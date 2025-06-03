@@ -1,4 +1,3 @@
-
 import { Target, Users, Award, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -26,11 +25,11 @@ const About = () => {
     }
   ];
 
-  const achievements = [
-    { value: "3", label: "Global offices", description: "Houston • Dubai • Irvine", gradient: "from-green-400 to-emerald-400" },
-    { value: "150+", label: "Projects delivered", description: "Enterprise solutions", gradient: "from-blue-400 to-cyan-400" },
-    { value: "99.9%", label: "Client satisfaction", description: "Proven excellence", gradient: "from-purple-400 to-pink-400" },
-    { value: "5+", label: "Years of impact", description: "Industry leadership", gradient: "from-orange-400 to-red-400" }
+  const serviceMetrics = [
+    { value: "AI/ML", label: "Solutions deployed", description: "Machine learning & automation", gradient: "from-green-400 to-emerald-400" },
+    { value: "Cloud", label: "Migrations completed", description: "Enterprise infrastructure", gradient: "from-blue-400 to-cyan-400" },
+    { value: "Digital", label: "Transformations led", description: "End-to-end modernization", gradient: "from-purple-400 to-pink-400" },
+    { value: "Data", label: "Analytics platforms", description: "Business intelligence", gradient: "from-orange-400 to-red-400" }
   ];
 
   return (
@@ -130,7 +129,6 @@ const About = () => {
 
           {/* Sleek Statistics Display */}
           <div className="space-y-8 animate-fade-in" style={{animationDelay: '800ms'}}>
-            {/* Animated Statistics Bar */}
             <div className="relative bg-gradient-to-r from-gray-800/30 to-gray-900/30 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/30 overflow-hidden">
               {/* Background glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-blue-500/5 to-purple-500/5"></div>
@@ -141,26 +139,26 @@ const About = () => {
               <div className="relative z-10">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-light text-white mb-2">
-                    Our <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">impact</span>
+                    Our <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">expertise</span>
                   </h3>
                   <div className="w-16 h-px bg-gradient-to-r from-green-400 to-blue-400 mx-auto"></div>
                 </div>
                 
                 {/* Statistics with animated progress bars */}
                 <div className="space-y-6">
-                  {achievements.map((achievement, index) => (
+                  {serviceMetrics.map((metric, index) => (
                     <div key={index} className="group">
                       <div className="flex justify-between items-center mb-2">
-                        <span className="text-gray-300 text-sm font-medium">{achievement.label}</span>
-                        <span className="text-white font-light text-lg">{achievement.value}</span>
+                        <span className="text-gray-300 text-sm font-medium">{metric.label}</span>
+                        <span className="text-white font-light text-lg">{metric.value}</span>
                       </div>
                       
                       {/* Animated progress bar */}
                       <div className="relative h-2 bg-gray-800 rounded-full overflow-hidden">
                         <div 
-                          className={`absolute inset-y-0 left-0 bg-gradient-to-r ${achievement.gradient} rounded-full transition-all duration-1000 ease-out`}
+                          className={`absolute inset-y-0 left-0 bg-gradient-to-r ${metric.gradient} rounded-full transition-all duration-1000 ease-out`}
                           style={{
-                            width: '85%',
+                            width: '90%',
                             animationDelay: `${index * 0.2}s`
                           }}
                         ></div>
@@ -169,7 +167,7 @@ const About = () => {
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-pulse"></div>
                       </div>
                       
-                      <div className="text-gray-500 text-xs mt-1">{achievement.description}</div>
+                      <div className="text-gray-500 text-xs mt-1">{metric.description}</div>
                     </div>
                   ))}
                 </div>
@@ -185,7 +183,7 @@ const About = () => {
                       ></div>
                     ))}
                   </div>
-                  <div className="text-center text-gray-400 text-xs mt-3">Trusted by industry leaders worldwide</div>
+                  <div className="text-center text-gray-400 text-xs mt-3">Specialized service domains</div>
                 </div>
               </div>
             </div>
