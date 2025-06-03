@@ -1,3 +1,4 @@
+
 import { Target, Users, Award, Lightbulb, MessageCircle, Users2, Rocket, CheckCircle, Star, Shield, Clock, TrendingUp, ArrowRight, Globe, Zap, Brain, Cpu, Database, Network } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -332,24 +333,24 @@ const AboutPageContent = () => {
                     </div>
                   </div>
 
-                  {/* Premium Interactive Phase Card */}
-                  <div className="flex-1 w-full max-w-lg">
+                  {/* Compact Premium Interactive Phase Card */}
+                  <div className="flex-1 w-full max-w-sm">
                     <div className="relative group">
-                      <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 blur-3xl rounded-3xl group-hover:from-cyan-400/30 group-hover:to-blue-400/30 transition-all duration-700"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 blur-2xl rounded-2xl group-hover:from-cyan-400/30 group-hover:to-blue-400/30 transition-all duration-700"></div>
                       
-                      <Card className="bg-white/5 border-gray-700/30 backdrop-blur-2xl relative overflow-hidden group-hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                      <Card className="bg-white/5 border-gray-700/30 backdrop-blur-2xl relative overflow-hidden group-hover:bg-white/10 transition-all duration-500 shadow-xl">
                         <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 via-transparent to-cyan-400/5 group-hover:from-green-400/10 group-hover:to-cyan-400/10 transition-all duration-500"></div>
                         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-green-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         
-                        <CardContent className="p-10 relative z-10">
-                          <div className="flex items-center justify-between mb-8">
-                            <span className="text-4xl font-light text-white font-mono group-hover:text-green-400 transition-colors duration-300">{step.number}</span>
-                            <span className="text-sm text-green-400 uppercase tracking-wide">Neural Phase</span>
+                        <CardContent className="p-6 relative z-10">
+                          <div className="flex items-center justify-between mb-6">
+                            <span className="text-2xl font-light text-white font-mono group-hover:text-green-400 transition-colors duration-300">{step.number}</span>
+                            <span className="text-xs text-green-400 uppercase tracking-wide">{step.title}</span>
                           </div>
                           
-                          {/* Enhanced Progress Visualization */}
-                          <div className="relative mb-8">
-                            <div className="h-3 bg-gray-800 rounded-full overflow-hidden">
+                          {/* Compact Progress Visualization */}
+                          <div className="relative mb-6">
+                            <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
                               <div 
                                 className={`h-full bg-gradient-to-r ${step.color} rounded-full transition-all duration-1000 relative`}
                                 style={{ width: `${step.progress}%` }}
@@ -357,27 +358,27 @@ const AboutPageContent = () => {
                                 <div className="absolute inset-0 bg-white/20 rounded-full animate-pulse"></div>
                               </div>
                             </div>
-                            <div className="absolute right-0 -top-8 text-xs text-green-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div className="absolute right-0 -top-6 text-xs text-green-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                               {step.progress}%
                             </div>
                           </div>
                           
-                          {/* Neural Network Progress Indicators */}
-                          <div className="space-y-4 mb-8">
+                          {/* Compact Neural Network Progress Indicators */}
+                          <div className="space-y-2 mb-6">
                             {processSteps.slice(0, 7).map((_, i) => (
-                              <div key={i} className="flex items-center gap-4">
-                                <div className={`w-4 h-4 rounded-full transition-all duration-500 relative ${
+                              <div key={i} className="flex items-center gap-2">
+                                <div className={`w-3 h-3 rounded-full transition-all duration-500 relative ${
                                   i < parseInt(step.number) 
-                                    ? 'bg-green-400 scale-110 shadow-lg shadow-green-400/50' 
+                                    ? 'bg-green-400 scale-110 shadow-sm shadow-green-400/50' 
                                     : i === parseInt(step.number) - 1 
-                                      ? 'bg-yellow-400 animate-pulse shadow-lg shadow-yellow-400/50'
+                                      ? 'bg-yellow-400 animate-pulse shadow-sm shadow-yellow-400/50'
                                       : 'bg-gray-600'
                                 }`}>
                                   {i < parseInt(step.number) && (
                                     <div className="absolute inset-0 bg-green-400 rounded-full animate-ping opacity-75"></div>
                                   )}
                                 </div>
-                                <div className={`h-2 flex-1 rounded-full overflow-hidden transition-all duration-500 ${
+                                <div className={`h-1 flex-1 rounded-full overflow-hidden transition-all duration-500 ${
                                   i < parseInt(step.number) 
                                     ? `bg-gradient-to-r ${step.color}` 
                                     : i === parseInt(step.number) - 1 
@@ -388,23 +389,23 @@ const AboutPageContent = () => {
                                     <div className="h-full bg-white/20 animate-pulse"></div>
                                   )}
                                 </div>
-                                <div className="text-xs text-gray-400 font-mono w-8 group-hover:text-green-400 transition-colors duration-300">
+                                <div className="text-xs text-gray-400 font-mono w-6 group-hover:text-green-400 transition-colors duration-300">
                                   {String(i + 1).padStart(2, '0')}
                                 </div>
                               </div>
                             ))}
                           </div>
 
-                          {/* Quantum Processing Status */}
-                          <div className="flex items-center justify-center p-4 bg-gray-900/30 rounded-xl border border-gray-700/30">
-                            <div className="flex items-center gap-4">
+                          {/* Compact Quantum Processing Status */}
+                          <div className="flex items-center justify-center p-3 bg-gray-900/30 rounded-lg border border-gray-700/30">
+                            <div className="flex items-center gap-3">
                               <div className="flex space-x-1">
                                 {Array.from({ length: 3 }).map((_, i) => (
-                                  <div key={i} className="w-2 h-2 bg-green-400 rounded-full animate-pulse group-hover:bg-cyan-400 transition-colors duration-300 shadow-sm shadow-green-400/50" style={{animationDelay: `${i * 0.2}s`}}></div>
+                                  <div key={i} className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse group-hover:bg-cyan-400 transition-colors duration-300 shadow-sm shadow-green-400/50" style={{animationDelay: `${i * 0.2}s`}}></div>
                                 ))}
                               </div>
                               <span className="text-xs text-gray-400 uppercase tracking-wide group-hover:text-green-400 transition-colors duration-300">
-                                Quantum Processing Active
+                                Active
                               </span>
                             </div>
                           </div>
