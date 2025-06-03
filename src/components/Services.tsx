@@ -1,94 +1,81 @@
-
 import { Code, Smartphone, Globe, BarChart3, Palette, Share2, Search, Zap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-
 const Services = () => {
-  const services = [
-    {
-      icon: Code,
-      category: "TECHNOLOGY",
-      title: "Web Development",
-      description: "Enterprise-grade solutions built with cutting-edge technologies for optimal performance.",
-      gradient: "from-blue-500/10 via-cyan-400/15 to-blue-600/10",
-      accentColor: "text-blue-600",
-      glowColor: "blue-500/20",
-      link: "/services/web-development"
-    },
-    {
-      icon: Smartphone,
-      category: "DIGITAL",
-      title: "Mobile Applications",
-      description: "Native and cross-platform mobile solutions that deliver exceptional user experiences.",
-      gradient: "from-emerald-500/10 via-green-400/15 to-emerald-600/10",
-      accentColor: "text-emerald-600",
-      glowColor: "emerald-500/20",
-      link: "/services/mobile-applications"
-    },
-    {
-      icon: Globe,
-      category: "INNOVATION",
-      title: "Web Applications",
-      description: "Complex applications with enterprise architecture and intuitive user interfaces.",
-      gradient: "from-purple-500/10 via-violet-400/15 to-purple-600/10",
-      accentColor: "text-purple-600",
-      glowColor: "purple-500/20",
-      link: "/services/web-applications"
-    },
-    {
-      icon: Zap,
-      category: "INFRASTRUCTURE",
-      title: "Cloud Solutions",
-      description: "Scalable, secure cloud hosting solutions with enterprise-level support.",
-      gradient: "from-amber-500/10 via-yellow-400/15 to-amber-600/10",
-      accentColor: "text-amber-600",
-      glowColor: "amber-500/20",
-      link: "/services/cloud-solutions"
-    },
-    {
-      icon: Search,
-      category: "ANALYTICS",
-      title: "SEO & Insights",
-      description: "Strategic optimization and comprehensive analytics to maximize performance.",
-      gradient: "from-rose-500/10 via-pink-400/15 to-rose-600/10",
-      accentColor: "text-rose-600",
-      glowColor: "rose-500/20",
-      link: "/services/seo-insights"
-    },
-    {
-      icon: Palette,
-      category: "STRATEGY",
-      title: "Brand Identity",
-      description: "Complete brand development from positioning to visual identity systems.",
-      gradient: "from-indigo-500/10 via-blue-400/15 to-indigo-600/10",
-      accentColor: "text-indigo-600",
-      glowColor: "indigo-500/20",
-      link: "/services/brand-identity"
-    },
-    {
-      icon: Share2,
-      category: "MARKETING",
-      title: "Digital Campaigns",
-      description: "Data-driven strategies that build communities and drive measurable ROI.",
-      gradient: "from-teal-500/10 via-cyan-400/15 to-teal-600/10",
-      accentColor: "text-teal-600",
-      glowColor: "teal-500/20",
-      link: "/services/digital-campaigns"
-    },
-    {
-      icon: BarChart3,
-      category: "AI",
-      title: "Experience Optimization",
-      description: "Pioneer AEO services optimizing for next-generation AI systems.",
-      gradient: "from-violet-500/10 via-purple-400/15 to-violet-600/10",
-      accentColor: "text-violet-600",
-      glowColor: "violet-500/20",
-      link: "/services/experience-optimization"
-    }
-  ];
-
-  return (
-    <section id="services" className="py-32 bg-white relative overflow-hidden">
+  const services = [{
+    icon: Code,
+    category: "TECHNOLOGY",
+    title: "Web Development",
+    description: "Enterprise-grade solutions built with cutting-edge technologies for optimal performance.",
+    gradient: "from-blue-500/10 via-cyan-400/15 to-blue-600/10",
+    accentColor: "text-blue-600",
+    glowColor: "blue-500/20",
+    link: "/services/web-development"
+  }, {
+    icon: Smartphone,
+    category: "DIGITAL",
+    title: "Mobile Applications",
+    description: "Native and cross-platform mobile solutions that deliver exceptional user experiences.",
+    gradient: "from-emerald-500/10 via-green-400/15 to-emerald-600/10",
+    accentColor: "text-emerald-600",
+    glowColor: "emerald-500/20",
+    link: "/services/mobile-applications"
+  }, {
+    icon: Globe,
+    category: "INNOVATION",
+    title: "Web Applications",
+    description: "Complex applications with enterprise architecture and intuitive user interfaces.",
+    gradient: "from-purple-500/10 via-violet-400/15 to-purple-600/10",
+    accentColor: "text-purple-600",
+    glowColor: "purple-500/20",
+    link: "/services/web-applications"
+  }, {
+    icon: Zap,
+    category: "INFRASTRUCTURE",
+    title: "Cloud Solutions",
+    description: "Scalable, secure cloud hosting solutions with enterprise-level support.",
+    gradient: "from-amber-500/10 via-yellow-400/15 to-amber-600/10",
+    accentColor: "text-amber-600",
+    glowColor: "amber-500/20",
+    link: "/services/cloud-solutions"
+  }, {
+    icon: Search,
+    category: "ANALYTICS",
+    title: "SEO & Insights",
+    description: "Strategic optimization and comprehensive analytics to maximize performance.",
+    gradient: "from-rose-500/10 via-pink-400/15 to-rose-600/10",
+    accentColor: "text-rose-600",
+    glowColor: "rose-500/20",
+    link: "/services/seo-insights"
+  }, {
+    icon: Palette,
+    category: "STRATEGY",
+    title: "Brand Identity",
+    description: "Complete brand development from positioning to visual identity systems.",
+    gradient: "from-indigo-500/10 via-blue-400/15 to-indigo-600/10",
+    accentColor: "text-indigo-600",
+    glowColor: "indigo-500/20",
+    link: "/services/brand-identity"
+  }, {
+    icon: Share2,
+    category: "MARKETING",
+    title: "Digital Campaigns",
+    description: "Data-driven strategies that build communities and drive measurable ROI.",
+    gradient: "from-teal-500/10 via-cyan-400/15 to-teal-600/10",
+    accentColor: "text-teal-600",
+    glowColor: "teal-500/20",
+    link: "/services/digital-campaigns"
+  }, {
+    icon: BarChart3,
+    category: "AI",
+    title: "Experience Optimization",
+    description: "Pioneer AEO services optimizing for next-generation AI systems.",
+    gradient: "from-violet-500/10 via-purple-400/15 to-violet-600/10",
+    accentColor: "text-violet-600",
+    glowColor: "violet-500/20",
+    link: "/services/experience-optimization"
+  }];
+  return <section id="services" className="py-32 bg-white relative overflow-hidden">
       {/* Subtle background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-green-400 to-blue-500 rounded-full blur-3xl"></div>
@@ -101,7 +88,7 @@ const Services = () => {
             <div className="w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-6"></div>
             Services
           </div>
-          <h2 className="text-5xl lg:text-6xl font-light text-gray-900 mb-8 leading-tight">
+          <h2 className="lg:text-6xl font-light text-gray-900 mb-8 leading-tight text-4xl">
             Digital solutions that
             <span className="block text-green-600 font-normal">
               drive growth
@@ -114,12 +101,7 @@ const Services = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, index) => (
-            <Link
-              key={index}
-              to={service.link}
-              className="group relative h-[420px] block"
-            >
+          {services.map((service, index) => <Link key={index} to={service.link} className="group relative h-[420px] block">
               {/* Subtle luxury glow - much more refined */}
               <div className={`absolute -inset-0.5 bg-gradient-to-r ${service.gradient} rounded-2xl opacity-0 group-hover:opacity-60 transition-all duration-700 blur-sm`}></div>
               
@@ -183,12 +165,9 @@ const Services = () => {
                   </div>
                 </CardContent>
               </Card>
-            </Link>
-          ))}
+            </Link>)}
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Services;
