@@ -234,28 +234,28 @@ const Industries = () => {
         {/* Enhanced CTA Section */}
         <div className="mt-24 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-green-50/50 via-gray-50 to-green-50/50 rounded-3xl"></div>
-          <div className="relative bg-gradient-to-r from-gray-50/80 to-green-50/80 backdrop-blur-sm rounded-3xl p-16 text-center border border-gray-200/50 shadow-2xl animate-fade-in" style={{animationDelay: '1200ms'}}>
+          <div className="relative bg-gradient-to-r from-gray-50/80 to-green-50/80 backdrop-blur-sm rounded-3xl p-8 md:p-16 text-center border border-gray-200/50 shadow-2xl animate-fade-in" style={{animationDelay: '1200ms'}}>
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-8 left-8 w-16 h-16 bg-green-200 rounded-full animate-float"></div>
               <div className="absolute bottom-8 right-8 w-12 h-12 bg-gray-300 rounded-full animate-bounce"></div>
               <div className="absolute top-1/2 left-1/4 w-8 h-8 bg-green-300 rounded-full animate-pulse"></div>
             </div>
             <div className="relative z-10">
-              <h3 className="text-4xl font-light text-gray-900 mb-6">
+              <h3 className="text-3xl md:text-4xl font-light text-gray-900 mb-4 md:mb-6">
                 Ready to transform your industry?
               </h3>
-              <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto font-light">
+              <p className="text-lg md:text-xl text-gray-600 mb-8 md:mb-10 max-w-3xl mx-auto font-light">
                 Get a comprehensive custom quote tailored to your specific needs. Our enhanced form captures all the details needed for an accurate proposal.
               </p>
               <button 
                 onClick={() => setIsFormOpen(true)}
-                className="group relative px-16 py-5 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-2xl font-medium text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden"
+                className="group relative w-full sm:w-auto min-w-[280px] px-8 md:px-12 lg:px-16 py-4 md:py-5 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl md:rounded-2xl font-medium text-lg md:text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden shadow-lg hover:shadow-green-500/25"
               >
                 <span className="relative z-10">Start Your Comprehensive Quote</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-green-700 to-green-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
               </button>
-              <p className="text-sm text-gray-500 mt-4">
+              <p className="text-sm text-gray-500 mt-4 px-4">
                 ✓ Detailed 6-step process ✓ Instant estimate ✓ 24-hour response
               </p>
             </div>
