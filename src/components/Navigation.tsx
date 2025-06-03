@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,13 +9,12 @@ const Navigation = () => {
   const location = useLocation();
 
   const navItems = [
-    { name: "Services", href: "#services" },
-    { name: "Industries", href: "#industries" },
+    { name: "Services", href: "/services" },
+    { name: "Industries", href: "/industries" },
     { name: "Domains", href: "/domains" },
-    { name: "Insights", href: "#portfolio" },
-    { name: "About", href: "#about" },
-    { name: "Careers", href: "#careers" },
-    { name: "Contact", href: "#contact" },
+    { name: "Insights", href: "/insights" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
   ];
 
   useEffect(() => {
@@ -59,16 +57,16 @@ const Navigation = () => {
           <div className="hidden lg:block">
             <div className="flex items-center space-x-8">
               {navItems.map((item, index) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
+                  to={item.href}
                   className="text-gray-700 hover:text-green-600 text-sm font-medium transition-all duration-300 relative group transform hover:scale-105"
                   style={{animationDelay: `${index * 100}ms`}}
                 >
                   {item.name}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full"></span>
                   <span className="absolute -inset-2 rounded-lg bg-green-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></span>
-                </a>
+                </Link>
               ))}
               <Button className="ml-4 bg-green-600 hover:bg-green-700 text-white px-6 py-2 text-sm font-medium group transition-all duration-300 hover:scale-105 hover:shadow-lg">
                 Contact us
@@ -99,15 +97,15 @@ const Navigation = () => {
           <div className="lg:hidden border-t border-gray-200 bg-white/95 backdrop-blur-md animate-fade-in">
             <div className="px-4 py-6 space-y-4">
               {navItems.map((item, index) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
+                  to={item.href}
                   className="text-gray-700 hover:text-green-600 block py-2 text-base font-medium transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
                   onClick={() => setIsMenuOpen(false)}
                   style={{animationDelay: `${index * 50}ms`}}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
               <Button className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white py-3 group transition-all duration-300 hover:scale-105">
                 Contact us

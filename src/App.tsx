@@ -8,6 +8,14 @@ import Index from "./pages/Index";
 import DomainRegistration from "./pages/DomainRegistration";
 import NotFound from "./pages/NotFound";
 
+// Main pages
+import ServicesPage from "./pages/Services";
+import IndustriesPage from "./pages/Industries";
+import AboutPage from "./pages/About";
+import ContactPage from "./pages/Contact";
+import InsightsPage from "./pages/Insights";
+import CareersPage from "./pages/Careers";
+
 // Service pages
 import WebDevelopment from "./pages/services/WebDevelopment";
 import MobileApplications from "./pages/services/MobileApplications";
@@ -29,6 +37,14 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/domains" element={<DomainRegistration />} />
+          
+          {/* Main Pages */}
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/industries" element={<IndustriesPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/insights" element={<InsightsPage />} />
+          <Route path="/careers" element={<CareersPage />} />
           
           {/* Service Routes */}
           <Route path="/services/web-development" element={<WebDevelopment />} />
