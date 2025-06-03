@@ -174,32 +174,39 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {services.map((service, index) => (
-            <Card 
+            <div
               key={index} 
-              className="group border-gray-200 hover:border-green-500 transition-all duration-500 bg-white shadow-none hover:shadow-xl hover:scale-105 cursor-pointer animate-fade-in"
+              className="relative animate-fade-in"
               style={{animationDelay: `${index * 100}ms`}}
             >
-              <CardContent className="p-8">
-                <div className="mb-6">
-                  <service.icon className="w-8 h-8 text-green-600 mb-4 group-hover:scale-110 transition-transform duration-300" />
-                  <div className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2 group-hover:text-green-600 transition-colors duration-300">
-                    {service.title}
+              {/* Animated glow border */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-green-500 via-green-400 to-green-500 rounded-lg opacity-60 blur-sm">
+                <div className="absolute inset-0 bg-gradient-to-r from-green-500 via-green-400 to-green-500 rounded-lg animate-spin" style={{animationDuration: '3s'}}></div>
+              </div>
+              
+              <Card className="relative bg-white border-2 border-green-500 shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer hover:scale-105">
+                <CardContent className="p-8">
+                  <div className="mb-6">
+                    <service.icon className="w-8 h-8 text-green-600 mb-4 group-hover:scale-110 transition-transform duration-300" />
+                    <div className="text-xs font-medium text-green-600 uppercase tracking-wide mb-2 transition-colors duration-300">
+                      {service.title}
+                    </div>
+                    <h3 className="text-lg font-medium text-gray-900 mb-3 group-hover:text-green-600 transition-colors duration-300">
+                      {service.subtitle}
+                    </h3>
                   </div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-3 group-hover:text-green-600 transition-colors duration-300">
-                    {service.subtitle}
-                  </h3>
-                </div>
-                <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                  {service.description}
-                </p>
-                <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-                  <Button variant="outline" size="sm" className="border-green-600 text-green-600 hover:bg-green-50 group/btn">
-                    Learn more
-                    <ArrowRight className="ml-2 w-3 h-3 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                    {service.description}
+                  </p>
+                  <div className="transition-all duration-500">
+                    <Button variant="outline" size="sm" className="border-green-600 text-green-600 hover:bg-green-50 group/btn">
+                      Learn more
+                      <ArrowRight className="ml-2 w-3 h-3 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           ))}
         </div>
 
