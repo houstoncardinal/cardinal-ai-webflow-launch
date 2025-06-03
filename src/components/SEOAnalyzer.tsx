@@ -219,43 +219,44 @@ const SEOAnalyzer = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-12">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
       {/* Header */}
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-light text-gray-900 mb-4">
+      <div className="text-center mb-8 sm:mb-12">
+        <h1 className="text-3xl sm:text-4xl font-light text-gray-900 mb-4">
           SEO <span className="text-rose-600">Analyzer</span>
         </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
           Get a comprehensive SEO audit of any website with actionable insights and recommendations.
         </p>
       </div>
 
       {/* URL Input */}
-      <Card className="mb-8">
-        <CardContent className="p-8">
-          <div className="flex gap-4">
+      <Card className="mb-6 sm:mb-8">
+        <CardContent className="p-4 sm:p-8">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <div className="flex-1">
               <Input
                 type="url"
                 placeholder="Enter website URL (e.g., https://example.com)"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
-                className="text-lg h-12"
+                className="text-base sm:text-lg h-11 sm:h-12"
               />
             </div>
             <Button 
               onClick={analyzeDomain}
               disabled={isAnalyzing}
-              className="bg-rose-600 hover:bg-rose-700 h-12 px-8"
+              className="bg-rose-600 hover:bg-rose-700 h-11 sm:h-12 px-6 sm:px-8 w-full sm:w-auto"
             >
               {isAnalyzing ? (
                 <>
-                  <Clock className="w-5 h-5 mr-2 animate-spin" />
-                  Analyzing...
+                  <Clock className="w-4 h-4 sm:w-5 sm:h-5 mr-2 animate-spin" />
+                  <span className="hidden sm:inline">Analyzing...</span>
+                  <span className="sm:hidden">Analyzing</span>
                 </>
               ) : (
                 <>
-                  <Search className="w-5 h-5 mr-2" />
+                  <Search className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Analyze
                 </>
               )}
@@ -266,40 +267,40 @@ const SEOAnalyzer = () => {
 
       {/* Results */}
       {results && (
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {/* Overview */}
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <TrendingUp className="w-6 h-6 text-rose-600" />
+            <CardHeader className="pb-4 sm:pb-6">
+              <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-rose-600" />
                 SEO Overview
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <CardContent className="pt-0">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 <div className="text-center">
-                  <div className={`text-4xl font-bold mb-2 ${getScoreColor(results.score)}`}>
+                  <div className={`text-2xl sm:text-4xl font-bold mb-1 sm:mb-2 ${getScoreColor(results.score)}`}>
                     {results.score}
                   </div>
-                  <div className="text-gray-600">Overall Score</div>
+                  <div className="text-xs sm:text-sm text-gray-600">Overall Score</div>
                 </div>
                 <div className="text-center">
-                  <div className={`text-4xl font-bold mb-2 ${getScoreColor(results.metrics.seoScore)}`}>
+                  <div className={`text-2xl sm:text-4xl font-bold mb-1 sm:mb-2 ${getScoreColor(results.metrics.seoScore)}`}>
                     {results.metrics.seoScore}
                   </div>
-                  <div className="text-gray-600">SEO Score</div>
+                  <div className="text-xs sm:text-sm text-gray-600">SEO Score</div>
                 </div>
                 <div className="text-center">
-                  <div className={`text-4xl font-bold mb-2 ${getScoreColor(results.metrics.mobileScore)}`}>
+                  <div className={`text-2xl sm:text-4xl font-bold mb-1 sm:mb-2 ${getScoreColor(results.metrics.mobileScore)}`}>
                     {results.metrics.mobileScore}
                   </div>
-                  <div className="text-gray-600">Mobile Score</div>
+                  <div className="text-xs sm:text-sm text-gray-600">Mobile Score</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-bold mb-2 text-gray-900">
+                  <div className="text-2xl sm:text-4xl font-bold mb-1 sm:mb-2 text-gray-900">
                     {results.metrics.pageLoadTime.toFixed(1)}s
                   </div>
-                  <div className="text-gray-600">Load Time</div>
+                  <div className="text-xs sm:text-sm text-gray-600">Load Time</div>
                 </div>
               </div>
             </CardContent>
@@ -307,21 +308,22 @@ const SEOAnalyzer = () => {
 
           {/* Issues */}
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <AlertTriangle className="w-6 h-6 text-rose-600" />
-                Issues Found ({results.issues.length})
+            <CardHeader className="pb-4 sm:pb-6">
+              <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 text-rose-600" />
+                <span className="hidden sm:inline">Issues Found ({results.issues.length})</span>
+                <span className="sm:hidden">Issues ({results.issues.length})</span>
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
+            <CardContent className="pt-0">
+              <div className="space-y-3 sm:space-y-4">
                 {results.issues.map((issue, index) => (
-                  <div key={index} className="flex items-start gap-3 p-4 border rounded-lg">
+                  <div key={index} className="flex items-start gap-3 p-3 sm:p-4 border rounded-lg">
                     {getIssueIcon(issue.type)}
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h4 className="font-semibold">{issue.title}</h4>
-                        <span className={`text-xs px-2 py-1 rounded-full ${
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-1">
+                        <h4 className="font-semibold text-sm sm:text-base truncate">{issue.title}</h4>
+                        <span className={`text-xs px-2 py-1 rounded-full flex-shrink-0 w-fit ${
                           issue.impact === 'high' ? 'bg-red-100 text-red-800' :
                           issue.impact === 'medium' ? 'bg-yellow-100 text-yellow-800' :
                           'bg-blue-100 text-blue-800'
@@ -329,7 +331,7 @@ const SEOAnalyzer = () => {
                           {issue.impact} impact
                         </span>
                       </div>
-                      <p className="text-gray-600 text-sm">{issue.description}</p>
+                      <p className="text-gray-600 text-sm mb-1">{issue.description}</p>
                       <span className="text-xs text-gray-500">{issue.category}</span>
                     </div>
                   </div>
@@ -340,19 +342,19 @@ const SEOAnalyzer = () => {
 
           {/* Recommendations */}
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <CheckCircle className="w-6 h-6 text-rose-600" />
+            <CardHeader className="pb-4 sm:pb-6">
+              <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-rose-600" />
                 Recommendations
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
+            <CardContent className="pt-0">
+              <div className="space-y-3 sm:space-y-4">
                 {results.recommendations.map((rec, index) => (
-                  <div key={index} className="p-4 border rounded-lg">
-                    <div className="flex items-center gap-2 mb-2">
-                      <h4 className="font-semibold">{rec.title}</h4>
-                      <span className={`text-xs px-2 py-1 rounded-full ${
+                  <div key={index} className="p-3 sm:p-4 border rounded-lg">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-2">
+                      <h4 className="font-semibold text-sm sm:text-base">{rec.title}</h4>
+                      <span className={`text-xs px-2 py-1 rounded-full w-fit ${
                         rec.priority === 'high' ? 'bg-red-100 text-red-800' :
                         rec.priority === 'medium' ? 'bg-yellow-100 text-yellow-800' :
                         'bg-green-100 text-green-800'
@@ -362,7 +364,7 @@ const SEOAnalyzer = () => {
                     </div>
                     <p className="text-gray-600 text-sm mb-2">{rec.description}</p>
                     <div className="bg-gray-50 p-3 rounded text-sm">
-                      <strong>Action:</strong> {rec.action}
+                      <strong>Action:</strong> <span className="break-words">{rec.action}</span>
                     </div>
                   </div>
                 ))}
@@ -372,75 +374,87 @@ const SEOAnalyzer = () => {
 
           {/* Technical SEO */}
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Shield className="w-6 h-6 text-rose-600" />
+            <CardHeader className="pb-4 sm:pb-6">
+              <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-rose-600" />
                 Technical SEO
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <CardContent className="pt-0">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 <div>
-                  <h4 className="font-semibold mb-3">Security & Structure</h4>
+                  <h4 className="font-semibold mb-3 text-sm sm:text-base">Security & Structure</h4>
                   <div className="space-y-2 text-sm">
                     <div className="flex items-center gap-2">
                       {results.technicalSEO.hasSSL ? 
-                        <CheckCircle className="w-4 h-4 text-green-500" /> : 
-                        <XCircle className="w-4 h-4 text-red-500" />
+                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" /> : 
+                        <XCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
                       }
-                      SSL Certificate
+                      <span className="truncate">SSL Certificate</span>
                     </div>
                     <div className="flex items-center gap-2">
                       {results.technicalSEO.hasRobotsTxt ? 
-                        <CheckCircle className="w-4 h-4 text-green-500" /> : 
-                        <XCircle className="w-4 h-4 text-red-500" />
+                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" /> : 
+                        <XCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
                       }
-                      Robots.txt
+                      <span className="truncate">Robots.txt</span>
                     </div>
                     <div className="flex items-center gap-2">
                       {results.technicalSEO.hasSitemap ? 
-                        <CheckCircle className="w-4 h-4 text-green-500" /> : 
-                        <XCircle className="w-4 h-4 text-red-500" />
+                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" /> : 
+                        <XCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
                       }
-                      XML Sitemap
+                      <span className="truncate">XML Sitemap</span>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="font-semibold mb-3">Meta Tags</h4>
+                  <h4 className="font-semibold mb-3 text-sm sm:text-base">Meta Tags</h4>
                   <div className="space-y-2 text-sm">
                     <div className="flex items-center gap-2">
                       {results.technicalSEO.metaTags.title ? 
-                        <CheckCircle className="w-4 h-4 text-green-500" /> : 
-                        <XCircle className="w-4 h-4 text-red-500" />
+                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" /> : 
+                        <XCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
                       }
-                      Title Tag
+                      <span className="truncate">Title Tag</span>
                     </div>
                     <div className="flex items-center gap-2">
                       {results.technicalSEO.metaTags.description ? 
-                        <CheckCircle className="w-4 h-4 text-green-500" /> : 
-                        <XCircle className="w-4 h-4 text-red-500" />
+                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" /> : 
+                        <XCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
                       }
-                      Meta Description
+                      <span className="truncate">Meta Description</span>
                     </div>
                     <div className="flex items-center gap-2">
                       {results.technicalSEO.metaTags.viewport ? 
-                        <CheckCircle className="w-4 h-4 text-green-500" /> : 
-                        <XCircle className="w-4 h-4 text-red-500" />
+                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" /> : 
+                        <XCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
                       }
-                      Viewport Tag
+                      <span className="truncate">Viewport Tag</span>
                     </div>
                   </div>
                 </div>
 
-                <div>
-                  <h4 className="font-semibold mb-3">Content Structure</h4>
+                <div className="sm:col-span-2 lg:col-span-1">
+                  <h4 className="font-semibold mb-3 text-sm sm:text-base">Content Structure</h4>
                   <div className="space-y-2 text-sm">
-                    <div>H1 Tags: {results.technicalSEO.headings.h1Count}</div>
-                    <div>H2 Tags: {results.technicalSEO.headings.h2Count}</div>
-                    <div>Images Total: {results.technicalSEO.images.total}</div>
-                    <div className="text-red-600">Missing Alt: {results.technicalSEO.images.withoutAlt}</div>
+                    <div className="flex justify-between">
+                      <span>H1 Tags:</span>
+                      <span className="font-medium">{results.technicalSEO.headings.h1Count}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>H2 Tags:</span>
+                      <span className="font-medium">{results.technicalSEO.headings.h2Count}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Images Total:</span>
+                      <span className="font-medium">{results.technicalSEO.images.total}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Missing Alt:</span>
+                      <span className="font-medium text-red-600">{results.technicalSEO.images.withoutAlt}</span>
+                    </div>
                   </div>
                 </div>
               </div>
