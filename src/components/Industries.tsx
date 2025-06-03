@@ -1,5 +1,6 @@
-import { Building, Shield, Heart, Scale } from "lucide-react";
+import { Building, Shield, Heart, Scale, CheckCircle, Users, Award, TrendingUp, Lock, Globe, Smartphone, Cloud, Search, Palette, Target, Zap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TransformationForm from "./TransformationForm";
 import { useState } from "react";
 
@@ -40,6 +41,161 @@ const Industries = () => {
       hoverGradient: "group-hover:from-rose-50 group-hover:to-pink-50"
     }
   ];
+
+  const industryExpertise = {
+    "Real Estate": {
+      overview: "We transform the real estate industry through cutting-edge digital solutions that streamline operations, enhance client experiences, and drive business growth.",
+      services: [
+        {
+          icon: Globe,
+          title: "Property Listing Platforms",
+          description: "Advanced search functionality, virtual tours, and interactive maps for seamless property discovery."
+        },
+        {
+          icon: Users,
+          title: "CRM & Lead Management",
+          description: "Automated lead tracking, client communication tools, and pipeline management systems."
+        },
+        {
+          icon: Smartphone,
+          title: "Mobile Applications",
+          description: "Native iOS and Android apps for property viewing, client management, and on-the-go operations."
+        },
+        {
+          icon: Cloud,
+          title: "Property Management Systems",
+          description: "Comprehensive platforms for rental management, maintenance tracking, and tenant communication."
+        }
+      ],
+      specialties: [
+        "MLS Integration & Data Synchronization",
+        "Virtual Reality Property Tours",
+        "Automated Property Valuation Models",
+        "Real Estate Investment Analytics",
+        "Commission & Transaction Management",
+        "Digital Document Management"
+      ],
+      stats: [
+        { number: "500+", label: "Properties Listed" },
+        { number: "98%", label: "Client Satisfaction" },
+        { number: "24/7", label: "System Uptime" }
+      ]
+    },
+    "Government": {
+      overview: "We partner with government agencies to create secure, accessible, and efficient digital services that serve citizens and streamline public sector operations.",
+      services: [
+        {
+          icon: Lock,
+          title: "Secure Citizen Portals",
+          description: "Multi-factor authentication, encrypted data transmission, and compliance with government security standards."
+        },
+        {
+          icon: Globe,
+          title: "Public Service Platforms",
+          description: "Online permit applications, license renewals, and citizen service request management systems."
+        },
+        {
+          icon: Cloud,
+          title: "Government Cloud Solutions",
+          description: "FedRAMP compliant cloud infrastructure with disaster recovery and data backup capabilities."
+        },
+        {
+          icon: TrendingUp,
+          title: "Data Analytics & Reporting",
+          description: "Real-time dashboards, performance metrics, and transparency reporting for public accountability."
+        }
+      ],
+      specialties: [
+        "Section 508 Accessibility Compliance",
+        "FISMA Security Framework Implementation",
+        "Open Data Initiatives & APIs",
+        "Digital Identity Management",
+        "Interagency System Integration",
+        "Emergency Response Systems"
+      ],
+      stats: [
+        { number: "99.9%", label: "Security Uptime" },
+        { number: "50K+", label: "Citizens Served" },
+        { number: "100%", label: "Compliance Rate" }
+      ]
+    },
+    "Legal": {
+      overview: "We empower law firms and legal professionals with sophisticated digital tools that enhance practice efficiency, client service, and case management.",
+      services: [
+        {
+          icon: Scale,
+          title: "Case Management Systems",
+          description: "Comprehensive platforms for case tracking, document management, and deadline monitoring."
+        },
+        {
+          icon: Lock,
+          title: "Secure Client Portals",
+          description: "Attorney-client privileged communication channels with end-to-end encryption and audit trails."
+        },
+        {
+          icon: Search,
+          title: "Legal Research Platforms",
+          description: "AI-powered legal research tools with case law analysis and precedent identification."
+        },
+        {
+          icon: Globe,
+          title: "Professional Websites",
+          description: "Attorney marketing websites with practice area showcases and client intake automation."
+        }
+      ],
+      specialties: [
+        "Attorney-Client Privilege Protection",
+        "Legal Document Automation",
+        "Court Filing System Integration",
+        "Time & Billing Management",
+        "Conflict of Interest Checking",
+        "Legal Marketing & SEO"
+      ],
+      stats: [
+        { number: "1000+", label: "Cases Managed" },
+        { number: "95%", label: "Time Savings" },
+        { number: "24/7", label: "Support Available" }
+      ]
+    },
+    "Healthcare": {
+      overview: "We deliver HIPAA-compliant healthcare solutions that improve patient outcomes, streamline operations, and enhance the quality of care delivery.",
+      services: [
+        {
+          icon: Heart,
+          title: "Patient Management Systems",
+          description: "Electronic health records, appointment scheduling, and patient communication platforms."
+        },
+        {
+          icon: Lock,
+          title: "HIPAA-Compliant Infrastructure",
+          description: "End-to-end encryption, audit logging, and compliance monitoring for patient data protection."
+        },
+        {
+          icon: Smartphone,
+          title: "Telemedicine Platforms",
+          description: "Secure video consultations, remote monitoring, and digital health assessment tools."
+        },
+        {
+          icon: TrendingUp,
+          title: "Healthcare Analytics",
+          description: "Population health insights, treatment outcome analysis, and operational efficiency metrics."
+        }
+      ],
+      specialties: [
+        "Electronic Health Records (EHR)",
+        "Medical Device Integration",
+        "Clinical Decision Support Systems",
+        "Healthcare Interoperability (HL7/FHIR)",
+        "Medical Billing & Claims Processing",
+        "Patient Engagement Platforms"
+      ],
+      stats: [
+        { number: "10K+", label: "Patients Served" },
+        { number: "100%", label: "HIPAA Compliance" },
+        { number: "30%", label: "Efficiency Increase" }
+      ]
+    }
+  };
 
   return (
     <section id="industries" className="py-32 bg-gray-50 relative overflow-hidden">
@@ -181,7 +337,8 @@ const Industries = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Industries Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-32">
           {industries.map((industry, index) => (
             <div
               key={index}
@@ -229,6 +386,90 @@ const Industries = () => {
               </Card>
             </div>
           ))}
+        </div>
+
+        {/* Industry Expertise Deep Dive */}
+        <div className="mb-24">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
+              Industry Expertise & 
+              <span className="block text-green-600 font-normal">Service Specialties</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Discover our deep domain knowledge and specialized services tailored to each industry's unique requirements.
+            </p>
+          </div>
+
+          <Tabs defaultValue="Real Estate" className="w-full">
+            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 mb-12 bg-white border border-gray-200 p-2 rounded-2xl">
+              {Object.keys(industryExpertise).map((industry) => (
+                <TabsTrigger 
+                  key={industry} 
+                  value={industry}
+                  className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-xl transition-all duration-300"
+                >
+                  {industry}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            {Object.entries(industryExpertise).map(([industry, data]) => (
+              <TabsContent key={industry} value={industry} className="space-y-12">
+                {/* Overview */}
+                <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-xl border border-gray-100">
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-6">Our {industry} Expertise</h3>
+                  <p className="text-lg text-gray-600 leading-relaxed">{data.overview}</p>
+                  
+                  {/* Stats */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 pt-8 border-t border-gray-200">
+                    {data.stats.map((stat, index) => (
+                      <div key={index} className="text-center">
+                        <div className="text-3xl font-bold text-green-600 mb-2">{stat.number}</div>
+                        <div className="text-sm text-gray-600 uppercase tracking-wide">{stat.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Services */}
+                <div>
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-8">Our {industry} Services</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {data.services.map((service, index) => (
+                      <Card key={index} className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300 group">
+                        <CardContent className="p-8">
+                          <div className="flex items-start space-x-4">
+                            <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-green-200 transition-colors duration-300">
+                              <service.icon className="w-6 h-6 text-green-600" />
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="text-lg font-semibold text-gray-900 mb-3">{service.title}</h4>
+                              <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Specialties */}
+                <div>
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-8">Technical Specialties</h3>
+                  <div className="bg-gradient-to-br from-green-50 to-gray-50 rounded-3xl p-8 lg:p-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {data.specialties.map((specialty, index) => (
+                        <div key={index} className="flex items-center space-x-3 p-4 bg-white rounded-xl shadow-sm">
+                          <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                          <span className="text-gray-700 font-medium">{specialty}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </TabsContent>
+            ))}
+          </Tabs>
         </div>
 
         {/* Enhanced CTA Section */}
