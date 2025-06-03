@@ -128,93 +128,65 @@ const About = () => {
             </Button>
           </div>
 
-          {/* Redesigned Achievements Grid with Progress Rings */}
-          <div className="space-y-6 animate-fade-in" style={{animationDelay: '800ms'}}>
-            <div className="grid grid-cols-2 gap-4">
-              {achievements.map((achievement, index) => (
-                <div 
-                  key={index} 
-                  className="group relative bg-gradient-to-br from-gray-800/20 via-gray-900/30 to-black/40 backdrop-blur-xl p-6 rounded-2xl border border-gray-700/30 overflow-hidden hover:border-green-400/50 transition-all duration-700 hover:scale-105"
-                >
-                  {/* Animated background glow */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                  
-                  {/* Floating orb effect */}
-                  <div className="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-r from-green-400/20 to-blue-400/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-150"></div>
-                  
-                  {/* Content with animated progress ring */}
-                  <div className="relative z-10 text-center">
-                    <div className="mb-4 relative flex justify-center">
-                      {/* Animated progress ring */}
-                      <div className="relative w-16 h-16">
-                        <svg className="w-16 h-16 transform -rotate-90" viewBox="0 0 64 64">
-                          <circle 
-                            cx="32" 
-                            cy="32" 
-                            r="28" 
-                            fill="none" 
-                            stroke="rgba(255,255,255,0.1)" 
-                            strokeWidth="2"
-                          />
-                          <circle 
-                            cx="32" 
-                            cy="32" 
-                            r="28" 
-                            fill="none" 
-                            stroke="url(#gradient-${index})" 
-                            strokeWidth="2"
-                            strokeDasharray="175.93"
-                            strokeDashoffset="44"
-                            className="group-hover:stroke-dashoffset-0 transition-all duration-1000"
-                          />
-                        </svg>
-                        
-                        {/* Center dot with gradient */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className={`w-3 h-3 bg-gradient-to-r ${achievement.gradient} rounded-full group-hover:scale-150 transition-transform duration-500 animate-pulse`}></div>
-                        </div>
+          {/* Sleek Statistics Display */}
+          <div className="space-y-8 animate-fade-in" style={{animationDelay: '800ms'}}>
+            {/* Animated Statistics Bar */}
+            <div className="relative bg-gradient-to-r from-gray-800/30 to-gray-900/30 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/30 overflow-hidden">
+              {/* Background glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-blue-500/5 to-purple-500/5"></div>
+              
+              {/* Floating orb effect */}
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-r from-green-400/10 to-blue-400/10 rounded-full blur-3xl animate-pulse"></div>
+              
+              <div className="relative z-10">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-light text-white mb-2">
+                    Our <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">impact</span>
+                  </h3>
+                  <div className="w-16 h-px bg-gradient-to-r from-green-400 to-blue-400 mx-auto"></div>
+                </div>
+                
+                {/* Statistics with animated progress bars */}
+                <div className="space-y-6">
+                  {achievements.map((achievement, index) => (
+                    <div key={index} className="group">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-gray-300 text-sm font-medium">{achievement.label}</span>
+                        <span className="text-white font-light text-lg">{achievement.value}</span>
                       </div>
                       
-                      {/* Hidden SVG for gradient definitions */}
-                      <svg className="absolute w-0 h-0">
-                        <defs>
-                          <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" className={index === 0 ? "stop-green-400" : index === 1 ? "stop-blue-400" : index === 2 ? "stop-purple-400" : "stop-orange-400"} />
-                            <stop offset="100%" className={index === 0 ? "stop-emerald-400" : index === 1 ? "stop-cyan-400" : index === 2 ? "stop-pink-400" : "stop-red-400"} />
-                          </linearGradient>
-                        </defs>
-                      </svg>
+                      {/* Animated progress bar */}
+                      <div className="relative h-2 bg-gray-800 rounded-full overflow-hidden">
+                        <div 
+                          className={`absolute inset-y-0 left-0 bg-gradient-to-r ${achievement.gradient} rounded-full transition-all duration-1000 ease-out`}
+                          style={{
+                            width: '85%',
+                            animationDelay: `${index * 0.2}s`
+                          }}
+                        ></div>
+                        
+                        {/* Shimmer effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-pulse"></div>
+                      </div>
+                      
+                      <div className="text-gray-500 text-xs mt-1">{achievement.description}</div>
                     </div>
-                    
-                    <div className="space-y-2">
-                      <div className="text-2xl font-light text-white mb-1 group-hover:text-green-300 transition-colors duration-500">
-                        {achievement.value}
-                      </div>
-                      <div className="text-gray-300 font-medium text-sm group-hover:text-white transition-colors duration-500">
-                        {achievement.label}
-                      </div>
-                      <div className="text-gray-500 text-xs group-hover:text-gray-300 transition-colors duration-500">
-                        {achievement.description}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Subtle border animation */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-400/20 via-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{
-                    background: 'linear-gradient(45deg, transparent 30%, rgba(34,197,94,0.1) 50%, transparent 70%)',
-                    animation: 'gradient-shift 3s ease-in-out infinite'
-                  }}></div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            
-            {/* Additional visual element */}
-            <div className="mt-8 p-6 bg-gradient-to-r from-gray-800/30 to-gray-900/30 backdrop-blur-sm rounded-xl border border-gray-700/30 text-center">
-              <div className="text-gray-400 text-sm mb-2">Trusted by industry leaders</div>
-              <div className="flex justify-center space-x-6">
-                {[...Array(5)].map((_, i) => (
-                  <div key={i} className="w-2 h-2 bg-green-400/60 rounded-full animate-pulse" style={{animationDelay: `${i * 0.2}s`}}></div>
-                ))}
+                
+                {/* Additional decorative elements */}
+                <div className="mt-8 pt-6 border-t border-gray-700/30">
+                  <div className="flex justify-center space-x-4">
+                    {[...Array(4)].map((_, i) => (
+                      <div 
+                        key={i} 
+                        className="w-2 h-2 bg-green-400/60 rounded-full animate-pulse" 
+                        style={{animationDelay: `${i * 0.3}s`}}
+                      ></div>
+                    ))}
+                  </div>
+                  <div className="text-center text-gray-400 text-xs mt-3">Trusted by industry leaders worldwide</div>
+                </div>
               </div>
             </div>
           </div>
