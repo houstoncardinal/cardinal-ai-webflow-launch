@@ -205,7 +205,7 @@ const Portfolio = () => {
         {/* Enhanced main CTA */}
         <div className="text-center">
           <Button variant="outline" className="bg-gradient-to-r from-emerald-600/30 to-cyan-600/30 border-emerald-500/60 text-emerald-300 hover:from-emerald-600/50 hover:to-cyan-600/50 hover:border-emerald-400 hover:text-white px-12 py-4 text-lg font-light group transition-all duration-700 backdrop-blur-sm shadow-2xl hover:shadow-emerald-500/25 relative overflow-hidden">
-            <span className="relative z-10">View all case studies</span>
+            <span className="relative z-10 text-slate-950">View all case studies</span>
             <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
             <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/0 via-emerald-500/30 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
           </Button>
