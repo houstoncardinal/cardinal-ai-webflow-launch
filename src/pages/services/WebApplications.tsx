@@ -1,48 +1,29 @@
-
 import { Globe, CheckCircle, ArrowRight, Database, Shield, Zap, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
-
 const WebApplications = () => {
-  const features = [
-    {
-      icon: Database,
-      title: "Enterprise Architecture",
-      description: "Scalable, robust architecture designed for enterprise-level demands"
-    },
-    {
-      icon: Shield,
-      title: "Security & Compliance",
-      description: "Built-in security measures and compliance with industry standards"
-    },
-    {
-      icon: Zap,
-      title: "High Performance",
-      description: "Optimized for speed, efficiency, and seamless user experiences"
-    },
-    {
-      icon: Users,
-      title: "User-Focused Design",
-      description: "Intuitive interfaces that prioritize user experience and accessibility"
-    }
-  ];
-
-  const capabilities = [
-    "Custom Web Portals",
-    "Enterprise Dashboards", 
-    "E-commerce Platforms",
-    "Content Management Systems",
-    "API Development",
-    "Database Design",
-    "Cloud Integration",
-    "Real-time Applications"
-  ];
-
-  return (
-    <div className="min-h-screen bg-white">
+  const features = [{
+    icon: Database,
+    title: "Enterprise Architecture",
+    description: "Scalable, robust architecture designed for enterprise-level demands"
+  }, {
+    icon: Shield,
+    title: "Security & Compliance",
+    description: "Built-in security measures and compliance with industry standards"
+  }, {
+    icon: Zap,
+    title: "High Performance",
+    description: "Optimized for speed, efficiency, and seamless user experiences"
+  }, {
+    icon: Users,
+    title: "User-Focused Design",
+    description: "Intuitive interfaces that prioritize user experience and accessibility"
+  }];
+  const capabilities = ["Custom Web Portals", "Enterprise Dashboards", "E-commerce Platforms", "Content Management Systems", "API Development", "Database Design", "Cloud Integration", "Real-time Applications"];
+  return <div className="min-h-screen bg-white">
       <Navigation />
       
       {/* Hero Section */}
@@ -76,7 +57,7 @@ const WebApplications = () => {
                 Start Your Application
               </Button>
               <Link to="/#contact">
-                <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 px-8 py-4 rounded-lg font-medium">
+                <Button variant="outline" className="border-gray-600 px-8 py-4 rounded-lg font-medium bg-slate-50 text-slate-950">
                   Get Quote
                 </Button>
               </Link>
@@ -98,8 +79,7 @@ const WebApplications = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white">
+            {features.map((feature, index) => <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white">
                 <CardContent className="p-8 text-center">
                   <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-purple-600 transition-colors duration-300">
                     <feature.icon className="w-8 h-8 text-purple-600 group-hover:text-white transition-colors duration-300" />
@@ -107,8 +87,7 @@ const WebApplications = () => {
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -126,11 +105,9 @@ const WebApplications = () => {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {capabilities.map((capability, index) => (
-              <div key={index} className="bg-purple-50 p-6 rounded-2xl text-center hover:bg-purple-100 transition-colors duration-300">
+            {capabilities.map((capability, index) => <div key={index} className="bg-purple-50 p-6 rounded-2xl text-center hover:bg-purple-100 transition-colors duration-300">
                 <h3 className="text-gray-900 font-semibold">{capability}</h3>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -152,7 +129,7 @@ const WebApplications = () => {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-4 rounded-lg font-medium">
+            <Button variant="outline" className="border-white px-8 py-4 rounded-lg font-medium bg-slate-50 text-slate-950">
               View Applications
             </Button>
           </div>
@@ -160,8 +137,6 @@ const WebApplications = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default WebApplications;
