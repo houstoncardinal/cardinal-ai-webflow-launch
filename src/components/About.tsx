@@ -1,4 +1,3 @@
-
 import { Target, Users, Award, Lightbulb, MessageCircle, Users2, Rocket, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -110,7 +109,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Enhanced Left Content */}
           <div className="space-y-8 animate-fade-in" style={{animationDelay: '600ms'}}>
             <div className="prose prose-lg max-w-none">
@@ -132,18 +131,20 @@ const About = () => {
               </div>
             </div>
             
-            <Button className="group relative overflow-hidden bg-gradient-to-r from-green-600 via-green-500 to-emerald-500 hover:from-green-500 hover:via-emerald-500 hover:to-green-400 text-white px-10 py-5 rounded-xl font-semibold transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/30 border border-green-500/20 text-lg">
-              <span className="relative z-10 flex items-center gap-3">
-                Learn more about us
-                <div className="w-2 h-2 bg-white/80 rounded-full animate-pulse"></div>
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute -inset-1 bg-gradient-to-r from-green-400/20 to-emerald-400/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
-            </Button>
+            <div className="pt-4">
+              <Button className="group relative overflow-hidden bg-gradient-to-r from-green-600 via-green-500 to-emerald-500 hover:from-green-500 hover:via-emerald-500 hover:to-green-400 text-white px-10 py-5 rounded-xl font-semibold transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/30 border border-green-500/20 text-lg">
+                <span className="relative z-10 flex items-center gap-3">
+                  Learn more about us
+                  <div className="w-2 h-2 bg-white/80 rounded-full animate-pulse"></div>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-green-400/20 to-emerald-400/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
+              </Button>
+            </div>
           </div>
 
-          {/* Animated Step Process - Aligned to top */}
-          <div className="animate-fade-in" style={{animationDelay: '600ms'}}>
+          {/* How we work together box - Aligned to top */}
+          <div className="animate-fade-in lg:mt-0" style={{animationDelay: '600ms'}}>
             <div className="relative bg-gradient-to-r from-gray-800/30 to-gray-900/30 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/30 overflow-hidden">
               {/* Background glow effect */}
               <div className="absolute inset-0"></div>
