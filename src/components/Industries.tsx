@@ -1,4 +1,5 @@
-import { Building, Shield, Heart, Scale, CheckCircle, Users, Award, TrendingUp, Lock, Globe, Smartphone, Cloud, Search, Palette, Target, Zap } from "lucide-react";
+
+import { Building, Shield, Heart, Scale, CheckCircle, Users, Award, TrendingUp, Lock, Globe, Smartphone, Cloud, Search, Palette, Target, Zap, Code, Layers, Paintbrush } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TransformationForm from "./TransformationForm";
@@ -44,27 +45,27 @@ const Industries = () => {
 
   const industryExpertise = {
     "Real Estate": {
-      overview: "We transform the real estate industry through cutting-edge digital solutions that streamline operations, enhance client experiences, and drive business growth.",
+      overview: "We transform the real estate industry through cutting-edge digital solutions that streamline operations, enhance client experiences, and drive business growth. Our comprehensive approach includes custom web development, mobile applications, and powerful corporate branding to establish market leadership.",
       services: [
         {
-          icon: Globe,
-          title: "Property Listing Platforms",
-          description: "Advanced search functionality, virtual tours, and interactive maps for seamless property discovery."
-        },
-        {
-          icon: Users,
-          title: "CRM & Lead Management",
-          description: "Automated lead tracking, client communication tools, and pipeline management systems."
+          icon: Code,
+          title: "Custom Web Development",
+          description: "Responsive property listing websites with advanced search, IDX integration, and lead capture systems built with modern frameworks."
         },
         {
           icon: Smartphone,
           title: "Mobile Applications",
-          description: "Native iOS and Android apps for property viewing, client management, and on-the-go operations."
+          description: "Native iOS and Android apps for property viewing, agent tools, client communication, and real-time market data access."
+        },
+        {
+          icon: Paintbrush,
+          title: "Corporate Branding",
+          description: "Professional brand identity design, logo creation, and marketing materials that establish trust and market presence."
         },
         {
           icon: Cloud,
           title: "Property Management Systems",
-          description: "Comprehensive platforms for rental management, maintenance tracking, and tenant communication."
+          description: "Comprehensive web-based platforms for rental management, maintenance tracking, and tenant communication portals."
         }
       ],
       specialties: [
@@ -73,7 +74,10 @@ const Industries = () => {
         "Automated Property Valuation Models",
         "Real Estate Investment Analytics",
         "Commission & Transaction Management",
-        "Digital Document Management"
+        "Digital Document Management",
+        "Responsive Real Estate Websites",
+        "Mobile Property Discovery Apps",
+        "Real Estate Brand Development"
       ],
       stats: [
         { number: "500+", label: "Properties Listed" },
@@ -82,27 +86,27 @@ const Industries = () => {
       ]
     },
     "Government": {
-      overview: "We partner with government agencies to create secure, accessible, and efficient digital services that serve citizens and streamline public sector operations.",
+      overview: "We partner with government agencies to create secure, accessible, and efficient digital services that serve citizens and streamline public sector operations. Our solutions encompass enterprise web development, mobile accessibility, and professional government branding that builds public trust.",
       services: [
         {
+          icon: Code,
+          title: "Government Web Development",
+          description: "Section 508 compliant websites with citizen portals, service applications, and accessibility-first design principles."
+        },
+        {
+          icon: Smartphone,
+          title: "Mobile Government Apps",
+          description: "Secure mobile applications for citizen services, emergency alerts, and government employee productivity tools."
+        },
+        {
+          icon: Paintbrush,
+          title: "Government Branding",
+          description: "Professional visual identity systems that enhance public trust and maintain consistent government communications."
+        },
+        {
           icon: Lock,
-          title: "Secure Citizen Portals",
-          description: "Multi-factor authentication, encrypted data transmission, and compliance with government security standards."
-        },
-        {
-          icon: Globe,
-          title: "Public Service Platforms",
-          description: "Online permit applications, license renewals, and citizen service request management systems."
-        },
-        {
-          icon: Cloud,
-          title: "Government Cloud Solutions",
-          description: "FedRAMP compliant cloud infrastructure with disaster recovery and data backup capabilities."
-        },
-        {
-          icon: TrendingUp,
-          title: "Data Analytics & Reporting",
-          description: "Real-time dashboards, performance metrics, and transparency reporting for public accountability."
+          title: "Secure Infrastructure",
+          description: "FedRAMP compliant cloud solutions with multi-factor authentication and encrypted data transmission."
         }
       ],
       specialties: [
@@ -111,7 +115,10 @@ const Industries = () => {
         "Open Data Initiatives & APIs",
         "Digital Identity Management",
         "Interagency System Integration",
-        "Emergency Response Systems"
+        "Emergency Response Systems",
+        "Government Website Development",
+        "Civic Mobile Applications",
+        "Public Sector Brand Guidelines"
       ],
       stats: [
         { number: "99.9%", label: "Security Uptime" },
@@ -120,27 +127,27 @@ const Industries = () => {
       ]
     },
     "Legal": {
-      overview: "We empower law firms and legal professionals with sophisticated digital tools that enhance practice efficiency, client service, and case management.",
+      overview: "We empower law firms and legal professionals with sophisticated digital tools that enhance practice efficiency, client service, and case management. Our expertise spans legal web development, mobile practice management, and authoritative legal branding that builds client confidence.",
       services: [
         {
-          icon: Scale,
-          title: "Case Management Systems",
-          description: "Comprehensive platforms for case tracking, document management, and deadline monitoring."
+          icon: Code,
+          title: "Legal Web Development",
+          description: "Professional law firm websites with practice area showcases, attorney profiles, and secure client intake forms."
+        },
+        {
+          icon: Smartphone,
+          title: "Legal Mobile Apps",
+          description: "Mobile case management, client communication apps, and legal research tools for attorneys on the go."
+        },
+        {
+          icon: Paintbrush,
+          title: "Legal Branding",
+          description: "Professional brand identity that conveys expertise, trustworthiness, and authority in the legal marketplace."
         },
         {
           icon: Lock,
           title: "Secure Client Portals",
           description: "Attorney-client privileged communication channels with end-to-end encryption and audit trails."
-        },
-        {
-          icon: Search,
-          title: "Legal Research Platforms",
-          description: "AI-powered legal research tools with case law analysis and precedent identification."
-        },
-        {
-          icon: Globe,
-          title: "Professional Websites",
-          description: "Attorney marketing websites with practice area showcases and client intake automation."
         }
       ],
       specialties: [
@@ -149,7 +156,10 @@ const Industries = () => {
         "Court Filing System Integration",
         "Time & Billing Management",
         "Conflict of Interest Checking",
-        "Legal Marketing & SEO"
+        "Legal Marketing & SEO",
+        "Law Firm Website Development",
+        "Legal Practice Mobile Apps",
+        "Legal Brand Development"
       ],
       stats: [
         { number: "1000+", label: "Cases Managed" },
@@ -158,27 +168,27 @@ const Industries = () => {
       ]
     },
     "Healthcare": {
-      overview: "We deliver HIPAA-compliant healthcare solutions that improve patient outcomes, streamline operations, and enhance the quality of care delivery.",
+      overview: "We deliver HIPAA-compliant healthcare solutions that improve patient outcomes, streamline operations, and enhance the quality of care delivery. Our comprehensive services include healthcare web development, medical mobile applications, and trusted healthcare branding that builds patient confidence.",
       services: [
         {
-          icon: Heart,
-          title: "Patient Management Systems",
-          description: "Electronic health records, appointment scheduling, and patient communication platforms."
-        },
-        {
-          icon: Lock,
-          title: "HIPAA-Compliant Infrastructure",
-          description: "End-to-end encryption, audit logging, and compliance monitoring for patient data protection."
+          icon: Code,
+          title: "Healthcare Web Development",
+          description: "HIPAA-compliant medical websites with patient portals, appointment booking, and telehealth integration capabilities."
         },
         {
           icon: Smartphone,
-          title: "Telemedicine Platforms",
-          description: "Secure video consultations, remote monitoring, and digital health assessment tools."
+          title: "Medical Mobile Apps",
+          description: "Patient engagement apps, telemedicine platforms, and healthcare provider tools with secure data handling."
         },
         {
-          icon: TrendingUp,
-          title: "Healthcare Analytics",
-          description: "Population health insights, treatment outcome analysis, and operational efficiency metrics."
+          icon: Paintbrush,
+          title: "Healthcare Branding",
+          description: "Compassionate brand identity design that builds patient trust and communicates medical expertise and care quality."
+        },
+        {
+          icon: Heart,
+          title: "Patient Management Systems",
+          description: "Comprehensive EHR integration, appointment scheduling, and patient communication platforms."
         }
       ],
       specialties: [
@@ -187,7 +197,10 @@ const Industries = () => {
         "Clinical Decision Support Systems",
         "Healthcare Interoperability (HL7/FHIR)",
         "Medical Billing & Claims Processing",
-        "Patient Engagement Platforms"
+        "Patient Engagement Platforms",
+        "Medical Website Development",
+        "Healthcare Mobile Applications",
+        "Medical Practice Branding"
       ],
       stats: [
         { number: "10K+", label: "Patients Served" },
@@ -333,7 +346,7 @@ const Industries = () => {
           </h2>
           <p className="text-xl text-gray-600 leading-relaxed font-light max-w-3xl animate-fade-in" style={{animationDelay: '500ms'}}>
             We understand the unique challenges and requirements of different industries, 
-            delivering specialized solutions that meet sector-specific needs and exceed expectations.
+            delivering specialized web development, mobile applications, and corporate branding solutions that meet sector-specific needs and exceed expectations.
           </p>
         </div>
 
@@ -396,7 +409,7 @@ const Industries = () => {
               <span className="block text-green-600 font-normal">Service Specialties</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover our deep domain knowledge and specialized services tailored to each industry's unique requirements.
+              Discover our deep domain knowledge and specialized web development, mobile app development, and corporate branding services tailored to each industry's unique requirements.
             </p>
           </div>
 
