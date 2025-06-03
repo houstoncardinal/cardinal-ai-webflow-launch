@@ -1,7 +1,11 @@
 import { Building, Shield, Heart, Scale } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import TransformationForm from "./TransformationForm";
+import { useState } from "react";
 
 const Industries = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   const industries = [
     {
       icon: Building,
@@ -243,7 +247,10 @@ const Industries = () => {
               <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto font-light">
                 Let's discuss how our specialized expertise can revolutionize your business operations.
               </p>
-              <button className="group relative px-12 py-4 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl font-medium text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden">
+              <button 
+                onClick={() => setIsFormOpen(true)}
+                className="group relative px-12 py-4 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl font-medium text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden"
+              >
                 <span className="relative z-10">Start your transformation</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-green-700 to-green-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
@@ -252,6 +259,11 @@ const Industries = () => {
           </div>
         </div>
       </div>
+
+      <TransformationForm 
+        isOpen={isFormOpen} 
+        onClose={() => setIsFormOpen(false)} 
+      />
     </section>
   );
 };
