@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEOAnalyzer from "@/components/SEOAnalyzer";
 import { Link } from "react-router-dom";
 
 const SEOInsights = () => {
@@ -62,11 +63,11 @@ const SEOInsights = () => {
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Button className="bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-500 hover:to-rose-400 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105">
-                Boost Your Rankings
+                Try Free SEO Analyzer
               </Button>
               <Link to="/#contact">
                 <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 px-8 py-4 rounded-lg font-medium">
-                  Get Audit
+                  Get Professional Audit
                 </Button>
               </Link>
             </div>
@@ -74,15 +75,20 @@ const SEOInsights = () => {
         </div>
       </section>
 
+      {/* SEO Analyzer Tool */}
+      <section className="py-16 bg-gray-50">
+        <SEOAnalyzer />
+      </section>
+
       {/* Features Section */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light text-gray-900 mb-6">
-              SEO <span className="text-rose-600">Excellence</span>
+              Professional SEO <span className="text-rose-600">Services</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Drive organic growth with strategic SEO optimization and comprehensive analytics.
+              Beyond our free analyzer, we provide comprehensive SEO services for businesses serious about growth.
             </p>
           </div>
           
@@ -106,21 +112,21 @@ const SEOInsights = () => {
       <section className="py-24 bg-gradient-to-r from-rose-600 to-pink-600">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-light text-white mb-6">
-            Ready to Improve Your Rankings?
+            Ready to Dominate Search Results?
           </h2>
           <p className="text-xl text-rose-100 mb-12 leading-relaxed">
-            Let's optimize your online presence with strategic SEO and powerful analytics.
+            Get a professional SEO strategy that drives real results. Our experts will analyze your site and create a custom optimization plan.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/#contact">
               <Button className="bg-white text-rose-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105">
-                Start SEO Audit
+                Get Professional Audit
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
             <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-4 rounded-lg font-medium">
-              View Results
+              View Case Studies
             </Button>
           </div>
         </div>
