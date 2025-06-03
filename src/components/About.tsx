@@ -1,4 +1,3 @@
-
 import { Target, Users, Award, Lightbulb, MessageCircle, Users2, Rocket, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -125,8 +124,8 @@ const About = () => {
           
           <div className="space-y-6 animate-fade-in" style={{animationDelay: '400ms'}}>
             <p className="text-xl text-gray-300 leading-relaxed font-light">
-              Cardinal Consulting is a <span className="text-green-400 font-medium">premier digital transformation consultancy</span> with global reach 
-              and local expertise, defining the future of enterprise digital experiences.
+              Cardinal Consulting is a <span className="text-green-400 font-medium">premier digital transformation consultancy</span> 
+              defining the future of enterprise digital experiences.
             </p>
           </div>
         </div>
@@ -137,8 +136,7 @@ const About = () => {
             <div className="prose prose-lg max-w-none">
               <div className="space-y-6 text-gray-300 leading-relaxed">
                 <p className="relative pl-6 border-l-2 border-green-400/30">
-                  Operating from strategic locations in <span className="text-green-400 font-medium">Houston, Dubai, and Irvine</span>, we deliver 
-                  enterprise-grade solutions to Fortune 500 companies and emerging market leaders 
+                  We deliver enterprise-grade solutions to Fortune 500 companies and emerging market leaders 
                   across multiple industries and geographies.
                 </p>
                 
