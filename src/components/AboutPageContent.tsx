@@ -362,7 +362,7 @@ const AboutPageContent = () => {
       </section>
 
       {/* Enhanced Benefits Section - Dark Background */}
-      <section className="py-24 sm:py-32 lg:py-40 relative px-4 sm:px-6 bg-gradient-to-br from-slate-900 via-gray-900 to-black">
+      <section className="py-24 sm:py-32 lg:py-40 relative px-4 sm:px-6 bg-gradient-to-br from-slate-950 via-gray-950 to-black">
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900/50 to-slate-900/50"></div>
         <div className="max-w-7xl mx-auto lg:px-8 relative z-10">
           <div className="text-center mb-16 sm:mb-20 lg:mb-24">
