@@ -1,4 +1,3 @@
-
 import { Code, Smartphone, Globe, Server, Search, Palette, Share2, Brain, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -179,12 +178,11 @@ const Services = () => {
               className="relative animate-fade-in"
               style={{animationDelay: `${index * 100}ms`}}
             >
-              {/* Animated glow border */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-green-500 via-green-400 to-green-500 rounded-lg opacity-60 blur-sm">
-                <div className="absolute inset-0 bg-gradient-to-r from-green-500 via-green-400 to-green-500 rounded-lg animate-spin" style={{animationDuration: '3s'}}></div>
-              </div>
+              {/* Subtle luxurious glow border */}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-green-600/20 via-green-400/30 to-green-600/20 rounded-xl blur-md opacity-75"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-green-500/10 via-green-400/20 to-green-500/10 rounded-xl blur-lg"></div>
               
-              <Card className="relative bg-white border-2 border-green-500 shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer hover:scale-105">
+              <Card className="relative bg-white border border-green-500/30 shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer hover:scale-105 group">
                 <CardContent className="p-8">
                   <div className="mb-6">
                     <service.icon className="w-8 h-8 text-green-600 mb-4 group-hover:scale-110 transition-transform duration-300" />
