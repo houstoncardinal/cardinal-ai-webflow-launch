@@ -65,7 +65,7 @@ const DigitalCampaigns = () => {
                 Launch Campaign
               </Button>
               <Link to="/#contact">
-                <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 px-8 py-4 rounded-lg font-medium">
+                <Button variant="outline" className="border-gray-600 px-8 py-4 rounded-lg font-medium bg-slate-50 text-slate-950">
                   Get Strategy
                 </Button>
               </Link>
@@ -119,7 +119,7 @@ const DigitalCampaigns = () => {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-4 rounded-lg font-medium">
+            <Button variant="outline" className="border-white px-8 py-4 rounded-lg font-medium bg-slate-50 text-slate-950">
               View Case Studies
             </Button>
           </div>
