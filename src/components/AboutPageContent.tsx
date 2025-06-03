@@ -168,7 +168,7 @@ const AboutPageContent = () => {
               </div>
             </div>
             
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-extralight text-gray-900 mb-8 sm:mb-12 leading-[1.2] relative">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-extralight text-gray-900 mb-8 sm:mb-12 leading-relaxed relative">
               <span className="relative inline-block">
                 Building
                 <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 opacity-20 blur-2xl"></div>
@@ -197,7 +197,7 @@ const AboutPageContent = () => {
                           <stat.icon className="w-full h-full text-white" strokeWidth={1.5} />
                         </div>
                       </div>
-                      <div className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light text-gray-900 mb-1 sm:mb-2 group-hover:text-green-600 transition-colors duration-300">{stat.number}</div>
+                      <div className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light text-gray-900 mb-1 sm:mb-2 group-hover:text-green-600 transition-colors duration-300 leading-relaxed">{stat.number}</div>
                       <div className="text-gray-600 text-xs sm:text-sm uppercase tracking-wide">{stat.label}</div>
                     </div>
                   ))}
@@ -249,7 +249,7 @@ const AboutPageContent = () => {
               <span className="relative z-10">Our Development Process</span>
               <Database className="w-4 h-4 ml-3 relative z-10" />
             </div>
-            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extralight text-white mb-12 leading-[1.2]">
+            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extralight text-white mb-12 leading-relaxed">
               Proven methodology
               <span className="block bg-gradient-to-r from-green-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
                 for digital success
@@ -292,7 +292,7 @@ const AboutPageContent = () => {
                               <span className="text-sm text-green-400 font-mono uppercase tracking-wide">Phase {step.number}</span>
                               <div className="flex-1 h-px bg-gradient-to-r from-green-400/50 to-transparent"></div>
                             </div>
-                            <h3 className="text-3xl text-white font-light mb-4 group-hover:text-green-400 transition-colors duration-300">{step.title}</h3>
+                            <h3 className="text-3xl text-white font-light mb-4 group-hover:text-green-400 transition-colors duration-300 leading-relaxed">{step.title}</h3>
                             <p className="text-lg text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
                               {step.description}
                             </p>
@@ -399,7 +399,7 @@ const AboutPageContent = () => {
       <section className="py-24 sm:py-32 lg:py-40 relative px-4 sm:px-6 bg-gradient-to-br from-gray-50 via-white to-gray-100">
         <div className="max-w-7xl mx-auto lg:px-8 relative z-10">
           <div className="text-center mb-16 sm:mb-20 lg:mb-24">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight text-gray-900 mb-8 sm:mb-12 leading-[1.2]">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight text-gray-900 mb-8 sm:mb-12 leading-relaxed">
               Why choose <span className="text-green-600">Cardinal</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -418,7 +418,7 @@ const AboutPageContent = () => {
                         <benefit.icon className="w-full h-full text-white" strokeWidth={1.5} />
                       </div>
                     </div>
-                    <h3 className="text-xl sm:text-2xl text-gray-900 font-light mb-3 sm:mb-4 group-hover:text-green-600 transition-colors duration-300">{benefit.title}</h3>
+                    <h3 className="text-xl sm:text-2xl text-gray-900 font-light mb-3 sm:mb-4 group-hover:text-green-600 transition-colors duration-300 leading-relaxed">{benefit.title}</h3>
                     <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300 flex-grow text-sm sm:text-base">{benefit.description}</p>
                   </CardContent>
                 </Card>
@@ -432,7 +432,7 @@ const AboutPageContent = () => {
       <section className="py-24 sm:py-32 lg:py-40 relative px-4 sm:px-6 bg-gradient-to-br from-slate-950 via-gray-950 to-black">
         <div className="max-w-7xl mx-auto lg:px-8">
           <div className="text-center mb-16 sm:mb-20 lg:mb-24">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight text-white mb-8 sm:mb-12 leading-[1.2]">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight text-white mb-8 sm:mb-12 leading-relaxed">
               Client <span className="text-green-400">success stories</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -476,7 +476,7 @@ const AboutPageContent = () => {
       <section className="py-24 sm:py-32 lg:py-40 relative overflow-hidden px-4 sm:px-6 bg-gradient-to-br from-white via-gray-50 to-gray-100">
         <div className="max-w-5xl mx-auto lg:px-8 text-center relative z-10">
           <div className="relative mb-8 sm:mb-12">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight text-gray-900 mb-6 sm:mb-8 leading-[1.2]">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight text-gray-900 mb-6 sm:mb-8 leading-relaxed">
               Ready to transform
               <span className="block bg-gradient-to-r from-green-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
                 your digital presence?
