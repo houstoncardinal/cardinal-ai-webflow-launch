@@ -1,48 +1,29 @@
-
 import { Zap, CheckCircle, ArrowRight, Cloud, Shield, Database, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
-
 const CloudSolutions = () => {
-  const features = [
-    {
-      icon: Cloud,
-      title: "Multi-Cloud Strategy",
-      description: "AWS, Azure, and Google Cloud expertise for optimal performance"
-    },
-    {
-      icon: Shield,
-      title: "Enterprise Security",
-      description: "Advanced security measures and compliance standards"
-    },
-    {
-      icon: Database,
-      title: "Data Management",
-      description: "Secure, scalable database solutions and backup strategies"
-    },
-    {
-      icon: Globe,
-      title: "Global Infrastructure",
-      description: "Worldwide deployment with edge computing capabilities"
-    }
-  ];
-
-  const services = [
-    "Cloud Migration",
-    "Infrastructure as Code",
-    "Container Orchestration", 
-    "Serverless Architecture",
-    "DevOps Implementation",
-    "Monitoring & Analytics",
-    "Disaster Recovery",
-    "Cost Optimization"
-  ];
-
-  return (
-    <div className="min-h-screen bg-white">
+  const features = [{
+    icon: Cloud,
+    title: "Multi-Cloud Strategy",
+    description: "AWS, Azure, and Google Cloud expertise for optimal performance"
+  }, {
+    icon: Shield,
+    title: "Enterprise Security",
+    description: "Advanced security measures and compliance standards"
+  }, {
+    icon: Database,
+    title: "Data Management",
+    description: "Secure, scalable database solutions and backup strategies"
+  }, {
+    icon: Globe,
+    title: "Global Infrastructure",
+    description: "Worldwide deployment with edge computing capabilities"
+  }];
+  const services = ["Cloud Migration", "Infrastructure as Code", "Container Orchestration", "Serverless Architecture", "DevOps Implementation", "Monitoring & Analytics", "Disaster Recovery", "Cost Optimization"];
+  return <div className="min-h-screen bg-white">
       <Navigation />
       
       {/* Hero Section */}
@@ -76,7 +57,7 @@ const CloudSolutions = () => {
                 Migrate to Cloud
               </Button>
               <Link to="/#contact">
-                <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 px-8 py-4 rounded-lg font-medium">
+                <Button variant="outline" className="border-gray-600 px-8 py-4 rounded-lg font-medium bg-slate-50 text-slate-950">
                   Get Assessment
                 </Button>
               </Link>
@@ -98,8 +79,7 @@ const CloudSolutions = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white">
+            {features.map((feature, index) => <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white">
                 <CardContent className="p-8 text-center">
                   <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-amber-600 transition-colors duration-300">
                     <feature.icon className="w-8 h-8 text-amber-600 group-hover:text-white transition-colors duration-300" />
@@ -107,8 +87,7 @@ const CloudSolutions = () => {
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -126,11 +105,9 @@ const CloudSolutions = () => {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {services.map((service, index) => (
-              <div key={index} className="bg-amber-50 p-6 rounded-2xl text-center hover:bg-amber-100 transition-colors duration-300">
+            {services.map((service, index) => <div key={index} className="bg-amber-50 p-6 rounded-2xl text-center hover:bg-amber-100 transition-colors duration-300">
                 <h3 className="text-gray-900 font-semibold">{service}</h3>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -152,7 +129,7 @@ const CloudSolutions = () => {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-4 rounded-lg font-medium">
+            <Button variant="outline" className="border-white px-8 py-4 rounded-lg font-medium bg-slate-50 text-slate-950">
               Cloud Assessment
             </Button>
           </div>
@@ -160,8 +137,6 @@ const CloudSolutions = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default CloudSolutions;
