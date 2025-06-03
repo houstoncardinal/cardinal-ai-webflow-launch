@@ -38,8 +38,8 @@ const Index = () => {
         <Portfolio />
       </div>
       
-      {/* Contact - White background */}
-      <div className="bg-white">
+      {/* Contact - Gray background to match Industries */}
+      <div className="bg-gray-50">
         <Contact />
       </div>
       
