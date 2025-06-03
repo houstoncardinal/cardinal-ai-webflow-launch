@@ -1,4 +1,5 @@
 
+
 import { Target, Users, Award, Lightbulb, MessageCircle, Users2, Rocket, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -160,11 +161,11 @@ const About = () => {
             </Button>
           </div>
 
-          {/* Animated Step Process */}
-          <div className="space-y-8 animate-fade-in" style={{animationDelay: '800ms'}}>
+          {/* Animated Step Process - Aligned to top */}
+          <div className="animate-fade-in" style={{animationDelay: '600ms'}}>
             <div className="relative bg-gradient-to-r from-gray-800/30 to-gray-900/30 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/30 overflow-hidden">
               {/* Background glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-blue-500/5 to-purple-500/5"></div>
+              <div className="absolute inset-0"></div>
               
               {/* Floating orb effect */}
               <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-r from-green-400/10 to-blue-400/10 rounded-full blur-3xl animate-pulse"></div>
@@ -276,3 +277,4 @@ const About = () => {
 };
 
 export default About;
+
