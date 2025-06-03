@@ -210,7 +210,7 @@ const Industries = () => {
   };
 
   return (
-    <section id="industries" className="py-32 bg-gray-50 relative overflow-hidden">
+    <section id="industries" className="py-16 bg-gray-50 relative overflow-hidden">
       {/* Advanced animated background */}
       <div className="absolute inset-0 opacity-30">
         {/* Floating geometric shapes */}
