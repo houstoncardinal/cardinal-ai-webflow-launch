@@ -1,231 +1,180 @@
-import { Code, Smartphone, Globe, Server, Search, Palette, Share2, Brain, ArrowRight } from "lucide-react";
+
+import { Code, Smartphone, Globe, BarChart3, Palette, Share2, Search, Zap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 
 const Services = () => {
   const services = [
     {
       icon: Code,
-      title: "Technology",
-      subtitle: "Web Development",
-      description: "Enterprise-grade solutions built with cutting-edge technologies for optimal performance."
+      category: "TECHNOLOGY",
+      title: "Web Development",
+      description: "Enterprise-grade solutions built with cutting-edge technologies for optimal performance.",
+      gradient: "from-blue-500/10 via-cyan-400/15 to-blue-600/10",
+      accentColor: "text-blue-600",
+      glowColor: "blue-500/20"
     },
     {
       icon: Smartphone,
-      title: "Digital",
-      subtitle: "Mobile Applications",
-      description: "Native and cross-platform mobile solutions that deliver exceptional user experiences."
+      category: "DIGITAL",
+      title: "Mobile Applications",
+      description: "Native and cross-platform mobile solutions that deliver exceptional user experiences.",
+      gradient: "from-emerald-500/10 via-green-400/15 to-emerald-600/10",
+      accentColor: "text-emerald-600",
+      glowColor: "emerald-500/20"
     },
     {
       icon: Globe,
-      title: "Innovation",
-      subtitle: "Web Applications",
-      description: "Complex applications with enterprise architecture and intuitive user interfaces."
+      category: "INNOVATION",
+      title: "Web Applications",
+      description: "Complex applications with enterprise architecture and intuitive user interfaces.",
+      gradient: "from-purple-500/10 via-violet-400/15 to-purple-600/10",
+      accentColor: "text-purple-600",
+      glowColor: "purple-500/20"
     },
     {
-      icon: Server,
-      title: "Infrastructure",
-      subtitle: "Cloud Solutions",
-      description: "Scalable, secure cloud hosting solutions with enterprise-level support."
+      icon: Zap,
+      category: "INFRASTRUCTURE",
+      title: "Cloud Solutions",
+      description: "Scalable, secure cloud hosting solutions with enterprise-level support.",
+      gradient: "from-amber-500/10 via-yellow-400/15 to-amber-600/10",
+      accentColor: "text-amber-600",
+      glowColor: "amber-500/20"
     },
     {
       icon: Search,
-      title: "Analytics",
-      subtitle: "SEO & Insights",
-      description: "Strategic optimization and comprehensive analytics to maximize performance."
+      category: "ANALYTICS",
+      title: "SEO & Insights",
+      description: "Strategic optimization and comprehensive analytics to maximize performance.",
+      gradient: "from-rose-500/10 via-pink-400/15 to-rose-600/10",
+      accentColor: "text-rose-600",
+      glowColor: "rose-500/20"
     },
     {
       icon: Palette,
-      title: "Strategy",
-      subtitle: "Brand Identity",
-      description: "Complete brand development from positioning to visual identity systems."
+      category: "STRATEGY",
+      title: "Brand Identity",
+      description: "Complete brand development from positioning to visual identity systems.",
+      gradient: "from-indigo-500/10 via-blue-400/15 to-indigo-600/10",
+      accentColor: "text-indigo-600",
+      glowColor: "indigo-500/20"
     },
     {
       icon: Share2,
-      title: "Marketing",
-      subtitle: "Digital Campaigns",
-      description: "Data-driven strategies that build communities and drive measurable ROI."
+      category: "MARKETING",
+      title: "Digital Campaigns",
+      description: "Data-driven strategies that build communities and drive measurable ROI.",
+      gradient: "from-teal-500/10 via-cyan-400/15 to-teal-600/10",
+      accentColor: "text-teal-600",
+      glowColor: "teal-500/20"
     },
     {
-      icon: Brain,
-      title: "AI",
-      subtitle: "Experience Optimization",
-      description: "Pioneer AEO services optimizing for next-generation AI systems."
+      icon: BarChart3,
+      category: "AI",
+      title: "Experience Optimization",
+      description: "Pioneer AEO services optimizing for next-generation AI systems.",
+      gradient: "from-violet-500/10 via-purple-400/15 to-violet-600/10",
+      accentColor: "text-violet-600",
+      glowColor: "violet-500/20"
     }
   ];
 
   return (
-    <section id="services" className="py-24 bg-white relative overflow-hidden">
-      {/* Animated network background */}
-      <div className="absolute inset-0 opacity-20">
-        {/* Digital circuit pattern */}
-        <div className="absolute inset-0">
-          <svg className="w-full h-full" viewBox="0 0 800 600">
-            {/* Circuit lines */}
-            <g stroke="#059669" strokeWidth="1" fill="none">
-              <path d="M50,100 L200,100 L200,200 L350,200" strokeDasharray="10,5">
-                <animate attributeName="stroke-dashoffset" values="0;15;0" dur="4s" repeatCount="indefinite"/>
-              </path>
-              <path d="M350,200 L500,200 L500,300 L650,300" strokeDasharray="10,5">
-                <animate attributeName="stroke-dashoffset" values="0;15;0" dur="5s" repeatCount="indefinite"/>
-              </path>
-              <path d="M100,400 L250,400 L250,500 L400,500" strokeDasharray="10,5">
-                <animate attributeName="stroke-dashoffset" values="0;15;0" dur="4.5s" repeatCount="indefinite"/>
-              </path>
-              <path d="M600,150 L750,150 L750,250 L600,250 Z" strokeDasharray="8,4">
-                <animate attributeName="stroke-dashoffset" values="0;12;0" dur="3.5s" repeatCount="indefinite"/>
-              </path>
-            </g>
-            
-            {/* Circuit nodes */}
-            <g fill="#059669" opacity="0.6">
-              <circle cx="200" cy="100" r="4">
-                <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
-              </circle>
-              <circle cx="350" cy="200" r="4">
-                <animate attributeName="r" values="4;6;4" dur="2.5s" repeatCount="indefinite"/>
-              </circle>
-              <circle cx="500" cy="300" r="4">
-                <animate attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite"/>
-              </circle>
-              <circle cx="250" cy="400" r="4">
-                <animate attributeName="r" values="4;6;4" dur="2.2s" repeatCount="indefinite"/>
-              </circle>
-            </g>
-          </svg>
-        </div>
-
-        {/* Data flow visualization */}
-        <div className="absolute top-0 right-0 w-96 h-96">
-          <svg viewBox="0 0 200 200" className="w-full h-full">
-            {/* Data packets */}
-            <g opacity="0.4">
-              {[...Array(6)].map((_, i) => (
-                <rect
-                  key={i}
-                  x="10"
-                  y="10"
-                  width="8"
-                  height="8"
-                  fill="#059669"
-                  rx="2"
-                >
-                  <animateTransform
-                    attributeName="transform"
-                    type="translate"
-                    values={`0,${i * 30};180,${i * 30};0,${i * 30}`}
-                    dur={`${3 + i * 0.3}s`}
-                    repeatCount="indefinite"
-                  />
-                </rect>
-              ))}
-            </g>
-          </svg>
-        </div>
-
-        {/* Network topology */}
-        <div className="absolute bottom-0 left-0 w-64 h-64 opacity-30">
-          <svg viewBox="0 0 150 150" className="w-full h-full">
-            <g transform="translate(75,75)">
-              {/* Central hub */}
-              <circle cx="0" cy="0" r="8" fill="#059669">
-                <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite"/>
-              </circle>
-              
-              {/* Connected nodes */}
-              {[...Array(6)].map((_, i) => {
-                const angle = (i * 60) * Math.PI / 180;
-                const x = Math.cos(angle) * 40;
-                const y = Math.sin(angle) * 40;
-                return (
-                  <g key={i}>
-                    <line x1="0" y1="0" x2={x} y2={y} stroke="#059669" strokeWidth="2" opacity="0.5">
-                      <animate attributeName="opacity" values="0.5;1;0.5" dur={`${2 + i * 0.2}s`} repeatCount="indefinite"/>
-                    </line>
-                    <circle cx={x} cy={y} r="4" fill="#059669">
-                      <animate attributeName="r" values="4;6;4" dur={`${2.5 + i * 0.1}s`} repeatCount="indefinite"/>
-                    </circle>
-                  </g>
-                );
-              })}
-            </g>
-          </svg>
-        </div>
+    <section id="services" className="py-32 bg-white relative overflow-hidden">
+      {/* Subtle background elements */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-green-400 to-blue-500 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full blur-3xl"></div>
       </div>
-      
+
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        <div className="max-w-3xl mb-20">
-          <div className="inline-flex items-center text-sm font-medium text-gray-600 uppercase tracking-wide mb-6 animate-fade-in">
-            <div className="w-8 h-px bg-green-500 mr-4 animate-pulse"></div>
-            Our Services
+        <div className="max-w-4xl mb-24">
+          <div className="inline-flex items-center text-sm font-medium text-gray-600 uppercase tracking-wide mb-8">
+            <div className="w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-6"></div>
+            Services
           </div>
-          <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6 leading-tight animate-fade-in" style={{animationDelay: '300ms'}}>
-            Comprehensive solutions
+          <h2 className="text-5xl lg:text-6xl font-light text-gray-900 mb-8 leading-tight">
+            Digital solutions that
             <span className="block text-green-600 font-normal">
-              for digital transformation
+              drive growth
             </span>
           </h2>
-          <p className="text-xl text-gray-600 leading-relaxed font-light animate-fade-in" style={{animationDelay: '500ms'}}>
-            We deliver end-to-end digital solutions that position organizations 
-            for sustained growth in an increasingly connected world.
+          <p className="text-xl text-gray-600 leading-relaxed font-light max-w-3xl">
+            We deliver end-to-end digital solutions that position organizations for sustained growth in 
+            an increasingly connected world.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <div
-              key={index} 
-              className="relative animate-fade-in"
-              style={{animationDelay: `${index * 100}ms`}}
+              key={index}
+              className="group relative h-[420px]"
             >
-              {/* Subtle luxurious glow border */}
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-green-600/20 via-green-400/30 to-green-600/20 rounded-xl blur-md opacity-75"></div>
-              <div className="absolute -inset-1 bg-gradient-to-r from-green-500/10 via-green-400/20 to-green-500/10 rounded-xl blur-lg"></div>
+              {/* Subtle luxury glow - much more refined */}
+              <div className={`absolute -inset-0.5 bg-gradient-to-r ${service.gradient} rounded-2xl opacity-0 group-hover:opacity-60 transition-all duration-700 blur-sm`}></div>
               
-              <Card className="relative bg-white border border-green-500/30 shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer hover:scale-105 group">
-                <CardContent className="p-8">
-                  <div className="mb-6">
-                    <service.icon className="w-8 h-8 text-green-600 mb-4 group-hover:scale-110 transition-transform duration-300" />
-                    <div className="text-xs font-medium text-green-600 uppercase tracking-wide mb-2 transition-colors duration-300">
-                      {service.title}
+              {/* Glass morphism effect */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent rounded-2xl backdrop-blur-[2px]"></div>
+                <div className="absolute inset-[1px] bg-gradient-to-br from-white/20 via-transparent to-white/10 rounded-2xl"></div>
+              </div>
+              
+              {/* Shimmer effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 rounded-2xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1500 ease-out"></div>
+              </div>
+              
+              <Card className="relative h-full bg-white/95 backdrop-blur-sm border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-700 cursor-pointer group-hover:scale-[1.02] rounded-2xl overflow-hidden">
+                {/* Refined hover background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-40 transition-all duration-700`}></div>
+                
+                <CardContent className="p-8 h-full flex flex-col justify-between relative z-10">
+                  <div>
+                    {/* Category badge */}
+                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4 opacity-70">
+                      {service.category}
                     </div>
-                    <h3 className="text-lg font-medium text-gray-900 mb-3 group-hover:text-green-600 transition-colors duration-300">
-                      {service.subtitle}
+                    
+                    {/* Icon with subtle glow */}
+                    <div className="mb-6 relative">
+                      <div className={`w-14 h-14 ${service.accentColor} relative group-hover:scale-110 transition-all duration-500`}>
+                        <service.icon className="w-full h-full" strokeWidth={1.5} />
+                        {/* Very subtle icon glow */}
+                        <div className={`absolute inset-0 bg-${service.glowColor} opacity-0 group-hover:opacity-30 blur-lg transition-all duration-500 rounded-full`}></div>
+                      </div>
+                    </div>
+                    
+                    {/* Title with consistent sizing */}
+                    <h3 className={`text-xl font-semibold text-gray-900 mb-4 group-hover:${service.accentColor} transition-colors duration-500 leading-tight min-h-[56px] flex items-center`}>
+                      {service.title}
                     </h3>
                   </div>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                    {service.description}
-                  </p>
-                  <div className="transition-all duration-500">
-                    <Button variant="outline" size="sm" className="border-green-600 text-green-600 hover:bg-green-50 group/btn">
-                      Learn more
-                      <ArrowRight className="ml-2 w-3 h-3 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                    </Button>
+                  
+                  {/* Description with consistent height */}
+                  <div className="flex-1 flex flex-col justify-between">
+                    <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300 min-h-[84px]">
+                      {service.description}
+                    </p>
+                    
+                    {/* Learn more link */}
+                    <div className="mt-6">
+                      <button className={`inline-flex items-center text-sm font-medium ${service.accentColor} group-hover:translate-x-1 transition-all duration-300 opacity-0 group-hover:opacity-100`}>
+                        Learn more
+                        <svg className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  
+                  {/* Subtle progress indicator */}
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-100">
+                    <div className={`h-full bg-gradient-to-r ${service.gradient} w-0 group-hover:w-full transition-all duration-1000 ease-out`}></div>
                   </div>
                 </CardContent>
               </Card>
             </div>
           ))}
-        </div>
-
-        {/* Enhanced CTA Section */}
-        <div className="bg-gradient-to-r from-gray-50 to-green-50 rounded-2xl p-12 text-center relative overflow-hidden animate-fade-in" style={{animationDelay: '1000ms'}}>
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-0 left-0 w-32 h-32 bg-green-200 rounded-full animate-bounce"></div>
-            <div className="absolute bottom-0 right-0 w-24 h-24 bg-gray-300 rounded-full animate-pulse"></div>
-          </div>
-          <div className="relative z-10">
-            <h3 className="text-2xl font-light text-gray-900 mb-4">
-              Ready to transform your business?
-            </h3>
-            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-              Let's discuss how our comprehensive digital solutions can accelerate your growth.
-            </p>
-            <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 group transition-all duration-300 hover:scale-105 hover:shadow-lg">
-              Get started
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </Button>
-          </div>
         </div>
       </div>
     </section>
