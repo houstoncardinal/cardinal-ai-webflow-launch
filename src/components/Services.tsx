@@ -1,6 +1,7 @@
 
 import { Code, Smartphone, Globe, BarChart3, Palette, Share2, Search, Zap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const services = [
@@ -11,7 +12,8 @@ const Services = () => {
       description: "Enterprise-grade solutions built with cutting-edge technologies for optimal performance.",
       gradient: "from-blue-500/10 via-cyan-400/15 to-blue-600/10",
       accentColor: "text-blue-600",
-      glowColor: "blue-500/20"
+      glowColor: "blue-500/20",
+      link: "/services/web-development"
     },
     {
       icon: Smartphone,
@@ -20,7 +22,8 @@ const Services = () => {
       description: "Native and cross-platform mobile solutions that deliver exceptional user experiences.",
       gradient: "from-emerald-500/10 via-green-400/15 to-emerald-600/10",
       accentColor: "text-emerald-600",
-      glowColor: "emerald-500/20"
+      glowColor: "emerald-500/20",
+      link: "/services/mobile-applications"
     },
     {
       icon: Globe,
@@ -29,7 +32,8 @@ const Services = () => {
       description: "Complex applications with enterprise architecture and intuitive user interfaces.",
       gradient: "from-purple-500/10 via-violet-400/15 to-purple-600/10",
       accentColor: "text-purple-600",
-      glowColor: "purple-500/20"
+      glowColor: "purple-500/20",
+      link: "/services/web-applications"
     },
     {
       icon: Zap,
@@ -38,7 +42,8 @@ const Services = () => {
       description: "Scalable, secure cloud hosting solutions with enterprise-level support.",
       gradient: "from-amber-500/10 via-yellow-400/15 to-amber-600/10",
       accentColor: "text-amber-600",
-      glowColor: "amber-500/20"
+      glowColor: "amber-500/20",
+      link: "/services/cloud-solutions"
     },
     {
       icon: Search,
@@ -47,7 +52,8 @@ const Services = () => {
       description: "Strategic optimization and comprehensive analytics to maximize performance.",
       gradient: "from-rose-500/10 via-pink-400/15 to-rose-600/10",
       accentColor: "text-rose-600",
-      glowColor: "rose-500/20"
+      glowColor: "rose-500/20",
+      link: "/services/seo-insights"
     },
     {
       icon: Palette,
@@ -56,7 +62,8 @@ const Services = () => {
       description: "Complete brand development from positioning to visual identity systems.",
       gradient: "from-indigo-500/10 via-blue-400/15 to-indigo-600/10",
       accentColor: "text-indigo-600",
-      glowColor: "indigo-500/20"
+      glowColor: "indigo-500/20",
+      link: "/services/brand-identity"
     },
     {
       icon: Share2,
@@ -65,7 +72,8 @@ const Services = () => {
       description: "Data-driven strategies that build communities and drive measurable ROI.",
       gradient: "from-teal-500/10 via-cyan-400/15 to-teal-600/10",
       accentColor: "text-teal-600",
-      glowColor: "teal-500/20"
+      glowColor: "teal-500/20",
+      link: "/services/digital-campaigns"
     },
     {
       icon: BarChart3,
@@ -74,7 +82,8 @@ const Services = () => {
       description: "Pioneer AEO services optimizing for next-generation AI systems.",
       gradient: "from-violet-500/10 via-purple-400/15 to-violet-600/10",
       accentColor: "text-violet-600",
-      glowColor: "violet-500/20"
+      glowColor: "violet-500/20",
+      link: "/services/experience-optimization"
     }
   ];
 
@@ -106,9 +115,10 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <div
+            <Link
               key={index}
-              className="group relative h-[420px]"
+              to={service.link}
+              className="group relative h-[420px] block"
             >
               {/* Subtle luxury glow - much more refined */}
               <div className={`absolute -inset-0.5 bg-gradient-to-r ${service.gradient} rounded-2xl opacity-0 group-hover:opacity-60 transition-all duration-700 blur-sm`}></div>
@@ -173,7 +183,7 @@ const Services = () => {
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
