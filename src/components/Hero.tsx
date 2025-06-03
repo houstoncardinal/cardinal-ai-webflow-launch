@@ -180,6 +180,34 @@ const Hero = () => {
         <div className="absolute bottom-32 right-32 opacity-15 animate-float" style={{animationDelay: '1s'}}>
           <Wifi className="w-10 h-10 text-green-500" />
         </div>
+
+        {/* Additional floating elements to fill empty space under bouncing ball */}
+        <div className="absolute bottom-1/4 left-1/3 opacity-10">
+          <div className="flex flex-col space-y-2 text-xs font-mono text-green-600">
+            <div className="animate-pulse" style={{animationDelay: '0s'}}>{"{ status: 'active' }"}</div>
+            <div className="animate-pulse" style={{animationDelay: '0.5s'}}>{"GET /api/data"}</div>
+            <div className="animate-pulse" style={{animationDelay: '1s'}}>{"200 OK"}</div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-1/4 right-1/4 opacity-15">
+          <div className="w-16 h-16 border border-green-300 rounded-lg flex items-center justify-center animate-pulse">
+            <div className="w-8 h-8 bg-green-200 rounded animate-ping"></div>
+          </div>
+        </div>
+
+        {/* Floating binary code */}
+        <div className="absolute bottom-1/3 left-1/2 opacity-8">
+          <div className="flex flex-col text-xs font-mono text-gray-400 space-y-1">
+            <div className="animate-pulse" style={{animationDelay: '0s'}}>1010</div>
+            <div className="animate-pulse" style={{animationDelay: '0.3s'}}>1100</div>
+            <div className="animate-pulse" style={{animationDelay: '0.6s'}}>0101</div>
+          </div>
+        </div>
+
+        {/* Additional geometric shapes for balance */}
+        <div className="absolute bottom-1/4 left-2/3 w-12 h-12 border-2 border-green-200 rounded-full opacity-20 animate-spin" style={{animationDuration: '15s'}}></div>
+        <div className="absolute bottom-1/5 right-1/3 w-8 h-8 bg-gray-200 rounded opacity-15 animate-pulse" style={{animationDelay: '2s'}}></div>
       </div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
