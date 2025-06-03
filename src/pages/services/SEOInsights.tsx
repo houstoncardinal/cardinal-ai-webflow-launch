@@ -1,4 +1,3 @@
-
 import { Search, CheckCircle, ArrowRight, BarChart3, Target, TrendingUp, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,33 +5,25 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEOAnalyzer from "@/components/SEOAnalyzer";
 import { Link } from "react-router-dom";
-
 const SEOInsights = () => {
-  const features = [
-    {
-      icon: BarChart3,
-      title: "Advanced Analytics",
-      description: "Comprehensive data analysis and performance tracking"
-    },
-    {
-      icon: Target,
-      title: "Keyword Strategy",
-      description: "Strategic keyword research and competitive analysis"
-    },
-    {
-      icon: TrendingUp,
-      title: "Growth Optimization",
-      description: "Continuous optimization for sustained growth"
-    },
-    {
-      icon: Eye,
-      title: "Visibility Enhancement",
-      description: "Increase online visibility and search rankings"
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-white">
+  const features = [{
+    icon: BarChart3,
+    title: "Advanced Analytics",
+    description: "Comprehensive data analysis and performance tracking"
+  }, {
+    icon: Target,
+    title: "Keyword Strategy",
+    description: "Strategic keyword research and competitive analysis"
+  }, {
+    icon: TrendingUp,
+    title: "Growth Optimization",
+    description: "Continuous optimization for sustained growth"
+  }, {
+    icon: Eye,
+    title: "Visibility Enhancement",
+    description: "Increase online visibility and search rankings"
+  }];
+  return <div className="min-h-screen bg-white">
       <Navigation />
       
       {/* Hero Section */}
@@ -66,7 +57,7 @@ const SEOInsights = () => {
                 Try Free SEO Analyzer
               </Button>
               <Link to="/#contact">
-                <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 px-8 py-4 rounded-lg font-medium">
+                <Button variant="outline" className="border-gray-600 px-8 py-4 rounded-lg font-medium text-slate-950 bg-slate-50">
                   Get Professional Audit
                 </Button>
               </Link>
@@ -93,8 +84,7 @@ const SEOInsights = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white">
+            {features.map((feature, index) => <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white">
                 <CardContent className="p-8 text-center">
                   <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-rose-600 transition-colors duration-300">
                     <feature.icon className="w-8 h-8 text-rose-600 group-hover:text-white transition-colors duration-300" />
@@ -102,8 +92,7 @@ const SEOInsights = () => {
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -125,7 +114,7 @@ const SEOInsights = () => {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-4 rounded-lg font-medium">
+            <Button variant="outline" className="border-white px-8 py-4 rounded-lg font-medium text-slate-950 bg-slate-50">
               View Case Studies
             </Button>
           </div>
@@ -133,8 +122,6 @@ const SEOInsights = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default SEOInsights;
