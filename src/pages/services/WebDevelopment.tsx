@@ -1,65 +1,46 @@
-
 import { Code, CheckCircle, ArrowRight, Globe, Database, Shield, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
-
 const WebDevelopment = () => {
-  const features = [
-    {
-      icon: Globe,
-      title: "Modern Frameworks",
-      description: "React, Next.js, Vue.js, and Angular for cutting-edge web applications"
-    },
-    {
-      icon: Database,
-      title: "Full-Stack Solutions",
-      description: "Complete backend integration with databases and API development"
-    },
-    {
-      icon: Shield,
-      title: "Security First",
-      description: "Enterprise-grade security measures and compliance standards"
-    },
-    {
-      icon: Zap,
-      title: "Performance Optimized",
-      description: "Lightning-fast loading times and optimized user experiences"
-    }
-  ];
-
-  const process = [
-    {
-      step: "01",
-      title: "Discovery & Planning",
-      description: "We analyze your requirements and create a detailed technical roadmap"
-    },
-    {
-      step: "02", 
-      title: "Design & Architecture",
-      description: "UI/UX design and technical architecture planning for scalability"
-    },
-    {
-      step: "03",
-      title: "Development & Testing",
-      description: "Agile development with continuous testing and quality assurance"
-    },
-    {
-      step: "04",
-      title: "Deployment & Support",
-      description: "Production deployment with ongoing maintenance and optimization"
-    }
-  ];
-
-  const technologies = [
-    "React", "Next.js", "TypeScript", "Node.js", "Express", "MongoDB", 
-    "PostgreSQL", "AWS", "Docker", "Kubernetes", "GraphQL", "REST APIs"
-  ];
-
-  return (
-    <div className="min-h-screen bg-white">
+  const features = [{
+    icon: Globe,
+    title: "Modern Frameworks",
+    description: "React, Next.js, Vue.js, and Angular for cutting-edge web applications"
+  }, {
+    icon: Database,
+    title: "Full-Stack Solutions",
+    description: "Complete backend integration with databases and API development"
+  }, {
+    icon: Shield,
+    title: "Security First",
+    description: "Enterprise-grade security measures and compliance standards"
+  }, {
+    icon: Zap,
+    title: "Performance Optimized",
+    description: "Lightning-fast loading times and optimized user experiences"
+  }];
+  const process = [{
+    step: "01",
+    title: "Discovery & Planning",
+    description: "We analyze your requirements and create a detailed technical roadmap"
+  }, {
+    step: "02",
+    title: "Design & Architecture",
+    description: "UI/UX design and technical architecture planning for scalability"
+  }, {
+    step: "03",
+    title: "Development & Testing",
+    description: "Agile development with continuous testing and quality assurance"
+  }, {
+    step: "04",
+    title: "Deployment & Support",
+    description: "Production deployment with ongoing maintenance and optimization"
+  }];
+  const technologies = ["React", "Next.js", "TypeScript", "Node.js", "Express", "MongoDB", "PostgreSQL", "AWS", "Docker", "Kubernetes", "GraphQL", "REST APIs"];
+  return <div className="min-h-screen bg-white">
       <Navigation />
       
       {/* Hero Section */}
@@ -93,7 +74,7 @@ const WebDevelopment = () => {
                 Start Your Project
               </Button>
               <Link to="/#contact">
-                <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 px-8 py-4 rounded-lg font-medium">
+                <Button variant="outline" className="border-gray-600 px-8 py-4 rounded-lg font-medium bg-slate-50 text-slate-950">
                   Get Quote
                 </Button>
               </Link>
@@ -116,8 +97,7 @@ const WebDevelopment = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white">
+            {features.map((feature, index) => <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white">
                 <CardContent className="p-8 text-center">
                   <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-600 transition-colors duration-300">
                     <feature.icon className="w-8 h-8 text-blue-600 group-hover:text-white transition-colors duration-300" />
@@ -125,8 +105,7 @@ const WebDevelopment = () => {
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -144,11 +123,8 @@ const WebDevelopment = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((item, index) => (
-              <div key={index} className="relative">
-                {index < process.length - 1 && (
-                  <div className="hidden lg:block absolute top-12 left-full w-full h-px bg-gradient-to-r from-blue-200 to-gray-200 z-0"></div>
-                )}
+            {process.map((item, index) => <div key={index} className="relative">
+                {index < process.length - 1 && <div className="hidden lg:block absolute top-12 left-full w-full h-px bg-gradient-to-r from-blue-200 to-gray-200 z-0"></div>}
                 
                 <div className="relative bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-all duration-300 z-10">
                   <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg mb-6">
@@ -157,8 +133,7 @@ const WebDevelopment = () => {
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">{item.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{item.description}</p>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -176,11 +151,9 @@ const WebDevelopment = () => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-4">
-            {technologies.map((tech, index) => (
-              <div key={index} className="bg-white px-6 py-3 rounded-full border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300">
+            {technologies.map((tech, index) => <div key={index} className="bg-white px-6 py-3 rounded-full border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300">
                 <span className="text-gray-700 font-medium">{tech}</span>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -202,7 +175,7 @@ const WebDevelopment = () => {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-4 rounded-lg font-medium">
+            <Button variant="outline" className="border-white px-8 py-4 rounded-lg font-medium bg-slate-50 text-slate-950">
               View Portfolio
             </Button>
           </div>
@@ -210,8 +183,6 @@ const WebDevelopment = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default WebDevelopment;
