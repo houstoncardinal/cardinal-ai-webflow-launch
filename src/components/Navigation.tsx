@@ -48,10 +48,13 @@ const Navigation = () => {
             <Link 
               to="/" 
               onClick={handleLogoClick}
-              className="text-2xl font-light text-gray-900 tracking-wide group cursor-pointer"
+              className="flex items-center group cursor-pointer"
             >
-              <span className="group-hover:text-green-600 transition-colors duration-300">CARDINAL</span>
-              <span className="text-green-600 font-normal ml-1 animate-pulse">.</span>
+              <img 
+                src="/lovable-uploads/ce9cd97d-b5a3-4dc6-bf7a-edfc3ca91d4a.png" 
+                alt="Cardinal Logo" 
+                className="h-8 w-auto transition-transform duration-300 group-hover:scale-105"
+              />
             </Link>
           </div>
           
