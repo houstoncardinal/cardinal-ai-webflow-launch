@@ -39,10 +39,85 @@ const Portfolio = () => {
 
   return (
     <section id="portfolio" className="py-24 bg-white relative overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-gradient-to-l from-green-100 to-transparent rounded-full animate-pulse"></div>
-        <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-gradient-to-r from-gray-100 to-transparent rounded-full animate-pulse delay-1000"></div>
+      {/* Animated web infrastructure background */}
+      <div className="absolute inset-0 opacity-15">
+        {/* Server rack visualization */}
+        <div className="absolute top-1/4 right-1/4 w-64 h-96">
+          <svg viewBox="0 0 100 150" className="w-full h-full">
+            {/* Server units */}
+            {[...Array(8)].map((_, i) => (
+              <g key={i}>
+                <rect x="20" y={10 + i * 16} width="60" height="12" fill="#059669" opacity="0.3" rx="2">
+                  <animate attributeName="opacity" values="0.3;0.8;0.3" dur={`${2 + i * 0.2}s`} repeatCount="indefinite"/>
+                </rect>
+                {/* Status lights */}
+                <circle cx="75" cy={16 + i * 16} r="2" fill="#059669">
+                  <animate attributeName="fill" values="#059669;#10b981;#059669" dur={`${1.5 + i * 0.1}s`} repeatCount="indefinite"/>
+                </circle>
+              </g>
+            ))}
+          </svg>
+        </div>
+
+        {/* Data center connectivity */}
+        <div className="absolute bottom-1/4 left-1/4 w-96 h-64">
+          <svg viewBox="0 0 200 100" className="w-full h-full">
+            {/* Connection paths */}
+            <g stroke="#059669" strokeWidth="2" fill="none" opacity="0.4">
+              <path d="M20,20 Q60,10 100,20 T180,20" strokeDasharray="5,3">
+                <animate attributeName="stroke-dashoffset" values="0;8;0" dur="3s" repeatCount="indefinite"/>
+              </path>
+              <path d="M20,50 Q60,40 100,50 T180,50" strokeDasharray="5,3">
+                <animate attributeName="stroke-dashoffset" values="0;8;0" dur="3.5s" repeatCount="indefinite"/>
+              </path>
+              <path d="M20,80 Q60,70 100,80 T180,80" strokeDasharray="5,3">
+                <animate attributeName="stroke-dashoffset" values="0;8;0" dur="4s" repeatCount="indefinite"/>
+              </path>
+            </g>
+            
+            {/* Data flow indicators */}
+            <g fill="#059669" opacity="0.6">
+              {[20, 50, 80].map((y, i) => (
+                <circle key={i} cx="20" cy={y} r="3">
+                  <animate attributeName="cx" values="20;180;20" dur={`${4 + i * 0.5}s`} repeatCount="indefinite"/>
+                  <animate attributeName="r" values="3;1;3" dur={`${4 + i * 0.5}s`} repeatCount="indefinite"/>
+                </circle>
+              ))}
+            </g>
+          </svg>
+        </div>
+
+        {/* Cloud infrastructure */}
+        <div className="absolute top-0 left-0 w-72 h-48 opacity-20">
+          <svg viewBox="0 0 150 80" className="w-full h-full">
+            {/* Cloud shapes */}
+            <g fill="#059669" opacity="0.3">
+              <ellipse cx="40" cy="30" rx="20" ry="12">
+                <animate attributeName="opacity" values="0.3;0.6;0.3" dur="4s" repeatCount="indefinite"/>
+              </ellipse>
+              <ellipse cx="70" cy="25" rx="25" ry="15">
+                <animate attributeName="opacity" values="0.3;0.6;0.3" dur="4.5s" repeatCount="indefinite"/>
+              </ellipse>
+              <ellipse cx="100" cy="30" rx="18" ry="10">
+                <animate attributeName="opacity" values="0.3;0.6;0.3" dur="3.5s" repeatCount="indefinite"/>
+              </ellipse>
+            </g>
+            
+            {/* Data streams from cloud */}
+            <g stroke="#059669" strokeWidth="1" opacity="0.4">
+              {[...Array(5)].map((_, i) => (
+                <line key={i} x1={50 + i * 10} y1="45" x2={50 + i * 10} y2="70" strokeDasharray="3,2">
+                  <animate 
+                    attributeName="stroke-dashoffset" 
+                    values="0;5;0" 
+                    dur={`${2 + i * 0.2}s`} 
+                    repeatCount="indefinite"
+                  />
+                </line>
+              ))}
+            </g>
+          </svg>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -51,13 +126,13 @@ const Portfolio = () => {
             <div className="w-8 h-px bg-green-500 mr-4 animate-pulse"></div>
             Case Studies
           </div>
-          <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6 leading-tight animate-fade-in delay-300">
+          <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6 leading-tight animate-fade-in" style={{animationDelay: '300ms'}}>
             Featured
             <span className="block text-green-600 font-normal">
               success stories
             </span>
           </h2>
-          <p className="text-xl text-gray-600 leading-relaxed font-light animate-fade-in delay-500">
+          <p className="text-xl text-gray-600 leading-relaxed font-light animate-fade-in" style={{animationDelay: '500ms'}}>
             Discover how we've helped businesses across various industries 
             achieve transformational growth through strategic digital innovation.
           </p>

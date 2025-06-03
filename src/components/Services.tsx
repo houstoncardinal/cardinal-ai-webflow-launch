@@ -57,10 +57,101 @@ const Services = () => {
 
   return (
     <section id="services" className="py-24 bg-white relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r from-green-100 to-transparent rounded-full animate-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-gradient-to-l from-gray-100 to-transparent rounded-full animate-pulse delay-1000"></div>
+      {/* Animated network background */}
+      <div className="absolute inset-0 opacity-20">
+        {/* Digital circuit pattern */}
+        <div className="absolute inset-0">
+          <svg className="w-full h-full" viewBox="0 0 800 600">
+            {/* Circuit lines */}
+            <g stroke="#059669" strokeWidth="1" fill="none">
+              <path d="M50,100 L200,100 L200,200 L350,200" strokeDasharray="10,5">
+                <animate attributeName="stroke-dashoffset" values="0;15;0" dur="4s" repeatCount="indefinite"/>
+              </path>
+              <path d="M350,200 L500,200 L500,300 L650,300" strokeDasharray="10,5">
+                <animate attributeName="stroke-dashoffset" values="0;15;0" dur="5s" repeatCount="indefinite"/>
+              </path>
+              <path d="M100,400 L250,400 L250,500 L400,500" strokeDasharray="10,5">
+                <animate attributeName="stroke-dashoffset" values="0;15;0" dur="4.5s" repeatCount="indefinite"/>
+              </path>
+              <path d="M600,150 L750,150 L750,250 L600,250 Z" strokeDasharray="8,4">
+                <animate attributeName="stroke-dashoffset" values="0;12;0" dur="3.5s" repeatCount="indefinite"/>
+              </path>
+            </g>
+            
+            {/* Circuit nodes */}
+            <g fill="#059669" opacity="0.6">
+              <circle cx="200" cy="100" r="4">
+                <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="350" cy="200" r="4">
+                <animate attributeName="r" values="4;6;4" dur="2.5s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="500" cy="300" r="4">
+                <animate attributeName="r" values="4;6;4" dur="3s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="250" cy="400" r="4">
+                <animate attributeName="r" values="4;6;4" dur="2.2s" repeatCount="indefinite"/>
+              </circle>
+            </g>
+          </svg>
+        </div>
+
+        {/* Data flow visualization */}
+        <div className="absolute top-0 right-0 w-96 h-96">
+          <svg viewBox="0 0 200 200" className="w-full h-full">
+            {/* Data packets */}
+            <g opacity="0.4">
+              {[...Array(6)].map((_, i) => (
+                <rect
+                  key={i}
+                  x="10"
+                  y="10"
+                  width="8"
+                  height="8"
+                  fill="#059669"
+                  rx="2"
+                >
+                  <animateTransform
+                    attributeName="transform"
+                    type="translate"
+                    values={`0,${i * 30};180,${i * 30};0,${i * 30}`}
+                    dur={`${3 + i * 0.3}s`}
+                    repeatCount="indefinite"
+                  />
+                </rect>
+              ))}
+            </g>
+          </svg>
+        </div>
+
+        {/* Network topology */}
+        <div className="absolute bottom-0 left-0 w-64 h-64 opacity-30">
+          <svg viewBox="0 0 150 150" className="w-full h-full">
+            <g transform="translate(75,75)">
+              {/* Central hub */}
+              <circle cx="0" cy="0" r="8" fill="#059669">
+                <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite"/>
+              </circle>
+              
+              {/* Connected nodes */}
+              {[...Array(6)].map((_, i) => {
+                const angle = (i * 60) * Math.PI / 180;
+                const x = Math.cos(angle) * 40;
+                const y = Math.sin(angle) * 40;
+                return (
+                  <g key={i}>
+                    <line x1="0" y1="0" x2={x} y2={y} stroke="#059669" strokeWidth="2" opacity="0.5">
+                      <animate attributeName="opacity" values="0.5;1;0.5" dur={`${2 + i * 0.2}s`} repeatCount="indefinite"/>
+                    </line>
+                    <circle cx={x} cy={y} r="4" fill="#059669">
+                      <animate attributeName="r" values="4;6;4" dur={`${2.5 + i * 0.1}s`} repeatCount="indefinite"/>
+                    </circle>
+                  </g>
+                );
+              })}
+            </g>
+          </svg>
+        </div>
       </div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -69,13 +160,13 @@ const Services = () => {
             <div className="w-8 h-px bg-green-500 mr-4 animate-pulse"></div>
             Our Services
           </div>
-          <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6 leading-tight animate-fade-in delay-300">
+          <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6 leading-tight animate-fade-in" style={{animationDelay: '300ms'}}>
             Comprehensive solutions
             <span className="block text-green-600 font-normal">
               for digital transformation
             </span>
           </h2>
-          <p className="text-xl text-gray-600 leading-relaxed font-light animate-fade-in delay-500">
+          <p className="text-xl text-gray-600 leading-relaxed font-light animate-fade-in" style={{animationDelay: '500ms'}}>
             We deliver end-to-end digital solutions that position organizations 
             for sustained growth in an increasingly connected world.
           </p>
@@ -113,7 +204,7 @@ const Services = () => {
         </div>
 
         {/* Enhanced CTA Section */}
-        <div className="bg-gradient-to-r from-gray-50 to-green-50 rounded-2xl p-12 text-center relative overflow-hidden animate-fade-in delay-1000">
+        <div className="bg-gradient-to-r from-gray-50 to-green-50 rounded-2xl p-12 text-center relative overflow-hidden animate-fade-in" style={{animationDelay: '1000ms'}}>
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-0 left-0 w-32 h-32 bg-green-200 rounded-full animate-bounce"></div>
             <div className="absolute bottom-0 right-0 w-24 h-24 bg-gray-300 rounded-full animate-pulse"></div>
