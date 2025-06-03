@@ -4,7 +4,6 @@ import Services from "@/components/Services";
 import Industries from "@/components/Industries";
 import Portfolio from "@/components/Portfolio";
 import About from "@/components/About";
-import GlobalPresence from "@/components/GlobalPresence";
 import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -37,11 +36,6 @@ const Index = () => {
       {/* Portfolio - Very light green background for subtle variation */}
       <div className="bg-green-50/30">
         <Portfolio />
-      </div>
-      
-      {/* Global Presence - Light gray background */}
-      <div className="bg-gray-50">
-        <GlobalPresence />
       </div>
       
       {/* Contact - White background */}
