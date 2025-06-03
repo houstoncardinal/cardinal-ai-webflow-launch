@@ -2,10 +2,12 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   const navItems = [
     { name: "Services", href: "#services" },
@@ -25,6 +27,15 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Scroll to top when route changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  const handleLogoClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       scrolled 
@@ -34,10 +45,14 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <div className="text-2xl font-light text-gray-900 tracking-wide group cursor-pointer">
+            <Link 
+              to="/" 
+              onClick={handleLogoClick}
+              className="text-2xl font-light text-gray-900 tracking-wide group cursor-pointer"
+            >
               <span className="group-hover:text-green-600 transition-colors duration-300">CARDINAL</span>
               <span className="text-green-600 font-normal ml-1 animate-pulse">.</span>
-            </div>
+            </Link>
           </div>
           
           {/* Desktop Menu with enhanced animations */}
