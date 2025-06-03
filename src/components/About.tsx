@@ -1,4 +1,3 @@
-
 import { Target, Users, Award, Lightbulb, MessageCircle, Users2, Rocket, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -131,48 +130,44 @@ const About = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-stretch mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-24">
           {/* Enhanced Left Content */}
-          <div className="flex flex-col justify-between h-full animate-fade-in" style={{animationDelay: '600ms'}}>
-            <div className="space-y-8">
-              <div className="prose prose-lg max-w-none">
-                <div className="space-y-6 text-gray-300 leading-relaxed">
-                  <p className="relative pl-6 border-l-2 border-green-400/30">
-                    We deliver enterprise-grade solutions to Fortune 500 companies and emerging market leaders 
-                    across multiple industries and geographies.
-                  </p>
-                  
-                  <p className="relative pl-6 border-l-2 border-blue-400/30">
-                    As pioneers in <span className="text-blue-400 font-medium">AI Experience Optimization (AEO)</span>, we're defining the future of digital 
-                    interaction by optimizing content and experiences for next-generation AI systems.
-                  </p>
-                  
-                  <p className="relative pl-6 border-l-2 border-emerald-400/30">
-                    Our comprehensive approach combines strategic consulting, cutting-edge technology, 
-                    and deep industry expertise to deliver <span className="text-emerald-400 font-medium">transformational outcomes</span>.
-                  </p>
-                </div>
+          <div className="space-y-8 animate-fade-in" style={{animationDelay: '600ms'}}>
+            <div className="prose prose-lg max-w-none">
+              <div className="space-y-6 text-gray-300 leading-relaxed">
+                <p className="relative pl-6 border-l-2 border-green-400/30">
+                  We deliver enterprise-grade solutions to Fortune 500 companies and emerging market leaders 
+                  across multiple industries and geographies.
+                </p>
+                
+                <p className="relative pl-6 border-l-2 border-blue-400/30">
+                  As pioneers in <span className="text-blue-400 font-medium">AI Experience Optimization (AEO)</span>, we're defining the future of digital 
+                  interaction by optimizing content and experiences for next-generation AI systems.
+                </p>
+                
+                <p className="relative pl-6 border-l-2 border-emerald-400/30">
+                  Our comprehensive approach combines strategic consulting, cutting-edge technology, 
+                  and deep industry expertise to deliver <span className="text-emerald-400 font-medium">transformational outcomes</span>.
+                </p>
               </div>
             </div>
             
-            <div className="mt-8">
-              <Button className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/25 border border-green-500/20">
-                <span className="relative z-10">Learn more about us</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-blue-400/20 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-              </Button>
-            </div>
+            <Button className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/25 border border-green-500/20">
+              <span className="relative z-10">Learn more about us</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-blue-400/20 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+            </Button>
           </div>
 
           {/* Animated Step Process */}
-          <div className="flex flex-col h-full animate-fade-in" style={{animationDelay: '800ms'}}>
-            <div className="relative bg-gradient-to-r from-gray-800/30 to-gray-900/30 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/30 overflow-hidden h-full">
+          <div className="space-y-8 animate-fade-in" style={{animationDelay: '800ms'}}>
+            <div className="relative bg-gradient-to-r from-gray-800/30 to-gray-900/30 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/30 overflow-hidden">
               {/* Background glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-blue-500/5 to-purple-500/5"></div>
               
               {/* Floating orb effect */}
               <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-r from-green-400/10 to-blue-400/10 rounded-full blur-3xl animate-pulse"></div>
               
-              <div className="relative z-10 h-full flex flex-col">
+              <div className="relative z-10">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-light text-white mb-2">
                     How we <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">work together</span>
@@ -182,7 +177,7 @@ const About = () => {
                 </div>
                 
                 {/* Process Steps */}
-                <div className="space-y-6 flex-1">
+                <div className="space-y-6">
                   {workflowSteps.map((step, index) => (
                     <div 
                       key={index} 
@@ -240,32 +235,37 @@ const About = () => {
           </div>
         </div>
 
-        {/* Sleek Values Section */}
-        <div className="animate-fade-in" style={{animationDelay: '1000ms'}}>
-          <div className="text-center mb-16">
-            <h3 className="text-4xl font-light text-white mb-6">
-              Our <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">values</span>
-            </h3>
-            <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-              The principles that guide our approach to delivering exceptional outcomes.
-            </p>
-          </div>
+        {/* Enhanced Values Section */}
+        <div className="relative bg-gradient-to-r from-gray-800/40 to-gray-900/40 backdrop-blur-xl rounded-2xl p-16 border border-gray-700/30 animate-fade-in" style={{animationDelay: '1000ms'}}>
+          {/* Subtle background pattern */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,197,94,0.05),transparent_50%)] rounded-2xl"></div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            {values.map((value, index) => (
-              <div key={index} className="group text-center">
-                <div className="relative mb-4">
-                  <value.icon className="w-8 h-8 text-green-400 mx-auto group-hover:text-white group-hover:scale-110 transition-all duration-300" strokeWidth={1.5} />
-                  <div className="absolute inset-0 bg-green-400/10 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative z-10">
+            <div className="text-center mb-16">
+              <h3 className="text-4xl font-light text-white mb-6">
+                Our <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">values</span>
+              </h3>
+              <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+                The principles that guide our approach to delivering exceptional outcomes.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {values.map((value, index) => (
+                <div key={index} className="group text-center p-6 rounded-xl hover:bg-gray-800/30 transition-all duration-300 hover:scale-105">
+                  <div className="relative mb-6">
+                    <value.icon className="w-12 h-12 text-green-400 mx-auto group-hover:scale-110 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-green-400/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                  <h4 className="text-xl font-medium text-white mb-4 group-hover:text-green-400 transition-colors duration-300">
+                    {value.title}
+                  </h4>
+                  <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                    {value.description}
+                  </p>
                 </div>
-                <h4 className="text-lg font-medium text-white mb-3 group-hover:text-green-400 transition-colors duration-300">
-                  {value.title}
-                </h4>
-                <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
-                  {value.description}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
