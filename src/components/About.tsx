@@ -1,28 +1,6 @@
+
 import { Target, Users, Award, Lightbulb, MessageCircle, Users2, Rocket, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const values = [
-  {
-    icon: Target,
-    title: "Purpose-driven",
-    description: "We deliver solutions that create meaningful impact and drive sustainable business growth."
-  },
-  {
-    icon: Users,
-    title: "Human-centered",
-    description: "Every solution we build puts people first, creating experiences that truly matter."
-  },
-  {
-    icon: Award,
-    title: "Excellence",
-    description: "We maintain the highest standards through rigorous quality processes and continuous improvement."
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation",
-    description: "We pioneer emerging technologies to deliver next-generation solutions for our clients."
-  }
-];
 
 const workflowSteps = [
   {
@@ -132,7 +110,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           {/* Enhanced Left Content */}
           <div className="space-y-8 animate-fade-in" style={{animationDelay: '600ms'}}>
             <div className="prose prose-lg max-w-none">
@@ -242,37 +220,6 @@ const About = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Enhanced Values Section */}
-        <div className="relative animate-fade-in" style={{animationDelay: '1000ms'}}>
-          <div className="text-center mb-16">
-            <h3 className="text-4xl font-light text-white mb-6">
-              Our <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">values</span>
-            </h3>
-            <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-              The principles that guide our approach to delivering exceptional outcomes.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
-            {values.map((value, index) => (
-              <div key={index} className="group text-center transition-all duration-300 hover:scale-105">
-                <div className="relative mb-6 flex justify-center">
-                  <div className="p-4 rounded-2xl bg-gradient-to-br from-gray-800/40 to-gray-900/40 border border-gray-700/30 group-hover:border-green-500/30 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-green-500/20">
-                    <value.icon className="w-8 h-8 text-green-400 group-hover:scale-110 transition-transform duration-300" />
-                  </div>
-                  <div className="absolute inset-0 bg-green-400/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <h4 className="text-lg font-medium text-white mb-3 group-hover:text-green-400 transition-colors duration-300">
-                  {value.title}
-                </h4>
-                <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
-                  {value.description}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
       </div>
