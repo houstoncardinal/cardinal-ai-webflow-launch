@@ -29,14 +29,14 @@ const Index = () => {
         <Industries />
       </div>
       
+      {/* About - Dark background (moved above Portfolio) */}
+      <div>
+        <About />
+      </div>
+      
       {/* Portfolio - Very light green background for subtle variation */}
       <div className="bg-green-50/30">
         <Portfolio />
-      </div>
-      
-      {/* About - White background */}
-      <div className="bg-white">
-        <About />
       </div>
       
       {/* Global Presence - Light gray background */}

@@ -1,4 +1,3 @@
-
 import { Target, Users, Award, Lightbulb, Globe, TrendingUp, Shield, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -128,25 +127,58 @@ const About = () => {
             </Button>
           </div>
 
-          {/* Enhanced Achievements Grid */}
-          <div className="grid grid-cols-2 gap-6 animate-fade-in" style={{animationDelay: '800ms'}}>
-            {achievements.map((achievement, index) => (
-              <div key={index} className="group relative bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm p-8 rounded-xl border border-gray-700/50 text-center hover:border-green-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/10">
-                {/* Glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-blue-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
-                <div className="relative z-10">
-                  <achievement.icon className="w-10 h-10 text-green-400 mx-auto mb-6 group-hover:scale-110 transition-transform duration-300" />
-                  <div className="text-3xl font-light text-white mb-2 group-hover:text-green-400 transition-colors duration-300">{achievement.value}</div>
-                  <div className="text-white font-medium mb-2">{achievement.label}</div>
-                  <div className="text-gray-400 text-sm">{achievement.description}</div>
+          {/* Redesigned Achievements Grid */}
+          <div className="space-y-6 animate-fade-in" style={{animationDelay: '800ms'}}>
+            <div className="grid grid-cols-2 gap-4">
+              {achievements.map((achievement, index) => (
+                <div 
+                  key={index} 
+                  className="group relative bg-gradient-to-br from-gray-800/20 via-gray-900/30 to-black/40 backdrop-blur-xl p-6 rounded-2xl border border-gray-700/30 overflow-hidden hover:border-green-400/50 transition-all duration-700 hover:scale-105"
+                >
+                  {/* Animated background glow */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                  
+                  {/* Floating orb effect */}
+                  <div className="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-r from-green-400/20 to-blue-400/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-150"></div>
+                  
+                  {/* Content */}
+                  <div className="relative z-10 text-center">
+                    <div className="mb-4 relative">
+                      <achievement.icon className="w-8 h-8 text-green-400 mx-auto group-hover:text-white group-hover:scale-110 transition-all duration-500" />
+                      <div className="absolute inset-0 bg-green-400/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <div className="text-2xl font-light text-white mb-1 group-hover:text-green-300 transition-colors duration-500">
+                        {achievement.value}
+                      </div>
+                      <div className="text-gray-300 font-medium text-sm group-hover:text-white transition-colors duration-500">
+                        {achievement.label}
+                      </div>
+                      <div className="text-gray-500 text-xs group-hover:text-gray-300 transition-colors duration-500">
+                        {achievement.description}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Subtle border animation */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-400/20 via-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{
+                    background: 'linear-gradient(45deg, transparent 30%, rgba(34,197,94,0.1) 50%, transparent 70%)',
+                    animation: 'gradient-shift 3s ease-in-out infinite'
+                  }}></div>
                 </div>
-                
-                {/* Corner accents */}
-                <div className="absolute top-2 left-2 w-3 h-3 border-l-2 border-t-2 border-green-400/30 group-hover:border-green-400 transition-colors duration-300"></div>
-                <div className="absolute bottom-2 right-2 w-3 h-3 border-r-2 border-b-2 border-green-400/30 group-hover:border-green-400 transition-colors duration-300"></div>
+              ))}
+            </div>
+            
+            {/* Additional visual element */}
+            <div className="mt-8 p-6 bg-gradient-to-r from-gray-800/30 to-gray-900/30 backdrop-blur-sm rounded-xl border border-gray-700/30 text-center">
+              <div className="text-gray-400 text-sm mb-2">Trusted by industry leaders</div>
+              <div className="flex justify-center space-x-6">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="w-2 h-2 bg-green-400/60 rounded-full animate-pulse" style={{animationDelay: `${i * 0.2}s`}}></div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
 
