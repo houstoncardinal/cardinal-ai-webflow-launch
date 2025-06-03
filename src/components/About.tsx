@@ -1,3 +1,4 @@
+
 import { Target, Users, Award, Lightbulb, MessageCircle, Users2, Rocket, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -124,7 +125,8 @@ const About = () => {
           
           <div className="space-y-6 animate-fade-in" style={{animationDelay: '400ms'}}>
             <p className="text-xl text-gray-300 leading-relaxed font-light">
-              Cardinal Consulting is a <span className="text-green-400 font-medium">premier digital transformation consultancy</span> 
+              Cardinal Consulting is a <span className="text-green-400 font-medium">premier digital transformation consultancy</span>
+              <br />
               defining the future of enterprise digital experiences.
             </p>
           </div>
