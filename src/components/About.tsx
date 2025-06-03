@@ -1,4 +1,4 @@
-import { Target, Users, Award, Lightbulb } from "lucide-react";
+import { Target, Users, Award, Lightbulb, Code, Monitor, Smartphone, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const About = () => {
@@ -25,11 +25,39 @@ const About = () => {
     }
   ];
 
-  const serviceMetrics = [
-    { value: "AI/ML", label: "Solutions deployed", description: "Machine learning & automation", gradient: "from-green-400 to-emerald-400" },
-    { value: "Cloud", label: "Migrations completed", description: "Enterprise infrastructure", gradient: "from-blue-400 to-cyan-400" },
-    { value: "Digital", label: "Transformations led", description: "End-to-end modernization", gradient: "from-purple-400 to-pink-400" },
-    { value: "Data", label: "Analytics platforms", description: "Business intelligence", gradient: "from-orange-400 to-red-400" }
+  const developmentServices = [
+    {
+      icon: Code,
+      title: "Custom Applications",
+      description: "Enterprise-grade applications built with cutting-edge technology",
+      technologies: ["React", "Node.js", "Python", "TypeScript"],
+      gradient: "from-green-400 to-emerald-400",
+      iconBg: "bg-green-500/20"
+    },
+    {
+      icon: Globe,
+      title: "Web Development",
+      description: "Responsive, scalable web solutions that drive business growth",
+      technologies: ["Next.js", "Tailwind", "GraphQL", "AWS"],
+      gradient: "from-blue-400 to-cyan-400",
+      iconBg: "bg-blue-500/20"
+    },
+    {
+      icon: Smartphone,
+      title: "Mobile Solutions",
+      description: "Cross-platform mobile apps with native performance",
+      technologies: ["React Native", "Flutter", "iOS", "Android"],
+      gradient: "from-purple-400 to-pink-400",
+      iconBg: "bg-purple-500/20"
+    },
+    {
+      icon: Monitor,
+      title: "Digital Platforms",
+      description: "Full-stack platforms that scale with your business",
+      technologies: ["Microservices", "Docker", "K8s", "CI/CD"],
+      gradient: "from-orange-400 to-red-400",
+      iconBg: "bg-orange-500/20"
+    }
   ];
 
   return (
@@ -127,7 +155,7 @@ const About = () => {
             </Button>
           </div>
 
-          {/* Sleek Statistics Display */}
+          {/* Creative Development Services Showcase */}
           <div className="space-y-8 animate-fade-in" style={{animationDelay: '800ms'}}>
             <div className="relative bg-gradient-to-r from-gray-800/30 to-gray-900/30 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/30 overflow-hidden">
               {/* Background glow effect */}
@@ -139,51 +167,63 @@ const About = () => {
               <div className="relative z-10">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-light text-white mb-2">
-                    Our <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">expertise</span>
+                    Development <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">excellence</span>
                   </h3>
                   <div className="w-16 h-px bg-gradient-to-r from-green-400 to-blue-400 mx-auto"></div>
                 </div>
                 
-                {/* Statistics with animated progress bars */}
-                <div className="space-y-6">
-                  {serviceMetrics.map((metric, index) => (
-                    <div key={index} className="group">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-gray-300 text-sm font-medium">{metric.label}</span>
-                        <span className="text-white font-light text-lg">{metric.value}</span>
-                      </div>
+                {/* Service Cards Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {developmentServices.map((service, index) => (
+                    <div key={index} className="group relative bg-gray-800/40 rounded-xl p-4 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 hover:scale-105">
+                      {/* Gradient background on hover */}
+                      <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-10 rounded-xl transition-opacity duration-300`}></div>
                       
-                      {/* Animated progress bar */}
-                      <div className="relative h-2 bg-gray-800 rounded-full overflow-hidden">
-                        <div 
-                          className={`absolute inset-y-0 left-0 bg-gradient-to-r ${metric.gradient} rounded-full transition-all duration-1000 ease-out`}
-                          style={{
-                            width: '90%',
-                            animationDelay: `${index * 0.2}s`
-                          }}
-                        ></div>
+                      <div className="relative z-10">
+                        {/* Icon */}
+                        <div className={`inline-flex items-center justify-center w-10 h-10 ${service.iconBg} rounded-lg mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                          <service.icon className="w-5 h-5 text-white" />
+                        </div>
                         
-                        {/* Shimmer effect */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-pulse"></div>
+                        {/* Title */}
+                        <h4 className="text-white font-medium text-sm mb-2 group-hover:text-green-400 transition-colors duration-300">
+                          {service.title}
+                        </h4>
+                        
+                        {/* Description */}
+                        <p className="text-gray-400 text-xs leading-relaxed mb-3">
+                          {service.description}
+                        </p>
+                        
+                        {/* Technologies */}
+                        <div className="flex flex-wrap gap-1">
+                          {service.technologies.map((tech, techIndex) => (
+                            <span 
+                              key={techIndex} 
+                              className="inline-block px-2 py-1 bg-gray-700/50 text-gray-300 text-xs rounded-md border border-gray-600/30 group-hover:border-gray-500/50 transition-colors duration-300"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                       
-                      <div className="text-gray-500 text-xs mt-1">{metric.description}</div>
+                      {/* Subtle glow effect */}
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                   ))}
                 </div>
                 
-                {/* Additional decorative elements */}
-                <div className="mt-8 pt-6 border-t border-gray-700/30">
-                  <div className="flex justify-center space-x-4">
-                    {[...Array(4)].map((_, i) => (
-                      <div 
-                        key={i} 
-                        className="w-2 h-2 bg-green-400/60 rounded-full animate-pulse" 
-                        style={{animationDelay: `${i * 0.3}s`}}
-                      ></div>
-                    ))}
+                {/* Footer with call to action */}
+                <div className="mt-6 pt-6 border-t border-gray-700/30 text-center">
+                  <div className="flex justify-center items-center space-x-2 mb-2">
+                    <div className="w-2 h-2 bg-green-400/60 rounded-full animate-pulse"></div>
+                    <span className="text-gray-400 text-xs">Ready to build your next project?</span>
+                    <div className="w-2 h-2 bg-blue-400/60 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
                   </div>
-                  <div className="text-center text-gray-400 text-xs mt-3">Specialized service domains</div>
+                  <Button className="bg-gradient-to-r from-green-600/80 to-blue-600/80 hover:from-green-500 hover:to-blue-500 text-white px-4 py-2 text-xs rounded-lg font-medium transition-all duration-300 hover:scale-105 border border-gray-600/30">
+                    Explore Our Work
+                  </Button>
                 </div>
               </div>
             </div>
