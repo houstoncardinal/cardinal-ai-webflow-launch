@@ -1,5 +1,5 @@
 
-import { Code, Smartphone, Globe, Server, Search, Palette, Share2, Brain, ArrowRight, Sparkles } from "lucide-react";
+import { Code, Smartphone, Globe, Server, Search, Palette, Share2, Brain, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -7,98 +7,93 @@ const Services = () => {
   const services = [
     {
       icon: Code,
-      title: "Web Development",
-      description: "Enterprise-grade web solutions built with cutting-edge technologies for optimal performance and scalability.",
-      gradient: "from-blue-500 to-cyan-500"
+      title: "Technology",
+      subtitle: "Web Development",
+      description: "Enterprise-grade solutions built with cutting-edge technologies for optimal performance."
     },
     {
       icon: Smartphone,
-      title: "Mobile Applications",
-      description: "Native and cross-platform mobile solutions that deliver exceptional user experiences and drive business growth.",
-      gradient: "from-purple-500 to-pink-500"
+      title: "Digital",
+      subtitle: "Mobile Applications",
+      description: "Native and cross-platform mobile solutions that deliver exceptional user experiences."
     },
     {
       icon: Globe,
-      title: "Web Applications",
-      description: "Complex web applications with enterprise architecture, robust functionality and intuitive user interfaces.",
-      gradient: "from-green-500 to-emerald-500"
+      title: "Innovation",
+      subtitle: "Web Applications",
+      description: "Complex applications with enterprise architecture and intuitive user interfaces."
     },
     {
       icon: Server,
-      title: "Cloud Infrastructure",
-      description: "Scalable, secure cloud hosting solutions with 99.9% uptime and enterprise-level support.",
-      gradient: "from-orange-500 to-red-500"
+      title: "Infrastructure",
+      subtitle: "Cloud Solutions",
+      description: "Scalable, secure cloud hosting solutions with enterprise-level support."
     },
     {
       icon: Search,
-      title: "SEO & Analytics",
-      description: "Strategic search optimization and comprehensive analytics to maximize visibility and performance metrics.",
-      gradient: "from-indigo-500 to-purple-500"
+      title: "Analytics",
+      subtitle: "SEO & Insights",
+      description: "Strategic optimization and comprehensive analytics to maximize performance."
     },
     {
       icon: Palette,
-      title: "Brand Strategy",
-      description: "Complete brand development from strategic positioning to comprehensive visual identity systems.",
-      gradient: "from-pink-500 to-rose-500"
+      title: "Strategy",
+      subtitle: "Brand Identity",
+      description: "Complete brand development from positioning to visual identity systems."
     },
     {
       icon: Share2,
-      title: "Digital Marketing",
-      description: "Data-driven digital marketing strategies that build engaged communities and drive measurable ROI.",
-      gradient: "from-teal-500 to-cyan-500"
+      title: "Marketing",
+      subtitle: "Digital Campaigns",
+      description: "Data-driven strategies that build communities and drive measurable ROI."
     },
     {
       icon: Brain,
-      title: "AI Experience Optimization",
-      description: "Pioneer AEO services optimizing content and experiences for next-generation AI systems and platforms.",
-      gradient: "from-violet-500 to-purple-500"
+      title: "AI",
+      subtitle: "Experience Optimization",
+      description: "Pioneer AEO services optimizing for next-generation AI systems."
     }
   ];
 
   return (
-    <section id="services" className="py-32 bg-gradient-to-br from-slate-50 via-white to-blue-50/30 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-50/50 to-transparent"></div>
-      <div className="absolute bottom-0 left-0 w-1/4 h-2/3 bg-gradient-to-tr from-cyan-50/30 to-transparent"></div>
-      
-      <div className="max-w-8xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-        <div className="text-center mb-24">
-          <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-cyan-50 text-blue-800 text-sm font-semibold px-6 py-3 rounded-full mb-8 border border-blue-200/50 shadow-lg">
-            <Sparkles className="w-4 h-4 mr-2" />
-            Our Expertise
+    <section id="services" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="max-w-3xl mb-20">
+          <div className="inline-flex items-center text-sm font-medium text-gray-600 uppercase tracking-wide mb-6">
+            <div className="w-8 h-px bg-green-500 mr-4"></div>
+            Our Services
           </div>
-          <h2 className="text-5xl md:text-7xl font-thin text-slate-900 mb-8 tracking-tight leading-tight">
-            Comprehensive Digital
-            <span className="block font-light bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 bg-clip-text text-transparent mt-2">
-              Solutions Portfolio
+          <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6 leading-tight">
+            Comprehensive solutions
+            <span className="block text-green-600 font-normal">
+              for digital transformation
             </span>
           </h2>
-          <p className="text-xl md:text-2xl text-slate-600 max-w-5xl mx-auto font-light leading-relaxed">
-            We deliver end-to-end digital transformation services that position your organization 
+          <p className="text-xl text-gray-600 leading-relaxed font-light">
+            We deliver end-to-end digital solutions that position organizations 
             for sustained growth in an increasingly connected world.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {services.map((service, index) => (
-            <Card key={index} className="group hover:shadow-3xl transition-all duration-700 border-0 shadow-xl hover:-translate-y-3 bg-white/80 backdrop-blur-sm relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-slate-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              <CardContent className="p-10 text-center relative z-10">
-                <div className="mb-8 relative">
-                  <div className={`w-20 h-20 bg-gradient-to-br ${service.gradient} rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-2xl`}>
-                    <service.icon className="w-10 h-10 text-white" />
+            <Card key={index} className="group border-gray-200 hover:border-green-500 transition-all duration-300 bg-white shadow-none hover:shadow-lg">
+              <CardContent className="p-8">
+                <div className="mb-6">
+                  <service.icon className="w-8 h-8 text-green-600 mb-4" />
+                  <div className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
+                    {service.title}
                   </div>
-                  <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                  <h3 className="text-lg font-medium text-gray-900 mb-3">
+                    {service.subtitle}
+                  </h3>
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-6 group-hover:text-blue-600 transition-colors duration-500">
-                  {service.title}
-                </h3>
-                <p className="text-slate-600 text-sm leading-relaxed font-light mb-6">
+                <p className="text-gray-600 text-sm leading-relaxed mb-6">
                   {service.description}
                 </p>
-                <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-                  <Button variant="outline" size="sm" className="border-blue-200 text-blue-600 hover:bg-blue-50 rounded-xl">
-                    Learn More
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Button variant="outline" size="sm" className="border-green-600 text-green-600 hover:bg-green-50">
+                    Learn more
                     <ArrowRight className="ml-2 w-3 h-3" />
                   </Button>
                 </div>
@@ -108,16 +103,16 @@ const Services = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 rounded-3xl p-16 shadow-2xl">
-          <h3 className="text-3xl md:text-4xl font-light text-white mb-6">
-            Ready to Transform Your Business?
+        <div className="bg-gray-50 rounded-lg p-12 text-center">
+          <h3 className="text-2xl font-light text-gray-900 mb-4">
+            Ready to transform your business?
           </h3>
-          <p className="text-xl text-slate-300 mb-10 max-w-3xl mx-auto font-light">
-            Let's discuss how our comprehensive digital solutions can accelerate your growth and market position.
+          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Let's discuss how our comprehensive digital solutions can accelerate your growth.
           </p>
-          <Button size="lg" className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-12 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 rounded-2xl">
-            Start Your Journey
-            <ArrowRight className="ml-3 w-6 h-6" />
+          <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3">
+            Get started
+            <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
         </div>
       </div>
