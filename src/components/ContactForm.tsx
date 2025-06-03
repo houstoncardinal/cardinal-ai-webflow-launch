@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowRight, Mail, Phone, User, Gift, ChevronDown, Code, Smartphone, Search, Palette, Cloud, BarChart } from 'lucide-react';
+import { ArrowRight, Mail, Phone, User, Gift, ChevronDown, Code, Smartphone, Search, Palette, Cloud, BarChart, Target } from 'lucide-react';
 
 const serviceOptions = [
   { value: "web-development", label: "Web Development", icon: Code },
@@ -44,7 +43,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="py-8 lg:py-12 relative overflow-hidden -mt-20 lg:-mt-24 z-20">
+    <section className="py-6 lg:py-8 relative overflow-hidden -mt-20 lg:-mt-24 z-20">
       {/* Background with subtle gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-green-50/50 via-white to-gray-50/30"></div>
       
@@ -59,7 +58,7 @@ const ContactForm = () => {
           <div className="absolute -inset-3 bg-gradient-to-r from-green-400/20 via-green-500/20 to-green-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
           
           {/* Main form card */}
-          <div className="relative bg-white/80 backdrop-blur-xl border border-gray-200/50 rounded-xl shadow-lg overflow-hidden">
+          <div className="relative bg-white/80 backdrop-blur-xl border border-gray-200/50 rounded-xl shadow-sm overflow-hidden">
             {/* Accent top border */}
             <div className="h-1 bg-gradient-to-r from-green-400 via-green-500 to-green-600 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
@@ -69,14 +68,14 @@ const ContactForm = () => {
               {/* Header */}
               <div className="text-center mb-6">
                 <div className="flex items-center justify-center gap-2 mb-3">
-                  <Gift className="w-5 h-5 text-green-600" />
+                  <Target className="w-5 h-5 text-green-600" />
                   <h3 className="text-xl lg:text-2xl font-light text-gray-900 leading-relaxed">
-                    Get Your Free Consultation
+                    Evaluate Your Project for Free
                   </h3>
-                  <Gift className="w-5 h-5 text-green-600" />
+                  <Target className="w-5 h-5 text-green-600" />
                 </div>
                 <p className="text-gray-600 text-base max-w-2xl mx-auto leading-relaxed">
-                  Start your digital transformation journey today - no cost, no commitment
+                  Get expert insights on your digital transformation opportunities - completely free, no strings attached
                 </p>
               </div>
 
@@ -171,7 +170,7 @@ const ContactForm = () => {
                       className="relative w-full h-12 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group-hover/button:scale-105 border-0"
                     >
                       <span className="flex items-center justify-center gap-2">
-                        Get Free Consultation
+                        Get Project Evaluation
                         <ArrowRight className="w-4 h-4 group-hover/button:translate-x-1 transition-transform duration-300" />
                       </span>
                     </Button>
@@ -191,7 +190,7 @@ const ContactForm = () => {
                 </div>
                 <div className="flex items-center gap-2 text-gray-500 text-sm">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
-                  <span>Response within 2 hours</span>
+                  <span>Expert insights within 2 hours</span>
                 </div>
               </div>
             </div>
