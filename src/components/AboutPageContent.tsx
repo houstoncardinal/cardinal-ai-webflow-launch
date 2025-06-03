@@ -1,4 +1,3 @@
-
 import { Target, Users, Award, Lightbulb, MessageCircle, Users2, Rocket, CheckCircle, Star, Shield, Clock, TrendingUp, ArrowRight, Globe, Zap, Brain, Cpu, Database, Network } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,8 +8,8 @@ const processSteps = [
     number: "01",
     icon: MessageCircle,
     title: "Discovery & Strategy",
-    description: "Deep dive into your business goals, challenges, and vision through comprehensive stakeholder interviews.",
-    details: ["Business analysis", "Stakeholder mapping", "Technical assessment", "Market research"],
+    description: "Deep dive into your business goals, challenges, and vision through comprehensive stakeholder interviews and market analysis.",
+    details: ["Business analysis", "Market research", "Technical assessment", "Strategy development"],
     duration: "1-2 weeks",
     color: "from-blue-500 to-purple-600",
     progress: 14
@@ -18,8 +17,8 @@ const processSteps = [
   {
     number: "02",
     icon: Lightbulb,
-    title: "Planning & Architecture",
-    description: "Craft detailed project roadmap with technology stack, timelines, and resource allocation.",
+    title: "Planning & Design",
+    description: "Create detailed project roadmaps with technology recommendations, timelines, and resource allocation for optimal results.",
     details: ["Technical architecture", "Project timeline", "Resource planning", "Risk assessment"],
     duration: "1-2 weeks",
     color: "from-purple-500 to-pink-600",
@@ -29,7 +28,7 @@ const processSteps = [
     number: "03",
     icon: Rocket,
     title: "Design & Prototyping",
-    description: "Create stunning user experiences with interactive prototypes and design systems.",
+    description: "Craft stunning user experiences with interactive prototypes and comprehensive design systems that convert visitors.",
     details: ["UI/UX design", "Interactive prototypes", "Design systems", "User testing"],
     duration: "2-3 weeks",
     color: "from-pink-500 to-red-600",
@@ -38,9 +37,9 @@ const processSteps = [
   {
     number: "04",
     icon: Users2,
-    title: "Development Sprint",
-    description: "Agile development with regular updates, code reviews, and collaborative feedback sessions.",
-    details: ["Frontend development", "Backend integration", "Quality assurance", "Performance optimization"],
+    title: "Development & Integration",
+    description: "Agile development process with regular updates, code reviews, and seamless third-party integrations.",
+    details: ["Frontend development", "Backend integration", "API development", "Performance optimization"],
     duration: "4-12 weeks",
     color: "from-green-500 to-emerald-600",
     progress: 56
@@ -49,7 +48,7 @@ const processSteps = [
     number: "05",
     icon: CheckCircle,
     title: "Testing & Quality Assurance",
-    description: "Comprehensive testing across devices, browsers, and user scenarios.",
+    description: "Comprehensive testing across all devices, browsers, and user scenarios to ensure flawless performance.",
     details: ["Cross-browser testing", "Mobile responsiveness", "Security audits", "Performance testing"],
     duration: "1-2 weeks",
     color: "from-emerald-500 to-teal-600",
@@ -58,8 +57,8 @@ const processSteps = [
   {
     number: "06",
     icon: Globe,
-    title: "Deployment & Launch",
-    description: "Seamless deployment with monitoring, analytics setup, and go-live support.",
+    title: "Launch & Deployment",
+    description: "Seamless deployment with monitoring setup, analytics configuration, and comprehensive launch support.",
     details: ["Production deployment", "Analytics setup", "Monitoring configuration", "Launch support"],
     duration: "1 week",
     color: "from-teal-500 to-cyan-600",
@@ -68,8 +67,8 @@ const processSteps = [
   {
     number: "07",
     icon: TrendingUp,
-    title: "Optimization & Support",
-    description: "Ongoing maintenance, performance optimization, and feature enhancements.",
+    title: "Growth & Optimization",
+    description: "Ongoing maintenance, performance monitoring, feature enhancements, and growth optimization strategies.",
     details: ["Performance monitoring", "Feature updates", "Technical support", "Growth optimization"],
     duration: "Ongoing",
     color: "from-cyan-500 to-blue-600",
@@ -80,56 +79,56 @@ const processSteps = [
 const benefits = [
   {
     icon: Shield,
-    title: "Quantum Security",
-    description: "Military-grade encryption with quantum-resistant algorithms",
+    title: "Enterprise Security",
+    description: "Bank-level security protocols with advanced encryption and compliance standards",
     gradient: "from-cyan-400 to-blue-600"
   },
   {
     icon: Clock,
-    title: "Neural Efficiency",
-    description: "AI-powered workflows deliver 10x faster execution times",
+    title: "Rapid Development",
+    description: "Agile methodologies deliver projects 3x faster than traditional approaches",
     gradient: "from-purple-400 to-pink-600"
   },
   {
     icon: TrendingUp,
-    title: "Exponential ROI",
-    description: "Advanced analytics predict 500% average growth metrics",
+    title: "Proven ROI",
+    description: "Data-driven solutions that deliver measurable business growth and results",
     gradient: "from-green-400 to-emerald-600"
   },
   {
     icon: Brain,
-    title: "Cognitive AI",
-    description: "Self-learning systems adapt to your business patterns",
+    title: "Smart Solutions",
+    description: "AI-powered automation and intelligent systems that scale with your business",
     gradient: "from-orange-400 to-red-600"
   }
 ];
 
 const stats = [
-  { number: "500+", label: "Neural Networks Deployed", icon: Network },
-  { number: "99.9%", label: "Quantum Uptime", icon: Cpu },
-  { number: "50+", label: "Fortune 500 Clients", icon: Globe },
-  { number: "24/7", label: "AI Monitoring", icon: Brain }
+  { number: "500+", label: "Projects Delivered", icon: Network },
+  { number: "99.9%", label: "Uptime Guarantee", icon: Cpu },
+  { number: "50+", label: "Enterprise Clients", icon: Globe },
+  { number: "24/7", label: "Support Available", icon: Brain }
 ];
 
 const testimonials = [
   {
-    quote: "Cardinal's quantum computing solutions revolutionized our data processing capabilities beyond imagination.",
-    author: "Dr. Sarah Chen",
-    role: "Chief AI Officer, QuantumTech Industries",
+    quote: "Cardinal transformed our digital presence with a stunning website that increased our conversions by 300%.",
+    author: "Sarah Chen",
+    role: "CEO, TechFlow Solutions",
     rating: 5,
     avatar: "SC"
   },
   {
-    quote: "The neural network implementation exceeded our wildest projections. Truly next-generation technology.",
+    quote: "The mobile app Cardinal built for us has over 100k downloads and 4.8-star rating. Exceptional work.",
     author: "Marcus Rodriguez",
-    role: "Director of Innovation, CyberDyne Corp",
+    role: "Founder, StartupHub",
     rating: 5,
     avatar: "MR"
   },
   {
-    quote: "Cardinal transformed our entire digital ecosystem with bleeding-edge AI that actually thinks.",
+    quote: "Cardinal's cloud solutions reduced our infrastructure costs by 60% while improving performance significantly.",
     author: "Elena Volkov",
-    role: "CTO, NeoTech Enterprises",
+    role: "CTO, DataCore Industries",
     rating: 5,
     avatar: "EV"
   }
@@ -138,11 +137,16 @@ const testimonials = [
 const AboutPageContent = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Hero Section - Light Background */}
+      {/* Hero Section - Light Background with Animated Particles */}
       <section className="relative py-24 sm:py-32 lg:py-40 overflow-hidden px-4 sm:px-6 bg-gradient-to-br from-white via-gray-50 to-gray-100">
-        {/* Advanced Background Effects for Light Theme */}
+        {/* Animated Background Particles */}
         <div className="absolute inset-0 opacity-30">
-          {/* Grid Pattern */}
+          {/* Floating Particles */}
+          <div className="absolute top-20 left-20 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-gradient-to-r from-green-400/20 to-blue-500/20 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute top-1/3 right-20 w-40 h-40 sm:w-60 sm:h-60 lg:w-80 lg:h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
+          <div className="absolute bottom-1/4 left-1/3 w-36 h-36 sm:w-54 sm:h-54 lg:w-72 lg:h-72 bg-gradient-to-r from-cyan-400/20 to-teal-500/20 rounded-full blur-3xl animate-float" style={{animationDelay: '4s'}}></div>
+          
+          {/* Animated Grid */}
           <div className="absolute inset-0" style={{
             backgroundImage: `
               linear-gradient(rgba(34, 197, 94, 0.1) 1px, transparent 1px),
@@ -150,19 +154,6 @@ const AboutPageContent = () => {
             `,
             backgroundSize: '50px 50px'
           }}></div>
-          
-          {/* Floating Orbs */}
-          <div className="absolute top-20 left-20 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-gradient-to-r from-green-400/20 to-blue-500/20 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute top-1/3 right-20 w-40 h-40 sm:w-60 sm:h-60 lg:w-80 lg:h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
-          <div className="absolute bottom-1/4 left-1/3 w-36 h-36 sm:w-54 sm:h-54 lg:w-72 lg:h-72 bg-gradient-to-r from-cyan-400/20 to-teal-500/20 rounded-full blur-3xl animate-float" style={{animationDelay: '4s'}}></div>
-          
-          {/* Scanning Lines */}
-          <div className="absolute inset-0">
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-green-400 to-transparent animate-pulse"></div>
-            <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-pulse" style={{animationDelay: '1s'}}></div>
-            <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent animate-pulse" style={{animationDelay: '2s'}}></div>
-            <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse" style={{animationDelay: '3s'}}></div>
-          </div>
         </div>
 
         <div className="max-w-7xl mx-auto lg:px-8 relative z-10">
@@ -171,29 +162,29 @@ const AboutPageContent = () => {
               <div className="absolute -inset-2 bg-green-400/10 blur-xl rounded-full"></div>
               <div className="relative flex items-center">
                 <div className="w-2 h-2 bg-green-600 rounded-full mr-3 sm:mr-4 animate-pulse"></div>
-                <span className="relative z-10">Neural Network Cardinal</span>
+                <span className="relative z-10">Digital Excellence Since 2015</span>
                 <div className="w-2 h-2 bg-green-600 rounded-full ml-3 sm:ml-4 animate-pulse"></div>
               </div>
             </div>
             
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-9xl font-extralight text-gray-900 mb-8 sm:mb-12 leading-tight relative">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-extralight text-gray-900 mb-8 sm:mb-12 leading-tight relative">
               <span className="relative inline-block">
-                Architecting
+                Building
                 <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 opacity-20 blur-2xl"></div>
               </span>
               <span className="block bg-gradient-to-r from-green-600 via-emerald-500 to-cyan-600 bg-clip-text text-transparent relative">
                 tomorrow's digital
                 <div className="absolute inset-0 bg-gradient-to-r from-green-600 via-emerald-500 to-cyan-600 opacity-30 blur-3xl"></div>
               </span>
-              <span className="block text-gray-700">consciousness</span>
+              <span className="block text-gray-700">experiences today</span>
             </h1>
             
             <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8 sm:mb-12 px-4">
-              Cardinal Quantum Labs pioneers the convergence of artificial intelligence, 
-              quantum computing, and neural networks to forge the future of enterprise transformation.
+              Cardinal is a leading digital agency specializing in web development, mobile applications, 
+              cloud solutions, and digital marketing that drives real business growth.
             </p>
 
-            {/* Holographic Stats Display */}
+            {/* Stats Display */}
             <div className="relative max-w-6xl mx-auto">
               <div className="absolute inset-0 bg-gradient-to-r from-green-400/10 via-blue-400/10 to-purple-400/10 blur-3xl rounded-3xl"></div>
               <div className="relative bg-white/60 backdrop-blur-xl border border-gray-300/50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-lg">
@@ -204,7 +195,6 @@ const AboutPageContent = () => {
                         <div className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 mx-auto bg-gradient-to-r ${index === 0 ? 'from-green-500 to-emerald-600' : index === 1 ? 'from-blue-500 to-cyan-600' : index === 2 ? 'from-purple-500 to-pink-600' : 'from-orange-500 to-red-600'} rounded-xl sm:rounded-2xl p-3 sm:p-4 group-hover:scale-110 transition-all duration-300 shadow-lg`}>
                           <stat.icon className="w-full h-full text-white" strokeWidth={1.5} />
                         </div>
-                        <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-blue-400/20 blur-xl rounded-full group-hover:scale-125 transition-transform duration-300"></div>
                       </div>
                       <div className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light text-gray-900 mb-1 sm:mb-2 group-hover:text-green-600 transition-colors duration-300">{stat.number}</div>
                       <div className="text-gray-600 text-xs sm:text-sm uppercase tracking-wide">{stat.label}</div>
@@ -217,7 +207,7 @@ const AboutPageContent = () => {
         </div>
       </section>
 
-      {/* Process Section - Dark Background with Premium Design */}
+      {/* Process Section - Dark Background */}
       <section className="py-32 lg:py-40 relative px-4 sm:px-6 bg-gradient-to-br from-slate-950 via-gray-950 to-black overflow-hidden">
         {/* Enhanced Background Effects */}
         <div className="absolute inset-0">
@@ -255,18 +245,18 @@ const AboutPageContent = () => {
             <div className="inline-flex items-center text-xs sm:text-sm font-medium text-green-400 uppercase tracking-[0.3em] mb-8 relative">
               <div className="absolute -inset-4 bg-green-400/10 blur-2xl rounded-full"></div>
               <Cpu className="w-4 h-4 mr-3 relative z-10" />
-              <span className="relative z-10">Neural Workflow Architecture</span>
+              <span className="relative z-10">Our Development Process</span>
               <Database className="w-4 h-4 ml-3 relative z-10" />
             </div>
             <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extralight text-white mb-12 leading-tight">
-              Quantum-powered
+              Proven methodology
               <span className="block bg-gradient-to-r from-green-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                transformation pipeline
+                for digital success
               </span>
             </h2>
             <p className="text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto px-4 leading-relaxed">
-              Our AI-orchestrated methodology leverages quantum computing principles 
-              to deliver exponential results through parallel processing dimensions.
+              Our systematic approach ensures every project delivers exceptional results 
+              through careful planning, expert execution, and continuous optimization.
             </p>
           </div>
 
@@ -294,7 +284,6 @@ const AboutPageContent = () => {
                             <div className={`w-20 h-20 bg-gradient-to-r ${step.color} rounded-2xl p-5 flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-lg`}>
                               <step.icon className="w-10 h-10 text-white" strokeWidth={1.5} />
                             </div>
-                            <div className={`absolute inset-0 bg-gradient-to-r ${step.color} opacity-0 group-hover:opacity-30 blur-xl rounded-2xl transition-all duration-500`}></div>
                           </div>
                           
                           <div className="flex-1">
@@ -309,7 +298,7 @@ const AboutPageContent = () => {
                           </div>
                         </div>
 
-                        {/* Enhanced Details Grid */}
+                        {/* Details Grid */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                           {step.details.map((detail, detailIndex) => (
                             <div key={detailIndex} className="flex items-center gap-3 group/item">
@@ -322,33 +311,29 @@ const AboutPageContent = () => {
                         {/* Duration Badge */}
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-3">
-                            <span className="text-gray-400 text-sm">Processing Duration:</span>
+                            <span className="text-gray-400 text-sm">Timeline:</span>
                             <div className="bg-green-400/10 border border-green-400/30 text-green-400 px-4 py-2 rounded-full text-sm font-mono backdrop-blur-sm">
                               {step.duration}
                             </div>
                           </div>
-                          <div className="text-xs text-gray-500 font-mono">{step.progress}% Complete</div>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Compact Premium Interactive Phase Card */}
+                  {/* Phase Progress Card */}
                   <div className="flex-1 w-full max-w-sm">
                     <div className="relative group">
                       <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 blur-2xl rounded-2xl group-hover:from-cyan-400/30 group-hover:to-blue-400/30 transition-all duration-700"></div>
                       
                       <Card className="bg-white/5 border-gray-700/30 backdrop-blur-2xl relative overflow-hidden group-hover:bg-white/10 transition-all duration-500 shadow-xl">
-                        <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 via-transparent to-cyan-400/5 group-hover:from-green-400/10 group-hover:to-cyan-400/10 transition-all duration-500"></div>
-                        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-green-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        
                         <CardContent className="p-6 relative z-10">
                           <div className="flex items-center justify-between mb-6">
                             <span className="text-2xl font-light text-white font-mono group-hover:text-green-400 transition-colors duration-300">{step.number}</span>
                             <span className="text-xs text-green-400 uppercase tracking-wide">{step.title}</span>
                           </div>
                           
-                          {/* Compact Progress Visualization */}
+                          {/* Progress Bar */}
                           <div className="relative mb-6">
                             <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
                               <div 
@@ -358,12 +343,9 @@ const AboutPageContent = () => {
                                 <div className="absolute inset-0 bg-white/20 rounded-full animate-pulse"></div>
                               </div>
                             </div>
-                            <div className="absolute right-0 -top-6 text-xs text-green-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                              {step.progress}%
-                            </div>
                           </div>
                           
-                          {/* Compact Neural Network Progress Indicators */}
+                          {/* Progress Indicators */}
                           <div className="space-y-2 mb-6">
                             {processSteps.slice(0, 7).map((_, i) => (
                               <div key={i} className="flex items-center gap-2">
@@ -373,22 +355,14 @@ const AboutPageContent = () => {
                                     : i === parseInt(step.number) - 1 
                                       ? 'bg-yellow-400 animate-pulse shadow-sm shadow-yellow-400/50'
                                       : 'bg-gray-600'
-                                }`}>
-                                  {i < parseInt(step.number) && (
-                                    <div className="absolute inset-0 bg-green-400 rounded-full animate-ping opacity-75"></div>
-                                  )}
-                                </div>
+                                }`}></div>
                                 <div className={`h-1 flex-1 rounded-full overflow-hidden transition-all duration-500 ${
                                   i < parseInt(step.number) 
                                     ? `bg-gradient-to-r ${step.color}` 
                                     : i === parseInt(step.number) - 1 
                                       ? 'bg-gradient-to-r from-yellow-400 to-orange-500'
                                       : 'bg-gray-700'
-                                } group-hover:scale-105`}>
-                                  {(i < parseInt(step.number) || i === parseInt(step.number) - 1) && (
-                                    <div className="h-full bg-white/20 animate-pulse"></div>
-                                  )}
-                                </div>
+                                } group-hover:scale-105`}></div>
                                 <div className="text-xs text-gray-400 font-mono w-6 group-hover:text-green-400 transition-colors duration-300">
                                   {String(i + 1).padStart(2, '0')}
                                 </div>
@@ -396,7 +370,7 @@ const AboutPageContent = () => {
                             ))}
                           </div>
 
-                          {/* Compact Quantum Processing Status */}
+                          {/* Status */}
                           <div className="flex items-center justify-center p-3 bg-gray-900/30 rounded-lg border border-gray-700/30">
                             <div className="flex items-center gap-3">
                               <div className="flex space-x-1">
@@ -420,13 +394,16 @@ const AboutPageContent = () => {
         </div>
       </section>
 
-      {/* Enhanced Benefits Section - Light Background */}
+      {/* Benefits Section - Light Background */}
       <section className="py-24 sm:py-32 lg:py-40 relative px-4 sm:px-6 bg-gradient-to-br from-gray-50 via-white to-gray-100">
         <div className="max-w-7xl mx-auto lg:px-8 relative z-10">
           <div className="text-center mb-16 sm:mb-20 lg:mb-24">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight text-gray-900 mb-8 sm:mb-12">
-              Quantum advantages of <span className="text-green-600">Cardinal</span>
+              Why choose <span className="text-green-600">Cardinal</span>
             </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              We deliver exceptional digital solutions that drive measurable business results through proven expertise and innovative approaches.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
@@ -434,13 +411,11 @@ const AboutPageContent = () => {
               <div key={index} className="group relative">
                 <div className={`absolute inset-0 bg-gradient-to-r ${benefit.gradient} opacity-0 group-hover:opacity-20 blur-2xl transition-all duration-500 rounded-3xl`}></div>
                 <Card className="bg-white/80 border-gray-200/50 backdrop-blur-xl hover:bg-white/90 transition-all duration-500 group relative overflow-hidden h-full shadow-lg">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <CardContent className="p-6 sm:p-8 text-center relative z-10 h-full flex flex-col">
                     <div className="relative mb-6 sm:mb-8">
                       <div className={`w-16 h-16 sm:w-18 sm:h-18 lg:w-20 lg:h-20 bg-gradient-to-r ${benefit.gradient} rounded-2xl sm:rounded-3xl p-4 sm:p-5 mx-auto group-hover:scale-110 transition-all duration-500 shadow-lg`}>
                         <benefit.icon className="w-full h-full text-white" strokeWidth={1.5} />
                       </div>
-                      <div className={`absolute inset-0 bg-gradient-to-r ${benefit.gradient} opacity-0 group-hover:opacity-30 blur-2xl rounded-3xl transition-all duration-500`}></div>
                     </div>
                     <h3 className="text-xl sm:text-2xl text-gray-900 font-light mb-3 sm:mb-4 group-hover:text-green-600 transition-colors duration-300">{benefit.title}</h3>
                     <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300 flex-grow text-sm sm:text-base">{benefit.description}</p>
@@ -452,29 +427,30 @@ const AboutPageContent = () => {
         </div>
       </section>
 
-      {/* Futuristic Testimonials Section - Dark Background */}
+      {/* Testimonials Section - Dark Background */}
       <section className="py-24 sm:py-32 lg:py-40 relative px-4 sm:px-6 bg-gradient-to-br from-slate-950 via-gray-950 to-black">
         <div className="max-w-7xl mx-auto lg:px-8">
           <div className="text-center mb-16 sm:mb-20 lg:mb-24">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight text-white mb-8 sm:mb-12">
-              Neural <span className="text-green-400">testimonials</span>
+              Client <span className="text-green-400">success stories</span>
             </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Discover how we've helped businesses transform their digital presence and achieve remarkable growth.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400/10 to-blue-400/10 opacity-0 group-hover:opacity-100 blur-2xl transition-all duration-500 rounded-3xl"></div>
                 <Card className="bg-gray-900/20 border-gray-700/30 backdrop-blur-xl group-hover:bg-gray-800/30 transition-all duration-500 relative overflow-hidden h-full">
-                  <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-green-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <CardContent className="p-6 sm:p-8 relative z-10 h-full flex flex-col">
                     <div className="flex items-center gap-2 mb-6 sm:mb-8">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current group-hover:scale-110 transition-transform duration-300" style={{transitionDelay: `${i * 100}ms`}} />
+                        <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current" />
                       ))}
                     </div>
                     
-                    <blockquote className="text-gray-300 mb-6 sm:mb-8 italic text-base sm:text-lg leading-relaxed flex-grow group-hover:text-gray-200 transition-colors duration-300">
+                    <blockquote className="text-gray-300 mb-6 sm:mb-8 italic text-base sm:text-lg leading-relaxed flex-grow">
                       "{testimonial.quote}"
                     </blockquote>
                     
@@ -483,7 +459,7 @@ const AboutPageContent = () => {
                         {testimonial.avatar}
                       </div>
                       <div>
-                        <div className="text-white font-medium group-hover:text-green-400 transition-colors duration-300 text-sm sm:text-base">{testimonial.author}</div>
+                        <div className="text-white font-medium text-sm sm:text-base">{testimonial.author}</div>
                         <div className="text-gray-400 text-xs sm:text-sm">{testimonial.role}</div>
                       </div>
                     </div>
@@ -495,44 +471,31 @@ const AboutPageContent = () => {
         </div>
       </section>
 
-      {/* Advanced CTA Section - Light Background */}
+      {/* CTA Section - Light Background */}
       <section className="py-24 sm:py-32 lg:py-40 relative overflow-hidden px-4 sm:px-6 bg-gradient-to-br from-white via-gray-50 to-gray-100">
-        <div className="absolute inset-0 bg-gradient-to-r from-green-600/10 via-blue-600/10 to-purple-600/10"></div>
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(34,197,94,0.1),transparent_70%)]"></div>
-        </div>
-        
         <div className="max-w-5xl mx-auto lg:px-8 text-center relative z-10">
           <div className="relative mb-8 sm:mb-12">
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight text-gray-900 mb-6 sm:mb-8">
-              Initialize quantum
+              Ready to transform
               <span className="block bg-gradient-to-r from-green-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
-                transformation protocol
+                your digital presence?
               </span>
             </h2>
-            <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 via-cyan-300/20 to-blue-400/20 blur-3xl"></div>
           </div>
           
           <p className="text-lg sm:text-xl text-gray-600 mb-12 sm:mb-16 max-w-3xl mx-auto leading-relaxed">
-            Engage with our neural network architects to design your organization's 
-            evolutionary pathway through the quantum digital landscape.
+            Let's discuss your project and create a digital solution that drives real business growth and success.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-600 opacity-0 group-hover:opacity-100 blur-xl transition-all duration-300 rounded-2xl"></div>
-              <Button className="relative bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white px-8 sm:px-10 py-4 sm:py-6 text-base sm:text-lg rounded-2xl font-semibold transition-all duration-300 hover:scale-105 border border-green-400/30 w-full sm:w-auto shadow-lg">
-                Initiate Neural Interface
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 sm:ml-3" />
-              </Button>
-            </div>
+            <Button className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white px-8 sm:px-10 py-4 sm:py-6 text-base sm:text-lg rounded-2xl font-semibold transition-all duration-300 hover:scale-105 w-full sm:w-auto shadow-lg">
+              Start Your Project
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 sm:ml-3" />
+            </Button>
             
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-100 blur-xl transition-all duration-300 rounded-2xl"></div>
-              <Button variant="outline" className="relative border-gray-300 text-gray-900 hover:bg-gray-100 px-8 sm:px-10 py-4 sm:py-6 text-base sm:text-lg rounded-2xl backdrop-blur-sm w-full sm:w-auto">
-                Access Quantum Portal
-              </Button>
-            </div>
+            <Button variant="outline" className="border-gray-300 text-gray-900 hover:bg-gray-100 px-8 sm:px-10 py-4 sm:py-6 text-base sm:text-lg rounded-2xl w-full sm:w-auto">
+              View Our Work
+            </Button>
           </div>
         </div>
       </section>
