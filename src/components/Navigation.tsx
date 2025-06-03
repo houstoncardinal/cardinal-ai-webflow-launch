@@ -51,7 +51,7 @@ const Navigation = () => {
               className="flex items-center group cursor-pointer"
             >
               <img 
-                src="/lovable-uploads/ce9cd97d-b5a3-4dc6-bf7a-edfc3ca91d4a.png" 
+                src="/lovable-uploads/e7da3a2f-bd07-4736-b96b-bb0c7cd0c9b1.png" 
                 alt="Cardinal Logo" 
                 className="h-8 w-auto transition-transform duration-300 group-hover:scale-105"
               />
