@@ -241,20 +241,23 @@ const Industries = () => {
               <div className="absolute top-1/2 left-1/4 w-8 h-8 bg-green-300 rounded-full animate-pulse"></div>
             </div>
             <div className="relative z-10">
-              <h3 className="text-3xl font-light text-gray-900 mb-6">
+              <h3 className="text-4xl font-light text-gray-900 mb-6">
                 Ready to transform your industry?
               </h3>
               <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto font-light">
-                Let's discuss how our specialized expertise can revolutionize your business operations.
+                Get a comprehensive custom quote tailored to your specific needs. Our enhanced form captures all the details needed for an accurate proposal.
               </p>
               <button 
                 onClick={() => setIsFormOpen(true)}
-                className="group relative px-12 py-4 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl font-medium text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden"
+                className="group relative px-16 py-5 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-2xl font-medium text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden"
               >
-                <span className="relative z-10">Start your transformation</span>
+                <span className="relative z-10">Start Your Comprehensive Quote</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-green-700 to-green-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
               </button>
+              <p className="text-sm text-gray-500 mt-4">
+                ✓ Detailed 6-step process ✓ Instant estimate ✓ 24-hour response
+              </p>
             </div>
           </div>
         </div>
