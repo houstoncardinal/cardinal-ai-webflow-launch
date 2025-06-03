@@ -137,34 +137,34 @@ const testimonials = [
 
 const AboutPageContent = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-950 to-black relative overflow-hidden">
-      {/* Advanced Background Effects */}
-      <div className="absolute inset-0 opacity-30">
-        {/* Grid Pattern */}
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(rgba(34, 197, 94, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(34, 197, 94, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px'
-        }}></div>
-        
-        {/* Floating Orbs */}
-        <div className="absolute top-20 left-20 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-gradient-to-r from-green-400/20 to-blue-500/20 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute top-1/3 right-20 w-40 h-40 sm:w-60 sm:h-60 lg:w-80 lg:h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
-        <div className="absolute bottom-1/4 left-1/3 w-36 h-36 sm:w-54 sm:h-54 lg:w-72 lg:h-72 bg-gradient-to-r from-cyan-400/20 to-teal-500/20 rounded-full blur-3xl animate-float" style={{animationDelay: '4s'}}></div>
-        
-        {/* Scanning Lines */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-green-400 to-transparent animate-pulse"></div>
-          <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-pulse" style={{animationDelay: '1s'}}></div>
-          <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent animate-pulse" style={{animationDelay: '2s'}}></div>
-          <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse" style={{animationDelay: '3s'}}></div>
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Hero Section - Dark */}
+      <section className="relative py-24 sm:py-32 lg:py-40 overflow-hidden px-4 sm:px-6 bg-gradient-to-br from-slate-950 via-gray-950 to-black">
+        {/* Advanced Background Effects */}
+        <div className="absolute inset-0 opacity-30">
+          {/* Grid Pattern */}
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              linear-gradient(rgba(34, 197, 94, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(34, 197, 94, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px'
+          }}></div>
+          
+          {/* Floating Orbs */}
+          <div className="absolute top-20 left-20 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-gradient-to-r from-green-400/20 to-blue-500/20 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute top-1/3 right-20 w-40 h-40 sm:w-60 sm:h-60 lg:w-80 lg:h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
+          <div className="absolute bottom-1/4 left-1/3 w-36 h-36 sm:w-54 sm:h-54 lg:w-72 lg:h-72 bg-gradient-to-r from-cyan-400/20 to-teal-500/20 rounded-full blur-3xl animate-float" style={{animationDelay: '4s'}}></div>
+          
+          {/* Scanning Lines */}
+          <div className="absolute inset-0">
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-green-400 to-transparent animate-pulse"></div>
+            <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-pulse" style={{animationDelay: '1s'}}></div>
+            <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent animate-pulse" style={{animationDelay: '2s'}}></div>
+            <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse" style={{animationDelay: '3s'}}></div>
+          </div>
         </div>
-      </div>
 
-      {/* Hero Section */}
-      <section className="relative py-24 sm:py-32 lg:py-40 overflow-hidden px-4 sm:px-6">
         <div className="max-w-7xl mx-auto lg:px-8 relative z-10">
           <div className="text-center mb-12 sm:mb-16 lg:mb-20">
             <div className="inline-flex items-center text-xs sm:text-sm font-medium text-green-400 uppercase tracking-[0.3em] mb-6 sm:mb-8 relative">
@@ -217,22 +217,22 @@ const AboutPageContent = () => {
         </div>
       </section>
 
-      {/* Process Section with Enhanced Interactive Cards */}
-      <section className="py-24 sm:py-32 lg:py-40 relative px-4 sm:px-6">
+      {/* Process Section - Light Background */}
+      <section className="py-24 sm:py-32 lg:py-40 relative px-4 sm:px-6 bg-gradient-to-br from-gray-50 via-white to-gray-100">
         <div className="max-w-7xl mx-auto lg:px-8">
           <div className="text-center mb-16 sm:mb-20 lg:mb-24">
-            <div className="inline-flex items-center text-xs sm:text-sm font-medium text-green-400 uppercase tracking-[0.3em] mb-6 sm:mb-8">
+            <div className="inline-flex items-center text-xs sm:text-sm font-medium text-green-600 uppercase tracking-[0.3em] mb-6 sm:mb-8">
               <Cpu className="w-3 h-3 sm:w-4 sm:h-4 mr-2 sm:mr-3" />
               <span>Neural Workflow Architecture</span>
               <Database className="w-3 h-3 sm:w-4 sm:h-4 ml-2 sm:ml-3" />
             </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extralight text-white mb-8 sm:mb-12">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extralight text-gray-900 mb-8 sm:mb-12">
               Quantum-powered
-              <span className="block bg-gradient-to-r from-green-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-green-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
                 transformation pipeline
               </span>
             </h2>
-            <p className="text-lg sm:text-xl text-gray-300 max-w-4xl mx-auto px-4">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto px-4">
               Our AI-orchestrated methodology leverages quantum computing principles 
               to deliver exponential results through parallel processing dimensions.
             </p>
@@ -252,29 +252,29 @@ const AboutPageContent = () => {
                     </div>
                     <div className="flex-1">
                       <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
-                        <div className="text-sm text-green-400 uppercase tracking-wide font-mono">Phase {step.number}</div>
-                        <div className="w-12 h-px bg-gradient-to-r from-green-400 to-transparent hidden sm:block"></div>
+                        <div className="text-sm text-green-600 uppercase tracking-wide font-mono">Phase {step.number}</div>
+                        <div className="w-12 h-px bg-gradient-to-r from-green-600 to-transparent hidden sm:block"></div>
                       </div>
-                      <h3 className="text-2xl sm:text-3xl text-white font-light">{step.title}</h3>
+                      <h3 className="text-2xl sm:text-3xl text-gray-900 font-light">{step.title}</h3>
                     </div>
                   </div>
 
-                  <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
+                  <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
                     {step.description}
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     {step.details.map((detail, detailIndex) => (
                       <div key={detailIndex} className="flex items-center gap-3 group cursor-pointer">
-                        <div className="w-2 h-2 bg-green-400 rounded-full group-hover:scale-150 transition-transform duration-300"></div>
-                        <span className="text-gray-400 group-hover:text-green-400 transition-colors duration-300">{detail}</span>
+                        <div className="w-2 h-2 bg-green-600 rounded-full group-hover:scale-150 transition-transform duration-300"></div>
+                        <span className="text-gray-700 group-hover:text-green-600 transition-colors duration-300">{detail}</span>
                       </div>
                     ))}
                   </div>
 
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-                    <span className="text-gray-400">Neural Processing Time:</span>
-                    <div className="bg-gray-800/50 border border-green-400/30 text-green-400 px-4 py-2 rounded-full text-sm font-mono backdrop-blur-sm hover:bg-gray-700/50 transition-colors duration-300">
+                    <span className="text-gray-600">Neural Processing Time:</span>
+                    <div className="bg-green-50 border border-green-600/30 text-green-700 px-4 py-2 rounded-full text-sm font-mono backdrop-blur-sm hover:bg-green-100 transition-colors duration-300">
                       {step.duration}
                     </div>
                   </div>
@@ -283,25 +283,25 @@ const AboutPageContent = () => {
                 {/* Enhanced Interactive Progress Card */}
                 <div className="flex-1 max-w-lg w-full">
                   <div className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-400/10 to-blue-400/10 blur-2xl rounded-3xl group-hover:from-green-400/20 group-hover:to-blue-400/20 transition-all duration-500"></div>
-                    <Card className="bg-gray-900/30 border-gray-700/30 backdrop-blur-xl relative overflow-hidden group-hover:bg-gray-800/40 transition-all duration-500 cursor-pointer">
-                      <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 via-transparent to-blue-400/5 group-hover:from-green-400/10 group-hover:to-blue-400/10 transition-all duration-500"></div>
-                      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-green-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-600/10 to-blue-600/10 blur-2xl rounded-3xl group-hover:from-green-600/20 group-hover:to-blue-600/20 transition-all duration-500"></div>
+                    <Card className="bg-white/80 border-gray-200/50 backdrop-blur-xl relative overflow-hidden group-hover:bg-white/90 transition-all duration-500 cursor-pointer shadow-lg">
+                      <div className="absolute inset-0 bg-gradient-to-br from-green-600/5 via-transparent to-blue-600/5 group-hover:from-green-600/10 group-hover:to-blue-600/10 transition-all duration-500"></div>
+                      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-green-600 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                       
                       <CardContent className="p-8 sm:p-10 relative z-10">
                         <div className="flex items-center justify-between mb-6 sm:mb-8">
-                          <span className="text-2xl sm:text-3xl font-light text-white font-mono group-hover:text-green-400 transition-colors duration-300">{step.number}</span>
-                          <span className="text-sm text-green-400 uppercase tracking-wide">Neural Phase</span>
+                          <span className="text-2xl sm:text-3xl font-light text-gray-900 font-mono group-hover:text-green-600 transition-colors duration-300">{step.number}</span>
+                          <span className="text-sm text-green-600 uppercase tracking-wide">Neural Phase</span>
                         </div>
                         
                         {/* Enhanced Progress Bar */}
                         <div className="relative mb-6 sm:mb-8">
                           <Progress 
                             value={step.progress} 
-                            className="h-4 bg-gray-800 rounded-full overflow-hidden"
+                            className="h-4 bg-gray-200 rounded-full overflow-hidden"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-blue-400/20 blur-sm rounded-full group-hover:from-green-400/40 group-hover:to-blue-400/40 transition-all duration-500"></div>
-                          <div className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-white font-mono opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-blue-600/20 blur-sm rounded-full group-hover:from-green-600/40 group-hover:to-blue-600/40 transition-all duration-500"></div>
+                          <div className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-gray-900 font-mono opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             {step.progress}%
                           </div>
                         </div>
@@ -310,12 +310,12 @@ const AboutPageContent = () => {
                         <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                           {processSteps.map((_, i) => (
                             <div key={i} className="flex items-center gap-4 group/item">
-                              <div className={`w-4 h-4 rounded-full relative transition-all duration-300 ${i < parseInt(step.number) ? 'bg-green-400 scale-110' : i === parseInt(step.number) - 1 ? 'bg-yellow-400 animate-pulse' : 'bg-gray-700'} group-hover:scale-125`}>
+                              <div className={`w-4 h-4 rounded-full relative transition-all duration-300 ${i < parseInt(step.number) ? 'bg-green-600 scale-110' : i === parseInt(step.number) - 1 ? 'bg-yellow-500 animate-pulse' : 'bg-gray-300'} group-hover:scale-125`}>
                                 {i < parseInt(step.number) && (
-                                  <div className="absolute inset-0 bg-green-400 rounded-full animate-ping opacity-75"></div>
+                                  <div className="absolute inset-0 bg-green-600 rounded-full animate-ping opacity-75"></div>
                                 )}
                                 {i === parseInt(step.number) - 1 && (
-                                  <div className="absolute inset-0 bg-yellow-400 rounded-full animate-pulse opacity-75"></div>
+                                  <div className="absolute inset-0 bg-yellow-500 rounded-full animate-pulse opacity-75"></div>
                                 )}
                               </div>
                               <div className={`h-3 flex-1 rounded-full overflow-hidden transition-all duration-500 relative ${
@@ -323,7 +323,7 @@ const AboutPageContent = () => {
                                   ? `bg-gradient-to-r ${step.color}` 
                                   : i === parseInt(step.number) - 1 
                                     ? 'bg-gradient-to-r from-yellow-400 to-orange-500'
-                                    : 'bg-gray-700'
+                                    : 'bg-gray-300'
                               } group-hover/item:scale-105`}>
                                 {(i < parseInt(step.number) || i === parseInt(step.number) - 1) && (
                                   <div className={`absolute inset-0 ${
@@ -333,7 +333,7 @@ const AboutPageContent = () => {
                                   } opacity-50 blur-sm`}></div>
                                 )}
                               </div>
-                              <div className="text-xs text-gray-500 font-mono w-8 group-hover/item:text-green-400 transition-colors duration-300">
+                              <div className="text-xs text-gray-400 font-mono w-8 group-hover/item:text-green-600 transition-colors duration-300">
                                 {String(i + 1).padStart(2, '0')}
                               </div>
                             </div>
@@ -344,10 +344,10 @@ const AboutPageContent = () => {
                         <div className="flex items-center justify-center">
                           <div className="flex space-x-1">
                             {Array.from({ length: 3 }).map((_, i) => (
-                              <div key={i} className="w-2 h-2 bg-green-400 rounded-full animate-pulse group-hover:bg-cyan-400 transition-colors duration-300" style={{animationDelay: `${i * 0.2}s`}}></div>
+                              <div key={i} className="w-2 h-2 bg-green-600 rounded-full animate-pulse group-hover:bg-cyan-600 transition-colors duration-300" style={{animationDelay: `${i * 0.2}s`}}></div>
                             ))}
                           </div>
-                          <span className="ml-4 text-xs text-gray-400 uppercase tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <span className="ml-4 text-xs text-gray-500 uppercase tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             Processing...
                           </span>
                         </div>
@@ -361,8 +361,8 @@ const AboutPageContent = () => {
         </div>
       </section>
 
-      {/* Enhanced Benefits Section */}
-      <section className="py-24 sm:py-32 lg:py-40 relative px-4 sm:px-6">
+      {/* Enhanced Benefits Section - Dark Background */}
+      <section className="py-24 sm:py-32 lg:py-40 relative px-4 sm:px-6 bg-gradient-to-br from-slate-900 via-gray-900 to-black">
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900/50 to-slate-900/50"></div>
         <div className="max-w-7xl mx-auto lg:px-8 relative z-10">
           <div className="text-center mb-16 sm:mb-20 lg:mb-24">
@@ -394,39 +394,39 @@ const AboutPageContent = () => {
         </div>
       </section>
 
-      {/* Futuristic Testimonials Section */}
-      <section className="py-24 sm:py-32 lg:py-40 relative px-4 sm:px-6">
+      {/* Futuristic Testimonials Section - Light Background */}
+      <section className="py-24 sm:py-32 lg:py-40 relative px-4 sm:px-6 bg-gradient-to-br from-gray-50 via-white to-blue-50">
         <div className="max-w-7xl mx-auto lg:px-8">
           <div className="text-center mb-16 sm:mb-20 lg:mb-24">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight text-white mb-8 sm:mb-12">
-              Neural <span className="text-green-400">testimonials</span>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight text-gray-900 mb-8 sm:mb-12">
+              Neural <span className="text-green-600">testimonials</span>
             </h2>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-green-400/10 to-blue-400/10 opacity-0 group-hover:opacity-100 blur-2xl transition-all duration-500 rounded-3xl"></div>
-                <Card className="bg-gray-900/20 border-gray-700/30 backdrop-blur-xl group-hover:bg-gray-800/30 transition-all duration-500 relative overflow-hidden h-full">
-                  <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-green-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-green-600/10 to-blue-600/10 opacity-0 group-hover:opacity-100 blur-2xl transition-all duration-500 rounded-3xl"></div>
+                <Card className="bg-white/80 border-gray-200/50 backdrop-blur-xl group-hover:bg-white/90 transition-all duration-500 relative overflow-hidden h-full shadow-lg">
+                  <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-green-600 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <CardContent className="p-6 sm:p-8 relative z-10 h-full flex flex-col">
                     <div className="flex items-center gap-2 mb-6 sm:mb-8">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current group-hover:scale-110 transition-transform duration-300" style={{transitionDelay: `${i * 100}ms`}} />
+                        <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-500 fill-current group-hover:scale-110 transition-transform duration-300" style={{transitionDelay: `${i * 100}ms`}} />
                       ))}
                     </div>
                     
-                    <blockquote className="text-gray-300 mb-6 sm:mb-8 italic text-base sm:text-lg leading-relaxed flex-grow group-hover:text-white transition-colors duration-300">
+                    <blockquote className="text-gray-600 mb-6 sm:mb-8 italic text-base sm:text-lg leading-relaxed flex-grow group-hover:text-gray-900 transition-colors duration-300">
                       "{testimonial.quote}"
                     </blockquote>
                     
                     <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-green-600 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base">
                         {testimonial.avatar}
                       </div>
                       <div>
-                        <div className="text-white font-medium group-hover:text-green-400 transition-colors duration-300 text-sm sm:text-base">{testimonial.author}</div>
-                        <div className="text-gray-400 text-xs sm:text-sm">{testimonial.role}</div>
+                        <div className="text-gray-900 font-medium group-hover:text-green-600 transition-colors duration-300 text-sm sm:text-base">{testimonial.author}</div>
+                        <div className="text-gray-500 text-xs sm:text-sm">{testimonial.role}</div>
                       </div>
                     </div>
                   </CardContent>
@@ -437,8 +437,8 @@ const AboutPageContent = () => {
         </div>
       </section>
 
-      {/* Advanced CTA Section */}
-      <section className="py-24 sm:py-32 lg:py-40 relative overflow-hidden px-4 sm:px-6">
+      {/* Advanced CTA Section - Dark Background */}
+      <section className="py-24 sm:py-32 lg:py-40 relative overflow-hidden px-4 sm:px-6 bg-gradient-to-br from-slate-950 via-gray-950 to-black">
         <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 via-blue-600/20 to-purple-600/20"></div>
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(34,197,94,0.1),transparent_70%)]"></div>
