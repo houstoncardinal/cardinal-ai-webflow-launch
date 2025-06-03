@@ -1,44 +1,41 @@
-
 import { Smartphone, CheckCircle, ArrowRight, Monitor, Zap, Users, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
-
 const MobileApplications = () => {
-  const features = [
-    {
-      icon: Monitor,
-      title: "Cross-Platform Development",
-      description: "React Native and Flutter for iOS and Android from a single codebase"
-    },
-    {
-      icon: Zap,
-      title: "Native Performance",
-      description: "Optimized performance that feels native on every platform"
-    },
-    {
-      icon: Users,
-      title: "User-Centric Design",
-      description: "Intuitive interfaces designed for exceptional user experiences"
-    },
-    {
-      icon: Globe,
-      title: "Offline Capabilities",
-      description: "Apps that work seamlessly even without internet connectivity"
-    }
-  ];
-
-  const platforms = [
-    { name: "iOS", description: "Native Swift/SwiftUI development" },
-    { name: "Android", description: "Native Kotlin/Java development" },
-    { name: "React Native", description: "Cross-platform development" },
-    { name: "Flutter", description: "Google's UI toolkit" }
-  ];
-
-  return (
-    <div className="min-h-screen bg-white">
+  const features = [{
+    icon: Monitor,
+    title: "Cross-Platform Development",
+    description: "React Native and Flutter for iOS and Android from a single codebase"
+  }, {
+    icon: Zap,
+    title: "Native Performance",
+    description: "Optimized performance that feels native on every platform"
+  }, {
+    icon: Users,
+    title: "User-Centric Design",
+    description: "Intuitive interfaces designed for exceptional user experiences"
+  }, {
+    icon: Globe,
+    title: "Offline Capabilities",
+    description: "Apps that work seamlessly even without internet connectivity"
+  }];
+  const platforms = [{
+    name: "iOS",
+    description: "Native Swift/SwiftUI development"
+  }, {
+    name: "Android",
+    description: "Native Kotlin/Java development"
+  }, {
+    name: "React Native",
+    description: "Cross-platform development"
+  }, {
+    name: "Flutter",
+    description: "Google's UI toolkit"
+  }];
+  return <div className="min-h-screen bg-white">
       <Navigation />
       
       {/* Hero Section */}
@@ -72,7 +69,7 @@ const MobileApplications = () => {
                 Start Your App
               </Button>
               <Link to="/#contact">
-                <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 px-8 py-4 rounded-lg font-medium">
+                <Button variant="outline" className="border-gray-600 px-8 py-4 rounded-lg font-medium bg-slate-50 text-slate-950">
                   Get Quote
                 </Button>
               </Link>
@@ -94,8 +91,7 @@ const MobileApplications = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white">
+            {features.map((feature, index) => <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white">
                 <CardContent className="p-8 text-center">
                   <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-emerald-600 transition-colors duration-300">
                     <feature.icon className="w-8 h-8 text-emerald-600 group-hover:text-white transition-colors duration-300" />
@@ -103,8 +99,7 @@ const MobileApplications = () => {
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -122,12 +117,10 @@ const MobileApplications = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {platforms.map((platform, index) => (
-              <div key={index} className="text-center p-8 bg-gray-50 rounded-2xl hover:bg-emerald-50 transition-all duration-300">
+            {platforms.map((platform, index) => <div key={index} className="text-center p-8 bg-gray-50 rounded-2xl hover:bg-emerald-50 transition-all duration-300">
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">{platform.name}</h3>
                 <p className="text-gray-600">{platform.description}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -149,7 +142,7 @@ const MobileApplications = () => {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-4 rounded-lg font-medium">
+            <Button variant="outline" className="border-white px-8 py-4 rounded-lg font-medium bg-slate-50 text-slate-950">
               View App Portfolio
             </Button>
           </div>
@@ -157,8 +150,6 @@ const MobileApplications = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default MobileApplications;
