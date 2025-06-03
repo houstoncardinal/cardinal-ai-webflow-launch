@@ -156,9 +156,9 @@ const Services = () => {
                       {service.description}
                     </p>
                     
-                    {/* Learn more link */}
+                    {/* Learn more link - now always visible */}
                     <div className="mt-6">
-                      <button className={`inline-flex items-center text-sm font-medium ${service.accentColor} group-hover:translate-x-1 transition-all duration-300 opacity-0 group-hover:opacity-100`}>
+                      <button className={`inline-flex items-center text-sm font-medium ${service.accentColor} group-hover:translate-x-1 transition-all duration-300`}>
                         Learn more
                         <svg className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
