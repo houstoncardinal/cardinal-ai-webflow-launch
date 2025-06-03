@@ -28,102 +28,190 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="lg:col-span-1">
-            <div className="text-2xl font-bold mb-4">
-              Cardinal<span className="text-blue-400">Consulting</span>
-            </div>
-            <p className="text-gray-400 mb-6 leading-relaxed">
-              Houston-based creative design studio with global reach, delivering 
-              cutting-edge digital solutions across multiple industries.
-            </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-5 h-5" />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
-            <ul className="space-y-2">
-              {services.map((service, index) => (
-                <li key={index}>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
-                    {service}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Industries */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Industries</h3>
-            <ul className="space-y-2">
-              {industries.map((industry, index) => (
-                <li key={index}>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
-                    {industry}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <h3 className="text-lg font-semibold mb-4 mt-8">Company</h3>
-            <ul className="space-y-2">
-              <li><a href="#about" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">About Us</a></li>
-              <li><a href="#portfolio" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">Portfolio</a></li>
-              <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">Contact</a></li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
-            <div className="space-y-3">
-              <div className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                <div className="text-gray-400 text-sm">
-                  <div>Houston, TX (HQ)</div>
-                  <div>Dubai, UAE</div>
-                  <div>Irvine, CA</div>
-                </div>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-blue-400" />
-                <span className="text-gray-400 text-sm">+1 (713) 555-0123</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-blue-400" />
-                <span className="text-gray-400 text-sm">hello@cardinalhouston.com</span>
-              </div>
-            </div>
-          </div>
+    <footer className="bg-gray-900 text-white relative overflow-hidden">
+      {/* Animated tech background */}
+      <div className="absolute inset-0 opacity-10">
+        {/* Digital grid pattern */}
+        <div className="absolute inset-0">
+          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+              <pattern id="footer-grid" width="8" height="8" patternUnits="userSpaceOnUse">
+                <path d="M 8 0 L 0 0 0 8" fill="none" stroke="#10b981" strokeWidth="0.3"/>
+              </pattern>
+            </defs>
+            <rect width="100" height="100" fill="url(#footer-grid)" />
+          </svg>
+        </div>
+        
+        {/* Network connections */}
+        <div className="absolute inset-0">
+          <svg className="w-full h-full" viewBox="0 0 1200 400">
+            <g opacity="0.4" stroke="#10b981" strokeWidth="1" fill="none">
+              <path d="M100,100 Q300,50 500,100 T900,100" strokeDasharray="4,4">
+                <animate attributeName="stroke-dashoffset" values="0;8;0" dur="4s" repeatCount="indefinite"/>
+              </path>
+              <path d="M200,200 Q400,150 600,200 T1000,200" strokeDasharray="4,4">
+                <animate attributeName="stroke-dashoffset" values="0;8;0" dur="5s" repeatCount="indefinite"/>
+              </path>
+              <path d="M150,300 Q350,250 550,300 T950,300" strokeDasharray="4,4">
+                <animate attributeName="stroke-dashoffset" values="0;8;0" dur="6s" repeatCount="indefinite"/>
+              </path>
+            </g>
+            
+            {/* Network nodes */}
+            <g fill="#10b981" opacity="0.6">
+              <circle cx="100" cy="100" r="2">
+                <animate attributeName="r" values="2;4;2" dur="3s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="500" cy="100" r="2">
+                <animate attributeName="r" values="2;4;2" dur="3.5s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="900" cy="100" r="2">
+                <animate attributeName="r" values="2;4;2" dur="4s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="200" cy="200" r="2">
+                <animate attributeName="r" values="2;4;2" dur="2.8s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="600" cy="200" r="2">
+                <animate attributeName="r" values="2;4;2" dur="3.2s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="1000" cy="200" r="2">
+                <animate attributeName="r" values="2;4;2" dur="3.8s" repeatCount="indefinite"/>
+              </circle>
+            </g>
+          </svg>
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
-              © 2024 Cardinal Consulting. All rights reserved.
-            </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
-                Terms of Service
-              </a>
+        {/* Floating data points */}
+        <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-green-500 rounded-full opacity-5 animate-pulse"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-24 h-24 bg-green-400 rounded-full opacity-8 animate-bounce"></div>
+        <div className="absolute top-1/2 right-1/3 w-16 h-16 bg-gray-400 rounded-full opacity-6 animate-pulse" style={{animationDelay: '1s'}}></div>
+      </div>
+
+      <div className="relative z-10">
+        <div className="max-w-full px-6 lg:px-12 py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {/* Company Info */}
+            <div className="lg:col-span-1 animate-fade-in">
+              <div className="text-3xl font-light mb-6 group cursor-pointer">
+                Cardinal<span className="text-green-400 group-hover:text-green-300 transition-colors duration-300">Consulting</span>
+              </div>
+              <p className="text-gray-300 mb-8 leading-relaxed font-light">
+                Houston-based creative design studio with global reach, delivering 
+                cutting-edge digital solutions across multiple industries.
+              </p>
+              <div className="flex space-x-6">
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.href}
+                    className="text-gray-400 hover:text-green-400 transition-all duration-300 hover:scale-110 group"
+                    aria-label={social.label}
+                  >
+                    <social.icon className="w-6 h-6 group-hover:animate-pulse" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Services */}
+            <div className="animate-fade-in" style={{animationDelay: '200ms'}}>
+              <h3 className="text-xl font-light mb-6 text-green-400">Services</h3>
+              <ul className="space-y-3">
+                {services.map((service, index) => (
+                  <li key={index}>
+                    <a href="#" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                      <span className="relative">
+                        {service}
+                        <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Industries */}
+            <div className="animate-fade-in" style={{animationDelay: '400ms'}}>
+              <h3 className="text-xl font-light mb-6 text-green-400">Industries</h3>
+              <ul className="space-y-3">
+                {industries.map((industry, index) => (
+                  <li key={index}>
+                    <a href="#" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                      <span className="relative">
+                        {industry}
+                        <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <h3 className="text-xl font-light mb-6 mt-10 text-green-400">Company</h3>
+              <ul className="space-y-3">
+                <li><a href="#about" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                  <span className="relative">
+                    About Us
+                    <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                  </span>
+                </a></li>
+                <li><a href="#portfolio" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                  <span className="relative">
+                    Portfolio
+                    <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                  </span>
+                </a></li>
+                <li><a href="#contact" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                  <span className="relative">
+                    Contact
+                    <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                  </span>
+                </a></li>
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div className="animate-fade-in" style={{animationDelay: '600ms'}}>
+              <h3 className="text-xl font-light mb-6 text-green-400">Contact</h3>
+              <div className="space-y-4">
+                <div className="flex items-start space-x-4 group">
+                  <MapPin className="w-5 h-5 text-green-400 mt-1 flex-shrink-0 group-hover:animate-pulse" />
+                  <div className="text-gray-300 text-sm font-light">
+                    <div className="hover:text-white transition-colors duration-300">Houston, TX (HQ)</div>
+                    <div className="hover:text-white transition-colors duration-300">Dubai, UAE</div>
+                    <div className="hover:text-white transition-colors duration-300">Irvine, CA</div>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-4 group cursor-pointer">
+                  <Phone className="w-5 h-5 text-green-400 group-hover:animate-pulse" />
+                  <span className="text-gray-300 text-sm font-light hover:text-white transition-colors duration-300">+1 (713) 555-0123</span>
+                </div>
+                <div className="flex items-center space-x-4 group cursor-pointer">
+                  <Mail className="w-5 h-5 text-green-400 group-hover:animate-pulse" />
+                  <span className="text-gray-300 text-sm font-light hover:text-white transition-colors duration-300">hello@cardinalhouston.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-gray-700/50 mt-16 pt-10">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <p className="text-gray-400 text-sm font-light animate-fade-in">
+                © 2024 Cardinal Consulting. All rights reserved.
+              </p>
+              <div className="flex space-x-8 mt-6 md:mt-0 animate-fade-in" style={{animationDelay: '200ms'}}>
+                <a href="#" className="text-gray-400 hover:text-white text-sm font-light transition-all duration-300 hover:scale-105 group">
+                  <span className="relative">
+                    Privacy Policy
+                    <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                  </span>
+                </a>
+                <a href="#" className="text-gray-400 hover:text-white text-sm font-light transition-all duration-300 hover:scale-105 group">
+                  <span className="relative">
+                    Terms of Service
+                    <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

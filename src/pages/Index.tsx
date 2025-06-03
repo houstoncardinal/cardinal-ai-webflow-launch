@@ -11,15 +11,44 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Navigation />
-      <Hero />
-      <Services />
-      <Industries />
-      <Portfolio />
-      <About />
-      <GlobalPresence />
-      <Contact />
+      
+      {/* Hero - White background */}
+      <div className="bg-white">
+        <Hero />
+      </div>
+      
+      {/* Services - Light gray background for variation */}
+      <div className="bg-gray-50">
+        <Services />
+      </div>
+      
+      {/* Industries - White background */}
+      <div className="bg-white">
+        <Industries />
+      </div>
+      
+      {/* Portfolio - Very light green background for subtle variation */}
+      <div className="bg-green-50/30">
+        <Portfolio />
+      </div>
+      
+      {/* About - White background */}
+      <div className="bg-white">
+        <About />
+      </div>
+      
+      {/* Global Presence - Light gray background */}
+      <div className="bg-gray-50">
+        <GlobalPresence />
+      </div>
+      
+      {/* Contact - White background */}
+      <div className="bg-white">
+        <Contact />
+      </div>
+      
       <Footer />
     </div>
   );
