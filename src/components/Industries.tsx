@@ -1,4 +1,3 @@
-
 import { Building, Shield, Heart, Scale } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -185,14 +184,14 @@ const Industries = () => {
               className="relative animate-fade-in group"
               style={{animationDelay: `${index * 150}ms`}}
             >
-              {/* Luxurious multi-layer glow effect */}
-              <div className={`absolute -inset-1 bg-gradient-to-r ${industry.gradient} rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-all duration-700`}></div>
-              <div className={`absolute -inset-0.5 bg-gradient-to-r ${industry.gradient} rounded-2xl blur-md opacity-40 group-hover:opacity-80 transition-all duration-700`}></div>
+              {/* Luxurious multi-layer glow effect - reduced intensity */}
+              <div className={`absolute -inset-1 bg-gradient-to-r ${industry.gradient} rounded-2xl blur-xl opacity-30 group-hover:opacity-60 transition-all duration-700`}></div>
+              <div className={`absolute -inset-0.5 bg-gradient-to-r ${industry.gradient} rounded-2xl blur-md opacity-20 group-hover:opacity-40 transition-all duration-700`}></div>
               
               {/* Animated border highlight */}
               <div className="absolute -inset-[1px] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/20 to-transparent">
-                  <div className="absolute inset-[1px] rounded-2xl bg-gradient-to-r from-green-500/20 via-green-400/40 to-green-500/20"></div>
+                  <div className="absolute inset-[1px] rounded-2xl bg-gradient-to-r from-green-500/10 via-green-400/20 to-green-500/10"></div>
                 </div>
               </div>
               
