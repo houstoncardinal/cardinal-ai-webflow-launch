@@ -1,3 +1,4 @@
+
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 const Hero = () => {
@@ -140,8 +141,8 @@ const Hero = () => {
                 <div className="text-sm text-gray-600 uppercase tracking-wide">Global offices</div>
               </div>
               <div className="group cursor-pointer">
-                <div className="text-2xl font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">99.9%</div>
-                <div className="text-sm text-gray-600 uppercase tracking-wide">Client satisfaction</div>
+                <div className="text-2xl font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">24/7</div>
+                <div className="text-sm text-gray-600 uppercase tracking-wide">Client support</div>
               </div>
             </div>
           </div>
