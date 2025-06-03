@@ -1,14 +1,14 @@
 
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import About from "@/components/About";
+import AboutPageContent from "@/components/AboutPageContent";
 
 const AboutPage = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
       <div className="pt-16">
-        <About />
+        <AboutPageContent />
       </div>
       <Footer />
     </div>
