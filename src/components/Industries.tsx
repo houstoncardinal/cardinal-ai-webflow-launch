@@ -198,7 +198,7 @@ const Industries = () => {
   };
 
   return (
-    <section id="industries" className="py-32 bg-gray-50 relative overflow-hidden">
+    <section id="industries" className="py-20 md:py-32 bg-gray-50 relative overflow-hidden">
       {/* Advanced animated background */}
       <div className="absolute inset-0 opacity-30">
         {/* Floating geometric shapes */}
@@ -313,8 +313,8 @@ const Industries = () => {
         </div>
       </div>
       
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        <div className="max-w-4xl mb-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-4xl mb-16 md:mb-24">
           <div className="inline-flex items-center text-sm font-medium text-gray-600 uppercase tracking-wide mb-8 animate-fade-in">
             <div className="w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-6"></div>
             <span className="relative">
@@ -322,7 +322,7 @@ const Industries = () => {
               <div className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-green-500/50 to-transparent"></div>
             </span>
           </div>
-          <h2 className="text-5xl lg:text-6xl font-light text-gray-900 mb-8 leading-tight animate-fade-in" style={{animationDelay: '300ms'}}>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light text-gray-900 mb-6 md:mb-8 leading-tight animate-fade-in" style={{animationDelay: '300ms'}}>
             <span className="relative inline-block">
               Sector expertise
               <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-gray-200 to-transparent rounded-full"></div>
@@ -331,14 +331,14 @@ const Industries = () => {
               across industries
             </span>
           </h2>
-          <p className="text-xl text-gray-600 leading-relaxed font-light max-w-3xl animate-fade-in" style={{animationDelay: '500ms'}}>
+          <p className="text-lg sm:text-xl text-gray-600 leading-relaxed font-light max-w-3xl animate-fade-in" style={{animationDelay: '500ms'}}>
             We understand the unique challenges and requirements of different industries, 
             delivering specialized solutions that meet sector-specific needs and exceed expectations.
           </p>
         </div>
 
         {/* Industries Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-32">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-20 md:mb-32">
           {industries.map((industry, index) => (
             <div
               key={index}
@@ -388,63 +388,89 @@ const Industries = () => {
           ))}
         </div>
 
-        {/* Industry Expertise Deep Dive */}
-        <div className="mb-24">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
+        {/* Enhanced Industry Expertise Deep Dive */}
+        <div className="mb-16 md:mb-24">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-4 md:mb-6">
               Industry Expertise & 
               <span className="block text-green-600 font-normal">Service Specialties</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
               Discover our deep domain knowledge and specialized services tailored to each industry's unique requirements.
             </p>
           </div>
 
           <Tabs defaultValue="Real Estate" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 mb-12 bg-white border border-gray-200 p-2 rounded-2xl">
-              {Object.keys(industryExpertise).map((industry) => (
-                <TabsTrigger 
-                  key={industry} 
-                  value={industry}
-                  className="data-[state=active]:bg-green-600 data-[state=active]:text-white rounded-xl transition-all duration-300"
-                >
-                  {industry}
-                </TabsTrigger>
-              ))}
-            </TabsList>
+            {/* Enhanced TabsList with better mobile responsiveness */}
+            <div className="relative mb-8 md:mb-12">
+              <div className="absolute inset-0 bg-gradient-to-r from-green-50/50 via-gray-50 to-green-50/50 rounded-3xl blur-xl"></div>
+              <TabsList className="relative w-full grid grid-cols-2 lg:grid-cols-4 gap-2 bg-white/80 backdrop-blur-sm border-2 border-gray-100/50 p-3 rounded-3xl shadow-2xl shadow-green-500/5 min-h-[60px] md:min-h-[80px]">
+                {Object.keys(industryExpertise).map((industry) => (
+                  <TabsTrigger 
+                    key={industry} 
+                    value={industry}
+                    className="relative group data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-600 data-[state=active]:to-green-700 data-[state=active]:text-white data-[state=active]:shadow-2xl data-[state=active]:shadow-green-500/25 rounded-2xl transition-all duration-500 hover:scale-[1.02] text-xs sm:text-sm md:text-base font-medium px-3 sm:px-4 md:px-6 py-3 md:py-4 h-auto min-h-[50px] md:min-h-[65px] flex items-center justify-center text-center leading-tight"
+                  >
+                    <span className="relative z-10">{industry}</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-600/10 to-green-700/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-2xl opacity-0 group-data-[state=active]:opacity-100 animate-pulse"></div>
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </div>
 
             {Object.entries(industryExpertise).map(([industry, data]) => (
-              <TabsContent key={industry} value={industry} className="space-y-12">
-                {/* Overview */}
-                <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-xl border border-gray-100">
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-6">Our {industry} Expertise</h3>
-                  <p className="text-lg text-gray-600 leading-relaxed">{data.overview}</p>
-                  
-                  {/* Stats */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 pt-8 border-t border-gray-200">
-                    {data.stats.map((stat, index) => (
-                      <div key={index} className="text-center">
-                        <div className="text-3xl font-bold text-green-600 mb-2">{stat.number}</div>
-                        <div className="text-sm text-gray-600 uppercase tracking-wide">{stat.label}</div>
+              <TabsContent key={industry} value={industry} className="space-y-8 md:space-y-12 animate-fade-in">
+                {/* Enhanced Overview Section */}
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 via-green-400/30 to-green-500/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-700"></div>
+                  <div className="relative bg-white/95 backdrop-blur-sm rounded-3xl p-6 md:p-8 lg:p-12 shadow-2xl border border-gray-100/50">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 md:mb-8">
+                      <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4 sm:mb-0">
+                        Our {industry} Expertise
+                      </h3>
+                      <div className="flex items-center space-x-2 text-green-600">
+                        <Award className="w-6 h-6" />
+                        <span className="text-sm font-medium">Industry Leader</span>
                       </div>
-                    ))}
+                    </div>
+                    <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-8">{data.overview}</p>
+                    
+                    {/* Enhanced Stats Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 pt-6 md:pt-8 border-t border-gray-200/50">
+                      {data.stats.map((stat, index) => (
+                        <div key={index} className="text-center group">
+                          <div className="relative mb-3">
+                            <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
+                              {stat.number}
+                            </div>
+                            <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-green-700/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          </div>
+                          <div className="text-sm md:text-base text-gray-600 uppercase tracking-wide font-medium">{stat.label}</div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                {/* Services */}
+                {/* Enhanced Services Grid */}
                 <div>
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-8">Our {industry} Services</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6 md:mb-8 text-center lg:text-left">
+                    Our {industry} Services
+                  </h3>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
                     {data.services.map((service, index) => (
-                      <Card key={index} className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300 group">
-                        <CardContent className="p-8">
-                          <div className="flex items-start space-x-4">
-                            <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-green-200 transition-colors duration-300">
-                              <service.icon className="w-6 h-6 text-green-600" />
+                      <Card key={index} className="group bg-white/80 backdrop-blur-sm border border-gray-200/50 hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-500 hover:scale-[1.02] rounded-2xl overflow-hidden">
+                        <CardContent className="p-6 md:p-8">
+                          <div className="flex flex-col sm:flex-row sm:items-start sm:space-x-4 space-y-4 sm:space-y-0">
+                            <div className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center group-hover:from-green-200 group-hover:to-green-300 transition-all duration-500 flex-shrink-0 mx-auto sm:mx-0">
+                              <service.icon className="w-7 h-7 md:w-8 md:h-8 text-green-600 group-hover:scale-110 transition-transform duration-300" />
                             </div>
-                            <div className="flex-1">
-                              <h4 className="text-lg font-semibold text-gray-900 mb-3">{service.title}</h4>
-                              <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                            <div className="flex-1 text-center sm:text-left">
+                              <h4 className="text-lg md:text-xl font-semibold text-gray-900 mb-3 group-hover:text-green-700 transition-colors duration-300">
+                                {service.title}
+                              </h4>
+                              <p className="text-gray-600 leading-relaxed text-sm md:text-base">{service.description}</p>
                             </div>
                           </div>
                         </CardContent>
@@ -453,17 +479,26 @@ const Industries = () => {
                   </div>
                 </div>
 
-                {/* Specialties */}
+                {/* Enhanced Specialties Section */}
                 <div>
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-8">Technical Specialties</h3>
-                  <div className="bg-gradient-to-br from-green-50 to-gray-50 rounded-3xl p-8 lg:p-12">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                      {data.specialties.map((specialty, index) => (
-                        <div key={index} className="flex items-center space-x-3 p-4 bg-white rounded-xl shadow-sm">
-                          <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                          <span className="text-gray-700 font-medium">{specialty}</span>
-                        </div>
-                      ))}
+                  <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6 md:mb-8 text-center lg:text-left">
+                    Technical Specialties
+                  </h3>
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-50/80 via-gray-50/50 to-green-50/80 rounded-3xl"></div>
+                    <div className="relative bg-gradient-to-br from-green-50/60 to-gray-50/60 backdrop-blur-sm rounded-3xl p-6 md:p-8 lg:p-12 border border-green-100/50">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-4">
+                        {data.specialties.map((specialty, index) => (
+                          <div key={index} className="group flex items-center space-x-3 p-4 md:p-5 bg-white/80 backdrop-blur-sm rounded-xl md:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border border-gray-100/50">
+                            <div className="flex-shrink-0">
+                              <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-green-600 group-hover:scale-110 transition-transform duration-300" />
+                            </div>
+                            <span className="text-gray-700 font-medium text-sm md:text-base leading-snug group-hover:text-gray-900 transition-colors duration-300">
+                              {specialty}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -473,30 +508,30 @@ const Industries = () => {
         </div>
 
         {/* Enhanced CTA Section */}
-        <div className="mt-24 relative">
+        <div className="mt-16 md:mt-24 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-green-50/50 via-gray-50 to-green-50/50 rounded-3xl"></div>
-          <div className="relative bg-gradient-to-r from-gray-50/80 to-green-50/80 backdrop-blur-sm rounded-3xl p-8 md:p-16 text-center border border-gray-200/50 shadow-2xl animate-fade-in" style={{animationDelay: '1200ms'}}>
+          <div className="relative bg-gradient-to-r from-gray-50/80 to-green-50/80 backdrop-blur-sm rounded-3xl p-6 md:p-8 lg:p-16 text-center border border-gray-200/50 shadow-2xl animate-fade-in" style={{animationDelay: '1200ms'}}>
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-8 left-8 w-16 h-16 bg-green-200 rounded-full animate-float"></div>
               <div className="absolute bottom-8 right-8 w-12 h-12 bg-gray-300 rounded-full animate-bounce"></div>
               <div className="absolute top-1/2 left-1/4 w-8 h-8 bg-green-300 rounded-full animate-pulse"></div>
             </div>
             <div className="relative z-10">
-              <h3 className="text-3xl md:text-4xl font-light text-gray-900 mb-4 md:mb-6">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 mb-4 md:mb-6">
                 Ready to transform your industry?
               </h3>
-              <p className="text-lg md:text-xl text-gray-600 mb-8 md:mb-10 max-w-3xl mx-auto font-light">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 md:mb-8 lg:mb-10 max-w-3xl mx-auto font-light px-4">
                 Get a comprehensive custom quote tailored to your specific needs. Our enhanced form captures all the details needed for an accurate proposal.
               </p>
               <button 
                 onClick={() => setIsFormOpen(true)}
-                className="group relative w-full sm:w-auto min-w-[280px] px-8 md:px-12 lg:px-16 py-4 md:py-5 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl md:rounded-2xl font-medium text-lg md:text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden shadow-lg hover:shadow-green-500/25"
+                className="group relative w-full sm:w-auto min-w-[280px] px-6 sm:px-8 md:px-12 lg:px-16 py-4 md:py-5 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl md:rounded-2xl font-medium text-base sm:text-lg md:text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden shadow-lg hover:shadow-green-500/25"
               >
                 <span className="relative z-10">Start Your Comprehensive Quote</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-green-700 to-green-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
               </button>
-              <p className="text-sm text-gray-500 mt-4 px-4">
+              <p className="text-xs sm:text-sm text-gray-500 mt-4 px-4">
                 ✓ Detailed 6-step process ✓ Instant estimate ✓ 24-hour response
               </p>
             </div>
