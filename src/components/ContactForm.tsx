@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -43,7 +44,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="py-6 lg:py-8 pt-12 lg:pt-8 relative overflow-hidden -mt-20 lg:-mt-24 z-20">
+    <section className="py-6 lg:py-8 pt-16 lg:pt-8 relative overflow-hidden -mt-20 lg:-mt-24 z-20">
       {/* Background with subtle gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-green-50/50 via-white to-gray-50/30"></div>
       
