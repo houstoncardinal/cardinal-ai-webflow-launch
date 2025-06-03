@@ -143,9 +143,9 @@ const About = () => {
             </div>
           </div>
 
-          {/* How we work together box - Aligned to top */}
+          {/* How we work together box - with smaller, more refined icons */}
           <div className="animate-fade-in lg:mt-0" style={{animationDelay: '600ms'}}>
-            <div className="relative bg-gradient-to-r from-gray-800/30 to-gray-900/30 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/30 overflow-hidden">
+            <div className="relative bg-gradient-to-r from-gray-800/30 to-gray-900/30 backdrop-blur-xl p-6 sm:p-8 rounded-2xl border border-gray-700/30 overflow-hidden">
               {/* Background glow effect */}
               <div className="absolute inset-0"></div>
               
@@ -153,16 +153,16 @@ const About = () => {
               <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-r from-green-400/10 to-blue-400/10 rounded-full blur-3xl animate-pulse"></div>
               
               <div className="relative z-10">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-light text-white mb-2">
+                <div className="text-center mb-6 sm:mb-8">
+                  <h3 className="text-xl sm:text-2xl font-light text-white mb-2">
                     How we <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">work together</span>
                   </h3>
                   <div className="w-16 h-px bg-gradient-to-r from-green-400 to-blue-400 mx-auto"></div>
                   <p className="text-gray-400 text-sm mt-3">Your journey from idea to launch</p>
                 </div>
                 
-                {/* Process Steps */}
-                <div className="space-y-6">
+                {/* Process Steps with smaller, refined icons */}
+                <div className="space-y-4 sm:space-y-6">
                   {workflowSteps.map((step, index) => (
                     <div 
                       key={index} 
@@ -171,16 +171,16 @@ const About = () => {
                     >
                       {/* Connecting line for non-last items */}
                       {index < workflowSteps.length - 1 && (
-                        <div className="absolute left-8 top-16 w-px h-6 bg-gradient-to-b from-gray-600 to-gray-700"></div>
+                        <div className="absolute left-6 sm:left-8 top-12 sm:top-14 w-px h-4 sm:h-6 bg-gradient-to-b from-gray-600 to-gray-700"></div>
                       )}
                       
-                      <div className="flex items-start space-x-4 p-4 rounded-xl bg-gray-800/40 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 hover:scale-[1.02] hover:bg-gray-800/60">
-                        {/* Step Number & Icon */}
+                      <div className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-xl bg-gray-800/40 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 hover:scale-[1.02] hover:bg-gray-800/60">
+                        {/* Step Number & Icon - Made smaller and more refined */}
                         <div className="flex-shrink-0">
-                          <div className={`relative w-16 h-16 bg-gradient-to-r ${step.gradient} rounded-full p-3 group-hover:scale-110 transition-transform duration-300`}>
-                            <step.icon className="w-full h-full text-white" />
-                            <div className="absolute -top-2 -right-2 w-6 h-6 bg-gray-900 rounded-full flex items-center justify-center border border-gray-700">
-                              <span className="text-xs font-bold text-green-400">{step.number}</span>
+                          <div className={`relative w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r ${step.gradient} rounded-full p-2 sm:p-2.5 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                            <step.icon className="w-full h-full text-white" strokeWidth={1.5} />
+                            <div className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-gray-900 rounded-full flex items-center justify-center border border-gray-700 shadow-sm">
+                              <span className="text-[10px] sm:text-xs font-bold text-green-400">{step.number}</span>
                             </div>
                           </div>
                         </div>
@@ -188,14 +188,14 @@ const About = () => {
                         {/* Step Content */}
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between mb-2">
-                            <h4 className="text-white font-medium group-hover:text-green-400 transition-colors duration-300">
+                            <h4 className="text-sm sm:text-base text-white font-medium group-hover:text-green-400 transition-colors duration-300">
                               {step.title}
                             </h4>
-                            <span className="text-xs text-gray-400 bg-gray-700/50 px-2 py-1 rounded-full">
+                            <span className="text-[10px] sm:text-xs text-gray-400 bg-gray-700/50 px-2 py-1 rounded-full whitespace-nowrap ml-2">
                               {step.duration}
                             </span>
                           </div>
-                          <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                          <p className="text-xs sm:text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                             {step.description}
                           </p>
                         </div>
@@ -205,16 +205,16 @@ const About = () => {
                 </div>
                 
                 {/* Call to Action */}
-                <div className="mt-8 pt-6 border-t border-gray-700/30 text-center">
+                <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-700/30 text-center">
                   <div className="flex justify-center items-center space-x-2 mb-4">
                     <div className="w-2 h-2 bg-green-400/60 rounded-full animate-pulse"></div>
-                    <span className="text-gray-300 text-sm font-medium">Ready to start your project?</span>
+                    <span className="text-gray-300 text-xs sm:text-sm font-medium">Ready to start your project?</span>
                     <div className="w-2 h-2 bg-blue-400/60 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
                   </div>
-                  <Button className="group relative overflow-hidden bg-green-600 hover:bg-green-500 text-white px-8 py-4 text-base rounded-xl font-semibold transition-all duration-300 hover:scale-105 border border-green-500/30 hover:shadow-xl hover:shadow-green-500/30 min-w-[200px]">
+                  <Button className="group relative overflow-hidden bg-green-600 hover:bg-green-500 text-white px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base rounded-xl font-semibold transition-all duration-300 hover:scale-105 border border-green-500/30 hover:shadow-xl hover:shadow-green-500/30 min-w-[180px] sm:min-w-[200px]">
                     <span className="relative z-10 flex items-center gap-2">
                       Schedule Discovery Call
-                      <Rocket className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                      <Rocket className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </span>
                     <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </Button>
