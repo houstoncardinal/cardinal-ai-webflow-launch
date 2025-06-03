@@ -7,9 +7,9 @@ const GlobalPresence = () => {
     {
       city: "Houston",
       country: "Texas, USA",
-      address: "Downtown Houston Business District",
+      address: "2100 West Loop S Fwy, Houston, TX 77027",
       timezone: "CST (UTC-6)",
-      phone: "+1 (713) 555-0123",
+      phone: "(832) 777-7312",
       primary: true
     },
     {

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,10 +8,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Phone, MapPin, Clock, Sparkles } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import TransformationForm from "./TransformationForm";
+
 const Contact = () => {
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
   const [isTransformationFormOpen, setIsTransformationFormOpen] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -19,6 +19,7 @@ const Contact = () => {
     company: "",
     message: ""
   });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
@@ -33,28 +34,36 @@ const Contact = () => {
       message: ""
     });
   };
-  const contactInfo = [{
-    icon: Mail,
-    title: "Email",
-    details: ["hello@yourcompany.com", "support@yourcompany.com"],
-    color: "text-blue-600"
-  }, {
-    icon: Phone,
-    title: "Phone",
-    details: ["+1 (555) 123-4567", "+1 (555) 987-6543"],
-    color: "text-green-600"
-  }, {
-    icon: MapPin,
-    title: "Office",
-    details: ["123 Business Ave", "Suite 100, City, State 12345"],
-    color: "text-purple-600"
-  }, {
-    icon: Clock,
-    title: "Hours",
-    details: ["Mon-Fri: 9AM-6PM", "Sat-Sun: By appointment"],
-    color: "text-orange-600"
-  }];
-  return <section id="contact" className="py-32 bg-white relative overflow-hidden">
+
+  const contactInfo = [
+    {
+      icon: Mail,
+      title: "Email",
+      details: ["hello@cardinalhouston.com", "support@cardinalhouston.com"],
+      color: "text-blue-600"
+    },
+    {
+      icon: Phone,
+      title: "Phone",
+      details: ["(832) 777-7312", "Available 24/7"],
+      color: "text-green-600"
+    },
+    {
+      icon: MapPin,
+      title: "Office",
+      details: ["2100 West Loop S Fwy", "Houston, TX 77027"],
+      color: "text-purple-600"
+    },
+    {
+      icon: Clock,
+      title: "Hours",
+      details: ["Mon-Fri: 9AM-6PM", "Sat-Sun: By appointment"],
+      color: "text-orange-600"
+    }
+  ];
+
+  return (
+    <section id="contact" className="py-32 bg-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-72 h-72 bg-green-500 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
@@ -73,8 +82,8 @@ const Contact = () => {
             </span>
           </div>
           <h2 className="text-5xl lg:text-6xl font-light text-gray-900 mb-8 leading-tight animate-fade-in" style={{
-          animationDelay: '300ms'
-        }}>
+            animationDelay: '300ms'
+          }}>
             <span className="relative inline-block">
               Let's start your
               <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-gray-200 to-transparent rounded-full"></div>
@@ -84,8 +93,8 @@ const Contact = () => {
             </span>
           </h2>
           <p className="text-xl text-gray-600 leading-relaxed font-light max-w-3xl animate-fade-in" style={{
-          animationDelay: '500ms'
-        }}>
+            animationDelay: '500ms'
+          }}>
             Ready to elevate your business with cutting-edge digital solutions? 
             We're here to turn your vision into reality.
           </p>
@@ -95,25 +104,29 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="space-y-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {contactInfo.map((info, index) => <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-white/80 backdrop-blur-sm animate-fade-in" style={{
-              animationDelay: `${index * 150}ms`
-            }}>
+              {contactInfo.map((info, index) => (
+                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-white/80 backdrop-blur-sm animate-fade-in" style={{
+                  animationDelay: `${index * 150}ms`
+                }}>
                   <CardContent className="p-6">
                     <div className={`w-12 h-12 ${info.color} mb-4 group-hover:scale-110 transition-all duration-300`}>
                       <info.icon className="w-full h-full" />
                     </div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">{info.title}</h3>
                     <div className="space-y-1">
-                      {info.details.map((detail, i) => <p key={i} className="text-gray-600 text-sm">{detail}</p>)}
+                      {info.details.map((detail, i) => (
+                        <p key={i} className="text-gray-600 text-sm">{detail}</p>
+                      ))}
                     </div>
                   </CardContent>
-                </Card>)}
+                </Card>
+              ))}
             </div>
 
             {/* Quick Contact Form */}
             <Card className="border-0 shadow-xl bg-gradient-to-br from-gray-50 to-white animate-fade-in" style={{
-            animationDelay: '600ms'
-          }}>
+              animationDelay: '600ms'
+            }}>
               <CardContent className="p-8">
                 <h3 className="text-2xl font-semibold text-gray-900 mb-6">Quick Contact</h3>
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -122,19 +135,27 @@ const Contact = () => {
                       <Label htmlFor="firstName" className="text-sm font-medium text-gray-700">
                         First name *
                       </Label>
-                      <Input id="firstName" value={formData.firstName} onChange={e => setFormData(prev => ({
-                      ...prev,
-                      firstName: e.target.value
-                    }))} placeholder="John" className="h-11 border-gray-300 focus:border-green-500 focus:ring-green-500" required />
+                      <Input 
+                        id="firstName" 
+                        value={formData.firstName} 
+                        onChange={(e) => setFormData(prev => ({ ...prev, firstName: e.target.value }))} 
+                        placeholder="John" 
+                        className="h-11 border-gray-300 focus:border-green-500 focus:ring-green-500" 
+                        required 
+                      />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="lastName" className="text-sm font-medium text-gray-700">
                         Last name *
                       </Label>
-                      <Input id="lastName" value={formData.lastName} onChange={e => setFormData(prev => ({
-                      ...prev,
-                      lastName: e.target.value
-                    }))} placeholder="Doe" className="h-11 border-gray-300 focus:border-green-500 focus:ring-green-500" required />
+                      <Input 
+                        id="lastName" 
+                        value={formData.lastName} 
+                        onChange={(e) => setFormData(prev => ({ ...prev, lastName: e.target.value }))} 
+                        placeholder="Doe" 
+                        className="h-11 border-gray-300 focus:border-green-500 focus:ring-green-500" 
+                        required 
+                      />
                     </div>
                   </div>
                   
@@ -142,30 +163,44 @@ const Contact = () => {
                     <Label htmlFor="email" className="text-sm font-medium text-gray-700">
                       Email address *
                     </Label>
-                    <Input id="email" type="email" value={formData.email} onChange={e => setFormData(prev => ({
-                    ...prev,
-                    email: e.target.value
-                  }))} placeholder="john@company.com" className="h-11 border-gray-300 focus:border-green-500 focus:ring-green-500" required />
+                    <Input 
+                      id="email" 
+                      type="email" 
+                      value={formData.email} 
+                      onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))} 
+                      placeholder="john@company.com" 
+                      className="h-11 border-gray-300 focus:border-green-500 focus:ring-green-500" 
+                      required 
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="company" className="text-sm font-medium text-gray-700">
                       Company name *
                     </Label>
-                    <Input id="company" value={formData.company} onChange={e => setFormData(prev => ({
-                    ...prev,
-                    company: e.target.value
-                  }))} placeholder="Your Company" className="h-11 border-gray-300 focus:border-green-500 focus:ring-green-500" required />
+                    <Input 
+                      id="company" 
+                      value={formData.company} 
+                      onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))} 
+                      placeholder="Your Company" 
+                      className="h-11 border-gray-300 focus:border-green-500 focus:ring-green-500" 
+                      required 
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="message" className="text-sm font-medium text-gray-700">
                       How can we help? *
                     </Label>
-                    <Textarea id="message" value={formData.message} onChange={e => setFormData(prev => ({
-                    ...prev,
-                    message: e.target.value
-                  }))} placeholder="Tell us about your project, goals, and timeline..." rows={4} className="border-gray-300 focus:border-green-500 focus:ring-green-500" required />
+                    <Textarea 
+                      id="message" 
+                      value={formData.message} 
+                      onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))} 
+                      placeholder="Tell us about your project, goals, and timeline..." 
+                      rows={4} 
+                      className="border-gray-300 focus:border-green-500 focus:ring-green-500" 
+                      required 
+                    />
                   </div>
 
                   <Button type="submit" className="w-full h-12 bg-green-600 hover:bg-green-700 text-white font-medium text-lg transition-all duration-300 hover:scale-105 shadow-lg">
@@ -179,8 +214,8 @@ const Contact = () => {
           {/* Enhanced Transformation Form CTA */}
           <div className="space-y-8">
             <Card className="border-0 shadow-2xl bg-gradient-to-br from-green-50 via-white to-gray-50 animate-fade-in" style={{
-            animationDelay: '800ms'
-          }}>
+              animationDelay: '800ms'
+            }}>
               <CardContent className="p-8 lg:p-12">
                 <div className="text-center mb-8">
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full mb-6">
@@ -214,7 +249,10 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <Button onClick={() => setIsTransformationFormOpen(true)} className="w-full h-14 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-xl group">
+                  <Button 
+                    onClick={() => setIsTransformationFormOpen(true)} 
+                    className="w-full h-14 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-xl group"
+                  >
                     <span className="relative z-10">Get Comprehensive Quote</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
                   </Button>
@@ -228,8 +266,8 @@ const Contact = () => {
 
             {/* Additional CTA for immediate contact */}
             <Card className="border-0 shadow-lg bg-gray-900 text-white animate-fade-in" style={{
-            animationDelay: '1000ms'
-          }}>
+              animationDelay: '1000ms'
+            }}>
               <CardContent className="p-8 text-center">
                 <h4 className="text-xl font-semibold mb-4">Need immediate assistance?</h4>
                 <p className="text-gray-300 mb-6">
@@ -251,7 +289,12 @@ const Contact = () => {
         </div>
       </div>
 
-      <TransformationForm isOpen={isTransformationFormOpen} onClose={() => setIsTransformationFormOpen(false)} />
-    </section>;
+      <TransformationForm 
+        isOpen={isTransformationFormOpen} 
+        onClose={() => setIsTransformationFormOpen(false)} 
+      />
+    </section>
+  );
 };
+
 export default Contact;

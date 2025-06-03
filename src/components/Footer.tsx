@@ -176,14 +176,15 @@ const Footer = () => {
                 <div className="flex items-start space-x-4 group">
                   <MapPin className="w-5 h-5 text-green-400 mt-1 flex-shrink-0 group-hover:animate-pulse" />
                   <div className="text-gray-300 text-sm font-light">
-                    <div className="hover:text-white transition-colors duration-300">Houston, TX (HQ)</div>
+                    <div className="hover:text-white transition-colors duration-300">2100 West Loop S Fwy</div>
+                    <div className="hover:text-white transition-colors duration-300">Houston, TX 77027</div>
                     <div className="hover:text-white transition-colors duration-300">Dubai, UAE</div>
                     <div className="hover:text-white transition-colors duration-300">Irvine, CA</div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4 group cursor-pointer">
                   <Phone className="w-5 h-5 text-green-400 group-hover:animate-pulse" />
-                  <span className="text-gray-300 text-sm font-light hover:text-white transition-colors duration-300">+1 (713) 555-0123</span>
+                  <span className="text-gray-300 text-sm font-light hover:text-white transition-colors duration-300">(832) 777-7312</span>
                 </div>
                 <div className="flex items-center space-x-4 group cursor-pointer">
                   <Mail className="w-5 h-5 text-green-400 group-hover:animate-pulse" />
