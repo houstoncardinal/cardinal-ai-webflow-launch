@@ -232,13 +232,12 @@ const About = () => {
                     <span className="text-gray-300 text-sm font-medium">Ready to start your project?</span>
                     <div className="w-2 h-2 bg-blue-400/60 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
                   </div>
-                  <Button className="group relative overflow-hidden bg-gradient-to-r from-green-600 via-emerald-500 to-blue-600 hover:from-green-500 hover:via-emerald-400 hover:to-blue-500 text-white px-8 py-4 text-base rounded-xl font-semibold transition-all duration-500 hover:scale-110 border border-gray-600/30 hover:shadow-2xl hover:shadow-green-500/40 min-w-[200px]">
+                  <Button className="group relative overflow-hidden bg-green-600 hover:bg-green-500 text-white px-8 py-4 text-base rounded-xl font-semibold transition-all duration-300 hover:scale-105 border border-green-500/30 hover:shadow-xl hover:shadow-green-500/30 min-w-[200px]">
                     <span className="relative z-10 flex items-center gap-2">
                       Schedule Discovery Call
                       <Rocket className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="absolute -inset-1 bg-gradient-to-r from-green-400/30 via-emerald-400/30 to-blue-400/30 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"></div>
+                    <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </Button>
                 </div>
               </div>
