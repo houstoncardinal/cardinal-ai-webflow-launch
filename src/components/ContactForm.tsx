@@ -59,7 +59,7 @@ const ContactForm = () => {
           <div className="absolute -inset-3 bg-gradient-to-r from-green-400/20 via-green-500/20 to-green-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
           
           {/* Main form card */}
-          <div className="relative bg-white/80 backdrop-blur-xl border border-gray-200/50 rounded-xl shadow-2xl overflow-hidden">
+          <div className="relative bg-white/80 backdrop-blur-xl border border-gray-200/50 rounded-xl shadow-lg overflow-hidden">
             {/* Accent top border */}
             <div className="h-1 bg-gradient-to-r from-green-400 via-green-500 to-green-600 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
@@ -94,7 +94,7 @@ const ContactForm = () => {
                         placeholder="Full Name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="pl-10 h-12 bg-white/50 border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-md hover:shadow-lg placeholder:text-gray-400"
+                        className="pl-10 h-12 bg-white/50 border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400"
                         required
                       />
                       <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left"></div>
@@ -112,7 +112,7 @@ const ContactForm = () => {
                         placeholder="Email Address"
                         value={formData.email}
                         onChange={handleChange}
-                        className="pl-10 h-12 bg-white/50 border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-md hover:shadow-lg placeholder:text-gray-400"
+                        className="pl-10 h-12 bg-white/50 border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400"
                         required
                       />
                       <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left"></div>
@@ -130,7 +130,7 @@ const ContactForm = () => {
                         placeholder="Phone Number"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="pl-10 h-12 bg-white/50 border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-md hover:shadow-lg placeholder:text-gray-400"
+                        className="pl-10 h-12 bg-white/50 border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400"
                       />
                       <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left"></div>
                     </div>
@@ -141,10 +141,10 @@ const ContactForm = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 rounded-lg opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
                     <div className="relative">
                       <Select onValueChange={handleServiceChange} value={formData.service}>
-                        <SelectTrigger className="h-12 bg-white/50 border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-md hover:shadow-lg">
+                        <SelectTrigger className="h-12 bg-white/50 border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md">
                           <SelectValue placeholder="Select Service" />
                         </SelectTrigger>
-                        <SelectContent className="bg-white/95 backdrop-blur-xl border border-gray-200/50 rounded-lg shadow-2xl z-50">
+                        <SelectContent className="bg-white/95 backdrop-blur-xl border border-gray-200/50 rounded-lg shadow-xl z-50">
                           {serviceOptions.map((service) => (
                             <SelectItem 
                               key={service.value} 
@@ -168,7 +168,7 @@ const ContactForm = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-600 rounded-lg opacity-0 group-hover/button:opacity-100 transition-all duration-300 blur-lg"></div>
                     <Button
                       type="submit"
-                      className="relative w-full h-12 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group-hover/button:scale-105 border-0"
+                      className="relative w-full h-12 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group-hover/button:scale-105 border-0"
                     >
                       <span className="flex items-center justify-center gap-2">
                         Get Free Consultation
