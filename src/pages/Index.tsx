@@ -7,6 +7,7 @@ import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ContactForm from "@/components/ContactForm";
 
 const Index = () => {
   return (
@@ -17,6 +18,9 @@ const Index = () => {
       <div className="bg-white">
         <Hero />
       </div>
+      
+      {/* Contact Form - Between Hero and Services */}
+      <ContactForm />
       
       {/* Services - Light gray background for variation */}
       <div className="bg-gray-50">
