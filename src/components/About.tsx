@@ -1,70 +1,69 @@
-
-
 import { Target, Users, Award, Lightbulb, MessageCircle, Users2, Rocket, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const About = () => {
-  const values = [
-    {
-      icon: Target,
-      title: "Purpose-driven",
-      description: "We deliver solutions that create meaningful impact and drive sustainable business growth."
-    },
-    {
-      icon: Users,
-      title: "Human-centered",
-      description: "Every solution we build puts people first, creating experiences that truly matter."
-    },
-    {
-      icon: Award,
-      title: "Excellence",
-      description: "We maintain the highest standards through rigorous quality processes and continuous improvement."
-    },
-    {
-      icon: Lightbulb,
-      title: "Innovation",
-      description: "We pioneer emerging technologies to deliver next-generation solutions for our clients."
-    }
-  ];
+const values = [
+  {
+    icon: Target,
+    title: "Purpose-driven",
+    description: "We deliver solutions that create meaningful impact and drive sustainable business growth."
+  },
+  {
+    icon: Users,
+    title: "Human-centered",
+    description: "Every solution we build puts people first, creating experiences that truly matter."
+  },
+  {
+    icon: Award,
+    title: "Excellence",
+    description: "We maintain the highest standards through rigorous quality processes and continuous improvement."
+  },
+  {
+    icon: Lightbulb,
+    title: "Innovation",
+    description: "We pioneer emerging technologies to deliver next-generation solutions for our clients."
+  }
+];
 
-  const workflowSteps = [
-    {
-      number: "01",
-      icon: MessageCircle,
-      title: "Discovery Call",
-      description: "We start with a comprehensive consultation to understand your vision, challenges, and goals.",
-      duration: "30-60 mins",
-      gradient: "from-blue-500 to-cyan-500",
-      delay: "0ms"
-    },
-    {
-      number: "02",
-      icon: Users2,
-      title: "Strategy & Planning",
-      description: "Our team crafts a detailed roadmap with timelines, technology stack, and project milestones.",
-      duration: "3-5 days",
-      gradient: "from-purple-500 to-pink-500",
-      delay: "200ms"
-    },
-    {
-      number: "03",
-      icon: Rocket,
-      title: "Development Sprint",
-      description: "Agile development with regular updates, prototypes, and collaborative feedback sessions.",
-      duration: "2-12 weeks",
-      gradient: "from-green-500 to-emerald-500",
-      delay: "400ms"
-    },
-    {
-      number: "04",
-      icon: CheckCircle,
-      title: "Launch & Support",
-      description: "Seamless deployment with ongoing maintenance, optimization, and dedicated support.",
-      duration: "Ongoing",
-      gradient: "from-orange-500 to-red-500",
-      delay: "600ms"
-    }
-  ];
+const workflowSteps = [
+  {
+    number: "01",
+    icon: MessageCircle,
+    title: "Discovery Call",
+    description: "We start with a comprehensive consultation to understand your vision, challenges, and goals.",
+    duration: "30-60 mins",
+    gradient: "from-blue-500 to-cyan-500",
+    delay: "0ms"
+  },
+  {
+    number: "02",
+    icon: Users2,
+    title: "Strategy & Planning",
+    description: "Our team crafts a detailed roadmap with timelines, technology stack, and project milestones.",
+    duration: "3-5 days",
+    gradient: "from-purple-500 to-pink-500",
+    delay: "200ms"
+  },
+  {
+    number: "03",
+    icon: Rocket,
+    title: "Development Sprint",
+    description: "Agile development with regular updates, prototypes, and collaborative feedback sessions.",
+    duration: "2-12 weeks",
+    gradient: "from-green-500 to-emerald-500",
+    delay: "400ms"
+  },
+  {
+    number: "04",
+    icon: CheckCircle,
+    title: "Launch & Support",
+    description: "Seamless deployment with ongoing maintenance, optimization, and dedicated support.",
+    duration: "Ongoing",
+    gradient: "from-orange-500 to-red-500",
+    delay: "600ms"
+  }
+];
+
+const About = () => {
 
   return (
     <section id="about" className="py-32 bg-gradient-to-br from-slate-900 via-gray-900 to-black relative overflow-hidden">
@@ -155,9 +154,13 @@ const About = () => {
               </div>
             </div>
             
-            <Button className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/25 border border-green-500/20">
-              <span className="relative z-10">Learn more about us</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-blue-400/20 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+            <Button className="group relative overflow-hidden bg-gradient-to-r from-green-600 via-green-500 to-emerald-500 hover:from-green-500 hover:via-emerald-500 hover:to-green-400 text-white px-10 py-5 rounded-xl font-semibold transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/30 border border-green-500/20 text-lg">
+              <span className="relative z-10 flex items-center gap-3">
+                Learn more about us
+                <div className="w-2 h-2 bg-white/80 rounded-full animate-pulse"></div>
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-green-400/20 to-emerald-400/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
             </Button>
           </div>
 
@@ -224,13 +227,18 @@ const About = () => {
                 
                 {/* Call to Action */}
                 <div className="mt-8 pt-6 border-t border-gray-700/30 text-center">
-                  <div className="flex justify-center items-center space-x-2 mb-3">
+                  <div className="flex justify-center items-center space-x-2 mb-4">
                     <div className="w-2 h-2 bg-green-400/60 rounded-full animate-pulse"></div>
                     <span className="text-gray-300 text-sm font-medium">Ready to start your project?</span>
                     <div className="w-2 h-2 bg-blue-400/60 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
                   </div>
-                  <Button className="bg-gradient-to-r from-green-600/80 to-blue-600/80 hover:from-green-500 hover:to-blue-500 text-white px-6 py-3 text-sm rounded-lg font-medium transition-all duration-300 hover:scale-105 border border-gray-600/30 hover:shadow-lg hover:shadow-green-500/25">
-                    Schedule Discovery Call
+                  <Button className="group relative overflow-hidden bg-gradient-to-r from-green-600 via-emerald-500 to-blue-600 hover:from-green-500 hover:via-emerald-400 hover:to-blue-500 text-white px-8 py-4 text-base rounded-xl font-semibold transition-all duration-500 hover:scale-110 border border-gray-600/30 hover:shadow-2xl hover:shadow-green-500/40 min-w-[200px]">
+                    <span className="relative z-10 flex items-center gap-2">
+                      Schedule Discovery Call
+                      <Rocket className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute -inset-1 bg-gradient-to-r from-green-400/30 via-emerald-400/30 to-blue-400/30 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"></div>
                   </Button>
                 </div>
               </div>
@@ -239,36 +247,33 @@ const About = () => {
         </div>
 
         {/* Enhanced Values Section */}
-        <div className="relative bg-gradient-to-r from-gray-800/40 to-gray-900/40 backdrop-blur-xl rounded-2xl p-16 border border-gray-700/30 animate-fade-in" style={{animationDelay: '1000ms'}}>
-          {/* Subtle background pattern */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,197,94,0.05),transparent_50%)] rounded-2xl"></div>
+        <div className="relative animate-fade-in" style={{animationDelay: '1000ms'}}>
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-light text-white mb-6">
+              Our <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">values</span>
+            </h3>
+            <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+              The principles that guide our approach to delivering exceptional outcomes.
+            </p>
+          </div>
           
-          <div className="relative z-10">
-            <div className="text-center mb-16">
-              <h3 className="text-4xl font-light text-white mb-6">
-                Our <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">values</span>
-              </h3>
-              <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-                The principles that guide our approach to delivering exceptional outcomes.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {values.map((value, index) => (
-                <div key={index} className="group text-center p-6 rounded-xl hover:bg-gray-800/30 transition-all duration-300 hover:scale-105">
-                  <div className="relative mb-6">
-                    <value.icon className="w-12 h-12 text-green-400 mx-auto group-hover:scale-110 transition-transform duration-300" />
-                    <div className="absolute inset-0 bg-green-400/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+            {values.map((value, index) => (
+              <div key={index} className="group text-center transition-all duration-300 hover:scale-105">
+                <div className="relative mb-6 flex justify-center">
+                  <div className="p-4 rounded-2xl bg-gradient-to-br from-gray-800/40 to-gray-900/40 border border-gray-700/30 group-hover:border-green-500/30 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-green-500/20">
+                    <value.icon className="w-8 h-8 text-green-400 group-hover:scale-110 transition-transform duration-300" />
                   </div>
-                  <h4 className="text-xl font-medium text-white mb-4 group-hover:text-green-400 transition-colors duration-300">
-                    {value.title}
-                  </h4>
-                  <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
-                    {value.description}
-                  </p>
+                  <div className="absolute inset-0 bg-green-400/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-              ))}
-            </div>
+                <h4 className="text-lg font-medium text-white mb-3 group-hover:text-green-400 transition-colors duration-300">
+                  {value.title}
+                </h4>
+                <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                  {value.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -277,4 +282,3 @@ const About = () => {
 };
 
 export default About;
-
