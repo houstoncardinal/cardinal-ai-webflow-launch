@@ -1,5 +1,6 @@
 
 import { Building, Shield, Heart, Scale } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 const Industries = () => {
   const industries = [
@@ -26,13 +27,20 @@ const Industries = () => {
   ];
 
   return (
-    <section id="industries" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Industry Expertise
+    <section id="industries" className="py-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="max-w-3xl mb-20">
+          <div className="inline-flex items-center text-sm font-medium text-gray-600 uppercase tracking-wide mb-6">
+            <div className="w-8 h-px bg-green-500 mr-4"></div>
+            Industries
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6 leading-tight">
+            Sector expertise
+            <span className="block text-green-600 font-normal">
+              across industries
+            </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 leading-relaxed font-light">
             We understand the unique challenges and requirements of different industries, 
             delivering specialized solutions that meet sector-specific needs.
           </p>
@@ -40,19 +48,19 @@ const Industries = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {industries.map((industry, index) => (
-            <div key={index} className="bg-white rounded-lg p-8 shadow-md hover:shadow-lg transition-shadow duration-300">
-              <div className="text-center">
+            <Card key={index} className="group border-gray-200 hover:border-green-500 transition-all duration-300 bg-white shadow-none hover:shadow-lg">
+              <CardContent className="p-8 text-center">
                 <div className="mb-6">
-                  <industry.icon className="w-16 h-16 text-blue-600 mx-auto" />
+                  <industry.icon className="w-8 h-8 text-green-600 mx-auto mb-4" />
+                  <h3 className="text-lg font-medium text-gray-900 mb-3">
+                    {industry.title}
+                  </h3>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  {industry.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   {industry.description}
                 </p>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

@@ -1,5 +1,6 @@
 
 import { MapPin, Clock, Phone } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 const GlobalPresence = () => {
   const offices = [
@@ -24,19 +25,26 @@ const GlobalPresence = () => {
       country: "California, USA",
       address: "Irvine Business Complex",
       timezone: "PST (UTC-8)",
-      phone: "+1 (949) 555-0123",
+      phone: "+1 (949) 555 0123",
       primary: false
     }
   ];
 
   return (
-    <section className="py-20 bg-blue-600 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Global Presence, Local Expertise
+    <section className="py-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="max-w-3xl mb-20">
+          <div className="inline-flex items-center text-sm font-medium text-gray-600 uppercase tracking-wide mb-6">
+            <div className="w-8 h-px bg-green-500 mr-4"></div>
+            Global Presence
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6 leading-tight">
+            Local expertise
+            <span className="block text-green-600 font-normal">
+              worldwide reach
+            </span>
           </h2>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 leading-relaxed font-light">
             With offices across three continents, we provide round-the-clock support 
             and local market expertise to serve our global clientele.
           </p>
@@ -44,38 +52,40 @@ const GlobalPresence = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {offices.map((office, index) => (
-            <div 
+            <Card 
               key={index} 
-              className={`bg-white/10 backdrop-blur-sm rounded-lg p-8 text-center transition-all duration-300 hover:bg-white/20 ${
-                office.primary ? 'ring-2 ring-white/30' : ''
+              className={`border-gray-200 hover:border-green-500 transition-all duration-300 bg-white shadow-none hover:shadow-lg ${
+                office.primary ? 'ring-1 ring-green-200' : ''
               }`}
             >
-              {office.primary && (
-                <div className="inline-block bg-white text-blue-600 text-xs font-semibold px-3 py-1 rounded-full mb-4">
-                  Headquarters
+              <CardContent className="p-8 text-center">
+                {office.primary && (
+                  <div className="inline-block bg-green-600 text-white text-xs font-medium px-3 py-1 rounded-full mb-4">
+                    Headquarters
+                  </div>
+                )}
+                
+                <h3 className="text-2xl font-light text-gray-900 mb-2">
+                  {office.city}
+                </h3>
+                <p className="text-gray-600 mb-6 font-medium">{office.country}</p>
+                
+                <div className="space-y-3 text-sm">
+                  <div className="flex items-center justify-center space-x-2">
+                    <MapPin className="w-4 h-4 text-green-600" />
+                    <span className="text-gray-600">{office.address}</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2">
+                    <Clock className="w-4 h-4 text-green-600" />
+                    <span className="text-gray-600">{office.timezone}</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2">
+                    <Phone className="w-4 h-4 text-green-600" />
+                    <span className="text-gray-600">{office.phone}</span>
+                  </div>
                 </div>
-              )}
-              
-              <h3 className="text-2xl font-bold mb-2">
-                {office.city}
-              </h3>
-              <p className="text-blue-100 mb-6">{office.country}</p>
-              
-              <div className="space-y-3 text-sm">
-                <div className="flex items-center justify-center space-x-2">
-                  <MapPin className="w-4 h-4" />
-                  <span>{office.address}</span>
-                </div>
-                <div className="flex items-center justify-center space-x-2">
-                  <Clock className="w-4 h-4" />
-                  <span>{office.timezone}</span>
-                </div>
-                <div className="flex items-center justify-center space-x-2">
-                  <Phone className="w-4 h-4" />
-                  <span>{office.phone}</span>
-                </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>
