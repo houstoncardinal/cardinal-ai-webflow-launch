@@ -124,7 +124,7 @@ const DigitalCampaigns = () => {
             </Button>
           </div>
         </div>
-      </Section>
+      </section>
 
       <Footer />
     </div>
