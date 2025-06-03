@@ -2,14 +2,25 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRight, Mail, Phone, User, Gift } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { ArrowRight, Mail, Phone, User, Gift, ChevronDown, Code, Smartphone, Search, Palette, Cloud, BarChart } from 'lucide-react';
+
+const serviceOptions = [
+  { value: "web-development", label: "Web Development", icon: Code },
+  { value: "mobile-apps", label: "Mobile Applications", icon: Smartphone },
+  { value: "seo-optimization", label: "SEO & Digital Marketing", icon: Search },
+  { value: "brand-identity", label: "Brand Identity & Design", icon: Palette },
+  { value: "cloud-solutions", label: "Cloud Solutions", icon: Cloud },
+  { value: "digital-campaigns", label: "Digital Campaigns", icon: BarChart },
+  { value: "consultation", label: "General Consultation", icon: Gift },
+];
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    message: ''
+    service: ''
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -18,10 +29,17 @@ const ContactForm = () => {
     // Handle form submission here
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
+    });
+  };
+
+  const handleServiceChange = (value: string) => {
+    setFormData({
+      ...formData,
+      service: value
     });
   };
 
@@ -118,18 +136,29 @@ const ContactForm = () => {
                     </div>
                   </div>
 
-                  {/* Message Input */}
+                  {/* Service Selection Dropdown */}
                   <div className="relative group/input">
                     <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 rounded-lg opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
                     <div className="relative">
-                      <Input
-                        type="text"
-                        name="message"
-                        placeholder="Brief project description (optional)"
-                        value={formData.message}
-                        onChange={handleChange}
-                        className="h-12 bg-white/50 border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-md hover:shadow-lg placeholder:text-gray-400"
-                      />
+                      <Select onValueChange={handleServiceChange} value={formData.service}>
+                        <SelectTrigger className="h-12 bg-white/50 border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-md hover:shadow-lg">
+                          <SelectValue placeholder="Select Service" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-white/95 backdrop-blur-xl border border-gray-200/50 rounded-lg shadow-2xl z-50">
+                          {serviceOptions.map((service) => (
+                            <SelectItem 
+                              key={service.value} 
+                              value={service.value}
+                              className="flex items-center gap-2 hover:bg-green-50 focus:bg-green-50 cursor-pointer transition-colors duration-200"
+                            >
+                              <div className="flex items-center gap-2">
+                                <service.icon className="w-4 h-4 text-green-600" />
+                                <span>{service.label}</span>
+                              </div>
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                       <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left"></div>
                     </div>
                   </div>
