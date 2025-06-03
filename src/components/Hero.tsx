@@ -95,7 +95,7 @@ const Hero = () => {
             
             
             {/* Main headline with staggered animation */}
-            <div className="space-y-6">
+            <div className="space-y-6 pt-16 sm:pt-0">
               <h1 className="text-5xl lg:text-7xl font-light text-gray-900 leading-[1.1] tracking-tight">
                 <span className="inline-block animate-fade-in">Make an impact</span>
                 <span className="block text-green-600 font-normal animate-fade-in" style={{
@@ -171,4 +171,5 @@ const Hero = () => {
       </div>
     </section>;
 };
+
 export default Hero;
