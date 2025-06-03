@@ -38,65 +38,80 @@ const Portfolio = () => {
   ];
 
   return (
-    <section id="portfolio" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="portfolio" className="py-24 bg-white relative overflow-hidden">
+      {/* Animated background */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-gradient-to-l from-green-100 to-transparent rounded-full animate-pulse"></div>
+        <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-gradient-to-r from-gray-100 to-transparent rounded-full animate-pulse delay-1000"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mb-20">
-          <div className="inline-flex items-center text-sm font-medium text-gray-600 uppercase tracking-wide mb-6">
-            <div className="w-8 h-px bg-green-500 mr-4"></div>
+          <div className="inline-flex items-center text-sm font-medium text-gray-600 uppercase tracking-wide mb-6 animate-fade-in">
+            <div className="w-8 h-px bg-green-500 mr-4 animate-pulse"></div>
             Case Studies
           </div>
-          <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6 leading-tight">
+          <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6 leading-tight animate-fade-in delay-300">
             Featured
             <span className="block text-green-600 font-normal">
               success stories
             </span>
           </h2>
-          <p className="text-xl text-gray-600 leading-relaxed font-light">
+          <p className="text-xl text-gray-600 leading-relaxed font-light animate-fade-in delay-500">
             Discover how we've helped businesses across various industries 
             achieve transformational growth through strategic digital innovation.
           </p>
         </div>
 
-        {/* Stats Section */}
+        {/* Enhanced Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           {stats.map((stat, index) => (
-            <div key={index} className="text-center p-8 bg-gray-50 rounded-lg border border-gray-200">
-              <stat.icon className="w-8 h-8 text-green-600 mx-auto mb-4" />
-              <div className="text-3xl font-light text-gray-900 mb-2">{stat.value}</div>
+            <div 
+              key={index} 
+              className="text-center p-8 bg-gradient-to-br from-gray-50 to-green-50 rounded-xl border border-gray-200 hover:border-green-500 transition-all duration-500 cursor-pointer group hover:scale-105 animate-fade-in"
+              style={{animationDelay: `${index * 200}ms`}}
+            >
+              <stat.icon className="w-8 h-8 text-green-600 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
+              <div className="text-3xl font-light text-gray-900 mb-2 group-hover:text-green-600 transition-colors duration-300">{stat.value}</div>
               <div className="text-gray-600 font-medium">{stat.label}</div>
             </div>
           ))}
         </div>
 
-        {/* Projects Grid */}
+        {/* Enhanced Projects Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
           {projects.map((project, index) => (
-            <Card key={index} className="group overflow-hidden border-gray-200 hover:border-green-500 transition-all duration-300 bg-white shadow-none hover:shadow-lg">
+            <Card 
+              key={index} 
+              className="group overflow-hidden border-gray-200 hover:border-green-500 transition-all duration-500 bg-white shadow-none hover:shadow-2xl cursor-pointer hover:scale-105 animate-fade-in"
+              style={{animationDelay: `${(index + 3) * 200}ms`}}
+            >
               <div className="relative overflow-hidden">
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute top-4 left-4">
-                  <span className="text-xs font-medium text-white bg-green-600 px-3 py-1 rounded-full">
+                  <span className="text-xs font-medium text-white bg-green-600 px-3 py-1 rounded-full animate-pulse">
                     {project.category}
                   </span>
                 </div>
               </div>
               <CardContent className="p-8">
-                <h3 className="text-xl font-medium text-gray-900 mb-3">
+                <h3 className="text-xl font-medium text-gray-900 mb-3 group-hover:text-green-600 transition-colors duration-300">
                   {project.title}
                 </h3>
                 <p className="text-gray-600 mb-6 leading-relaxed text-sm">
                   {project.description}
                 </p>
                 
-                {/* Metrics */}
-                <div className="grid grid-cols-3 gap-4 mb-6 p-4 bg-gray-50 rounded-lg">
+                {/* Enhanced Metrics */}
+                <div className="grid grid-cols-3 gap-4 mb-6 p-4 bg-gradient-to-r from-gray-50 to-green-50 rounded-lg group-hover:from-green-50 group-hover:to-gray-50 transition-all duration-300">
                   {Object.entries(project.metrics).map(([key, value], metricIndex) => (
                     <div key={metricIndex} className="text-center">
-                      <div className="text-sm font-medium text-green-600">{value}</div>
+                      <div className="text-sm font-medium text-green-600 group-hover:scale-110 transition-transform duration-300">{value}</div>
                       <div className="text-xs text-gray-500 capitalize">{key}</div>
                     </div>
                   ))}
@@ -104,15 +119,18 @@ const Portfolio = () => {
                 
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag, tagIndex) => (
-                    <span key={tagIndex} className="text-xs text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
+                    <span 
+                      key={tagIndex} 
+                      className="text-xs text-gray-600 bg-gray-100 px-3 py-1 rounded-full group-hover:bg-green-100 group-hover:text-green-700 transition-all duration-300"
+                    >
                       {tag}
                     </span>
                   ))}
                 </div>
                 
-                <Button variant="outline" size="sm" className="w-full border-green-600 text-green-600 hover:bg-green-50">
+                <Button variant="outline" size="sm" className="w-full border-green-600 text-green-600 hover:bg-green-50 group/btn transition-all duration-300 hover:scale-105">
                   View case study
-                  <ArrowRight className="ml-2 w-3 h-3" />
+                  <ArrowRight className="ml-2 w-3 h-3 group-hover/btn:translate-x-1 transition-transform duration-300" />
                 </Button>
               </CardContent>
             </Card>
@@ -120,9 +138,9 @@ const Portfolio = () => {
         </div>
 
         <div className="text-center">
-          <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 px-8 py-3">
+          <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 px-8 py-3 group transition-all duration-300 hover:scale-105 hover:shadow-lg">
             View all case studies
-            <ArrowRight className="ml-2 w-4 h-4" />
+            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
           </Button>
         </div>
       </div>
