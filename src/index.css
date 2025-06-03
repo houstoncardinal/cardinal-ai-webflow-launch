@@ -99,6 +99,16 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Fix line-height for all headings to prevent letter clipping */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.25;
+  }
+
+  /* Ensure proper line-height for large text elements */
+  .text-4xl, .text-5xl, .text-6xl, .text-7xl, .text-8xl {
+    line-height: 1.25;
+  }
 }
 
 @layer utilities {
