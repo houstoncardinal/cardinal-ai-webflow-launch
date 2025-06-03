@@ -1,4 +1,5 @@
-import { Target, Users, Award, Lightbulb, Globe, TrendingUp, Shield, Zap } from "lucide-react";
+
+import { Target, Users, Award, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const About = () => {
@@ -26,10 +27,10 @@ const About = () => {
   ];
 
   const achievements = [
-    { icon: Globe, value: "3", label: "Global offices", description: "Houston • Dubai • Irvine" },
-    { icon: TrendingUp, value: "150+", label: "Projects delivered", description: "Enterprise solutions" },
-    { icon: Shield, value: "99.9%", label: "Client satisfaction", description: "Proven excellence" },
-    { icon: Zap, value: "5+", label: "Years of impact", description: "Industry leadership" }
+    { value: "3", label: "Global offices", description: "Houston • Dubai • Irvine", gradient: "from-green-400 to-emerald-400" },
+    { value: "150+", label: "Projects delivered", description: "Enterprise solutions", gradient: "from-blue-400 to-cyan-400" },
+    { value: "99.9%", label: "Client satisfaction", description: "Proven excellence", gradient: "from-purple-400 to-pink-400" },
+    { value: "5+", label: "Years of impact", description: "Industry leadership", gradient: "from-orange-400 to-red-400" }
   ];
 
   return (
@@ -127,7 +128,7 @@ const About = () => {
             </Button>
           </div>
 
-          {/* Redesigned Achievements Grid */}
+          {/* Redesigned Achievements Grid with Progress Rings */}
           <div className="space-y-6 animate-fade-in" style={{animationDelay: '800ms'}}>
             <div className="grid grid-cols-2 gap-4">
               {achievements.map((achievement, index) => (
@@ -141,11 +142,48 @@ const About = () => {
                   {/* Floating orb effect */}
                   <div className="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-r from-green-400/20 to-blue-400/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-150"></div>
                   
-                  {/* Content */}
+                  {/* Content with animated progress ring */}
                   <div className="relative z-10 text-center">
-                    <div className="mb-4 relative">
-                      <achievement.icon className="w-8 h-8 text-green-400 mx-auto group-hover:text-white group-hover:scale-110 transition-all duration-500" />
-                      <div className="absolute inset-0 bg-green-400/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="mb-4 relative flex justify-center">
+                      {/* Animated progress ring */}
+                      <div className="relative w-16 h-16">
+                        <svg className="w-16 h-16 transform -rotate-90" viewBox="0 0 64 64">
+                          <circle 
+                            cx="32" 
+                            cy="32" 
+                            r="28" 
+                            fill="none" 
+                            stroke="rgba(255,255,255,0.1)" 
+                            strokeWidth="2"
+                          />
+                          <circle 
+                            cx="32" 
+                            cy="32" 
+                            r="28" 
+                            fill="none" 
+                            stroke="url(#gradient-${index})" 
+                            strokeWidth="2"
+                            strokeDasharray="175.93"
+                            strokeDashoffset="44"
+                            className="group-hover:stroke-dashoffset-0 transition-all duration-1000"
+                          />
+                        </svg>
+                        
+                        {/* Center dot with gradient */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className={`w-3 h-3 bg-gradient-to-r ${achievement.gradient} rounded-full group-hover:scale-150 transition-transform duration-500 animate-pulse`}></div>
+                        </div>
+                      </div>
+                      
+                      {/* Hidden SVG for gradient definitions */}
+                      <svg className="absolute w-0 h-0">
+                        <defs>
+                          <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" className={index === 0 ? "stop-green-400" : index === 1 ? "stop-blue-400" : index === 2 ? "stop-purple-400" : "stop-orange-400"} />
+                            <stop offset="100%" className={index === 0 ? "stop-emerald-400" : index === 1 ? "stop-cyan-400" : index === 2 ? "stop-pink-400" : "stop-red-400"} />
+                          </linearGradient>
+                        </defs>
+                      </svg>
                     </div>
                     
                     <div className="space-y-2">
