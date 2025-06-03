@@ -1,4 +1,3 @@
-
 import { Building, Shield, Heart, Scale, CheckCircle, Users, Award, TrendingUp, Lock, Globe, Smartphone, Cloud, Search, Palette, Target, Zap, Code, Layers, Paintbrush } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -503,13 +502,13 @@ const Industries = () => {
               </p>
               <button 
                 onClick={() => setIsFormOpen(true)}
-                className="group relative w-full sm:w-auto min-w-[280px] px-8 md:px-12 lg:px-16 py-4 md:py-5 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl md:rounded-2xl font-medium text-lg md:text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl overflow-hidden shadow-lg hover:shadow-green-500/25"
+                className="group relative inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl font-medium text-base transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden shadow-lg hover:shadow-green-500/25"
               >
                 <span className="relative z-10">Start Your Comprehensive Quote</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-green-700 to-green-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
               </button>
-              <p className="text-sm text-gray-500 mt-4 px-4">
+              <p className="text-sm text-gray-500 mt-4">
                 ✓ Detailed 6-step process ✓ Instant estimate ✓ 24-hour response
               </p>
             </div>
