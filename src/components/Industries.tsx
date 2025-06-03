@@ -337,8 +337,8 @@ const Industries = () => {
           </p>
         </div>
 
-        {/* Industries Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-20 md:mb-32">
+        {/* Industries Grid - Added proper bottom margin */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-24 md:mb-32">
           {industries.map((industry, index) => (
             <div
               key={index}
@@ -388,8 +388,8 @@ const Industries = () => {
           ))}
         </div>
 
-        {/* Enhanced Industry Expertise Deep Dive */}
-        <div className="mb-16 md:mb-24">
+        {/* Enhanced Industry Expertise Deep Dive - Added top padding for mobile */}
+        <div className="pt-8 md:pt-0 mb-16 md:mb-24">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-4 md:mb-6">
               Industry Expertise & 
@@ -401,15 +401,15 @@ const Industries = () => {
           </div>
 
           <Tabs defaultValue="Real Estate" className="w-full">
-            {/* Enhanced TabsList with better mobile responsiveness */}
-            <div className="relative mb-8 md:mb-12">
+            {/* Enhanced TabsList with better mobile spacing */}
+            <div className="relative mb-12 md:mb-16">
               <div className="absolute inset-0 bg-gradient-to-r from-green-50/50 via-gray-50 to-green-50/50 rounded-3xl blur-xl"></div>
-              <TabsList className="relative w-full grid grid-cols-2 lg:grid-cols-4 gap-2 bg-white/80 backdrop-blur-sm border-2 border-gray-100/50 p-3 rounded-3xl shadow-2xl shadow-green-500/5 min-h-[60px] md:min-h-[80px]">
+              <TabsList className="relative w-full grid grid-cols-2 lg:grid-cols-4 gap-2 bg-white/80 backdrop-blur-sm border-2 border-gray-100/50 p-3 rounded-3xl shadow-2xl shadow-green-500/5 min-h-[80px] md:min-h-[80px]">
                 {Object.keys(industryExpertise).map((industry) => (
                   <TabsTrigger 
                     key={industry} 
                     value={industry}
-                    className="relative group data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-600 data-[state=active]:to-green-700 data-[state=active]:text-white data-[state=active]:shadow-2xl data-[state=active]:shadow-green-500/25 rounded-2xl transition-all duration-500 hover:scale-[1.02] text-xs sm:text-sm md:text-base font-medium px-3 sm:px-4 md:px-6 py-3 md:py-4 h-auto min-h-[50px] md:min-h-[65px] flex items-center justify-center text-center leading-tight"
+                    className="relative group data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-600 data-[state=active]:to-green-700 data-[state=active]:text-white data-[state=active]:shadow-2xl data-[state=active]:shadow-green-500/25 rounded-2xl transition-all duration-500 hover:scale-[1.02] text-xs sm:text-sm md:text-base font-medium px-2 sm:px-4 md:px-6 py-3 md:py-4 h-auto min-h-[65px] md:min-h-[65px] flex items-center justify-center text-center leading-tight"
                   >
                     <span className="relative z-10">{industry}</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-green-600/10 to-green-700/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
