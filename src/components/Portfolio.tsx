@@ -1,5 +1,5 @@
 
-import { ExternalLink, ArrowRight, Award, Users, TrendingUp } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -31,93 +31,29 @@ const Portfolio = () => {
     }
   ];
 
-  const stats = [
-    { icon: Award, value: "150+", label: "Projects Delivered" },
-    { icon: Users, value: "50+", label: "Enterprise Clients" },
-    { icon: TrendingUp, value: "99.9%", label: "Client Satisfaction" }
-  ];
-
   return (
     <section id="portfolio" className="py-24 bg-white relative overflow-hidden">
-      {/* Animated web infrastructure background */}
-      <div className="absolute inset-0 opacity-15">
-        {/* Server rack visualization */}
-        <div className="absolute top-1/4 right-1/4 w-64 h-96">
-          <svg viewBox="0 0 100 150" className="w-full h-full">
-            {/* Server units */}
-            {[...Array(8)].map((_, i) => (
-              <g key={i}>
-                <rect x="20" y={10 + i * 16} width="60" height="12" fill="#059669" opacity="0.3" rx="2">
-                  <animate attributeName="opacity" values="0.3;0.8;0.3" dur={`${2 + i * 0.2}s`} repeatCount="indefinite"/>
-                </rect>
-                {/* Status lights */}
-                <circle cx="75" cy={16 + i * 16} r="2" fill="#059669">
-                  <animate attributeName="fill" values="#059669;#10b981;#059669" dur={`${1.5 + i * 0.1}s`} repeatCount="indefinite"/>
-                </circle>
-              </g>
-            ))}
-          </svg>
-        </div>
+      {/* Subtle animated background elements */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-green-400 to-blue-500 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-gradient-to-br from-emerald-300 to-cyan-400 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+      </div>
 
-        {/* Data center connectivity */}
-        <div className="absolute bottom-1/4 left-1/4 w-96 h-64">
-          <svg viewBox="0 0 200 100" className="w-full h-full">
-            {/* Connection paths */}
-            <g stroke="#059669" strokeWidth="2" fill="none" opacity="0.4">
-              <path d="M20,20 Q60,10 100,20 T180,20" strokeDasharray="5,3">
-                <animate attributeName="stroke-dashoffset" values="0;8;0" dur="3s" repeatCount="indefinite"/>
-              </path>
-              <path d="M20,50 Q60,40 100,50 T180,50" strokeDasharray="5,3">
-                <animate attributeName="stroke-dashoffset" values="0;8;0" dur="3.5s" repeatCount="indefinite"/>
-              </path>
-              <path d="M20,80 Q60,70 100,80 T180,80" strokeDasharray="5,3">
-                <animate attributeName="stroke-dashoffset" values="0;8;0" dur="4s" repeatCount="indefinite"/>
-              </path>
-            </g>
-            
-            {/* Data flow indicators */}
-            <g fill="#059669" opacity="0.6">
-              {[20, 50, 80].map((y, i) => (
-                <circle key={i} cx="20" cy={y} r="3">
-                  <animate attributeName="cx" values="20;180;20" dur={`${4 + i * 0.5}s`} repeatCount="indefinite"/>
-                  <animate attributeName="r" values="3;1;3" dur={`${4 + i * 0.5}s`} repeatCount="indefinite"/>
-                </circle>
-              ))}
-            </g>
-          </svg>
-        </div>
-
-        {/* Cloud infrastructure */}
-        <div className="absolute top-0 left-0 w-72 h-48 opacity-20">
-          <svg viewBox="0 0 150 80" className="w-full h-full">
-            {/* Cloud shapes */}
-            <g fill="#059669" opacity="0.3">
-              <ellipse cx="40" cy="30" rx="20" ry="12">
-                <animate attributeName="opacity" values="0.3;0.6;0.3" dur="4s" repeatCount="indefinite"/>
-              </ellipse>
-              <ellipse cx="70" cy="25" rx="25" ry="15">
-                <animate attributeName="opacity" values="0.3;0.6;0.3" dur="4.5s" repeatCount="indefinite"/>
-              </ellipse>
-              <ellipse cx="100" cy="30" rx="18" ry="10">
-                <animate attributeName="opacity" values="0.3;0.6;0.3" dur="3.5s" repeatCount="indefinite"/>
-              </ellipse>
-            </g>
-            
-            {/* Data streams from cloud */}
-            <g stroke="#059669" strokeWidth="1" opacity="0.4">
-              {[...Array(5)].map((_, i) => (
-                <line key={i} x1={50 + i * 10} y1="45" x2={50 + i * 10} y2="70" strokeDasharray="3,2">
-                  <animate 
-                    attributeName="stroke-dashoffset" 
-                    values="0;5;0" 
-                    dur={`${2 + i * 0.2}s`} 
-                    repeatCount="indefinite"
-                  />
-                </line>
-              ))}
-            </g>
-          </svg>
-        </div>
+      {/* Floating particles */}
+      <div className="absolute inset-0 opacity-20">
+        {[...Array(6)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-green-500 rounded-full animate-pulse"
+            style={{
+              left: `${20 + i * 15}%`,
+              top: `${30 + (i % 3) * 20}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${3 + i * 0.5}s`
+            }}
+          ></div>
+        ))}
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -138,28 +74,13 @@ const Portfolio = () => {
           </p>
         </div>
 
-        {/* Enhanced Stats Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          {stats.map((stat, index) => (
-            <div 
-              key={index} 
-              className="text-center p-8 bg-gradient-to-br from-gray-50 to-green-50 rounded-xl border border-gray-200 hover:border-green-500 transition-all duration-500 cursor-pointer group hover:scale-105 animate-fade-in"
-              style={{animationDelay: `${index * 200}ms`}}
-            >
-              <stat.icon className="w-8 h-8 text-green-600 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
-              <div className="text-3xl font-light text-gray-900 mb-2 group-hover:text-green-600 transition-colors duration-300">{stat.value}</div>
-              <div className="text-gray-600 font-medium">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-
         {/* Enhanced Projects Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
           {projects.map((project, index) => (
             <Card 
               key={index} 
               className="group overflow-hidden border-gray-200 hover:border-green-500 transition-all duration-500 bg-white shadow-none hover:shadow-2xl cursor-pointer hover:scale-105 animate-fade-in"
-              style={{animationDelay: `${(index + 3) * 200}ms`}}
+              style={{animationDelay: `${index * 200}ms`}}
             >
               <div className="relative overflow-hidden">
                 <img 
