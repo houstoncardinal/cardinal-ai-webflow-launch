@@ -1,4 +1,5 @@
-import { Target, Users, Award, Lightbulb, Code, Monitor, Smartphone, Globe } from "lucide-react";
+
+import { Target, Users, Award, Lightbulb, MessageCircle, Users2, Rocket, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const About = () => {
@@ -25,38 +26,42 @@ const About = () => {
     }
   ];
 
-  const developmentServices = [
+  const workflowSteps = [
     {
-      icon: Code,
-      title: "Custom Applications",
-      description: "Enterprise-grade applications built with cutting-edge technology",
-      technologies: ["React", "Node.js", "Python", "TypeScript"],
-      gradient: "from-green-400 to-emerald-400",
-      iconBg: "bg-green-500/20"
+      number: "01",
+      icon: MessageCircle,
+      title: "Discovery Call",
+      description: "We start with a comprehensive consultation to understand your vision, challenges, and goals.",
+      duration: "30-60 mins",
+      gradient: "from-blue-500 to-cyan-500",
+      delay: "0ms"
     },
     {
-      icon: Globe,
-      title: "Web Development",
-      description: "Responsive, scalable web solutions that drive business growth",
-      technologies: ["Next.js", "Tailwind", "GraphQL", "AWS"],
-      gradient: "from-blue-400 to-cyan-400",
-      iconBg: "bg-blue-500/20"
+      number: "02",
+      icon: Users2,
+      title: "Strategy & Planning",
+      description: "Our team crafts a detailed roadmap with timelines, technology stack, and project milestones.",
+      duration: "3-5 days",
+      gradient: "from-purple-500 to-pink-500",
+      delay: "200ms"
     },
     {
-      icon: Smartphone,
-      title: "Mobile Solutions",
-      description: "Cross-platform mobile apps with native performance",
-      technologies: ["React Native", "Flutter", "iOS", "Android"],
-      gradient: "from-purple-400 to-pink-400",
-      iconBg: "bg-purple-500/20"
+      number: "03",
+      icon: Rocket,
+      title: "Development Sprint",
+      description: "Agile development with regular updates, prototypes, and collaborative feedback sessions.",
+      duration: "2-12 weeks",
+      gradient: "from-green-500 to-emerald-500",
+      delay: "400ms"
     },
     {
-      icon: Monitor,
-      title: "Digital Platforms",
-      description: "Full-stack platforms that scale with your business",
-      technologies: ["Microservices", "Docker", "K8s", "CI/CD"],
-      gradient: "from-orange-400 to-red-400",
-      iconBg: "bg-orange-500/20"
+      number: "04",
+      icon: CheckCircle,
+      title: "Launch & Support",
+      description: "Seamless deployment with ongoing maintenance, optimization, and dedicated support.",
+      duration: "Ongoing",
+      gradient: "from-orange-500 to-red-500",
+      delay: "600ms"
     }
   ];
 
@@ -155,7 +160,7 @@ const About = () => {
             </Button>
           </div>
 
-          {/* Creative Development Services Showcase */}
+          {/* Animated Step Process */}
           <div className="space-y-8 animate-fade-in" style={{animationDelay: '800ms'}}>
             <div className="relative bg-gradient-to-r from-gray-800/30 to-gray-900/30 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/30 overflow-hidden">
               {/* Background glow effect */}
@@ -167,62 +172,64 @@ const About = () => {
               <div className="relative z-10">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-light text-white mb-2">
-                    Development <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">excellence</span>
+                    How we <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">work together</span>
                   </h3>
                   <div className="w-16 h-px bg-gradient-to-r from-green-400 to-blue-400 mx-auto"></div>
+                  <p className="text-gray-400 text-sm mt-3">Your journey from idea to launch</p>
                 </div>
                 
-                {/* Service Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {developmentServices.map((service, index) => (
-                    <div key={index} className="group relative bg-gray-800/40 rounded-xl p-4 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 hover:scale-105">
-                      {/* Gradient background on hover */}
-                      <div className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-10 rounded-xl transition-opacity duration-300`}></div>
+                {/* Process Steps */}
+                <div className="space-y-6">
+                  {workflowSteps.map((step, index) => (
+                    <div 
+                      key={index} 
+                      className="group relative animate-fade-in"
+                      style={{animationDelay: step.delay}}
+                    >
+                      {/* Connecting line for non-last items */}
+                      {index < workflowSteps.length - 1 && (
+                        <div className="absolute left-8 top-16 w-px h-6 bg-gradient-to-b from-gray-600 to-gray-700"></div>
+                      )}
                       
-                      <div className="relative z-10">
-                        {/* Icon */}
-                        <div className={`inline-flex items-center justify-center w-10 h-10 ${service.iconBg} rounded-lg mb-3 group-hover:scale-110 transition-transform duration-300`}>
-                          <service.icon className="w-5 h-5 text-white" />
+                      <div className="flex items-start space-x-4 p-4 rounded-xl bg-gray-800/40 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 hover:scale-[1.02] hover:bg-gray-800/60">
+                        {/* Step Number & Icon */}
+                        <div className="flex-shrink-0">
+                          <div className={`relative w-16 h-16 bg-gradient-to-r ${step.gradient} rounded-full p-3 group-hover:scale-110 transition-transform duration-300`}>
+                            <step.icon className="w-full h-full text-white" />
+                            <div className="absolute -top-2 -right-2 w-6 h-6 bg-gray-900 rounded-full flex items-center justify-center border border-gray-700">
+                              <span className="text-xs font-bold text-green-400">{step.number}</span>
+                            </div>
+                          </div>
                         </div>
                         
-                        {/* Title */}
-                        <h4 className="text-white font-medium text-sm mb-2 group-hover:text-green-400 transition-colors duration-300">
-                          {service.title}
-                        </h4>
-                        
-                        {/* Description */}
-                        <p className="text-gray-400 text-xs leading-relaxed mb-3">
-                          {service.description}
-                        </p>
-                        
-                        {/* Technologies */}
-                        <div className="flex flex-wrap gap-1">
-                          {service.technologies.map((tech, techIndex) => (
-                            <span 
-                              key={techIndex} 
-                              className="inline-block px-2 py-1 bg-gray-700/50 text-gray-300 text-xs rounded-md border border-gray-600/30 group-hover:border-gray-500/50 transition-colors duration-300"
-                            >
-                              {tech}
+                        {/* Step Content */}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between mb-2">
+                            <h4 className="text-white font-medium group-hover:text-green-400 transition-colors duration-300">
+                              {step.title}
+                            </h4>
+                            <span className="text-xs text-gray-400 bg-gray-700/50 px-2 py-1 rounded-full">
+                              {step.duration}
                             </span>
-                          ))}
+                          </div>
+                          <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                            {step.description}
+                          </p>
                         </div>
                       </div>
-                      
-                      {/* Subtle glow effect */}
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                   ))}
                 </div>
                 
-                {/* Footer with call to action */}
-                <div className="mt-6 pt-6 border-t border-gray-700/30 text-center">
-                  <div className="flex justify-center items-center space-x-2 mb-2">
+                {/* Call to Action */}
+                <div className="mt-8 pt-6 border-t border-gray-700/30 text-center">
+                  <div className="flex justify-center items-center space-x-2 mb-3">
                     <div className="w-2 h-2 bg-green-400/60 rounded-full animate-pulse"></div>
-                    <span className="text-gray-400 text-xs">Ready to build your next project?</span>
+                    <span className="text-gray-300 text-sm font-medium">Ready to start your project?</span>
                     <div className="w-2 h-2 bg-blue-400/60 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
                   </div>
-                  <Button className="bg-gradient-to-r from-green-600/80 to-blue-600/80 hover:from-green-500 hover:to-blue-500 text-white px-4 py-2 text-xs rounded-lg font-medium transition-all duration-300 hover:scale-105 border border-gray-600/30">
-                    Explore Our Work
+                  <Button className="bg-gradient-to-r from-green-600/80 to-blue-600/80 hover:from-green-500 hover:to-blue-500 text-white px-6 py-3 text-sm rounded-lg font-medium transition-all duration-300 hover:scale-105 border border-gray-600/30 hover:shadow-lg hover:shadow-green-500/25">
+                    Schedule Discovery Call
                   </Button>
                 </div>
               </div>
