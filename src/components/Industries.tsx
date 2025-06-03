@@ -337,8 +337,8 @@ const Industries = () => {
           </p>
         </div>
 
-        {/* Industries Grid - Added proper bottom margin */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-24 md:mb-32">
+        {/* Industries Grid - Increased bottom margin significantly */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-32 md:mb-40">
           {industries.map((industry, index) => (
             <div
               key={index}
@@ -388,8 +388,8 @@ const Industries = () => {
           ))}
         </div>
 
-        {/* Enhanced Industry Expertise Deep Dive - Added top padding for mobile */}
-        <div className="pt-8 md:pt-0 mb-16 md:mb-24">
+        {/* Enhanced Industry Expertise Deep Dive - Increased top padding significantly */}
+        <div className="pt-16 md:pt-8 mb-16 md:mb-24">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-4 md:mb-6">
               Industry Expertise & 
@@ -401,8 +401,8 @@ const Industries = () => {
           </div>
 
           <Tabs defaultValue="Real Estate" className="w-full">
-            {/* Enhanced TabsList with better mobile spacing */}
-            <div className="relative mb-12 md:mb-16">
+            {/* Enhanced TabsList with increased mobile spacing */}
+            <div className="relative mb-16 md:mb-20">
               <div className="absolute inset-0 bg-gradient-to-r from-green-50/50 via-gray-50 to-green-50/50 rounded-3xl blur-xl"></div>
               <TabsList className="relative w-full grid grid-cols-2 lg:grid-cols-4 gap-2 bg-white/80 backdrop-blur-sm border-2 border-gray-100/50 p-3 rounded-3xl shadow-2xl shadow-green-500/5 min-h-[80px] md:min-h-[80px]">
                 {Object.keys(industryExpertise).map((industry) => (
