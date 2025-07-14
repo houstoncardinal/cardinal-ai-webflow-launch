@@ -1,12 +1,49 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [user, setUser] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    // Check initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      if (session?.user) {
+        checkAdminRole(session.user.id);
+      }
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setUser(session?.user ?? null);
+        if (session?.user) {
+          checkAdminRole(session.user.id);
+        } else {
+          setIsAdmin(false);
+        }
+      }
+    );
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const checkAdminRole = async (userId: string) => {
+    const { data } = await supabase
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', userId)
+      .single();
+    
+    setIsAdmin(data?.role === 'admin');
+  };
 
   const navItems = [
     { name: "Services", href: "/services" },
@@ -67,10 +104,40 @@ const Navigation = () => {
                   <span className="absolute -inset-2 rounded-lg bg-green-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></span>
                 </Link>
               ))}
-              <Button className="ml-4 bg-green-600 hover:bg-green-700 text-white px-6 py-2 text-sm font-medium group transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                Contact us
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </Button>
+              
+              <div className="flex items-center gap-4 ml-4">
+                {user ? (
+                  <div className="flex items-center gap-2">
+                    {isAdmin && (
+                      <Link to="/admin">
+                        <Button variant="outline" size="sm" className="text-sm">
+                          Admin
+                        </Button>
+                      </Link>
+                    )}
+                    <Button 
+                      variant="ghost" 
+                      size="sm"
+                      onClick={() => supabase.auth.signOut()}
+                      className="text-sm"
+                    >
+                      Sign Out
+                    </Button>
+                  </div>
+                ) : (
+                  <Link to="/auth">
+                    <Button variant="outline" size="sm" className="text-sm">
+                      <User className="mr-2 h-4 w-4" />
+                      Sign In
+                    </Button>
+                  </Link>
+                )}
+                
+                <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 text-sm font-medium group transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                  Contact us
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </Button>
+              </div>
             </div>
           </div>
 
@@ -106,6 +173,38 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
+              
+              <div className="mt-4 pt-4 border-t border-gray-200">
+                {user ? (
+                  <div className="space-y-2">
+                    {isAdmin && (
+                      <Link to="/admin" onClick={() => setIsMenuOpen(false)}>
+                        <Button variant="outline" className="w-full text-sm">
+                          Admin Dashboard
+                        </Button>
+                      </Link>
+                    )}
+                    <Button 
+                      onClick={() => {
+                        supabase.auth.signOut();
+                        setIsMenuOpen(false);
+                      }}
+                      variant="ghost"
+                      className="w-full text-sm"
+                    >
+                      Sign Out
+                    </Button>
+                  </div>
+                ) : (
+                  <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
+                    <Button variant="outline" className="w-full text-sm">
+                      <User className="mr-2 h-4 w-4" />
+                      Sign In
+                    </Button>
+                  </Link>
+                )}
+              </div>
+              
               <Button className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white py-3 group transition-all duration-300 hover:scale-105">
                 Contact us
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />

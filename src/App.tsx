@@ -14,6 +14,8 @@ import AboutPage from "./pages/About";
 import ContactPage from "./pages/Contact";
 import InsightsPage from "./pages/Insights";
 import CareersPage from "./pages/Careers";
+import AuthPage from "./pages/Auth";
+import AdminDashboard from "./pages/AdminDashboard";
 
 // Service pages
 import WebDevelopment from "./pages/services/WebDevelopment";
@@ -43,6 +45,8 @@ const App = () => (
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/insights" element={<InsightsPage />} />
           <Route path="/careers" element={<CareersPage />} />
+          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/admin" element={<AdminDashboard />} />
           
           {/* Service Routes */}
           <Route path="/services/web-development" element={<WebDevelopment />} />
