@@ -7,11 +7,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Phone, MapPin, Clock, Sparkles } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import TransformationForm from "./TransformationForm";
 
 const Contact = () => {
   const { toast } = useToast();
   const [isTransformationFormOpen, setIsTransformationFormOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -20,19 +22,45 @@ const Contact = () => {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message sent successfully! 🚀",
-      description: "We'll get back to you within 24 hours."
-    });
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      company: "",
-      message: ""
-    });
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert({
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          email: formData.email,
+          company: formData.company,
+          message: formData.message
+        });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message sent successfully! 🚀",
+        description: "We'll get back to you within 24 hours."
+      });
+
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        company: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      toast({
+        title: "Submission failed",
+        description: "Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -203,8 +231,12 @@ const Contact = () => {
                     />
                   </div>
 
-                  <Button type="submit" className="w-full h-12 bg-green-600 hover:bg-green-700 text-white font-medium text-lg transition-all duration-300 hover:scale-105 shadow-lg">
-                    Send message
+                  <Button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="w-full h-12 bg-green-600 hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium text-lg transition-all duration-300 hover:scale-105 shadow-lg"
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send message'}
                   </Button>
                 </form>
               </CardContent>

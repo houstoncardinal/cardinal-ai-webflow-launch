@@ -3,16 +3,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowRight, Mail, Phone, User, Gift, ChevronDown, Code, Smartphone, Search, Palette, Cloud, BarChart, Target } from 'lucide-react';
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 const serviceOptions = [{
   value: "web-development",
   label: "Web Development",
   icon: Code
 }, {
-  value: "mobile-apps",
+  value: "mobile-applications",
   label: "Mobile Applications",
   icon: Smartphone
 }, {
-  value: "seo-optimization",
+  value: "seo-insights",
   label: "SEO & Digital Marketing",
   icon: Search
 }, {
@@ -28,21 +30,58 @@ const serviceOptions = [{
   label: "Digital Campaigns",
   icon: BarChart
 }, {
-  value: "consultation",
-  label: "General Consultation",
-  icon: Gift
+  value: "experience-optimization",
+  label: "Experience Optimization",
+  icon: Target
 }];
 const ContactForm = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     service: ''
   });
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission here
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase
+        .from('project_evaluations')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          service: formData.service as any
+        });
+
+      if (error) throw error;
+
+      toast({
+        title: "Request submitted successfully! 🚀",
+        description: "We'll get back to you within 2 hours with your project evaluation.",
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: ''
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Submission failed",
+        description: "Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -151,9 +190,13 @@ const ContactForm = () => {
                   {/* Submit Button */}
                   <div className="relative group/button">
                     <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-600 rounded-lg opacity-0 group-hover/button:opacity-100 transition-all duration-300 blur-lg"></div>
-                    <Button type="submit" className="relative w-full h-12 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group-hover/button:scale-105 border-0">
+                    <Button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="relative w-full h-12 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group-hover/button:scale-105 border-0"
+                    >
                       <span className="flex items-center justify-center gap-2">
-                        Get Project Evaluation
+                        {isSubmitting ? 'Submitting...' : 'Get Project Evaluation'}
                         <ArrowRight className="w-4 h-4 group-hover/button:translate-x-1 transition-transform duration-300" />
                       </span>
                     </Button>

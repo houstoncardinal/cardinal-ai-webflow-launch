@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Star, Sparkles, Zap, Phone, Mail, Building, Calendar, DollarSign } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 interface TransformationFormProps {
   isOpen: boolean;
@@ -19,6 +20,7 @@ interface TransformationFormProps {
 const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
   const { toast } = useToast();
   const [currentStep, setCurrentStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -46,12 +48,11 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
   ];
 
   const budgetRanges = [
-    { value: "5k-10k", label: "$5,000 - $10,000", description: "Starter projects" },
+    { value: "under-10k", label: "$5,000 - $10,000", description: "Starter projects" },
     { value: "10k-25k", label: "$10,000 - $25,000", description: "Standard solutions" },
     { value: "25k-50k", label: "$25,000 - $50,000", description: "Advanced features" },
     { value: "50k-100k", label: "$50,000 - $100,000", description: "Enterprise solutions" },
-    { value: "100k+", label: "$100,000+", description: "Large-scale projects" },
-    { value: "discuss", label: "Let's Discuss", description: "Custom quote needed" }
+    { value: "over-100k", label: "$100,000+", description: "Large-scale projects" }
   ];
 
   const timelineOptions = [
@@ -72,21 +73,66 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
     "Manufacturing", "Legal", "Government", "Non-profit", "Entertainment", "Other"
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    toast({
-      title: "Quote Request Submitted! 🚀",
-      description: "We'll contact you within 24 hours with a detailed proposal.",
-    });
-    
-    console.log("Comprehensive quote request:", formData);
-    onClose();
-    setCurrentStep(1);
-    setFormData({
-      name: "", email: "", phone: "", company: "", projectType: "", budget: "",
-      timeline: "", description: "", features: [], industry: "", currentWebsite: "", goals: ""
-    });
+    setIsSubmitting(true);
+
+    try {
+      // Map project type to service type
+      const serviceMap: Record<string, string> = {
+        "website": "web-development",
+        "ecommerce": "web-applications", 
+        "webapp": "web-applications",
+        "portfolio": "web-development",
+        "blog": "web-development",
+        "landing": "web-development",
+        "redesign": "web-development",
+        "custom": "web-applications"
+      };
+
+      const { error } = await supabase
+        .from('project_evaluations')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          service: (serviceMap[formData.projectType] || "web-development") as any,
+          estimated_budget: formData.budget as any,
+          timeline: formData.timeline,
+          project_description: [
+            `Project Type: ${formData.projectType}`,
+            `Industry: ${formData.industry}`,
+            `Features: ${formData.features.join(', ')}`,
+            `Current Website: ${formData.currentWebsite || 'None'}`,
+            `Goals: ${formData.goals}`,
+            `Description: ${formData.description}`
+          ].join('\n\n'),
+          notes: `Company: ${formData.company}`
+        });
+
+      if (error) throw error;
+
+      toast({
+        title: "Quote Request Submitted! 🚀",
+        description: "We'll contact you within 24 hours with a detailed proposal.",
+      });
+      
+      onClose();
+      setCurrentStep(1);
+      setFormData({
+        name: "", email: "", phone: "", company: "", projectType: "", budget: "",
+        timeline: "", description: "", features: [], industry: "", currentWebsite: "", goals: ""
+      });
+    } catch (error) {
+      console.error('Error submitting transformation form:', error);
+      toast({
+        title: "Submission failed",
+        description: "Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, 4));
@@ -453,9 +499,10 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
             ) : (
               <Button
                 type="submit"
-                className="px-8 h-12 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 shadow-lg"
+                disabled={isSubmitting}
+                className="px-8 h-12 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
               >
-                Submit Quote Request
+                {isSubmitting ? 'Submitting...' : 'Submit Quote Request'}
               </Button>
             )}
           </div>

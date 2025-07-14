@@ -1,5 +1,6 @@
 import { Facebook, Twitter, Linkedin, Youtube, Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import NewsletterSignup from "./NewsletterSignup";
 
 const Footer = () => {
   const socialLinks = [
@@ -90,7 +91,7 @@ const Footer = () => {
 
       <div className="relative z-10">
         <div className="max-w-full px-6 lg:px-12 py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
             {/* Company Info */}
             <div className="lg:col-span-1 animate-fade-in">
               <div className="text-3xl font-light mb-6 group cursor-pointer">
@@ -197,6 +198,11 @@ const Footer = () => {
                   <span className="text-gray-300 text-sm font-light hover:text-white transition-colors duration-300">hello@cardinalhouston.com</span>
                 </div>
               </div>
+            </div>
+
+            {/* Newsletter Signup */}
+            <div className="animate-fade-in" style={{animationDelay: '800ms'}}>
+              <NewsletterSignup />
             </div>
           </div>
 
