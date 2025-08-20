@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -16,6 +17,7 @@ import InsightsPage from "./pages/Insights";
 import CareersPage from "./pages/Careers";
 import AuthPage from "./pages/Auth";
 import AdminDashboard from "./pages/AdminDashboard";
+import SocialMediaTest from "./components/SocialMediaTest";
 
 // Service pages
 import WebDevelopment from "./pages/services/WebDevelopment";
@@ -30,40 +32,43 @@ import ExperienceOptimization from "./pages/services/ExperienceOptimization";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          
-          {/* Main Pages */}
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/industries" element={<IndustriesPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/insights" element={<InsightsPage />} />
-          <Route path="/careers" element={<CareersPage />} />
-          <Route path="/auth" element={<AuthPage />} />
-          <Route path="/admin" element={<AdminDashboard />} />
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            
+            {/* Main Pages */}
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/industries" element={<IndustriesPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/insights" element={<InsightsPage />} />
+            <Route path="/careers" element={<CareersPage />} />
+            <Route path="/auth" element={<AuthPage />} />
+                      <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/test" element={<SocialMediaTest />} />
           
           {/* Service Routes */}
-          <Route path="/services/web-development" element={<WebDevelopment />} />
-          <Route path="/services/mobile-applications" element={<MobileApplications />} />
-          <Route path="/services/web-applications" element={<WebApplications />} />
-          <Route path="/services/cloud-solutions" element={<CloudSolutions />} />
-          <Route path="/services/seo-insights" element={<SEOInsights />} />
-          <Route path="/services/brand-identity" element={<BrandIdentity />} />
-          <Route path="/services/digital-campaigns" element={<DigitalCampaigns />} />
-          <Route path="/services/experience-optimization" element={<ExperienceOptimization />} />
-          
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+            <Route path="/services/web-development" element={<WebDevelopment />} />
+            <Route path="/services/mobile-applications" element={<MobileApplications />} />
+            <Route path="/services/web-applications" element={<WebApplications />} />
+            <Route path="/services/cloud-solutions" element={<CloudSolutions />} />
+            <Route path="/services/seo-insights" element={<SEOInsights />} />
+            <Route path="/services/brand-identity" element={<BrandIdentity />} />
+            <Route path="/services/digital-campaigns" element={<DigitalCampaigns />} />
+            <Route path="/services/experience-optimization" element={<ExperienceOptimization />} />
+            
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </HelmetProvider>
 );
 
 export default App;

@@ -8,10 +8,18 @@ import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
+import SEO from "@/components/SEO";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="Cardinal Consulting - Advanced Technology Solutions"
+        description="Cardinal Consulting delivers cutting-edge technology solutions including AI, blockchain, quantum computing, and enterprise software development for Fortune 500 companies."
+        keywords="AI, artificial intelligence, blockchain, quantum computing, enterprise software, technology consulting, digital transformation"
+        url="/"
+      />
+      
       <Navigation />
       
       {/* Hero - White background */}
