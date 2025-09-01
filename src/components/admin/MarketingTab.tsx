@@ -780,10 +780,10 @@ const MarketingTab = () => {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {leads.reduce((acc, lead) => {
+                  {Object.entries(leads.reduce((acc, lead) => {
                     acc[lead.source] = (acc[lead.source] || 0) + 1;
                     return acc;
-                  }, {} as Record<string, number>)
+                  }, {} as Record<string, number>))
                   .sort(([,a], [,b]) => b - a)
                   .slice(0, 5)
                   .map(([source, count]) => (

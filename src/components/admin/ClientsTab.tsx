@@ -58,7 +58,7 @@ const ClientsTab = () => {
           id: '1',
           name: 'TechCorp Solutions',
           email: 'ceo@techcorp.com',
-          phone: '+1 (555) 123-4567',
+          phone: '(832) 989-2163',
           company: 'TechCorp Solutions',
           website: 'https://techcorp.com',
           industry: 'Technology',

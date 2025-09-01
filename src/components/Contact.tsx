@@ -73,7 +73,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone",
-      details: ["(832) 777-7312", "Available 24/7"],
+      details: ["(832) 989-2163", "Available 24/7"],
       color: "text-green-600"
     },
     {
@@ -306,11 +306,19 @@ const Contact = () => {
                   Speak directly with our team for urgent projects or complex requirements.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button variant="outline" className="flex-1 border-white hover:bg-white text-slate-950">
+                  <Button 
+                    variant="outline" 
+                    className="flex-1 border-white hover:bg-white text-slate-950"
+                    onClick={() => window.location.href = 'tel:(832) 989-2163'}
+                  >
                     <Phone className="w-4 h-4 mr-2" />
                     Call Now
                   </Button>
-                  <Button variant="outline" className="flex-1 border-white hover:bg-white text-slate-950">
+                  <Button 
+                    variant="outline" 
+                    className="flex-1 border-white hover:bg-white text-slate-950"
+                    onClick={() => window.location.href = 'mailto:hello@cardinalhouston.com'}
+                  >
                     <Mail className="w-4 h-4 mr-2" />
                     Live Chat
                   </Button>

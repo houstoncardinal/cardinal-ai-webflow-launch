@@ -118,12 +118,19 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in" style={{
             animationDelay: '700ms'
           }}>
-              <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 text-base font-medium border-0 shadow-none group transition-all duration-300 hover:scale-105 hover:shadow-lg">
+              <Button 
+                onClick={() => window.location.href = '#contact'} 
+                className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 text-base font-medium border-0 shadow-none group transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              >
                 Get started
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
               
-              <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-3 text-base font-medium transition-all duration-300 hover:scale-105 hover:border-green-500">
+              <Button 
+                onClick={() => window.location.href = '/about'} 
+                variant="outline" 
+                className="border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-3 text-base font-medium transition-all duration-300 hover:scale-105 hover:border-green-500"
+              >
                 Learn more
               </Button>
             </div>

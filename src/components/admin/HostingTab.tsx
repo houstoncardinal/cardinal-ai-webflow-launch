@@ -9,7 +9,7 @@ import { Progress } from '@/components/ui/progress';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Server, Globe, Shield, Activity, Cpu, HardDrive, Wifi, Zap, Plus, Search, Eye, Settings, RefreshCw, AlertTriangle, CheckCircle, Clock, TrendingUp, Database, Network, Cloud, Lock, Unlock, Power, PowerOff, Play, Pause, Stop, RotateCcw, Download, Upload, BarChart3, PieChart, LineChart, Target, Star, Award, Trophy, Gem, Diamond, Sparkles, Rocket, Brain, Crown, Users, FileText, Calendar, DollarSign, ArrowUpRight, ArrowDownRight, Minus, Plus as PlusIcon, Filter, MoreHorizontal, Edit, Trash2, Copy, ExternalLink, Bell, Mail, Phone, Building, MapPin } from 'lucide-react';
+import { Server, Globe, Shield, Activity, Cpu, HardDrive, Wifi, Zap, Plus, Search, Eye, Settings, RefreshCw, AlertTriangle, CheckCircle, Clock, TrendingUp, Database, Network, Cloud, Lock, Unlock, Power, PowerOff, Play, Pause, RotateCcw, Download, Upload, BarChart3, PieChart, LineChart, Target, Star, Award, Trophy, Gem, Diamond, Sparkles, Rocket, Brain, Crown, Users, FileText, Calendar, DollarSign, ArrowUpRight, ArrowDownRight, Minus, Plus as PlusIcon, Filter, MoreHorizontal, Edit, Trash2, Copy, ExternalLink, Bell, Mail, Phone, Building, MapPin } from 'lucide-react';
 
 interface HostingServer {
   id: string;

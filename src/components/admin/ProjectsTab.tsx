@@ -1,56 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '@/integrations/supabase/client';
-import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Calendar, User, DollarSign, Clock, Plus, Filter, Search, Edit, Trash2, FileText, Upload, Download, Eye, CalendarDays, Users, Tag, Target, CheckCircle, AlertCircle, Clock as ClockIcon, FileUp, MessageSquare, BarChart3, Zap, Crown, Star, Award, Trophy, Gem, Diamond, Sparkles, Rocket, Brain, Cpu, Shield, Database, Globe, Network, Activity, TrendingUp } from 'lucide-react';
-import type { Project, Client, Milestone, Task, ProjectDocument, ProjectNote, TimeEntry, ProjectExpense } from '@/integrations/supabase/types';
+import { useToast } from '@/hooks/use-toast';
 
-interface ProjectWithClient extends Project {
-  client?: Client;
-  milestones?: Milestone[];
-  tasks?: Task[];
-  documents?: ProjectDocument[];
-  notes?: ProjectNote[];
-  time_entries?: TimeEntry[];
-  expenses?: ProjectExpense[];
+interface SimpleProject {
+  id: string;
+  name: string;
+  description: string;
+  client_name: string;
+  service_type: string;
+  status: string;
+  priority: string;
+  start_date: string;
+  end_date: string;
+  deadline: string;
+  budget: number;
+  actual_cost: number;
+  progress: number;
+  team_lead: string;
+  assigned_team: string[];
+  tags: string[];
+  created_at: string;
+  updated_at: string;
 }
 
 const ProjectsTab = () => {
-  const [projects, setProjects] = useState<ProjectWithClient[]>([]);
-  const [clients, setClients] = useState<Client[]>([]);
+  const [projects, setProjects] = useState<SimpleProject[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [priorityFilter, setPriorityFilter] = useState<string>('all');
-  const [selectedProject, setSelectedProject] = useState<ProjectWithClient | null>(null);
+  const [selectedProject, setSelectedProject] = useState<SimpleProject | null>(null);
   const [isProjectDialogOpen, setIsProjectDialogOpen] = useState(false);
   const { toast } = useToast();
-
-  // Form states
-  const [projectForm, setProjectForm] = useState({
-    name: '',
-    description: '',
-    client_id: '',
-    service_type: 'web-development' as any,
-    status: 'new' as any,
-    priority: 'medium' as any,
-    start_date: '',
-    end_date: '',
-    deadline: '',
-    budget: '',
-    team_lead: '',
-    assigned_team: [] as string[],
-    tags: [] as string[]
-  });
 
   useEffect(() => {
     loadData();
@@ -61,12 +50,12 @@ const ProjectsTab = () => {
       setLoading(true);
       
       // Demo data for luxury projects
-      const demoProjects: ProjectWithClient[] = [
+      const demoProjects: SimpleProject[] = [
         {
           id: '1',
           name: 'Quantum E-commerce Platform',
           description: 'Next-generation e-commerce platform with AI-powered recommendations, blockchain payments, and immersive AR shopping experiences.',
-          client_id: '1',
+          client_name: 'TechCorp Solutions',
           service_type: 'web-development',
           status: 'in-progress',
           priority: 'critical',
@@ -80,47 +69,13 @@ const ProjectsTab = () => {
           assigned_team: ['Alex Rodriguez', 'Emma Thompson', 'Marcus Kim', 'Lisa Park'],
           tags: ['AI/ML', 'Blockchain', 'AR/VR', 'Enterprise'],
           created_at: '2024-01-15T00:00:00Z',
-          updated_at: '2024-01-15T00:00:00Z',
-          client: {
-            id: '1',
-            name: 'TechCorp Solutions',
-            email: 'ceo@techcorp.com',
-            company: 'TechCorp Solutions',
-            industry: 'Technology',
-            status: 'active',
-            created_at: '2024-01-01T00:00:00Z',
-            updated_at: '2024-01-01T00:00:00Z'
-          },
-          milestones: [
-            { id: '1', project_id: '1', name: 'AI Engine Development', status: 'completed', progress: 100, order_index: 1, created_at: '2024-01-15T00:00:00Z', updated_at: '2024-01-15T00:00:00Z' },
-            { id: '2', project_id: '1', name: 'Blockchain Integration', status: 'in-progress', progress: 75, order_index: 2, created_at: '2024-01-15T00:00:00Z', updated_at: '2024-01-15T00:00:00Z' },
-            { id: '3', project_id: '1', name: 'AR Shopping Experience', status: 'in-progress', progress: 45, order_index: 3, created_at: '2024-01-15T00:00:00Z', updated_at: '2024-01-15T00:00:00Z' }
-          ],
-          tasks: [
-            { id: '1', project_id: '1', title: 'Implement AI Recommendation Engine', status: 'completed', priority: 'high', estimated_hours: 80, actual_hours: 75, order_index: 1, created_at: '2024-01-15T00:00:00Z', updated_at: '2024-01-15T00:00:00Z' },
-            { id: '2', project_id: '1', title: 'Develop Blockchain Payment System', status: 'in-progress', priority: 'critical', estimated_hours: 120, actual_hours: 90, order_index: 2, created_at: '2024-01-15T00:00:00Z', updated_at: '2024-01-15T00:00:00Z' },
-            { id: '3', project_id: '1', title: 'Create AR Product Visualization', status: 'in-progress', priority: 'high', estimated_hours: 100, actual_hours: 45, order_index: 3, created_at: '2024-01-15T00:00:00Z', updated_at: '2024-01-15T00:00:00Z' }
-          ],
-          documents: [
-            { id: '1', project_id: '1', name: 'Technical Architecture', file_type: 'technical', created_at: '2024-01-15T00:00:00Z' },
-            { id: '2', project_id: '1', name: 'AI Model Specifications', file_type: 'technical', created_at: '2024-01-15T00:00:00Z' }
-          ],
-          notes: [
-            { id: '1', project_id: '1', title: 'AI Performance Optimization', content: 'Achieved 99.2% accuracy in product recommendations', is_private: false, created_at: '2024-01-15T00:00:00Z', updated_at: '2024-01-15T00:00:00Z' }
-          ],
-          time_entries: [
-            { id: '1', project_id: '1', description: 'AI Engine Development', hours: 75, date: '2024-01-15', billable: true, created_at: '2024-01-15T00:00:00Z' },
-            { id: '2', project_id: '1', description: 'Blockchain Integration', hours: 90, date: '2024-01-15', billable: true, created_at: '2024-01-15T00:00:00Z' }
-          ],
-          expenses: [
-            { id: '1', project_id: '1', description: 'AI Computing Resources', amount: 15000, date: '2024-01-15', category: 'Infrastructure', created_at: '2024-01-15T00:00:00Z' }
-          ]
+          updated_at: '2024-01-15T00:00:00Z'
         },
         {
           id: '2',
           name: 'Neural Banking Application',
           description: 'Revolutionary mobile banking app with neural network security, biometric authentication, and predictive financial insights.',
-          client_id: '2',
+          client_name: 'FinanceFirst Bank',
           service_type: 'mobile-applications',
           status: 'in-progress',
           priority: 'critical',
@@ -134,47 +89,13 @@ const ProjectsTab = () => {
           assigned_team: ['Sophie Williams', 'David Kim', 'Rachel Green'],
           tags: ['Neural Networks', 'Biometrics', 'FinTech', 'Security'],
           created_at: '2024-01-01T00:00:00Z',
-          updated_at: '2024-01-01T00:00:00Z',
-          client: {
-            id: '2',
-            name: 'FinanceFirst Bank',
-            email: 'cto@financefirst.com',
-            company: 'FinanceFirst Bank',
-            industry: 'Finance',
-            status: 'active',
-            created_at: '2024-01-01T00:00:00Z',
-            updated_at: '2024-01-01T00:00:00Z'
-          },
-          milestones: [
-            { id: '4', project_id: '2', name: 'Neural Security Framework', status: 'completed', progress: 100, order_index: 1, created_at: '2024-01-01T00:00:00Z', updated_at: '2024-01-01T00:00:00Z' },
-            { id: '5', project_id: '2', name: 'Biometric Authentication', status: 'completed', progress: 100, order_index: 2, created_at: '2024-01-01T00:00:00Z', updated_at: '2024-01-01T00:00:00Z' },
-            { id: '6', project_id: '2', name: 'Predictive Analytics Engine', status: 'in-progress', progress: 70, order_index: 3, created_at: '2024-01-01T00:00:00Z', updated_at: '2024-01-01T00:00:00Z' }
-          ],
-          tasks: [
-            { id: '4', project_id: '2', title: 'Implement Neural Security', status: 'completed', priority: 'critical', estimated_hours: 160, actual_hours: 150, order_index: 1, created_at: '2024-01-01T00:00:00Z', updated_at: '2024-01-01T00:00:00Z' },
-            { id: '5', project_id: '2', title: 'Develop Biometric System', status: 'completed', priority: 'critical', estimated_hours: 120, actual_hours: 110, order_index: 2, created_at: '2024-01-01T00:00:00Z', updated_at: '2024-01-01T00:00:00Z' },
-            { id: '6', project_id: '2', title: 'Build Predictive Analytics', status: 'in-progress', priority: 'high', estimated_hours: 200, actual_hours: 140, order_index: 3, created_at: '2024-01-01T00:00:00Z', updated_at: '2024-01-01T00:00:00Z' }
-          ],
-          documents: [
-            { id: '3', project_id: '2', name: 'Security Architecture', file_type: 'technical', created_at: '2024-01-01T00:00:00Z' },
-            { id: '4', project_id: '2', name: 'Compliance Documentation', file_type: 'contract', created_at: '2024-01-01T00:00:00Z' }
-          ],
-          notes: [
-            { id: '2', project_id: '2', title: 'Security Audit Results', content: 'Neural security framework passed all penetration tests with 100% success rate', is_private: true, created_at: '2024-01-01T00:00:00Z', updated_at: '2024-01-01T00:00:00Z' }
-          ],
-          time_entries: [
-            { id: '3', project_id: '2', description: 'Neural Security Development', hours: 150, date: '2024-01-01', billable: true, created_at: '2024-01-01T00:00:00Z' },
-            { id: '4', project_id: '2', description: 'Biometric Integration', hours: 110, date: '2024-01-01', billable: true, created_at: '2024-01-01T00:00:00Z' }
-          ],
-          expenses: [
-            { id: '2', project_id: '2', description: 'Security Infrastructure', amount: 25000, date: '2024-01-01', category: 'Security', created_at: '2024-01-01T00:00:00Z' }
-          ]
+          updated_at: '2024-01-01T00:00:00Z'
         },
         {
           id: '3',
           name: 'Quantum Brand Identity Suite',
           description: 'Comprehensive brand identity system with quantum-inspired design principles, dynamic logos, and immersive brand experiences.',
-          client_id: '3',
+          client_name: 'Creative Studio Inc',
           service_type: 'brand-identity',
           status: 'in-progress',
           priority: 'high',
@@ -188,41 +109,7 @@ const ProjectsTab = () => {
           assigned_team: ['Tom Wilson', 'Anna Rodriguez'],
           tags: ['Quantum Design', 'Dynamic Branding', 'Immersive', 'Creative'],
           created_at: '2024-01-20T00:00:00Z',
-          updated_at: '2024-01-20T00:00:00Z',
-          client: {
-            id: '3',
-            name: 'Creative Studio Inc',
-            email: 'creative@creativestudio.com',
-            company: 'Creative Studio Inc',
-            industry: 'Creative',
-            status: 'active',
-            created_at: '2024-01-01T00:00:00Z',
-            updated_at: '2024-01-01T00:00:00Z'
-          },
-          milestones: [
-            { id: '7', project_id: '3', name: 'Quantum Design System', status: 'completed', progress: 100, order_index: 1, created_at: '2024-01-20T00:00:00Z', updated_at: '2024-01-20T00:00:00Z' },
-            { id: '8', project_id: '3', name: 'Dynamic Logo Development', status: 'completed', progress: 100, order_index: 2, created_at: '2024-01-20T00:00:00Z', updated_at: '2024-01-20T00:00:00Z' },
-            { id: '9', project_id: '3', name: 'Brand Experience Platform', status: 'in-progress', progress: 80, order_index: 3, created_at: '2024-01-20T00:00:00Z', updated_at: '2024-01-20T00:00:00Z' }
-          ],
-          tasks: [
-            { id: '7', project_id: '3', title: 'Design Quantum Brand System', status: 'completed', priority: 'high', estimated_hours: 60, actual_hours: 55, order_index: 1, created_at: '2024-01-20T00:00:00Z', updated_at: '2024-01-20T00:00:00Z' },
-            { id: '8', project_id: '3', title: 'Create Dynamic Logo', status: 'completed', priority: 'high', estimated_hours: 40, actual_hours: 38, order_index: 2, created_at: '2024-01-20T00:00:00Z', updated_at: '2024-01-20T00:00:00Z' },
-            { id: '9', project_id: '3', title: 'Build Brand Platform', status: 'in-progress', priority: 'medium', estimated_hours: 80, actual_hours: 64, order_index: 3, created_at: '2024-01-20T00:00:00Z', updated_at: '2024-01-20T00:00:00Z' }
-          ],
-          documents: [
-            { id: '5', project_id: '3', name: 'Brand Guidelines', file_type: 'design', created_at: '2024-01-20T00:00:00Z' },
-            { id: '6', project_id: '3', name: 'Design System Specs', file_type: 'design', created_at: '2024-01-20T00:00:00Z' }
-          ],
-          notes: [
-            { id: '3', project_id: '3', title: 'Client Feedback', content: 'Quantum design system received exceptional feedback - "Revolutionary and inspiring"', is_private: false, created_at: '2024-01-20T00:00:00Z', updated_at: '2024-01-20T00:00:00Z' }
-          ],
-          time_entries: [
-            { id: '5', project_id: '3', description: 'Quantum Design Development', hours: 55, date: '2024-01-20', billable: true, created_at: '2024-01-20T00:00:00Z' },
-            { id: '6', project_id: '3', description: 'Dynamic Logo Creation', hours: 38, date: '2024-01-20', billable: true, created_at: '2024-01-20T00:00:00Z' }
-          ],
-          expenses: [
-            { id: '3', project_id: '3', description: 'Design Software Licenses', amount: 5000, date: '2024-01-20', category: 'Software', created_at: '2024-01-20T00:00:00Z' }
-          ]
+          updated_at: '2024-01-20T00:00:00Z'
         }
       ];
 
@@ -285,7 +172,7 @@ const ProjectsTab = () => {
 
   const filteredProjects = projects.filter(project => {
     const matchesSearch = project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         project.client?.name.toLowerCase().includes(searchTerm.toLowerCase());
+                         project.client_name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesStatus = statusFilter === 'all' || project.status === statusFilter;
     const matchesPriority = priorityFilter === 'all' || project.priority === priorityFilter;
     
@@ -332,7 +219,6 @@ const ProjectsTab = () => {
                   Initialize a new advanced project for Cardinal Consulting
                 </DialogDescription>
               </DialogHeader>
-              {/* Form content would go here */}
               <DialogFooter>
                 <Button variant="outline" onClick={() => setIsProjectDialogOpen(false)}>
                   Cancel
@@ -397,7 +283,7 @@ const ProjectsTab = () => {
                       {project.name}
                     </CardTitle>
                     <CardDescription className="text-gray-600 mt-1">
-                      {project.client?.name || 'No client assigned'}
+                      {project.client_name}
                     </CardDescription>
                   </div>
                   <div className="flex flex-col gap-2">
@@ -481,22 +367,19 @@ const ProjectsTab = () => {
       {/* Project Details Dialog */}
       {selectedProject && (
         <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-          <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="text-2xl text-gray-900">{selectedProject.name}</DialogTitle>
               <DialogDescription className="text-gray-600">
-                {selectedProject.client?.name} • {selectedProject.service_type.replace('-', ' ')}
+                {selectedProject.client_name} • {selectedProject.service_type.replace('-', ' ')}
               </DialogDescription>
             </DialogHeader>
             
             <Tabs defaultValue="overview" className="w-full">
-              <TabsList className="grid w-full grid-cols-6">
+              <TabsList className="grid w-full grid-cols-3">
                 <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="milestones">Milestones</TabsTrigger>
-                <TabsTrigger value="tasks">Tasks</TabsTrigger>
-                <TabsTrigger value="documents">Documents</TabsTrigger>
-                <TabsTrigger value="notes">Notes</TabsTrigger>
-                <TabsTrigger value="time">Time & Expenses</TabsTrigger>
+                <TabsTrigger value="team">Team</TabsTrigger>
+                <TabsTrigger value="timeline">Timeline</TabsTrigger>
               </TabsList>
 
               <TabsContent value="overview" className="space-y-6 mt-6">
@@ -576,194 +459,61 @@ const ProjectsTab = () => {
                 )}
               </TabsContent>
 
-              <TabsContent value="milestones" className="space-y-4 mt-6">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-semibold text-gray-900">Milestones</h3>
-                  <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
-                    <Plus className="mr-2 h-4 w-4" />
-                    Add Milestone
-                  </Button>
-                </div>
-                <div className="space-y-3">
-                  {selectedProject.milestones?.map((milestone) => (
-                    <Card key={milestone.id}>
-                      <CardContent className="p-4">
-                        <div className="flex justify-between items-center">
-                          <div>
-                            <h4 className="font-medium text-gray-900">{milestone.name}</h4>
-                            <p className="text-sm text-gray-600">{milestone.description}</p>
-                          </div>
-                          <div className="flex items-center gap-3">
-                            <Badge variant="secondary" className="bg-gray-100 text-gray-700 border-gray-300">
-                              {milestone.status.replace('-', ' ')}
-                            </Badge>
-                            <span className="text-sm text-gray-900">{milestone.progress}%</span>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
+              <TabsContent value="team" className="space-y-4 mt-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg text-gray-900">Team Information</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div>
+                      <h4 className="font-medium text-gray-900 mb-2">Team Lead</h4>
+                      <p className="text-gray-600">{selectedProject.team_lead}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-gray-900 mb-2">Team Members</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedProject.assigned_team.map((member, index) => (
+                          <Badge key={index} variant="secondary" className="bg-gray-100 text-gray-700 border-gray-300">
+                            {member}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </TabsContent>
 
-              <TabsContent value="tasks" className="space-y-4 mt-6">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-semibold text-gray-900">Tasks</h3>
-                  <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
-                    <Plus className="mr-2 h-4 w-4" />
-                    Add Task
-                  </Button>
-                </div>
-                <div className="space-y-3">
-                  {selectedProject.tasks?.map((task) => (
-                    <Card key={task.id}>
-                      <CardContent className="p-4">
-                        <div className="flex justify-between items-center">
-                          <div>
-                            <h4 className="font-medium text-gray-900">{task.title}</h4>
-                            <p className="text-sm text-gray-600">{task.description}</p>
-                          </div>
-                          <div className="flex items-center gap-3">
-                            <Badge variant="secondary" className="bg-gray-100 text-gray-700 border-gray-300">
-                              {task.status}
-                            </Badge>
-                            <Badge className={getPriorityColor(task.priority)}>
-                              {task.priority}
-                            </Badge>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </TabsContent>
-
-              <TabsContent value="documents" className="space-y-4 mt-6">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-semibold text-gray-900">Documents</h3>
-                  <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
-                    <Upload className="mr-2 h-4 w-4" />
-                    Upload Document
-                  </Button>
-                </div>
-                <div className="space-y-3">
-                  {selectedProject.documents?.map((doc) => (
-                    <Card key={doc.id}>
-                      <CardContent className="p-4">
-                        <div className="flex justify-between items-center">
-                          <div className="flex items-center gap-3">
-                            <FileText className="h-5 w-5 text-gray-500" />
-                            <div>
-                              <h4 className="font-medium text-gray-900">{doc.name}</h4>
-                              <p className="text-sm text-gray-600">{doc.file_type}</p>
-                            </div>
-                          </div>
-                          <Button size="sm" variant="outline" className="border-gray-300 text-gray-700">
-                            <Download className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </TabsContent>
-
-              <TabsContent value="notes" className="space-y-4 mt-6">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-semibold text-gray-900">Notes</h3>
-                  <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
-                    <Plus className="mr-2 h-4 w-4" />
-                    Add Note
-                  </Button>
-                </div>
-                <div className="space-y-3">
-                  {selectedProject.notes?.map((note) => (
-                    <Card key={note.id}>
-                      <CardContent className="p-4">
+              <TabsContent value="timeline" className="space-y-4 mt-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg text-gray-900">Project Timeline</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-4">
+                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                         <div>
-                          <h4 className="font-medium text-gray-900">{note.title}</h4>
-                          <p className="text-sm text-gray-600 mt-1">{note.content}</p>
-                          <div className="flex justify-between items-center mt-3">
-                            <span className="text-xs text-gray-500">
-                              {formatDate(note.created_at)}
-                            </span>
-                            {note.is_private && (
-                              <Badge variant="outline" className="text-xs border-gray-300 text-gray-600">Private</Badge>
-                            )}
-                          </div>
+                          <p className="font-medium text-gray-900">Project Started</p>
+                          <p className="text-sm text-gray-600">{formatDate(selectedProject.start_date)}</p>
                         </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </TabsContent>
-
-              <TabsContent value="time" className="space-y-6 mt-6">
-                <div className="grid grid-cols-2 gap-6">
-                  <div>
-                    <div className="flex justify-between items-center mb-4">
-                      <h3 className="text-lg font-semibold text-gray-900">Time Entries</h3>
-                      <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
-                        <Plus className="mr-2 h-4 w-4" />
-                        Add Time
-                      </Button>
+                      </div>
+                      <div className="flex items-center gap-4">
+                        <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                        <div>
+                          <p className="font-medium text-gray-900">Current Progress</p>
+                          <p className="text-sm text-gray-600">{selectedProject.progress}% Complete</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-4">
+                        <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                        <div>
+                          <p className="font-medium text-gray-900">Project Deadline</p>
+                          <p className="text-sm text-gray-600">{formatDate(selectedProject.deadline)}</p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="space-y-3">
-                      {selectedProject.time_entries?.map((entry) => (
-                        <Card key={entry.id}>
-                          <CardContent className="p-3">
-                            <div className="flex justify-between items-center">
-                              <div>
-                                <p className="text-sm font-medium text-gray-900">{entry.description}</p>
-                                <p className="text-xs text-gray-500">
-                                  {formatDate(entry.date)}
-                                </p>
-                              </div>
-                              <div className="text-right">
-                                <p className="text-sm font-medium text-gray-900">{entry.hours}h</p>
-                                {entry.billable && (
-                                  <Badge variant="outline" className="text-xs border-gray-300 text-gray-600">Billable</Badge>
-                                )}
-                              </div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between items-center mb-4">
-                      <h3 className="text-lg font-semibold text-gray-900">Expenses</h3>
-                      <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
-                        <Plus className="mr-2 h-4 w-4" />
-                        Add Expense
-                      </Button>
-                    </div>
-                    <div className="space-y-3">
-                      {selectedProject.expenses?.map((expense) => (
-                        <Card key={expense.id}>
-                          <CardContent className="p-3">
-                            <div className="flex justify-between items-center">
-                              <div>
-                                <p className="text-sm font-medium text-gray-900">{expense.description}</p>
-                                <p className="text-xs text-gray-500">
-                                  {formatDate(expense.date)}
-                                </p>
-                              </div>
-                              <div className="text-right">
-                                <p className="text-sm font-medium text-gray-900">{formatCurrency(expense.amount)}</p>
-                                {expense.category && (
-                                  <Badge variant="outline" className="text-xs border-gray-300 text-gray-600">{expense.category}</Badge>
-                                )}
-                              </div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                  </CardContent>
+                </Card>
               </TabsContent>
             </Tabs>
           </DialogContent>
