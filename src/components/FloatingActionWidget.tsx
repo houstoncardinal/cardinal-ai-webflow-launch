@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { 
   Phone, 
   Calendar, 
@@ -113,6 +113,24 @@ const FloatingActionWidget = () => {
     setIsExpanded(false);
   }, []);
 
+  // Close widget with Escape key
+  useEffect(() => {
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+        setIsExpanded(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscapeKey);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [isOpen]);
+
   return (
     <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-[9999] floating-widget">
       {/* Main Floating Button */}
@@ -147,22 +165,23 @@ const FloatingActionWidget = () => {
           <div className="absolute bottom-20 right-0 w-72 sm:w-80 lg:w-96 transform transition-all duration-300 ease-out scale-100 opacity-100 floating-widget-popup">
           {/* Popup Container */}
           <div className="border-0 shadow-2xl bg-white/95 backdrop-blur-xl overflow-hidden rounded-xl transform transition-all duration-300 hover:scale-[1.02]">
-            {/* Enhanced Header */}
-            <div className="bg-gradient-to-r from-green-600 via-green-700 to-green-800 p-4 text-white relative overflow-hidden">
-              {/* Background Pattern */}
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full -translate-y-16 translate-x-16"></div>
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-green-300 rounded-full translate-y-12 -translate-x-12"></div>
+                      {/* Enhanced Header */}
+          <div className="bg-gradient-to-r from-green-600 via-green-700 to-green-800 p-4 text-white relative overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-green-300 rounded-full translate-y-12 -translate-x-12"></div>
+            </div>
+            
+            <div className="flex items-center justify-between relative z-10">
+              <div>
+                <h3 className="text-lg font-semibold flex items-center">
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Quick Actions
+                </h3>
+                <p className="text-green-100 text-sm">Get started in seconds</p>
               </div>
-              
-              <div className="flex items-center justify-between relative z-10">
-                <div>
-                  <h3 className="text-lg font-semibold flex items-center">
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Quick Actions
-                  </h3>
-                  <p className="text-green-100 text-sm">Get started in seconds</p>
-                </div>
+              <div className="flex items-center space-x-2">
                 <button
                   type="button"
                   onClick={toggleExpanded}
@@ -170,8 +189,17 @@ const FloatingActionWidget = () => {
                 >
                   <ChevronUp className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
                 </button>
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  className="text-white hover:bg-white/20 p-2 rounded-lg transition-all duration-200 hover:scale-110"
+                  title="Close widget"
+                >
+                  <X className="w-4 h-4" />
+                </button>
               </div>
             </div>
+          </div>
 
             {/* Content */}
             <div className="p-0">
