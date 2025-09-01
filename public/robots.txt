@@ -29,6 +29,23 @@ Allow: /iac.png
 Allow: /apn.png
 Allow: /abq.png
 
+# Allow CSS and JS for better crawling
+Allow: /src/
+Allow: /*.css
+Allow: /*.js
+
+# Allow all portfolio images
+Allow: /portfolio/*.png
+Allow: /portfolio/*.jpg
+Allow: /portfolio/*.jpeg
+Allow: /portfolio/*.webp
+
+# Allow all service images
+Allow: /services/*.png
+Allow: /services/*.jpg
+Allow: /services/*.jpeg
+Allow: /services/*.webp
+
 # Sitemaps
 Sitemap: https://cardinalhtx.com/sitemap.xml
 Sitemap: https://cardinalhtx.com/houston-web-development.xml
