@@ -160,17 +160,14 @@ const Services = () => {
                       {service.description}
                     </p>
                     
-                    {/* Learn more link - now always visible */}
+                    {/* Learn more indicator - now just visual since entire card is clickable */}
                     <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-gray-100">
-                      <Link 
-                        to={service.link}
-                        className={`inline-flex items-center text-xs sm:text-sm font-medium ${service.accentColor} group-hover:translate-x-1 transition-all duration-300 cursor-pointer`}
-                      >
+                      <div className={`inline-flex items-center text-xs sm:text-sm font-medium ${service.accentColor} group-hover:translate-x-1 transition-all duration-300`}>
                         Learn more
                         <svg className="ml-2 w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
-                      </Link>
+                      </div>
                     </div>
                   </div>
                   

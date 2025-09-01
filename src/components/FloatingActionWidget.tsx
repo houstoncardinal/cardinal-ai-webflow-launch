@@ -82,7 +82,6 @@ const FloatingActionWidget = () => {
   ];
 
   const handleAction = useCallback((action: string, external: boolean = false) => {
-    console.log('Action clicked:', action); // Debug log
     if (external) {
       window.location.href = action;
     } else {
@@ -95,7 +94,6 @@ const FloatingActionWidget = () => {
   const toggleWidget = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log('Toggle widget clicked'); // Debug log
     setIsOpen(prev => !prev);
     if (isOpen) {
       setIsExpanded(false);
@@ -105,14 +103,12 @@ const FloatingActionWidget = () => {
   const toggleExpanded = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log('Toggle expanded clicked'); // Debug log
     setIsExpanded(prev => !prev);
   }, []);
 
   const handleBackdropClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log('Backdrop clicked'); // Debug log
     setIsOpen(false);
     setIsExpanded(false);
   }, []);
