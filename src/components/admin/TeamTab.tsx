@@ -86,7 +86,7 @@ const TeamTab = () => {
         {
           id: '1',
           name: 'Dr. Sarah Chen',
-          email: 'sarah.chen@cardinalconsulting.com',
+          email: 'sarah.chen@cardinalhtx.com',
           phone: '+1 (555) 123-4567',
           position: 'Chief Technology Officer',
           department: 'Technology',
@@ -126,7 +126,7 @@ const TeamTab = () => {
         {
           id: '2',
           name: 'Alex Rodriguez',
-          email: 'alex.rodriguez@cardinalconsulting.com',
+          email: 'alex.rodriguez@cardinalhtx.com',
           phone: '+1 (555) 234-5678',
           position: 'Senior Full-Stack Developer',
           department: 'Development',
@@ -165,7 +165,7 @@ const TeamTab = () => {
         {
           id: '3',
           name: 'Emma Thompson',
-          email: 'emma.thompson@cardinalconsulting.com',
+          email: 'emma.thompson@cardinalhtx.com',
           phone: '+1 (555) 345-6789',
           position: 'UX/UI Design Lead',
           department: 'Design',
@@ -204,7 +204,7 @@ const TeamTab = () => {
         {
           id: '4',
           name: 'Marcus Kim',
-          email: 'marcus.kim@cardinalconsulting.com',
+          email: 'marcus.kim@cardinalhtx.com',
           phone: '+1 (555) 456-7890',
           position: 'Data Science Lead',
           department: 'Analytics',
@@ -243,7 +243,7 @@ const TeamTab = () => {
         {
           id: '5',
           name: 'Lisa Park',
-          email: 'lisa.park@cardinalconsulting.com',
+          email: 'lisa.park@cardinalhtx.com',
           phone: '+1 (555) 567-8901',
           position: 'Creative Director',
           department: 'Creative',

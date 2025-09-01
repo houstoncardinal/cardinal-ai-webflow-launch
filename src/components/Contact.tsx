@@ -67,7 +67,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      details: ["hello@cardinalhouston.com", "support@cardinalhouston.com"],
+      details: ["hello@cardinalhtx.com", "support@cardinalhtx.com"],
       color: "text-blue-600"
     },
     {
@@ -317,7 +317,7 @@ const Contact = () => {
                   <Button 
                     variant="outline" 
                     className="flex-1 border-white hover:bg-white text-slate-950"
-                    onClick={() => window.location.href = 'mailto:hello@cardinalhouston.com'}
+                    onClick={() => window.location.href = 'mailto:hello@cardinalhtx.com'}
                   >
                     <Mail className="w-4 h-4 mr-2" />
                     Live Chat

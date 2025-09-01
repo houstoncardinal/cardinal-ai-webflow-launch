@@ -195,7 +195,7 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center space-x-4 group cursor-pointer">
                   <Mail className="w-5 h-5 text-green-400 group-hover:animate-pulse" />
-                  <span className="text-gray-300 text-sm font-light hover:text-white transition-colors duration-300">hello@cardinalhouston.com</span>
+                  <span className="text-gray-300 text-sm font-light hover:text-white transition-colors duration-300">hello@cardinalhtx.com</span>
                 </div>
               </div>
             </div>

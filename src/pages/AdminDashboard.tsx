@@ -56,7 +56,7 @@ const AdminDashboard = () => {
   const checkAuth = async () => {
     // BYPASS: Always allow admin access for development
     setIsAdmin(true);
-    setUser({ id: 'admin-bypass', email: 'admin@cardinalconsulting.com' } as any);
+    setUser({ id: 'admin-bypass', email: 'admin@cardinalhtx.com' } as any);
     await loadData();
     setLoading(false);
   };
