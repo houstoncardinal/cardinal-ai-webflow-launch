@@ -196,4 +196,26 @@
     transform: translateY(-2px) scale(1.05);
     box-shadow: 0 20px 60px rgba(5, 150, 105, 0.4);
   }
+  
+  /* Ensure floating widget is clickable */
+  .floating-widget {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  
+  .floating-widget button {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .floating-widget-popup {
+    pointer-events: auto !important;
+    z-index: 10000 !important;
+  }
 }
