@@ -112,47 +112,60 @@ const FloatingActionWidget = () => {
   return (
     <>
       {/* Floating Action Button */}
-      <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50">
+      <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-[9999]">
         <div className="relative">
           {/* Main Floating Button */}
-          <Button
+          <button
             onClick={toggleWidget}
-            className="w-16 h-16 rounded-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 border-0 animate-float hover:animate-glow"
+            className="w-16 h-16 rounded-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 border-0 cursor-pointer flex items-center justify-center group floating-widget-hover"
+            style={{
+              boxShadow: '0 10px 40px rgba(5, 150, 105, 0.3), 0 0 20px rgba(5, 150, 105, 0.2)'
+            }}
           >
             {isOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" />
             ) : (
-              <MessageCircle className="w-6 h-6" />
+              <MessageCircle className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
             )}
-          </Button>
+          </button>
 
-          {/* Pulse Animation Ring */}
-          <div className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-20"></div>
+          {/* Enhanced Pulse Animation Ring */}
+          <div className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-30"></div>
+          <div className="absolute inset-0 rounded-full bg-green-300 animate-ping opacity-20" style={{ animationDelay: '1s' }}></div>
           
           {/* Status Indicator */}
-          <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white animate-pulse"></div>
+          <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white animate-pulse">
+            <div className="absolute inset-1 bg-green-400 rounded-full animate-ping"></div>
+          </div>
         </div>
 
         {/* Quick Actions Popup */}
         {isOpen && (
-          <div className="absolute bottom-20 right-0 w-72 sm:w-80 lg:w-96 animate-in slide-in-from-bottom-2 duration-300">
+          <div className="absolute bottom-20 right-0 w-72 sm:w-80 lg:w-96 transform transition-all duration-300 ease-out scale-100 opacity-100">
             {/* Popup Container */}
-            <Card className="border-0 shadow-2xl bg-white/95 backdrop-blur-xl overflow-hidden">
-              {/* Header */}
-              <div className="bg-gradient-to-r from-green-600 to-green-700 p-4 text-white">
-                <div className="flex items-center justify-between">
+            <Card className="border-0 shadow-2xl bg-white/95 backdrop-blur-xl overflow-hidden transform transition-all duration-300 hover:scale-[1.02]">
+              {/* Enhanced Header */}
+              <div className="bg-gradient-to-r from-green-600 via-green-700 to-green-800 p-4 text-white relative overflow-hidden">
+                {/* Background Pattern */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full -translate-y-16 translate-x-16"></div>
+                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-green-300 rounded-full translate-y-12 -translate-x-12"></div>
+                </div>
+                
+                <div className="flex items-center justify-between relative z-10">
                   <div>
-                    <h3 className="text-lg font-semibold">Quick Actions</h3>
+                    <h3 className="text-lg font-semibold flex items-center">
+                      <MessageCircle className="w-5 h-5 mr-2" />
+                      Quick Actions
+                    </h3>
                     <p className="text-green-100 text-sm">Get started in seconds</p>
                   </div>
-                  <Button
-                    variant="ghost"
-                    size="sm"
+                  <button
                     onClick={toggleExpanded}
-                    className="text-white hover:bg-green-700/50 p-1"
+                    className="text-white hover:bg-white/20 p-2 rounded-lg transition-all duration-200 hover:scale-110"
                   >
                     <ChevronUp className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
-                  </Button>
+                  </button>
                 </div>
               </div>
 
@@ -183,51 +196,69 @@ const FloatingActionWidget = () => {
                 ) : (
                   /* Collapsed View - Top 3 Actions */
                   <div className="p-4 space-y-3">
-                    {quickActions.slice(0, 3).map((action, index) => (
-                      <button
-                        key={index}
-                        onClick={() => handleAction(action.action, action.external)}
-                        className={`w-full p-3 rounded-lg border ${action.bgColor} ${action.borderColor} ${action.hoverBg} transition-all duration-200 hover:scale-[1.02] hover:shadow-md text-left group`}
-                      >
-                        <div className="flex items-center space-x-3">
-                          <div className={`p-2 rounded-lg ${action.bgColor} group-hover:scale-110 transition-transform duration-200`}>
-                            <action.icon className={`w-5 h-5 ${action.color}`} />
-                          </div>
-                          <div className="flex-1">
-                            <h4 className="font-semibold text-gray-900 text-sm">{action.title}</h4>
-                            <p className="text-gray-600 text-xs">{action.subtitle}</p>
-                          </div>
-                          <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-gray-600 transition-colors duration-200" />
-                        </div>
-                      </button>
-                    ))}
+                                         {quickActions.slice(0, 3).map((action, index) => (
+                       <button
+                         key={index}
+                         onClick={() => handleAction(action.action, action.external)}
+                         className={`w-full p-3 rounded-lg border ${action.bgColor} ${action.borderColor} ${action.hoverBg} transition-all duration-300 hover:scale-[1.02] hover:shadow-lg text-left group relative overflow-hidden`}
+                       >
+                         {/* Hover Background Effect */}
+                         <div className={`absolute inset-0 ${action.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                         
+                         <div className="flex items-center space-x-3 relative z-10">
+                           <div className={`p-2 rounded-lg ${action.bgColor} group-hover:scale-110 transition-all duration-300 group-hover:rotate-3`}>
+                             <action.icon className={`w-5 h-5 ${action.color}`} />
+                           </div>
+                           <div className="flex-1">
+                             <h4 className="font-semibold text-gray-900 group-hover:text-gray-800 text-sm transition-colors duration-300">{action.title}</h4>
+                             <p className="text-gray-600 group-hover:text-gray-700 text-xs transition-colors duration-300">{action.subtitle}</p>
+                           </div>
+                           <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-gray-600 transition-all duration-300 group-hover:translate-x-1" />
+                         </div>
+                         
+                         {/* Ripple Effect */}
+                         <div className="absolute inset-0 rounded-lg bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                       </button>
+                     ))}
                     
-                    {/* Show More Button */}
-                    <button
-                      onClick={toggleExpanded}
-                      className="w-full p-3 rounded-lg border border-gray-200 bg-gray-50 hover:bg-gray-100 transition-all duration-200 text-center group"
-                    >
-                      <div className="flex items-center justify-center space-x-2 text-gray-600 group-hover:text-gray-800">
-                        <span className="text-sm font-medium">Show More Actions</span>
-                        <ChevronUp className="w-4 h-4 transition-transform duration-300" />
-                      </div>
-                    </button>
+                                         {/* Enhanced Show More Button */}
+                     <button
+                       onClick={toggleExpanded}
+                       className="w-full p-3 rounded-lg border border-gray-200 bg-gradient-to-r from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200 transition-all duration-300 text-center group hover:shadow-md hover:scale-[1.02] relative overflow-hidden"
+                     >
+                       {/* Hover Background */}
+                       <div className="absolute inset-0 bg-gradient-to-r from-green-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                       
+                       <div className="flex items-center justify-center space-x-2 text-gray-600 group-hover:text-gray-800 relative z-10">
+                         <span className="text-sm font-medium">Show More Actions</span>
+                         <ChevronUp className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
+                       </div>
+                       
+                       {/* Subtle Border Animation */}
+                       <div className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-green-200 transition-all duration-300"></div>
+                     </button>
                   </div>
                 )}
 
-                {/* Footer */}
-                <div className="border-t border-gray-100 p-4 bg-gray-50/50">
-                  <div className="flex items-center justify-between text-xs text-gray-500">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span>Available 24/7</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <Star className="w-3 h-3 text-yellow-500 fill-current" />
-                      <span>4.9/5 Rating</span>
-                    </div>
-                  </div>
-                </div>
+                                 {/* Enhanced Footer */}
+                 <div className="border-t border-gray-100 p-4 bg-gradient-to-r from-gray-50/80 to-green-50/30 relative overflow-hidden">
+                   {/* Background Pattern */}
+                   <div className="absolute inset-0 opacity-5">
+                     <div className="absolute top-0 right-0 w-16 h-16 bg-green-400 rounded-full -translate-y-8 translate-x-8"></div>
+                     <div className="absolute bottom-0 left-0 w-12 h-12 bg-blue-400 rounded-full translate-y-6 -translate-x-6"></div>
+                   </div>
+                   
+                   <div className="flex items-center justify-between text-xs text-gray-600 relative z-10">
+                     <div className="flex items-center space-x-2 group cursor-pointer">
+                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse group-hover:scale-150 transition-transform duration-300"></div>
+                       <span className="group-hover:text-green-600 transition-colors duration-300">Available 24/7</span>
+                     </div>
+                     <div className="flex items-center space-x-1 group cursor-pointer">
+                       <Star className="w-3 h-3 text-yellow-500 fill-current group-hover:scale-125 transition-transform duration-300" />
+                       <span className="group-hover:text-yellow-600 transition-colors duration-300">4.9/5 Rating</span>
+                     </div>
+                   </div>
+                 </div>
               </CardContent>
             </Card>
 
@@ -237,10 +268,10 @@ const FloatingActionWidget = () => {
         )}
       </div>
 
-      {/* Backdrop */}
+      {/* Enhanced Backdrop */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9998] transition-opacity duration-300"
           onClick={() => {
             setIsOpen(false);
             setIsExpanded(false);

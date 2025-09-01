@@ -167,4 +167,33 @@
       transform: translateY(-20px);
     }
   }
+  
+  /* Enhanced floating widget animations */
+  @keyframes bounce-gentle {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+  
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  
+  .animate-bounce-gentle {
+    animation: bounce-gentle 3s ease-in-out infinite;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+  
+  /* Hover effects for the widget */
+  .floating-widget-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0, 0.2, 1);
+  }
+  
+  .floating-widget-hover:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 20px 60px rgba(5, 150, 105, 0.4);
+  }
 }
