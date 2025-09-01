@@ -99,6 +99,34 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Mobile Status Bar Styling */
+  @media screen and (max-width: 768px) {
+    /* Ensure status bar color is applied */
+    html {
+      background-color: #059669;
+    }
+    
+    /* For iOS Safari */
+    body {
+      -webkit-tap-highlight-color: #059669;
+    }
+    
+    /* Additional mobile status bar support */
+    @supports (-webkit-appearance: none) {
+      /* WebKit browsers */
+      html {
+        background-color: #059669 !important;
+      }
+    }
+    
+    /* Firefox mobile */
+    @supports (-moz-appearance: none) {
+      html {
+        background-color: #059669 !important;
+      }
+    }
+  }
 
   /* Fix line-height for all headings to prevent letter clipping */
   h1, h2, h3, h4, h5, h6 {
