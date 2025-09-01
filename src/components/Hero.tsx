@@ -190,23 +190,23 @@ const Hero = () => {
               </div>
               
                                  {/* CTA Section with hover animations */}
-                   <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                     <Button 
-                       onClick={() => window.location.href = '#contact'} 
-                       className="bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
-                     >
-                       Free Project Evaluation
-                       <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-                     </Button>
-                     
-                     <Button 
-                       variant="outline" 
-                       onClick={() => window.location.href = '/contact'} 
-                       className="border-green-300 text-green-700 hover:bg-green-50 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium transition-all duration-300 hover:scale-105 w-full sm:w-auto"
-                     >
-                       Free Consultation
-                     </Button>
-                   </div>
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                      <Button 
+                        onClick={() => window.location.href = '/contact'} 
+                        className="bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                      >
+                        Free Consultation
+                        <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+                      </Button>
+                      
+                      <Button 
+                        variant="outline" 
+                        onClick={() => window.location.href = '/services'} 
+                        className="border-green-300 text-green-700 hover:bg-green-50 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                      >
+                        View Services
+                      </Button>
+                    </div>
                      
                    <p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4 text-center sm:text-left">
                      ✓ No obligation ✓ No purchase necessary ✓ 100% free
