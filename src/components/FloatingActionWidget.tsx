@@ -96,7 +96,6 @@ const FloatingActionWidget = () => {
     e.preventDefault();
     e.stopPropagation();
     console.log('Toggle widget clicked'); // Debug log
-    alert('Widget clicked!'); // Test alert to verify functionality
     setIsOpen(prev => !prev);
     if (isOpen) {
       setIsExpanded(false);
