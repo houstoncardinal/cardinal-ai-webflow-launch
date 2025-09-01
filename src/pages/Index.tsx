@@ -7,16 +7,15 @@ import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import ContactForm from "@/components/ContactForm";
 import SEO from "@/components/SEO";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <SEO 
-        title="Cardinal Consulting - Advanced Technology Solutions"
-        description="Cardinal Consulting delivers cutting-edge technology solutions including AI, blockchain, quantum computing, and enterprise software development for Fortune 500 companies."
-        keywords="AI, artificial intelligence, blockchain, quantum computing, enterprise software, technology consulting, digital transformation"
+        title="Web Development, App Development & Digital Marketing Agency | Cardinal Consulting"
+        description="Leading web development, app development & digital marketing agency. Custom websites, mobile apps, SEO, PPC & digital campaigns. Serving businesses across America. Get your free consultation today!"
+        keywords="web development, app development, digital marketing, SEO, PPC, social media marketing, custom websites, mobile applications, digital agency, business technology solutions, web development agency, app development company"
         url="/"
       />
       
@@ -26,9 +25,6 @@ const Index = () => {
       <div className="bg-white">
         <Hero />
       </div>
-      
-      {/* Contact Form - Between Hero and Services */}
-      <ContactForm />
       
       {/* Services - Light gray background for variation */}
       <div className="bg-gray-50">

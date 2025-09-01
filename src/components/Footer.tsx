@@ -4,7 +4,7 @@ import NewsletterSignup from "./NewsletterSignup";
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Facebook, href: "https://www.facebook.com/cardinalad", label: "Facebook" },
     { icon: Twitter, href: "#", label: "Twitter" },
     { icon: Linkedin, href: "#", label: "LinkedIn" },
     { icon: Youtube, href: "#", label: "YouTube" }
@@ -95,21 +95,24 @@ const Footer = () => {
             {/* Company Info */}
             <div className="lg:col-span-1 animate-fade-in">
               <div className="text-3xl font-light mb-6 group cursor-pointer">
-                Cardinal<span className="text-green-400 group-hover:text-green-300 transition-colors duration-300">Consulting</span>
+                <span className="text-white">Cardinal</span><span className="text-green-400 group-hover:text-green-300 transition-colors duration-300">Consulting</span>
               </div>
               <p className="text-gray-300 mb-8 leading-relaxed font-light">
-                Houston-based creative design studio with global reach, delivering 
-                cutting-edge digital solutions across multiple industries.
+                We've been in business for over 7+ years providing powerful services to communities and clients all over America. Our commitment to excellence and innovation has made us a trusted partner for businesses seeking digital transformation.
               </p>
-              <div className="flex space-x-6">
+              
+              {/* Social Links */}
+              <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
                   <a
-                    key={index}
+                    key={social.label}
                     href={social.href}
-                    className="text-gray-400 hover:text-green-400 transition-all duration-300 hover:scale-110 group"
-                    aria-label={social.label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:bg-green-600 hover:text-white transition-all duration-300 group"
+                    style={{animationDelay: `${index * 100}ms`}}
                   >
-                    <social.icon className="w-6 h-6 group-hover:animate-pulse" />
+                    <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
                   </a>
                 ))}
               </div>
@@ -155,7 +158,7 @@ const Footer = () => {
                     <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link></li>
-                <li><Link to="/insights" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                <li><Link to="/portfolio" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
                   <span className="relative">
                     Portfolio
                     <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>

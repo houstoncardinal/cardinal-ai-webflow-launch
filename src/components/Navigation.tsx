@@ -48,9 +48,9 @@ const Navigation = () => {
   const navItems = [
     { name: "Services", href: "/services" },
     { name: "Industries", href: "/industries" },
-    { name: "Insights", href: "/insights" },
+    { name: "Portfolio", href: "/portfolio" },
     { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    { name: "Contact", href: "/contact" }
   ];
 
   useEffect(() => {
@@ -71,21 +71,20 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled 
-        ? 'bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-lg' 
-        : 'bg-white'
-    }`}>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-lg">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
             <Link 
               to="/" 
               onClick={handleLogoClick}
-              className="text-2xl font-light text-gray-900 tracking-wide group cursor-pointer"
+              className="flex items-center group cursor-pointer"
             >
-              <span className="group-hover:text-green-600 transition-colors duration-300">CARDINAL</span>
-              <span className="text-green-600 font-normal ml-1 animate-pulse">.</span>
+              <img 
+                src="/logo.png" 
+                alt="Cardinal Consulting Logo" 
+                className="h-16 w-auto group-hover:scale-105 transition-transform duration-300"
+              />
             </Link>
           </div>
           
@@ -100,8 +99,7 @@ const Navigation = () => {
                   style={{animationDelay: `${index * 100}ms`}}
                 >
                   {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full"></span>
-                  <span className="absolute -inset-2 rounded-lg bg-green-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></span>
+                  <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full"></div>
                 </Link>
               ))}
               

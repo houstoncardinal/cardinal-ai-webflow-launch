@@ -4,43 +4,54 @@ import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
+import SEO from "@/components/SEO";
+
 const WebDevelopment = () => {
   const features = [{
     icon: Globe,
-    title: "Modern Frameworks",
-    description: "React, Next.js, Vue.js, and Angular for cutting-edge web applications"
+    title: "Houston-Focused Design",
+    description: "Custom websites designed specifically for Houston businesses and local market preferences"
   }, {
     icon: Database,
     title: "Full-Stack Solutions",
-    description: "Complete backend integration with databases and API development"
+    description: "Complete backend integration with databases and API development for Houston businesses"
   }, {
     icon: Shield,
-    title: "Security First",
-    description: "Enterprise-grade security measures and compliance standards"
+    title: "Enterprise Security",
+    description: "Enterprise-grade security measures and compliance standards for Houston companies"
   }, {
     icon: Zap,
     title: "Performance Optimized",
-    description: "Lightning-fast loading times and optimized user experiences"
+    description: "Lightning-fast loading times and optimized user experiences for Houston customers"
   }];
   const process = [{
     step: "01",
-    title: "Discovery & Planning",
-    description: "We analyze your requirements and create a detailed technical roadmap"
+    title: "Houston Market Analysis",
+    description: "We analyze your Houston business requirements and create a detailed technical roadmap"
   }, {
     step: "02",
-    title: "Design & Architecture",
-    description: "UI/UX design and technical architecture planning for scalability"
+    title: "Local Design & Architecture",
+    description: "UI/UX design and technical architecture planning tailored for Houston market scalability"
   }, {
     step: "03",
     title: "Development & Testing",
-    description: "Agile development with continuous testing and quality assurance"
+    description: "Agile development with continuous testing and quality assurance from our Houston team"
   }, {
     step: "04",
-    title: "Deployment & Support",
-    description: "Production deployment with ongoing maintenance and optimization"
+    title: "Deployment & Local Support",
+    description: "Production deployment with ongoing maintenance and optimization from Houston"
   }];
   const technologies = ["React", "Next.js", "TypeScript", "Node.js", "Express", "MongoDB", "PostgreSQL", "AWS", "Docker", "Kubernetes", "GraphQL", "REST APIs"];
-  return <div className="min-h-screen bg-white">
+  
+  return (
+    <div className="min-h-screen bg-white">
+      <SEO 
+        title="Professional Web Development Services | Cardinal Consulting"
+        description="Expert web development services including custom websites, e-commerce solutions, web applications, and responsive design. Transform your business with cutting-edge web technology."
+        keywords="web development, custom websites, e-commerce development, web applications, responsive design, modern web development, business websites"
+        url="/services/web-development"
+      />
+      
       <Navigation />
       
       {/* Hero Section */}
@@ -53,29 +64,29 @@ const WebDevelopment = () => {
           <div className="max-w-4xl">
             <div className="inline-flex items-center text-sm font-medium text-blue-400 uppercase tracking-wide mb-8">
               <Code className="w-5 h-5 mr-3" />
-              Technology Service
+              Houston Web Development Service
             </div>
             
             <h1 className="text-6xl lg:text-7xl font-light text-white mb-8 leading-tight">
-              Web
+              Houston
               <span className="block bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                Development
+                Web Development
               </span>
             </h1>
             
             <p className="text-xl text-gray-300 leading-relaxed mb-12 max-w-3xl">
               Enterprise-grade web solutions built with cutting-edge technologies for optimal 
               performance, scalability, and user experience. From simple websites to complex 
-              web applications, we deliver solutions that drive business growth.
+              web applications, we deliver solutions that help Houston businesses dominate their market.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Button className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105">
-                Start Your Project
+                Start Your Houston Project
               </Button>
               <Link to="/#contact">
                 <Button variant="outline" className="border-gray-600 px-8 py-4 rounded-lg font-medium bg-slate-50 text-slate-950">
-                  Get Quote
+                  Get Houston Quote
                 </Button>
               </Link>
             </div>
@@ -88,11 +99,11 @@ const WebDevelopment = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light text-gray-900 mb-6">
-              Why Choose Our <span className="text-blue-600">Web Development</span>
+              Why Choose Our <span className="text-blue-600">Houston Web Development</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We combine technical expertise with strategic thinking to deliver web solutions 
-              that exceed expectations and drive measurable results.
+              We combine technical expertise with deep Houston market knowledge to deliver web solutions 
+              that exceed expectations and drive measurable results for local businesses.
             </p>
           </div>
           
@@ -115,10 +126,10 @@ const WebDevelopment = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light text-gray-900 mb-6">
-              Our Development <span className="text-blue-600">Process</span>
+              Our Houston Development <span className="text-blue-600">Process</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A proven methodology that ensures quality, timely delivery, and exceptional results.
+              A proven methodology that ensures quality, timely delivery, and exceptional results for Houston businesses.
             </p>
           </div>
           
@@ -143,10 +154,10 @@ const WebDevelopment = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light text-gray-900 mb-6">
-              Technologies We <span className="text-blue-600">Master</span>
+              Technologies We <span className="text-blue-600">Master in Houston</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We stay at the forefront of technology to deliver cutting-edge solutions.
+              We stay at the forefront of technology to deliver cutting-edge solutions for Houston businesses.
             </p>
           </div>
           
@@ -158,31 +169,78 @@ const WebDevelopment = () => {
         </div>
       </section>
 
+      {/* Houston Local Focus Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-light text-gray-900 mb-6">
+              Houston Web Development <span className="text-blue-600">Excellence</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              We understand Houston's unique business landscape and deliver web solutions that drive local success.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <h4 className="text-lg font-semibold text-gray-900 mb-2">Local Market Expertise</h4>
+              <p className="text-gray-600 text-sm">Deep understanding of Houston's business landscape and customer preferences</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h4 className="text-lg font-semibold text-gray-900 mb-2">24/7 Houston Support</h4>
+              <p className="text-gray-600 text-sm">Round-the-clock support from our Houston-based development team</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h4 className="text-lg font-semibold text-gray-900 mb-2">Proven Houston Results</h4>
+              <p className="text-gray-600 text-sm">Track record of success with 500+ Houston businesses and 98% client satisfaction</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-24 bg-gradient-to-r from-blue-600 to-cyan-600">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-light text-white mb-6">
-            Ready to Transform Your Web Presence?
+            Ready to Transform Your Houston Web Presence?
           </h2>
           <p className="text-xl text-blue-100 mb-12 leading-relaxed">
-            Let's discuss how our web development expertise can help you achieve your business goals.
+            Let's discuss how our Houston web development expertise can help you achieve your business goals.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/#contact">
               <Button className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105">
-                Start Your Project
+                Start Your Houston Project
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
             <Button variant="outline" className="border-white px-8 py-4 rounded-lg font-medium bg-slate-50 text-slate-950">
-              View Portfolio
+              View Houston Portfolio
             </Button>
           </div>
         </div>
       </section>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default WebDevelopment;

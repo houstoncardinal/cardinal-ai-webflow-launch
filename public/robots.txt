@@ -1,14 +1,71 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /auth/
+Disallow: /test/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Allow important pages
+Allow: /services/
+Allow: /industries/
+Allow: /about/
+Allow: /contact/
+Allow: /insights/
+Allow: /careers/
+Allow: /portfolio/
+
+# Allow important assets
+Allow: /logo.png
+Allow: /thumbnail.png
+Allow: /favicon.png
+Allow: /vargas.png
+Allow: /clearledger.png
+Allow: /eps.png
+Allow: /hougenpros.png
+Allow: /blutouch.png
+Allow: /iac.png
+Allow: /apn.png
+Allow: /abq.png
+
+# Sitemaps
+Sitemap: https://cardinalhtx.com/sitemap.xml
+Sitemap: https://cardinalhtx.com/houston-web-development.xml
+
+# Crawl delays for different bots
+User-agent: Googlebot
+Crawl-delay: 1
+
+User-agent: Bingbot
+Crawl-delay: 1
+
+User-agent: Slurp
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Crawl-delay: 3
+
+User-agent: YandexBot
+Crawl-delay: 2
+
+User-agent: Twitterbot
+Crawl-delay: 1
+
+User-agent: facebookexternalhit
+Crawl-delay: 1
+
+User-agent: LinkedInBot
+Crawl-delay: 1
+
+User-agent: ChatGPT-User
+Crawl-delay: 1
+
+User-agent: Claude-Web
+Crawl-delay: 1
+
+User-agent: PerplexityBot
+Crawl-delay: 1

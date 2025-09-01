@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mail, Phone, MapPin, Clock, Sparkles } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Sparkles, Star, MessageCircle, ExternalLink, Facebook } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import TransformationForm from "./TransformationForm";
@@ -91,7 +91,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-32 bg-white relative overflow-hidden">
+    <section id="contact" className="py-16 lg:py-20 bg-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-72 h-72 bg-green-500 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
@@ -100,63 +100,30 @@ const Contact = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <div className="max-w-4xl mb-20">
-          <div className="inline-flex items-center text-sm font-medium text-gray-600 uppercase tracking-wide mb-8 animate-fade-in">
+        {/* Powerful Header */}
+        <div className="text-center max-w-4xl mx-auto mb-12">
+          <div className="inline-flex items-center text-sm font-medium text-green-600 uppercase tracking-wide mb-4">
             <div className="w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-6"></div>
-            <span className="relative">
-              Contact
-              <div className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-green-500/50 to-transparent"></div>
-            </span>
+            Contact
           </div>
-          <h2 className="text-5xl lg:text-6xl font-light text-gray-900 mb-8 leading-tight animate-fade-in" style={{
-            animationDelay: '300ms'
-          }}>
-            <span className="relative inline-block">
-              Let's start your
-              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-gray-200 to-transparent rounded-full"></div>
-            </span>
-            <span className="block text-green-600 font-normal mt-2">
+          <h2 className="text-4xl lg:text-5xl xl:text-6xl font-light text-gray-900 mb-4 leading-tight">
+            Let's start your
+            <span className="block text-green-600 font-normal mt-1">
               digital transformation
             </span>
           </h2>
-          <p className="text-xl text-gray-600 leading-relaxed font-light max-w-3xl animate-fade-in" style={{
-            animationDelay: '500ms'
-          }}>
+          <p className="text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-2xl mx-auto">
             Ready to elevate your business with cutting-edge digital solutions? 
-            We're here to turn your vision into reality.
+            <span className="font-medium text-gray-800"> We're here to turn your vision into reality.</span>
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {contactInfo.map((info, index) => (
-                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-white/80 backdrop-blur-sm animate-fade-in" style={{
-                  animationDelay: `${index * 150}ms`
-                }}>
-                  <CardContent className="p-6">
-                    <div className={`w-12 h-12 ${info.color} mb-4 group-hover:scale-110 transition-all duration-300`}>
-                      <info.icon className="w-full h-full" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{info.title}</h3>
-                    <div className="space-y-1">
-                      {info.details.map((detail, i) => (
-                        <p key={i} className="text-gray-600 text-sm">{detail}</p>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            {/* Quick Contact Form */}
-            <Card className="border-0 shadow-xl bg-gradient-to-br from-gray-50 to-white animate-fade-in" style={{
-              animationDelay: '600ms'
-            }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* Streamlined Contact Form */}
+          <div className="space-y-6">
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-gray-50 to-white">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-6">Quick Contact</h3>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-6">Get Started Today</h3>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -225,7 +192,7 @@ const Contact = () => {
                       value={formData.message} 
                       onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))} 
                       placeholder="Tell us about your project, goals, and timeline..." 
-                      rows={4} 
+                      rows={3} 
                       className="border-gray-300 focus:border-green-500 focus:ring-green-500" 
                       required 
                     />
@@ -241,14 +208,31 @@ const Contact = () => {
                 </form>
               </CardContent>
             </Card>
+
+            {/* Compact Contact Info */}
+            <div className="grid grid-cols-2 gap-4">
+              {contactInfo.slice(0, 4).map((info, index) => (
+                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-white/80 backdrop-blur-sm">
+                  <CardContent className="p-4">
+                    <div className={`w-8 h-8 ${info.color} mb-3`}>
+                      <info.icon className="w-full h-full" />
+                    </div>
+                    <h3 className="text-sm font-semibold text-gray-900 mb-1">{info.title}</h3>
+                    <div className="space-y-1">
+                      {info.details.map((detail, i) => (
+                        <p key={i} className="text-gray-600 text-xs">{detail}</p>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
 
-          {/* Enhanced Transformation Form CTA */}
-          <div className="space-y-8">
-            <Card className="border-0 shadow-2xl bg-gradient-to-br from-green-50 via-white to-gray-50 animate-fade-in" style={{
-              animationDelay: '800ms'
-            }}>
-              <CardContent className="p-8 lg:p-12">
+          {/* Powerful CTA Section */}
+          <div className="space-y-6">
+            <Card className="border-0 shadow-2xl bg-gradient-to-br from-green-50 via-white to-gray-50">
+              <CardContent className="p-8 lg:p-10">
                 <div className="text-center mb-8">
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full mb-6">
                     <Sparkles className="w-8 h-8 text-white" />
@@ -296,43 +280,39 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            {/* Additional CTA for immediate contact */}
-            <Card className="border-0 shadow-lg bg-gray-900 text-white animate-fade-in" style={{
-              animationDelay: '1000ms'
-            }}>
-              <CardContent className="p-8 text-center">
-                <h4 className="text-xl font-semibold mb-4">Need immediate assistance?</h4>
-                <p className="text-gray-300 mb-6">
-                  Speak directly with our team for urgent projects or complex requirements.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button 
-                    variant="outline" 
-                    className="flex-1 border-white hover:bg-white text-slate-950"
-                    onClick={() => window.location.href = 'tel:(832) 989-2163'}
-                  >
-                    <Phone className="w-4 h-4 mr-2" />
-                    Call Now
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    className="flex-1 border-white hover:bg-white text-slate-950"
-                    onClick={() => window.location.href = 'mailto:hello@cardinalhtx.com'}
-                  >
-                    <Mail className="w-4 h-4 mr-2" />
-                    Live Chat
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+            {/* Immediate Contact CTA */}
+            <div className="text-center p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100">
+              <p className="text-gray-700 mb-3">
+                Need immediate assistance?
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <a 
+                  href="mailto:hello@cardinalhtx.com" 
+                  className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 hover:scale-105"
+                >
+                  <Mail className="w-4 h-4 mr-2" />
+                  Email us directly
+                </a>
+                <a 
+                  href="tel:832-989-2163" 
+                  className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all duration-300 hover:scale-105"
+                >
+                  <Phone className="w-4 h-4 mr-2" />
+                  Call now
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <TransformationForm 
-        isOpen={isTransformationFormOpen} 
-        onClose={() => setIsTransformationFormOpen(false)} 
-      />
+      {/* Transformation Form Modal */}
+      {isTransformationFormOpen && (
+        <TransformationForm 
+          isOpen={isTransformationFormOpen} 
+          onClose={() => setIsTransformationFormOpen(false)} 
+        />
+      )}
     </section>
   );
 };

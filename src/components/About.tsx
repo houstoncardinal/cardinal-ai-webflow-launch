@@ -5,8 +5,8 @@ const workflowSteps = [
   {
     number: "01",
     icon: MessageCircle,
-    title: "Discovery Call",
-    description: "We start with a comprehensive consultation to understand your vision, challenges, and goals.",
+    title: "Houston Discovery Call",
+    description: "We start with a comprehensive consultation to understand your Houston business vision, challenges, and local market goals.",
     duration: "30-60 mins",
     gradient: "from-blue-500 to-cyan-500",
     delay: "0ms"
@@ -14,8 +14,8 @@ const workflowSteps = [
   {
     number: "02",
     icon: Users2,
-    title: "Strategy & Planning",
-    description: "Our team crafts a detailed roadmap with timelines, technology stack, and project milestones.",
+    title: "Local Strategy & Planning",
+    description: "Our Houston team crafts a detailed roadmap with timelines, technology stack, and project milestones tailored to your local market.",
     duration: "3-5 days",
     gradient: "from-purple-500 to-pink-500",
     delay: "200ms"
@@ -24,7 +24,7 @@ const workflowSteps = [
     number: "03",
     icon: Rocket,
     title: "Development Sprint",
-    description: "Agile development with regular updates, prototypes, and collaborative feedback sessions.",
+    description: "Agile development with regular updates, prototypes, and collaborative feedback sessions from our Houston-based development team.",
     duration: "2-12 weeks",
     gradient: "from-green-500 to-emerald-500",
     delay: "400ms"
@@ -32,8 +32,8 @@ const workflowSteps = [
   {
     number: "04",
     icon: CheckCircle,
-    title: "Launch & Support",
-    description: "Seamless deployment with ongoing maintenance, optimization, and dedicated support.",
+    title: "Launch & Local Support",
+    description: "Seamless deployment with ongoing maintenance, optimization, and dedicated Houston-based support for your business.",
     duration: "Ongoing",
     gradient: "from-orange-500 to-red-500",
     delay: "600ms"
@@ -88,23 +88,23 @@ const About = () => {
           <div className="inline-flex items-center text-sm font-medium text-green-400 uppercase tracking-[0.2em] mb-8 animate-fade-in">
             <div className="w-12 h-px bg-gradient-to-r from-green-400 to-blue-400 mr-6 animate-pulse"></div>
             <span className="relative">
-              About Cardinal
+              About Cardinal Consulting
               <div className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-green-400 to-transparent opacity-50"></div>
             </span>
           </div>
           
           <h2 className="text-5xl lg:text-7xl font-extralight text-white mb-8 leading-tight animate-fade-in tracking-tight" style={{animationDelay: '200ms'}}>
-            Making an
+            Houston's trusted
             <span className="block bg-gradient-to-r from-green-400 via-emerald-300 to-blue-400 bg-clip-text text-transparent font-light">
-              impact that matters
+              digital partner
             </span>
           </h2>
           
           <div className="space-y-6 animate-fade-in" style={{animationDelay: '400ms'}}>
             <p className="text-xl text-gray-300 leading-relaxed font-light">
-              Cardinal Consulting is a <span className="text-green-400 font-medium">premier digital transformation consultancy</span>
+              Cardinal Consulting is a <span className="text-green-400 font-medium">premier Houston-based digital agency</span>
               <br />
-              defining the future of enterprise digital experiences.
+              specializing in web development, app development, and digital marketing for local businesses.
             </p>
           </div>
         </div>
@@ -115,18 +115,18 @@ const About = () => {
             <div className="prose prose-lg max-w-none">
               <div className="space-y-6 text-gray-300 leading-relaxed">
                 <p className="relative pl-6 border-l-2 border-green-400/30">
-                  We deliver enterprise-grade solutions to Fortune 500 companies and emerging market leaders 
-                  across multiple industries and geographies.
+                  We deliver enterprise-grade web development and digital marketing solutions to Houston businesses, 
+                  helping them dominate their local market and expand their digital presence across Texas.
                 </p>
                 
                 <p className="relative pl-6 border-l-2 border-blue-400/30">
-                  As pioneers in <span className="text-blue-400 font-medium">AI Experience Optimization (AEO)</span>, we're defining the future of digital 
-                  interaction by optimizing content and experiences for next-generation AI systems.
+                  As Houston's leading <span className="text-blue-400 font-medium">web development and digital marketing agency</span>, we're defining the future of 
+                  local business growth through cutting-edge technology, strategic digital campaigns, and mobile app development.
                 </p>
                 
                 <p className="relative pl-6 border-l-2 border-emerald-400/30">
                   Our comprehensive approach combines strategic consulting, cutting-edge technology, 
-                  and deep industry expertise to deliver <span className="text-emerald-400 font-medium">transformational outcomes</span>.
+                  and deep <span className="text-emerald-400 font-medium">Houston market expertise</span> to deliver transformational outcomes for local businesses.
                 </p>
               </div>
             </div>
@@ -134,7 +134,7 @@ const About = () => {
             <div className="pt-4">
               <Button className="group relative overflow-hidden bg-gradient-to-r from-green-600 via-green-500 to-emerald-500 hover:from-green-500 hover:via-emerald-500 hover:to-green-400 text-white px-10 py-5 rounded-xl font-semibold transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/30 border border-green-500/20 text-lg">
                 <span className="relative z-10 flex items-center gap-3">
-                  Learn more about us
+                  Learn more about our Houston agency
                   <div className="w-2 h-2 bg-white/80 rounded-full animate-pulse"></div>
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -155,10 +155,10 @@ const About = () => {
               <div className="relative z-10">
                 <div className="text-center mb-6 sm:mb-8">
                   <h3 className="text-xl sm:text-2xl font-light text-white mb-2">
-                    How we <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">work together</span>
+                    How we <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">work with Houston businesses</span>
                   </h3>
                   <div className="w-16 h-px bg-gradient-to-r from-green-400 to-blue-400 mx-auto"></div>
-                  <p className="text-gray-400 text-sm mt-3">Your journey from idea to launch</p>
+                  <p className="text-gray-400 text-sm mt-3">Your journey from idea to Houston market dominance</p>
                 </div>
                 
                 {/* Process Steps with smaller, refined icons */}
@@ -208,12 +208,12 @@ const About = () => {
                 <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-700/30 text-center">
                   <div className="flex justify-center items-center space-x-2 mb-4">
                     <div className="w-2 h-2 bg-green-400/60 rounded-full animate-pulse"></div>
-                    <span className="text-gray-300 text-xs sm:text-sm font-medium">Ready to start your project?</span>
+                    <span className="text-gray-300 text-xs sm:text-sm font-medium">Ready to dominate Houston's digital landscape?</span>
                     <div className="w-2 h-2 bg-blue-400/60 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
                   </div>
                   <Button className="group relative overflow-hidden bg-green-600 hover:bg-green-500 text-white px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base rounded-xl font-semibold transition-all duration-300 hover:scale-105 border border-green-500/30 hover:shadow-xl hover:shadow-green-500/30 min-w-[180px] sm:min-w-[200px]">
                     <span className="relative z-10 flex items-center gap-2">
-                      Schedule Discovery Call
+                      Schedule Houston Discovery Call
                       <Rocket className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </span>
                     <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

@@ -4,6 +4,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
+import SEO from "@/components/SEO";
+
 const MobileApplications = () => {
   const features = [{
     icon: Monitor,
@@ -36,6 +38,12 @@ const MobileApplications = () => {
     description: "Google's UI toolkit"
   }];
   return <div className="min-h-screen bg-white">
+      <SEO 
+        title="Mobile App Development Services | Cardinal Consulting"
+        description="Professional mobile app development for iOS and Android. Custom mobile applications, cross-platform solutions, and app maintenance services to grow your business."
+        keywords="mobile app development, iOS development, Android development, cross-platform apps, custom mobile apps, business mobile applications"
+        url="/services/mobile-applications"
+      />
       <Navigation />
       
       {/* Hero Section */}
