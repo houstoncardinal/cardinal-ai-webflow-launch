@@ -153,102 +153,102 @@ const Hero = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[70vh] sm:min-h-[75vh] lg:min-h-[80vh]">
-            <div className="lg:col-span-7 space-y-6 sm:space-y-8">
-              {/* Animated category tag */}
-              <div className="inline-flex items-center text-sm font-medium text-green-600 uppercase tracking-wide mb-4 animate-fade-in">
-                <div className="w-8 sm:w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-3 sm:mr-4"></div>
-                Houston's Premier Digital Agency
+                             <div className="lg:col-span-7 space-y-4 sm:space-y-6 lg:space-y-8">
+                   {/* Animated category tag */}
+                   <div className="inline-flex items-center text-xs sm:text-sm font-medium text-green-600 uppercase tracking-wide mb-3 sm:mb-4 animate-fade-in">
+                     <div className="w-6 sm:w-8 lg:w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-2 sm:mr-3 lg:mr-4"></div>
+                     Houston's Premier Digital Agency
+                   </div>
+                   
+                   {/* Main headline with staggered animation */}
+                   <div className="space-y-3 sm:space-y-4 lg:space-y-6">
+                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-gray-900 leading-[1.1] tracking-tight">
+                       <span className="inline-block animate-fade-in my-0 py-0">Houston's #1</span>
+                       <span className="block text-green-600 font-normal animate-fade-in" style={{
+                         animationDelay: '300ms'
+                       }}>
+                         Web Development Agency
+                       </span>
+                     </h1>
+                     
+                     <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-2xl animate-fade-in" style={{
+                       animationDelay: '500ms'
+                     }}>
+                       We help Houston businesses dominate online with custom websites, mobile apps, 
+                       and digital marketing that drives real results. Serving Houston, TX and surrounding areas.
+                     </p>
+                
+                                     {/* Quick Turnaround Highlight */}
+                     <div className="mt-8 sm:mt-12 lg:mt-16 text-left">
+                       <div className="inline-flex items-start sm:items-center px-4 sm:px-6 py-3 sm:py-4 bg-green-50 border border-green-200 rounded-xl sm:rounded-full max-w-full">
+                         <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 mr-2 sm:mr-3 mt-0.5 sm:mt-0 flex-shrink-0" />
+                         <span className="text-green-700 font-medium text-sm sm:text-base leading-relaxed">
+                           While web and app projects can take weeks, Cardinal specializes in expedited services delivered in less than 72 hours when requested.
+                         </span>
+                       </div>
+                     </div>
               </div>
               
-              {/* Main headline with staggered animation */}
-              <div className="space-y-4 sm:space-y-6">
-                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-light text-gray-900 leading-[1.1] tracking-tight">
-                  <span className="inline-block animate-fade-in my-0 py-0">Houston's #1</span>
-                  <span className="block text-green-600 font-normal animate-fade-in" style={{
-                    animationDelay: '300ms'
-                  }}>
-                    Web Development Agency
-                  </span>
-                </h1>
-                
-                <p className="text-lg sm:text-xl text-gray-600 leading-relaxed font-light max-w-2xl animate-fade-in" style={{
-                  animationDelay: '500ms'
-                }}>
-                  We help Houston businesses dominate online with custom websites, mobile apps, 
-                  and digital marketing that drives real results. Serving Houston, TX and surrounding areas.
-                </p>
-                
-                {/* Quick Turnaround Highlight */}
-                <div className="mt-16 text-center">
-                  <div className="inline-flex items-center px-6 py-3 bg-green-50 border border-green-200 rounded-full">
-                    <Zap className="w-5 h-5 text-green-600 mr-2" />
-                    <span className="text-green-700 font-medium">
-                      While web and app projects can take weeks, Cardinal specializes in expedited services delivered in less than 72 hours when requested.
-                    </span>
-                  </div>
-                </div>
-              </div>
-              
-              {/* CTA Section with hover animations */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  onClick={() => window.location.href = '#contact'} 
-                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                >
-                  Free Project Evaluation
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  onClick={() => window.location.href = '/contact'} 
-                  className="border-green-300 text-green-700 hover:bg-green-50 px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105"
-                >
-                  Free Consultation
-                </Button>
-              </div>
-                
-              <p className="text-sm text-gray-500 mt-4">
-                ✓ No obligation ✓ No purchase necessary ✓ 100% free
-              </p>
+                                 {/* CTA Section with hover animations */}
+                   <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                     <Button 
+                       onClick={() => window.location.href = '#contact'} 
+                       className="bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                     >
+                       Free Project Evaluation
+                       <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+                     </Button>
+                     
+                     <Button 
+                       variant="outline" 
+                       onClick={() => window.location.href = '/contact'} 
+                       className="border-green-300 text-green-700 hover:bg-green-50 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                     >
+                       Free Consultation
+                     </Button>
+                   </div>
+                     
+                   <p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4 text-center sm:text-left">
+                     ✓ No obligation ✓ No purchase necessary ✓ 100% free
+                   </p>
 
-              {/* Animated stats */}
-              <div className="flex flex-wrap gap-6 sm:gap-12 pt-6 sm:pt-8 border-t border-gray-200 animate-fade-in" style={{
-                animationDelay: '1000ms'
-              }}>
-                <div className="group cursor-pointer">
-                  <div className="text-xl sm:text-2xl font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">500+</div>
-                  <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Houston Projects</div>
-                </div>
-                <div className="group cursor-pointer">
-                  <div className="text-xl sm:text-2xl font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">98%</div>
-                  <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Client Satisfaction</div>
-                </div>
-                <div className="group cursor-pointer">
-                  <div className="text-xl sm:text-2xl font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">24/7</div>
-                  <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Houston Support</div>
-                </div>
-              </div>
+                                 {/* Animated stats */}
+                   <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-12 pt-4 sm:pt-6 lg:pt-8 border-t border-gray-200 animate-fade-in" style={{
+                     animationDelay: '1000ms'
+                   }}>
+                     <div className="group cursor-pointer flex-1 min-w-[80px]">
+                       <div className="text-lg sm:text-xl lg:text-2xl font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">500+</div>
+                       <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Houston Projects</div>
+                     </div>
+                     <div className="group cursor-pointer flex-1 min-w-[80px]">
+                       <div className="text-lg sm:text-xl lg:text-2xl font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">98%</div>
+                       <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Client Satisfaction</div>
+                     </div>
+                     <div className="group cursor-pointer flex-1 min-w-[80px]">
+                       <div className="text-lg sm:text-xl lg:text-2xl font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">24/7</div>
+                       <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Houston Support</div>
+                     </div>
+                   </div>
 
-              {/* Local Trust Indicators */}
-              <div className="pt-4 animate-fade-in" style={{
-                animationDelay: '1200ms'
-              }}>
-                <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-6 text-sm text-gray-500">
-                  <div className="flex items-center">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                    <span>Houston, TX Based</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                    <span>Texas Licensed</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                    <span>Local Support</span>
-                  </div>
-                </div>
-              </div>
+                                 {/* Local Trust Indicators */}
+                   <div className="pt-3 sm:pt-4 animate-fade-in" style={{
+                     animationDelay: '1200ms'
+                   }}>
+                     <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 lg:space-x-6 text-xs sm:text-sm text-gray-500">
+                       <div className="flex items-center">
+                         <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                         <span>Houston, TX Based</span>
+                       </div>
+                       <div className="flex items-center">
+                         <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                         <span>Texas Licensed</span>
+                       </div>
+                       <div className="flex items-center">
+                         <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                         <span>Local Support</span>
+                       </div>
+                     </div>
+                   </div>
             </div>
 
             {/* Enhanced geometric element with animations - Hidden on mobile, visible on larger screens */}
@@ -276,8 +276,8 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* Evaluate Your Project for Free Form */}
-      <section className="py-8 lg:py-6 relative overflow-hidden bg-gradient-to-br from-green-50/50 via-white to-gray-50/30">
+                 {/* Evaluate Your Project for Free Form */}
+           <section className="py-6 sm:py-8 lg:py-6 relative overflow-hidden bg-gradient-to-br from-green-50/50 via-white to-gray-50/30">
         {/* Floating background elements */}
         <div className="absolute top-1/4 left-1/4 w-24 h-24 bg-green-100 rounded-full opacity-20 blur-2xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/3 w-20 h-20 bg-green-200 rounded-full opacity-30 blur-xl animate-pulse" style={{
@@ -297,34 +297,34 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
               </div>
               
-              <div className="p-6 lg:p-8">
-                {/* Header */}
-                <div className="text-center mb-6 lg:mb-8">
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-light text-gray-900 leading-relaxed mb-3">
-                    Evaluate Your Project for Free
-                  </h3>
-                  <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-                    Get expert insights on your digital transformation opportunities - completely free, no strings attached
-                  </p>
-                </div>
+                                 <div className="p-4 sm:p-6 lg:p-8">
+                     {/* Header */}
+                     <div className="text-center mb-4 sm:mb-6 lg:mb-8">
+                       <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-light text-gray-900 leading-relaxed mb-2 sm:mb-3">
+                         Evaluate Your Project for Free
+                       </h3>
+                       <p className="text-gray-600 text-xs sm:text-sm lg:text-base max-w-2xl mx-auto leading-relaxed px-2">
+                         Get expert insights on your digital transformation opportunities - completely free, no strings attached
+                       </p>
+                     </div>
 
-                {/* Form */}
-                <form onSubmit={handleFormSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                                     {/* Form */}
+                     <form onSubmit={handleFormSubmit} className="space-y-4">
+                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
                     {/* Name Input */}
                     <div className="relative group/input sm:col-span-2 lg:col-span-1">
                       <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 rounded-lg opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
                       <div className="relative">
                         <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
-                        <input 
-                          type="text" 
-                          name="name" 
-                          placeholder="Full Name" 
-                          className="w-full pl-10 h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400" 
-                          required 
-                          value={formData.name}
-                          onChange={handleInputChange}
-                        />
+                                                     <input 
+                               type="text" 
+                               name="name" 
+                               placeholder="Full Name" 
+                               className="w-full pl-10 h-10 sm:h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400 text-sm sm:text-base" 
+                               required 
+                               value={formData.name}
+                               onChange={handleInputChange}
+                             />
                         <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left"></div>
                       </div>
                     </div>
@@ -334,15 +334,15 @@ const Hero = () => {
                       <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 rounded-lg opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
                       <div className="relative">
                         <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
-                        <input 
-                          type="email" 
-                          name="email" 
-                          placeholder="Email Address" 
-                          className="w-full pl-10 h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400" 
-                          required 
-                          value={formData.email}
-                          onChange={handleInputChange}
-                        />
+                                                     <input 
+                               type="email" 
+                               name="email" 
+                               placeholder="Email Address" 
+                               className="w-full pl-10 h-10 sm:h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400 text-sm sm:text-base" 
+                               required 
+                               value={formData.email}
+                               onChange={handleInputChange}
+                             />
                         <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left"></div>
                       </div>
                     </div>
@@ -352,14 +352,14 @@ const Hero = () => {
                       <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 rounded-lg opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
                       <div className="relative">
                         <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
-                        <input 
-                          type="tel" 
-                          name="phone" 
-                          placeholder="Phone Number" 
-                          className="w-full pl-10 h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400" 
-                          value={formData.phone}
-                          onChange={handleInputChange}
-                        />
+                                                     <input 
+                               type="tel" 
+                               name="phone" 
+                               placeholder="Phone Number" 
+                               className="w-full pl-10 h-10 sm:h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400 text-sm sm:text-base" 
+                               value={formData.phone}
+                               onChange={handleInputChange}
+                             />
                         <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left"></div>
                       </div>
                     </div>
@@ -368,12 +368,12 @@ const Hero = () => {
                     <div className="relative group/input sm:col-span-2 lg:col-span-1">
                       <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 rounded-lg opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
                       <div className="relative">
-                        <select 
-                          name="service" 
-                          className="w-full h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md pl-3 pr-10"
-                          value={formData.service}
-                          onChange={handleInputChange}
-                        >
+                                                     <select 
+                               name="service" 
+                               className="w-full h-10 sm:h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md pl-3 pr-10 text-sm sm:text-base"
+                               value={formData.service}
+                               onChange={handleInputChange}
+                             >
                           <option value="">Select Service</option>
                           <option value="web-development">Web Development</option>
                           <option value="mobile-applications">Mobile Applications</option>
@@ -390,11 +390,11 @@ const Hero = () => {
                     {/* Submit Button */}
                     <div className="relative group/button sm:col-span-2 lg:col-span-1">
                       <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-600 rounded-lg opacity-0 group-hover/button:opacity-100 transition-all duration-300 blur-lg"></div>
-                      <button 
-                        type="submit" 
-                        className="relative w-full h-12 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group-hover/button:scale-105 border-0"
-                        disabled={isSubmitting}
-                      >
+                                                 <button 
+                             type="submit" 
+                             className="relative w-full h-10 sm:h-12 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group-hover/button:scale-105 border-0 text-sm sm:text-base"
+                             disabled={isSubmitting}
+                           >
                         <span className="flex items-center justify-center gap-2">
                           {isSubmitting ? 'Submitting...' : 'Get Project Evaluation'}
                           <ArrowRight className="w-4 h-4 group-hover/button:translate-x-1 transition-transform duration-300" />
@@ -404,25 +404,25 @@ const Hero = () => {
                   </div>
                 </form>
 
-                {/* Trust indicators */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-6 pt-6 border-t border-gray-200/50">
-                  <div className="flex items-center gap-2 text-gray-500 text-sm">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span>100% Free</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-500 text-sm">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{
-                      animationDelay: '0.5s'
-                    }}></div>
-                    <span>No obligation</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-500 text-sm">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{
-                      animationDelay: '1s'
-                    }}></div>
-                    <span>Expert insights within 2 hours</span>
-                  </div>
-                </div>
+                                     {/* Trust indicators */}
+                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 lg:gap-6 mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200/50">
+                       <div className="flex items-center gap-2 text-gray-500 text-xs sm:text-sm">
+                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                         <span>100% Free</span>
+                       </div>
+                       <div className="flex items-center gap-2 text-gray-500 text-xs sm:text-sm">
+                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{
+                           animationDelay: '0.5s'
+                         }}></div>
+                         <span>No obligation</span>
+                       </div>
+                       <div className="flex items-center gap-2 text-gray-500 text-xs sm:text-sm">
+                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{
+                           animationDelay: '1s'
+                         }}></div>
+                         <span>Expert insights within 2 hours</span>
+                       </div>
+                     </div>
               </div>
             </div>
           </div>

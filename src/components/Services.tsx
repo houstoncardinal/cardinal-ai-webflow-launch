@@ -85,33 +85,33 @@ const Services = () => {
     }
   ];
   return (
-    <section id="services" className="py-16 lg:py-20 bg-white relative overflow-hidden">
+    <section id="services" className="py-12 sm:py-16 lg:py-20 bg-white relative overflow-hidden">
       {/* Subtle background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-green-400 to-blue-500 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        <div className="max-w-4xl mb-16 lg:mb-20">
-          <div className="inline-flex items-center text-sm font-medium text-gray-600 uppercase tracking-wide mb-6">
-            <div className="w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-6"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-4xl mb-12 sm:mb-16 lg:mb-20">
+          <div className="inline-flex items-center text-xs sm:text-sm font-medium text-gray-600 uppercase tracking-wide mb-4 sm:mb-6">
+            <div className="w-8 sm:w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-4 sm:mr-6"></div>
             Digital Services
           </div>
-          <h2 className="lg:text-6xl font-light text-gray-900 mb-6 lg:mb-8 leading-tight text-4xl">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light text-gray-900 mb-4 sm:mb-6 lg:mb-8 leading-tight">
             Digital solutions that
             <span className="block text-green-600 font-normal">
               grow your business
             </span>
           </h2>
-          <p className="text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-3xl">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-3xl">
             We deliver end-to-end digital solutions designed to transform businesses. 
             From custom websites to comprehensive digital marketing, we help companies 
             dominate their market and drive sustainable growth.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {services.map((service, index) => (
             <Link key={index} to={service.link} className="group relative block">
               {/* Subtle luxury glow - much more refined */}
@@ -128,20 +128,20 @@ const Services = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1500 ease-out"></div>
               </div>
               
-              <Card className="relative h-full min-h-[420px] bg-white/95 backdrop-blur-sm border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-700 cursor-pointer group-hover:scale-[1.02] rounded-2xl overflow-hidden">
+              <Card className="relative h-full min-h-[380px] sm:min-h-[420px] bg-white/95 backdrop-blur-sm border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-700 cursor-pointer group-hover:scale-[1.02] rounded-2xl overflow-hidden">
                 {/* Refined hover background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-40 transition-all duration-700`}></div>
                 
-                <CardContent className="p-6 lg:p-8 h-full flex flex-col justify-between relative z-10">
+                <CardContent className="p-4 sm:p-6 lg:p-8 h-full flex flex-col justify-between relative z-10">
                   <div>
                     {/* Category badge */}
-                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4 opacity-70">
+                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-3 sm:mb-4 opacity-70">
                       {service.category}
                     </div>
                     
                     {/* Icon with subtle glow */}
-                    <div className="mb-6 relative">
-                      <div className={`w-14 h-14 ${service.accentColor} relative group-hover:scale-110 transition-all duration-500`}>
+                    <div className="mb-4 sm:mb-6 relative">
+                      <div className={`w-12 h-12 sm:w-14 sm:h-14 ${service.accentColor} relative group-hover:scale-110 transition-all duration-500`}>
                         <service.icon className="w-full h-full" strokeWidth={1.5} />
                         {/* Very subtle icon glow */}
                         <div className={`absolute inset-0 bg-${service.glowColor} opacity-0 group-hover:opacity-30 blur-lg transition-all duration-500 rounded-full`}></div>
@@ -149,25 +149,25 @@ const Services = () => {
                     </div>
                     
                     {/* Title with consistent sizing */}
-                    <h3 className={`text-lg lg:text-xl font-semibold text-gray-900 mb-4 group-hover:${service.accentColor} transition-colors duration-500 leading-tight min-h-[56px] flex items-center`}>
+                    <h3 className={`text-base sm:text-lg lg:text-xl font-semibold text-gray-900 mb-3 sm:mb-4 group-hover:${service.accentColor} transition-colors duration-500 leading-tight min-h-[48px] sm:min-h-[56px] flex items-center`}>
                       {service.title}
                     </h3>
                   </div>
                   
                   {/* Description with consistent height */}
                   <div className="flex-1 flex flex-col justify-between">
-                    <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300 min-h-[96px] flex items-start">
+                    <p className="text-gray-600 text-xs sm:text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300 min-h-[80px] sm:min-h-[96px] flex items-start">
                       {service.description}
                     </p>
                     
                     {/* Learn more link - now always visible */}
-                    <div className="mt-6 pt-4 border-t border-gray-100">
+                    <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-gray-100">
                       <Link 
                         to={service.link}
-                        className={`inline-flex items-center text-sm font-medium ${service.accentColor} group-hover:translate-x-1 transition-all duration-300 cursor-pointer`}
+                        className={`inline-flex items-center text-xs sm:text-sm font-medium ${service.accentColor} group-hover:translate-x-1 transition-all duration-300 cursor-pointer`}
                       >
                         Learn more
-                        <svg className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="ml-2 w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </Link>
@@ -184,40 +184,40 @@ const Services = () => {
           ))}
         </div>
 
-        {/* Business Focus Section */}
-        <div className="mt-24 text-center">
-          <div className="max-w-3xl mx-auto">
-            <h3 className="text-2xl font-light text-gray-900 mb-6">
-              Why Businesses Choose Cardinal Consulting
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                     {/* Business Focus Section */}
+             <div className="mt-16 sm:mt-20 lg:mt-24 text-center">
+               <div className="max-w-3xl mx-auto">
+                 <h3 className="text-xl sm:text-2xl font-light text-gray-900 mb-4 sm:mb-6">
+                   Why Businesses Choose Cardinal Consulting
+                 </h3>
+                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12">
               <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">Industry Expertise</h4>
-                <p className="text-gray-600 text-sm">Deep understanding of business landscapes and market dynamics across industries</p>
+                <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Industry Expertise</h4>
+                <p className="text-gray-600 text-xs sm:text-sm">Deep understanding of business landscapes and market dynamics across industries</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">24/7 Support</h4>
-                <p className="text-gray-600 text-sm">Round-the-clock support from our team for immediate assistance when you need it</p>
+                <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">24/7 Support</h4>
+                <p className="text-gray-600 text-xs sm:text-sm">Round-the-clock support from our team for immediate assistance when you need it</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">Proven Results</h4>
-                <p className="text-gray-600 text-sm">Track record of success with 500+ businesses and 98% client satisfaction</p>
+                <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Proven Results</h4>
+                <p className="text-gray-600 text-xs sm:text-sm">Track record of success with 500+ businesses and 98% client satisfaction</p>
               </div>
             </div>
           </div>

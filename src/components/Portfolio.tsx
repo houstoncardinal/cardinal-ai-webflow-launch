@@ -42,19 +42,19 @@ const Portfolio = () => {
   ];
 
   return (
-    <section className="py-20 bg-green-50/30">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
+    <section className="py-12 sm:py-16 lg:py-20 bg-green-50/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-4 sm:mb-6">
             Featured Client Success Stories
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-2">
             Discover how we've helped businesses across America transform their digital presence and achieve remarkable results
           </p>
         </div>
 
         {/* Featured Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-12">
           {featuredProjects.map((project) => (
             <Link key={project.id} to={`/portfolio/${project.id}`} className="group">
               <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105 bg-white overflow-hidden">
@@ -71,18 +71,18 @@ const Portfolio = () => {
                   </div>
                 </div>
                 
-                <CardContent className="p-6">
-                  <div className="space-y-4">
+                <CardContent className="p-4 sm:p-6">
+                  <div className="space-y-3 sm:space-y-4">
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 group-hover:text-green-600 transition-colors duration-200 mb-2">
+                      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 group-hover:text-green-600 transition-colors duration-200 mb-2">
                         {project.title}
                       </h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">
+                      <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
                         {project.description}
                       </p>
                     </div>
                     
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {project.tags.slice(0, 3).map((tag, index) => (
                         <span
                           key={index}
@@ -93,9 +93,9 @@ const Portfolio = () => {
                       ))}
                     </div>
                     
-                    <div className="grid grid-cols-3 gap-4 pt-4 border-t border-gray-100">
+                    <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-3 sm:pt-4 border-t border-gray-100">
                       <div className="text-center">
-                        <div className="text-lg font-semibold text-green-600">
+                        <div className="text-base sm:text-lg font-semibold text-green-600">
                           {project.metrics.clients || project.metrics.years || 'N/A'}
                         </div>
                         <div className="text-xs text-gray-500">
@@ -103,7 +103,7 @@ const Portfolio = () => {
                         </div>
                       </div>
                       <div className="text-center">
-                        <div className="text-lg font-semibold text-blue-600">
+                        <div className="text-base sm:text-lg font-semibold text-blue-600">
                           {project.metrics.services || project.metrics.pools || project.metrics.accuracy || 'N/A'}
                         </div>
                         <div className="text-xs text-gray-500">
@@ -111,7 +111,7 @@ const Portfolio = () => {
                         </div>
                       </div>
                       <div className="text-center">
-                        <div className="text-lg font-semibold text-purple-600">
+                        <div className="text-base sm:text-lg font-semibold text-purple-600">
                           {project.metrics.satisfaction || project.metrics.awards || 'N/A'}
                         </div>
                         <div className="text-xs text-gray-500">
@@ -130,10 +130,10 @@ const Portfolio = () => {
         <div className="text-center">
           <Link
             to="/portfolio"
-            className="inline-flex items-center px-8 py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl text-lg font-medium"
+            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl text-base sm:text-lg font-medium w-full sm:w-auto justify-center"
           >
             View All Client Success Stories
-            <ArrowRight className="ml-2 w-5 h-5" />
+            <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
           </Link>
         </div>
       </div>

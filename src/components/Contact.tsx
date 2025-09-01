@@ -91,43 +91,43 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-16 lg:py-20 bg-white relative overflow-hidden">
+    <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-green-500 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+        <div className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-green-500 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+        <div className="absolute top-40 right-10 w-48 sm:w-72 h-48 sm:h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-20 left-1/2 w-48 sm:w-72 h-48 sm:h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Powerful Header */}
-        <div className="text-center max-w-4xl mx-auto mb-12">
-          <div className="inline-flex items-center text-sm font-medium text-green-600 uppercase tracking-wide mb-4">
-            <div className="w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-6"></div>
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
+          <div className="inline-flex items-center text-xs sm:text-sm font-medium text-green-600 uppercase tracking-wide mb-3 sm:mb-4">
+            <div className="w-8 sm:w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-4 sm:mr-6"></div>
             Contact
           </div>
-          <h2 className="text-4xl lg:text-5xl xl:text-6xl font-light text-gray-900 mb-4 leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light text-gray-900 mb-3 sm:mb-4 leading-tight">
             Let's start your
             <span className="block text-green-600 font-normal mt-1">
               digital transformation
             </span>
           </h2>
-          <p className="text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-2xl mx-auto px-2">
             Ready to elevate your business with cutting-edge digital solutions? 
             <span className="font-medium text-gray-800"> We're here to turn your vision into reality.</span>
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
           {/* Streamlined Contact Form */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <Card className="border-0 shadow-xl bg-gradient-to-br from-gray-50 to-white">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-6">Get Started Today</h3>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <CardContent className="p-4 sm:p-6 lg:p-8">
+                <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">Get Started Today</h3>
+                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="firstName" className="text-sm font-medium text-gray-700">
+                      <Label htmlFor="firstName" className="text-xs sm:text-sm font-medium text-gray-700">
                         First name *
                       </Label>
                       <Input 
@@ -135,12 +135,12 @@ const Contact = () => {
                         value={formData.firstName} 
                         onChange={(e) => setFormData(prev => ({ ...prev, firstName: e.target.value }))} 
                         placeholder="John" 
-                        className="h-11 border-gray-300 focus:border-green-500 focus:ring-green-500" 
+                        className="h-10 sm:h-11 border-gray-300 focus:border-green-500 focus:ring-green-500 text-sm sm:text-base" 
                         required 
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="lastName" className="text-sm font-medium text-gray-700">
+                      <Label htmlFor="lastName" className="text-xs sm:text-sm font-medium text-gray-700">
                         Last name *
                       </Label>
                       <Input 
@@ -148,14 +148,14 @@ const Contact = () => {
                         value={formData.lastName} 
                         onChange={(e) => setFormData(prev => ({ ...prev, lastName: e.target.value }))} 
                         placeholder="Doe" 
-                        className="h-11 border-gray-300 focus:border-green-500 focus:ring-green-500" 
+                        className="h-10 sm:h-11 border-gray-300 focus:border-green-500 focus:ring-green-500 text-sm sm:text-base" 
                         required 
                       />
                     </div>
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+                    <Label htmlFor="email" className="text-xs sm:text-sm font-medium text-gray-700">
                       Email address *
                     </Label>
                     <Input 
@@ -164,13 +164,13 @@ const Contact = () => {
                       value={formData.email} 
                       onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))} 
                       placeholder="john@company.com" 
-                      className="h-11 border-gray-300 focus:border-green-500 focus:ring-green-500" 
+                      className="h-10 sm:h-11 border-gray-300 focus:border-green-500 focus:ring-green-500 text-sm sm:text-base" 
                       required 
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="company" className="text-sm font-medium text-gray-700">
+                    <Label htmlFor="company" className="text-xs sm:text-sm font-medium text-gray-700">
                       Company name *
                     </Label>
                     <Input 
@@ -178,13 +178,13 @@ const Contact = () => {
                       value={formData.company} 
                       onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))} 
                       placeholder="Your Company" 
-                      className="h-11 border-gray-300 focus:border-green-500 focus:ring-green-500" 
+                      className="h-10 sm:h-11 border-gray-300 focus:border-green-500 focus:ring-green-500 text-sm sm:text-base" 
                       required 
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message" className="text-sm font-medium text-gray-700">
+                    <Label htmlFor="message" className="text-xs sm:text-sm font-medium text-gray-700">
                       How can we help? *
                     </Label>
                     <Textarea 
@@ -193,7 +193,7 @@ const Contact = () => {
                       onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))} 
                       placeholder="Tell us about your project, goals, and timeline..." 
                       rows={3} 
-                      className="border-gray-300 focus:border-green-500 focus:ring-green-500" 
+                      className="border-gray-300 focus:border-green-500 focus:ring-green-500 text-sm sm:text-base" 
                       required 
                     />
                   </div>
