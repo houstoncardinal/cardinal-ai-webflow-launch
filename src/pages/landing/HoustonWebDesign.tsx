@@ -90,52 +90,87 @@ const HoustonWebDesignLanding = () => {
       <Navigation />
 
       {/* Hero Section - Enhanced */}
-      <header className="pt-24 pb-16 bg-gradient-to-br from-gray-50 via-white to-green-50/30 relative overflow-hidden">
+      <header className="pt-16 md:pt-24 pb-16 bg-gradient-to-br from-gray-50 via-white to-green-50/30 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPGcgZmlsbD0iIzAwMCIgZmlsbC1vcGFjaXR5PSIwLjAzIj4KPGNpcmNsZSBjeD0iNyIgY3k9IjciIHI9IjEiLz4KPC9nPgo8L2c+Cjwvc3ZnPg==')] opacity-30"></div>
-        <div className="container mx-auto px-4 max-w-6xl relative">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center rounded-full bg-gradient-to-r from-green-100 to-emerald-100 border border-green-200 px-4 py-2 text-sm font-medium text-green-800 animate-fade-in">
-              <Star className="w-4 h-4 mr-2 text-green-600" />
-              Limited-time: Save $500 + Free Technical SEO Setup
+        
+        {/* Animated background elements - Optimized for mobile */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-8 -left-8 w-48 md:w-64 h-48 md:h-64 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+          <div className="absolute top-0 -right-8 w-48 md:w-64 h-48 md:h-64 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-8 left-20 w-48 md:w-64 h-48 md:h-64 bg-green-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto">
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center rounded-full bg-gradient-to-r from-green-100 to-emerald-100 border border-green-200 px-4 py-2 text-sm font-medium text-green-800 animate-fade-in mb-6">
+                <Star className="w-4 h-4 mr-2 text-green-600" />
+                <span className="whitespace-nowrap">Limited-time: Save $500 + Free SEO Setup</span>
+              </div>
+              
+              <h1 className="text-[2.5rem] sm:text-5xl md:text-[3.5rem] font-bold leading-[1.15] mb-6">
+                <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-green-800 bg-clip-text text-transparent">
+                  Transform Your Houston Business
+                </span>
+                <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent block mt-2">
+                  With High-Converting Web Design
+                </span>
+              </h1>
+              
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
+                Custom, mobile-first websites engineered for speed, SEO, and measurable ROI. Get a high-converting site that becomes your best marketing asset.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <button
+                  onClick={handleClaimOffer}
+                  className="group inline-flex items-center justify-center rounded-lg px-6 sm:px-8 py-3 sm:py-4 font-semibold bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-700 hover:to-emerald-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 w-full sm:w-auto"
+                >
+                  <span>Claim This Offer</span>
+                  <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </button>
+                <a
+                  href="#portfolio"
+                  className="group inline-flex items-center justify-center rounded-lg px-6 sm:px-8 py-3 sm:py-4 font-semibold border-2 border-gray-300 text-gray-700 hover:border-green-600 hover:text-green-600 transition-all duration-300 w-full sm:w-auto"
+                >
+                  <span>View Portfolio</span>
+                  <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+              
+              <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto lg:mx-0">
+                <div className="flex items-center gap-2 bg-white/50 backdrop-blur-sm rounded-lg p-3 border border-gray-100 justify-center sm:justify-start">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                  <span className="text-sm font-medium text-gray-700 whitespace-nowrap">No obligation</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/50 backdrop-blur-sm rounded-lg p-3 border border-gray-100 justify-center sm:justify-start">
+                  <Clock className="w-5 h-5 text-green-600 flex-shrink-0" />
+                  <span className="text-sm font-medium text-gray-700 whitespace-nowrap">24-hour response</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/50 backdrop-blur-sm rounded-lg p-3 border border-gray-100 justify-center sm:justify-start">
+                  <Award className="w-5 h-5 text-green-600 flex-shrink-0" />
+                  <span className="text-sm font-medium text-gray-700 whitespace-nowrap">5-star rated</span>
+                </div>
+              </div>
             </div>
-            
-            <h1 className="mt-6 text-5xl md:text-6xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-green-800 bg-clip-text text-transparent leading-tight">
-              Houston Web Design Services that Convert Visitors into 
-              <span className="text-green-600"> Customers</span>
-            </h1>
-            
-            <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Custom, mobile-first websites built for speed, SEO, and measurable ROI. Get a high-converting site and scale your business in Houston.
-            </p>
-            
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={handleClaimOffer}
-                className="inline-flex items-center justify-center rounded-lg px-8 py-4 font-semibold bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-700 hover:to-emerald-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-              >
-                Claim This Offer
-              </button>
-              <a
-                href="#portfolio"
-                className="inline-flex items-center justify-center rounded-lg px-8 py-4 font-semibold border-2 border-gray-300 text-gray-700 hover:border-green-600 hover:text-green-600 transition-all duration-300"
-              >
-                View Portfolio
-              </a>
-            </div>
-            
-            <div className="mt-6 flex items-center justify-center gap-6 text-sm text-gray-500">
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600" />
-                No obligation
+
+            <div className="relative block">
+              <div className="relative z-10 bg-white rounded-2xl shadow-xl p-3 md:p-4 transform hover:scale-105 transition-transform duration-300">
+                <img 
+                  src="/blutouch.png" 
+                  alt="Featured Web Design Project - BluTouch" 
+                  className="rounded-lg w-full h-auto object-cover"
+                  loading="eager"
+                />
+                <div className="absolute -bottom-3 md:-bottom-4 -right-3 md:-right-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 md:px-6 py-2 rounded-full text-sm font-semibold shadow-lg whitespace-nowrap">
+                  Featured Project
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-green-600" />
-                24-hour response
-              </div>
-              <div className="flex items-center gap-2">
-                <Award className="w-4 h-4 text-green-600" />
-                5-star rated
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-emerald-600/20 rounded-2xl blur-3xl transform scale-95 -z-10"></div>
             </div>
           </div>
         </div>
@@ -171,46 +206,85 @@ const HoustonWebDesignLanding = () => {
         </section>
 
         {/* Value Propositions - Enhanced */}
-        <section className="py-16 bg-white">
+        <section className="py-12 md:py-16 bg-white overflow-hidden">
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-gray-800 to-green-800">
                 Why Houston Businesses Choose Cardinal
               </h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
                 We don't just build websites – we create digital growth engines
               </p>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-8">
-              <article className="group p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center mb-6">
-                  <CheckCircle className="w-6 h-6 text-white" />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              <article className="group p-6 md:p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-100 to-emerald-50 rounded-full filter blur-3xl opacity-30 transform group-hover:scale-150 transition-transform duration-500"></div>
+                <div className="relative">
+                  <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                    <CheckCircle className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Designed to Rank</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Technical SEO baked in: clean architecture, fast load times, structured data, and content strategy that gets you found on Google.
+                  </p>
+                  <div className="mt-6 space-y-2">
+                    <div className="flex items-center text-sm text-gray-600">
+                      <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                      <span>Schema Markup</span>
+                    </div>
+                    <div className="flex items-center text-sm text-gray-600">
+                      <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                      <span>Core Web Vitals Optimized</span>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Designed to Rank</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Technical SEO baked in: clean architecture, fast load times, structured data, and content strategy that gets you found on Google.
-                </p>
               </article>
               
-              <article className="group p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center mb-6">
-                  <Star className="w-6 h-6 text-white" />
+              <article className="group p-6 md:p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-100 to-emerald-50 rounded-full filter blur-3xl opacity-30 transform group-hover:scale-150 transition-transform duration-500"></div>
+                <div className="relative">
+                  <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                    <Star className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Built to Convert</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Clear CTAs, trust signals, and UX patterns proven to turn visitors into leads and paying customers.
+                  </p>
+                  <div className="mt-6 space-y-2">
+                    <div className="flex items-center text-sm text-gray-600">
+                      <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                      <span>A/B Testing Ready</span>
+                    </div>
+                    <div className="flex items-center text-sm text-gray-600">
+                      <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                      <span>Conversion Tracking</span>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Built to Convert</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Clear CTAs, trust signals, and UX patterns proven to turn visitors into leads and paying customers.
-                </p>
               </article>
               
-              <article className="group p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center mb-6">
-                  <Award className="w-6 h-6 text-white" />
+              <article className="group p-6 md:p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative sm:col-span-2 lg:col-span-1">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-100 to-emerald-50 rounded-full filter blur-3xl opacity-30 transform group-hover:scale-150 transition-transform duration-500"></div>
+                <div className="relative">
+                  <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                    <Award className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Managed & Scalable</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Hosting, analytics, and ongoing optimization to keep performance high as your business grows.
+                  </p>
+                  <div className="mt-6 space-y-2">
+                    <div className="flex items-center text-sm text-gray-600">
+                      <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                      <span>Cloud Infrastructure</span>
+                    </div>
+                    <div className="flex items-center text-sm text-gray-600">
+                      <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                      <span>Monthly Reports</span>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Managed & Scalable</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Hosting, analytics, and ongoing optimization to keep performance high as your business grows.
-                </p>
               </article>
             </div>
           </div>
@@ -276,9 +350,9 @@ const HoustonWebDesignLanding = () => {
 
         {/* Contact Form Section */}
         {showForm && (
-          <section id="contact-form" className="py-16 bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 relative overflow-hidden">
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPGcgZmlsbD0iI0ZGRiIgZmlsbC1vcGFjaXR5PSIwLjA1Ij4KPGNpcmNsZSBjeD0iNyIgY3k9IjciIHI9IjEiLz4KPC9nPgo8L2c+Cjwvc3ZnPg==')] opacity-30"></div>
-            <div className="container mx-auto px-4 relative">
+          <section id="contact-form" className="relative py-16 bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 overflow-visible isolate">
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPGcgZmlsbD0iI0ZGRiIgZmlsbC1vcGFjaXR5PSIwLjA1Ij4KPGNpcmNsZSBjeD0iNyIgY3k9IjciIHI9IjEiLz4KPC9nPgo8L2c+Cjwvc3ZnPg==')] opacity-30 -z-10"></div>
+            <div className="container mx-auto px-4 relative z-20">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                   Ready to Transform Your Business?
@@ -292,6 +366,79 @@ const HoustonWebDesignLanding = () => {
           </section>
         )}
 
+        {/* Testimonials Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                What Our Clients Say
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Join hundreds of successful businesses who trust us with their online presence
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl shadow-lg border border-gray-100 transform hover:-translate-y-1 transition-all duration-300">
+                <div className="flex items-center mb-4">
+                  <div className="flex text-green-500">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-current" />
+                    ))}
+                  </div>
+                </div>
+                <blockquote className="mb-4">
+                  <p className="text-gray-700 leading-relaxed">
+                    "Cardinal transformed our online presence. Our new website not only looks amazing but has significantly increased our leads and conversions."
+                  </p>
+                </blockquote>
+                <footer>
+                  <div className="font-semibold text-gray-900">Sarah Johnson</div>
+                  <div className="text-sm text-gray-500">CEO, Houston Tech Solutions</div>
+                </footer>
+              </div>
+
+              <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl shadow-lg border border-gray-100 transform hover:-translate-y-1 transition-all duration-300">
+                <div className="flex items-center mb-4">
+                  <div className="flex text-green-500">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-current" />
+                    ))}
+                  </div>
+                </div>
+                <blockquote className="mb-4">
+                  <p className="text-gray-700 leading-relaxed">
+                    "The SEO optimizations and mobile-first design have helped us rank higher on Google and reach more customers than ever before."
+                  </p>
+                </blockquote>
+                <footer>
+                  <div className="font-semibold text-gray-900">Michael Chen</div>
+                  <div className="text-sm text-gray-500">Owner, Premier Services</div>
+                </footer>
+              </div>
+
+              <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl shadow-lg border border-gray-100 transform hover:-translate-y-1 transition-all duration-300">
+                <div className="flex items-center mb-4">
+                  <div className="flex text-green-500">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-current" />
+                    ))}
+                  </div>
+                </div>
+                <blockquote className="mb-4">
+                  <p className="text-gray-700 leading-relaxed">
+                    "Working with Cardinal was a game-changer. They delivered a website that perfectly represents our brand and drives real business results."
+                  </p>
+                </blockquote>
+                <footer>
+                  <div className="font-semibold text-gray-900">David Martinez</div>
+                  <div className="text-sm text-gray-500">Director, Growth Innovations</div>
+                </footer>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Portfolio Section - Enhanced */}
         <section id="portfolio" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 max-w-6xl">
@@ -304,6 +451,107 @@ const HoustonWebDesignLanding = () => {
               </p>
             </div>
             <Portfolio />
+          </div>
+        </section>
+
+        {/* Features Comparison Section */}
+        <section className="py-16 bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPGcgZmlsbD0iI0ZGRiIgZmlsbC1vcGFjaXR5PSIwLjA1Ij4KPGNpcmNsZSBjeD0iNyIgY3k9IjciIHI9IjEiLz4KPC9nPgo8L2c+Cjwvc3ZnPg==')] opacity-20"></div>
+          <div className="container mx-auto px-4 max-w-6xl relative">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Why Choose Cardinal for Your Web Design?
+              </h2>
+              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                See how we compare to traditional web design agencies
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 items-start">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-green-400 mb-2">Cardinal's Approach</h3>
+                  <p className="text-gray-300">Data-driven, results-focused web design</p>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className="font-semibold mb-1">SEO-First Design</h4>
+                      <p className="text-gray-400">Built-in technical SEO and content strategy that ranks</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className="font-semibold mb-1">Conversion Optimization</h4>
+                      <p className="text-gray-400">Strategic CTAs and conversion paths throughout</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className="font-semibold mb-1">Performance Tracking</h4>
+                      <p className="text-gray-400">Built-in analytics and conversion tracking</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className="font-semibold mb-1">Growth-Ready Platform</h4>
+                      <p className="text-gray-400">Scalable architecture that grows with your business</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-gray-400 mb-2">Traditional Agencies</h3>
+                  <p className="text-gray-500">Design-only focus without strategy</p>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <svg className="w-6 h-6 text-gray-500 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <div>
+                      <h4 className="font-semibold mb-1 text-gray-400">Basic Design</h4>
+                      <p className="text-gray-500">Focus on aesthetics without SEO consideration</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <svg className="w-6 h-6 text-gray-500 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <div>
+                      <h4 className="font-semibold mb-1 text-gray-400">Limited Functionality</h4>
+                      <p className="text-gray-500">Basic features without conversion optimization</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <svg className="w-6 h-6 text-gray-500 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <div>
+                      <h4 className="font-semibold mb-1 text-gray-400">No Analytics</h4>
+                      <p className="text-gray-500">Missing performance tracking and insights</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <svg className="w-6 h-6 text-gray-500 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <div>
+                      <h4 className="font-semibold mb-1 text-gray-400">Static Solutions</h4>
+                      <p className="text-gray-500">Hard to update and scale over time</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

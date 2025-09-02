@@ -6,35 +6,128 @@ import { ArrowRight, Mail, Phone, User, Gift, ChevronDown, Code, Smartphone, Sea
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
-const serviceOptions = [{
-  value: "web-development",
-  label: "Web Development",
-  icon: Code
-}, {
-  value: "mobile-applications",
-  label: "Mobile Applications",
-  icon: Smartphone
-}, {
-  value: "seo-insights",
-  label: "SEO & Digital Marketing",
-  icon: Search
-}, {
-  value: "brand-identity",
-  label: "Brand Identity & Design",
-  icon: Palette
-}, {
-  value: "cloud-solutions",
-  label: "Cloud Solutions",
-  icon: Cloud
-}, {
-  value: "digital-campaigns",
-  label: "Digital Campaigns",
-  icon: BarChart
-}, {
-  value: "experience-optimization",
-  label: "Experience Optimization",
-  icon: Target
-}];
+const serviceCategories = [
+  {
+    category: "Web Solutions",
+    services: [
+      {
+        value: "custom-website",
+        label: "Custom Website Development",
+        description: "Professional, responsive websites built with modern technologies",
+        icon: Code
+      },
+      {
+        value: "ecommerce",
+        label: "E-commerce Solutions",
+        description: "Full-featured online stores with secure payment processing",
+        icon: Code
+      },
+      {
+        value: "web-application",
+        label: "Web Applications",
+        description: "Complex web apps with enterprise architecture",
+        icon: Code
+      }
+    ]
+  },
+  {
+    category: "Mobile & Apps",
+    services: [
+      {
+        value: "ios-development",
+        label: "iOS App Development",
+        description: "Native iOS applications for iPhone and iPad",
+        icon: Smartphone
+      },
+      {
+        value: "android-development",
+        label: "Android App Development",
+        description: "Native Android applications for all devices",
+        icon: Smartphone
+      },
+      {
+        value: "cross-platform",
+        label: "Cross-Platform Apps",
+        description: "Hybrid apps that work on both iOS and Android",
+        icon: Smartphone
+      }
+    ]
+  },
+  {
+    category: "Digital Marketing",
+    services: [
+      {
+        value: "seo-optimization",
+        label: "SEO Optimization",
+        description: "Improve your search engine rankings and visibility",
+        icon: Search
+      },
+      {
+        value: "social-media",
+        label: "Social Media Marketing",
+        description: "Strategic social media presence and campaigns",
+        icon: BarChart
+      },
+      {
+        value: "ppc-advertising",
+        label: "PPC Advertising",
+        description: "Targeted paid advertising campaigns",
+        icon: Target
+      }
+    ]
+  },
+  {
+    category: "Design & Branding",
+    services: [
+      {
+        value: "brand-identity",
+        label: "Brand Identity Design",
+        description: "Complete brand development and visual identity",
+        icon: Palette
+      },
+      {
+        value: "ui-ux-design",
+        label: "UI/UX Design",
+        description: "User-centered interface and experience design",
+        icon: Palette
+      }
+    ]
+  },
+  {
+    category: "Infrastructure",
+    services: [
+      {
+        value: "cloud-solutions",
+        label: "Cloud Infrastructure",
+        description: "Scalable, secure cloud hosting solutions",
+        icon: Cloud
+      },
+      {
+        value: "devops",
+        label: "DevOps Services",
+        description: "Streamlined development and deployment processes",
+        icon: Cloud
+      }
+    ]
+  },
+  {
+    category: "Other Services",
+    services: [
+      {
+        value: "consulting",
+        label: "Digital Consulting",
+        description: "Strategic technology and digital transformation advice",
+        icon: Target
+      },
+      {
+        value: "custom-solution",
+        label: "Custom Solution",
+        description: "Multiple or specialized services not listed above",
+        icon: Gift
+      }
+    ]
+  }
+];
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -191,21 +284,35 @@ const ContactForm = () => {
                   </div>
 
                   {/* Service Selection Dropdown */}
-                  <div className="relative group/input sm:col-span-2 lg:col-span-1">
+                  <div className="relative group/input sm:col-span-2 lg:col-span-2">
                     <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 rounded-lg opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
                     <div className="relative">
                       <Select onValueChange={handleServiceChange} value={formData.service} name="service">
                         <SelectTrigger className="h-12 bg-white/50 border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md">
-                          <SelectValue placeholder="Select Service" />
+                          <SelectValue placeholder="Select Service(s)" />
                         </SelectTrigger>
-                        <SelectContent className="bg-white/95 backdrop-blur-xl border border-gray-200/50 rounded-lg shadow-xl z-50">
-                          {serviceOptions.map(service => (
-                            <SelectItem key={service.value} value={service.value} className="flex items-center gap-2 hover:bg-green-50 focus:bg-green-50 cursor-pointer transition-colors duration-200">
-                              <div className="flex items-center gap-2">
-                                <service.icon className="w-4 h-4 text-green-600" />
-                                <span>{service.label}</span>
+                        <SelectContent className="bg-white/95 backdrop-blur-xl border border-gray-200/50 rounded-lg shadow-xl z-50 max-h-[300px]">
+                          {serviceCategories.map((category, idx) => (
+                            <div key={idx}>
+                              <div className="px-2 py-1.5 text-sm font-semibold text-gray-500 bg-gray-50/50">
+                                {category.category}
                               </div>
-                            </SelectItem>
+                              {category.services.map(service => (
+                                <SelectItem 
+                                  key={service.value} 
+                                  value={service.value} 
+                                  className="flex items-start gap-2 py-2 hover:bg-green-50 focus:bg-green-50 cursor-pointer transition-colors duration-200"
+                                >
+                                  <div className="flex flex-col gap-1">
+                                    <div className="flex items-center gap-2">
+                                      <service.icon className="w-4 h-4 text-green-600 flex-shrink-0" />
+                                      <span className="font-medium">{service.label}</span>
+                                    </div>
+                                    <span className="text-xs text-gray-500 pl-6">{service.description}</span>
+                                  </div>
+                                </SelectItem>
+                              ))}
+                            </div>
                           ))}
                         </SelectContent>
                       </Select>

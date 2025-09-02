@@ -1,7 +1,7 @@
 
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-import Industries from "@/components/Industries";
+
 import Portfolio from "@/components/Portfolio";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
@@ -32,14 +32,9 @@ const Index = () => {
         <Services />
       </div>
       
-      {/* About - Dark background (moved above Industries) */}
+      {/* About - Dark background */}
       <div>
         <About />
-      </div>
-      
-      {/* Industries - White background */}
-      <div className="bg-white">
-        <Industries />
       </div>
       
       {/* Portfolio - Very light green background for subtle variation */}
@@ -47,13 +42,13 @@ const Index = () => {
         <Portfolio />
       </div>
       
-      {/* Featured Articles */}
-      <FeaturedArticles />
-      
-      {/* Contact - Gray background to match Industries */}
+      {/* Contact - Gray background */}
       <div className="bg-gray-50">
         <Contact />
       </div>
+      
+      {/* Featured Articles */}
+      <FeaturedArticles />
       
       <Footer />
     </div>

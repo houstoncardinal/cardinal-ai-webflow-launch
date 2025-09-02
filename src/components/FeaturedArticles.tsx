@@ -66,27 +66,27 @@ const FeaturedArticles = () => {
   }
 
   return (
-    <section className="py-16 bg-muted/50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="py-10 sm:py-12 bg-muted/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Badge variant="secondary" className="px-3 py-1">Featured</Badge>
-            <div className="h-px bg-border flex-1 max-w-20"></div>
-            <span className="text-primary">✨</span>
-            <div className="h-px bg-border flex-1 max-w-20"></div>
+        <div className="text-center mb-8 sm:mb-10">
+          <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3">
+            <Badge variant="secondary" className="px-2 py-0.5 text-xs">Featured</Badge>
+            <div className="h-px bg-border flex-1 max-w-16"></div>
+            <span className="text-primary text-sm">✨</span>
+            <div className="h-px bg-border flex-1 max-w-16"></div>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Latest <span className="text-primary">Insights</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light text-foreground mb-3 sm:mb-4 leading-tight">
+            Latest <span className="text-primary font-normal">Insights</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             Stay ahead of the curve with our expert analysis on technology trends, 
             development best practices, and business insights.
           </p>
         </div>
 
         {/* Featured Articles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10">
           {featuredPosts.map((post) => (
             <BlogCard key={post.id} post={post} />
           ))}
@@ -95,9 +95,9 @@ const FeaturedArticles = () => {
         {/* View All Button */}
         <div className="text-center">
           <Link to="/blog">
-            <Button size="lg" className="group">
+            <Button size="lg" className="group text-sm sm:text-base py-2 px-4 sm:px-6">
               View All Articles
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
         </div>

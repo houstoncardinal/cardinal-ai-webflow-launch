@@ -27,16 +27,22 @@ const BlogArticleSchema = ({ post, url }: BlogArticleSchemaProps) => {
   
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "NewsArticle",
     headline: post.title,
     description: post.excerpt,
     image: post.thumbnail_url ? [post.thumbnail_url] : [`${window.location.origin}/thumbnail.png`],
     datePublished: formatISO(post.published_at),
     dateModified: formatISO(post.updated_at),
     author: {
-      "@type": "Organization",
+      "@type": "Person",
       name: post.author_name,
-      url: window.location.origin
+      url: `${window.location.origin}/team/${post.author_name.toLowerCase().replace(/\s+/g, '-')}`,
+    },
+    isAccessibleForFree: true,
+    articleBody: post.content,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", ".article-content"]
     },
     publisher: {
       "@type": "Organization",
@@ -126,6 +132,13 @@ const BlogArticleSchema = ({ post, url }: BlogArticleSchemaProps) => {
       {/* Additional Meta Tags for News/Top Stories */}
       <meta name="news_keywords" content={post.tags?.join(", ")} />
       <meta name="article:publisher" content="https://www.cardinalconsulting.com" />
+      
+      {/* Google News specific tags */}
+      <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      <meta name="googlebot-news" content="index, follow" />
+      <link rel="publisher" href="https://www.facebook.com/cardinalad" />
+      <meta property="article:opinion" content="false" />
+      <meta property="article:content_tier" content="free" />
       
       {/* JSON-LD Structured Data */}
       <script type="application/ld+json">

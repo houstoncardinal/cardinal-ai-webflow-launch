@@ -148,7 +148,7 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
   }
 
   return (
-    <Card className="w-full max-w-2xl mx-auto shadow-xl border-0 bg-white/80 backdrop-blur-sm">
+    <Card className="relative w-full max-w-2xl mx-auto shadow-xl border-0 bg-white/90 backdrop-blur-sm z-10">
       <CardHeader className="text-center pb-6">
         <CardTitle className="text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
           {t.title}
@@ -224,10 +224,10 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700">{t.projectType} *</label>
               <Select name="projectType" required>
-                <SelectTrigger className="border-gray-300 focus:border-green-500">
+                <SelectTrigger className="border-gray-300 focus:border-green-500 relative bg-white">
                   <SelectValue placeholder={language === 'en' ? "Select project type" : "Selecciona tipo"} />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white z-[100]">
                   {Object.entries(t.projectTypes).map(([value, label]) => (
                     <SelectItem key={value} value={value}>{label}</SelectItem>
                   ))}
@@ -241,10 +241,10 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
                 {t.timeline} *
               </label>
               <Select name="timeline" required>
-                <SelectTrigger className="border-gray-300 focus:border-green-500">
+                <SelectTrigger className="border-gray-300 focus:border-green-500 relative bg-white">
                   <SelectValue placeholder={language === 'en' ? "Select timeline" : "Selecciona cronograma"} />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white z-[100]">
                   {Object.entries(t.timelines).map(([value, label]) => (
                     <SelectItem key={value} value={value}>{label}</SelectItem>
                   ))}
@@ -259,10 +259,10 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
               {t.budget}
             </label>
             <Select name="budget">
-              <SelectTrigger className="border-gray-300 focus:border-green-500">
+              <SelectTrigger className="border-gray-300 focus:border-green-500 relative bg-white">
                 <SelectValue placeholder={language === 'en' ? "Select budget range" : "Selecciona presupuesto"} />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white z-[100]">
                 {Object.entries(t.budgetRanges).map(([value, label]) => (
                   <SelectItem key={value} value={value}>{label}</SelectItem>
                 ))}

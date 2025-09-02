@@ -5,7 +5,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mail, Phone, MapPin, Clock, Sparkles, Star, MessageCircle, ExternalLink, Facebook } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from "@/components/ui/command";
+import { cn } from "@/lib/utils";
+import { Mail, Phone, MapPin, Clock, Sparkles, Star, MessageCircle, ExternalLink, Facebook, Code, Smartphone, Search, Palette, Cloud, BarChart, Target, Globe, Zap, Check, ChevronsUpDown } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import TransformationForm from "./TransformationForm";
@@ -18,7 +22,9 @@ const Contact = () => {
     firstName: "",
     lastName: "",
     email: "",
+    phone: "",
     company: "",
+    services: [] as string[],
     message: ""
   });
 
@@ -33,7 +39,9 @@ const Contact = () => {
           first_name: formData.firstName,
           last_name: formData.lastName,
           email: formData.email,
+          phone: formData.phone,
           company: formData.company,
+          services: formData.services,
           message: formData.message
         });
 
@@ -48,7 +56,9 @@ const Contact = () => {
         firstName: "",
         lastName: "",
         email: "",
+        phone: "",
         company: "",
+        services: [],
         message: ""
       });
     } catch (error) {
@@ -63,7 +73,113 @@ const Contact = () => {
     }
   };
 
-  const contactInfo = [
+  const serviceCategories = [
+  {
+    category: "Web Development",
+    services: [
+      {
+        id: "custom-website",
+        label: "Custom Website Development",
+        description: "Professional, responsive websites built with modern technologies",
+        icon: Code
+      },
+      {
+        id: "web-application",
+        label: "Web Applications",
+        description: "Complex web apps with enterprise architecture",
+        icon: Globe
+      },
+      {
+        id: "ecommerce",
+        label: "E-commerce Solutions",
+        description: "Full-featured online stores with secure payment processing",
+        icon: Code
+      }
+    ]
+  },
+  {
+    category: "Mobile Development",
+    services: [
+      {
+        id: "ios-development",
+        label: "iOS App Development",
+        description: "Native iOS applications for iPhone and iPad",
+        icon: Smartphone
+      },
+      {
+        id: "android-development",
+        label: "Android App Development",
+        description: "Native Android applications for all devices",
+        icon: Smartphone
+      },
+      {
+        id: "cross-platform",
+        label: "Cross-Platform Apps",
+        description: "Hybrid apps that work on both iOS and Android",
+        icon: Smartphone
+      }
+    ]
+  },
+  {
+    category: "Digital Marketing",
+    services: [
+      {
+        id: "seo-optimization",
+        label: "SEO Optimization",
+        description: "Improve your search engine rankings and visibility",
+        icon: Search
+      },
+      {
+        id: "ppc-advertising",
+        label: "PPC Advertising",
+        description: "Targeted paid advertising campaigns",
+        icon: Target
+      },
+      {
+        id: "social-media",
+        label: "Social Media Marketing",
+        description: "Strategic social media presence and campaigns",
+        icon: BarChart
+      }
+    ]
+  },
+  {
+    category: "Design & Branding",
+    services: [
+      {
+        id: "brand-identity",
+        label: "Brand Identity Design",
+        description: "Complete brand development and visual identity",
+        icon: Palette
+      },
+      {
+        id: "ui-ux-design",
+        label: "UI/UX Design",
+        description: "User-centered interface and experience design",
+        icon: Palette
+      }
+    ]
+  },
+  {
+    category: "Infrastructure",
+    services: [
+      {
+        id: "cloud-solutions",
+        label: "Cloud Infrastructure",
+        description: "Scalable, secure cloud hosting solutions",
+        icon: Cloud
+      },
+      {
+        id: "ai-optimization",
+        label: "AI & Optimization",
+        description: "AI-powered solutions and performance optimization",
+        icon: Zap
+      }
+    ]
+  }
+];
+
+const contactInfo = [
     {
       icon: Mail,
       title: "Email",
@@ -154,19 +270,35 @@ const Contact = () => {
                     </div>
                   </div>
                   
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-xs sm:text-sm font-medium text-gray-700">
-                      Email address *
-                    </Label>
-                    <Input 
-                      id="email" 
-                      type="email" 
-                      value={formData.email} 
-                      onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))} 
-                      placeholder="john@company.com" 
-                      className="h-10 sm:h-11 border-gray-300 focus:border-green-500 focus:ring-green-500 text-sm sm:text-base" 
-                      required 
-                    />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="text-xs sm:text-sm font-medium text-gray-700">
+                        Email address *
+                      </Label>
+                      <Input 
+                        id="email" 
+                        type="email" 
+                        value={formData.email} 
+                        onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))} 
+                        placeholder="john@company.com" 
+                        className="h-10 sm:h-11 border-gray-300 focus:border-green-500 focus:ring-green-500 text-sm sm:text-base" 
+                        required 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="phone" className="text-xs sm:text-sm font-medium text-gray-700">
+                        Phone number *
+                      </Label>
+                      <Input 
+                        id="phone" 
+                        type="tel" 
+                        value={formData.phone} 
+                        onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))} 
+                        placeholder="(123) 456-7890" 
+                        className="h-10 sm:h-11 border-gray-300 focus:border-green-500 focus:ring-green-500 text-sm sm:text-base" 
+                        required 
+                      />
+                    </div>
                   </div>
 
                   <div className="space-y-2">
@@ -181,6 +313,112 @@ const Contact = () => {
                       className="h-10 sm:h-11 border-gray-300 focus:border-green-500 focus:ring-green-500 text-sm sm:text-base" 
                       required 
                     />
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="flex flex-col gap-2">
+                      <Label className="text-xs sm:text-sm font-medium text-gray-700">
+                        Services of Interest *
+                      </Label>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <Button
+                            variant="outline"
+                            role="combobox"
+                            className="h-10 sm:h-11 justify-between border-gray-300 hover:border-green-500 hover:bg-gray-50/50 text-left font-normal"
+                          >
+                            {formData.services.length === 0 ? (
+                              <span className="text-gray-500">Select services...</span>
+                            ) : (
+                              <span className="text-sm truncate">
+                                {formData.services.length} service{formData.services.length > 1 ? "s" : ""} selected
+                              </span>
+                            )}
+                            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-[min(calc(100vw-2rem),400px)] p-0" align="start">
+                          <Command>
+                            <CommandInput placeholder="Search services..." className="h-9" />
+                            <CommandEmpty>No services found.</CommandEmpty>
+                            <div className="max-h-[300px] overflow-auto">
+                              {serviceCategories.map((category, idx) => (
+                                <CommandGroup key={idx} heading={category.category}>
+                                  {category.services.map((service) => (
+                                    <CommandItem
+                                      key={service.id}
+                                      value={service.label}
+                                      onSelect={() => {
+                                        setFormData(prev => ({
+                                          ...prev,
+                                          services: prev.services.includes(service.id)
+                                            ? prev.services.filter(s => s !== service.id)
+                                            : [...prev.services, service.id]
+                                        }));
+                                      }}
+                                      className="gap-2 py-2"
+                                    >
+                                      <div className={cn(
+                                        "border border-gray-200 rounded w-4 h-4 flex items-center justify-center",
+                                        formData.services.includes(service.id) && "bg-green-600 border-green-600"
+                                      )}>
+                                        {formData.services.includes(service.id) && (
+                                          <Check className="h-3 w-3 text-white" />
+                                        )}
+                                      </div>
+                                      <div className="flex-1">
+                                        <div className="flex items-center gap-2">
+                                          <service.icon className="w-4 h-4 text-green-600" />
+                                          <span>{service.label}</span>
+                                        </div>
+                                        <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">
+                                          {service.description}
+                                        </p>
+                                      </div>
+                                    </CommandItem>
+                                  ))}
+                                </CommandGroup>
+                              ))}
+                            </div>
+                          </Command>
+                        </PopoverContent>
+                      </Popover>
+
+                      {/* Selected Services Pills */}
+                      {formData.services.length > 0 && (
+                        <div className="flex flex-wrap gap-2 mt-2">
+                          {formData.services.map(serviceId => {
+                            const service = serviceCategories
+                              .flatMap(cat => cat.services)
+                              .find(s => s.id === serviceId);
+                            
+                            if (!service) return null;
+                            
+                            return (
+                              <div
+                                key={serviceId}
+                                className="inline-flex items-center gap-1 text-xs bg-green-50 text-green-700 px-2 py-1 rounded-full"
+                              >
+                                <service.icon className="w-3 h-3" />
+                                <span>{service.label}</span>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setFormData(prev => ({
+                                      ...prev,
+                                      services: prev.services.filter(s => s !== serviceId)
+                                    }));
+                                  }}
+                                  className="ml-1 hover:text-green-900"
+                                >
+                                  ×
+                                </button>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
                   </div>
 
                   <div className="space-y-2">

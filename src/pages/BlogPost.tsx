@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Calendar, Clock, Eye, Share2, Tag } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, Clock, Eye, Share2, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/Navigation";
@@ -236,32 +236,252 @@ const BlogPost = () => {
           </header>
 
           {/* Featured Image */}
-          {post.thumbnail_url && (
-            <div className="mb-8">
-              <img
-                src={post.thumbnail_url}
-                alt={post.title}
-                className="w-full h-64 md:h-96 object-cover rounded-xl"
-              />
+          {(post.slug === 'hidden-money-leaks-on-your-website' || post.thumbnail_url) && (
+            <div className="relative mb-12 group">
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative">
+                <img
+                  src={post.slug === 'hidden-money-leaks-on-your-website' ? '/money-leaks.png' : post.thumbnail_url}
+                  alt={post.title}
+                  className="w-full h-64 md:h-[500px] object-cover rounded-xl shadow-lg"
+                />
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-background/80 via-background/20 to-transparent"></div>
+              </div>
             </div>
           )}
 
           {/* Article Content */}
           <div className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-foreground prose-strong:text-foreground prose-code:text-foreground prose-li:text-foreground prose-blockquote:text-muted-foreground prose-a:text-primary hover:prose-a:text-primary/80">
-            <ReactMarkdown>{post.content}</ReactMarkdown>
+            {/* Streamlined Article Header */}
+            <div className="not-prose mb-8">
+              <div className="relative">
+                <div className="flex items-center gap-3 mb-4">
+                  {post.tags?.slice(0, 3).map(tag => (
+                    <span key={tag} 
+                      className="px-3 py-1 bg-primary/5 text-primary rounded-full text-sm border border-primary/10">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                
+                <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-primary/10">
+                  <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-primary/60" />
+                      <span>{post.reading_time}m read</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4 text-primary/60" />
+                      <span>Updated {formatDate(post.updated_at || post.published_at).split(',')[0]}</span>
+                    </div>
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={sharePost}
+                    className="flex items-center gap-2"
+                  >
+                    <Share2 className="w-4 h-4" />
+                    Share
+                  </Button>
+                </div>
+
+                {/* Quick Navigation Chips */}
+                <div className="relative -mx-6 px-6 md:mx-0 md:px-0">
+                  <div className="flex items-center gap-2 py-4 overflow-x-auto hide-scrollbar">
+                    <ReactMarkdown
+                      components={{
+                        p: () => null,
+                        h1: () => null,
+                        h2: ({node, ...props}) => {
+                          const title = props.children?.toString() || '';
+                          const id = title.toLowerCase().replace(/\s+/g, '-');
+                          const icon = 
+                            title.includes('Quick') ? '⚡' :
+                            title.includes('Bonus') ? '�' :
+                            title.includes('Need') ? '🎯' :
+                            title.includes('Why') ? '�' : '�';
+                          
+                          return (
+                            <a href={`#${id}`} 
+                               className="shrink-0 flex items-center gap-2 px-3 py-1.5 bg-background hover:bg-primary/5 border border-primary/10 rounded-full transition-colors">
+                              <span className="text-sm">{icon}</span>
+                              <span className="text-xs sm:text-sm text-muted-foreground whitespace-nowrap">
+                                {title.replace(/^\d+\.\s/, '').split(' ').slice(0, 3).join(' ')}...
+                              </span>
+                            </a>
+                          );
+                        },
+                        h3: () => null,
+                      }}
+                    >
+                      {post.content}
+                    </ReactMarkdown>
+                  </div>
+                  {/* Gradient fade effect for overflow */}
+                  <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-background to-transparent pointer-events-none md:hidden"></div>
+                </div>
+
+                {/* Reading Progress Bar */}
+                <div className="h-0.5 w-full bg-primary/10 overflow-hidden">
+                  <div className="h-full w-0 bg-gradient-to-r from-green-500 to-primary rounded-full transition-all duration-300" 
+                       style={{ width: '0%' }} />
+                </div>
+              </div>
+            </div>
+
+            {/* Main Content */}
+            <ReactMarkdown
+              components={{
+                h2: ({node, ...props}) => (
+                  <h2 
+                    id={props.children?.toString().toLowerCase().replace(/\s+/g, '-')}
+                    {...props} 
+                    className="group relative mt-16 mb-8 scroll-mt-32"
+                  >
+                    <div className="absolute -left-4 sm:-left-8 top-1/2 -translate-y-1/2 w-2 sm:w-4 h-px bg-gradient-to-r from-green-500 to-primary"></div>
+                    <div className="flex items-center gap-3 sm:gap-4 bg-gradient-to-r from-green-500/5 to-transparent p-4 sm:p-6 rounded-xl">
+                      <div className="relative">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-primary rounded-lg blur opacity-25 group-hover:opacity-50 transition-opacity"></div>
+                        <span className="relative flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-green-500/10 to-primary/10 border border-green-500/10 flex items-center justify-center text-lg sm:text-xl">
+                          {props.children?.toString().includes('Quick') ? '⚡' :
+                           props.children?.toString().includes('Bonus') ? '�' :
+                           props.children?.toString().includes('Need') ? '🎯' :
+                           props.children?.toString().includes('Why') ? '�' : '📋'}
+                        </span>
+                      </div>
+                      <span className="text-xl sm:text-2xl font-semibold bg-gradient-to-r from-green-600 to-primary bg-clip-text text-transparent">
+                        {props.children}
+                      </span>
+                    </div>
+                  </h2>
+                ),
+                h3: ({node, ...props}) => (
+                  <h3 {...props} className="flex items-center gap-3 text-lg sm:text-xl font-semibold mb-4 text-foreground/90 mt-8">
+                    <span className="w-6 h-6 rounded-lg bg-green-500/10 flex items-center justify-center text-sm border border-green-500/10">
+                      {props.children?.toString().includes('1.') ? '1' :
+                       props.children?.toString().includes('2.') ? '2' :
+                       props.children?.toString().includes('3.') ? '3' :
+                       props.children?.toString().includes('4.') ? '4' :
+                       props.children?.toString().includes('5.') ? '5' : '•'}
+                    </span>
+                    {props.children}
+                  </h3>
+                ),
+                p: ({node, ...props}) => (
+                  <p {...props} className="leading-relaxed text-foreground/80 text-lg mb-6">
+                    {props.children}
+                  </p>
+                ),
+                ul: ({node, ...props}) => (
+                  <ul {...props} className="space-y-4 my-8 bg-muted/50 p-6 rounded-xl">
+                    {props.children}
+                  </ul>
+                ),
+                li: ({node, ...props}) => {
+                  const content = props.children?.toString() || '';
+                  const hasImpactPrefix = content.includes('Key Impact:') || 
+                                        content.includes('Pro Tip:') || 
+                                        content.includes('Key Insight:') ||
+                                        content.includes('Impact:') ||
+                                        content.includes('Result:');
+                  
+                  return hasImpactPrefix ? (
+                    <div className="mt-6 p-4 bg-primary/5 border border-primary/10 rounded-lg">
+                      <p className="font-semibold text-primary">{props.children}</p>
+                    </div>
+                  ) : (
+                    <li {...props} className="flex items-start gap-3">
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                        •
+                      </span>
+                      <span className="flex-1 text-foreground/90">{props.children}</span>
+                    </li>
+                  );
+                },
+                blockquote: ({node, ...props}) => (
+                  <blockquote {...props} className="my-8 p-6 bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl border-l-4 border-primary">
+                    <p className="italic text-lg text-foreground/90">{props.children}</p>
+                  </blockquote>
+                ),
+                strong: ({node, ...props}) => (
+                  <strong {...props} className="font-semibold text-primary">
+                    {props.children}
+                  </strong>
+                ),
+              }}
+            >
+              {post.content}
+            </ReactMarkdown>
+
+            {/* Key Takeaways Box */}
+            <div className="not-prose mt-12">
+              <div className="p-8 bg-gradient-to-br from-primary/5 via-background to-primary/5 rounded-xl border border-primary/10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span className="text-xl">🎯</span>
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground">Key Takeaways</h3>
+                </div>
+                <ul className="space-y-3">
+                  {post.tags?.map((tag, index) => (
+                    <li key={tag} className="flex items-center gap-3 text-muted-foreground">
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary text-sm">
+                        {index + 1}
+                      </span>
+                      <span>{tag}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
 
           {/* Article Footer */}
-          <footer className="mt-12 pt-8 border-t border-border">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground mb-2">Published by</p>
-                <p className="font-semibold text-foreground">{post.author_name}</p>
+          <footer className="mt-16 space-y-12">
+            {/* CTA Section */}
+            <div className="relative p-8 md:p-12 rounded-2xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-primary/5"></div>
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)]"></div>
+              <div className="relative">
+                <h3 className="text-2xl font-bold mb-4">
+                  Want to Stop Your Website from Leaking Money?
+                </h3>
+                <p className="text-lg text-muted-foreground mb-6">
+                  Get a free website audit and discover how much revenue you're leaving on the table. 
+                  Our team of experts will analyze your site and provide actionable recommendations.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Link to="/contact">
+                    <Button size="lg" className="group">
+                      Get Your Free Audit
+                      <ArrowLeft className="ml-2 w-4 h-4 rotate-180 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                  <Button variant="outline" size="lg" onClick={sharePost}>
+                    <Share2 className="w-4 h-4 mr-2" />
+                    Share Article
+                  </Button>
+                </div>
               </div>
-              <Button onClick={sharePost} variant="outline" className="flex items-center gap-2">
-                <Share2 className="w-4 h-4" />
-                Share Article
-              </Button>
+            </div>
+
+            {/* Author Section */}
+            <div className="flex items-center justify-between pt-8 border-t border-border">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <span className="text-primary font-semibold text-lg">
+                    {post.author_name.charAt(0)}
+                  </span>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">{post.author_name}</p>
+                  <p className="text-sm text-muted-foreground">Digital Strategy Expert</p>
+                </div>
+              </div>
+              <div className="text-sm text-muted-foreground">
+                Published {formatDate(post.published_at)}
+              </div>
             </div>
           </footer>
         </div>
