@@ -1,3 +1,6 @@
+# Cardinal Consulting - Houston Web Development Agency
+# Optimized robots.txt for maximum SEO visibility
+
 User-agent: *
 Allow: /
 Disallow: /admin/
@@ -6,15 +9,33 @@ Disallow: /test/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /static/
+Disallow: /temp/
+Disallow: /private/
 
-# Allow important pages
+# Allow important pages for crawling
 Allow: /services/
+Allow: /services/web-development
+Allow: /services/mobile-applications
+Allow: /services/web-applications
+Allow: /services/digital-campaigns
+Allow: /services/cloud-solutions
+Allow: /services/brand-identity
+Allow: /services/experience-optimization
+Allow: /services/seo-insights
 Allow: /industries/
 Allow: /about/
 Allow: /contact/
 Allow: /insights/
 Allow: /careers/
 Allow: /portfolio/
+Allow: /portfolio/abq-mri
+Allow: /portfolio/apn-clinic
+Allow: /portfolio/blutouch-pools
+Allow: /portfolio/clear-ledger
+Allow: /portfolio/eps-parking
+Allow: /portfolio/hougen-pros
+Allow: /portfolio/iac-centers
+Allow: /portfolio/vargas-group
 
 # Allow important assets
 Allow: /logo.png

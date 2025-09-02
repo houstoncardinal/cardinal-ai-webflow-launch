@@ -1,0 +1,103 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://cardinalhtx.com/#organization",
+      "name": "Cardinal Consulting",
+      "alternateName": "Cardinal HTX",
+      "url": "https://cardinalhtx.com",
+      "logo": "https://cardinalhtx.com/logo.png",
+      "image": "https://cardinalhtx.com/thumbnail.png",
+      "description": "Houston's #1 web development agency specializing in custom websites, mobile apps, and digital marketing solutions. 500+ projects completed with 98% client satisfaction.",
+      "telephone": "+1-832-989-2163",
+      "email": "hello@cardinalhtx.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2100 West Loop S Fwy",
+        "addressLocality": "Houston",
+        "addressRegion": "TX",
+        "postalCode": "77027",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 29.7604,
+        "longitude": -95.3698
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "127",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Michael Rodriguez"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Cardinal Consulting transformed our online presence completely! Their team delivered a stunning website that increased our conversions by 300%. Professional, fast, and exceeded all expectations. Highly recommend!",
+          "datePublished": "2024-01-15"
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Sarah Johnson"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Best decision we made for our business! Cardinal Consulting's digital marketing strategy boosted our leads by 250%. Their expertise in SEO and PPC is unmatched in Houston. Amazing results!",
+          "datePublished": "2024-02-03"
+        }
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/company/cardinalhtx",
+        "https://www.facebook.com/cardinalhtx",
+        "https://twitter.com/cardinalhtx",
+        "https://www.instagram.com/cardinalhtx"
+      ],
+      "serviceArea": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": 29.7604,
+          "longitude": -95.3698
+        },
+        "geoRadius": "50000"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://cardinalhtx.com/#website",
+      "url": "https://cardinalhtx.com",
+      "name": "Cardinal Consulting",
+      "description": "Houston's premier web development, app development & digital marketing agency",
+      "publisher": {
+        "@id": "https://cardinalhtx.com/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cardinalhtx.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+}

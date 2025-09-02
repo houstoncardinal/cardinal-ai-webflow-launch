@@ -46,9 +46,22 @@ const WebDevelopment = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO 
-        title="Professional Web Development Services | Cardinal Consulting"
-        description="Expert web development services including custom websites, e-commerce solutions, web applications, and responsive design. Transform your business with cutting-edge web technology."
-        keywords="web development, custom websites, e-commerce development, web applications, responsive design, modern web development, business websites"
+        title="🚀 Houston Web Development Services | #1 Custom Websites | Cardinal Consulting"
+        description="🔥 Houston's premier web development agency! Custom websites, e-commerce platforms & web applications that drive RESULTS. 500+ projects completed. FREE consultation & quote!"
+        keywords="Houston web development, Houston website design, custom websites Houston, Houston web developer, Houston e-commerce development, Houston responsive web design, web development Houston TX, Houston website builder"
+        servicePage={true}
+        pageType="service"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+          { name: "Web Development", url: "/services/web-development" }
+        ]}
+        serviceDetails={{
+          name: "Web Development Services",
+          description: "Custom website development, e-commerce platforms, and responsive web design services for Houston businesses",
+          priceRange: "$2,500 - $25,000",
+          category: "Web Development"
+        }}
         url="/services/web-development"
       />
       
