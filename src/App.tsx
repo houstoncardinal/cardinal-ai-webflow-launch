@@ -40,6 +40,8 @@ import EPSParking from "./pages/portfolio/EPSParking";
 import IACCenters from "./pages/portfolio/IACCenters";
 import ABQMRI from "./pages/portfolio/ABQMRI";
 import APNClinic from "./pages/portfolio/APNClinic";
+import HoustonWebDesignLanding from "./pages/landing/HoustonWebDesign";
+import HoustonWebDesignEsLanding from "./pages/landing/HoustonWebDesignEs";
 
 const queryClient = new QueryClient();
 
@@ -93,6 +95,10 @@ const App = () => (
             <Route path="/portfolio/iac-centers" element={<IACCenters />} />
             <Route path="/portfolio/abq-mri" element={<ABQMRI />} />
             <Route path="/portfolio/apn-clinic" element={<APNClinic />} />
+            
+            {/* Promotional Landing Pages */}
+            <Route path="/houston-web-design" element={<HoustonWebDesignLanding />} />
+            <Route path="/diseno-web-houston" element={<HoustonWebDesignEsLanding />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
