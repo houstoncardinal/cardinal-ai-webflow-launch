@@ -129,7 +129,7 @@ const SEO = ({
         },
         "sameAs": [
           "https://www.linkedin.com/company/cardinalhtx",
-          "https://www.facebook.com/cardinalhtx",
+          "https://www.facebook.com/cardinalad",
           "https://twitter.com/cardinalhtx",
           "https://www.instagram.com/cardinalhtx"
         ],
@@ -284,7 +284,7 @@ const SEO = ({
         },
         "sameAs": [
           "https://www.linkedin.com/company/cardinalhtx",
-          "https://www.facebook.com/cardinalhtx",
+          "https://www.facebook.com/cardinalad",
           "https://twitter.com/cardinalhtx",
           "https://www.instagram.com/cardinalhtx"
         ],
