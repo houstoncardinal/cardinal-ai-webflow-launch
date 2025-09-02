@@ -122,16 +122,70 @@ const Footer = () => {
             <div className="animate-fade-in" style={{animationDelay: '200ms'}}>
               <h3 className="text-xl font-light mb-6 text-green-400">Services</h3>
               <ul className="space-y-3">
-                {services.map((service, index) => (
-                  <li key={index}>
-                    <a href="#" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
-                      <span className="relative">
-                        {service}
-                        <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
-                      </span>
-                    </a>
-                  </li>
-                ))}
+                <li>
+                  <Link to="/services/web-development" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                    <span className="relative">
+                      Web Development
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/mobile-applications" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                    <span className="relative">
+                      Mobile App Development
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/web-applications" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                    <span className="relative">
+                      Web Applications
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/cloud-solutions" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                    <span className="relative">
+                      Hosting Solutions
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/seo-insights" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                    <span className="relative">
+                      SEO Optimization
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/brand-identity" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                    <span className="relative">
+                      Brand Identity
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/digital-campaigns" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                    <span className="relative">
+                      Social Media Marketing
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services/experience-optimization" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                    <span className="relative">
+                      AI Experience Optimization
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -139,16 +193,38 @@ const Footer = () => {
             <div className="animate-fade-in" style={{animationDelay: '400ms'}}>
               <h3 className="text-xl font-light mb-6 text-green-400">Industries</h3>
               <ul className="space-y-3">
-                {industries.map((industry, index) => (
-                  <li key={index}>
-                    <a href="#" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
-                      <span className="relative">
-                        {industry}
-                        <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
-                      </span>
-                    </a>
-                  </li>
-                ))}
+                <li>
+                  <Link to="/industries" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                    <span className="relative">
+                      Real Estate
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/industries" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                    <span className="relative">
+                      Government
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/industries" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                    <span className="relative">
+                      Legal Services
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/industries" className="text-gray-300 hover:text-white transition-all duration-300 text-sm font-light hover:translate-x-2 inline-block group">
+                    <span className="relative">
+                      Healthcare
+                      <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                  </Link>
+                </li>
               </ul>
               <h3 className="text-xl font-light mb-6 mt-10 text-green-400">Company</h3>
               <ul className="space-y-3">
@@ -215,18 +291,18 @@ const Footer = () => {
                 © 2024 Cardinal Consulting. All rights reserved.
               </p>
               <div className="flex space-x-8 mt-6 md:mt-0 animate-fade-in" style={{animationDelay: '200ms'}}>
-                <a href="#" className="text-gray-400 hover:text-white text-sm font-light transition-all duration-300 hover:scale-105 group">
+                <Link to="/contact" className="text-gray-400 hover:text-white text-sm font-light transition-all duration-300 hover:scale-105 group">
                   <span className="relative">
                     Privacy Policy
                     <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white text-sm font-light transition-all duration-300 hover:scale-105 group">
+                </Link>
+                <Link to="/contact" className="text-gray-400 hover:text-white text-sm font-light transition-all duration-300 hover:scale-105 group">
                   <span className="relative">
                     Terms of Service
                     <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

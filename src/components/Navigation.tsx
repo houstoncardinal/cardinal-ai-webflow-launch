@@ -131,10 +131,12 @@ const Navigation = () => {
                   </Link>
                 )}
                 
-                <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 text-sm font-medium group transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                  Contact us
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </Button>
+                <Link to="/contact">
+                  <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 text-sm font-medium group transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                    Contact us
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
@@ -203,10 +205,12 @@ const Navigation = () => {
                 )}
               </div>
               
-              <Button className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white py-3 group transition-all duration-300 hover:scale-105">
-                Contact us
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </Button>
+              <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
+                <Button className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white py-3 group transition-all duration-300 hover:scale-105">
+                  Contact us
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </Button>
+              </Link>
             </div>
           </div>
         )}
