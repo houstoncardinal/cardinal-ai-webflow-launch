@@ -20,6 +20,8 @@ import AuthPage from "./pages/Auth";
 import AdminDashboard from "./pages/AdminDashboard";
 import SocialMediaTest from "./components/SocialMediaTest";
 import PortfolioPage from "./pages/Portfolio";
+import BlogPage from "./pages/Blog";
+import BlogPostPage from "./pages/BlogPost";
 
 // Service pages
 import WebDevelopment from "./pages/services/WebDevelopment";
@@ -66,6 +68,8 @@ const App = () => (
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/test" element={<SocialMediaTest />} />
             <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
             <Route path="/portfolio/vargas-tax" element={<VargasGroup />} />
             <Route path="/portfolio/clearledger" element={<ClearLedger />} />
             <Route path="/portfolio/blutouch-pools" element={<BluTouchPools />} />

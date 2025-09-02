@@ -8,6 +8,7 @@ import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import FeaturedArticles from "@/components/FeaturedArticles";
 
 const Index = () => {
   return (
@@ -45,6 +46,9 @@ const Index = () => {
       <div className="bg-green-50/30">
         <Portfolio />
       </div>
+      
+      {/* Featured Articles */}
+      <FeaturedArticles />
       
       {/* Contact - Gray background to match Industries */}
       <div className="bg-gray-50">
