@@ -2,10 +2,14 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Portfolio from "@/components/Portfolio";
 import SEO from "@/components/SEO";
+import OfferContactForm from "@/components/OfferContactForm";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { CheckCircle, Star, Users, Award, Clock } from "lucide-react";
 
 const HoustonWebDesignLanding = () => {
+  const [showForm, setShowForm] = useState(false);
   const canonical = "https://www.cardinalhtx.com/houston-web-design";
   const spanishAlt = "https://www.cardinalhtx.com/diseno-web-houston";
 
@@ -53,6 +57,14 @@ const HoustonWebDesignLanding = () => {
     url: canonical,
   } as const;
 
+  const handleClaimOffer = () => {
+    setShowForm(true);
+    const formSection = document.getElementById('contact-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <SEO
@@ -77,110 +89,240 @@ const HoustonWebDesignLanding = () => {
 
       <Navigation />
 
-      {/* Hero */}
-      <header className="pt-24 pb-12">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <span className="inline-flex items-center rounded-full border px-3 py-1 text-sm">
-            Limited-time: Save $500 + Free Technical SEO Setup
-          </span>
-          <h1 className="mt-4 text-4xl md:text-5xl font-bold">
-            Houston Web Design Services that Convert Visitors into Customers
-          </h1>
-          <p className="mt-4 text-lg opacity-80 max-w-2xl">
-            Custom, mobile-first websites built for speed, SEO, and measurable ROI. Get a high-converting site and scale your business in Houston.
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <Link
-              to="/contact?offer=houston-web-design"
-              className="inline-flex items-center justify-center rounded-md px-5 py-3 font-medium bg-black text-white"
-            >
-              Claim This Offer
-            </Link>
-            <a
-              href="#portfolio"
-              className="inline-flex items-center justify-center rounded-md px-5 py-3 font-medium border"
-            >
-              View Portfolio
-            </a>
+      {/* Hero Section - Enhanced */}
+      <header className="pt-24 pb-16 bg-gradient-to-br from-gray-50 via-white to-green-50/30 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPGcgZmlsbD0iIzAwMCIgZmlsbC1vcGFjaXR5PSIwLjAzIj4KPGNpcmNsZSBjeD0iNyIgY3k9IjciIHI9IjEiLz4KPC9nPgo8L2c+Cjwvc3ZnPg==')] opacity-30"></div>
+        <div className="container mx-auto px-4 max-w-6xl relative">
+          <div className="text-center max-w-4xl mx-auto">
+            <div className="inline-flex items-center rounded-full bg-gradient-to-r from-green-100 to-emerald-100 border border-green-200 px-4 py-2 text-sm font-medium text-green-800 animate-fade-in">
+              <Star className="w-4 h-4 mr-2 text-green-600" />
+              Limited-time: Save $500 + Free Technical SEO Setup
+            </div>
+            
+            <h1 className="mt-6 text-5xl md:text-6xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-green-800 bg-clip-text text-transparent leading-tight">
+              Houston Web Design Services that Convert Visitors into 
+              <span className="text-green-600"> Customers</span>
+            </h1>
+            
+            <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Custom, mobile-first websites built for speed, SEO, and measurable ROI. Get a high-converting site and scale your business in Houston.
+            </p>
+            
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={handleClaimOffer}
+                className="inline-flex items-center justify-center rounded-lg px-8 py-4 font-semibold bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-700 hover:to-emerald-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              >
+                Claim This Offer
+              </button>
+              <a
+                href="#portfolio"
+                className="inline-flex items-center justify-center rounded-lg px-8 py-4 font-semibold border-2 border-gray-300 text-gray-700 hover:border-green-600 hover:text-green-600 transition-all duration-300"
+              >
+                View Portfolio
+              </a>
+            </div>
+            
+            <div className="mt-6 flex items-center justify-center gap-6 text-sm text-gray-500">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-green-600" />
+                No obligation
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-green-600" />
+                24-hour response
+              </div>
+              <div className="flex items-center gap-2">
+                <Award className="w-4 h-4 text-green-600" />
+                5-star rated
+              </div>
+            </div>
           </div>
-          <p className="mt-3 text-sm opacity-70">No obligation. Quick response guaranteed.</p>
         </div>
       </header>
 
-      {/* Value props */}
       <main>
-        <section className="py-10 bg-gray-50">
-          <div className="container mx-auto px-4 max-w-6xl grid md:grid-cols-3 gap-6">
-            <article>
-              <h2 className="text-xl font-semibold">Designed to Rank</h2>
-              <p className="mt-2 opacity-80">
-                Technical SEO baked in: clean architecture, fast load times, structured data, and content strategy.
-              </p>
-            </article>
-            <article>
-              <h2 className="text-xl font-semibold">Built to Convert</h2>
-              <p className="mt-2 opacity-80">
-                Clear CTAs, trust signals, and UX patterns that turn visitors into leads and paying customers.
-              </p>
-            </article>
-            <article>
-              <h2 className="text-xl font-semibold">Managed & Scalable</h2>
-              <p className="mt-2 opacity-80">
-                Hosting, analytics, and ongoing optimization to keep performance high as you grow.
-              </p>
-            </article>
+        {/* Trust Indicators */}
+        <section className="py-12 bg-gray-50 border-b">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="grid md:grid-cols-4 gap-8 text-center">
+              <div className="animate-fade-in">
+                <Users className="w-8 h-8 text-green-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-gray-900">127+</div>
+                <div className="text-sm text-gray-600">Happy Clients</div>
+              </div>
+              <div className="animate-fade-in" style={{animationDelay: '100ms'}}>
+                <Star className="w-8 h-8 text-green-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-gray-900">5.0</div>
+                <div className="text-sm text-gray-600">Average Rating</div>
+              </div>
+              <div className="animate-fade-in" style={{animationDelay: '200ms'}}>
+                <Award className="w-8 h-8 text-green-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-gray-900">7+</div>
+                <div className="text-sm text-gray-600">Years Experience</div>
+              </div>
+              <div className="animate-fade-in" style={{animationDelay: '300ms'}}>
+                <Clock className="w-8 h-8 text-green-600 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-gray-900">24hr</div>
+                <div className="text-sm text-gray-600">Response Time</div>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Offer section */}
-        <section className="py-12">
+        {/* Value Propositions - Enhanced */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Why Houston Businesses Choose Cardinal
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                We don't just build websites – we create digital growth engines
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              <article className="group p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center mb-6">
+                  <CheckCircle className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Designed to Rank</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Technical SEO baked in: clean architecture, fast load times, structured data, and content strategy that gets you found on Google.
+                </p>
+              </article>
+              
+              <article className="group p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center mb-6">
+                  <Star className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Built to Convert</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Clear CTAs, trust signals, and UX patterns proven to turn visitors into leads and paying customers.
+                </p>
+              </article>
+              
+              <article className="group p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center mb-6">
+                  <Award className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Managed & Scalable</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Hosting, analytics, and ongoing optimization to keep performance high as your business grows.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* Offer Section - Enhanced */}
+        <section className="py-16 bg-gradient-to-br from-green-50 to-emerald-50">
           <div className="container mx-auto px-4 max-w-5xl">
-            <div className="rounded-lg border p-6 md:p-8">
-              <h2 className="text-2xl font-bold">Undeniable Offer for Houston Businesses</h2>
-              <ul className="mt-4 grid md:grid-cols-2 gap-3 list-disc pl-5">
-                <li>Save $500 on site design & build (limited-time)</li>
-                <li>Free Technical SEO Setup (schema, speed, indexing)</li>
-                <li>Free Analytics + Conversion Tracking configuration</li>
-                <li>Launch checklist and QA included</li>
-              </ul>
-              <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                <Link
-                  to="/contact?offer=houston-web-design"
-                  className="inline-flex items-center justify-center rounded-md px-5 py-3 font-medium bg-black text-white"
+            <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-green-100">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                  Undeniable Offer for Houston Businesses
+                </h2>
+                <p className="text-xl text-gray-600">
+                  Everything you need to dominate your market online
+                </p>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    <span className="text-gray-700">Save $500 on site design & build (limited-time)</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    <span className="text-gray-700">Free Technical SEO Setup (schema, speed, indexing)</span>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    <span className="text-gray-700">Free Analytics + Conversion Tracking configuration</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    <span className="text-gray-700">Launch checklist and QA included</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="text-center">
+                <button
+                  onClick={handleClaimOffer}
+                  className="inline-flex items-center justify-center rounded-lg px-8 py-4 font-semibold bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-700 hover:to-emerald-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 mr-4"
                 >
                   Get My Discount
-                </Link>
-                <Link to="/services" className="inline-flex items-center justify-center rounded-md px-5 py-3 font-medium border">
+                </button>
+                <Link 
+                  to="/services" 
+                  className="inline-flex items-center justify-center rounded-lg px-8 py-4 font-semibold border-2 border-gray-300 text-gray-700 hover:border-green-600 hover:text-green-600 transition-all duration-300"
+                >
                   Explore Services
                 </Link>
               </div>
-              <p className="mt-2 text-sm opacity-70">Limited availability. Mention “Houston Web Design Offer”.</p>
+              
+              <p className="mt-4 text-sm text-gray-500 text-center">
+                Limited availability. Mention "Houston Web Design Offer".
+              </p>
             </div>
           </div>
         </section>
 
-        {/* Portfolio highlight */}
-        <section id="portfolio" className="py-12 bg-gray-50">
+        {/* Contact Form Section */}
+        {showForm && (
+          <section id="contact-form" className="py-16 bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 relative overflow-hidden">
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPGcgZmlsbD0iI0ZGRiIgZmlsbC1vcGFjaXR5PSIwLjA1Ij4KPGNpcmNsZSBjeD0iNyIgY3k9IjciIHI9IjEiLz4KPC9nPgo8L2c+Cjwvc3ZnPg==')] opacity-30"></div>
+            <div className="container mx-auto px-4 relative">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Ready to Transform Your Business?
+                </h2>
+                <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                  Fill out the form below and we'll prepare a custom proposal just for you
+                </p>
+              </div>
+              <OfferContactForm offer="houston-web-design" language="en" />
+            </div>
+          </section>
+        )}
+
+        {/* Portfolio Section - Enhanced */}
+        <section id="portfolio" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 max-w-6xl">
-            <h2 className="text-2xl font-bold">Featured Houston Web Design Portfolio</h2>
-            <p className="mt-2 opacity-80">Real results from real clients across the U.S. and Houston.</p>
-            <div className="mt-6">
-              <Portfolio />
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Featured Houston Web Design Portfolio
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Real results from real clients across the U.S. and Houston
+              </p>
             </div>
+            <Portfolio />
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section className="py-12">
-          <div className="container mx-auto px-4 max-w-5xl text-center">
-            <h2 className="text-2xl font-bold">Ready to launch a high-performing website?</h2>
-            <p className="mt-2 opacity-80">Claim your $500 savings + Free Technical SEO Setup now.</p>
-            <Link
-              to="/contact?offer=houston-web-design"
-              className="mt-6 inline-flex items-center justify-center rounded-md px-6 py-3 font-medium bg-black text-white"
+        {/* Final CTA Section - Enhanced */}
+        <section className="py-16 bg-gradient-to-r from-gray-900 to-green-900 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPGcgZmlsbD0iI0ZGRiIgZmlsbC1vcGFjaXR5PSIwLjA1Ij4KPGNpcmNsZSBjeD0iNyIgY3k9IjciIHI9IjEiLz4KPC9nPgo8L2c+Cjwvc3ZnPg==')] opacity-20"></div>
+          <div className="container mx-auto px-4 max-w-5xl text-center relative">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Ready to launch a high-performing website?
+            </h2>
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              Claim your $500 savings + Free Technical SEO Setup now. Limited spots available.
+            </p>
+            <button
+              onClick={handleClaimOffer}
+              className="inline-flex items-center justify-center rounded-lg px-8 py-4 font-semibold bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-700 hover:to-emerald-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
               Start My Project
-            </Link>
+            </button>
           </div>
         </section>
       </main>
