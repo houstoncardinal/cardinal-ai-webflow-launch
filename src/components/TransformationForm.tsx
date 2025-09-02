@@ -204,7 +204,9 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
           </div>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6" name="transformation-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="transformation-form" />
+          <input type="hidden" name="bot-field" style={{ display: 'none' }} />
           <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
             <CardContent className="p-8">
               <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">

@@ -133,7 +133,9 @@ const ContactForm = () => {
               </div>
 
               {/* Form */}
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4" name="contact-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="contact-form" />
+                <input type="hidden" name="bot-field" style={{ display: 'none' }} />
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                   {/* Name Input */}
                   <div className="relative group/input sm:col-span-2 lg:col-span-1">
@@ -192,7 +194,7 @@ const ContactForm = () => {
                   <div className="relative group/input sm:col-span-2 lg:col-span-1">
                     <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 rounded-lg opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
                     <div className="relative">
-                      <Select onValueChange={handleServiceChange} value={formData.service}>
+                      <Select onValueChange={handleServiceChange} value={formData.service} name="service">
                         <SelectTrigger className="h-12 bg-white/50 border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md">
                           <SelectValue placeholder="Select Service" />
                         </SelectTrigger>

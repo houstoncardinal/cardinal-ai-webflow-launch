@@ -54,11 +54,14 @@ const NewsletterSignup = () => {
       <p className="text-gray-300 text-sm leading-relaxed">
         Get the latest insights on digital transformation, technology trends, and project updates.
       </p>
-      <form onSubmit={handleSubmit} className="flex gap-2">
+      <form onSubmit={handleSubmit} className="flex gap-2" name="newsletter-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="newsletter-signup" />
+        <input type="hidden" name="bot-field" style={{ display: 'none' }} />
         <div className="relative flex-1">
           <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
           <Input
             type="email"
+            name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
