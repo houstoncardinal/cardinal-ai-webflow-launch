@@ -4,6 +4,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
+import SEO from "@/components/SEO";
+
 const CloudSolutions = () => {
   const features = [{
     icon: Cloud,
@@ -22,21 +24,56 @@ const CloudSolutions = () => {
     title: "Global Infrastructure",
     description: "Worldwide deployment with edge computing capabilities"
   }];
+  
   const services = ["Cloud Migration", "Infrastructure as Code", "Container Orchestration", "Serverless Architecture", "DevOps Implementation", "Monitoring & Analytics", "Disaster Recovery", "Cost Optimization"];
-  return <div className="min-h-screen bg-white">
+  
+
+  
+  const platforms = [
+    { name: "AWS", icon: "☁️", description: "Amazon Web Services" },
+    { name: "Azure", icon: "🔷", description: "Microsoft Azure" },
+    { name: "GCP", icon: "🔵", description: "Google Cloud Platform" },
+    { name: "Kubernetes", icon: "⚓", description: "Container Orchestration" }
+  ];
+  
+  return (
+    <div className="min-h-screen bg-white">
+      <SEO 
+        title="☁️ Cloud Solutions & Migration Services | AWS, Azure, GCP | Cardinal Consulting"
+        description="🚀 Scalable, secure cloud hosting solutions with enterprise-level support. Transform your infrastructure with cloud-native architectures that deliver reliability, performance, and cost efficiency."
+        keywords="cloud solutions, cloud migration, AWS, Azure, Google Cloud, infrastructure as code, DevOps, container orchestration, serverless architecture"
+        servicePage={true}
+        pageType="service"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+          { name: "Cloud Solutions", url: "/services/cloud-solutions" }
+        ]}
+        serviceDetails={{
+          name: "Cloud Solutions & Migration",
+          description: "Scalable, secure cloud hosting solutions with enterprise-level support",
+          priceRange: "$5,000 - $100,000",
+          category: "Cloud Infrastructure"
+        }}
+        url="/services/cloud-solutions"
+      />
+      
       <Navigation />
       
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-to-br from-amber-900 via-yellow-900 to-orange-900 relative overflow-hidden">
+        {/* Animated background elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(245,158,11,0.1),transparent_50%)]"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-amber-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
         
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
             <div className="inline-flex items-center text-sm font-medium text-amber-400 uppercase tracking-wide mb-8">
               <Zap className="w-5 h-5 mr-3" />
-              Infrastructure Service
+              Cloud Infrastructure Service
             </div>
             
             <h1 className="text-6xl lg:text-7xl font-light text-white mb-8 leading-tight">
@@ -53,11 +90,14 @@ const CloudSolutions = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105">
-                Migrate to Cloud
-              </Button>
-              <Link to="/#contact">
-                <Button variant="outline" className="border-gray-600 px-8 py-4 rounded-lg font-medium bg-slate-50 text-slate-950">
+              <Link to="/contact?service=cloud-solutions">
+                <Button className="bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-amber-500/25">
+                  Migrate to Cloud
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+              <Link to="/contact">
+                <Button variant="outline" className="border-gray-600 px-8 py-4 rounded-lg font-medium bg-slate-50 text-slate-950 hover:bg-slate-100 transition-all duration-300 hover:scale-105">
                   Get Assessment
                 </Button>
               </Link>
@@ -65,6 +105,8 @@ const CloudSolutions = () => {
           </div>
         </div>
       </section>
+
+
 
       {/* Features Section */}
       <section className="py-24 bg-gray-50">
@@ -79,21 +121,52 @@ const CloudSolutions = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white">
-                <CardContent className="p-8 text-center">
-                  <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-amber-600 transition-colors duration-300">
-                    <feature.icon className="w-8 h-8 text-amber-600 group-hover:text-white transition-colors duration-300" />
+            {features.map((feature, index) => (
+              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-white overflow-hidden">
+                <CardContent className="p-8 text-center relative">
+                  {/* Animated background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-50 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-amber-600 transition-all duration-300 group-hover:scale-110">
+                      <feature.icon className="w-8 h-8 text-amber-600 group-hover:text-white transition-colors duration-300" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-amber-600 transition-colors duration-300">{feature.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                 </CardContent>
-              </Card>)}
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Platforms Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-light text-gray-900 mb-6">
+              Cloud <span className="text-amber-600">Platforms</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              We master all major cloud platforms and technologies.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {platforms.map((platform, index) => (
+              <div key={index} className="text-center p-8 bg-gray-50 rounded-2xl hover:bg-amber-50 hover:shadow-lg transition-all duration-300 group hover:-translate-y-2">
+                <div className="text-4xl mb-4">{platform.icon}</div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-amber-600 transition-colors duration-300">{platform.name}</h3>
+                <p className="text-gray-600">{platform.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light text-gray-900 mb-6">
@@ -105,16 +178,24 @@ const CloudSolutions = () => {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {services.map((service, index) => <div key={index} className="bg-amber-50 p-6 rounded-2xl text-center hover:bg-amber-100 transition-colors duration-300">
-                <h3 className="text-gray-900 font-semibold">{service}</h3>
-              </div>)}
+            {services.map((service, index) => (
+              <div key={index} className="bg-white p-6 rounded-2xl text-center hover:bg-amber-50 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
+                <h3 className="text-gray-900 font-semibold group-hover:text-amber-600 transition-colors duration-300">{service}</h3>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-amber-600 to-yellow-600">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <section className="py-24 bg-gradient-to-r from-amber-600 to-yellow-600 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-72 h-72 bg-white/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+        
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-4xl font-light text-white mb-6">
             Ready to Move to the Cloud?
           </h2>
@@ -123,20 +204,24 @@ const CloudSolutions = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/#contact">
-              <Button className="bg-white text-amber-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105">
+            <Link to="/contact">
+              <Button className="bg-white text-amber-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-white/25">
                 Start Migration
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <Button variant="outline" className="border-white px-8 py-4 rounded-lg font-medium bg-slate-50 text-slate-950">
-              Cloud Assessment
-            </Button>
+            <Link to="/contact">
+              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-amber-600 px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105">
+                Cloud Assessment
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default CloudSolutions;

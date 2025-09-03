@@ -107,7 +107,7 @@ Contact Cardinal Digital for a free consultation on how to implement these strat
   ARRAY['Local SEO', 'Digital Marketing', 'Business Growth', 'Lead Generation', 'Content Marketing', 'Houston Marketing'],
   'Cardinal Digital Team',
   'published',
-  'The $0 Growth Stack: Free Marketing Strategies That Beat Expensive Ads | Cardinal Digital',
-  'Discover six powerful, zero-cost marketing strategies that can outperform expensive ads. Learn how to leverage Google Business Profile, email marketing, local SEO, and more for sustainable business growth.',
+  'The $0 Growth Stack: Free Marketing Strategies That Beat $5K Ad Budgets | Cardinal Consulting',
+  'Stop wasting money on ads! Discover 6 proven free marketing strategies that outperform expensive advertising. Learn Google Business Profile optimization, local SEO, email marketing, and AI lead capture techniques.',
   true
 );

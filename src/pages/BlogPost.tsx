@@ -158,6 +158,11 @@ const BlogPost = () => {
     <div className="min-h-screen bg-background">
       <BlogArticleSchema post={post} url={currentUrl} />
       
+      {/* Additional SEO Meta Tags */}
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      <meta name="googlebot" content="index, follow" />
+      <meta name="bingbot" content="index, follow" />
+      
       <Navigation />
       
       {/* Article Header */}
@@ -236,14 +241,15 @@ const BlogPost = () => {
           </header>
 
           {/* Featured Image */}
-          {(post.slug === 'hidden-money-leaks-on-your-website' || post.thumbnail_url) && (
+          {post.thumbnail_url && (
             <div className="relative mb-12 group">
               <div className="absolute -inset-4 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative">
                 <img
-                  src={post.slug === 'hidden-money-leaks-on-your-website' ? '/money-leaks.png' : post.thumbnail_url}
-                  alt={post.title}
+                  src={post.thumbnail_url}
+                  alt={`${post.title} - Cardinal Consulting`}
                   className="w-full h-64 md:h-[500px] object-cover rounded-xl shadow-lg"
+                  loading="eager"
                 />
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-background/80 via-background/20 to-transparent"></div>
               </div>

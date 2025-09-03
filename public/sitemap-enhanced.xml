@@ -227,4 +227,75 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
+  <!-- Blog Page -->
+  <url>
+    <loc>https://cardinalhtx.com/blog</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog Posts with Images -->
+  <url>
+    <loc>https://cardinalhtx.com/blog/hidden-money-leaks-on-your-website</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://cardinalhtx.com/money-leaks.png</image:loc>
+      <image:caption>Hidden Money Leaks on Your Website - Cardinal Consulting</image:caption>
+      <image:title>5 Critical Website Issues Costing You Money</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://cardinalhtx.com/blog/zero-dollar-growth-stack</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://cardinalhtx.com/cardinalpost.jpg</image:loc>
+      <image:caption>The $0 Growth Stack - Cardinal Consulting</image:caption>
+      <image:title>Free Marketing Strategies That Beat Expensive Ads</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://cardinalhtx.com/blog/ten-minute-website-audit</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://cardinalhtx.com/10min.jpg</image:loc>
+      <image:caption>10-Minute Website Audit - Cardinal Consulting</image:caption>
+      <image:title>Quick Website Audit That Saves Thousands</image:title>
+    </image:image>
+  </url>
+
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://cardinalhtx.com/privacy-policy</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cardinalhtx.com/terms-of-service</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Landing Pages -->
+  <url>
+    <loc>https://cardinalhtx.com/houston-web-design</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cardinalhtx.com/diseno-web-houston</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

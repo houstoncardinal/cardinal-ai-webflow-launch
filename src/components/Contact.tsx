@@ -1,5 +1,6 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -16,6 +17,7 @@ import TransformationForm from "./TransformationForm";
 
 const Contact = () => {
   const { toast } = useToast();
+  const [searchParams] = useSearchParams();
   const [isTransformationFormOpen, setIsTransformationFormOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -27,6 +29,17 @@ const Contact = () => {
     services: [] as string[],
     message: ""
   });
+
+  // Handle pre-selected service from URL parameter
+  useEffect(() => {
+    const preSelectedService = searchParams.get('service');
+    if (preSelectedService) {
+      setFormData(prev => ({
+        ...prev,
+        services: [preSelectedService]
+      }));
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

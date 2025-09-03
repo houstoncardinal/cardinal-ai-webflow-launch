@@ -31,11 +31,19 @@ Allow: /portfolio/
 Allow: /portfolio/abq-mri
 Allow: /portfolio/apn-clinic
 Allow: /portfolio/blutouch-pools
-Allow: /portfolio/clear-ledger
+Allow: /portfolio/clearledger
 Allow: /portfolio/eps-parking
-Allow: /portfolio/hougen-pros
+Allow: /portfolio/hougenpros
 Allow: /portfolio/iac-centers
-Allow: /portfolio/vargas-group
+Allow: /portfolio/vargas-tax
+Allow: /blog/
+Allow: /blog/hidden-money-leaks-on-your-website
+Allow: /blog/zero-dollar-growth-stack
+Allow: /blog/ten-minute-website-audit
+Allow: /privacy-policy
+Allow: /terms-of-service
+Allow: /houston-web-design
+Allow: /diseno-web-houston
 
 # Allow important assets
 Allow: /logo.png
@@ -68,8 +76,7 @@ Allow: /services/*.jpeg
 Allow: /services/*.webp
 
 # Sitemaps
-Sitemap: https://cardinalhtx.com/sitemap.xml
-Sitemap: https://cardinalhtx.com/houston-web-development.xml
+Sitemap: https://cardinalhtx.com/sitemap-index.xml
 
 # Crawl delays for different bots
 User-agent: Googlebot

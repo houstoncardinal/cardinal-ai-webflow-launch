@@ -87,7 +87,7 @@ Want a deeper dive into your website''s performance? Get a FREE professional web
   ARRAY['Website Audit', 'SEO', 'Conversion Optimization', 'Web Performance', 'Houston Marketing', 'Lead Generation'],
   'Cardinal Digital Team',
   'published',
-  '10-Minute Website Audit Guide: Save Thousands in Lost Revenue | Cardinal Digital',
-  'Learn how to perform a quick yet powerful website audit that can save you thousands in lost revenue. Check page speed, mobile-friendliness, security, and more in just 10 minutes.',
+  '10-Minute Website Audit: Save $5K+ Monthly in Lost Revenue | Cardinal Consulting',
+  'Stop losing money! Learn how to perform a 10-minute website audit that can save you $5K+ monthly. Check page speed, mobile optimization, security, and conversion issues instantly.',
   true
 );

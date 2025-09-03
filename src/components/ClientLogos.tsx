@@ -34,29 +34,33 @@ const ClientLogos = () => {
       logo: "/iaclogo.png",
       alt: "IAC Centers Logo"
     },
-
+    {
+      name: "RE Logo",
+      logo: "/relogo.png",
+      alt: "RE Logo"
+    },
   ];
 
   return (
-    <section className="relative py-16 bg-gradient-to-b from-white to-gray-50/50 overflow-hidden">
+    <section className="relative py-12 sm:py-16 bg-gradient-to-b from-white to-gray-50/50 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-32 h-32 bg-gradient-to-br from-green-400/10 to-blue-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-40 h-40 bg-gradient-to-br from-purple-400/10 to-pink-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-1/4 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-br from-green-400/10 to-blue-500/10 rounded-full blur-2xl sm:blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-32 sm:w-40 h-32 sm:h-40 bg-gradient-to-br from-purple-400/10 to-pink-500/10 rounded-full blur-2xl sm:blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center text-xs font-medium text-gray-600 uppercase tracking-wide mb-4">
-            <div className="w-8 h-px bg-gradient-to-r from-green-500 to-green-600 mr-4"></div>
+        <div className="text-center mb-8 sm:mb-12">
+          <div className="inline-flex items-center text-xs font-medium text-gray-600 uppercase tracking-wide mb-3 sm:mb-4">
+            <div className="w-6 sm:w-8 h-px bg-gradient-to-r from-green-500 to-green-600 mr-3 sm:mr-4"></div>
             Trusted By Industry Leaders
           </div>
-          <h2 className="text-2xl lg:text-3xl font-light text-gray-900 mb-4">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-light text-gray-900 mb-3 sm:mb-4">
             Companies that trust us to
             <span className="block text-green-600 font-normal">deliver results</span>
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-4">
             From healthcare to construction, we've helped businesses across industries 
             transform their digital presence and drive growth.
           </p>
@@ -64,49 +68,49 @@ const ClientLogos = () => {
 
         {/* Logos Container */}
         <div className="relative">
-          {/* Gradient Overlays for Smooth Edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10"></div>
+          {/* Gradient Overlays for Smooth Edges - Hidden on mobile */}
+          <div className="hidden sm:block absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10"></div>
+          <div className="hidden sm:block absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10"></div>
           
-          {/* Logos Grid */}
-          <div className={`flex items-center justify-center gap-8 lg:gap-12 xl:gap-16 transition-all duration-1000 ${
+          {/* Mobile Grid Layout */}
+          <div className={`grid grid-cols-2 sm:grid-cols-3 lg:flex lg:items-center lg:justify-center gap-6 sm:gap-8 lg:gap-12 xl:gap-16 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             {clients.map((client, index) => (
               <div
                 key={client.name}
-                className="group relative flex-shrink-0"
+                className="group relative flex-shrink-0 flex flex-col items-center justify-center"
                 style={{
                   animationDelay: `${index * 150}ms`
                 }}
               >
-                                 {/* Logo */}
-                 <div className="relative group-hover:scale-105 transition-all duration-500 group-hover:-translate-y-1">
-                   <img
-                     src={client.logo}
-                     alt={client.alt}
-                     className="h-8 lg:h-10 w-auto object-contain transition-all duration-500 group-hover:brightness-110"
-                     loading="lazy"
-                   />
-                   
-                   {/* Hover indicator */}
-                   <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-green-500 to-blue-500 group-hover:w-6 transition-all duration-300"></div>
-                 </div>
+                {/* Logo */}
+                <div className="relative group-hover:scale-105 transition-all duration-500 group-hover:-translate-y-1">
+                  <img
+                    src={client.logo}
+                    alt={client.alt}
+                    className="h-6 sm:h-8 lg:h-10 w-auto object-contain transition-all duration-500 group-hover:brightness-110"
+                    loading="lazy"
+                  />
+                  
+                  {/* Hover indicator - Hidden on mobile */}
+                  <div className="hidden sm:block absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-green-500 to-blue-500 group-hover:w-6 transition-all duration-300"></div>
+                </div>
                 
-                                 {/* Client name on hover */}
-                 <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
-                   <span className="text-xs font-medium text-gray-600 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md shadow-sm whitespace-nowrap">
-                     {client.name}
-                   </span>
-                 </div>
+                {/* Client name - Always visible on mobile, hover on desktop */}
+                <div className="mt-2 sm:mt-3 lg:mt-0 lg:absolute lg:-bottom-6 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                  <span className="text-xs font-medium text-gray-600 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md shadow-sm whitespace-nowrap">
+                    {client.name}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-12 pt-8 border-t border-gray-200/50">
-          <p className="text-gray-600 mb-4">
+        <div className="text-center mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200/50">
+          <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 px-4">
             Ready to join these industry leaders?
           </p>
           <div className="inline-flex items-center text-sm font-medium text-green-600 hover:text-green-700 transition-colors duration-300 group cursor-pointer">

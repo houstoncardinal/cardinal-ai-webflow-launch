@@ -17,9 +17,10 @@ interface ServicesMegaMenuProps {
   isOpen: boolean;
   onClose: () => void;
   setIsOpen: (open: boolean) => void;
+  setIsHoveringMegaMenu?: (hovering: boolean) => void;
 }
 
-const ServicesMegaMenu = ({ isOpen, onClose, setIsOpen }: ServicesMegaMenuProps) => {
+const ServicesMegaMenu = ({ isOpen, onClose, setIsOpen, setIsHoveringMegaMenu }: ServicesMegaMenuProps) => {
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -136,12 +137,39 @@ const ServicesMegaMenu = ({ isOpen, onClose, setIsOpen }: ServicesMegaMenuProps)
   return (
     <div 
       ref={menuRef}
-      className="absolute top-full left-0 right-0 z-50 animate-in slide-in-from-top-2 duration-500 ease-out"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+      className="absolute top-full left-0 right-0 z-50 animate-in slide-in-from-top-2 duration-500 ease-out mega-menu-container"
+      onMouseEnter={() => {
+        setIsOpen(true);
+        setIsHoveringMegaMenu?.(true);
+      }}
+      onMouseLeave={(e) => {
+        // Only close if mouse is actually leaving the mega menu area
+        const rect = menuRef.current?.getBoundingClientRect();
+        if (rect) {
+          // Add a much larger buffer zone to prevent premature closing
+          const buffer = 50; // 50px buffer
+          const isActuallyLeaving = (
+            e.clientY < rect.top - buffer ||
+            e.clientX < rect.left - buffer ||
+            e.clientX > rect.right + buffer ||
+            e.clientY > rect.bottom + buffer
+          );
+          
+          if (isActuallyLeaving) {
+            setTimeout(() => {
+              setIsHoveringMegaMenu?.(false);
+            }, 800);
+          }
+        }
+      }}
     >
       {/* Backdrop blur */}
-      <div className="absolute inset-0 bg-black/5 backdrop-blur-sm" />
+      <div 
+        className="absolute inset-0 bg-black/5 backdrop-blur-sm"
+        onMouseEnter={() => {
+          setIsHoveringMegaMenu?.(true);
+        }}
+      />
       
       {/* Main menu container */}
       <div className="relative bg-white/95 backdrop-blur-md border-b border-gray-200/50 shadow-xl">
@@ -153,7 +181,15 @@ const ServicesMegaMenu = ({ isOpen, onClose, setIsOpen }: ServicesMegaMenuProps)
           <div className="absolute bottom-10 right-1/4 w-40 h-40 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full blur-3xl"></div>
         </div>
 
-                <div className="max-w-5xl mx-auto px-6 lg:px-8 py-6 relative z-10">
+                <div 
+          className="max-w-5xl mx-auto px-6 lg:px-8 py-6 relative z-10"
+          onMouseEnter={() => {
+            setIsHoveringMegaMenu?.(true);
+          }}
+          onMouseLeave={() => {
+            // Don't clear hover state immediately - let the main container handle it
+          }}
+        >
           {/* Compact Header */}
           <div className="text-center mb-4">
             <h2 className="text-xl font-light text-gray-900 mb-1">

@@ -291,13 +291,13 @@ const Footer = () => {
                 © 2024 Cardinal Consulting. All rights reserved.
               </p>
               <div className="flex space-x-8 mt-6 md:mt-0 animate-fade-in" style={{animationDelay: '200ms'}}>
-                <Link to="/contact" className="text-gray-400 hover:text-white text-sm font-light transition-all duration-300 hover:scale-105 group">
+                <Link to="/privacy-policy" className="text-gray-400 hover:text-white text-sm font-light transition-all duration-300 hover:scale-105 group">
                   <span className="relative">
                     Privacy Policy
                     <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
-                <Link to="/contact" className="text-gray-400 hover:text-white text-sm font-light transition-all duration-300 hover:scale-105 group">
+                <Link to="/terms-of-service" className="text-gray-400 hover:text-white text-sm font-light transition-all duration-300 hover:scale-105 group">
                   <span className="relative">
                     Terms of Service
                     <span className="absolute bottom-0 left-0 w-0 h-px bg-green-400 group-hover:w-full transition-all duration-300"></span>

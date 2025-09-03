@@ -71,7 +71,7 @@ Your website needs to embody these qualities to truly serve your business.',
   ARRAY['Website Optimization', 'Business Growth', 'Digital Strategy', 'Conversion Optimization', 'Web Development'],
   'Cardinal Digital Team',
   'published',
-  'Hidden Money Leaks: 5 Website Issues Costing You Business | Cardinal Digital',
-  'Discover five critical website issues that could be costing you business. Learn practical solutions to optimize your website and capture more leads, from mobile optimization to conversion strategies.',
+  'Hidden Money Leaks: 5 Critical Website Issues Costing You $10K+ Monthly | Cardinal Consulting',
+  'Stop losing money! Discover 5 critical website issues that could be costing you $10K+ monthly. Learn proven strategies to fix mobile optimization, lead capture, trust signals, and conversion problems.',
   true
 ); 

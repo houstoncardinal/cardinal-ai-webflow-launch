@@ -44,6 +44,8 @@ import ABQMRI from "./pages/portfolio/ABQMRI";
 import APNClinic from "./pages/portfolio/APNClinic";
 import HoustonWebDesignLanding from "./pages/landing/HoustonWebDesign";
 import HoustonWebDesignEsLanding from "./pages/landing/HoustonWebDesignEs";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 
 const queryClient = new QueryClient();
 
@@ -102,6 +104,10 @@ const App = () => (
             {/* Promotional Landing Pages */}
             <Route path="/houston-web-design" element={<HoustonWebDesignLanding />} />
             <Route path="/diseno-web-houston" element={<HoustonWebDesignEsLanding />} />
+            
+            {/* Legal Pages */}
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

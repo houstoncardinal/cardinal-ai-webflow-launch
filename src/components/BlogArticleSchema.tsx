@@ -112,9 +112,12 @@ const BlogArticleSchema = ({ post, url }: BlogArticleSchemaProps) => {
       <meta property="og:title" content={post.meta_title || post.title} />
       <meta property="og:description" content={post.meta_description || post.excerpt} />
       <meta property="og:image" content={post.thumbnail_url || `${window.location.origin}/thumbnail.png`} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:url" content={url} />
       <meta property="og:type" content="article" />
       <meta property="og:site_name" content="Cardinal Consulting" />
+      <meta property="og:locale" content="en_US" />
       <meta property="article:published_time" content={formatISO(post.published_at)} />
       <meta property="article:modified_time" content={formatISO(post.updated_at)} />
       <meta property="article:author" content={post.author_name} />
@@ -125,13 +128,16 @@ const BlogArticleSchema = ({ post, url }: BlogArticleSchemaProps) => {
 
       {/* Twitter Card Tags */}
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@cardinalconsult" />
+      <meta name="twitter:creator" content="@cardinalconsult" />
       <meta name="twitter:title" content={post.meta_title || post.title} />
       <meta name="twitter:description" content={post.meta_description || post.excerpt} />
       <meta name="twitter:image" content={post.thumbnail_url || `${window.location.origin}/thumbnail.png`} />
+      <meta name="twitter:image:alt" content={post.title} />
 
       {/* Additional Meta Tags for News/Top Stories */}
       <meta name="news_keywords" content={post.tags?.join(", ")} />
-      <meta name="article:publisher" content="https://www.cardinalconsulting.com" />
+      <meta name="article:publisher" content="https://www.cardinalhtx.com" />
       
       {/* Google News specific tags */}
       <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -139,6 +145,17 @@ const BlogArticleSchema = ({ post, url }: BlogArticleSchemaProps) => {
       <link rel="publisher" href="https://www.facebook.com/cardinalad" />
       <meta property="article:opinion" content="false" />
       <meta property="article:content_tier" content="free" />
+      <meta property="article:paywall" content="false" />
+      
+      {/* Additional SEO Meta Tags */}
+      <meta name="googlebot" content="index, follow" />
+      <meta name="bingbot" content="index, follow" />
+      <meta name="author" content={post.author_name} />
+      <meta name="article:author" content={post.author_name} />
+      <meta name="article:published_time" content={formatISO(post.published_at)} />
+      <meta name="article:modified_time" content={formatISO(post.updated_at)} />
+      <meta name="article:section" content="Technology" />
+      <meta name="article:tag" content={post.tags?.join(", ")} />
       
       {/* JSON-LD Structured Data */}
       <script type="application/ld+json">
