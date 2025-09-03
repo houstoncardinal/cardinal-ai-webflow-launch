@@ -401,9 +401,9 @@ const BlogPost = () => {
                         <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-primary rounded-lg blur opacity-25 group-hover:opacity-50 transition-opacity"></div>
                         <span className="relative flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-green-500/10 to-primary/10 border border-green-500/10 flex items-center justify-center text-lg sm:text-xl">
                           {props.children?.toString().includes('Quick') ? '⚡' :
-                           props.children?.toString().includes('Bonus') ? '' :
+                           props.children?.toString().includes('Bonus') ? '🎁' :
                            props.children?.toString().includes('Need') ? '🎯' :
-                           props.children?.toString().includes('Why') ? '' : '📋'}
+                           props.children?.toString().includes('Why') ? '❓' : '📋'}
                         </span>
                       </div>
                       <span className="text-xl sm:text-2xl font-semibold bg-gradient-to-r from-green-600 to-primary bg-clip-text text-transparent">
@@ -424,35 +424,105 @@ const BlogPost = () => {
                     {props.children}
                   </h3>
                 ),
-                p: ({node, ...props}) => (
-                  <p {...props} className="leading-relaxed text-foreground/80 text-lg mb-6">
-                    {props.children}
-                  </p>
-                ),
+                p: ({node, ...props}) => {
+                  let content = props.children?.toString() || '';
+                  
+                  // Internal link mapping for powerful SEO
+                  const linkMappings = [
+                    // Services
+                    { keyword: 'web development', url: '/services/web-development', text: 'web development' },
+                    { keyword: 'app development', url: '/services/mobile-applications', text: 'app development' },
+                    { keyword: 'mobile app', url: '/services/mobile-applications', text: 'mobile app' },
+                    { keyword: 'mobile application', url: '/services/mobile-applications', text: 'mobile application' },
+                    { keyword: 'SEO', url: '/services/seo-insights', text: 'SEO' },
+                    { keyword: 'search engine optimization', url: '/services/seo-insights', text: 'search engine optimization' },
+                    { keyword: 'digital marketing', url: '/services/digital-campaigns', text: 'digital marketing' },
+                    { keyword: 'PPC', url: '/services/digital-campaigns', text: 'PPC' },
+                    { keyword: 'pay-per-click', url: '/services/digital-campaigns', text: 'pay-per-click' },
+                    { keyword: 'social media marketing', url: '/services/digital-campaigns', text: 'social media marketing' },
+                    { keyword: 'brand identity', url: '/services/brand-identity', text: 'brand identity' },
+                    { keyword: 'branding', url: '/services/brand-identity', text: 'branding' },
+                    { keyword: 'cloud solutions', url: '/services/cloud-solutions', text: 'cloud solutions' },
+                    { keyword: 'cloud computing', url: '/services/cloud-solutions', text: 'cloud computing' },
+                    { keyword: 'user experience', url: '/services/experience-optimization', text: 'user experience' },
+                    { keyword: 'UX', url: '/services/experience-optimization', text: 'UX' },
+                    { keyword: 'UI', url: '/services/experience-optimization', text: 'UI' },
+                    { keyword: 'user interface', url: '/services/experience-optimization', text: 'user interface' },
+                    { keyword: 'web application', url: '/services/web-applications', text: 'web application' },
+                    { keyword: 'web app', url: '/services/web-applications', text: 'web app' },
+                    
+                    // Pages
+                    { keyword: 'contact us', url: '/contact', text: 'contact us' },
+                    { keyword: 'get started', url: '/contact', text: 'get started' },
+                    { keyword: 'free consultation', url: '/contact', text: 'free consultation' },
+                    { keyword: 'portfolio', url: '/portfolio', text: 'portfolio' },
+                    { keyword: 'our work', url: '/portfolio', text: 'our work' },
+                    { keyword: 'case studies', url: '/portfolio', text: 'case studies' },
+                    { keyword: 'about us', url: '/about', text: 'about us' },
+                    { keyword: 'our team', url: '/about', text: 'our team' },
+                    { keyword: 'blog', url: '/blog', text: 'blog' },
+                    { keyword: 'insights', url: '/insights', text: 'insights' },
+                    { keyword: 'industries', url: '/industries', text: 'industries' },
+                    { keyword: 'services', url: '/services', text: 'services' },
+                    
+                    // Action words
+                    { keyword: 'website audit', url: '/contact', text: 'website audit' },
+                    { keyword: 'free audit', url: '/contact', text: 'free audit' },
+                    { keyword: 'consultation', url: '/contact', text: 'consultation' },
+                    { keyword: 'quote', url: '/contact', text: 'quote' },
+                    { keyword: 'estimate', url: '/contact', text: 'estimate' },
+                    { keyword: 'project evaluation', url: '/contact', text: 'project evaluation' },
+                  ];
+
+                  // Apply link mappings
+                  linkMappings.forEach(mapping => {
+                    const regex = new RegExp(`\\b${mapping.keyword}\\b`, 'gi');
+                    content = content.replace(regex, `<a href="${mapping.url}" class="text-primary hover:text-primary/80 font-medium underline decoration-primary/30 hover:decoration-primary/60 transition-all duration-200">${mapping.text}</a>`);
+                  });
+
+                  return (
+                    <p 
+                      {...props} 
+                      className="leading-relaxed text-foreground/80 text-lg mb-6"
+                      dangerouslySetInnerHTML={{ __html: content }}
+                    />
+                  );
+                },
                 ul: ({node, ...props}) => (
                   <ul {...props} className="space-y-4 my-8 bg-muted/50 p-6 rounded-xl">
                     {props.children}
                   </ul>
                 ),
                 li: ({node, ...props}) => {
-                  const content = props.children?.toString() || '';
+                  let content = props.children?.toString() || '';
                   const hasImpactPrefix = content.includes('Key Impact:') || 
                                         content.includes('Pro Tip:') || 
                                         content.includes('Key Insight:') ||
                                         content.includes('Impact:') ||
                                         content.includes('Result:');
                   
+                  // Apply internal links to list items
+                  const linkMappings = [
+                    { keyword: 'web development', url: '/services/web-development', text: 'web development' },
+                    { keyword: 'app development', url: '/services/mobile-applications', text: 'app development' },
+                    { keyword: 'SEO', url: '/services/seo-insights', text: 'SEO' },
+                    { keyword: 'digital marketing', url: '/services/digital-campaigns', text: 'digital marketing' },
+                    { keyword: 'contact us', url: '/contact', text: 'contact us' },
+                    { keyword: 'free consultation', url: '/contact', text: 'free consultation' },
+                    { keyword: 'website audit', url: '/contact', text: 'website audit' },
+                  ];
+
+                  linkMappings.forEach(mapping => {
+                    const regex = new RegExp(`\\b${mapping.keyword}\\b`, 'gi');
+                    content = content.replace(regex, `<a href="${mapping.url}" class="text-primary hover:text-primary/80 font-medium underline decoration-primary/30 hover:decoration-primary/60 transition-all duration-200">${mapping.text}</a>`);
+                  });
+                  
                   return hasImpactPrefix ? (
                     <div className="mt-6 p-4 bg-primary/5 border border-primary/10 rounded-lg">
-                      <p className="font-semibold text-primary">{props.children}</p>
+                      <p className="font-semibold text-primary" dangerouslySetInnerHTML={{ __html: content }} />
                     </div>
                   ) : (
-                    <li {...props} className="flex items-start gap-3">
-                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                        •
-                      </span>
-                      <span className="flex-1 text-foreground/90">{props.children}</span>
-                    </li>
+                    <li {...props} className="flex items-start gap-3" dangerouslySetInnerHTML={{ __html: content }} />
                   );
                 },
                 blockquote: ({node, ...props}) => (
@@ -501,16 +571,21 @@ const BlogPost = () => {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)]"></div>
               <div className="relative">
                 <h3 className="text-2xl font-bold mb-4">
-                  Want to Stop Your Website from Leaking Money?
+                  Ready to Transform Your Digital Presence?
                 </h3>
                 <p className="text-lg text-muted-foreground mb-6">
-                  Get a free website audit and discover how much revenue you're leaving on the table. 
-                  Our team of experts will analyze your site and provide actionable recommendations.
+                  Our expert team specializes in <a href="/services/web-development" className="text-primary hover:text-primary/80 font-medium underline decoration-primary/30 hover:decoration-primary/60 transition-all duration-200">web development</a>, <a href="/services/mobile-applications" className="text-primary hover:text-primary/80 font-medium underline decoration-primary/30 hover:decoration-primary/60 transition-all duration-200">app development</a>, <a href="/services/seo-insights" className="text-primary hover:text-primary/80 font-medium underline decoration-primary/30 hover:decoration-primary/60 transition-all duration-200">SEO optimization</a>, and <a href="/services/digital-campaigns" className="text-primary hover:text-primary/80 font-medium underline decoration-primary/30 hover:decoration-primary/60 transition-all duration-200">digital marketing</a>. Get a free consultation and discover how we can help your business grow.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Link to="/contact">
                     <Button size="lg" className="group">
-                      Get Your Free Audit
+                      Get Your Free Consultation
+                      <ArrowLeft className="ml-2 w-4 h-4 rotate-180 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                  <Link to="/services">
+                    <Button variant="outline" size="lg" className="group">
+                      Explore Our Services
                       <ArrowLeft className="ml-2 w-4 h-4 rotate-180 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
@@ -519,6 +594,79 @@ const BlogPost = () => {
                     Share Article
                   </Button>
                 </div>
+              </div>
+            </div>
+
+            {/* Related Services Section */}
+            <div className="p-8 bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl border border-green-200/50">
+              <h3 className="text-xl font-bold text-gray-900 mb-6">Related Services You Might Need</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <Link to="/services/web-development" className="group p-4 bg-white rounded-xl border border-gray-200 hover:border-green-300 transition-all duration-200 hover:shadow-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center group-hover:bg-green-200 transition-colors">
+                      <span className="text-green-600 text-lg">🌐</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 group-hover:text-green-700 transition-colors">Web Development</h4>
+                      <p className="text-sm text-gray-600">Custom websites that convert</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link to="/services/mobile-applications" className="group p-4 bg-white rounded-xl border border-gray-200 hover:border-green-300 transition-all duration-200 hover:shadow-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+                      <span className="text-blue-600 text-lg">📱</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">Mobile Apps</h4>
+                      <p className="text-sm text-gray-600">Native & cross-platform solutions</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link to="/services/seo-insights" className="group p-4 bg-white rounded-xl border border-gray-200 hover:border-green-300 transition-all duration-200 hover:shadow-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center group-hover:bg-purple-200 transition-colors">
+                      <span className="text-purple-600 text-lg">🔍</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 group-hover:text-purple-700 transition-colors">SEO Insights</h4>
+                      <p className="text-sm text-gray-600">Boost your search rankings</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link to="/services/digital-campaigns" className="group p-4 bg-white rounded-xl border border-gray-200 hover:border-green-300 transition-all duration-200 hover:shadow-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center group-hover:bg-orange-200 transition-colors">
+                      <span className="text-orange-600 text-lg">📈</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 group-hover:text-orange-700 transition-colors">Digital Marketing</h4>
+                      <p className="text-sm text-gray-600">PPC, social media & more</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link to="/services/brand-identity" className="group p-4 bg-white rounded-xl border border-gray-200 hover:border-green-300 transition-all duration-200 hover:shadow-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-pink-100 flex items-center justify-center group-hover:bg-pink-200 transition-colors">
+                      <span className="text-pink-600 text-lg">🎨</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 group-hover:text-pink-700 transition-colors">Brand Identity</h4>
+                      <p className="text-sm text-gray-600">Stand out from the competition</p>
+                    </div>
+                  </div>
+                </Link>
+                <Link to="/services/experience-optimization" className="group p-4 bg-white rounded-xl border border-gray-200 hover:border-green-300 transition-all duration-200 hover:shadow-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-indigo-100 flex items-center justify-center group-hover:bg-indigo-200 transition-colors">
+                      <span className="text-indigo-600 text-lg">✨</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 group-hover:text-indigo-700 transition-colors">UX/UI Design</h4>
+                      <p className="text-sm text-gray-600">Delight your users</p>
+                    </div>
+                  </div>
+                </Link>
               </div>
             </div>
 
