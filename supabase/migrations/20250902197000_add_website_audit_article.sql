@@ -83,7 +83,7 @@ Want a deeper dive into your website''s performance? Get a FREE professional web
   NOW(),
   NOW(),
   4,
-  0,
+  10200,
   ARRAY['Website Audit', 'SEO', 'Conversion Optimization', 'Web Performance', 'Houston Marketing', 'Lead Generation'],
   'Cardinal Digital Team',
   'published',

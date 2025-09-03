@@ -116,7 +116,7 @@ const BlogPost = () => {
 
     // Create small, clean share dropdown
     const shareDropdown = document.createElement('div');
-    shareDropdown.className = 'fixed z-50 bg-white rounded-lg shadow-lg border border-gray-200 p-2 min-w-[200px] animate-in fade-in duration-200';
+    shareDropdown.className = 'fixed z-50 bg-white rounded-lg shadow-lg border border-gray-200 p-2 min-w-[200px]';
     
     // Position near the clicked button
     const button = event?.currentTarget as HTMLElement;
@@ -133,28 +133,28 @@ const BlogPost = () => {
 
     shareDropdown.innerHTML = `
       <div class="space-y-1">
-        <button onclick="window.open('https://twitter.com/intent/tweet?text=${encodeURIComponent(shareData.title + ' - ' + shareData.text)}&url=${encodeURIComponent(shareData.url)}&via=CardinalConsult', '_blank'); this.closest('.fixed').remove()" class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
+        <button class="share-x-btn w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
           <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
           Share on X
         </button>
         
-        <button onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareData.url)}&quote=${encodeURIComponent(shareData.title)}', '_blank'); this.closest('.fixed').remove()" class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
+        <button class="share-facebook-btn w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
           <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
           </svg>
           Share on Facebook
         </button>
         
-        <button onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareData.url)}&title=${encodeURIComponent(shareData.title)}&summary=${encodeURIComponent(shareData.text)}', '_blank'); this.closest('.fixed').remove()" class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
+        <button class="share-linkedin-btn w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
           <svg class="w-4 h-4 text-blue-700" fill="currentColor" viewBox="0 0 24 24">
             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
           </svg>
           Share on LinkedIn
         </button>
         
-        <button onclick="navigator.clipboard.writeText('${shareData.url}'); this.innerHTML='<svg class=\\"w-4 h-4 text-green-600\\" fill=\\"currentColor\\" viewBox=\\"0 0 24 24\\"><path d=\\"M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z\\"/></svg><span class=\\"ml-3 text-sm text-green-600\\">Copied!</span>'; setTimeout(() => this.closest('.fixed').remove(), 1500)" class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
+        <button class="share-instagram-btn w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
           <svg class="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
           </svg>
@@ -163,7 +163,7 @@ const BlogPost = () => {
         
         <div class="border-t border-gray-200 my-1"></div>
         
-        <button onclick="navigator.clipboard.writeText('${shareData.url}'); this.innerHTML='<svg class=\\"w-4 h-4 text-green-600\\" fill=\\"none\\" stroke=\\"currentColor\\" viewBox=\\"0 0 24 24\\"><path stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" stroke-width=\\"2\\" d=\\"M5 13l4 4L19 7\\"></path></svg><span class=\\"ml-3 text-sm text-green-600\\">Copied!</span>'; setTimeout(() => this.closest('.fixed').remove(), 1500)" class="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
+        <button class="copy-link-btn w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors">
           <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
           </svg>
@@ -174,9 +174,53 @@ const BlogPost = () => {
     
     document.body.appendChild(shareDropdown);
     
+    // Add event listeners
+    const xBtn = shareDropdown.querySelector('.share-x-btn');
+    const facebookBtn = shareDropdown.querySelector('.share-facebook-btn');
+    const linkedinBtn = shareDropdown.querySelector('.share-linkedin-btn');
+    const instagramBtn = shareDropdown.querySelector('.share-instagram-btn');
+    const copyBtn = shareDropdown.querySelector('.copy-link-btn');
+    
+    xBtn?.addEventListener('click', () => {
+      const text = `${shareData.title} - ${shareData.text}`;
+      const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareData.url)}&via=CardinalConsult`;
+      window.open(url, '_blank');
+      shareDropdown.remove();
+    });
+    
+    facebookBtn?.addEventListener('click', () => {
+      const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareData.url)}&quote=${encodeURIComponent(shareData.title)}`;
+      window.open(url, '_blank');
+      shareDropdown.remove();
+    });
+    
+    linkedinBtn?.addEventListener('click', () => {
+      const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareData.url)}&title=${encodeURIComponent(shareData.title)}&summary=${encodeURIComponent(shareData.text)}`;
+      window.open(url, '_blank');
+      shareDropdown.remove();
+    });
+    
+    instagramBtn?.addEventListener('click', () => {
+      navigator.clipboard.writeText(shareData.url);
+      if (instagramBtn) {
+        instagramBtn.textContent = 'Copied!';
+        instagramBtn.classList.add('text-green-600');
+      }
+      setTimeout(() => shareDropdown.remove(), 1500);
+    });
+    
+    copyBtn?.addEventListener('click', () => {
+      navigator.clipboard.writeText(shareData.url);
+      if (copyBtn) {
+        copyBtn.textContent = 'Copied!';
+        copyBtn.classList.add('text-green-600');
+      }
+      setTimeout(() => shareDropdown.remove(), 1500);
+    });
+    
     // Close dropdown when clicking outside
-    const closeDropdown = (e) => {
-      if (!shareDropdown.contains(e.target)) {
+    const closeDropdown = (e: MouseEvent) => {
+      if (!shareDropdown.contains(e.target as Node)) {
         shareDropdown.remove();
         document.removeEventListener('click', closeDropdown);
       }
@@ -386,67 +430,80 @@ const BlogPost = () => {
                   </h3>
                 ),
                 p: ({node, ...props}) => {
-                  let content = props.children?.toString() || '';
+                  const content = props.children?.toString() || '';
                   
-                  // Internal link mapping for powerful SEO
+                  // Simple internal link replacement without breaking React
                   const linkMappings = [
-                    // Services
-                    { keyword: 'web development', url: '/services/web-development', text: 'web development' },
-                    { keyword: 'app development', url: '/services/mobile-applications', text: 'app development' },
-                    { keyword: 'mobile app', url: '/services/mobile-applications', text: 'mobile app' },
-                    { keyword: 'mobile application', url: '/services/mobile-applications', text: 'mobile application' },
-                    { keyword: 'SEO', url: '/services/seo-insights', text: 'SEO' },
-                    { keyword: 'search engine optimization', url: '/services/seo-insights', text: 'search engine optimization' },
-                    { keyword: 'digital marketing', url: '/services/digital-campaigns', text: 'digital marketing' },
-                    { keyword: 'PPC', url: '/services/digital-campaigns', text: 'PPC' },
-                    { keyword: 'pay-per-click', url: '/services/digital-campaigns', text: 'pay-per-click' },
-                    { keyword: 'social media marketing', url: '/services/digital-campaigns', text: 'social media marketing' },
-                    { keyword: 'brand identity', url: '/services/brand-identity', text: 'brand identity' },
-                    { keyword: 'branding', url: '/services/brand-identity', text: 'branding' },
-                    { keyword: 'cloud solutions', url: '/services/cloud-solutions', text: 'cloud solutions' },
-                    { keyword: 'cloud computing', url: '/services/cloud-solutions', text: 'cloud computing' },
-                    { keyword: 'user experience', url: '/services/experience-optimization', text: 'user experience' },
-                    { keyword: 'UX', url: '/services/experience-optimization', text: 'UX' },
-                    { keyword: 'UI', url: '/services/experience-optimization', text: 'UI' },
-                    { keyword: 'user interface', url: '/services/experience-optimization', text: 'user interface' },
-                    { keyword: 'web application', url: '/services/web-applications', text: 'web application' },
-                    { keyword: 'web app', url: '/services/web-applications', text: 'web app' },
-                    
-                    // Pages
-                    { keyword: 'contact us', url: '/contact', text: 'contact us' },
-                    { keyword: 'get started', url: '/contact', text: 'get started' },
-                    { keyword: 'free consultation', url: '/contact', text: 'free consultation' },
-                    { keyword: 'portfolio', url: '/portfolio', text: 'portfolio' },
-                    { keyword: 'our work', url: '/portfolio', text: 'our work' },
-                    { keyword: 'case studies', url: '/portfolio', text: 'case studies' },
-                    { keyword: 'about us', url: '/about', text: 'about us' },
-                    { keyword: 'our team', url: '/about', text: 'our team' },
-                    { keyword: 'blog', url: '/blog', text: 'blog' },
-                    { keyword: 'insights', url: '/insights', text: 'insights' },
-                    { keyword: 'industries', url: '/industries', text: 'industries' },
-                    { keyword: 'services', url: '/services', text: 'services' },
-                    
-                    // Action words
-                    { keyword: 'website audit', url: '/contact', text: 'website audit' },
-                    { keyword: 'free audit', url: '/contact', text: 'free audit' },
-                    { keyword: 'consultation', url: '/contact', text: 'consultation' },
-                    { keyword: 'quote', url: '/contact', text: 'quote' },
-                    { keyword: 'estimate', url: '/contact', text: 'estimate' },
-                    { keyword: 'project evaluation', url: '/contact', text: 'project evaluation' },
+                    { keyword: 'web development', url: '/services/web-development' },
+                    { keyword: 'app development', url: '/services/mobile-applications' },
+                    { keyword: 'mobile app', url: '/services/mobile-applications' },
+                    { keyword: 'mobile application', url: '/services/mobile-applications' },
+                    { keyword: 'SEO', url: '/services/seo-insights' },
+                    { keyword: 'search engine optimization', url: '/services/seo-insights' },
+                    { keyword: 'digital marketing', url: '/services/digital-campaigns' },
+                    { keyword: 'PPC', url: '/services/digital-campaigns' },
+                    { keyword: 'pay-per-click', url: '/services/digital-campaigns' },
+                    { keyword: 'social media marketing', url: '/services/digital-campaigns' },
+                    { keyword: 'brand identity', url: '/services/brand-identity' },
+                    { keyword: 'branding', url: '/services/brand-identity' },
+                    { keyword: 'cloud solutions', url: '/services/cloud-solutions' },
+                    { keyword: 'cloud computing', url: '/services/cloud-solutions' },
+                    { keyword: 'user experience', url: '/services/experience-optimization' },
+                    { keyword: 'UX', url: '/services/experience-optimization' },
+                    { keyword: 'UI', url: '/services/experience-optimization' },
+                    { keyword: 'user interface', url: '/services/experience-optimization' },
+                    { keyword: 'web application', url: '/services/web-applications' },
+                    { keyword: 'web app', url: '/services/web-applications' },
+                    { keyword: 'contact us', url: '/contact' },
+                    { keyword: 'get started', url: '/contact' },
+                    { keyword: 'free consultation', url: '/contact' },
+                    { keyword: 'portfolio', url: '/portfolio' },
+                    { keyword: 'our work', url: '/portfolio' },
+                    { keyword: 'case studies', url: '/portfolio' },
+                    { keyword: 'about us', url: '/about' },
+                    { keyword: 'our team', url: '/about' },
+                    { keyword: 'blog', url: '/blog' },
+                    { keyword: 'insights', url: '/insights' },
+                    { keyword: 'industries', url: '/industries' },
+                    { keyword: 'services', url: '/services' },
+                    { keyword: 'website audit', url: '/contact' },
+                    { keyword: 'free audit', url: '/contact' },
+                    { keyword: 'consultation', url: '/contact' },
+                    { keyword: 'quote', url: '/contact' },
+                    { keyword: 'estimate', url: '/contact' },
+                    { keyword: 'project evaluation', url: '/contact' },
                   ];
 
-                  // Apply link mappings
-                  linkMappings.forEach(mapping => {
-                    const regex = new RegExp(`\\b${mapping.keyword}\\b`, 'gi');
-                    content = content.replace(regex, `<a href="${mapping.url}" class="text-primary hover:text-primary/80 font-medium underline decoration-primary/30 hover:decoration-primary/60 transition-all duration-200">${mapping.text}</a>`);
-                  });
+                  // Check if content contains any of our keywords
+                  const hasKeyword = linkMappings.some(mapping => 
+                    content.toLowerCase().includes(mapping.keyword.toLowerCase())
+                  );
 
                   return (
-                    <p 
-                      {...props} 
-                      className="leading-relaxed text-foreground/80 text-lg mb-6"
-                      dangerouslySetInnerHTML={{ __html: content }}
-                    />
+                    <p {...props} className="leading-relaxed text-foreground/80 text-lg mb-6">
+                      {props.children}
+                      {hasKeyword && (
+                        <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+                          <p className="text-sm text-green-700 mb-2">
+                            <strong>Related Services:</strong>
+                          </p>
+                          <div className="flex flex-wrap gap-2">
+                            {linkMappings
+                              .filter(mapping => content.toLowerCase().includes(mapping.keyword.toLowerCase()))
+                              .slice(0, 3)
+                              .map((mapping, index) => (
+                                <a
+                                  key={index}
+                                  href={mapping.url}
+                                  className="inline-flex items-center px-2 py-1 text-xs bg-green-100 text-green-700 rounded-md hover:bg-green-200 transition-colors"
+                                >
+                                  {mapping.keyword}
+                                </a>
+                              ))}
+                          </div>
+                        </div>
+                      )}
+                    </p>
                   );
                 },
                 ul: ({node, ...props}) => (
@@ -455,35 +512,24 @@ const BlogPost = () => {
                   </ul>
                 ),
                 li: ({node, ...props}) => {
-                  let content = props.children?.toString() || '';
+                  const content = props.children?.toString() || '';
                   const hasImpactPrefix = content.includes('Key Impact:') || 
                                         content.includes('Pro Tip:') || 
                                         content.includes('Key Insight:') ||
                                         content.includes('Impact:') ||
                                         content.includes('Result:');
                   
-                  // Apply internal links to list items
-                  const linkMappings = [
-                    { keyword: 'web development', url: '/services/web-development', text: 'web development' },
-                    { keyword: 'app development', url: '/services/mobile-applications', text: 'app development' },
-                    { keyword: 'SEO', url: '/services/seo-insights', text: 'SEO' },
-                    { keyword: 'digital marketing', url: '/services/digital-campaigns', text: 'digital marketing' },
-                    { keyword: 'contact us', url: '/contact', text: 'contact us' },
-                    { keyword: 'free consultation', url: '/contact', text: 'free consultation' },
-                    { keyword: 'website audit', url: '/contact', text: 'website audit' },
-                  ];
-
-                  linkMappings.forEach(mapping => {
-                    const regex = new RegExp(`\\b${mapping.keyword}\\b`, 'gi');
-                    content = content.replace(regex, `<a href="${mapping.url}" class="text-primary hover:text-primary/80 font-medium underline decoration-primary/30 hover:decoration-primary/60 transition-all duration-200">${mapping.text}</a>`);
-                  });
-                  
                   return hasImpactPrefix ? (
                     <div className="mt-6 p-4 bg-primary/5 border border-primary/10 rounded-lg">
-                      <p className="font-semibold text-primary" dangerouslySetInnerHTML={{ __html: content }} />
+                      <p className="font-semibold text-primary">{props.children}</p>
                     </div>
                   ) : (
-                    <li {...props} className="flex items-start gap-3" dangerouslySetInnerHTML={{ __html: content }} />
+                    <li {...props} className="flex items-start gap-3">
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                        •
+                      </span>
+                      <span className="flex-1 text-foreground/90">{props.children}</span>
+                    </li>
                   );
                 },
                 blockquote: ({node, ...props}) => (
