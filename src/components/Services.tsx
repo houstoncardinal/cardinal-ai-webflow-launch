@@ -1,5 +1,6 @@
-import { Code, Smartphone, Globe, BarChart3, Palette, Share2, Search, Zap, TrendingUp, Users } from "lucide-react";
+import { Code, Smartphone, Globe, BarChart3, Palette, Share2, Search, Zap, TrendingUp, Users, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 const Services = () => {
   const services = [
@@ -181,47 +182,180 @@ const Services = () => {
           ))}
         </div>
 
-                     {/* Business Focus Section */}
-             <div className="mt-16 sm:mt-20 lg:mt-24 text-center">
-               <div className="max-w-3xl mx-auto">
-                 <h3 className="text-xl sm:text-2xl font-light text-gray-900 mb-4 sm:mb-6">
-                   Why Businesses Choose Cardinal Consulting
+                     {/* Comparison Section */}
+             <div className="mt-16 sm:mt-20 lg:mt-24">
+               <div className="max-w-6xl mx-auto">
+                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-light text-gray-900 mb-4 sm:mb-6 text-center">
+                   Other Agencies vs Cardinal Consulting
                  </h3>
-                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12">
-              <div className="text-center">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Industry Expertise</h4>
-                <p className="text-gray-600 text-xs sm:text-sm">Deep understanding of business landscapes and market dynamics across industries</p>
-              </div>
-              <div className="text-center">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">24/7 Support</h4>
-                <p className="text-gray-600 text-xs sm:text-sm">Round-the-clock support from our team for immediate assistance when you need it</p>
-              </div>
-              <div className="text-center">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Proven Results</h4>
-                <p className="text-gray-600 text-xs sm:text-sm">Track record of success with 500+ businesses and 98% client satisfaction</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
+                 <p className="text-gray-600 text-sm sm:text-base text-center mb-8 sm:mb-12 max-w-3xl mx-auto">
+                   See why businesses choose Cardinal Consulting over traditional agencies
+                 </p>
+                 
+                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+                   {/* Other Agencies Column */}
+                   <div className="bg-gray-50/50 rounded-2xl p-6 sm:p-8 border border-gray-200">
+                     <div className="text-center mb-6 sm:mb-8">
+                       <h4 className="text-lg sm:text-xl font-semibold text-gray-700 mb-2">Other Agencies</h4>
+                       <p className="text-gray-500 text-sm">Generic, one-size-fits-all approach</p>
+                     </div>
+                     
+                     <div className="space-y-4 sm:space-y-6">
+                       <div className="flex items-start space-x-3">
+                         <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                           <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                           </svg>
+                         </div>
+                         <div>
+                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">Generic Templates</h5>
+                           <p className="text-gray-600 text-xs sm:text-sm">Cookie-cutter solutions that don't reflect your unique business needs</p>
+                         </div>
+                       </div>
+                       
+                       <div className="flex items-start space-x-3">
+                         <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                           <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                           </svg>
+                         </div>
+                         <div>
+                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">Slow Response Times</h5>
+                           <p className="text-gray-600 text-xs sm:text-sm">Days or weeks to get back to you with updates or changes</p>
+                         </div>
+                       </div>
+                       
+                       <div className="flex items-start space-x-3">
+                         <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                           <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                           </svg>
+                         </div>
+                         <div>
+                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">Hidden Costs</h5>
+                           <p className="text-gray-600 text-xs sm:text-sm">Surprise fees and charges that weren't mentioned upfront</p>
+                         </div>
+                       </div>
+                       
+                       <div className="flex items-start space-x-3">
+                         <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                           <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                           </svg>
+                         </div>
+                         <div>
+                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">No Industry Knowledge</h5>
+                           <p className="text-gray-600 text-xs sm:text-sm">Lack of understanding of your specific industry challenges</p>
+                         </div>
+                       </div>
+                       
+                       <div className="flex items-start space-x-3">
+                         <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                           <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                           </svg>
+                         </div>
+                         <div>
+                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">Poor Communication</h5>
+                           <p className="text-gray-600 text-xs sm:text-sm">Difficult to reach, unclear project status, and delayed feedback</p>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                   
+                   {/* Cardinal Consulting Column */}
+                   <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 sm:p-8 border border-green-200 relative overflow-hidden">
+                     {/* Accent border */}
+                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 to-emerald-500"></div>
+                     
+                     <div className="text-center mb-6 sm:mb-8">
+                       <h4 className="text-lg sm:text-xl font-semibold text-green-800 mb-2">Cardinal Consulting</h4>
+                       <p className="text-green-600 text-sm">Custom solutions tailored to your business</p>
+                     </div>
+                     
+                     <div className="space-y-4 sm:space-y-6">
+                       <div className="flex items-start space-x-3">
+                         <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                           <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                           </svg>
+                         </div>
+                         <div>
+                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">Custom Solutions</h5>
+                           <p className="text-gray-600 text-xs sm:text-sm">Tailored strategies designed specifically for your business goals</p>
+                         </div>
+                       </div>
+                       
+                       <div className="flex items-start space-x-3">
+                         <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                           <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                           </svg>
+                         </div>
+                         <div>
+                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">24/7 Support</h5>
+                           <p className="text-gray-600 text-xs sm:text-sm">Immediate response within 2 hours, even on weekends</p>
+                         </div>
+                       </div>
+                       
+                       <div className="flex items-start space-x-3">
+                         <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                           <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                           </svg>
+                         </div>
+                         <div>
+                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">Transparent Pricing</h5>
+                           <p className="text-gray-600 text-xs sm:text-sm">Clear, upfront costs with no hidden fees or surprise charges</p>
+                         </div>
+                       </div>
+                       
+                       <div className="flex items-start space-x-3">
+                         <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                           <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                           </svg>
+                         </div>
+                         <div>
+                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">Industry Expertise</h5>
+                           <p className="text-gray-600 text-xs sm:text-sm">Deep understanding of your industry challenges and opportunities</p>
+                         </div>
+                       </div>
+                       
+                       <div className="flex items-start space-x-3">
+                         <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                           <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                           </svg>
+                         </div>
+                         <div>
+                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">Proactive Communication</h5>
+                           <p className="text-gray-600 text-xs sm:text-sm">Regular updates, clear timelines, and transparent project status</p>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 {/* CTA Section */}
+                 <div className="text-center mt-8 sm:mt-12">
+                   <p className="text-gray-600 text-sm sm:text-base mb-4">
+                     Ready to experience the Cardinal difference?
+                   </p>
+                   <Link to="/contact">
+                     <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 text-sm sm:text-base font-medium transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+                       Get Your Free Consultation
+                       <ArrowRight className="ml-2 w-4 h-4" />
+                     </Button>
+                   </Link>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </section>
+   );
+ };
 
-export default Services;
+ export default Services;
