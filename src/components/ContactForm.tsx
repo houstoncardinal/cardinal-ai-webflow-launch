@@ -142,23 +142,47 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Netlify Forms will handle the submission automatically
-    // We just need to show success message and reset form
-    setTimeout(() => {
-      toast({
-        title: "Request submitted successfully! 🚀",
-        description: "We'll get back to you within 2 hours with your project evaluation.",
+    try {
+      // Create FormData object
+      const formDataToSend = new FormData();
+      formDataToSend.append('form-name', 'project-evaluation');
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('phone', formData.phone);
+      formDataToSend.append('service', formData.service);
+
+      // Submit to Netlify
+      const response = await fetch('/', {
+        method: 'POST',
+        body: formDataToSend,
       });
 
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: ''
+      if (response.ok) {
+        toast({
+          title: "Request submitted successfully! 🚀",
+          description: "We'll get back to you within 2 hours with your project evaluation.",
+        });
+
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: ''
+        });
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Submission failed",
+        description: "Please try again or contact us directly.",
+        variant: "destructive",
       });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -208,7 +232,7 @@ const ContactForm = () => {
               </div>
 
               {/* Form */}
-              <form onSubmit={handleSubmit} className="space-y-4" name="project-evaluation" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+              <form onSubmit={handleSubmit} className="space-y-4" name="project-evaluation" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
                 <input type="hidden" name="form-name" value="project-evaluation" />
                 <input type="hidden" name="bot-field" style={{ display: 'none' }} />
                 

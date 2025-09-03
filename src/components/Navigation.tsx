@@ -355,84 +355,15 @@ const Navigation = () => {
           <div className="lg:hidden border-t border-gray-200 bg-white/95 backdrop-blur-md animate-fade-in">
             <div className="px-4 py-6 space-y-4">
               {navItems.map((item, index) => (
-                <div key={item.name}>
-                  {item.hasMegaMenu ? (
-                    <div className="space-y-2">
-                      <div className="text-gray-700 text-base font-medium px-4 py-2">
-                        {item.name}
-                      </div>
-                      {item.megaMenuType === "services" && (
-                        <div className="ml-4 space-y-2">
-                          <Link
-                            to="/services/web-development"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
-                          >
-                            Web Development
-                          </Link>
-                          <Link
-                            to="/services/mobile-applications"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
-                          >
-                            Mobile Applications
-                          </Link>
-                          <Link
-                            to="/services/seo-insights"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
-                          >
-                            SEO Insights
-                          </Link>
-                          <Link
-                            to="/services/digital-campaigns"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
-                          >
-                            Digital Campaigns
-                          </Link>
-                          <Link
-                            to="/services/brand-identity"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
-                          >
-                            Brand Identity
-                          </Link>
-                          <Link
-                            to="/services/cloud-solutions"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
-                          >
-                            Cloud Solutions
-                          </Link>
-                          <Link
-                            to="/services/experience-optimization"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
-                          >
-                            Experience Optimization
-                          </Link>
-                          <Link
-                            to="/services/web-applications"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
-                          >
-                            Web Applications
-                          </Link>
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    <Link
-                      to={item.href}
-                      className="text-gray-700 hover:text-green-600 block py-2 text-base font-medium transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
-                      onClick={() => setIsMenuOpen(false)}
-                      style={{animationDelay: `${index * 50}ms`}}
-                    >
-                      {item.name}
-                    </Link>
-                  )}
-                </div>
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="text-gray-700 hover:text-green-600 block py-2 text-base font-medium transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
+                  onClick={() => setIsMenuOpen(false)}
+                  style={{animationDelay: `${index * 50}ms`}}
+                >
+                  {item.name}
+                </Link>
               ))}
               
               <div className="mt-4 pt-4 border-t border-gray-200">
