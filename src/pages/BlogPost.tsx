@@ -334,49 +334,6 @@ const BlogPost = () => {
 
           {/* Article Content */}
           <div className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-foreground prose-strong:text-foreground prose-code:text-foreground prose-li:text-foreground prose-blockquote:text-muted-foreground prose-a:text-primary hover:prose-a:text-primary/80">
-            {/* Clean Article Navigation */}
-            <div className="not-prose mb-8">
-              <div className="relative">
-                {/* Article Navigation Buttons */}
-                <div className="relative -mx-6 px-6 md:mx-0 md:px-0">
-                  <div className="flex items-center gap-2 py-4 overflow-x-auto hide-scrollbar">
-                    <ReactMarkdown
-                      components={{
-                        p: () => null,
-                        h1: () => null,
-                        h2: ({node, ...props}) => {
-                          const title = props.children?.toString() || '';
-                          const id = title.toLowerCase().replace(/\s+/g, '-');
-                          const icon = 
-                            title.includes('Quick') ? '⚡' :
-                            title.includes('Bonus') ? '🎁' :
-                            title.includes('Need') ? '🎯' :
-                            title.includes('Why') ? '❓' : '📋';
-                          
-                          return (
-                            <a href={`#${id}`} 
-                               className="shrink-0 flex items-center gap-2 px-3 py-2 bg-white hover:bg-green-50 border border-gray-200 hover:border-green-300 rounded-lg transition-all duration-200 text-sm font-medium shadow-sm hover:shadow-md">
-                              <span className="text-sm">{icon}</span>
-                              <span className="text-gray-700 whitespace-nowrap">
-                                {title.replace(/^\d+\.\s/, '').split(' ').slice(0, 3).join(' ')}
-                              </span>
-                            </a>
-                          );
-                        },
-                        h3: () => null,
-                      }}
-                    >
-                      {post.content}
-                    </ReactMarkdown>
-                  </div>
-                  {/* Subtle gradient fade for overflow */}
-                  <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none md:hidden"></div>
-                </div>
-
-
-              </div>
-            </div>
-
             {/* Main Content */}
             <ReactMarkdown
               components={{
