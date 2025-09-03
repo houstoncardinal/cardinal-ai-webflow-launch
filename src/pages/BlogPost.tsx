@@ -258,43 +258,12 @@ const BlogPost = () => {
 
           {/* Article Content */}
           <div className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-foreground prose-strong:text-foreground prose-code:text-foreground prose-li:text-foreground prose-blockquote:text-muted-foreground prose-a:text-primary hover:prose-a:text-primary/80">
-            {/* Streamlined Article Header */}
+            {/* Clean Article Navigation */}
             <div className="not-prose mb-8">
               <div className="relative">
-                <div className="flex items-center gap-2 mb-3">
-                  {post.tags?.slice(0, 3).map(tag => (
-                    <span key={tag} 
-                      className="px-2 py-0.5 bg-green-50 text-green-700 rounded-md text-xs border border-green-200 font-medium">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                
-                <div className="flex flex-wrap items-center justify-between gap-3 py-3 border-y border-gray-200">
-                  <div className="flex items-center gap-4 text-xs text-gray-600">
-                    <div className="flex items-center gap-1.5">
-                      <Clock className="w-3 h-3 text-green-600" />
-                      <span>{post.reading_time}m read</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <Calendar className="w-3 h-3 text-green-600" />
-                      <span>{formatDate(post.updated_at || post.published_at).split(',')[0]}</span>
-                    </div>
-                  </div>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={sharePost}
-                    className="flex items-center gap-1.5 text-xs h-7 px-2"
-                  >
-                    <Share2 className="w-3 h-3" />
-                    Share
-                  </Button>
-                </div>
-
-                {/* Compact Article Navigation */}
+                {/* Article Navigation Buttons */}
                 <div className="relative -mx-6 px-6 md:mx-0 md:px-0">
-                  <div className="flex items-center gap-1.5 py-3 overflow-x-auto hide-scrollbar">
+                  <div className="flex items-center gap-2 py-4 overflow-x-auto hide-scrollbar">
                     <ReactMarkdown
                       components={{
                         p: () => null,
@@ -310,10 +279,10 @@ const BlogPost = () => {
                           
                           return (
                             <a href={`#${id}`} 
-                               className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 bg-gray-50 hover:bg-green-50 border border-gray-200 hover:border-green-300 rounded-md transition-all duration-200 text-xs">
-                              <span className="text-xs">{icon}</span>
-                              <span className="text-gray-700 whitespace-nowrap font-medium">
-                                {title.replace(/^\d+\.\s/, '').split(' ').slice(0, 2).join(' ')}
+                               className="shrink-0 flex items-center gap-2 px-3 py-2 bg-white hover:bg-green-50 border border-gray-200 hover:border-green-300 rounded-lg transition-all duration-200 text-sm font-medium shadow-sm hover:shadow-md">
+                              <span className="text-sm">{icon}</span>
+                              <span className="text-gray-700 whitespace-nowrap">
+                                {title.replace(/^\d+\.\s/, '').split(' ').slice(0, 3).join(' ')}
                               </span>
                             </a>
                           );
@@ -329,8 +298,8 @@ const BlogPost = () => {
                 </div>
 
                 {/* Reading Progress Bar */}
-                <div className="h-0.5 w-full bg-primary/10 overflow-hidden">
-                  <div className="h-full w-0 bg-gradient-to-r from-green-500 to-primary rounded-full transition-all duration-300" 
+                <div className="h-1 w-full bg-gray-100 rounded-full overflow-hidden mt-4">
+                  <div className="h-full w-0 bg-gradient-to-r from-green-500 to-green-600 rounded-full transition-all duration-300" 
                        style={{ width: '0%' }} />
                 </div>
               </div>
@@ -351,9 +320,9 @@ const BlogPost = () => {
                         <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-primary rounded-lg blur opacity-25 group-hover:opacity-50 transition-opacity"></div>
                         <span className="relative flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-green-500/10 to-primary/10 border border-green-500/10 flex items-center justify-center text-lg sm:text-xl">
                           {props.children?.toString().includes('Quick') ? '⚡' :
-                           props.children?.toString().includes('Bonus') ? '�' :
+                           props.children?.toString().includes('Bonus') ? '' :
                            props.children?.toString().includes('Need') ? '🎯' :
-                           props.children?.toString().includes('Why') ? '�' : '📋'}
+                           props.children?.toString().includes('Why') ? '' : '📋'}
                         </span>
                       </div>
                       <span className="text-xl sm:text-2xl font-semibold bg-gradient-to-r from-green-600 to-primary bg-clip-text text-transparent">
