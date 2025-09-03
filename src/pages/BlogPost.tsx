@@ -33,12 +33,26 @@ const BlogPost = () => {
   const [post, setPost] = useState<BlogPost | null>(null);
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [readingProgress, setReadingProgress] = useState(0);
 
   useEffect(() => {
     if (slug) {
       fetchPost(slug);
     }
   }, [slug]);
+
+  // Reading progress tracking
+  useEffect(() => {
+    const updateReadingProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      setReadingProgress(Math.min(progress, 100));
+    };
+
+    window.addEventListener('scroll', updateReadingProgress);
+    return () => window.removeEventListener('scroll', updateReadingProgress);
+  }, []);
 
   const fetchPost = async (slug: string) => {
     try {
@@ -217,6 +231,16 @@ const BlogPost = () => {
       
       <Navigation />
       
+      {/* Reading Progress Bar */}
+      <div className="fixed top-16 left-0 right-0 z-40 bg-white border-b border-gray-200">
+        <div className="h-1 bg-gray-100">
+          <div 
+            className="h-full bg-gradient-to-r from-green-500 to-green-600 transition-all duration-300 ease-out"
+            style={{ width: `${readingProgress}%` }}
+          />
+        </div>
+      </div>
+      
       {/* Article Header */}
       <article className="pt-24 pb-16">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
@@ -349,11 +373,7 @@ const BlogPost = () => {
                   <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none md:hidden"></div>
                 </div>
 
-                {/* Reading Progress Bar */}
-                <div className="h-1 w-full bg-gray-100 rounded-full overflow-hidden mt-4">
-                  <div className="h-full w-0 bg-gradient-to-r from-green-500 to-green-600 rounded-full transition-all duration-300" 
-                       style={{ width: '0%' }} />
-                </div>
+
               </div>
             </div>
 
