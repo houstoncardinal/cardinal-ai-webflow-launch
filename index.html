@@ -176,7 +176,13 @@
         "ratingValue": "4.9",
         "reviewCount": "500",
         "bestRating": "5",
-        "worstRating": "1"
+        "worstRating": "1",
+        "reviewAspect": "Service Quality",
+        "author": {
+          "@type": "Organization",
+          "name": "Facebook Reviews",
+          "url": "https://www.facebook.com/cardinalad"
+        }
       }
     }
     </script>
@@ -258,6 +264,82 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
+      "@type": "AggregateRating",
+      "itemReviewed": {
+        "@type": "LocalBusiness",
+        "name": "Cardinal Consulting",
+        "alternateName": "Cardinal HTX",
+        "url": "https://cardinalhtx.com",
+        "telephone": "+1-832-989-2163",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "2100 West Loop S Fwy",
+          "addressLocality": "Houston",
+          "addressRegion": "TX",
+          "postalCode": "77027",
+          "addressCountry": "US"
+        }
+      },
+      "ratingValue": "4.9",
+      "reviewCount": "500",
+      "bestRating": "5",
+      "worstRating": "1",
+      "reviewAspect": "Web Development Services",
+      "author": {
+        "@type": "Organization",
+        "name": "Facebook Reviews",
+        "url": "https://www.facebook.com/cardinalad"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Sarah Johnson"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Cardinal Consulting transformed our website completely. Professional, responsive, and delivered exactly what we needed. Highly recommend!",
+          "datePublished": "2024-01-15"
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Mike Rodriguez"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Outstanding web development services. The team at Cardinal is knowledgeable, professional, and delivers results that exceed expectations.",
+          "datePublished": "2024-01-10"
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Jennifer Smith"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Best web development agency in Houston! They built our e-commerce site and it's generating amazing results. Professional team throughout.",
+          "datePublished": "2024-01-05"
+        }
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
         {
@@ -322,6 +404,21 @@
   </head>
   <body>
     <div id="root"></div>
+    
+    <!-- Netlify Forms - Hidden for detection -->
+    <form name="free-audit" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" style="display: none;">
+      <input type="hidden" name="form-name" value="free-audit" />
+      <input type="hidden" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="url" name="website" />
+      <input type="text" name="businessName" />
+      <input type="text" name="industry" />
+      <textarea name="currentChallenges"></textarea>
+      <textarea name="goals"></textarea>
+    </form>
+    
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

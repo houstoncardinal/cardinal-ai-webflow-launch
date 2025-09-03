@@ -46,7 +46,7 @@ const Hero = () => {
 
   return (
     <>
-      <section className="min-h-screen bg-white flex items-center relative overflow-hidden pt-20 pb-16 sm:pt-24 sm:pb-20">
+      <section className="min-h-[90vh] bg-white flex items-center relative overflow-hidden pt-20 pb-4 sm:pt-24 sm:pb-6">
         {/* Animated network background */}
         <div className="absolute inset-0">
           {/* Network grid */}
@@ -259,7 +259,7 @@ const Hero = () => {
       </section>
 
                  {/* Evaluate Your Project for Free Form */}
-           <section className="py-6 sm:py-8 lg:py-6 relative overflow-hidden bg-gradient-to-br from-green-50/50 via-white to-gray-50/30">
+           <section className="py-2 sm:py-4 lg:py-2 relative overflow-hidden bg-gradient-to-br from-green-50/50 via-white to-gray-50/30">
         {/* Floating background elements */}
         <div className="absolute top-1/4 left-1/4 w-24 h-24 bg-green-100 rounded-full opacity-20 blur-2xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/3 w-20 h-20 bg-green-200 rounded-full opacity-30 blur-xl animate-pulse" style={{

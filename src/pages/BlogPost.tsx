@@ -56,43 +56,56 @@ const BlogPost = () => {
 
   const fetchPost = async (slug: string) => {
     try {
-      // Fetch the main post
+      // Check if we already have the post cached
+      if (post && post.slug === slug) {
+        setLoading(false);
+        return;
+      }
+
+      // Fetch the main post with optimized query
       const { data: postData, error: postError } = await supabase
         .from('blog_posts')
-        .select('*')
+        .select('id, title, slug, excerpt, content, thumbnail_url, published_at, updated_at, reading_time, views_count, tags, author_name, meta_title, meta_description')
         .eq('slug', slug)
         .eq('status', 'published')
         .not('published_at', 'is', null)
         .single();
 
       if (postError) throw postError;
+      
+      // Set post immediately for faster rendering
       setPost(postData);
+      setLoading(false);
 
-      // Increment view count
-      const { error: updateError } = await supabase
+      // Update view count in background (non-blocking)
+      supabase
         .from('blog_posts')
         .update({ views_count: (postData.views_count || 0) + 1 })
-        .eq('id', postData.id);
+        .eq('id', postData.id)
+        .then(({ error }) => {
+          if (error) console.error('Error updating view count:', error);
+        });
 
-      if (updateError) console.error('Error updating view count:', updateError);
-
-      // Fetch related posts
-      const { data: relatedData, error: relatedError } = await supabase
+      // Fetch related posts in background
+      supabase
         .from('blog_posts')
-        .select('*')
+        .select('id, title, slug, excerpt, content, thumbnail_url, published_at, updated_at, reading_time, views_count, tags, author_name')
         .eq('status', 'published')
         .not('published_at', 'is', null)
         .neq('id', postData.id)
         .order('published_at', { ascending: false })
-        .limit(3);
-
-      if (relatedError) throw relatedError;
-      setRelatedPosts(relatedData || []);
+        .limit(3)
+        .then(({ data: relatedData, error: relatedError }) => {
+          if (relatedError) {
+            console.error('Error fetching related posts:', relatedError);
+            return;
+          }
+          setRelatedPosts(relatedData || []);
+        });
 
     } catch (error) {
       console.error('Error fetching post:', error);
       toast.error('Failed to load blog post');
-    } finally {
       setLoading(false);
     }
   };
@@ -234,57 +247,55 @@ const BlogPost = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background">
+      <>
         <Navigation />
-        <div className="pt-24 pb-16">
+        <div className="pt-32 pb-20 bg-white">
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <div className="flex items-center justify-center min-h-[400px]">
-              <div className="text-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-                <p className="mt-4 text-muted-foreground">Loading article...</p>
+            <div className="animate-pulse">
+              <div className="h-8 bg-gray-200 rounded w-1/4 mb-4"></div>
+              <div className="h-12 bg-gray-200 rounded w-3/4 mb-6"></div>
+              <div className="h-6 bg-gray-200 rounded w-1/2 mb-8"></div>
+              <div className="h-96 bg-gray-200 rounded mb-8"></div>
+              <div className="space-y-4">
+                <div className="h-4 bg-gray-200 rounded"></div>
+                <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+                <div className="h-4 bg-gray-200 rounded w-4/6"></div>
               </div>
             </div>
           </div>
         </div>
         <Footer />
-      </div>
+      </>
     );
   }
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-background">
+      <>
         <Navigation />
-        <div className="pt-24 pb-16">
+        <div className="pt-32 pb-20 bg-white">
           <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-            <div className="text-6xl mb-4">📄</div>
-            <h1 className="text-2xl font-bold text-foreground mb-4">Article Not Found</h1>
-            <p className="text-muted-foreground mb-6">
-              The article you're looking for doesn't exist or has been removed.
-            </p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-4">Blog Post Not Found</h1>
+            <p className="text-gray-600 mb-8">The blog post you're looking for doesn't exist.</p>
             <Link to="/blog">
               <Button>
-                <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Blog
+                <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
           </div>
         </div>
         <Footer />
-      </div>
+      </>
     );
   }
 
   const currentUrl = `${window.location.origin}/blog/${post.slug}`;
 
   return (
-    <div className="min-h-screen bg-background">
-      <BlogArticleSchema post={post} url={currentUrl} />
-      
-      {/* Additional SEO Meta Tags */}
-      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-      <meta name="googlebot" content="index, follow" />
-      <meta name="bingbot" content="index, follow" />
+    <>
+      {/* SEO Meta Tags - This ensures proper sharing metadata */}
+      <BlogArticleSchema post={post} url={window.location.href} />
       
       <Navigation />
       
@@ -759,7 +770,7 @@ const BlogPost = () => {
       </div>
 
       <Footer />
-    </div>
+    </>
   );
 };
 

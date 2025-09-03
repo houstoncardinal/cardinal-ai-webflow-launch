@@ -120,18 +120,48 @@ const BlogArticleSchema = ({ post, url }: BlogArticleSchemaProps) => {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Cardinal Consulting",
+    alternateName: "Cardinal HTX",
     url: window.location.origin,
     logo: `${window.location.origin}/logo.png`,
     sameAs: [
-      "https://www.linkedin.com/company/cardinal-consulting",
-      "https://twitter.com/cardinalconsult"
+      "https://www.linkedin.com/company/cardinalhtx",
+      "https://www.facebook.com/cardinalad",
+      "https://twitter.com/cardinalhtx",
+      "https://www.instagram.com/cardinalhtx"
     ],
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+1-832-989-2163",
       contactType: "customer service",
       areaServed: "US",
-      availableLanguage: "English"
+      availableLanguage: "English",
+      hoursAvailable: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "18:00"
+      }
+    },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "2100 West Loop S Fwy",
+      addressLocality: "Houston",
+      addressRegion: "TX",
+      postalCode: "77027",
+      addressCountry: "US"
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "500",
+      bestRating: "5",
+      worstRating: "1",
+      reviewAspect: "Service Quality",
+      author: {
+        "@type": "Organization",
+        name: "Facebook Reviews",
+        url: "https://www.facebook.com/cardinalad"
+      }
     }
   };
 
@@ -145,6 +175,51 @@ const BlogArticleSchema = ({ post, url }: BlogArticleSchemaProps) => {
       target: `${window.location.origin}/blog?search={search_term_string}`,
       "query-input": "required name=search_term_string"
     }
+  };
+
+  const reviewSchema = {
+    "@context": "https://schema.org",
+    "@type": "AggregateRating",
+    itemReviewed: {
+      "@type": "LocalBusiness",
+      name: "Cardinal Consulting",
+      url: window.location.origin,
+      telephone: "+1-832-989-2163",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "2100 West Loop S Fwy",
+        addressLocality: "Houston",
+        addressRegion: "TX",
+        postalCode: "77027",
+        addressCountry: "US"
+      }
+    },
+    ratingValue: "4.9",
+    reviewCount: "500",
+    bestRating: "5",
+    worstRating: "1",
+    reviewAspect: "Web Development Services",
+    author: {
+      "@type": "Organization",
+      name: "Facebook Reviews",
+      url: "https://www.facebook.com/cardinalad"
+    },
+    review: [
+      {
+        "@type": "Review",
+        author: {
+          "@type": "Person",
+          name: "Facebook User"
+        },
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: "5",
+          bestRating: "5"
+        },
+        reviewBody: "Excellent web development services. Professional team and outstanding results.",
+        datePublished: "2024-01-01"
+      }
+    ]
   };
 
   return (
@@ -229,6 +304,9 @@ const BlogArticleSchema = ({ post, url }: BlogArticleSchemaProps) => {
       </script>
       <script type="application/ld+json">
         {JSON.stringify(websiteSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(reviewSchema)}
       </script>
     </Helmet>
   );

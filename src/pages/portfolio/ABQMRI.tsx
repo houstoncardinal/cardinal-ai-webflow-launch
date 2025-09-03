@@ -10,6 +10,7 @@ import {
   Award, 
   CheckCircle, 
   ArrowRight,
+  ArrowLeft,
   Star,
   ExternalLink,
   Palette,
@@ -19,7 +20,10 @@ import {
   Heart,
   Brain,
   Activity,
-  Shield
+  Shield,
+  Eye,
+  Clock,
+  MapPin
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -98,7 +102,7 @@ const ABQMRI = () => {
                 {project.tags.map((tag, index) => (
                   <span 
                     key={index}
-                    className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium"
+                    className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors duration-200"
                   >
                     {tag}
                   </span>
@@ -107,41 +111,46 @@ const ABQMRI = () => {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
-                  onClick={() => window.location.href = '#overview'} 
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  asChild
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
                 >
-                  View Project Details
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                  <a href="#overview">
+                    View Project Details
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+                  </a>
                 </Button>
                 
                 <Button 
                   variant="outline" 
-                  onClick={() => window.location.href = '/contact'} 
-                  className="border-blue-300 text-blue-700 hover:bg-blue-50 px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105"
+                  asChild
+                  className="border-blue-300 text-blue-700 hover:bg-blue-50 px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105 group"
                 >
-                  Start Your Project
+                  <Link to="/contact">
+                    Start Your Project
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+                  </Link>
                 </Button>
               </div>
             </div>
             
             <div className="relative">
-              <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
+              <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100 hover:shadow-3xl transition-all duration-500">
                 <img 
                   src={project.image} 
                   alt={`${project.title} Project`}
-                  className="w-full h-auto rounded-xl shadow-lg"
+                  className="w-full h-auto rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
                 />
               </div>
               
               {/* Floating stats */}
-              <div className="absolute -top-6 -right-6 bg-white rounded-xl shadow-lg p-4 border border-gray-100">
+              <div className="absolute -top-6 -right-6 bg-white rounded-xl shadow-lg p-4 border border-gray-100 hover:shadow-xl transition-all duration-300">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-600">{project.metrics.timeline}</div>
                   <div className="text-sm text-gray-600">Delivery Time</div>
                 </div>
               </div>
               
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-4 border border-gray-100">
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-4 border border-gray-100 hover:shadow-xl transition-all duration-300">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-green-600">{project.metrics.impact}</div>
                   <div className="text-sm text-gray-600">Performance Boost</div>
@@ -165,9 +174,9 @@ const ABQMRI = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-blue-50 to-blue-100">
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-blue-50 to-blue-100 hover:scale-105">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 hover:scale-110 transition-transform duration-200">
                   <Calendar className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-4">Timeline</h3>
@@ -175,9 +184,9 @@ const ABQMRI = () => {
               </CardContent>
             </Card>
             
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-green-50 to-green-100">
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-green-50 to-green-100 hover:scale-105">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6 hover:scale-110 transition-transform duration-200">
                   <Users className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-4">Team Size</h3>
@@ -185,9 +194,9 @@ const ABQMRI = () => {
               </CardContent>
             </Card>
             
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-indigo-50 to-indigo-100">
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-indigo-50 to-indigo-100 hover:scale-105">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 hover:scale-110 transition-transform duration-200">
                   <TrendingUp className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-4">Impact</h3>
@@ -245,11 +254,11 @@ const ABQMRI = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {project.process.map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
+              <div key={index} className="text-center group">
+                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl group-hover:scale-110 transition-transform duration-200">
                   {index + 1}
                 </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">{step}</h4>
+                <h4 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-200">{step}</h4>
               </div>
             ))}
           </div>
@@ -270,9 +279,9 @@ const ABQMRI = () => {
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {project.technologies.map((tech, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
+              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white hover:scale-105">
                 <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition-colors duration-200">
                     <Globe className="w-6 h-6 text-blue-600" />
                   </div>
                   <h4 className="text-sm font-medium text-gray-900">{tech}</h4>
@@ -297,7 +306,7 @@ const ABQMRI = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {project.results.map((result, index) => (
-              <div key={index} className="flex items-start space-x-4">
+              <div key={index} className="flex items-start space-x-4 p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200">
                 <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                   <CheckCircle className="w-5 h-5 text-green-600" />
                 </div>
@@ -327,19 +336,24 @@ const ABQMRI = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
-              onClick={() => window.location.href = '/contact'} 
-              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              asChild
+              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
             >
-              Start Your Project
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <Link to="/contact">
+                Start Your Project
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+              </Link>
             </Button>
             
             <Button 
               variant="outline" 
-              onClick={() => window.location.href = '/portfolio'} 
-              className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105"
+              asChild
+              className="border-white text-blue-600 hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105 group"
             >
-              View All Projects
+              <Link to="/portfolio">
+                View All Projects
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+              </Link>
             </Button>
           </div>
         </div>

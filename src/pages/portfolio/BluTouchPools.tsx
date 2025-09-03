@@ -323,19 +323,24 @@ const BluTouchPools = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
-              onClick={() => window.location.href = '/contact'} 
-              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              asChild
+              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
             >
-              Start Your Project
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <Link to="/contact">
+                Start Your Project
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+              </Link>
             </Button>
             
             <Button 
               variant="outline" 
-              onClick={() => window.location.href = '/portfolio'} 
-              className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105"
+              asChild
+              className="border-white text-blue-600 hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105 group"
             >
-              View All Projects
+              <Link to="/portfolio">
+                View All Projects
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+              </Link>
             </Button>
           </div>
         </div>

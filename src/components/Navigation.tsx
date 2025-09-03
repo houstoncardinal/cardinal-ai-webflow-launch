@@ -46,10 +46,8 @@ const Navigation = () => {
 
   // Ensure only one mega menu is open at a time
   useEffect(() => {
-    if (isServicesMenuOpen && isContactMenuOpen) {
-      setIsContactMenuOpen(false);
-    }
-  }, [isServicesMenuOpen, isContactMenuOpen]);
+    // No need for this effect since we only have one mega menu now
+  }, []);
 
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -147,7 +145,35 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-lg">
+    <>
+      {/* Topbar - Desktop Only */}
+      <div className="hidden lg:block bg-green-600 text-white fixed top-0 left-0 right-0 z-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between py-1">
+            <div className="flex items-center space-x-3">
+              <span className="text-xs font-medium">🎯</span>
+              <span className="text-xs">
+                <strong>Limited Time Offer:</strong> Get a FREE Website Audit + SEO Analysis Worth $2,500
+              </span>
+            </div>
+            <div className="flex items-center space-x-3">
+              <span className="text-xs opacity-90">No strings attached • Instant results</span>
+              <Link to="/free-audit">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  className="border-white text-green-600 bg-white hover:bg-green-50 text-xs font-medium transition-all duration-300 hover:scale-105 h-6 px-3"
+                >
+                  Claim Your Free Audit
+                  <ArrowRight className="ml-1 w-3 h-3" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav className="fixed top-0 left-0 right-0 z-40 bg-white border-b border-gray-200 shadow-lg lg:top-8">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
@@ -198,12 +224,10 @@ const Navigation = () => {
                           // Set which nav item we're hovering
                           if (item.megaMenuType === "services") {
                             setIsHoveringNavItem("services");
-                            setIsContactMenuOpen(false);
                             setIsServicesMenuOpen(true);
                             setActiveMegaMenu("services");
                           } else if (item.megaMenuType === "contact") {
                             setIsHoveringNavItem("contact");
-                            setIsServicesMenuOpen(false);
                             setIsContactMenuOpen(true);
                             setActiveMegaMenu("contact");
                           }
@@ -272,20 +296,23 @@ const Navigation = () => {
                     </Button>
                   </div>
                 ) : (
-                  <Link to="/auth">
-                    <Button variant="outline" size="sm" className="text-sm">
-                      <User className="mr-2 h-4 w-4" />
-                      Sign In
+                  <div className="flex items-center gap-2">
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => window.open("tel:+18325550123", "_self")}
+                      className="text-sm"
+                    >
+                      📞 Call Now
                     </Button>
-                  </Link>
+                    <Link to="/contact">
+                      <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 text-sm font-medium group transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                        Free Consultation
+                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                      </Button>
+                    </Link>
+                  </div>
                 )}
-                
-                <Link to="/contact">
-                  <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 text-sm font-medium group transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                    Contact us
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Button>
-                </Link>
               </div>
             </div>
           </div>
@@ -334,39 +361,63 @@ const Navigation = () => {
                       <div className="text-gray-700 text-base font-medium px-4 py-2">
                         {item.name}
                       </div>
-                      {item.megaMenuType === "contact" && (
+                      {item.megaMenuType === "services" && (
                         <div className="ml-4 space-y-2">
-                          <button
-                            onClick={() => {
-                              window.open("tel:+18325550123", "_self");
-                              setIsMenuOpen(false);
-                            }}
-                            className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4 w-full text-left"
-                          >
-                            📞 Call Us Now
-                          </button>
-                          <button
-                            onClick={() => {
-                              window.open("mailto:hello@cardinalconsulting.com", "_self");
-                              setIsMenuOpen(false);
-                            }}
-                            className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4 w-full text-left"
-                          >
-                            ✉️ Email Us
-                          </button>
                           <Link
-                            to="/contact?type=consultation"
+                            to="/services/web-development"
                             onClick={() => setIsMenuOpen(false)}
                             className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
                           >
-                            📅 Schedule Consultation
+                            Web Development
                           </Link>
                           <Link
-                            to="/contact?type=callback"
+                            to="/services/mobile-applications"
                             onClick={() => setIsMenuOpen(false)}
                             className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
                           >
-                            💬 Request Callback
+                            Mobile Applications
+                          </Link>
+                          <Link
+                            to="/services/seo-insights"
+                            onClick={() => setIsMenuOpen(false)}
+                            className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
+                          >
+                            SEO Insights
+                          </Link>
+                          <Link
+                            to="/services/digital-campaigns"
+                            onClick={() => setIsMenuOpen(false)}
+                            className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
+                          >
+                            Digital Campaigns
+                          </Link>
+                          <Link
+                            to="/services/brand-identity"
+                            onClick={() => setIsMenuOpen(false)}
+                            className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
+                          >
+                            Brand Identity
+                          </Link>
+                          <Link
+                            to="/services/cloud-solutions"
+                            onClick={() => setIsMenuOpen(false)}
+                            className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
+                          >
+                            Cloud Solutions
+                          </Link>
+                          <Link
+                            to="/services/experience-optimization"
+                            onClick={() => setIsMenuOpen(false)}
+                            className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
+                          >
+                            Experience Optimization
+                          </Link>
+                          <Link
+                            to="/services/web-applications"
+                            onClick={() => setIsMenuOpen(false)}
+                            className="text-gray-600 hover:text-green-600 block py-1 text-sm transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
+                          >
+                            Web Applications
                           </Link>
                         </div>
                       )}
@@ -406,12 +457,23 @@ const Navigation = () => {
                     </Button>
                   </div>
                 ) : (
-                  <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
-                    <Button variant="outline" className="w-full text-sm">
-                      <User className="mr-2 h-4 w-4" />
-                      Sign In
+                  <div className="space-y-2">
+                    <Button 
+                      variant="outline" 
+                      className="w-full text-sm"
+                      onClick={() => {
+                        window.open("tel:+18325550123", "_self");
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      📞 Call Now
                     </Button>
-                  </Link>
+                    <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
+                      <Button variant="outline" className="w-full text-sm">
+                        Free Consultation
+                      </Button>
+                    </Link>
+                  </div>
                 )}
               </div>
               
@@ -426,6 +488,7 @@ const Navigation = () => {
         )}
       </div>
     </nav>
+    </>
   );
 };
 

@@ -22,6 +22,7 @@ import SocialMediaTest from "./components/SocialMediaTest";
 import PortfolioPage from "./pages/Portfolio";
 import BlogPage from "./pages/Blog";
 import BlogPostPage from "./pages/BlogPost";
+import FreeAuditPage from "./pages/FreeAudit";
 
 // Service pages
 import WebDevelopment from "./pages/services/WebDevelopment";
@@ -80,6 +81,7 @@ const App = () => (
             <Route path="/portfolio/iac-centers" element={<IACCenters />} />
             <Route path="/portfolio/abq-mri" element={<ABQMRI />} />
             <Route path="/portfolio/apn-clinic" element={<APNClinic />} />
+            <Route path="/free-audit" element={<FreeAuditPage />} />
             
             {/* Service Routes */}
             <Route path="/services/web-development" element={<WebDevelopment />} />

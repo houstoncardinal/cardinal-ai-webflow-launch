@@ -10,13 +10,19 @@ import {
   Award, 
   CheckCircle, 
   ArrowRight,
+  ArrowLeft,
   Star,
   ExternalLink,
   Palette,
   Smartphone,
   Globe,
   Zap,
-  Shield
+  Shield,
+  Eye,
+  Clock,
+  MapPin,
+  Wrench,
+  Zap as Lightning
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -95,7 +101,7 @@ const HougenPros = () => {
                 {project.tags.map((tag, index) => (
                   <span 
                     key={index}
-                    className="px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-medium"
+                    className="px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-medium hover:bg-orange-200 transition-colors duration-200"
                   >
                     {tag}
                   </span>
@@ -104,41 +110,46 @@ const HougenPros = () => {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
-                  onClick={() => window.location.href = '#overview'} 
-                  className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  asChild
+                  className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
                 >
-                  View Project Details
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                  <a href="#overview">
+                    View Project Details
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+                  </a>
                 </Button>
                 
                 <Button 
                   variant="outline" 
-                  onClick={() => window.location.href = '/contact'} 
-                  className="border-orange-300 text-orange-700 hover:bg-orange-50 px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105"
+                  asChild
+                  className="border-orange-300 text-orange-700 hover:bg-orange-50 px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105 group"
                 >
-                  Start Your Project
+                  <Link to="/contact">
+                    Start Your Project
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+                  </Link>
                 </Button>
               </div>
             </div>
             
             <div className="relative">
-              <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
+              <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100 hover:shadow-3xl transition-all duration-500">
                 <img 
                   src={project.image} 
                   alt={`${project.title} Project`}
-                  className="w-full h-auto rounded-xl shadow-lg"
+                  className="w-full h-auto rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
                 />
               </div>
               
               {/* Floating stats */}
-              <div className="absolute -top-6 -right-6 bg-white rounded-xl shadow-lg p-4 border border-gray-100">
+              <div className="absolute -top-6 -right-6 bg-white rounded-xl shadow-lg p-4 border border-gray-100 hover:shadow-xl transition-all duration-300">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-orange-600">{project.metrics.timeline}</div>
                   <div className="text-sm text-gray-600">Delivery Time</div>
                 </div>
               </div>
               
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-4 border border-gray-100">
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-4 border border-gray-100 hover:shadow-xl transition-all duration-300">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-green-600">{project.metrics.impact}</div>
                   <div className="text-sm text-gray-600">Performance Boost</div>
@@ -157,14 +168,14 @@ const HougenPros = () => {
               Project Overview
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A comprehensive digital transformation for Houston's trusted generator service company
+              A comprehensive digital transformation for Houston's trusted generator service provider
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-orange-50 to-orange-100">
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-orange-50 to-orange-100 hover:scale-105">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 hover:scale-110 transition-transform duration-200">
                   <Calendar className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-4">Timeline</h3>
@@ -172,9 +183,9 @@ const HougenPros = () => {
               </CardContent>
             </Card>
             
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-green-50 to-green-100">
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-green-50 to-green-100 hover:scale-105">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6 hover:scale-110 transition-transform duration-200">
                   <Users className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-4">Team Size</h3>
@@ -182,9 +193,9 @@ const HougenPros = () => {
               </CardContent>
             </Card>
             
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-red-50 to-red-100">
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-red-50 to-red-100 hover:scale-105">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-6 hover:scale-110 transition-transform duration-200">
                   <TrendingUp className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-4">Impact</h3>
@@ -200,8 +211,8 @@ const HougenPros = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="space-y-6">
-              <div className="inline-flex items-center text-sm font-medium text-red-600 uppercase tracking-wide mb-6">
-                <div className="w-8 h-px bg-red-400 mr-4"></div>
+              <div className="inline-flex items-center text-sm font-medium text-orange-600 uppercase tracking-wide mb-6">
+                <div className="w-8 h-px bg-orange-400 mr-4"></div>
                 The Challenge
               </div>
               <h3 className="text-3xl font-light text-gray-900 mb-6">
@@ -218,7 +229,7 @@ const HougenPros = () => {
                 Our Solution
               </div>
               <h3 className="text-3xl font-light text-gray-900 mb-6">
-                Trustworthy Digital Platform
+                Professional Emergency Service Platform
               </h3>
               <p className="text-lg text-gray-600 leading-relaxed">
                 {project.solution}
@@ -242,11 +253,11 @@ const HougenPros = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {project.process.map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
+              <div key={index} className="text-center group">
+                <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl group-hover:scale-110 transition-transform duration-200">
                   {index + 1}
                 </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">{step}</h4>
+                <h4 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors duration-200">{step}</h4>
               </div>
             ))}
           </div>
@@ -267,9 +278,9 @@ const HougenPros = () => {
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {project.technologies.map((tech, index) => (
-              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
+              <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white hover:scale-105">
                 <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-200 transition-colors duration-200">
                     <Globe className="w-6 h-6 text-orange-600" />
                   </div>
                   <h4 className="text-sm font-medium text-gray-900">{tech}</h4>
@@ -294,7 +305,7 @@ const HougenPros = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {project.results.map((result, index) => (
-              <div key={index} className="flex items-start space-x-4">
+              <div key={index} className="flex items-start space-x-4 p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200">
                 <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                   <CheckCircle className="w-5 h-5 text-green-600" />
                 </div>
@@ -324,19 +335,24 @@ const HougenPros = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
-              onClick={() => window.location.href = '/contact'} 
-              className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              asChild
+              className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-4 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
             >
-              Start Your Project
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <Link to="/contact">
+                Start Your Project
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+              </Link>
             </Button>
             
             <Button 
               variant="outline" 
-              onClick={() => window.location.href = '/portfolio'} 
-              className="border-white text-white hover:bg-white hover:text-orange-600 px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105"
+              asChild
+              className="border-white text-orange-600 hover:bg-white hover:text-orange-600 px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105 group"
             >
-              View All Projects
+              <Link to="/portfolio">
+                View All Projects
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+              </Link>
             </Button>
           </div>
         </div>

@@ -96,13 +96,6 @@ const ClientLogos = () => {
                   {/* Hover indicator - Hidden on mobile */}
                   <div className="hidden sm:block absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-green-500 to-blue-500 group-hover:w-6 transition-all duration-300"></div>
                 </div>
-                
-                {/* Client name - Always visible on mobile, hover on desktop */}
-                <div className="mt-2 sm:mt-3 lg:mt-0 lg:absolute lg:-bottom-6 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 pointer-events-none">
-                  <span className="text-xs font-medium text-gray-600 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md shadow-sm whitespace-nowrap">
-                    {client.name}
-                  </span>
-                </div>
               </div>
             ))}
           </div>
