@@ -358,20 +358,24 @@ const Navigation = () => {
                 <Link
                   key={item.name}
                   to={item.href}
-                  className="text-gray-700 hover:text-green-600 block py-2 text-base font-medium transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-lg px-4"
+                  className="text-gray-700 hover:text-green-600 block py-3 px-4 text-base font-medium transition-all duration-300 hover:translate-x-2 hover:bg-green-50 rounded-xl group"
                   onClick={() => setIsMenuOpen(false)}
                   style={{animationDelay: `${index * 50}ms`}}
                 >
-                  {item.name}
+                  <div className="flex items-center justify-between">
+                    <span>{item.name}</span>
+                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-green-600 group-hover:translate-x-1 transition-all duration-300" />
+                  </div>
                 </Link>
               ))}
               
-              <div className="mt-4 pt-4 border-t border-gray-200">
+              <div className="mt-6 pt-6 border-t border-gray-200">
                 {user ? (
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     {isAdmin && (
                       <Link to="/admin" onClick={() => setIsMenuOpen(false)}>
-                        <Button variant="outline" className="w-full text-sm">
+                        <Button variant="outline" className="w-full text-sm py-3 border-green-200 text-green-600 hover:bg-green-50 hover:border-green-300 transition-all duration-300">
+                          <User className="mr-2 w-4 h-4" />
                           Admin Dashboard
                         </Button>
                       </Link>
@@ -382,16 +386,16 @@ const Navigation = () => {
                         setIsMenuOpen(false);
                       }}
                       variant="ghost"
-                      className="w-full text-sm"
+                      className="w-full text-sm py-3 text-gray-600 hover:bg-gray-50 transition-all duration-300"
                     >
                       Sign Out
                     </Button>
                   </div>
                 ) : (
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <Button 
                       variant="outline" 
-                      className="w-full text-sm"
+                      className="w-full text-sm py-3 border-green-200 text-green-600 hover:bg-green-50 hover:border-green-300 transition-all duration-300"
                       onClick={() => {
                         window.open("tel:+18325550123", "_self");
                         setIsMenuOpen(false);
@@ -400,7 +404,7 @@ const Navigation = () => {
                       📞 Call Now
                     </Button>
                     <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
-                      <Button variant="outline" className="w-full text-sm">
+                      <Button variant="outline" className="w-full text-sm py-3 border-green-200 text-green-600 hover:bg-green-50 hover:border-green-300 transition-all duration-300">
                         Free Consultation
                       </Button>
                     </Link>
@@ -409,7 +413,7 @@ const Navigation = () => {
               </div>
               
               <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
-                <Button className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white py-3 group transition-all duration-300 hover:scale-105">
+                <Button className="w-full mt-6 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white py-3 group transition-all duration-300 hover:scale-105 hover:shadow-lg">
                   Contact us
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>

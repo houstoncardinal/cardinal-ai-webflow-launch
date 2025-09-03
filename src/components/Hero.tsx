@@ -70,7 +70,7 @@ const Hero = () => {
 
   return (
     <>
-      <section className="min-h-[90vh] bg-white flex items-center relative overflow-hidden pt-20 pb-4 sm:pt-24 sm:pb-6">
+      <section className="min-h-[90vh] bg-white flex items-center relative overflow-hidden pt-28 pb-4 sm:pt-32 lg:pt-36 sm:pb-6">
         {/* Animated network background */}
         <div className="absolute inset-0">
           {/* Network grid */}
@@ -158,8 +158,8 @@ const Hero = () => {
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[70vh] sm:min-h-[75vh] lg:min-h-[80vh]">
-                             <div className="lg:col-span-7 space-y-4 sm:space-y-6 lg:space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[65vh] sm:min-h-[70vh] lg:min-h-[75vh]">
+                             <div className="lg:col-span-7 space-y-3 sm:space-y-4 lg:space-y-6">
                    {/* Animated category tag */}
                    <div className="inline-flex items-center text-xs sm:text-sm font-medium text-green-600 uppercase tracking-wide mb-3 sm:mb-4 animate-fade-in">
                      <div className="w-6 sm:w-8 lg:w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-2 sm:mr-3 lg:mr-4"></div>
@@ -167,7 +167,7 @@ const Hero = () => {
                    </div>
                    
                    {/* Main headline with staggered animation */}
-                   <div className="space-y-3 sm:space-y-4 lg:space-y-6">
+                   <div className="space-y-2 sm:space-y-3 lg:space-y-4">
                      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-gray-900 leading-[1.1] tracking-tight">
                        <span className="inline-block animate-fade-in my-0 py-0">Houston's #1</span>
                        <span className="block text-green-600 font-normal animate-fade-in" style={{
@@ -185,7 +185,7 @@ const Hero = () => {
                      </p>
                 
                                      {/* Quick Turnaround Highlight */}
-                     <div className="mt-8 sm:mt-12 lg:mt-16 text-left">
+                     <div className="mt-6 sm:mt-8 lg:mt-10 text-left">
                        <div className="inline-flex items-start sm:items-center px-4 sm:px-6 py-3 sm:py-4 bg-green-50 border border-green-200 rounded-xl sm:rounded-full max-w-full">
                          <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 mr-2 sm:mr-3 mt-0.5 sm:mt-0 flex-shrink-0" />
                          <span className="text-green-700 font-medium text-sm sm:text-base leading-relaxed">
@@ -219,7 +219,7 @@ const Hero = () => {
                    </p>
 
                                  {/* Animated stats */}
-                   <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-12 pt-4 sm:pt-6 lg:pt-8 border-t border-gray-200 animate-fade-in" style={{
+                   <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-12 pt-3 sm:pt-4 lg:pt-6 border-t border-gray-200 animate-fade-in" style={{
                      animationDelay: '1000ms'
                    }}>
                      <div className="group cursor-pointer flex-1 min-w-[80px]">

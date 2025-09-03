@@ -39,6 +39,11 @@ const ClientLogos = () => {
       logo: "/relogo.png",
       alt: "RE Logo"
     },
+    {
+      name: "HE Logo",
+      logo: "/helogo.png",
+      alt: "HE Logo"
+    },
   ];
 
   return (
@@ -106,12 +111,12 @@ const ClientLogos = () => {
           <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 px-4">
             Ready to join these industry leaders?
           </p>
-          <div className="inline-flex items-center text-sm font-medium text-green-600 hover:text-green-700 transition-colors duration-300 group cursor-pointer">
+          <a href="/contact" className="inline-flex items-center text-sm font-medium text-green-600 hover:text-green-700 transition-colors duration-300 group cursor-pointer">
             <span>Start your transformation today</span>
             <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-          </div>
+          </a>
         </div>
       </div>
     </section>

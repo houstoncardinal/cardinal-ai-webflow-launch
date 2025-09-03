@@ -1,6 +1,5 @@
-import { Code, Smartphone, Globe, BarChart3, Palette, Share2, Search, Zap, TrendingUp, Users, ArrowRight } from "lucide-react";
+import { Code, Smartphone, Globe, BarChart3, Palette, Share2, Search, Zap, TrendingUp, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 const Services = () => {
   const services = [
@@ -86,7 +85,7 @@ const Services = () => {
     }
   ];
   return (
-    <section id="services" className="py-12 sm:py-16 lg:py-20 bg-white relative overflow-hidden">
+    <section id="services" className="pt-12 sm:pt-16 lg:pt-20 pb-0 bg-white relative overflow-hidden">
       {/* Subtle background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-green-400 to-blue-500 rounded-full blur-3xl"></div>
@@ -182,180 +181,262 @@ const Services = () => {
           ))}
         </div>
 
-                     {/* Comparison Section */}
-             <div className="mt-16 sm:mt-20 lg:mt-24">
-               <div className="max-w-6xl mx-auto">
-                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-light text-gray-900 mb-4 sm:mb-6 text-center">
-                   Other Agencies vs Cardinal Consulting
-                 </h3>
-                 <p className="text-gray-600 text-sm sm:text-base text-center mb-8 sm:mb-12 max-w-3xl mx-auto">
-                   See why businesses choose Cardinal Consulting over traditional agencies
-                 </p>
-                 
-                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-                   {/* Other Agencies Column */}
-                   <div className="bg-gray-50/50 rounded-2xl p-6 sm:p-8 border border-gray-200">
-                     <div className="text-center mb-6 sm:mb-8">
-                       <h4 className="text-lg sm:text-xl font-semibold text-gray-700 mb-2">Other Agencies</h4>
-                       <p className="text-gray-500 text-sm">Generic, one-size-fits-all approach</p>
-                     </div>
-                     
-                     <div className="space-y-4 sm:space-y-6">
-                       <div className="flex items-start space-x-3">
-                         <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                           <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                           </svg>
-                         </div>
-                         <div>
-                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">Generic Templates</h5>
-                           <p className="text-gray-600 text-xs sm:text-sm">Cookie-cutter solutions that don't reflect your unique business needs</p>
-                         </div>
-                       </div>
-                       
-                       <div className="flex items-start space-x-3">
-                         <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                           <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                           </svg>
-                         </div>
-                         <div>
-                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">Slow Response Times</h5>
-                           <p className="text-gray-600 text-xs sm:text-sm">Days or weeks to get back to you with updates or changes</p>
-                         </div>
-                       </div>
-                       
-                       <div className="flex items-start space-x-3">
-                         <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                           <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                           </svg>
-                         </div>
-                         <div>
-                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">Hidden Costs</h5>
-                           <p className="text-gray-600 text-xs sm:text-sm">Surprise fees and charges that weren't mentioned upfront</p>
-                         </div>
-                       </div>
-                       
-                       <div className="flex items-start space-x-3">
-                         <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                           <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                           </svg>
-                         </div>
-                         <div>
-                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">No Industry Knowledge</h5>
-                           <p className="text-gray-600 text-xs sm:text-sm">Lack of understanding of your specific industry challenges</p>
-                         </div>
-                       </div>
-                       
-                       <div className="flex items-start space-x-3">
-                         <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                           <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                           </svg>
-                         </div>
-                         <div>
-                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">Poor Communication</h5>
-                           <p className="text-gray-600 text-xs sm:text-sm">Difficult to reach, unclear project status, and delayed feedback</p>
-                         </div>
-                       </div>
-                     </div>
-                   </div>
-                   
-                   {/* Cardinal Consulting Column */}
-                   <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 sm:p-8 border border-green-200 relative overflow-hidden">
-                     {/* Accent border */}
-                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 to-emerald-500"></div>
-                     
-                     <div className="text-center mb-6 sm:mb-8">
-                       <h4 className="text-lg sm:text-xl font-semibold text-green-800 mb-2">Cardinal Consulting</h4>
-                       <p className="text-green-600 text-sm">Custom solutions tailored to your business</p>
-                     </div>
-                     
-                     <div className="space-y-4 sm:space-y-6">
-                       <div className="flex items-start space-x-3">
-                         <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                           <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                           </svg>
-                         </div>
-                         <div>
-                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">Custom Solutions</h5>
-                           <p className="text-gray-600 text-xs sm:text-sm">Tailored strategies designed specifically for your business goals</p>
-                         </div>
-                       </div>
-                       
-                       <div className="flex items-start space-x-3">
-                         <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                           <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                           </svg>
-                         </div>
-                         <div>
-                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">24/7 Support</h5>
-                           <p className="text-gray-600 text-xs sm:text-sm">Immediate response within 2 hours, even on weekends</p>
-                         </div>
-                       </div>
-                       
-                       <div className="flex items-start space-x-3">
-                         <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                           <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                           </svg>
-                         </div>
-                         <div>
-                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">Transparent Pricing</h5>
-                           <p className="text-gray-600 text-xs sm:text-sm">Clear, upfront costs with no hidden fees or surprise charges</p>
-                         </div>
-                       </div>
-                       
-                       <div className="flex items-start space-x-3">
-                         <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                           <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                           </svg>
-                         </div>
-                         <div>
-                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">Industry Expertise</h5>
-                           <p className="text-gray-600 text-xs sm:text-sm">Deep understanding of your industry challenges and opportunities</p>
-                         </div>
-                       </div>
-                       
-                       <div className="flex items-start space-x-3">
-                         <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                           <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                           </svg>
-                         </div>
-                         <div>
-                           <h5 className="text-sm sm:text-base font-medium text-gray-900 mb-1">Proactive Communication</h5>
-                           <p className="text-gray-600 text-xs sm:text-sm">Regular updates, clear timelines, and transparent project status</p>
-                         </div>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-                 
-                 {/* CTA Section */}
-                 <div className="text-center mt-8 sm:mt-12">
-                   <p className="text-gray-600 text-sm sm:text-base mb-4">
-                     Ready to experience the Cardinal difference?
-                   </p>
-                   <Link to="/contact">
-                     <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 text-sm sm:text-base font-medium transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
-                       Get Your Free Consultation
-                       <ArrowRight className="ml-2 w-4 h-4" />
-                     </Button>
-                   </Link>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-     </section>
-   );
- };
+        {/* The Cardinal Advantage - Green Background Design */}
+        <div className="relative w-screen left-1/2 -ml-[50vw] mt-20 sm:mt-24 lg:mt-32 pt-8 sm:pt-12 lg:pt-16 pb-0 bg-gradient-to-br from-green-600 to-emerald-700 overflow-hidden" style={{marginBottom: '0'}}>
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
+          </div>
+          
+          <div className="relative z-10 px-4 sm:px-6 lg:px-8">
+            {/* Section Header */}
+            <div className="text-center mb-6 sm:mb-8">
+              <div className="inline-flex items-center text-xs sm:text-sm font-medium text-green-100 uppercase tracking-wide mb-2 sm:mb-3">
+                <div className="w-6 sm:w-8 h-px bg-gradient-to-r from-white to-green-200 mr-3 sm:mr-4"></div>
+                The Cardinal Advantage
+              </div>
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-light text-white mb-2 sm:mb-3">
+                Why Houston Businesses Choose
+                <span className="block text-green-200 font-normal">Cardinal Consulting</span>
+              </h3>
+              <p className="text-sm sm:text-base text-green-100">
+                We're not just another agency. We're Houston's premier digital partner, combining cutting-edge AI technology with deep local market expertise to deliver results that traditional agencies simply can't match.
+              </p>
+            </div>
+            
+            {/* Enhanced Comparison Table */}
+            <div className="max-w-7xl mx-auto bg-white rounded-2xl shadow-2xl border border-white/20 overflow-hidden">
+              {/* Table Header */}
+              <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 border-b border-gray-200">
+                <div className="grid grid-cols-4 gap-2 sm:gap-4 lg:gap-6">
+                  <div className="text-left">
+                    <h4 className="text-xs sm:text-sm lg:text-base font-semibold text-gray-900">Cardinal's Unique Advantages</h4>
+                  </div>
+                  <div className="text-center">
+                    <h4 className="text-xs sm:text-sm lg:text-base font-semibold text-gray-900">Traditional Agencies</h4>
+                  </div>
+                  <div className="text-center">
+                    <h4 className="text-xs sm:text-sm lg:text-base font-semibold text-green-600">Cardinal Consulting</h4>
+                  </div>
+                  <div className="text-center">
+                    <h4 className="text-xs sm:text-sm lg:text-base font-semibold text-gray-900">The Difference</h4>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Table Rows */}
+              <div className="divide-y divide-gray-100">
+                {/* AI Optimization */}
+                <div className="px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 hover:bg-gray-50/50 transition-colors">
+                  <div className="grid grid-cols-4 gap-2 sm:gap-4 lg:gap-6 items-center">
+                    <div className="text-left">
+                      <h5 className="text-xs sm:text-sm lg:text-base font-medium text-gray-900">AI Experience Optimization (AEO)</h5>
+                      <p className="text-xs text-gray-600 mt-1">Future-proof content for AI search engines</p>
+                    </div>
+                                          <div className="text-center">
+                        <div className="flex justify-center">
+                          <svg className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <div className="flex justify-center">
+                          <svg className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <span className="inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs font-medium bg-violet-100 text-violet-800">
+                          Industry First
+                        </span>
+                      </div>
+                  </div>
+                </div>
+                
+                {/* Houston Market Expertise */}
+                <div className="px-6 sm:px-8 py-4 sm:py-6 hover:bg-gray-50/50 transition-colors">
+                  <div className="grid grid-cols-4 gap-4 sm:gap-6 items-center">
+                    <div className="text-left">
+                      <h5 className="text-sm sm:text-base font-medium text-gray-900">Houston Market Specialization</h5>
+                      <p className="text-xs sm:text-sm text-gray-600 mt-1">Deep understanding of Texas business landscape</p>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-sm sm:text-base text-gray-600">Generic</span>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-sm sm:text-base font-semibold text-green-600">Specialized</span>
+                    </div>
+                    <div className="text-center">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-blue-100 text-blue-800">
+                        Local Expert
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Project Timeline */}
+                <div className="px-6 sm:px-8 py-4 sm:py-6 hover:bg-gray-50/50 transition-colors">
+                  <div className="grid grid-cols-4 gap-4 sm:gap-6 items-center">
+                    <div className="text-left">
+                      <h5 className="text-sm sm:text-base font-medium text-gray-900">Project Delivery Timeline</h5>
+                      <p className="text-xs sm:text-sm text-gray-600 mt-1">From concept to launch</p>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-sm sm:text-base text-gray-600">3-6 months</span>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-sm sm:text-base font-semibold text-green-600">72 hours - 2 weeks</span>
+                    </div>
+                    <div className="text-center">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-emerald-100 text-emerald-800">
+                        10x Faster
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Support Availability */}
+                <div className="px-6 sm:px-8 py-4 sm:py-6 hover:bg-gray-50/50 transition-colors">
+                  <div className="grid grid-cols-4 gap-4 sm:gap-6 items-center">
+                    <div className="text-left">
+                      <h5 className="text-sm sm:text-base font-medium text-gray-900">Support Response Time</h5>
+                      <p className="text-xs sm:text-sm text-gray-600 mt-1">When you need immediate assistance</p>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-sm sm:text-base text-gray-600">24-48 hours</span>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-sm sm:text-base font-semibold text-green-600">Instant - 2 hours</span>
+                    </div>
+                    <div className="text-center">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-green-100 text-green-800">
+                        24x Faster
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Technology Stack */}
+                <div className="px-6 sm:px-8 py-4 sm:py-6 hover:bg-gray-50/50 transition-colors">
+                  <div className="grid grid-cols-4 gap-4 sm:gap-6 items-center">
+                    <div className="text-left">
+                      <h5 className="text-sm sm:text-base font-medium text-gray-900">Cutting-Edge Technology</h5>
+                      <p className="text-xs sm:text-sm text-gray-600 mt-1">Latest frameworks and AI integration</p>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-sm sm:text-base text-gray-600">Standard</span>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-sm sm:text-base font-semibold text-green-600">AI-Powered</span>
+                    </div>
+                    <div className="text-center">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-purple-100 text-purple-800">
+                        Future-Ready
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Client Success Rate */}
+                <div className="px-6 sm:px-8 py-4 sm:py-6 hover:bg-gray-50/50 transition-colors">
+                  <div className="grid grid-cols-4 gap-4 sm:gap-6 items-center">
+                    <div className="text-left">
+                      <h5 className="text-sm sm:text-base font-medium text-gray-900">Client Success Rate</h5>
+                      <p className="text-xs sm:text-sm text-gray-600 mt-1">Projects completed successfully</p>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-sm sm:text-base text-gray-600">85%</span>
+                    </div>
+                    <div className="text-center">
+                      <span className="text-sm sm:text-base font-semibold text-green-600">98%</span>
+                    </div>
+                    <div className="text-center">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-green-100 text-green-800">
+                        +13% Higher
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Pricing Transparency */}
+                <div className="px-6 sm:px-8 py-4 sm:py-6 hover:bg-gray-50/50 transition-colors">
+                  <div className="grid grid-cols-4 gap-4 sm:gap-6 items-center">
+                    <div className="text-left">
+                      <h5 className="text-sm sm:text-base font-medium text-gray-900">Pricing Transparency</h5>
+                      <p className="text-xs sm:text-sm text-gray-600 mt-1">No hidden fees or surprise charges</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="flex justify-center">
+                        <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="flex justify-center">
+                        <svg className="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-green-100 text-green-800">
+                        Full Transparency
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Performance Guarantees */}
+                <div className="px-6 sm:px-8 py-4 sm:py-6 hover:bg-gray-50/50 transition-colors">
+                  <div className="grid grid-cols-4 gap-4 sm:gap-6 items-center">
+                    <div className="text-left">
+                      <h5 className="text-sm sm:text-base font-medium text-gray-900">Performance Guarantees</h5>
+                      <p className="text-xs sm:text-sm text-gray-600 mt-1">Guaranteed results or money back</p>
+                    </div>
+                    <div className="text-center">
+                      <div className="flex justify-center">
+                        <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="flex justify-center">
+                        <svg className="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-green-100 text-green-800">
+                        Risk-Free
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Simple Text CTA */}
+            <div className="text-center mt-6 sm:mt-8 mb-6 sm:mb-8">
+              <p className="text-green-100 text-base sm:text-lg lg:text-xl mb-2 sm:mb-3 px-4">
+                Ready to experience the Cardinal difference?
+              </p>
+              <a href="/contact" className="inline-flex items-center text-white font-semibold text-base sm:text-lg lg:text-xl hover:text-green-200 transition-colors duration-300 underline decoration-2 underline-offset-4 hover:decoration-green-200 px-4 text-center">
+                Get your FREE consultation and project evaluation today
+                <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
- export default Services;
+export default Services;
