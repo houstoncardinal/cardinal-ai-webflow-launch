@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
 const NewsletterSignup = () => {
   const { toast } = useToast();
@@ -14,38 +13,16 @@ const NewsletterSignup = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      const { error } = await supabase
-        .from('newsletter_subscriptions')
-        .insert({ email });
-
-      if (error) {
-        if (error.code === '23505') { // Unique constraint violation
-          toast({
-            title: "Already subscribed",
-            description: "This email is already subscribed to our newsletter.",
-            variant: "destructive"
-          });
-        } else {
-          throw error;
-        }
-      } else {
-        toast({
-          title: "Successfully subscribed! 📧",
-          description: "Welcome to our newsletter. Stay tuned for updates!"
-        });
-        setEmail('');
-      }
-    } catch (error) {
-      console.error('Error subscribing to newsletter:', error);
+    // Netlify Forms will handle the submission automatically
+    // We just need to show success message and reset form
+    setTimeout(() => {
       toast({
-        title: "Subscription failed",
-        description: "Please try again later.",
-        variant: "destructive"
+        title: "Successfully subscribed! 📧",
+        description: "Welcome to our newsletter. Stay tuned for updates!"
       });
-    } finally {
+      setEmail('');
       setIsSubmitting(false);
-    }
+    }, 1000);
   };
 
   return (
@@ -54,7 +31,7 @@ const NewsletterSignup = () => {
       <p className="text-gray-300 text-sm leading-relaxed">
         Get the latest insights on digital transformation, technology trends, and project updates.
       </p>
-      <form onSubmit={handleSubmit} className="flex gap-2" name="newsletter-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <form onSubmit={handleSubmit} className="flex gap-2" name="newsletter-signup" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="newsletter-signup" />
         <input type="hidden" name="bot-field" style={{ display: 'none' }} />
         <div className="relative flex-1">

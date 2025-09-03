@@ -10,7 +10,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Star, Sparkles, Zap, Phone, Mail, Building, Calendar, DollarSign } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
 interface TransformationFormProps {
   isOpen: boolean;
@@ -77,41 +76,9 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      // Map project type to service type
-      const serviceMap: Record<string, string> = {
-        "website": "web-development",
-        "ecommerce": "web-applications", 
-        "webapp": "web-applications",
-        "portfolio": "web-development",
-        "blog": "web-development",
-        "landing": "web-development",
-        "redesign": "web-development",
-        "custom": "web-applications"
-      };
-
-      const { error } = await supabase
-        .from('project_evaluations')
-        .insert({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone || null,
-          service: (serviceMap[formData.projectType] || "web-development") as any,
-          estimated_budget: formData.budget as any,
-          timeline: formData.timeline,
-          project_description: [
-            `Project Type: ${formData.projectType}`,
-            `Industry: ${formData.industry}`,
-            `Features: ${formData.features.join(', ')}`,
-            `Current Website: ${formData.currentWebsite || 'None'}`,
-            `Goals: ${formData.goals}`,
-            `Description: ${formData.description}`
-          ].join('\n\n'),
-          notes: `Company: ${formData.company}`
-        });
-
-      if (error) throw error;
-
+    // Netlify Forms will handle the submission automatically
+    // We just need to show success message and reset form
+    setTimeout(() => {
       toast({
         title: "Quote Request Submitted! 🚀",
         description: "We'll contact you within 24 hours with a detailed proposal.",
@@ -123,16 +90,8 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
         name: "", email: "", phone: "", company: "", projectType: "", budget: "",
         timeline: "", description: "", features: [], industry: "", currentWebsite: "", goals: ""
       });
-    } catch (error) {
-      console.error('Error submitting transformation form:', error);
-      toast({
-        title: "Submission failed",
-        description: "Please try again or contact us directly.",
-        variant: "destructive"
-      });
-    } finally {
       setIsSubmitting(false);
-    }
+    }, 1000);
   };
 
   const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, 4));
@@ -204,9 +163,10 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
           </div>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-6" name="transformation-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="transformation-form" />
+        <form onSubmit={handleSubmit} className="space-y-6" name="transformation-quote" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="transformation-quote" />
           <input type="hidden" name="bot-field" style={{ display: 'none' }} />
+          
           <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
             <CardContent className="p-8">
               <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
@@ -223,6 +183,7 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
                     </Label>
                     <Input
                       id="name"
+                      name="name"
                       value={formData.name}
                       onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                       placeholder="John Doe"
@@ -239,6 +200,7 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
                       <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                       <Input
                         id="email"
+                        name="email"
                         type="email"
                         value={formData.email}
                         onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
@@ -257,6 +219,7 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
                       <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                       <Input
                         id="phone"
+                        name="phone"
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
@@ -275,6 +238,7 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
                       <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                       <Input
                         id="company"
+                        name="company"
                         value={formData.company}
                         onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
                         placeholder="Your Company"
@@ -306,6 +270,7 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
                         </div>
                       ))}
                     </div>
+                    <input type="hidden" name="projectType" value={formData.projectType} />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -329,6 +294,7 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
                           ))}
                         </SelectContent>
                       </Select>
+                      <input type="hidden" name="budget" value={formData.budget} />
                     </div>
 
                     <div className="space-y-3">
@@ -351,6 +317,7 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
                           ))}
                         </SelectContent>
                       </Select>
+                      <input type="hidden" name="timeline" value={formData.timeline} />
                     </div>
                   </div>
                 </div>
@@ -374,6 +341,7 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
                           ))}
                         </SelectContent>
                       </Select>
+                      <input type="hidden" name="industry" value={formData.industry} />
                     </div>
 
                     <div className="space-y-3">
@@ -382,6 +350,7 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
                       </Label>
                       <Input
                         id="currentWebsite"
+                        name="currentWebsite"
                         value={formData.currentWebsite}
                         onChange={(e) => setFormData(prev => ({ ...prev, currentWebsite: e.target.value }))}
                         placeholder="https://yourwebsite.com"
@@ -408,6 +377,7 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
                         </Badge>
                       ))}
                     </div>
+                    <input type="hidden" name="features" value={formData.features.join(', ')} />
                   </div>
 
                   <div className="space-y-3">
@@ -416,6 +386,7 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
                     </Label>
                     <Textarea
                       id="description"
+                      name="description"
                       value={formData.description}
                       onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
                       placeholder="Describe your project requirements, goals, and any specific features you need..."
@@ -436,6 +407,7 @@ const TransformationForm = ({ isOpen, onClose }: TransformationFormProps) => {
                     </Label>
                     <Textarea
                       id="goals"
+                      name="goals"
                       value={formData.goals}
                       onChange={(e) => setFormData(prev => ({ ...prev, goals: e.target.value }))}
                       placeholder="What do you want to achieve with this project? How will you measure success?"

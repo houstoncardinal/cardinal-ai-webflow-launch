@@ -1,1 +1,5 @@
 /* /index.html 200
+
+# Netlify Forms redirects
+/forms.html /index.html 200
+/success /success.html 200

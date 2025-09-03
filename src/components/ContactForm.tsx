@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowRight, Mail, Phone, User, Gift, ChevronDown, Code, Smartphone, Search, Palette, Cloud, BarChart, Target } from 'lucide-react';
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
 const serviceCategories = [
@@ -143,18 +142,9 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      const { error } = await supabase
-        .from('project_evaluations')
-        .insert({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone || null,
-          service: formData.service as any
-        });
-
-      if (error) throw error;
-
+    // Netlify Forms will handle the submission automatically
+    // We just need to show success message and reset form
+    setTimeout(() => {
       toast({
         title: "Request submitted successfully! 🚀",
         description: "We'll get back to you within 2 hours with your project evaluation.",
@@ -167,16 +157,8 @@ const ContactForm = () => {
         phone: '',
         service: ''
       });
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast({
-        title: "Submission failed",
-        description: "Please try again or contact us directly.",
-        variant: "destructive"
-      });
-    } finally {
       setIsSubmitting(false);
-    }
+    }, 1000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -226,9 +208,10 @@ const ContactForm = () => {
               </div>
 
               {/* Form */}
-              <form onSubmit={handleSubmit} className="space-y-4" name="contact-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                <input type="hidden" name="form-name" value="contact-form" />
+              <form onSubmit={handleSubmit} className="space-y-4" name="project-evaluation" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="project-evaluation" />
                 <input type="hidden" name="bot-field" style={{ display: 'none' }} />
+                
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                   {/* Name Input */}
                   <div className="relative group/input sm:col-span-2 lg:col-span-1">

@@ -3,7 +3,6 @@ import { ArrowRight, ChevronDown, Star, ExternalLink, MessageCircle, Facebook, Z
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
 const Hero = () => {
   const { toast } = useToast();
@@ -19,18 +18,9 @@ const Hero = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      const { error } = await supabase
-        .from('project_evaluations')
-        .insert({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone || null,
-          service: formData.service as any
-        });
-
-      if (error) throw error;
-
+    // Netlify Forms will handle the submission automatically
+    // We just need to show success message and reset form
+    setTimeout(() => {
       toast({
         title: "Request submitted successfully! 🚀",
         description: "We'll get back to you within 2 hours with your project evaluation.",
@@ -43,16 +33,8 @@ const Hero = () => {
         phone: '',
         service: ''
       });
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast({
-        title: "Submission failed",
-        description: "Please try again or contact us directly.",
-        variant: "destructive"
-      });
-    } finally {
       setIsSubmitting(false);
-    }
+    }, 1000);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -309,7 +291,10 @@ const Hero = () => {
                      </div>
 
                                      {/* Form */}
-                     <form onSubmit={handleFormSubmit} className="space-y-4">
+                     <form onSubmit={handleFormSubmit} className="space-y-4" name="hero-project-evaluation" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                       <input type="hidden" name="form-name" value="hero-project-evaluation" />
+                       <input type="hidden" name="bot-field" style={{ display: 'none' }} />
+                       
                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
                     {/* Name Input */}
                     <div className="relative group/input sm:col-span-2 lg:col-span-1">

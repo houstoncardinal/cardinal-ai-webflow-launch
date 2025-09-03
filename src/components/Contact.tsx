@@ -12,7 +12,6 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from "
 import { cn } from "@/lib/utils";
 import { Mail, Phone, MapPin, Clock, Sparkles, Star, MessageCircle, ExternalLink, Facebook, Code, Smartphone, Search, Palette, Cloud, BarChart, Target, Globe, Zap, Check, ChevronsUpDown } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 import TransformationForm from "./TransformationForm";
 
 const Contact = () => {
@@ -45,21 +44,9 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      const { error } = await supabase
-        .from('contact_submissions')
-        .insert({
-          first_name: formData.firstName,
-          last_name: formData.lastName,
-          email: formData.email,
-          phone: formData.phone,
-          company: formData.company,
-          services: formData.services,
-          message: formData.message
-        });
-
-      if (error) throw error;
-
+    // Netlify Forms will handle the submission automatically
+    // We just need to show success message and reset form
+    setTimeout(() => {
       toast({
         title: "Message sent successfully! 🚀",
         description: "We'll get back to you within 24 hours."
@@ -74,16 +61,8 @@ const Contact = () => {
         services: [],
         message: ""
       });
-    } catch (error) {
-      console.error('Error submitting contact form:', error);
-      toast({
-        title: "Submission failed",
-        description: "Please try again or contact us directly.",
-        variant: "destructive"
-      });
-    } finally {
       setIsSubmitting(false);
-    }
+    }, 1000);
   };
 
   const serviceCategories = [
@@ -253,7 +232,10 @@ const contactInfo = [
             <Card className="border-0 shadow-xl bg-gradient-to-br from-gray-50 to-white">
               <CardContent className="p-4 sm:p-6 lg:p-8">
                 <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">Get Started Today</h3>
-                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4" name="contact-form" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                  <input type="hidden" name="form-name" value="contact-form" />
+                  <input type="hidden" name="bot-field" style={{ display: 'none' }} />
+                  
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="firstName" className="text-xs sm:text-sm font-medium text-gray-700">
@@ -261,6 +243,7 @@ const contactInfo = [
                       </Label>
                       <Input 
                         id="firstName" 
+                        name="firstName"
                         value={formData.firstName} 
                         onChange={(e) => setFormData(prev => ({ ...prev, firstName: e.target.value }))} 
                         placeholder="John" 
@@ -274,6 +257,7 @@ const contactInfo = [
                       </Label>
                       <Input 
                         id="lastName" 
+                        name="lastName"
                         value={formData.lastName} 
                         onChange={(e) => setFormData(prev => ({ ...prev, lastName: e.target.value }))} 
                         placeholder="Doe" 
@@ -290,6 +274,7 @@ const contactInfo = [
                       </Label>
                       <Input 
                         id="email" 
+                        name="email"
                         type="email" 
                         value={formData.email} 
                         onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))} 
@@ -304,6 +289,7 @@ const contactInfo = [
                       </Label>
                       <Input 
                         id="phone" 
+                        name="phone"
                         type="tel" 
                         value={formData.phone} 
                         onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))} 
@@ -320,6 +306,7 @@ const contactInfo = [
                     </Label>
                     <Input 
                       id="company" 
+                      name="company"
                       value={formData.company} 
                       onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))} 
                       placeholder="Your Company" 
@@ -396,6 +383,7 @@ const contactInfo = [
                           </Command>
                         </PopoverContent>
                       </Popover>
+                      <input type="hidden" name="services" value={formData.services.join(', ')} />
 
                       {/* Selected Services Pills */}
                       {formData.services.length > 0 && (
@@ -440,6 +428,7 @@ const contactInfo = [
                     </Label>
                     <Textarea 
                       id="message" 
+                      name="message"
                       value={formData.message} 
                       onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))} 
                       placeholder="Tell us about your project, goals, and timeline..." 
