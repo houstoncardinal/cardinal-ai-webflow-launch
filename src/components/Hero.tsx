@@ -291,7 +291,7 @@ const Hero = () => {
                      </div>
 
                                      {/* Form */}
-                     <form onSubmit={handleFormSubmit} className="space-y-4" name="hero-project-evaluation" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                     <form onSubmit={handleFormSubmit} className="space-y-4" name="hero-project-evaluation" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
                        <input type="hidden" name="form-name" value="hero-project-evaluation" />
                        <input type="hidden" name="bot-field" style={{ display: 'none' }} />
                        
