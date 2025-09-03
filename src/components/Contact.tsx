@@ -7,8 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from "@/components/ui/command";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { Mail, Phone, MapPin, Clock, Sparkles, Star, MessageCircle, ExternalLink, Facebook, Code, Smartphone, Search, Palette, Cloud, BarChart, Target, Globe, Zap, Check, ChevronsUpDown } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
@@ -320,69 +319,45 @@ const contactInfo = [
                       <Label className="text-xs sm:text-sm font-medium text-gray-700">
                         Services of Interest *
                       </Label>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <Button
-                            variant="outline"
-                            role="combobox"
-                            className="h-10 sm:h-11 justify-between border-gray-300 hover:border-green-500 hover:bg-gray-50/50 text-left font-normal"
-                          >
-                            {formData.services.length === 0 ? (
-                              <span className="text-gray-500">Select services...</span>
-                            ) : (
-                              <span className="text-sm truncate">
-                                {formData.services.length} service{formData.services.length > 1 ? "s" : ""} selected
-                              </span>
-                            )}
-                            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                          </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-[min(calc(100vw-2rem),400px)] p-0" align="start">
-                          <Command>
-                            <CommandInput placeholder="Search services..." className="h-9" />
-                            <CommandEmpty>No services found.</CommandEmpty>
-                            <div className="max-h-[300px] overflow-auto">
-                              {serviceCategories.map((category, idx) => (
-                                <CommandGroup key={idx} heading={category.category}>
-                                  {category.services.map((service) => (
-                                    <CommandItem
-                                      key={service.id}
-                                      value={service.label}
-                                      onSelect={() => {
+                      
+                      {/* Simplified Services Selection */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {serviceCategories.map((category) => (
+                          <div key={category.category} className="space-y-2">
+                            <h4 className="text-xs font-medium text-gray-600 uppercase tracking-wide">
+                              {category.category}
+                            </h4>
+                            <div className="space-y-1">
+                              {category.services.map((service) => (
+                                <label key={service.id} className="flex items-center space-x-2 cursor-pointer">
+                                  <Checkbox
+                                    checked={formData.services.includes(service.id)}
+                                    onCheckedChange={(checked) => {
+                                      if (checked) {
                                         setFormData(prev => ({
                                           ...prev,
-                                          services: prev.services.includes(service.id)
-                                            ? prev.services.filter(s => s !== service.id)
-                                            : [...prev.services, service.id]
+                                          services: [...prev.services, service.id]
                                         }));
-                                      }}
-                                      className="gap-2 py-2"
-                                    >
-                                      <div className={cn(
-                                        "border border-gray-200 rounded w-4 h-4 flex items-center justify-center",
-                                        formData.services.includes(service.id) && "bg-green-600 border-green-600"
-                                      )}>
-                                        {formData.services.includes(service.id) && (
-                                          <Check className="h-3 w-3 text-white" />
-                                        )}
-                                      </div>
-                                      <div className="flex-1">
-                                        <div className="flex items-center gap-2">
-                                          <service.icon className="w-4 h-4 text-green-600" />
-                                          <span>{service.label}</span>
-                                        </div>
-                                        <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">
-                                          {service.description}
-                                        </p>
-                                      </div>
-                                    </CommandItem>
-                                  ))}
-                                </CommandGroup>
+                                      } else {
+                                        setFormData(prev => ({
+                                          ...prev,
+                                          services: prev.services.filter(s => s !== service.id)
+                                        }));
+                                      }
+                                    }}
+                                    className="text-green-600"
+                                  />
+                                  <div className="flex items-center gap-2 text-sm">
+                                    <service.icon className="w-4 h-4 text-green-600" />
+                                    <span>{service.label}</span>
+                                  </div>
+                                </label>
                               ))}
                             </div>
-                          </Command>
-                        </PopoverContent>
-                      </Popover>
+                          </div>
+                        ))}
+                      </div>
+                      
                       <input type="hidden" name="services" value={formData.services.join(', ')} />
 
                       {/* Selected Services Pills */}
