@@ -241,12 +241,12 @@ const BlogPost = () => {
           </header>
 
           {/* Featured Image */}
-          {post.thumbnail_url && (
+          {(post.thumbnail_url || post.slug === 'hidden-money-leaks-on-your-website') && (
             <div className="relative mb-12 group">
               <div className="absolute -inset-4 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative">
                 <img
-                  src={post.thumbnail_url}
+                  src={post.slug === 'hidden-money-leaks-on-your-website' ? '/money-leaks.png' : post.thumbnail_url}
                   alt={`${post.title} - Cardinal Consulting`}
                   className="w-full h-64 md:h-[500px] object-cover rounded-xl shadow-lg"
                   loading="eager"

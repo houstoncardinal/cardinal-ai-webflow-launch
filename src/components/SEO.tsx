@@ -83,6 +83,20 @@ const SEO = ({
       <meta name="msapplication-TileColor" content="#059669" />
       <meta name="apple-mobile-web-app-title" content="Cardinal Consulting" />
       
+      {/* Enhanced SEO Meta Tags */}
+      <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      <meta name="bingbot" content="index, follow" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="format-detection" content="telephone=no" />
+      
+      {/* Local Business Schema */}
+      <meta name="business:contact_data:street_address" content="2100 West Loop S Fwy" />
+      <meta name="business:contact_data:locality" content="Houston" />
+      <meta name="business:contact_data:administrative_area" content="TX" />
+      <meta name="business:contact_data:postal_code" content="77027" />
+      <meta name="business:contact_data:country_name" content="United States" />
+      <meta name="business:contact_data:phone_number" content="+1-832-989-2163" />
+      
       {/* Canonical URL */}
       <link rel="canonical" href={fullUrl} />
       
