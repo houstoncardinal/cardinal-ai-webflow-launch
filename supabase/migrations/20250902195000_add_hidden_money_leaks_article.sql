@@ -1,25 +1,24 @@
 INSERT INTO blog_posts (
-    title,
-    slug,
-    excerpt,
-    content,
-    thumbnail_url,
-    published_at,
-    reading_time,
-    views_count,
-    tags,
-    author_name,
-    status,
-    is_featured,
-    meta_title,
-    meta_description,
-    source_type,
-    source_url
+  title,
+  slug,
+  excerpt,
+  content,
+  thumbnail_url,
+  published_at,
+  updated_at,
+  reading_time,
+  views_count,
+  tags,
+  author_name,
+  status,
+  meta_title,
+  meta_description,
+  is_featured
 ) VALUES (
-    'The Hidden Money Leaks on Your Website (and How to Plug Them)',
-    'hidden-money-leaks-on-your-website',
-    'Most business owners think: "I have a website, so I''m good." But here''s the truth: your website is probably leaking money every single day—and you don''t even know it. Discover five critical website issues that could be costing you business and learn how to fix them.',
-    '# The Hidden Money Leaks on Your Website (and How to Plug Them)
+  'The Hidden Money Leaks on Your Website (and How to Plug Them)',
+  'hidden-money-leaks-on-your-website',
+  'Most business owners think: "I have a website, so I''m good." But here''s the truth: your website is probably leaking money every single day—and you don''t even know it. Discover the 5 critical website issues costing you business.',
+  '# The Hidden Money Leaks on Your Website (and How to Plug Them)
 
 Most business owners think: "I have a website, so I''m good."
 
@@ -64,16 +63,15 @@ Think about it: If your website was your best salesperson, how would you want th
 - Persuasive in driving action?
 
 Your website needs to embody these qualities to truly serve your business.',
-    '/blog/images/hidden-money-leaks-hero.jpg',
-    NOW(),
-    5,
-    0,
-    ARRAY['Website Optimization', 'Business Growth', 'Digital Strategy', 'Conversion Optimization', 'Web Development'],
-    'Cardinal Team',
-    'published',
-    true,
-    'Hidden Money Leaks: 5 Website Issues Costing You Business | Cardinal Digital',
-    'Discover five critical website issues that could be costing you business. Learn practical solutions to optimize your website and capture more leads, from mobile optimization to conversion strategies.',
-    'article',
-    'https://www.cardinaldigital.com/blog/hidden-money-leaks-on-your-website'
-);
+  '/money-leaks.png',
+  NOW(),
+  NOW(),
+  5,
+  0,
+  ARRAY['Website Optimization', 'Business Growth', 'Digital Strategy', 'Conversion Optimization', 'Web Development'],
+  'Cardinal Digital Team',
+  'published',
+  'Hidden Money Leaks: 5 Website Issues Costing You Business | Cardinal Digital',
+  'Discover five critical website issues that could be costing you business. Learn practical solutions to optimize your website and capture more leads, from mobile optimization to conversion strategies.',
+  true
+); 

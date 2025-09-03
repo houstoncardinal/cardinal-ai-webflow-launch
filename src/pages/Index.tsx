@@ -1,7 +1,7 @@
 
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-
+import ClientLogos from "@/components/ClientLogos";
 import Portfolio from "@/components/Portfolio";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
@@ -26,6 +26,9 @@ const Index = () => {
       <div className="bg-white">
         <Hero />
       </div>
+      
+      {/* Client Logos - Showcase trusted clients */}
+      <ClientLogos />
       
       {/* Services - Light gray background for variation */}
       <div className="bg-gray-50">

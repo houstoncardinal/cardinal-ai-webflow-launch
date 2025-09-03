@@ -205,16 +205,16 @@ const Blog = () => {
               </div>
             </div>
 
-            {/* Category Pills */}
+            {/* Compact Category Navigation */}
             <div className="relative -mx-6 px-6 md:mx-0 md:px-0">
-              <div className="flex items-center gap-2 overflow-x-auto pb-4 scrollbar-none md:gap-3 md:pb-0">
+              <div className="flex items-center gap-1.5 overflow-x-auto pb-3 scrollbar-none md:gap-2 md:pb-0">
                 <Button 
                   variant="outline" 
                   size="sm"
-                  className={`shrink-0 text-sm ${
+                  className={`shrink-0 text-xs h-7 px-3 ${
                     activeCategory === "all" 
-                      ? 'bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 border-green-200 dark:border-green-500/20' 
-                      : 'hover:bg-gray-50 dark:hover:bg-gray-800'
+                      ? 'bg-green-50 text-green-700 border-green-300 shadow-sm' 
+                      : 'hover:bg-gray-50 border-gray-200'
                   }`}
                   onClick={() => setActiveCategory("all")}
                 >
@@ -225,10 +225,10 @@ const Blog = () => {
                     key={category.id}
                     variant="outline"
                     size="sm"
-                    className={`shrink-0 text-sm ${
+                    className={`shrink-0 text-xs h-7 px-3 ${
                       activeCategory === category.id 
-                        ? 'bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 border-green-200 dark:border-green-500/20' 
-                        : 'hover:bg-gray-50 dark:hover:bg-gray-800'
+                        ? 'bg-green-50 text-green-700 border-green-300 shadow-sm' 
+                        : 'hover:bg-gray-50 border-gray-200'
                     }`}
                     onClick={() => setActiveCategory(category.id)}
                   >
@@ -236,8 +236,8 @@ const Blog = () => {
                   </Button>
                 ))}
               </div>
-              {/* Gradient fade effect for overflow */}
-              <div className="absolute right-0 top-0 bottom-4 w-8 bg-gradient-to-l from-white dark:from-gray-950 md:hidden"></div>
+              {/* Subtle gradient fade for overflow */}
+              <div className="absolute right-0 top-0 bottom-3 w-6 bg-gradient-to-l from-white to-transparent md:hidden"></div>
             </div>
           </div>
 

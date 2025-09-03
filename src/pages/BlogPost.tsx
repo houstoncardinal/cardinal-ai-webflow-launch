@@ -255,40 +255,40 @@ const BlogPost = () => {
             {/* Streamlined Article Header */}
             <div className="not-prose mb-8">
               <div className="relative">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-2 mb-3">
                   {post.tags?.slice(0, 3).map(tag => (
                     <span key={tag} 
-                      className="px-3 py-1 bg-primary/5 text-primary rounded-full text-sm border border-primary/10">
+                      className="px-2 py-0.5 bg-green-50 text-green-700 rounded-md text-xs border border-green-200 font-medium">
                       {tag}
                     </span>
                   ))}
                 </div>
                 
-                <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-primary/10">
-                  <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-primary/60" />
+                <div className="flex flex-wrap items-center justify-between gap-3 py-3 border-y border-gray-200">
+                  <div className="flex items-center gap-4 text-xs text-gray-600">
+                    <div className="flex items-center gap-1.5">
+                      <Clock className="w-3 h-3 text-green-600" />
                       <span>{post.reading_time}m read</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4 text-primary/60" />
-                      <span>Updated {formatDate(post.updated_at || post.published_at).split(',')[0]}</span>
+                    <div className="flex items-center gap-1.5">
+                      <Calendar className="w-3 h-3 text-green-600" />
+                      <span>{formatDate(post.updated_at || post.published_at).split(',')[0]}</span>
                     </div>
                   </div>
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={sharePost}
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-1.5 text-xs h-7 px-2"
                   >
-                    <Share2 className="w-4 h-4" />
+                    <Share2 className="w-3 h-3" />
                     Share
                   </Button>
                 </div>
 
-                {/* Quick Navigation Chips */}
+                {/* Compact Article Navigation */}
                 <div className="relative -mx-6 px-6 md:mx-0 md:px-0">
-                  <div className="flex items-center gap-2 py-4 overflow-x-auto hide-scrollbar">
+                  <div className="flex items-center gap-1.5 py-3 overflow-x-auto hide-scrollbar">
                     <ReactMarkdown
                       components={{
                         p: () => null,
@@ -298,16 +298,16 @@ const BlogPost = () => {
                           const id = title.toLowerCase().replace(/\s+/g, '-');
                           const icon = 
                             title.includes('Quick') ? '⚡' :
-                            title.includes('Bonus') ? '�' :
+                            title.includes('Bonus') ? '🎁' :
                             title.includes('Need') ? '🎯' :
-                            title.includes('Why') ? '�' : '�';
+                            title.includes('Why') ? '❓' : '📋';
                           
                           return (
                             <a href={`#${id}`} 
-                               className="shrink-0 flex items-center gap-2 px-3 py-1.5 bg-background hover:bg-primary/5 border border-primary/10 rounded-full transition-colors">
-                              <span className="text-sm">{icon}</span>
-                              <span className="text-xs sm:text-sm text-muted-foreground whitespace-nowrap">
-                                {title.replace(/^\d+\.\s/, '').split(' ').slice(0, 3).join(' ')}...
+                               className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 bg-gray-50 hover:bg-green-50 border border-gray-200 hover:border-green-300 rounded-md transition-all duration-200 text-xs">
+                              <span className="text-xs">{icon}</span>
+                              <span className="text-gray-700 whitespace-nowrap font-medium">
+                                {title.replace(/^\d+\.\s/, '').split(' ').slice(0, 2).join(' ')}
                               </span>
                             </a>
                           );
@@ -318,8 +318,8 @@ const BlogPost = () => {
                       {post.content}
                     </ReactMarkdown>
                   </div>
-                  {/* Gradient fade effect for overflow */}
-                  <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-background to-transparent pointer-events-none md:hidden"></div>
+                  {/* Subtle gradient fade for overflow */}
+                  <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none md:hidden"></div>
                 </div>
 
                 {/* Reading Progress Bar */}

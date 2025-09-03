@@ -3,12 +3,14 @@ import { Menu, X, ArrowRight, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import ServicesMegaMenu from "./ServicesMegaMenu";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [user, setUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isServicesMenuOpen, setIsServicesMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -46,7 +48,7 @@ const Navigation = () => {
   };
 
   const navItems = [
-    { name: "Services", href: "/services" },
+    { name: "Services", href: "/services", hasMegaMenu: true },
     { name: "Industries", href: "/industries" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Blog", href: "/blog" },
@@ -73,7 +75,7 @@ const Navigation = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-lg">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
             <Link 
@@ -90,18 +92,32 @@ const Navigation = () => {
           </div>
           
           {/* Desktop Menu with enhanced animations */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:block relative">
             <div className="flex items-center space-x-8">
               {navItems.map((item, index) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="text-gray-700 hover:text-green-600 text-sm font-medium transition-all duration-300 relative group transform hover:scale-105"
-                  style={{animationDelay: `${index * 100}ms`}}
-                >
-                  {item.name}
-                  <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full"></div>
-                </Link>
+                <div key={item.name} className="relative">
+                  {item.hasMegaMenu ? (
+                    <div
+                      className="text-gray-700 hover:text-green-600 text-sm font-medium transition-all duration-300 relative group transform hover:scale-105 cursor-pointer"
+                      style={{animationDelay: `${index * 100}ms`}}
+                      onMouseEnter={() => setIsServicesMenuOpen(true)}
+                    >
+                      {item.name}
+                      <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full"></div>
+                      {/* Mega menu indicator */}
+                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 scale-0 group-hover:scale-100"></div>
+                    </div>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      className="text-gray-700 hover:text-green-600 text-sm font-medium transition-all duration-300 relative group transform hover:scale-105"
+                      style={{animationDelay: `${index * 100}ms`}}
+                    >
+                      {item.name}
+                      <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full"></div>
+                    </Link>
+                  )}
+                </div>
               ))}
               
               <div className="flex items-center gap-4 ml-4">
@@ -141,6 +157,13 @@ const Navigation = () => {
               </div>
             </div>
           </div>
+          
+          {/* Services Mega Menu */}
+          <ServicesMegaMenu 
+            isOpen={isServicesMenuOpen} 
+            onClose={() => setIsServicesMenuOpen(false)}
+            setIsOpen={setIsServicesMenuOpen}
+          />
 
           {/* Enhanced mobile menu button */}
           <div className="lg:hidden">
