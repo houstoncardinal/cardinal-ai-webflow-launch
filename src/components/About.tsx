@@ -111,6 +111,18 @@ const About = () => {
               Cardinal Consulting is a <span className="text-green-400 font-medium">premier Houston-based digital agency</span> specializing in web development, app development, and digital marketing for local businesses.
             </p>
           </div>
+          
+          {/* Expedited Services Highlight */}
+          <div className="animate-fade-in mt-6" style={{animationDelay: '500ms'}}>
+            <div className="inline-flex items-start sm:items-center px-4 sm:px-6 py-3 sm:py-4 bg-green-900/30 border border-green-400/30 rounded-xl backdrop-blur-sm max-w-full">
+              <svg className="w-5 h-5 text-green-400 mr-3 mt-0.5 sm:mt-0 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <span className="text-green-300 font-medium text-sm sm:text-base leading-relaxed">
+                While web and app projects can take weeks, Cardinal specializes in expedited services delivered in less than 72 hours when requested.
+              </span>
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">

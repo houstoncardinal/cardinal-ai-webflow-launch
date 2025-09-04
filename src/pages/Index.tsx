@@ -14,9 +14,9 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <SEO 
-        title="Web Development, App Development & Digital Marketing Agency | Cardinal Consulting"
-        description="Leading web development, app development & digital marketing agency. Custom websites, mobile apps, SEO, PPC & digital campaigns. Serving businesses across America. Get your free consultation today!"
-        keywords="web development, app development, digital marketing, SEO, PPC, social media marketing, custom websites, mobile applications, digital agency, business technology solutions, web development agency, app development company"
+        title="🚀 Houston Web Development & Digital Marketing Agency | #1 Custom Websites | Cardinal Consulting"
+        description="🔥 Houston's #1 digital agency! Custom websites, mobile apps, SEO, PPC & digital marketing that drives RESULTS. 500+ Houston projects completed. FREE consultation & quote! Serving Houston, TX & surrounding areas."
+        keywords="Houston web development, Houston digital marketing agency, Houston website design, Houston SEO services, Houston mobile app development, Houston web developer, Houston digital agency, Houston website builder, Houston e-commerce development, Houston responsive web design, web development Houston TX, Houston web design company, Houston web development services, Houston custom website design, Houston e-commerce website, Houston SEO company, Houston digital marketing, Houston web agency, Houston website development, Houston web design agency, Houston web development company, Houston website designer, Houston web development firm, Houston app development, Houston mobile applications, Houston cloud solutions, Houston brand identity"
         url="/"
       />
       

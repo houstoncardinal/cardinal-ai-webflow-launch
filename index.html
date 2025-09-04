@@ -402,8 +402,8 @@
     }
     </script>
   </head>
-  <body>
-    <div id="root"></div>
+  <body style="background-color: white; margin: 0; padding: 0;">
+    <div id="root" style="background-color: white; min-height: 100vh;"></div>
     
     <!-- Netlify Forms - Hidden for detection -->
     <form name="free-audit" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" style="display: none;">
@@ -456,6 +456,53 @@
         <option value="ui-ux-design">UI/UX Design</option>
         <option value="cloud-solutions">Cloud Infrastructure</option>
       </select>
+    </form>
+    
+    <form name="strategy-call-booking" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" style="display: none;">
+      <input type="hidden" name="form-name" value="strategy-call-booking" />
+      <input type="hidden" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="company" />
+      <select name="projectType">
+        <option value="Web Development">Web Development</option>
+        <option value="Mobile App Development">Mobile App Development</option>
+        <option value="E-commerce Platform">E-commerce Platform</option>
+        <option value="Digital Marketing">Digital Marketing</option>
+        <option value="SEO & Content Strategy">SEO & Content Strategy</option>
+        <option value="Brand Identity & Design">Brand Identity & Design</option>
+        <option value="Cloud Solutions">Cloud Solutions</option>
+        <option value="Business Consulting">Business Consulting</option>
+        <option value="Other">Other</option>
+      </select>
+      <textarea name="projectDetails"></textarea>
+      <input type="date" name="preferredDate" />
+      <select name="preferredTime">
+        <option value="9:00 AM - 9:30 AM">9:00 AM - 9:30 AM</option>
+        <option value="10:00 AM - 10:30 AM">10:00 AM - 10:30 AM</option>
+        <option value="11:00 AM - 11:30 AM">11:00 AM - 11:30 AM</option>
+        <option value="1:00 PM - 1:30 PM">1:00 PM - 1:30 PM</option>
+        <option value="2:00 PM - 2:30 PM">2:00 PM - 2:30 PM</option>
+        <option value="3:00 PM - 3:30 PM">3:00 PM - 3:30 PM</option>
+        <option value="4:00 PM - 4:30 PM">4:00 PM - 4:30 PM</option>
+      </select>
+      <select name="budget">
+        <option value="Under $5,000">Under $5,000</option>
+        <option value="$5,000 - $10,000">$5,000 - $10,000</option>
+        <option value="$10,000 - $25,000">$10,000 - $25,000</option>
+        <option value="$25,000 - $50,000">$25,000 - $50,000</option>
+        <option value="$50,000 - $100,000">$50,000 - $100,000</option>
+        <option value="$100,000+">$100,000+</option>
+      </select>
+      <select name="timeline">
+        <option value="ASAP - Within 2 weeks">ASAP - Within 2 weeks</option>
+        <option value="1-2 months">1-2 months</option>
+        <option value="3-6 months">3-6 months</option>
+        <option value="6+ months">6+ months</option>
+        <option value="Still planning">Still planning</option>
+      </select>
+      <input type="text" name="goals" />
     </form>
     
     <script type="module" src="/src/main.tsx"></script>

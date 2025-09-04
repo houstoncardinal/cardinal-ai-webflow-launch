@@ -287,7 +287,7 @@ const Footer = () => {
 
           <div className="border-t border-gray-700/50 mt-16 pt-10">
             <div className="flex flex-col md:flex-row justify-between items-center">
-              <p className="text-gray-400 text-sm font-light animate-fade-in">
+              <p className="text-white text-xs font-light animate-fade-in">
                 © 2024 Cardinal Consulting. All rights reserved.
               </p>
               <div className="flex space-x-8 mt-6 md:mt-0 animate-fade-in" style={{animationDelay: '200ms'}}>

@@ -12,37 +12,50 @@ const ClientLogos = () => {
     {
       name: "ABQ MRI",
       logo: "/abqmrilogo.png",
-      alt: "ABQ MRI Logo"
+      alt: "ABQ MRI Logo",
+      url: "https://www.abqmri.com"
     },
     {
       name: "APN Clinic",
       logo: "/apncliniclogo.png",
-      alt: "APN Clinic Logo"
+      alt: "APN Clinic Logo",
+      url: "https://www.apnclinic.com"
+    },
+    {
+      name: "CCR",
+      logo: "/ccrlogo.jpg",
+      alt: "CCR Logo",
+      url: "https://www.unitedccr.com"
     },
     {
       name: "ClearLedger",
       logo: "/clearledgerlogo.png",
-      alt: "ClearLedger Logo"
+      alt: "ClearLedger Logo",
+      url: "https://www.yourclearledger.com"
     },
     {
       name: "HougenPros",
       logo: "/hougenproslogo.png",
-      alt: "HougenPros Logo"
+      alt: "HougenPros Logo",
+      url: "https://www.hougenpros.com"
     },
     {
       name: "IAC Centers",
       logo: "/iaclogo.png",
-      alt: "IAC Centers Logo"
+      alt: "IAC Centers Logo",
+      url: "https://www.injuryassistancecenters.com"
     },
     {
       name: "RE Logo",
       logo: "/relogo.png",
-      alt: "RE Logo"
+      alt: "RE Logo",
+      url: "https://www.reactivatedallas.com"
     },
     {
       name: "HE Logo",
       logo: "/helogo.png",
-      alt: "HE Logo"
+      alt: "HE Logo",
+      url: "https://www.houinc.com"
     },
   ];
 
@@ -90,7 +103,12 @@ const ClientLogos = () => {
                 }}
               >
                 {/* Logo */}
-                <div className="relative group-hover:scale-105 transition-all duration-500 group-hover:-translate-y-1">
+                <a 
+                  href={client.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative group-hover:scale-105 transition-all duration-500 group-hover:-translate-y-1 cursor-pointer"
+                >
                   <img
                     src={client.logo}
                     alt={client.alt}
@@ -100,7 +118,7 @@ const ClientLogos = () => {
                   
                   {/* Hover indicator - Hidden on mobile */}
                   <div className="hidden sm:block absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-green-500 to-blue-500 group-hover:w-6 transition-all duration-300"></div>
-                </div>
+                </a>
               </div>
             ))}
           </div>

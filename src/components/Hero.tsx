@@ -1,5 +1,5 @@
 
-import { ArrowRight, ChevronDown, Star, ExternalLink, MessageCircle, Facebook, Zap, User, Mail, Phone } from "lucide-react";
+import { ArrowRight, ChevronDown, Star, ExternalLink, MessageCircle, Facebook, User, Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -70,7 +70,7 @@ const Hero = () => {
 
   return (
     <>
-      <section className="min-h-[90vh] bg-white flex items-center relative overflow-hidden pt-28 pb-4 sm:pt-32 lg:pt-36 sm:pb-6">
+      <section className="min-h-[70vh] bg-white flex items-center relative overflow-hidden pt-4 pb-2 sm:pt-16 lg:pt-20 sm:pb-6">
         {/* Animated network background */}
         <div className="absolute inset-0">
           {/* Network grid */}
@@ -159,102 +159,68 @@ const Hero = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[65vh] sm:min-h-[70vh] lg:min-h-[75vh]">
-                             <div className="lg:col-span-7 space-y-3 sm:space-y-4 lg:space-y-6">
+                             <div className="lg:col-span-7 space-y-3 sm:space-y-3 lg:space-y-4">
                    {/* Animated category tag */}
-                   <div className="inline-flex items-center text-xs sm:text-sm font-medium text-green-600 uppercase tracking-wide mb-3 sm:mb-4 animate-fade-in">
+                                        <div className="inline-flex items-center text-xs sm:text-sm font-medium text-green-600 uppercase tracking-wide mb-1 sm:mb-2 animate-fade-in">
                      <div className="w-6 sm:w-8 lg:w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-2 sm:mr-3 lg:mr-4"></div>
                      Houston's Premier Digital Agency
                    </div>
                    
                    {/* Main headline with staggered animation */}
-                   <div className="space-y-2 sm:space-y-3 lg:space-y-4">
-                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-gray-900 leading-[1.1] tracking-tight">
-                       <span className="inline-block animate-fade-in my-0 py-0">Houston's #1</span>
-                       <span className="block text-green-600 font-normal animate-fade-in" style={{
-                         animationDelay: '300ms'
-                       }}>
-                         Web Development Agency
-                       </span>
-                     </h1>
+                   <div className="space-y-2 sm:space-y-2 lg:space-y-3">
+                                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-gray-900 leading-[1.1] tracking-tight">
+                  <span className="inline-block animate-fade-in my-0 py-0 whitespace-nowrap text-3xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">Custom Websites & Mobile Apps</span>
+                  <span className="block text-green-600 font-normal text-3xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl animate-slide-forward" style={{
+                    animationDelay: '300ms'
+                  }}>
+                    That Drive Business Growth
+                  </span>
+                </h1>
                      
-                     <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-2xl animate-fade-in" style={{
-                       animationDelay: '500ms'
-                     }}>
-                       We help Houston businesses dominate online with custom websites, mobile apps, 
-                       and digital marketing that drives real results. Serving Houston, TX and surrounding areas.
-                     </p>
+                                     <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-2xl animate-fade-in relative z-10" style={{
+                  animationDelay: '500ms',
+                  textShadow: '0 0 8px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 255, 255, 0.9), 0 0 24px rgba(255, 255, 255, 0.7)'
+                }}>
+                  Transform your Houston business into a digital powerhouse with custom websites, mobile apps, and AI-powered marketing that drives measurable ROI. 500+ successful projects completed.
+                </p>
                 
-                                     {/* Quick Turnaround Highlight */}
-                     <div className="mt-6 sm:mt-8 lg:mt-10 text-left">
-                       <div className="inline-flex items-start sm:items-center px-4 sm:px-6 py-3 sm:py-4 bg-green-50 border border-green-200 rounded-xl sm:rounded-full max-w-full">
-                         <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 mr-2 sm:mr-3 mt-0.5 sm:mt-0 flex-shrink-0" />
-                         <span className="text-green-700 font-medium text-sm sm:text-base leading-relaxed">
-                           While web and app projects can take weeks, Cardinal specializes in expedited services delivered in less than 72 hours when requested.
-                         </span>
-                       </div>
-                     </div>
+                                     
               </div>
               
-                                 {/* CTA Section with hover animations */}
-                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                      <Button 
-                        onClick={() => window.location.href = '/contact'} 
-                        className="bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
-                      >
-                        Free Consultation
-                        <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
-                      </Button>
-                      
-                      <Button 
-                        variant="outline" 
-                        onClick={() => window.location.href = '/services'} 
-                        className="border-green-300 text-green-700 hover:bg-green-50 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium transition-all duration-300 hover:scale-105 w-full sm:w-auto"
-                      >
-                        View Services
-                      </Button>
-                    </div>
+                                               {/* CTA Section with hover animations */}
+              <div className="flex justify-start">
+                <Button 
+                  onClick={() => window.location.href = '/strategy-call'} 
+                  className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 w-full sm:w-auto rounded-xl"
+                >
+                  Book Free Strategy Call
+                  <ArrowRight className="ml-3 w-5 h-5 sm:w-6 sm:h-6" />
+                </Button>
+              </div>
                      
-                   <p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4 text-center sm:text-left">
-                     ✓ No obligation ✓ No purchase necessary ✓ 100% free
-                   </p>
+                                 <p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4 text-center sm:text-left">
+                <span className="text-green-600">✓</span> No obligation <span className="text-green-600">✓</span> No purchase necessary <span className="text-green-600">✓</span> 100% free
+              </p>
 
                                  {/* Animated stats */}
-                   <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-12 pt-3 sm:pt-4 lg:pt-6 border-t border-gray-200 animate-fade-in" style={{
-                     animationDelay: '1000ms'
-                   }}>
-                     <div className="group cursor-pointer flex-1 min-w-[80px]">
-                       <div className="text-lg sm:text-xl lg:text-2xl font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">500+</div>
-                       <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Houston Projects</div>
-                     </div>
-                     <div className="group cursor-pointer flex-1 min-w-[80px]">
-                       <div className="text-lg sm:text-xl lg:text-2xl font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">98%</div>
-                       <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Client Satisfaction</div>
-                     </div>
-                     <div className="group cursor-pointer flex-1 min-w-[80px]">
-                       <div className="text-lg sm:text-xl lg:text-2xl font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">24/7</div>
-                       <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Houston Support</div>
-                     </div>
+                                 <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-12 pt-2 sm:pt-3 lg:pt-4 border-t border-gray-200 animate-fade-in" style={{
+                animationDelay: '1000ms'
+              }}>
+                                     <div className="group cursor-pointer flex-1 min-w-[80px]">
+                  <div className="text-sm sm:text-base lg:text-lg font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">500+</div>
+                  <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Houston Projects</div>
+                </div>
+                <div className="group cursor-pointer flex-1 min-w-[80px]">
+                  <div className="text-sm sm:text-base lg:text-lg font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">98%</div>
+                  <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Client Satisfaction</div>
+                </div>
+                <div className="group cursor-pointer flex-1 min-w-[80px]">
+                  <div className="text-sm sm:text-base lg:text-lg font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">24/7</div>
+                  <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Houston Support</div>
+                </div>
                    </div>
 
-                                 {/* Local Trust Indicators */}
-                   <div className="pt-3 sm:pt-4 animate-fade-in" style={{
-                     animationDelay: '1200ms'
-                   }}>
-                     <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 lg:space-x-6 text-xs sm:text-sm text-gray-500">
-                       <div className="flex items-center">
-                         <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                         <span>Houston, TX Based</span>
-                       </div>
-                       <div className="flex items-center">
-                         <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                         <span>Texas Licensed</span>
-                       </div>
-                       <div className="flex items-center">
-                         <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                         <span>Local Support</span>
-                       </div>
-                     </div>
-                   </div>
+
             </div>
 
             {/* Enhanced geometric element with animations - Hidden on mobile, visible on larger screens */}
@@ -283,7 +249,7 @@ const Hero = () => {
       </section>
 
                  {/* Evaluate Your Project for Free Form */}
-           <section className="py-2 sm:py-4 lg:py-2 relative overflow-hidden bg-gradient-to-br from-green-50/50 via-white to-gray-50/30">
+           <section className="-mt-16 sm:py-4 lg:py-2 relative overflow-hidden bg-gradient-to-br from-green-50/50 via-white to-gray-50/30">
         {/* Floating background elements */}
         <div className="absolute top-1/4 left-1/4 w-24 h-24 bg-green-100 rounded-full opacity-20 blur-2xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/3 w-20 h-20 bg-green-200 rounded-full opacity-30 blur-xl animate-pulse" style={{

@@ -23,6 +23,8 @@ import PortfolioPage from "./pages/Portfolio";
 import BlogPage from "./pages/Blog";
 import BlogPostPage from "./pages/BlogPost";
 import FreeAuditPage from "./pages/FreeAudit";
+import StrategyCallPage from "./pages/StrategyCall";
+import LoadingScreen from "./components/LoadingScreen";
 
 // Service pages
 import WebDevelopment from "./pages/services/WebDevelopment";
@@ -54,9 +56,11 @@ const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <LoadingScreen />
         <Toaster />
         <Sonner />
-          <FloatingActionWidget />
+        <FloatingActionWidget />
+        <div className="min-h-screen bg-white">
           <Routes>
             <Route path="/" element={<Index />} />
             
@@ -82,6 +86,7 @@ const App = () => (
             <Route path="/portfolio/abq-mri" element={<ABQMRI />} />
             <Route path="/portfolio/apn-clinic" element={<APNClinic />} />
             <Route path="/free-audit" element={<FreeAuditPage />} />
+            <Route path="/strategy-call" element={<StrategyCallPage />} />
             
             {/* Service Routes */}
             <Route path="/services/web-development" element={<WebDevelopment />} />
@@ -114,6 +119,7 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+        </div>
       </TooltipProvider>
     </QueryClientProvider>
   </HelmetProvider>
