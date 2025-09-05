@@ -1,5 +1,5 @@
 
-import HeroSlider from "@/components/HeroSlider";
+import HeroSlider, { ProjectEvaluationForm } from "@/components/HeroSlider";
 import Services from "@/components/Services";
 import ClientLogos from "@/components/ClientLogos";
 import Portfolio from "@/components/Portfolio";
@@ -26,6 +26,9 @@ const Index = () => {
       <div className="bg-white">
         <HeroSlider />
       </div>
+      
+      {/* Project Evaluation Form - Separate from hero */}
+      <ProjectEvaluationForm />
       
       {/* Client Logos - Showcase trusted clients */}
       <ClientLogos />

@@ -321,153 +321,221 @@ const HeroSlider = () => {
           </div>
         </div>
       </section>
-
-      {/* Evaluate Your Project for Free Form - Floating Over Hero */}
-      <section className="absolute bottom-0 left-0 right-0 -mb-8 sm:-mb-12 lg:-mb-16 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 form-container">
-          {/* Premium Form Container with Enhanced Glow */}
-          <div className="relative group">
-            {/* Always Visible Glow Effect */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-green-400/30 via-green-500/40 to-green-600/30 rounded-3xl blur-2xl opacity-40 animate-pulse"></div>
-            
-            {/* Enhanced Hover Glow */}
-            <div className="absolute -inset-6 bg-gradient-to-r from-green-400/20 via-green-500/30 to-green-600/20 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-            
-            {/* Main form card with enhanced styling */}
-            <div className="relative bg-white/95 backdrop-blur-2xl border border-green-200/50 rounded-2xl shadow-2xl overflow-hidden transform group-hover:scale-[1.02] transition-all duration-500">
-              {/* Enhanced accent top border */}
-              <div className="h-2 bg-gradient-to-r from-green-400 via-green-500 to-green-600 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-pulse"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-green-300 via-green-400 to-green-500 opacity-50 animate-pulse" style={{animationDelay: '1s'}}></div>
-              </div>
-              
-              <div className="p-6 sm:p-8 lg:p-10">
-                {/* Enhanced Header */}
-                <div className="text-center mb-6 sm:mb-8 lg:mb-10">
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-light text-gray-900 leading-relaxed mb-3 sm:mb-4">
-                    Evaluate Your Project for Free
-                  </h3>
-                  <p className="text-gray-600 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed px-2">
-                    Get expert insights on your digital transformation opportunities - completely free, no strings attached
-                  </p>
-                </div>
-
-                {/* Enhanced Form */}
-                <form onSubmit={handleFormSubmit} className="space-y-5" name="hero-project-evaluation" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
-                  <input type="hidden" name="form-name" value="hero-project-evaluation" />
-                  <input type="hidden" name="bot-field" style={{ display: 'none' }} />
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
-                    {/* Enhanced Name Input */}
-                    <div className="relative group/input sm:col-span-2 lg:col-span-1">
-                      <div className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-green-500/30 rounded-xl opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
-                      <div className="relative">
-                        <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
-                        <input 
-                          type="text" 
-                          name="name" 
-                          placeholder="Full Name" 
-                          className="w-full pl-12 h-12 sm:h-14 bg-white/70 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-500/20 transition-all duration-300 shadow-lg hover:shadow-xl placeholder:text-gray-400 text-sm sm:text-base font-medium" 
-                          required 
-                          value={formData.name}
-                          onChange={handleInputChange}
-                        />
-                        <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left rounded-full"></div>
-                      </div>
-                    </div>
-
-                    {/* Enhanced Email Input */}
-                    <div className="relative group/input sm:col-span-2 lg:col-span-1">
-                      <div className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-green-500/30 rounded-xl opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
-                      <div className="relative">
-                        <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
-                        <input 
-                          type="email" 
-                          name="email" 
-                          placeholder="Email Address" 
-                          className="w-full pl-12 h-12 sm:h-14 bg-white/70 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-500/20 transition-all duration-300 shadow-lg hover:shadow-xl placeholder:text-gray-400 text-sm sm:text-base font-medium" 
-                          required 
-                          value={formData.email}
-                          onChange={handleInputChange}
-                        />
-                        <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left rounded-full"></div>
-                      </div>
-                    </div>
-
-                    {/* Enhanced Phone Input */}
-                    <div className="relative group/input sm:col-span-2 lg:col-span-1">
-                      <div className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-green-500/30 rounded-xl opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
-                      <div className="relative">
-                        <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
-                        <input 
-                          type="tel" 
-                          name="phone" 
-                          placeholder="Phone Number" 
-                          className="w-full pl-12 h-12 sm:h-14 bg-white/70 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-500/20 transition-all duration-300 shadow-lg hover:shadow-xl placeholder:text-gray-400 text-sm sm:text-base font-medium" 
-                          value={formData.phone}
-                          onChange={handleInputChange}
-                        />
-                        <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left rounded-full"></div>
-                      </div>
-                    </div>
-
-                    {/* Enhanced Service Selection Dropdown */}
-                    <div className="relative group/input sm:col-span-2 lg:col-span-1">
-                      <div className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-green-500/30 rounded-xl opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
-                      <div className="relative">
-                        <select 
-                          name="service" 
-                          className="w-full pl-12 h-12 sm:h-14 bg-white/70 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-500/20 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base font-medium appearance-none" 
-                          value={formData.service}
-                          onChange={handleInputChange}
-                        >
-                          <option value="">Select Service</option>
-                          <option value="Web Development">Web Development</option>
-                          <option value="Mobile App Development">Mobile App Development</option>
-                          <option value="Digital Marketing">Digital Marketing</option>
-                          <option value="SEO Optimization">SEO Optimization</option>
-                          <option value="Brand Identity">Brand Identity</option>
-                          <option value="E-commerce">E-commerce</option>
-                          <option value="Other">Other</option>
-                        </select>
-                        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                          <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </div>
-                        <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left rounded-full"></div>
-                      </div>
-                    </div>
-
-                    {/* Enhanced Submit Button */}
-                    <div className="sm:col-span-2 lg:col-span-1">
-                      <Button 
-                        type="submit" 
-                        disabled={isSubmitting}
-                        className="w-full h-12 sm:h-14 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold shadow-xl hover:shadow-lg transition-all duration-300 hover:scale-105 rounded-xl relative overflow-hidden group/btn"
-                      >
-                        {isSubmitting ? (
-                          <div className="flex items-center justify-center">
-                            <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin mr-3"></div>
-                            Submitting...
-                          </div>
-                        ) : (
-                          <>
-                            Get Free Evaluation
-                            <ArrowRight className="ml-3 w-5 h-5 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                          </>
-                        )}
-                      </Button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   );
 };
 
+// Separate component for the form
+const ProjectEvaluationForm = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    service: ''
+  });
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Create FormData object
+      const formDataToSend = new FormData();
+      formDataToSend.append('form-name', 'hero-project-evaluation');
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('phone', formData.phone);
+      formDataToSend.append('service', formData.service);
+
+      // Submit to Netlify
+      const response = await fetch('/', {
+        method: 'POST',
+        body: formDataToSend,
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Request submitted successfully! 🚀",
+          description: "We'll get back to you within 2 hours with your project evaluation.",
+        });
+
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: ''
+        });
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      toast({
+        title: "Submission failed",
+        description: "Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  return (
+    <section className="relative bg-white py-16 sm:py-20 lg:py-24 -mt-8 sm:-mt-12 lg:-mt-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 form-container">
+        {/* Premium Form Container with Enhanced Glow */}
+        <div className="relative group">
+          {/* Always Visible Glow Effect */}
+          <div className="absolute -inset-4 bg-gradient-to-r from-green-400/30 via-green-500/40 to-green-600/30 rounded-3xl blur-2xl opacity-40 animate-pulse"></div>
+          
+          {/* Enhanced Hover Glow */}
+          <div className="absolute -inset-6 bg-gradient-to-r from-green-400/20 via-green-500/30 to-green-600/20 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+          
+          {/* Main form card with enhanced styling */}
+          <div className="relative bg-white/95 backdrop-blur-2xl border border-green-200/50 rounded-2xl shadow-2xl overflow-hidden transform group-hover:scale-[1.02] transition-all duration-500">
+            {/* Enhanced accent top border */}
+            <div className="h-2 bg-gradient-to-r from-green-400 via-green-500 to-green-600 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-green-300 via-green-400 to-green-500 opacity-50 animate-pulse" style={{animationDelay: '1s'}}></div>
+            </div>
+            
+            <div className="p-6 sm:p-8 lg:p-10">
+              {/* Enhanced Header */}
+              <div className="text-center mb-6 sm:mb-8 lg:mb-10">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-light text-gray-900 leading-relaxed mb-3 sm:mb-4">
+                  Evaluate Your Project for Free
+                </h3>
+                <p className="text-gray-600 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed px-2">
+                  Get expert insights on your digital transformation opportunities - completely free, no strings attached
+                </p>
+              </div>
+
+              {/* Enhanced Form */}
+              <form onSubmit={handleFormSubmit} className="space-y-5" name="hero-project-evaluation" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="hero-project-evaluation" />
+                <input type="hidden" name="bot-field" style={{ display: 'none' }} />
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
+                  {/* Enhanced Name Input */}
+                  <div className="relative group/input sm:col-span-2 lg:col-span-1">
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-green-500/30 rounded-xl opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
+                    <div className="relative">
+                      <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
+                      <input 
+                        type="text" 
+                        name="name" 
+                        placeholder="Full Name" 
+                        className="w-full pl-12 h-12 sm:h-14 bg-white/70 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-500/20 transition-all duration-300 shadow-lg hover:shadow-xl placeholder:text-gray-400 text-sm sm:text-base font-medium" 
+                        required 
+                        value={formData.name}
+                        onChange={handleInputChange}
+                      />
+                      <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left rounded-full"></div>
+                    </div>
+                  </div>
+
+                  {/* Enhanced Email Input */}
+                  <div className="relative group/input sm:col-span-2 lg:col-span-1">
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-green-500/30 rounded-xl opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
+                    <div className="relative">
+                      <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
+                      <input 
+                        type="email" 
+                        name="email" 
+                        placeholder="Email Address" 
+                        className="w-full pl-12 h-12 sm:h-14 bg-white/70 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-500/20 transition-all duration-300 shadow-lg hover:shadow-xl placeholder:text-gray-400 text-sm sm:text-base font-medium" 
+                        required 
+                        value={formData.email}
+                        onChange={handleInputChange}
+                      />
+                      <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left rounded-full"></div>
+                    </div>
+                  </div>
+
+                  {/* Enhanced Phone Input */}
+                  <div className="relative group/input sm:col-span-2 lg:col-span-1">
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-green-500/30 rounded-xl opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
+                    <div className="relative">
+                      <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
+                      <input 
+                        type="tel" 
+                        name="phone" 
+                        placeholder="Phone Number" 
+                        className="w-full pl-12 h-12 sm:h-14 bg-white/70 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-500/20 transition-all duration-300 shadow-lg hover:shadow-xl placeholder:text-gray-400 text-sm sm:text-base font-medium" 
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                      />
+                      <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left rounded-full"></div>
+                    </div>
+                  </div>
+
+                  {/* Enhanced Service Selection Dropdown */}
+                  <div className="relative group/input sm:col-span-2 lg:col-span-1">
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-green-500/30 rounded-xl opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
+                    <div className="relative">
+                      <select 
+                        name="service" 
+                        className="w-full pl-12 h-12 sm:h-14 bg-white/70 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-500/20 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base font-medium appearance-none" 
+                        value={formData.service}
+                        onChange={handleInputChange}
+                      >
+                        <option value="">Select Service</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Mobile App Development">Mobile App Development</option>
+                        <option value="Digital Marketing">Digital Marketing</option>
+                        <option value="SEO Optimization">SEO Optimization</option>
+                        <option value="Brand Identity">Brand Identity</option>
+                        <option value="E-commerce">E-commerce</option>
+                        <option value="Other">Other</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                        <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                      <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left rounded-full"></div>
+                    </div>
+                  </div>
+
+                  {/* Enhanced Submit Button */}
+                  <div className="sm:col-span-2 lg:col-span-1">
+                    <Button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="w-full h-12 sm:h-14 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold shadow-xl hover:shadow-lg transition-all duration-300 hover:scale-105 rounded-xl relative overflow-hidden group/btn"
+                    >
+                      {isSubmitting ? (
+                        <div className="flex items-center justify-center">
+                          <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin mr-3"></div>
+                          Submitting...
+                        </div>
+                      ) : (
+                        <>
+                          Get Free Evaluation
+                          <ArrowRight className="ml-3 w-5 h-5 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 export default HeroSlider;
+export { ProjectEvaluationForm };
