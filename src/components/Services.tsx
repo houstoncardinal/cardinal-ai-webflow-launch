@@ -182,7 +182,7 @@ const Services = () => {
         </div>
 
         {/* The Cardinal Advantage - Green Background Design */}
-        <div className="relative w-screen left-1/2 -ml-[50vw] mt-20 sm:mt-24 lg:mt-32 pt-8 sm:pt-12 lg:pt-16 pb-0 bg-gradient-to-br from-green-600 to-emerald-700 overflow-hidden" style={{marginBottom: '0'}}>
+        <div className="relative w-full mt-20 sm:mt-24 lg:mt-32 pt-8 sm:pt-12 lg:pt-16 pb-0 bg-gradient-to-br from-green-600 to-emerald-700 overflow-hidden" style={{marginBottom: '0'}}>
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
