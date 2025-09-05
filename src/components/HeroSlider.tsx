@@ -300,8 +300,8 @@ const HeroSlider = () => {
             </div>
 
             {/* Enhanced geometric element with animations - Hidden on mobile, visible on larger screens */}
-            <div className="lg:col-span-5 hidden lg:flex justify-center items-center overflow-hidden">
-              <div className="relative w-full max-w-md overflow-hidden">
+            <div className="lg:col-span-5 hidden lg:flex justify-center items-center">
+              <div className="relative w-full max-w-md">
                 <div className="aspect-square bg-gradient-to-br from-green-50 to-gray-50 rounded-2xl border border-gray-200 animate-pulse"></div>
                 <div className="absolute -top-4 -right-4 w-24 h-24 bg-green-600 rounded-full animate-bounce"></div>
                 <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gray-900 rounded-full animate-pulse" style={{
