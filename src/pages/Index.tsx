@@ -1,5 +1,5 @@
 
-import Hero from "@/components/Hero";
+import HeroSlider from "@/components/HeroSlider";
 import Services from "@/components/Services";
 import ClientLogos from "@/components/ClientLogos";
 import Portfolio from "@/components/Portfolio";
@@ -24,7 +24,7 @@ const Index = () => {
       
       {/* Hero - White background */}
       <div className="bg-white">
-        <Hero />
+        <HeroSlider />
       </div>
       
       {/* Client Logos - Showcase trusted clients */}

@@ -1,18 +1,27 @@
-
-import { ArrowRight, ChevronDown, Star, ExternalLink, MessageCircle, Facebook, User, Mail, Phone } from "lucide-react";
+import { ArrowRight, ChevronDown, Star, ExternalLink, MessageCircle, Facebook, User, Mail, Phone, TrendingUp, Award, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 
-const Hero = () => {
+const HeroSlider = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     service: ''
   });
+
+  // Auto-slide every 6 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev === 0 ? 1 : 0));
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,6 +76,29 @@ const Hero = () => {
       [e.target.name]: e.target.value
     });
   };
+
+  const slides = [
+    // Original Hero
+    {
+      category: "Houston's Premier Digital Agency",
+      headline: {
+        first: "Houston Web Design",
+        second: "That Dominates Your Market"
+      },
+      description: "Transform your Houston business into a digital powerhouse with custom websites, mobile apps, and AI-powered marketing that drives measurable ROI. 500+ successful projects completed.",
+      cta: "Book Free Strategy Call"
+    },
+    // Client Success Story Hero
+    {
+      category: "Client Success Story",
+      headline: {
+        first: "How We Helped ABQ MRI",
+        second: "Increase Revenue by 300%"
+      },
+      description: "ABQ MRI's new website and mobile app transformed their patient experience, streamlined scheduling, and drove unprecedented growth. See how we delivered measurable results.",
+      cta: "View Case Study"
+    }
+  ];
 
   return (
     <>
@@ -159,22 +191,22 @@ const Hero = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[70vh] sm:min-h-[75vh] lg:min-h-[80vh]">
-                             <div className="lg:col-span-7 space-y-4 sm:space-y-5 lg:space-y-6">
-                   {/* Animated category tag */}
-                                        <div className="inline-flex items-center text-xs sm:text-sm font-medium text-green-600 uppercase tracking-wide mb-1 sm:mb-2 animate-fade-in pt-4 sm:pt-0">
-                     <div className="w-6 sm:w-8 lg:w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-2 sm:mr-3 lg:mr-4"></div>
-                     Houston's Premier Digital Agency
-                   </div>
-                   
-                   {/* Main headline with staggered animation */}
-                   <div className="space-y-3 sm:space-y-4 lg:space-y-5">
-                                     <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-gray-900 leading-[1.15] tracking-tight">
-                  <span className="inline-block animate-fade-in my-0 py-0 text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">Custom Websites & Mobile Apps</span>
-                  <span className="block lg:inline text-green-600 font-normal text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl animate-slide-forward relative" style={{
+            <div className="lg:col-span-7 space-y-4 sm:space-y-5 lg:space-y-6">
+              {/* Animated category tag */}
+              <div className="inline-flex items-center text-xs sm:text-sm font-medium text-green-600 uppercase tracking-wide mb-1 sm:mb-2 animate-fade-in pt-4 sm:pt-0">
+                <div className="w-6 sm:w-8 lg:w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-2 sm:mr-3 lg:mr-4"></div>
+                {slides[currentSlide].category}
+              </div>
+              
+              {/* Main headline with staggered animation */}
+              <div className="space-y-3 sm:space-y-4 lg:space-y-5">
+                <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-gray-900 leading-[1.15] tracking-tight">
+                  <span className="inline-block animate-fade-in my-0 py-0 text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">{slides[currentSlide].headline.first}</span>
+                  <span className="block text-green-600 font-normal text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl animate-slide-forward relative" style={{
                     animationDelay: '300ms'
                   }}>
-                    <span className="text-gray-900">That</span>                     <span className="text-green-600 relative">
-                      Drive Business Growth
+                    <span className="text-green-600 relative">
+                      {slides[currentSlide].headline.second}
                       <svg className="absolute -bottom-2 left-0 w-full h-4 animate-draw-underline" viewBox="0 0 100 20" preserveAspectRatio="none">
                         <path 
                           d="M0,10 Q25,5 50,10 T100,10" 
@@ -195,37 +227,36 @@ const Hero = () => {
                     </span>
                   </span>
                 </h1>
-                     
-                                     <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-2xl animate-fade-in relative z-10" style={{
+                
+                <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-2xl animate-fade-in relative z-10" style={{
                   animationDelay: '500ms',
                   textShadow: '0 0 8px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 255, 255, 0.9), 0 0 24px rgba(255, 255, 255, 0.7)'
                 }}>
-                  Transform your Houston business into a digital powerhouse with custom websites, mobile apps, and AI-powered marketing that drives measurable ROI. 500+ successful projects completed.
+                  {slides[currentSlide].description}
                 </p>
                 
-                                     
               </div>
               
-                                               {/* CTA Section with hover animations */}
+              {/* CTA Section with hover animations */}
               <div className="flex justify-start pt-2 sm:pt-3 lg:pt-4">
                 <Button 
-                  onClick={() => window.location.href = '/strategy-call'} 
+                  onClick={() => currentSlide === 0 ? window.location.href = '/strategy-call' : window.location.href = '/portfolio/abqmri'} 
                   className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 w-full sm:w-auto rounded-xl"
                 >
-                  Book Free Strategy Call
+                  {slides[currentSlide].cta}
                   <ArrowRight className="ml-3 w-5 h-5 sm:w-6 sm:h-6" />
                 </Button>
               </div>
-                     
-                                 <p className="text-xs sm:text-sm text-gray-500 mt-4 sm:mt-5 lg:mt-6 text-center sm:text-left">
+              
+              <p className="text-xs sm:text-sm text-gray-500 mt-4 sm:mt-5 lg:mt-6 text-center sm:text-left">
                 <span className="text-green-600">✓</span> No obligation <span className="text-green-600">✓</span> No purchase necessary <span className="text-green-600">✓</span> 100% free
               </p>
 
-                                 {/* Animated stats */}
-                                 <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-12 pt-4 sm:pt-5 lg:pt-6 border-t border-gray-200 animate-fade-in" style={{
+              {/* Animated stats */}
+              <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-12 pt-4 sm:pt-5 lg:pt-6 border-t border-gray-200 animate-fade-in" style={{
                 animationDelay: '1000ms'
               }}>
-                                     <div className="group cursor-pointer flex-1 min-w-[80px]">
+                <div className="group cursor-pointer flex-1 min-w-[80px]">
                   <div className="text-sm sm:text-base lg:text-lg font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">500+</div>
                   <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Houston Projects</div>
                 </div>
@@ -237,9 +268,7 @@ const Hero = () => {
                   <div className="text-sm sm:text-base lg:text-lg font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">24/7</div>
                   <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Houston Support</div>
                 </div>
-                   </div>
-
-
+              </div>
             </div>
 
             {/* Enhanced geometric element with animations - Hidden on mobile, visible on larger screens */}
@@ -264,11 +293,26 @@ const Hero = () => {
               <div className="w-px h-8 bg-gradient-to-b from-gray-400 to-transparent"></div>
             </div>
           </div>
+
+          {/* Slide indicators */}
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  currentSlide === index 
+                    ? 'bg-green-600 scale-125' 
+                    : 'bg-gray-300 hover:bg-gray-400'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
-                 {/* Evaluate Your Project for Free Form */}
-           <section className="-mt-16 sm:py-4 lg:py-2 relative overflow-hidden bg-gradient-to-br from-green-50/50 via-white to-gray-50/30">
+      {/* Evaluate Your Project for Free Form */}
+      <section className="-mt-16 sm:py-4 lg:py-2 relative overflow-hidden bg-gradient-to-br from-green-50/50 via-white to-gray-50/30">
         {/* Floating background elements */}
         <div className="absolute top-1/4 left-1/4 w-24 h-24 bg-green-100 rounded-full opacity-20 blur-2xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/3 w-20 h-20 bg-green-200 rounded-full opacity-30 blur-xl animate-pulse" style={{
@@ -288,37 +332,37 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
               </div>
               
-                                 <div className="p-4 sm:p-6 lg:p-8">
-                     {/* Header */}
-                     <div className="text-center mb-4 sm:mb-6 lg:mb-8">
-                       <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-light text-gray-900 leading-relaxed mb-2 sm:mb-3">
-                         Evaluate Your Project for Free
-                       </h3>
-                       <p className="text-gray-600 text-xs sm:text-sm lg:text-base max-w-2xl mx-auto leading-relaxed px-2">
-                         Get expert insights on your digital transformation opportunities - completely free, no strings attached
-                       </p>
-                     </div>
+              <div className="p-4 sm:p-6 lg:p-8">
+                {/* Header */}
+                <div className="text-center mb-4 sm:mb-6 lg:mb-8">
+                  <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-light text-gray-900 leading-relaxed mb-2 sm:mb-3">
+                    Evaluate Your Project for Free
+                  </h3>
+                  <p className="text-gray-600 text-xs sm:text-sm lg:text-base max-w-2xl mx-auto leading-relaxed px-2">
+                    Get expert insights on your digital transformation opportunities - completely free, no strings attached
+                  </p>
+                </div>
 
-                                     {/* Form */}
-                     <form onSubmit={handleFormSubmit} className="space-y-4" name="hero-project-evaluation" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
-                       <input type="hidden" name="form-name" value="hero-project-evaluation" />
-                       <input type="hidden" name="bot-field" style={{ display: 'none' }} />
-                       
-                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
+                {/* Form */}
+                <form onSubmit={handleFormSubmit} className="space-y-4" name="hero-project-evaluation" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
+                  <input type="hidden" name="form-name" value="hero-project-evaluation" />
+                  <input type="hidden" name="bot-field" style={{ display: 'none' }} />
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
                     {/* Name Input */}
                     <div className="relative group/input sm:col-span-2 lg:col-span-1">
                       <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 rounded-lg opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
                       <div className="relative">
                         <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
-                                                     <input 
-                               type="text" 
-                               name="name" 
-                               placeholder="Full Name" 
-                               className="w-full pl-10 h-10 sm:h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400 text-sm sm:text-base" 
-                               required 
-                               value={formData.name}
-                               onChange={handleInputChange}
-                             />
+                        <input 
+                          type="text" 
+                          name="name" 
+                          placeholder="Full Name" 
+                          className="w-full pl-10 h-10 sm:h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400 text-sm sm:text-base" 
+                          required 
+                          value={formData.name}
+                          onChange={handleInputChange}
+                        />
                         <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left"></div>
                       </div>
                     </div>
@@ -328,15 +372,15 @@ const Hero = () => {
                       <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 rounded-lg opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
                       <div className="relative">
                         <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
-                                                     <input 
-                               type="email" 
-                               name="email" 
-                               placeholder="Email Address" 
-                               className="w-full pl-10 h-10 sm:h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400 text-sm sm:text-base" 
-                               required 
-                               value={formData.email}
-                               onChange={handleInputChange}
-                             />
+                        <input 
+                          type="email" 
+                          name="email" 
+                          placeholder="Email Address" 
+                          className="w-full pl-10 h-10 sm:h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400 text-sm sm:text-base" 
+                          required 
+                          value={formData.email}
+                          onChange={handleInputChange}
+                        />
                         <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left"></div>
                       </div>
                     </div>
@@ -346,14 +390,14 @@ const Hero = () => {
                       <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 rounded-lg opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
                       <div className="relative">
                         <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
-                                                     <input 
-                               type="tel" 
-                               name="phone" 
-                               placeholder="Phone Number" 
-                               className="w-full pl-10 h-10 sm:h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400 text-sm sm:text-base" 
-                               value={formData.phone}
-                               onChange={handleInputChange}
-                             />
+                        <input 
+                          type="tel" 
+                          name="phone" 
+                          placeholder="Phone Number" 
+                          className="w-full pl-10 h-10 sm:h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400 text-sm sm:text-base" 
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                        />
                         <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left"></div>
                       </div>
                     </div>
@@ -362,61 +406,52 @@ const Hero = () => {
                     <div className="relative group/input sm:col-span-2 lg:col-span-1">
                       <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 rounded-lg opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
                       <div className="relative">
-                                                     <select 
-                               name="service" 
-                               className="w-full h-10 sm:h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md pl-3 pr-10 text-sm sm:text-base"
-                               value={formData.service}
-                               onChange={handleInputChange}
-                             >
+                        <select 
+                          name="service" 
+                          className="w-full pl-10 h-10 sm:h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md text-sm sm:text-base appearance-none" 
+                          value={formData.service}
+                          onChange={handleInputChange}
+                        >
                           <option value="">Select Service</option>
-                          <option value="web-development">Web Development</option>
-                          <option value="mobile-applications">Mobile Applications</option>
-                          <option value="seo-insights">SEO & Digital Marketing</option>
-                          <option value="brand-identity">Brand Identity & Design</option>
-                          <option value="cloud-solutions">Cloud Solutions</option>
-                          <option value="digital-campaigns">Digital Campaigns</option>
-                          <option value="experience-optimization">Experience Optimization</option>
+                          <option value="Web Development">Web Development</option>
+                          <option value="Mobile App Development">Mobile App Development</option>
+                          <option value="Digital Marketing">Digital Marketing</option>
+                          <option value="SEO Optimization">SEO Optimization</option>
+                          <option value="Brand Identity">Brand Identity</option>
+                          <option value="E-commerce">E-commerce</option>
+                          <option value="Other">Other</option>
                         </select>
+                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                          <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
                         <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left"></div>
                       </div>
                     </div>
 
                     {/* Submit Button */}
-                    <div className="relative group/button sm:col-span-2 lg:col-span-1">
-                      <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-600 rounded-lg opacity-0 group-hover/button:opacity-100 transition-all duration-300 blur-lg"></div>
-                                                 <button 
-                             type="submit" 
-                             className="relative w-full h-10 sm:h-12 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 group-hover/button:scale-105 border-0 text-sm sm:text-base"
-                             disabled={isSubmitting}
-                           >
-                        <span className="flex items-center justify-center gap-2">
-                          {isSubmitting ? 'Submitting...' : 'Get Project Evaluation'}
-                          <ArrowRight className="w-4 h-4 group-hover/button:translate-x-1 transition-transform duration-300" />
-                        </span>
-                      </button>
+                    <div className="sm:col-span-2 lg:col-span-1">
+                      <Button 
+                        type="submit" 
+                        disabled={isSubmitting}
+                        className="w-full h-10 sm:h-12 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 rounded-lg relative overflow-hidden group"
+                      >
+                        {isSubmitting ? (
+                          <div className="flex items-center justify-center">
+                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                            Submitting...
+                          </div>
+                        ) : (
+                          <>
+                            Get Free Evaluation
+                            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                          </>
+                        )}
+                      </Button>
                     </div>
                   </div>
                 </form>
-
-                                     {/* Trust indicators */}
-                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 lg:gap-6 mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200/50">
-                       <div className="flex items-center gap-2 text-gray-500 text-xs sm:text-sm">
-                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                         <span>100% Free</span>
-                       </div>
-                       <div className="flex items-center gap-2 text-gray-500 text-xs sm:text-sm">
-                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{
-                           animationDelay: '0.5s'
-                         }}></div>
-                         <span>No obligation</span>
-                       </div>
-                       <div className="flex items-center gap-2 text-gray-500 text-xs sm:text-sm">
-                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{
-                           animationDelay: '1s'
-                         }}></div>
-                         <span>Expert insights within 2 hours</span>
-                       </div>
-                     </div>
               </div>
             </div>
           </div>
@@ -426,4 +461,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default HeroSlider; 
