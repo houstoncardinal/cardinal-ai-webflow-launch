@@ -196,11 +196,11 @@ const Services = () => {
                 The Cardinal Advantage
               </div>
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-light text-white mb-2 sm:mb-3">
-                Why Houston Businesses Choose
+                Why Businesses Choose
                 <span className="block text-green-200 font-normal">Cardinal Consulting</span>
               </h3>
               <p className="text-sm sm:text-base text-green-100">
-                We're not just another agency. We're Houston's premier digital partner, combining cutting-edge AI technology with deep local market expertise to deliver results that traditional agencies simply can't match.
+                We're not just another agency. We're your premier digital partner, combining cutting-edge AI technology with deep market expertise to deliver results that traditional agencies simply can't match.
               </p>
             </div>
             
@@ -259,8 +259,8 @@ const Services = () => {
                 <div className="px-6 sm:px-8 py-4 sm:py-6 hover:bg-gray-50/50 transition-colors">
                   <div className="grid grid-cols-4 gap-4 sm:gap-6 items-center">
                     <div className="text-left">
-                      <h5 className="text-sm sm:text-base font-medium text-gray-900">Houston Market Specialization</h5>
-                      <p className="text-xs sm:text-sm text-gray-600 mt-1">Deep understanding of Texas business landscape</p>
+                      <h5 className="text-sm sm:text-base font-medium text-gray-900">Market Specialization</h5>
+                      <p className="text-xs sm:text-sm text-gray-600 mt-1">Deep understanding of global business landscape</p>
                     </div>
                     <div className="text-center">
                       <span className="text-sm sm:text-base text-gray-600">Generic</span>

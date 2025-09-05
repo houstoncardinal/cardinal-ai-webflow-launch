@@ -487,7 +487,7 @@ const AboutPageContent = () => {
               Client Reviews & Social Proof
             </div>
             <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
-              Trusted by Houston Businesses
+              Trusted by Businesses
               <span className="block text-green-600 font-normal">
                 for Over 7+ Years
               </span>
@@ -517,7 +517,7 @@ const AboutPageContent = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <div className="font-semibold text-gray-900">Sarah Johnson</div>
-                  <div className="text-sm text-gray-600">CEO, Houston Tech Solutions</div>
+                  <div className="text-sm text-gray-600">CEO, Tech Solutions</div>
                 </div>
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
                   <span className="text-green-600 font-semibold text-lg">S</span>
@@ -562,7 +562,7 @@ const AboutPageContent = () => {
               </div>
               <p className="text-gray-700 mb-6 italic">
                 "Outstanding service and results! Our digital marketing campaigns have increased 
-                our leads by 300%. Cardinal Consulting is the real deal in Houston."
+                our leads by 300%. Cardinal Consulting is the real deal."
               </p>
               <div className="flex items-center justify-between">
                 <div>
@@ -586,7 +586,7 @@ const AboutPageContent = () => {
                 Share Your Experience
               </h3>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Help other Houston businesses discover the power of Cardinal Consulting. 
+                Help other businesses discover the power of Cardinal Consulting. 
                 Leave us a review and let the world know about your success story!
               </p>
             </div>

@@ -163,7 +163,7 @@ const Hero = () => {
                    {/* Animated category tag */}
                                         <div className="inline-flex items-center text-xs sm:text-sm font-medium text-green-600 uppercase tracking-wide mb-1 sm:mb-2 animate-fade-in pt-4 sm:pt-0">
                      <div className="w-6 sm:w-8 lg:w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-2 sm:mr-3 lg:mr-4"></div>
-                     Houston's Premier Digital Agency
+                     Premier Digital Agency
                    </div>
                    
                    {/* Main headline with staggered animation */}
@@ -200,7 +200,7 @@ const Hero = () => {
                   animationDelay: '500ms',
                   textShadow: '0 0 8px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 255, 255, 0.9), 0 0 24px rgba(255, 255, 255, 0.7)'
                 }}>
-                  Transform your Houston business into a digital powerhouse with custom websites, mobile apps, and AI-powered marketing that drives measurable ROI. 500+ successful projects completed.
+                  Transform your business into a digital powerhouse with custom websites, mobile apps, and AI-powered marketing that drives measurable ROI. 500+ successful projects completed.
                 </p>
                 
                                      
@@ -227,7 +227,7 @@ const Hero = () => {
               }}>
                                      <div className="group cursor-pointer flex-1 min-w-[80px]">
                   <div className="text-sm sm:text-base lg:text-lg font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">500+</div>
-                  <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Houston Projects</div>
+                  <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Global Projects</div>
                 </div>
                 <div className="group cursor-pointer flex-1 min-w-[80px]">
                   <div className="text-sm sm:text-base lg:text-lg font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">98%</div>
@@ -235,7 +235,7 @@ const Hero = () => {
                 </div>
                 <div className="group cursor-pointer flex-1 min-w-[80px]">
                   <div className="text-sm sm:text-base lg:text-lg font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">24/7</div>
-                  <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Houston Support</div>
+                  <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Global Support</div>
                 </div>
                    </div>
 
