@@ -16,6 +16,8 @@ import {
 const FloatingActionWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const quickActions = [
     {
@@ -81,6 +83,49 @@ const FloatingActionWidget = () => {
     }
   ];
 
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Handle scroll visibility for mobile
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!isMobile) {
+        setIsVisible(true);
+        return;
+      }
+
+      // Get hero section height (approximately 75vh)
+      const heroHeight = window.innerHeight * 0.75;
+      const scrollY = window.scrollY;
+      
+      // Show widget when scrolled past hero section
+      if (scrollY > heroHeight) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+        // Close widget if it's open when scrolling back to hero
+        if (isOpen) {
+          setIsOpen(false);
+          setIsExpanded(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isMobile, isOpen]);
+
   const handleAction = useCallback((action: string, external: boolean = false) => {
     if (external) {
       window.location.href = action;
@@ -131,8 +176,15 @@ const FloatingActionWidget = () => {
     };
   }, [isOpen]);
 
+  // Don't render if not visible (mobile only)
+  if (!isVisible) {
+    return null;
+  }
+
   return (
-    <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-[9999] floating-widget">
+    <div className={`fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-[9999] floating-widget transition-all duration-500 ease-out ${
+      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+    }`}>
       {/* Main Floating Button */}
       <div className="relative">
         <button
@@ -160,46 +212,46 @@ const FloatingActionWidget = () => {
         </div>
       </div>
 
-              {/* Quick Actions Popup */}
-        {isOpen && (
-          <div className="absolute bottom-20 right-0 w-72 sm:w-80 lg:w-96 transform transition-all duration-300 ease-out scale-100 opacity-100 floating-widget-popup">
+      {/* Quick Actions Popup */}
+      {isOpen && (
+        <div className="absolute bottom-20 right-0 w-72 sm:w-80 lg:w-96 transform transition-all duration-300 ease-out scale-100 opacity-100 floating-widget-popup">
           {/* Popup Container */}
           <div className="border-0 shadow-2xl bg-white/95 backdrop-blur-xl overflow-hidden rounded-xl transform transition-all duration-300 hover:scale-[1.02]">
-                      {/* Enhanced Header */}
-          <div className="bg-gradient-to-r from-green-600 via-green-700 to-green-800 p-4 text-white relative overflow-hidden">
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full -translate-y-16 translate-x-16"></div>
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-green-300 rounded-full translate-y-12 -translate-x-12"></div>
-            </div>
-            
-            <div className="flex items-center justify-between relative z-10">
-              <div>
-                <h3 className="text-lg font-semibold flex items-center">
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  Quick Actions
-                </h3>
-                <p className="text-green-100 text-sm">Get started in seconds</p>
+            {/* Enhanced Header */}
+            <div className="bg-gradient-to-r from-green-600 via-green-700 to-green-800 p-4 text-white relative overflow-hidden">
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full -translate-y-16 translate-x-16"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-green-300 rounded-full translate-y-12 -translate-x-12"></div>
               </div>
-              <div className="flex items-center space-x-2">
-                <button
-                  type="button"
-                  onClick={toggleExpanded}
-                  className="text-white hover:bg-white/20 p-2 rounded-lg transition-all duration-200 hover:scale-110"
-                >
-                  <ChevronUp className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setIsOpen(false)}
-                  className="text-white hover:bg-white/20 p-2 rounded-lg transition-all duration-200 hover:scale-110"
-                  title="Close widget"
-                >
-                  <X className="w-4 h-4" />
-                </button>
+              
+              <div className="flex items-center justify-between relative z-10">
+                <div>
+                  <h3 className="text-lg font-semibold flex items-center">
+                    <MessageCircle className="w-5 h-5 mr-2" />
+                    Quick Actions
+                  </h3>
+                  <p className="text-green-100 text-sm">Get started in seconds</p>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <button
+                    type="button"
+                    onClick={toggleExpanded}
+                    className="text-white hover:bg-white/20 p-2 rounded-lg transition-all duration-200 hover:scale-110"
+                  >
+                    <ChevronUp className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsOpen(false)}
+                    className="text-white hover:bg-white/20 p-2 rounded-lg transition-all duration-200 hover:scale-110"
+                    title="Close widget"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
 
             {/* Content */}
             <div className="p-0">
@@ -319,4 +371,4 @@ const FloatingActionWidget = () => {
   );
 };
 
-export default FloatingActionWidget; 
+export default FloatingActionWidget;
