@@ -116,8 +116,8 @@ const HeroSlider = () => {
     {
       category: "Digital Marketing Excellence",
       headline: {
-        first: "Advanced SEO & Analytics",
-        second: "That Dominate Search Results"
+        first: "SEO That Works",
+        second: "Drives Real Growth"
       },
       description: "Leverage cutting-edge AI technology to optimize your search rankings, track performance metrics, and drive qualified traffic. Our advanced SEO strategies and analytics deliver measurable growth and competitive advantage.",
       cta: "Boost Your Rankings",
