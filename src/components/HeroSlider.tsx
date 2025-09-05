@@ -126,7 +126,7 @@ const HeroSlider = () => {
   ];
   return (
     <>
-      <section className="min-h-[70vh] lg:min-h-[65vh] bg-white flex items-center relative overflow-hidden hero-mobile-padding -mt-8 sm:-mt-12 lg:-mt-16 -mb-8 sm:-mb-12 lg:-mb-16">
+      <section className="min-h-[70vh] lg:min-h-[65vh] bg-white flex items-center relative overflow-hidden hero-mobile-padding -mt-8 sm:-mt-12 lg:-mt-16 -mb-24 sm:-mb-28 lg:-mb-32">
         {/* Animated network background */}
         <div className="absolute inset-0">
           {/* Network grid */}
@@ -215,18 +215,18 @@ const HeroSlider = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 form-container relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[70vh] sm:min-h-[70vh] lg:min-h-[65vh] lg:min-h-[80vh]">
-            <div className="lg:col-span-7 space-y-4 sm:space-y-5 lg:space-y-6">
+            <div className="lg:col-span-7 space-y-5 sm:space-y-6 lg:space-y-7">
               {/* Animated category tag */}
-              <div className={`inline-flex items-center text-xs sm:text-sm font-medium text-green-600 uppercase tracking-wide mb-1 sm:mb-2 animate-fade-in slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}>
-                <div className="w-6 sm:w-8 lg:w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-2 sm:mr-3 lg:mr-4"></div>
+              <div className={`inline-flex items-center text-sm sm:text-base lg:text-lg font-medium text-green-600 uppercase tracking-wide mb-2 sm:mb-3 animate-fade-in slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}>
+                <div className="w-8 sm:w-10 lg:w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-3 sm:mr-4 lg:mr-5"></div>
                 {slides[currentSlide].category}
               </div>
               
               {/* Main headline with staggered animation */}
-              <div className="space-y-3 sm:space-y-4 lg:space-y-5">
-                <h1 className={`text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-gray-900 leading-[1.15] tracking-tight slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}>
-                  <span className="inline-block animate-fade-in my-0 py-0 text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">{slides[currentSlide].headline.first}</span>
-                  <span className="block text-green-600 font-normal text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl animate-slide-forward relative" style={{
+              <div className="space-y-4 sm:space-y-5 lg:space-y-6">
+                <h1 className={`text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-gray-900 leading-[1.15] tracking-tight slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}>
+                  <span className="inline-block animate-fade-in my-0 py-0 text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">{slides[currentSlide].headline.first}</span>
+                  <span className="block text-green-600 font-normal text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl animate-slide-forward relative" style={{
                     animationDelay: '300ms'
                   }}>
                     <span className="text-green-600 relative">
@@ -235,7 +235,7 @@ const HeroSlider = () => {
                   </span>
                 </h1>
                 
-                <p className={`text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-2xl animate-fade-in relative z-10 slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`} style={{
+                <p className={`text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed font-light max-w-2xl animate-fade-in relative z-10 slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`} style={{
                   animationDelay: '500ms',
                   textShadow: '0 0 8px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 255, 255, 0.9), 0 0 24px rgba(255, 255, 255, 0.7)'
                 }}>
@@ -245,21 +245,21 @@ const HeroSlider = () => {
               </div>
               
               {/* CTA Section with hover animations */}
-              <div className="flex justify-start pt-2 sm:pt-3 lg:pt-4">
+              <div className="flex justify-start pt-3 sm:pt-4 lg:pt-5">
                 <Button 
                   onClick={() => {
                     if (currentSlide === 0) window.location.href = '/strategy-call';
                     else if (currentSlide === 1) window.location.href = '/portfolio/abqmri';
                     else window.location.href = '/services/seo-insights';
                   }} 
-                  className={`bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl font-semibold shadow-xl hover:shadow-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto rounded-xl slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}
+                  className={`bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-10 sm:px-12 lg:px-14 py-5 sm:py-6 lg:py-7 text-xl sm:text-2xl lg:text-3xl font-semibold shadow-xl hover:shadow-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto rounded-xl slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}
                 >
                   {slides[currentSlide].cta}
-                  <ArrowRight className="ml-3 w-5 h-5 sm:w-6 sm:h-6" />
+                  <ArrowRight className="ml-4 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
                 </Button>
               </div>
               
-              <p className={`text-xs sm:text-sm text-gray-500 mt-4 sm:mt-5 lg:mt-6 text-center sm:text-left slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}>
+              <p className={`text-sm sm:text-base lg:text-lg text-gray-500 mt-5 sm:mt-6 lg:mt-7 text-center sm:text-left slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}>
                 <span className="text-green-600">{slides[currentSlide].checkmarks[0]}</span> <span className="text-green-600">{slides[currentSlide].checkmarks[1]}</span> <span className="text-green-600">{slides[currentSlide].checkmarks[2]}</span>
               </p>
 
