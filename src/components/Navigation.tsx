@@ -147,7 +147,7 @@ const Navigation = () => {
   return (
     <>
       {/* Topbar - Desktop Only */}
-      <div className="hidden lg:block bg-green-600 text-white fixed top-0 left-0 right-0 z-50">
+      <div className="hidden lg:block bg-green-600 text-white fixed top-0 left-0 right-0 z-[10000]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between py-1">
             <div className="flex items-center space-x-3">
@@ -173,7 +173,7 @@ const Navigation = () => {
         </div>
       </div>
 
-      <nav className="fixed top-0 left-0 right-0 z-40 bg-white border-b border-gray-200 shadow-lg lg:top-8">
+      <nav className="fixed top-0 left-0 right-0 z-[10000] bg-white border-b border-gray-200 shadow-lg lg:top-8">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
