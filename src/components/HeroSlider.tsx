@@ -267,7 +267,7 @@ const HeroSlider = () => {
                     else if (currentSlide === 1) window.location.href = '/portfolio/abqmri';
                     else window.location.href = '/services/seo-insights';
                   }} 
-                  className={`bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 w-full sm:w-auto rounded-xl slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}
+                  className={`bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl font-semibold shadow-xl hover:shadow-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto rounded-xl slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}
                 >
                   {slides[currentSlide].cta}
                   <ArrowRight className="ml-3 w-5 h-5 sm:w-6 sm:h-6" />
@@ -343,13 +343,13 @@ const HeroSlider = () => {
           {/* Premium Form Container with Enhanced Glow */}
           <div className="relative group">
             {/* Always Visible Glow Effect */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-green-400/30 via-green-500/40 to-green-600/30 rounded-3xl blur-2xl opacity-60 animate-pulse"></div>
+            <div className="absolute -inset-4 bg-gradient-to-r from-green-400/30 via-green-500/40 to-green-600/30 rounded-3xl blur-2xl opacity-40 animate-pulse"></div>
             
             {/* Enhanced Hover Glow */}
             <div className="absolute -inset-6 bg-gradient-to-r from-green-400/20 via-green-500/30 to-green-600/20 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
             
             {/* Main form card with enhanced styling */}
-            <div className="relative bg-white/95 backdrop-blur-2xl border border-green-200/50 rounded-2xl shadow-2xl overflow-hidden transform group-hover:scale-[1.02] transition-all duration-500">
+            <div className="relative bg-white/95 backdrop-blur-2xl border border-green-200/50 rounded-2xl shadow-lg overflow-hidden transform group-hover:scale-[1.02] transition-all duration-500">
               {/* Enhanced accent top border */}
               <div className="h-2 bg-gradient-to-r from-green-400 via-green-500 to-green-600 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-pulse"></div>
@@ -459,7 +459,7 @@ const HeroSlider = () => {
                       <Button 
                         type="submit" 
                         disabled={isSubmitting}
-                        className="w-full h-12 sm:h-14 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-xl relative overflow-hidden group/btn"
+                        className="w-full h-12 sm:h-14 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold shadow-xl hover:shadow-lg transition-all duration-300 hover:scale-105 rounded-xl relative overflow-hidden group/btn"
                       >
                         {isSubmitting ? (
                           <div className="flex items-center justify-center">
