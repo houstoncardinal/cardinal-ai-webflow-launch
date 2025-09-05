@@ -1,441 +1,305 @@
-import { Code, Smartphone, Globe, BarChart3, Palette, Share2, Search, Zap, TrendingUp, Users } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Link } from "react-router-dom";
+import { Code, Smartphone, Search, Palette, ShoppingCart, BarChart3, MessageCircle, Zap, Shield, Clock, TrendingUp, Brain, Network, Cpu, Globe, Users, Award, CheckCircle, XCircle, Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+
 const Services = () => {
   const services = [
     {
       icon: Code,
-      category: "WEB DEVELOPMENT",
-      title: "Custom Website Development",
-      description: "Professional, responsive websites built with modern technologies. From simple business sites to complex e-commerce platforms, we create digital experiences that convert visitors into customers.",
-      gradient: "from-blue-500/10 via-cyan-400/15 to-blue-600/10",
-      accentColor: "text-blue-600",
-      glowColor: "blue-500/20",
-      link: "/services/web-development"
+      title: "Web Development",
+      description: "Custom websites built with cutting-edge technology and optimized for performance",
+      features: ["Responsive Design", "SEO Optimized", "Fast Loading", "Mobile-First"],
+      price: "Starting at $2,500",
+      gradient: "from-blue-500 to-purple-600"
     },
     {
       icon: Smartphone,
-      category: "MOBILE APPS",
-      title: "Mobile & Web Applications",
-      description: "Custom mobile apps and web applications that streamline your business operations. Built for performance, scalability, and exceptional user experience across all devices and platforms.",
-      gradient: "from-emerald-500/10 via-green-400/15 to-emerald-600/10",
-      accentColor: "text-emerald-600",
-      glowColor: "emerald-500/20",
-      link: "/services/mobile-applications"
-    },
-    {
-      icon: Globe,
-      category: "WEB APPLICATIONS",
-      title: "Custom Web Applications",
-      description: "Complex web applications with enterprise architecture and modern frameworks. Built to streamline operations and boost efficiency for businesses of all sizes and industries.",
-      gradient: "from-purple-500/10 via-violet-400/15 to-purple-600/10",
-      accentColor: "text-purple-600",
-      glowColor: "purple-500/20",
-      link: "/services/web-applications"
-    },
-    {
-      icon: Zap,
-      category: "CLOUD SOLUTIONS",
-      title: "Cloud Infrastructure Solutions",
-      description: "Scalable, secure cloud hosting solutions with enterprise-level reliability and performance. Optimized for security, speed, and cost-effectiveness across all business types.",
-      gradient: "from-amber-500/10 via-yellow-400/15 to-amber-600/10",
-      accentColor: "text-amber-600",
-      glowColor: "amber-500/20",
-      link: "/services/cloud-solutions"
+      title: "Mobile App Development",
+      description: "Native and cross-platform mobile applications that deliver exceptional user experiences",
+      features: ["iOS & Android", "Cross-Platform", "App Store Ready", "Push Notifications"],
+      price: "Starting at $5,000",
+      gradient: "from-green-500 to-teal-600"
     },
     {
       icon: Search,
-      category: "SEO & ANALYTICS",
-      title: "SEO & Analytics Services",
-      description: "Comprehensive SEO optimization and analytics solutions that drive real results. Help businesses rank higher in search results and drive more qualified traffic to their websites.",
-      gradient: "from-rose-500/10 via-pink-400/15 to-rose-600/10",
-      accentColor: "text-rose-600",
-      glowColor: "rose-500/20",
-      link: "/services/seo-insights"
+      title: "SEO & Digital Marketing",
+      description: "AI-powered SEO strategies and digital marketing campaigns that drive real results",
+      features: ["AI-Powered SEO", "Local SEO", "PPC Campaigns", "Analytics"],
+      price: "Starting at $1,500",
+      gradient: "from-orange-500 to-red-600"
     },
     {
       icon: Palette,
-      category: "BRAND STRATEGY",
-      title: "Brand Identity & Strategy",
-      description: "Complete brand development from positioning to visual identity and marketing materials. Help businesses stand out in their market with memorable brand experiences.",
-      gradient: "from-indigo-500/10 via-blue-400/15 to-indigo-600/10",
-      accentColor: "text-indigo-600",
-      glowColor: "indigo-500/20",
-      link: "/services/brand-identity"
+      title: "Brand Identity",
+      description: "Complete brand identity packages that make your business stand out from the competition",
+      features: ["Logo Design", "Brand Guidelines", "Business Cards", "Marketing Materials"],
+      price: "Starting at $1,200",
+      gradient: "from-pink-500 to-rose-600"
     },
     {
-      icon: Share2,
-      category: "DIGITAL MARKETING",
-      title: "Digital Marketing Strategies",
-      description: "Data-driven digital marketing strategies that deliver measurable results and ROI. PPC, social media, and content marketing campaigns that drive qualified leads.",
-      gradient: "from-teal-500/10 via-cyan-400/15 to-teal-600/10",
-      accentColor: "text-teal-600",
-      glowColor: "teal-500/20",
-      link: "/services/digital-campaigns"
+      icon: ShoppingCart,
+      title: "E-commerce Solutions",
+      description: "Full-featured online stores with secure payment processing and inventory management",
+      features: ["Payment Gateway", "Inventory Management", "Order Tracking", "Analytics"],
+      price: "Starting at $3,500",
+      gradient: "from-purple-500 to-indigo-600"
     },
     {
       icon: BarChart3,
-      category: "AI OPTIMIZATION",
-      title: "AI Experience Optimization",
-      description: "Pioneer AEO services optimizing for next-generation AI systems and search engines. Future-proof your business with AI-ready content and intelligent user experiences.",
-      gradient: "from-violet-500/10 via-purple-400/15 to-violet-600/10",
-      accentColor: "text-violet-600",
-      glowColor: "violet-500/20",
-      link: "/services/experience-optimization"
+      title: "Analytics & Insights",
+      description: "Comprehensive analytics and business intelligence solutions for data-driven decisions",
+      features: ["Custom Dashboards", "Real-time Data", "Predictive Analytics", "Reports"],
+      price: "Starting at $2,000",
+      gradient: "from-cyan-500 to-blue-600"
     }
   ];
+
+  const advantages = [
+    {
+      icon: Zap,
+      title: "Lightning Fast Delivery",
+      description: "72 hours to 2 weeks vs 3-6 months",
+      highlight: "10x Faster"
+    },
+    {
+      icon: MessageCircle,
+      title: "Instant Support",
+      description: "Instant to 2 hours vs 24-48 hours",
+      highlight: "24x Faster"
+    },
+    {
+      icon: Brain,
+      title: "AI-Powered Solutions",
+      description: "Cutting-edge AI integration",
+      highlight: "Future-Ready"
+    },
+    {
+      icon: Shield,
+      title: "98% Success Rate",
+      description: "vs 85% industry average",
+      highlight: "+13% Higher"
+    }
+  ];
+
   return (
-    <section id="services" className="pt-12 sm:pt-16 lg:pt-20 pb-0 bg-white relative overflow-hidden">
-      {/* Subtle background elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-green-400 to-blue-500 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-4xl mb-12 sm:mb-16 lg:mb-20">
-          <div className="inline-flex items-center text-xs sm:text-sm font-medium text-gray-600 uppercase tracking-wide mb-4 sm:mb-6">
-            <div className="w-8 sm:w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-4 sm:mr-6"></div>
-            Digital Services
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="relative py-20 sm:py-24 lg:py-32 bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16 sm:mb-20">
+            <div className="inline-flex items-center text-sm font-medium text-blue-600 uppercase tracking-wide mb-4">
+              <div className="w-8 h-px bg-gradient-to-r from-blue-500 to-blue-600 mr-4"></div>
+              Our Services
+            </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light text-gray-900 mb-6 leading-tight">
+              Digital Solutions That
+              <span className="block text-blue-600 font-normal">Drive Business Growth</span>
+            </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              From custom web development to AI-powered marketing, we deliver comprehensive digital solutions that transform businesses and drive measurable results.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light text-gray-900 mb-4 sm:mb-6 lg:mb-8 leading-tight">
-            Digital solutions that
-            <span className="block text-green-600 font-normal">
-              grow your business
-            </span>
-          </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-3xl">
-            We deliver end-to-end digital solutions designed to transform businesses. 
-            From custom websites to comprehensive digital marketing, we help companies 
-            dominate their market and drive sustainable growth.
-          </p>
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-          {services.map((service, index) => (
-            <Link key={index} to={service.link} className="group relative block">
-              {/* Subtle luxury glow - much more refined */}
-              <div className={`absolute -inset-0.5 bg-gradient-to-r ${service.gradient} rounded-2xl opacity-0 group-hover:opacity-60 transition-all duration-700 blur-sm`}></div>
-              
-              {/* Glass morphism effect */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-white/5 to-transparent rounded-2xl backdrop-blur-[2px]"></div>
-                <div className="absolute inset-[1px] bg-gradient-to-br from-white/20 via-transparent to-white/10 rounded-2xl"></div>
-              </div>
-              
-              {/* Shimmer effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 rounded-2xl overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1500 ease-out"></div>
-              </div>
-              
-              <Card className="relative h-full min-h-[380px] sm:min-h-[420px] bg-white/95 backdrop-blur-sm border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-700 cursor-pointer group-hover:scale-[1.02] rounded-2xl overflow-hidden">
-                {/* Refined hover background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-40 transition-all duration-700`}></div>
+      {/* Services Grid */}
+      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {services.map((service, index) => (
+              <Card key={index} className="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                {/* Gradient Background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
                 
-                <CardContent className="p-4 sm:p-6 lg:p-8 h-full flex flex-col justify-between relative z-10">
-                  <div>
-                    {/* Category badge */}
-                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-3 sm:mb-4 opacity-70">
-                      {service.category}
-                    </div>
-                    
-                    {/* Icon with subtle glow */}
-                    <div className="mb-4 sm:mb-6 relative">
-                      <div className={`w-12 h-12 sm:w-14 sm:h-14 ${service.accentColor} relative group-hover:scale-110 transition-all duration-500`}>
-                        <service.icon className="w-full h-full" strokeWidth={1.5} />
-                        {/* Very subtle icon glow */}
-                        <div className={`absolute inset-0 bg-${service.glowColor} opacity-0 group-hover:opacity-30 blur-lg transition-all duration-500 rounded-full`}></div>
-                      </div>
-                    </div>
-                    
-                    {/* Title with consistent sizing */}
-                    <h3 className={`text-base sm:text-lg lg:text-xl font-semibold text-gray-900 mb-3 sm:mb-4 group-hover:${service.accentColor} transition-colors duration-500 leading-tight min-h-[48px] sm:min-h-[56px] flex items-center`}>
-                      {service.title}
-                    </h3>
+                {/* Content */}
+                <div className="relative p-6 sm:p-8">
+                  {/* Icon */}
+                  <div className={`inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br ${service.gradient} text-white mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <service.icon className="w-6 h-6 sm:w-7 sm:h-7" />
                   </div>
                   
-                  {/* Description with consistent height */}
-                  <div className="flex-1 flex flex-col justify-between">
-                    <p className="text-gray-600 text-xs sm:text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300 min-h-[80px] sm:min-h-[96px] flex items-start">
-                      {service.description}
-                    </p>
-                    
-                    {/* Learn more indicator - now just visual since entire card is clickable */}
-                    <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-gray-100">
-                      <div className={`inline-flex items-center text-xs sm:text-sm font-medium ${service.accentColor} group-hover:translate-x-1 transition-all duration-300`}>
-                        Learn more
-                        <svg className="ml-2 w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
+                  {/* Title */}
+                  <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3 sm:mb-4 group-hover:text-gray-700 transition-colors">
+                    {service.title}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed">
+                    {service.description}
+                  </p>
+                  
+                  {/* Features */}
+                  <div className="space-y-2 mb-4 sm:mb-6">
+                    {service.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center text-sm text-gray-600">
+                        <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                        {feature}
                       </div>
-                    </div>
+                    ))}
                   </div>
                   
-                  {/* Subtle progress indicator */}
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-100">
-                    <div className={`h-full bg-gradient-to-r ${service.gradient} w-0 group-hover:w-full transition-all duration-1000 ease-out`}></div>
+                  {/* Price */}
+                  <div className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 sm:mb-6">
+                    {service.price}
                   </div>
-                </CardContent>
+                  
+                  {/* CTA Button */}
+                  <Button className={`w-full bg-gradient-to-r ${service.gradient} hover:opacity-90 text-white font-semibold py-3 sm:py-4 rounded-xl transition-all duration-300 group-hover:scale-105`}>
+                    Get Started
+                  </Button>
+                </div>
               </Card>
-            </Link>
-          ))}
+            ))}
+          </div>
         </div>
+      </section>
 
-        {/* The Cardinal Advantage - Green Background Design */}
-        <div className="relative w-screen left-1/2 -ml-[50vw] mt-20 sm:mt-24 lg:mt-32 pt-8 sm:pt-12 lg:pt-16 pb-0 bg-gradient-to-br from-green-600 to-emerald-700 overflow-hidden" style={{marginBottom: '0'}}>
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
+      {/* The Cardinal Advantage - Simplified Mobile-Friendly Design */}
+      <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-green-600 to-emerald-700 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-12 sm:mb-16">
+            <div className="inline-flex items-center text-sm font-medium text-green-100 uppercase tracking-wide mb-3 sm:mb-4">
+              <div className="w-8 h-px bg-gradient-to-r from-white to-green-200 mr-4"></div>
+              The Cardinal Advantage
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white mb-3 sm:mb-4">
+              Why Businesses Choose
+              <span className="block text-green-200 font-normal">Cardinal Consulting</span>
+            </h2>
+            <p className="text-sm sm:text-base text-green-100 max-w-2xl mx-auto">
+              We're not just another agency. We're your premier digital partner, combining cutting-edge AI technology with deep market expertise to deliver results that traditional agencies simply can't match.
+            </p>
           </div>
           
-          <div className="relative z-10 px-4 sm:px-6 lg:px-8">
-            {/* Section Header */}
-            <div className="text-center mb-6 sm:mb-8">
-              <div className="inline-flex items-center text-xs sm:text-sm font-medium text-green-100 uppercase tracking-wide mb-2 sm:mb-3">
-                <div className="w-6 sm:w-8 h-px bg-gradient-to-r from-white to-green-200 mr-3 sm:mr-4"></div>
-                The Cardinal Advantage
-              </div>
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-light text-white mb-2 sm:mb-3">
-                Why Houston Businesses Choose
-                <span className="block text-green-200 font-normal">Cardinal Consulting</span>
-              </h3>
-              <p className="text-sm sm:text-base text-green-100">
-                We're not just another agency. We're Houston's premier digital partner, combining cutting-edge AI technology with deep local market expertise to deliver results that traditional agencies simply can't match.
-              </p>
-            </div>
-            
-            {/* Enhanced Comparison Table */}
-            <div className="max-w-7xl mx-auto bg-white rounded-2xl shadow-2xl border border-white/20 overflow-hidden">
-              {/* Table Header */}
-              <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 border-b border-gray-200">
-                <div className="grid grid-cols-4 gap-2 sm:gap-4 lg:gap-6">
-                  <div className="text-left">
-                    <h4 className="text-xs sm:text-sm lg:text-base font-semibold text-gray-900">Cardinal's Unique Advantages</h4>
+          {/* Simplified Comparison - Mobile-First Design */}
+          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+            {/* Mobile-First Comparison Cards */}
+            <div className="p-4 sm:p-6 lg:p-8">
+              <div className="space-y-4 sm:space-y-6">
+                {advantages.map((advantage, index) => (
+                  <div key={index} className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-4 sm:p-6 border border-gray-100 hover:shadow-lg transition-all duration-300">
+                    <div className="flex items-start space-x-4">
+                      {/* Icon */}
+                      <div className="flex-shrink-0">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center">
+                          <advantage.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                        </div>
+                      </div>
+                      
+                      {/* Content */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
+                          <div className="flex-1">
+                            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-1">
+                              {advantage.title}
+                            </h3>
+                            <p className="text-sm text-gray-600">
+                              {advantage.description}
+                            </p>
+                          </div>
+                          
+                          {/* Highlight Badge */}
+                          <div className="flex-shrink-0">
+                            <Badge className="bg-green-100 text-green-800 border-green-200 px-3 py-1 text-xs sm:text-sm font-medium">
+                              {advantage.highlight}
+                            </Badge>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-center">
-                    <h4 className="text-xs sm:text-sm lg:text-base font-semibold text-gray-900">Traditional Agencies</h4>
-                  </div>
-                  <div className="text-center">
-                    <h4 className="text-xs sm:text-sm lg:text-base font-semibold text-green-600">Cardinal Consulting</h4>
-                  </div>
-                  <div className="text-center">
-                    <h4 className="text-xs sm:text-sm lg:text-base font-semibold text-gray-900">The Difference</h4>
-                  </div>
-                </div>
+                ))}
               </div>
               
-              {/* Table Rows */}
-              <div className="divide-y divide-gray-100">
-                {/* AI Optimization */}
-                <div className="px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 hover:bg-gray-50/50 transition-colors">
-                  <div className="grid grid-cols-4 gap-2 sm:gap-4 lg:gap-6 items-center">
-                    <div className="text-left">
-                      <h5 className="text-xs sm:text-sm lg:text-base font-medium text-gray-900">AI Experience Optimization (AEO)</h5>
-                      <p className="text-xs text-gray-600 mt-1">Future-proof content for AI search engines</p>
-                    </div>
-                                          <div className="text-center">
-                        <div className="flex justify-center">
-                          <svg className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
-                          </svg>
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <div className="flex justify-center">
-                          <svg className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <span className="inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs font-medium bg-violet-100 text-violet-800">
-                          Industry First
-                        </span>
-                      </div>
-                  </div>
-                </div>
-                
-                {/* Houston Market Expertise */}
-                <div className="px-6 sm:px-8 py-4 sm:py-6 hover:bg-gray-50/50 transition-colors">
-                  <div className="grid grid-cols-4 gap-4 sm:gap-6 items-center">
-                    <div className="text-left">
-                      <h5 className="text-sm sm:text-base font-medium text-gray-900">Houston Market Specialization</h5>
-                      <p className="text-xs sm:text-sm text-gray-600 mt-1">Deep understanding of Texas business landscape</p>
-                    </div>
-                    <div className="text-center">
-                      <span className="text-sm sm:text-base text-gray-600">Generic</span>
-                    </div>
-                    <div className="text-center">
-                      <span className="text-sm sm:text-base font-semibold text-green-600">Specialized</span>
-                    </div>
-                    <div className="text-center">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-blue-100 text-blue-800">
-                        Local Expert
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Project Timeline */}
-                <div className="px-6 sm:px-8 py-4 sm:py-6 hover:bg-gray-50/50 transition-colors">
-                  <div className="grid grid-cols-4 gap-4 sm:gap-6 items-center">
-                    <div className="text-left">
-                      <h5 className="text-sm sm:text-base font-medium text-gray-900">Project Delivery Timeline</h5>
-                      <p className="text-xs sm:text-sm text-gray-600 mt-1">From concept to launch</p>
-                    </div>
-                    <div className="text-center">
-                      <span className="text-sm sm:text-base text-gray-600">3-6 months</span>
-                    </div>
-                    <div className="text-center">
-                      <span className="text-sm sm:text-base font-semibold text-green-600">72 hours - 2 weeks</span>
-                    </div>
-                    <div className="text-center">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-emerald-100 text-emerald-800">
-                        10x Faster
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Support Availability */}
-                <div className="px-6 sm:px-8 py-4 sm:py-6 hover:bg-gray-50/50 transition-colors">
-                  <div className="grid grid-cols-4 gap-4 sm:gap-6 items-center">
-                    <div className="text-left">
-                      <h5 className="text-sm sm:text-base font-medium text-gray-900">Support Response Time</h5>
-                      <p className="text-xs sm:text-sm text-gray-600 mt-1">When you need immediate assistance</p>
-                    </div>
-                    <div className="text-center">
-                      <span className="text-sm sm:text-base text-gray-600">24-48 hours</span>
-                    </div>
-                    <div className="text-center">
-                      <span className="text-sm sm:text-base font-semibold text-green-600">Instant - 2 hours</span>
-                    </div>
-                    <div className="text-center">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-green-100 text-green-800">
-                        24x Faster
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Technology Stack */}
-                <div className="px-6 sm:px-8 py-4 sm:py-6 hover:bg-gray-50/50 transition-colors">
-                  <div className="grid grid-cols-4 gap-4 sm:gap-6 items-center">
-                    <div className="text-left">
-                      <h5 className="text-sm sm:text-base font-medium text-gray-900">Cutting-Edge Technology</h5>
-                      <p className="text-xs sm:text-sm text-gray-600 mt-1">Latest frameworks and AI integration</p>
-                    </div>
-                    <div className="text-center">
-                      <span className="text-sm sm:text-base text-gray-600">Standard</span>
-                    </div>
-                    <div className="text-center">
-                      <span className="text-sm sm:text-base font-semibold text-green-600">AI-Powered</span>
-                    </div>
-                    <div className="text-center">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-purple-100 text-purple-800">
-                        Future-Ready
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Client Success Rate */}
-                <div className="px-6 sm:px-8 py-4 sm:py-6 hover:bg-gray-50/50 transition-colors">
-                  <div className="grid grid-cols-4 gap-4 sm:gap-6 items-center">
-                    <div className="text-left">
-                      <h5 className="text-sm sm:text-base font-medium text-gray-900">Client Success Rate</h5>
-                      <p className="text-xs sm:text-sm text-gray-600 mt-1">Projects completed successfully</p>
-                    </div>
-                    <div className="text-center">
-                      <span className="text-sm sm:text-base text-gray-600">85%</span>
-                    </div>
-                    <div className="text-center">
-                      <span className="text-sm sm:text-base font-semibold text-green-600">98%</span>
-                    </div>
-                    <div className="text-center">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-green-100 text-green-800">
-                        +13% Higher
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Pricing Transparency */}
-                <div className="px-6 sm:px-8 py-4 sm:py-6 hover:bg-gray-50/50 transition-colors">
-                  <div className="grid grid-cols-4 gap-4 sm:gap-6 items-center">
-                    <div className="text-left">
-                      <h5 className="text-sm sm:text-base font-medium text-gray-900">Pricing Transparency</h5>
-                      <p className="text-xs sm:text-sm text-gray-600 mt-1">No hidden fees or surprise charges</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="flex justify-center">
-                        <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <div className="flex justify-center">
-                        <svg className="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-green-100 text-green-800">
-                        Full Transparency
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Performance Guarantees */}
-                <div className="px-6 sm:px-8 py-4 sm:py-6 hover:bg-gray-50/50 transition-colors">
-                  <div className="grid grid-cols-4 gap-4 sm:gap-6 items-center">
-                    <div className="text-left">
-                      <h5 className="text-sm sm:text-base font-medium text-gray-900">Performance Guarantees</h5>
-                      <p className="text-xs sm:text-sm text-gray-600 mt-1">Guaranteed results or money back</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="flex justify-center">
-                        <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <div className="flex justify-center">
-                        <svg className="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-green-100 text-green-800">
-                        Risk-Free
-                      </span>
-                    </div>
-                  </div>
-                </div>
+              {/* CTA Section */}
+              <div className="mt-8 sm:mt-10 text-center">
+                <Button className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-xl">
+                  Experience the Cardinal Difference
+                  <Award className="ml-3 w-5 h-5" />
+                </Button>
               </div>
-            </div>
-            
-            {/* Simple Text CTA */}
-            <div className="text-center mt-6 sm:mt-8 mb-6 sm:mb-8">
-              <p className="text-green-100 text-base sm:text-lg lg:text-xl mb-2 sm:mb-3 px-4">
-                Ready to experience the Cardinal difference?
-              </p>
-              <a href="/contact" className="inline-flex items-center text-white font-semibold text-base sm:text-lg lg:text-xl hover:text-green-200 transition-colors duration-300 underline decoration-2 underline-offset-4 hover:decoration-green-200 px-4 text-center">
-                Get your FREE consultation and project evaluation today
-                <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white mb-4">
+              Trusted by Businesses Worldwide
+            </h2>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+              Our track record speaks for itself with measurable results and satisfied clients across industries.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <div className="text-center group">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-light text-white mb-2 group-hover:text-green-400 transition-colors duration-300">500+</div>
+              <div className="text-sm sm:text-base text-gray-400 uppercase tracking-wide">Projects Delivered</div>
+            </div>
+            <div className="text-center group">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-light text-white mb-2 group-hover:text-green-400 transition-colors duration-300">98%</div>
+              <div className="text-sm sm:text-base text-gray-400 uppercase tracking-wide">Client Satisfaction</div>
+            </div>
+            <div className="text-center group">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-light text-white mb-2 group-hover:text-green-400 transition-colors duration-300">24/7</div>
+              <div className="text-sm sm:text-base text-gray-400 uppercase tracking-wide">Global Support</div>
+            </div>
+            <div className="text-center group">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-light text-white mb-2 group-hover:text-green-400 transition-colors duration-300">50+</div>
+              <div className="text-sm sm:text-base text-gray-400 uppercase tracking-wide">Enterprise Clients</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-blue-600 to-purple-700 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
+        </div>
+        
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white mb-4 sm:mb-6">
+            Ready to Transform Your Business?
+          </h2>
+          <p className="text-lg sm:text-xl text-blue-100 mb-8 sm:mb-10 max-w-2xl mx-auto">
+            Let's discuss your project and create a custom solution that drives real results for your business.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+            <Button className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-xl">
+              Get Free Consultation
+              <MessageCircle className="ml-3 w-5 h-5" />
+            </Button>
+            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-105 rounded-xl">
+              View Our Portfolio
+              <Star className="ml-3 w-5 h-5" />
+            </Button>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 

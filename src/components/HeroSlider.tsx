@@ -229,7 +229,7 @@ const HeroSlider = () => {
                   }}>
                     <span className="text-green-600 relative">
                       {slides[currentSlide].headline.second}
-                      <svg className="absolute -bottom-2 left-0 w-full h-4 animate-draw-underline" viewBox="0 0 100 20" preserveAspectRatio="none">
+                      <svg className="absolute -bottom-2 left-0 w-auto h-3 sm:h-4 animate-draw-underline max-w-full" viewBox="0 0 100 15" preserveAspectRatio="none">
                         <path 
                           d="M0,10 Q25,5 50,10 T100,10" 
                           stroke="url(#underlineGradient)" 
