@@ -263,23 +263,6 @@ const HeroSlider = () => {
                 <span className="text-green-600">{slides[currentSlide].checkmarks[0]}</span> <span className="text-green-600">{slides[currentSlide].checkmarks[1]}</span> <span className="text-green-600">{slides[currentSlide].checkmarks[2]}</span>
               </p>
 
-              {/* Animated stats */}
-              <div className={`flex flex-wrap gap-4 sm:gap-6 lg:gap-12 pt-4 sm:pt-5 lg:pt-6 pb-12 border-t border-gray-200 min-h-[80px] sm:min-h-[90px] lg:min-h-[100px] hero-stats-container animate-fade-in slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`} style={{
-                animationDelay: '1000ms'
-              }}>
-                <div className="group cursor-pointer w-1/3 min-w-[80px] max-w-[120px] hero-stats-item">
-                  <div className="text-sm sm:text-base lg:text-lg font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">500+</div>
-                  <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Global Projects</div>
-                </div>
-                <div className="group cursor-pointer w-1/3 min-w-[80px] max-w-[120px] hero-stats-item">
-                  <div className="text-sm sm:text-base lg:text-lg font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">98%</div>
-                  <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Client Satisfaction</div>
-                </div>
-                <div className="group cursor-pointer w-1/3 min-w-[80px] max-w-[120px] hero-stats-item">
-                  <div className="text-sm sm:text-base lg:text-lg font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">24/7</div>
-                  <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Global Support</div>
-                </div>
-              </div>
             </div>
 
             {/* Enhanced geometric element with animations - Hidden on mobile, visible on larger screens */}
