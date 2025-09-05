@@ -100,7 +100,8 @@ const HeroSlider = () => {
         second: "That Drive Global Success"
       },
       description: "Transform your business into a digital powerhouse with custom websites, mobile applications, and AI-powered solutions that deliver measurable ROI. Serving clients worldwide with 500+ successful projects completed.",
-      cta: "Start Your Project"
+      cta: "Start Your Project",
+      checkmarks: ["✓ No obligation", "✓ Free consultation", "✓ 100% custom"]
     },
     {
       category: "Client Success Story",
@@ -109,7 +110,8 @@ const HeroSlider = () => {
         second: "300% Revenue Growth"
       },
       description: "See how we transformed ABQ MRI's digital presence, resulting in 300% revenue growth and 500% increase in online bookings through strategic web design, SEO optimization, and custom patient portal development.",
-      cta: "View Case Study"
+      cta: "View Case Study",
+      checkmarks: ["✓ Real results", "✓ Proven success", "✓ Detailed case study"]
     },
     {
       category: "Digital Marketing Excellence",
@@ -118,10 +120,10 @@ const HeroSlider = () => {
         second: "That Dominate Search Results"
       },
       description: "Leverage cutting-edge AI technology to optimize your search rankings, track performance metrics, and drive qualified traffic. Our advanced SEO strategies and analytics deliver measurable growth and competitive advantage.",
-      cta: "Boost Your Rankings"
+      cta: "Boost Your Rankings",
+      checkmarks: ["✓ AI-powered", "✓ Data-driven", "✓ Measurable results"]
     }
   ];
-
   return (
     <>
       <section className="min-h-[75vh] bg-white flex items-center relative overflow-hidden hero-mobile-padding pb-8 sm:pt-16 lg:pt-20 sm:pb-12">
@@ -275,7 +277,7 @@ const HeroSlider = () => {
               </div>
               
               <p className={`text-xs sm:text-sm text-gray-500 mt-4 sm:mt-5 lg:mt-6 text-center sm:text-left slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}>
-                <span className="text-green-600">✓</span> No obligation <span className="text-green-600">✓</span> No purchase necessary <span className="text-green-600">✓</span> 100% free
+                <span className="text-green-600">{slides[currentSlide].checkmarks[0]}</span> <span className="text-green-600">{slides[currentSlide].checkmarks[1]}</span> <span className="text-green-600">{slides[currentSlide].checkmarks[2]}</span>
               </p>
 
               {/* Animated stats */}
