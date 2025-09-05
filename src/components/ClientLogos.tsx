@@ -60,7 +60,7 @@ const ClientLogos = () => {
   ];
 
   return (
-    <section className="relative pt-40 sm:pt-44 pb-20 sm:pb-24 bg-gradient-to-b from-white to-gray-50/50 overflow-hidden">
+    <section className="relative pt-24 sm:pt-28 pb-12 sm:pb-16 bg-gradient-to-b from-white to-gray-50/50 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-br from-green-400/10 to-blue-500/10 rounded-full blur-2xl sm:blur-3xl"></div>
@@ -69,12 +69,12 @@ const ClientLogos = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-12">
-          <div className="inline-flex items-center text-xs font-medium text-gray-600 uppercase tracking-wide mb-3 sm:mb-4">
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="inline-flex items-center text-xs font-medium text-gray-600 uppercase tracking-wide mb-2 sm:mb-3">
             <div className="w-6 sm:w-8 h-px bg-gradient-to-r from-green-500 to-green-600 mr-3 sm:mr-4"></div>
             Trusted By Industry Leaders
           </div>
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-light text-gray-900 mb-3 sm:mb-4">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-light text-gray-900 mb-2 sm:mb-3">
             Companies that trust us to
             <span className="block text-green-600 font-normal">deliver results</span>
           </h2>
@@ -126,7 +126,7 @@ const ClientLogos = () => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200/50">
-          <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 px-4">
+          <p className="text-sm sm:text-base text-gray-600 mb-2 sm:mb-3 px-4">
             Ready to join these industry leaders?
           </p>
           <a href="/contact" className="inline-flex items-center text-sm font-medium text-green-600 hover:text-green-700 transition-colors duration-300 group cursor-pointer">

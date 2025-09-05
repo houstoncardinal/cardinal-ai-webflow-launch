@@ -430,7 +430,7 @@
 /* Ensure form floats properly */
 .floating-form {
   position: absolute !important;
-  bottom: -6rem !important;
+  bottom: -4rem !important;
   left: 0 !important;
   right: 0 !important;
   transform: none !important;
@@ -467,17 +467,33 @@
 @media (min-width: 1024px) {
   .floating-form {
     top: auto !important;
-    bottom: -6rem !important;
+    bottom: -4rem !important;
     margin-top: 0 !important;
-    margin-bottom: 6.25rem !important;
+    margin-bottom: 4rem !important;
   }
 }
 
 @media (max-width: 1023px) {
   .floating-form {
     top: auto !important;
-    bottom: -6rem !important;
+    bottom: -4rem !important;
     margin-top: 0 !important;
-    margin-bottom: 6.25rem !important;
+    margin-bottom: 4rem !important;
+  }
+}
+
+/* Mobile-specific form optimization */
+@media (max-width: 640px) {
+  .floating-form {
+    bottom: -3rem !important;
+    margin-bottom: 3rem !important;
+  }
+}
+
+/* Tablet-specific form optimization */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .floating-form {
+    bottom: -4rem !important;
+    margin-bottom: 4rem !important;
   }
 }
