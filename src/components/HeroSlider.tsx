@@ -106,8 +106,8 @@ const HeroSlider = () => {
     {
       category: "Client Success Story",
       headline: {
-        first: "ABQ MRI Transformation",
-        second: "300% Revenue Growth"
+        first: "Healthcare Digital Success",
+        second: "That Drive Real Results"
       },
       description: "See how we transformed ABQ MRI's digital presence, resulting in 300% revenue growth and 500% increase in online bookings through strategic web design, SEO optimization, and custom patient portal development.",
       cta: "View Case Study",
@@ -116,7 +116,7 @@ const HeroSlider = () => {
     {
       category: "Digital Marketing Excellence",
       headline: {
-        first: "AI-Powered SEO & Analytics",
+        first: "Advanced SEO & Analytics",
         second: "That Dominate Search Results"
       },
       description: "Leverage cutting-edge AI technology to optimize your search rankings, track performance metrics, and drive qualified traffic. Our advanced SEO strategies and analytics deliver measurable growth and competitive advantage.",
