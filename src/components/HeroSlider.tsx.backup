@@ -7,7 +7,6 @@ const HeroSlider = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,28 +14,14 @@ const HeroSlider = () => {
     service: ''
   });
 
-  // Auto-slide every 6 seconds with smooth transitions
+  // Auto-slide every 6 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentSlide((prev) => (prev === 0 ? 1 : 0));
-        setIsTransitioning(false);
-      }, 300);
+      setCurrentSlide((prev) => (prev === 0 ? 1 : 0));
     }, 6000);
 
     return () => clearInterval(interval);
   }, []);
-
-  const handleSlideChange = (newSlide: number) => {
-    if (newSlide !== currentSlide && !isTransitioning) {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentSlide(newSlide);
-        setIsTransitioning(false);
-      }, 300);
-    }
-  };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,6 +59,7 @@ const HeroSlider = () => {
         throw new Error('Form submission failed');
       }
     } catch (error) {
+      console.error('Error submitting form:', error);
       toast({
         title: "Submission failed",
         description: "Please try again or contact us directly.",
@@ -85,14 +71,14 @@ const HeroSlider = () => {
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
   const slides = [
+    // Original Hero
     {
       category: "Houston's Premier Digital Agency",
       headline: {
@@ -102,20 +88,21 @@ const HeroSlider = () => {
       description: "Transform your Houston business into a digital powerhouse with custom websites, mobile apps, and AI-powered marketing that drives measurable ROI. 500+ successful projects completed.",
       cta: "Book Free Strategy Call"
     },
+    // Client Success Story Hero
     {
       category: "Client Success Story",
       headline: {
-        first: "ABQ MRI Case Study",
-        second: "300% Revenue Growth"
+        first: "How We Helped ABQ MRI",
+        second: "Increase Revenue by 300%"
       },
-      description: "See how we transformed ABQ MRI's digital presence, resulting in 300% revenue growth and 500% increase in online bookings through strategic web design and SEO optimization.",
+      description: "ABQ MRI's new website and mobile app transformed their patient experience, streamlined scheduling, and drove unprecedented growth. See how we delivered measurable results.",
       cta: "View Case Study"
     }
   ];
 
   return (
     <>
-      <section className="min-h-[75vh] bg-white flex items-center relative overflow-hidden hero-mobile-padding pb-8 sm:pt-16 lg:pt-20 sm:pb-12">
+      <section className="min-h-[75vh] bg-white flex items-center relative overflow-hidden pt-4 pb-8 sm:pt-16 lg:pt-20 sm:pb-12">
         {/* Animated network background */}
         <div className="absolute inset-0">
           {/* Network grid */}
@@ -206,14 +193,14 @@ const HeroSlider = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[70vh] sm:min-h-[75vh] lg:min-h-[80vh]">
             <div className="lg:col-span-7 space-y-4 sm:space-y-5 lg:space-y-6">
               {/* Animated category tag */}
-              <div className={`inline-flex items-center text-xs sm:text-sm font-medium text-green-600 uppercase tracking-wide mb-1 sm:mb-2 animate-fade-in slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}>
+              <div className="inline-flex items-center text-xs sm:text-sm font-medium text-green-600 uppercase tracking-wide mb-1 sm:mb-2 animate-fade-in pt-4 sm:pt-0">
                 <div className="w-6 sm:w-8 lg:w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-2 sm:mr-3 lg:mr-4"></div>
                 {slides[currentSlide].category}
               </div>
               
               {/* Main headline with staggered animation */}
               <div className="space-y-3 sm:space-y-4 lg:space-y-5">
-                <h1 className={`text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-gray-900 leading-[1.15] tracking-tight slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}>
+                <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-gray-900 leading-[1.15] tracking-tight">
                   <span className="inline-block animate-fade-in my-0 py-0 text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">{slides[currentSlide].headline.first}</span>
                   <span className="block text-green-600 font-normal text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl animate-slide-forward relative" style={{
                     animationDelay: '300ms'
@@ -241,7 +228,7 @@ const HeroSlider = () => {
                   </span>
                 </h1>
                 
-                <p className={`text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-2xl animate-fade-in relative z-10 slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`} style={{
+                <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-2xl animate-fade-in relative z-10" style={{
                   animationDelay: '500ms',
                   textShadow: '0 0 8px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 255, 255, 0.9), 0 0 24px rgba(255, 255, 255, 0.7)'
                 }}>
@@ -254,19 +241,19 @@ const HeroSlider = () => {
               <div className="flex justify-start pt-2 sm:pt-3 lg:pt-4">
                 <Button 
                   onClick={() => currentSlide === 0 ? window.location.href = '/strategy-call' : window.location.href = '/portfolio/abqmri'} 
-                  className={`bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 w-full sm:w-auto rounded-xl slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}
+                  className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 w-full sm:w-auto rounded-xl"
                 >
                   {slides[currentSlide].cta}
                   <ArrowRight className="ml-3 w-5 h-5 sm:w-6 sm:h-6" />
                 </Button>
               </div>
               
-              <p className={`text-xs sm:text-sm text-gray-500 mt-4 sm:mt-5 lg:mt-6 text-center sm:text-left slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}>
+              <p className="text-xs sm:text-sm text-gray-500 mt-4 sm:mt-5 lg:mt-6 text-center sm:text-left">
                 <span className="text-green-600">✓</span> No obligation <span className="text-green-600">✓</span> No purchase necessary <span className="text-green-600">✓</span> 100% free
               </p>
 
               {/* Animated stats */}
-              <div className={`flex flex-wrap gap-4 sm:gap-6 lg:gap-12 pt-4 sm:pt-5 lg:pt-6 border-t border-gray-200 animate-fade-in slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`} style={{
+              <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-12 pt-4 sm:pt-5 lg:pt-6 border-t border-gray-200 animate-fade-in" style={{
                 animationDelay: '1000ms'
               }}>
                 <div className="group cursor-pointer flex-1 min-w-[80px]">
@@ -312,7 +299,7 @@ const HeroSlider = () => {
             {slides.map((_, index) => (
               <button
                 key={index}
-                onClick={() => handleSlideChange(index)}
+                onClick={() => setCurrentSlide(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   currentSlide === index 
                     ? 'bg-green-600 scale-125' 
@@ -474,4 +461,4 @@ const HeroSlider = () => {
   );
 };
 
-export default HeroSlider;
+export default HeroSlider; 

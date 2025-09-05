@@ -592,3 +592,46 @@
     z-index: 10000 !important;
   }
 }
+
+/* Hero Slider Transition Animations */
+@keyframes slideOutLeft {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(-100%); opacity: 0; }
+}
+
+@keyframes slideInRight {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeSlideOut {
+  0% { transform: translateX(0) scale(1); opacity: 1; }
+  100% { transform: translateX(-50px) scale(0.95); opacity: 0; }
+}
+
+@keyframes fadeSlideIn {
+  0% { transform: translateX(50px) scale(0.95); opacity: 0; }
+  100% { transform: translateX(0) scale(1); opacity: 1; }
+}
+
+.slide-exit {
+  animation: fadeSlideOut 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.slide-enter {
+  animation: fadeSlideIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.slide-transition {
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-mobile-padding {
+  padding-top: 2rem;
+}
+
+@media (max-width: 640px) {
+  .hero-mobile-padding {
+    padding-top: 3rem;
+  }
+}
