@@ -281,18 +281,18 @@ const HeroSlider = () => {
               </p>
 
               {/* Animated stats */}
-              <div className={`flex flex-wrap gap-4 sm:gap-6 lg:gap-12 pt-4 sm:pt-5 lg:pt-6 border-t border-gray-200 animate-fade-in slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`} style={{
+              <div className={`flex flex-wrap gap-4 sm:gap-6 lg:gap-12 pt-4 sm:pt-5 lg:pt-6 border-t border-gray-200 min-h-[80px] sm:min-h-[90px] lg:min-h-[100px] hero-stats-container animate-fade-in slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`} style={{
                 animationDelay: '1000ms'
               }}>
-                <div className="group cursor-pointer flex-1 min-w-[80px]">
+                <div className="group cursor-pointer w-1/3 min-w-[80px] max-w-[120px] hero-stats-item">
                   <div className="text-sm sm:text-base lg:text-lg font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">500+</div>
                   <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Global Projects</div>
                 </div>
-                <div className="group cursor-pointer flex-1 min-w-[80px]">
+                <div className="group cursor-pointer w-1/3 min-w-[80px] max-w-[120px] hero-stats-item">
                   <div className="text-sm sm:text-base lg:text-lg font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">98%</div>
                   <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Client Satisfaction</div>
                 </div>
-                <div className="group cursor-pointer flex-1 min-w-[80px]">
+                <div className="group cursor-pointer w-1/3 min-w-[80px] max-w-[120px] hero-stats-item">
                   <div className="text-sm sm:text-base lg:text-lg font-light text-gray-900 group-hover:text-green-600 transition-colors duration-300">24/7</div>
                   <div className="text-xs sm:text-sm text-gray-600 uppercase tracking-wide">Global Support</div>
                 </div>
@@ -340,7 +340,7 @@ const HeroSlider = () => {
       </section>
 
       {/* Evaluate Your Project for Free Form - Ultra High Z-Index */}
-      <section className="absolute bottom-0 left-0 right-0 z-[9999] floating-form">
+      <section className="absolute bottom-0 left-0 right-0 mb-8 z-[9999] floating-form">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 form-container">
           {/* Premium Form Container with Enhanced Glow */}
           <div className="relative group">

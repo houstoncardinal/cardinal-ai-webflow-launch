@@ -436,3 +436,29 @@
   transform: none !important;
   z-index: 9999 !important;
 }
+
+/* Stabilize hero stats container */
+.hero-stats-container {
+  position: relative;
+  min-height: 80px;
+}
+
+@media (min-width: 640px) {
+  .hero-stats-container {
+    min-height: 90px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-stats-container {
+    min-height: 100px;
+  }
+}
+
+/* Ensure stats don't move with content changes */
+.hero-stats-item {
+  flex-shrink: 0;
+  width: 33.333%;
+  min-width: 80px;
+  max-width: 120px;
+}
