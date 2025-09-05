@@ -392,3 +392,26 @@
     }
   }
 }
+
+/* Prevent scrollbars globally */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+
+/* Ensure no overflow on form containers */
+.form-container {
+  overflow: visible !important;
+}
+
+/* Fix mobile zoom issues */
+@media screen and (max-width: 768px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+}
