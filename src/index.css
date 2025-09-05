@@ -462,3 +462,22 @@
   min-width: 80px;
   max-width: 120px;
 }
+
+/* Responsive form positioning */
+@media (min-width: 1024px) {
+  .floating-form {
+    top: auto !important;
+    bottom: 0 !important;
+    margin-top: 2rem !important;
+    margin-bottom: 4rem !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .floating-form {
+    top: auto !important;
+    bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 2rem !important;
+  }
+}
