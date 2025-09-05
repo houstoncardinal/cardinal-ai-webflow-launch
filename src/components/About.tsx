@@ -100,9 +100,9 @@ const About = () => {
           </div>
           
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extralight text-white mb-4 leading-tight animate-fade-in tracking-tight" style={{animationDelay: '200ms'}}>
-            trusted
+            Premier Web Design
             <span className="block bg-gradient-to-r from-green-400 via-emerald-300 to-blue-400 bg-clip-text text-transparent font-light">
-              digital partner
+              & Mobile App Development Agency
             </span>
           </h2>
           
