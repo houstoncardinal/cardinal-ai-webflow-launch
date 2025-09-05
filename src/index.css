@@ -469,7 +469,7 @@
     top: auto !important;
     bottom: -4rem !important;
     margin-top: 0 !important;
-    margin-top: 2rem !important;
+    margin-top: 1rem !important;
   }
 }
 
@@ -478,15 +478,15 @@
     top: auto !important;
     bottom: -4rem !important;
     margin-top: 0 !important;
-    margin-top: 2rem !important;
+    margin-top: 1rem !important;
   }
 }
 
 /* Mobile-specific form optimization */
 @media (max-width: 640px) {
   .floating-form {
-    top: 90vh !important;
-    margin-top: 2rem !important;
+    top: 85vh !important;
+    margin-top: 1rem !important;
   }
 }
 
@@ -494,6 +494,6 @@
 @media (min-width: 641px) and (max-width: 1023px) {
   .floating-form {
     bottom: -4rem !important;
-    margin-top: 2rem !important;
+    margin-top: 1rem !important;
   }
 }
