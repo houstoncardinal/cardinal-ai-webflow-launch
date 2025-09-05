@@ -340,7 +340,7 @@ const HeroSlider = () => {
       </section>
 
       {/* Evaluate Your Project for Free Form - Ultra High Z-Index */}
-      <section className="absolute bottom-0 left-0 right-0 -mb-8 sm:-mb-12 lg:-mb-16 z-[9999] floating-form">
+      <section className="absolute bottom-0 left-0 right-0 -mb-12 sm:-mb-16 lg:-mb-20 z-[9999] floating-form">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 form-container">
           {/* Premium Form Container with Enhanced Glow */}
           <div className="relative group">
