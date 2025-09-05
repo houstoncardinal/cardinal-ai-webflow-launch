@@ -231,23 +231,6 @@ const HeroSlider = () => {
                   }}>
                     <span className="text-green-600 relative">
                       {slides[currentSlide].headline.second}
-                      <svg className="absolute -bottom-2 left-0 w-auto h-3 sm:h-4 animate-draw-underline max-w-full" viewBox="0 0 100 15" preserveAspectRatio="none">
-                        <path 
-                          d="M0,10 Q25,5 50,10 T100,10" 
-                          stroke="url(#underlineGradient)" 
-                          strokeWidth="3" 
-                          fill="none" 
-                          strokeLinecap="round"
-                          className="animate-draw-path"
-                        />
-                        <defs>
-                          <linearGradient id="underlineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stopColor="#10b981" />
-                            <stop offset="50%" stopColor="#059669" />
-                            <stop offset="100%" stopColor="#047857" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
                     </span>
                   </span>
                 </h1>

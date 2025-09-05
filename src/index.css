@@ -485,8 +485,8 @@
 /* Mobile-specific form optimization */
 @media (max-width: 640px) {
   .floating-form {
-    bottom: -3rem !important;
-    margin-bottom: 3rem !important;
+    bottom: -1rem !important;
+    margin-bottom: 2rem !important;
   }
 }
 
