@@ -298,10 +298,10 @@
   /* Mobile padding utilities */
   .hero-mobile-padding {
     @media (max-width: 640px) { /* sm breakpoint */
-      padding-top: 2rem;
+      padding-top: 4rem;
     }
     @media (min-width: 641px) and (max-width: 768px) { /* sm to md breakpoint */
-      padding-top: 3rem;
+      padding-top: 5rem;
     }
   }
   
