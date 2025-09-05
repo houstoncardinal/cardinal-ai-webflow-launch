@@ -323,7 +323,7 @@ const HeroSlider = () => {
       </section>
 
       {/* Evaluate Your Project for Free Form - Floating Over Hero */}
-      <section className="absolute bottom-0 left-0 right-0 -mb-16 sm:-mb-20 lg:-mb-24 z-50">
+      <section className="absolute bottom-0 left-0 right-0 -mb-8 sm:-mb-12 lg:-mb-16 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 form-container">
           {/* Premium Form Container with Enhanced Glow */}
           <div className="relative group">
