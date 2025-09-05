@@ -126,7 +126,7 @@ const HeroSlider = () => {
   ];
   return (
     <>
-      <section className="min-h-[70vh] lg:min-h-[65vh] bg-white flex items-center relative overflow-hidden hero-mobile-padding pb-2 sm:pt-8 lg:pt-6 sm:pb-4 lg:pb-2">
+      <section className="min-h-[70vh] lg:min-h-[65vh] bg-white flex items-center relative overflow-hidden hero-mobile-padding -mt-8 sm:-mt-12 lg:-mt-16 -mb-8 sm:-mb-12 lg:-mb-16">
         {/* Animated network background */}
         <div className="absolute inset-0">
           {/* Network grid */}
