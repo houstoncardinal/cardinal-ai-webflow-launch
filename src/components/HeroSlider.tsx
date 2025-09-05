@@ -126,7 +126,7 @@ const HeroSlider = () => {
   ];
   return (
     <>
-      <section className="min-h-[75vh] bg-white flex items-center relative overflow-hidden hero-mobile-padding pb-8 sm:pt-16 lg:pt-20 sm:pb-12">
+      <section className="min-h-[70vh] lg:min-h-[65vh] bg-white flex items-center relative overflow-hidden hero-mobile-padding pb-8 sm:pt-16 lg:pt-12 sm:pb-12 lg:pb-8">
         {/* Animated network background */}
         <div className="absolute inset-0">
           {/* Network grid */}
@@ -214,7 +214,7 @@ const HeroSlider = () => {
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[70vh] sm:min-h-[75vh] lg:min-h-[80vh]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[70vh] sm:min-h-[70vh] lg:min-h-[65vh] lg:min-h-[80vh]">
             <div className="lg:col-span-7 space-y-4 sm:space-y-5 lg:space-y-6">
               {/* Animated category tag */}
               <div className={`inline-flex items-center text-xs sm:text-sm font-medium text-green-600 uppercase tracking-wide mb-1 sm:mb-2 animate-fade-in slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}>
