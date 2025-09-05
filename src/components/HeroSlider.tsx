@@ -338,7 +338,7 @@ const HeroSlider = () => {
       </section>
 
       {/* Evaluate Your Project for Free Form - Ultra High Z-Index */}
-      <section className="relative -mt-20 z-[9999]">
+      <section className="relative -mt-8 sm:-mt-12 lg:-mt-20 z-[9999]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Premium Form Container with Enhanced Glow */}
           <div className="relative group">
