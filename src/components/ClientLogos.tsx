@@ -60,7 +60,7 @@ const ClientLogos = () => {
   ];
 
   return (
-    <section className="relative py-12 sm:py-16 bg-gradient-to-b from-white to-gray-50/50 overflow-hidden">
+    <section className="relative py-20 sm:py-24 bg-gradient-to-b from-white to-gray-50/50 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-br from-green-400/10 to-blue-500/10 rounded-full blur-2xl sm:blur-3xl"></div>
