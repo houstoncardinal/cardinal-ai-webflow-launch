@@ -322,8 +322,8 @@ const HeroSlider = () => {
         </div>
       </section>
 
-      {/* Evaluate Your Project for Free Form - Ultra High Z-Index */}
-      <section className="absolute bottom-0 left-0 right-0 -mb-24 sm:-mb-28 lg:-mb-32 z-[9999] floating-form">
+      {/* Evaluate Your Project for Free Form - Floating Over Hero */}
+      <section className="absolute bottom-0 left-0 right-0 -mb-16 sm:-mb-20 lg:-mb-24 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 form-container">
           {/* Premium Form Container with Enhanced Glow */}
           <div className="relative group">
@@ -334,7 +334,7 @@ const HeroSlider = () => {
             <div className="absolute -inset-6 bg-gradient-to-r from-green-400/20 via-green-500/30 to-green-600/20 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
             
             {/* Main form card with enhanced styling */}
-            <div className="relative bg-white/95 backdrop-blur-2xl border border-green-200/50 rounded-2xl shadow-lg overflow-hidden transform group-hover:scale-[1.02] transition-all duration-500">
+            <div className="relative bg-white/95 backdrop-blur-2xl border border-green-200/50 rounded-2xl shadow-2xl overflow-hidden transform group-hover:scale-[1.02] transition-all duration-500">
               {/* Enhanced accent top border */}
               <div className="h-2 bg-gradient-to-r from-green-400 via-green-500 to-green-600 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-pulse"></div>
