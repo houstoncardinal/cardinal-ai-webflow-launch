@@ -430,9 +430,9 @@
 /* Ensure form floats properly */
 .floating-form {
   position: absolute !important;
-  top: 50% !important;
+  bottom: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  transform: translateY(-50%) !important;
+  transform: none !important;
   z-index: 9999 !important;
 }
