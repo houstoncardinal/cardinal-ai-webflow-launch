@@ -213,7 +213,7 @@ const HeroSlider = () => {
           </div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 form-container relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[70vh] sm:min-h-[70vh] lg:min-h-[65vh] lg:min-h-[80vh]">
             <div className="lg:col-span-7 space-y-4 sm:space-y-5 lg:space-y-6">
               {/* Animated category tag */}
@@ -340,8 +340,8 @@ const HeroSlider = () => {
       </section>
 
       {/* Evaluate Your Project for Free Form - Ultra High Z-Index */}
-      <section className="relative mt-8 sm:mt-12 lg:mt-16 mb-20 sm:mb-24 lg:mb-32 z-[9999]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="absolute top-1/2 left-0 right-0 transform -translate-y-1/2 z-[9999] floating-form">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 form-container">
           {/* Premium Form Container with Enhanced Glow */}
           <div className="relative group">
             {/* Always Visible Glow Effect */}

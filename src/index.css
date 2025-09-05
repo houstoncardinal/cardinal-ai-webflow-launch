@@ -415,3 +415,24 @@
     -ms-text-size-adjust: 100%;
   }
 }
+
+/* Prevent scrolling in form sections */
+.form-section {
+  overflow: visible !important;
+  max-height: none !important;
+}
+
+.form-container {
+  overflow: visible !important;
+  max-height: none !important;
+}
+
+/* Ensure form floats properly */
+.floating-form {
+  position: absolute !important;
+  top: 50% !important;
+  left: 0 !important;
+  right: 0 !important;
+  transform: translateY(-50%) !important;
+  z-index: 9999 !important;
+}
