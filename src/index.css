@@ -430,7 +430,7 @@
 /* Ensure form floats properly */
 .floating-form {
   position: absolute !important;
-  bottom: 0 !important;
+  bottom: -2rem !important;
   left: 0 !important;
   right: 0 !important;
   transform: none !important;
@@ -467,16 +467,16 @@
 @media (min-width: 1024px) {
   .floating-form {
     top: auto !important;
-    bottom: 0 !important;
-    margin-top: 3rem !important;
-    margin-bottom: 5rem !important;
+    bottom: -2rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 2rem !important;
   }
 }
 
 @media (max-width: 1023px) {
   .floating-form {
     top: auto !important;
-    bottom: 0 !important;
+    bottom: -2rem !important;
     margin-top: 0 !important;
     margin-bottom: 3rem !important;
   }
