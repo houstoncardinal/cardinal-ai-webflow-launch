@@ -1,4 +1,4 @@
-import { Code, Smartphone, Globe, BarChart3, Palette, Share2, Search, Zap, TrendingUp, Users } from "lucide-react";
+import { Code, Smartphone, Globe, BarChart3, Palette, Share2, Search, Zap, TrendingUp, Users, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 const Services = () => {
@@ -72,7 +72,7 @@ const Services = () => {
   ];
   return (
     <>
-      <section id="services" className="pt-12 sm:pt-16 lg:pt-20 pb-24 sm:pb-28 lg:pb-32 bg-white relative">
+      <section id="services" className="pt-12 sm:pt-16 lg:pt-20 pb-40 sm:pb-44 lg:pb-48 bg-white relative">
         {/* Subtle background elements */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-green-400 to-blue-500 rounded-full blur-3xl"></div>
@@ -147,6 +147,20 @@ const Services = () => {
                 </Card>
               </Link>
             ))}
+          </div>
+
+          {/* View All Services Link */}
+          <div className="text-center mt-12 sm:mt-16 lg:mt-20">
+            <Link 
+              to="/services" 
+              className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-semibold text-lg sm:text-xl transition-all duration-300 group shadow-lg hover:shadow-xl"
+            >
+              <span className="mr-3">Explore All Our Services</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
+            <p className="text-gray-600 text-sm sm:text-base mt-4 font-light">
+              Discover how we can transform your business with our complete suite of digital solutions
+            </p>
           </div>
         </div>
       </section>

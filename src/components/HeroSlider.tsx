@@ -96,28 +96,28 @@ const HeroSlider = () => {
     {
       category: "Premier Digital Agency",
       headline: {
-        first: "Web Design & Mobile Apps",
-        second: "That Drive Global Success"
+        first: "Custom Websites & Apps",
+        second: "That Convert Visitors"
       },
       description: "Transform your business into a digital powerhouse with custom websites, mobile applications, and AI-powered solutions that deliver measurable ROI. Serving clients worldwide with 500+ successful projects completed.",
       cta: "Start Your Project",
       checkmarks: ["✓ No obligation", "✓ Free consultation", "✓ 100% custom"]
     },
     {
-      category: "Client Success Story",
+      category: "Proven Results",
       headline: {
-        first: "Healthcare Digital Success",
-        second: "That Drive Real Results"
+        first: "300% Revenue Growth",
+        second: "In 6 Months"
       },
       description: "See how we transformed ABQ MRI's digital presence, resulting in 300% revenue growth and 500% increase in online bookings through strategic web design, SEO optimization, and custom patient portal development.",
       cta: "View Case Study",
       checkmarks: ["✓ Real results", "✓ Proven success", "✓ Detailed case study"]
     },
     {
-      category: "Digital Marketing Excellence",
+      category: "AI-Powered SEO",
       headline: {
-        first: "SEO That Works",
-        second: "Drives Real Growth"
+        first: "Rank #1 on Google",
+        second: "With AI Technology"
       },
       description: "Leverage cutting-edge AI technology to optimize your search rankings, track performance metrics, and drive qualified traffic. Our advanced SEO strategies and analytics deliver measurable growth and competitive advantage.",
       cta: "Boost Your Rankings",
