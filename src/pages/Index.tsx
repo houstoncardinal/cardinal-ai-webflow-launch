@@ -14,9 +14,9 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <SEO 
-        title="🚀 Houston Web Development & Digital Marketing Agency | #1 Custom Websites | Cardinal Consulting"
-        description="🔥 Houston's #1 digital agency! Custom websites, mobile apps, SEO, PPC & digital marketing that drives RESULTS. 500+ Houston projects completed. FREE consultation & quote! Serving Houston, TX & surrounding areas."
-        keywords="Houston web development, Houston digital marketing agency, Houston website design, Houston SEO services, Houston mobile app development, Houston web developer, Houston digital agency, Houston website builder, Houston e-commerce development, Houston responsive web design, web development Houston TX, Houston web design company, Houston web development services, Houston custom website design, Houston e-commerce website, Houston SEO company, Houston digital marketing, Houston web agency, Houston website development, Houston web design agency, Houston web development company, Houston website designer, Houston web development firm, Houston app development, Houston mobile applications, Houston cloud solutions, Houston brand identity"
+        title="🚀 Premier Web Design Houston Web Development & Digital Marketing Agency Mobile App Development Agency | #1 Custom Websites | Cardinal Consulting"
+        description="🔥 Premier digital agency serving clients worldwide! Custom websites, mobile apps, SEO, PPC & digital marketing that drives RESULTS. 500+ global projects completed. FREE consultation & quote! Serving clients worldwide."
+        keywords="web design, mobile app development, web development, digital marketing agency, website design, SEO services, mobile app development, web developer, digital agency, website builder, e-commerce development, responsive web design, web design company, web development services, custom website design, e-commerce website, SEO company, digital marketing, web agency, website development, web design agency, web development company, website designer, web development firm, app development, mobile applications, cloud solutions, brand identity, custom websites, mobile apps, digital solutions"
         url="/"
       />
       
