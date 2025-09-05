@@ -15,15 +15,15 @@ const HeroSlider = () => {
     service: ''
   });
 
-  // Auto-slide every 6 seconds with smooth transitions
+  // Auto-slide every 8 seconds with smooth transitions
   useEffect(() => {
     const interval = setInterval(() => {
       setIsTransitioning(true);
       setTimeout(() => {
-        setCurrentSlide((prev) => (prev === 0 ? 1 : 0));
+        setCurrentSlide((prev) => (prev === 2 ? 0 : prev + 1));
         setIsTransitioning(false);
       }, 300);
-    }, 6000);
+    }, 8000);
 
     return () => clearInterval(interval);
   }, []);
@@ -103,13 +103,22 @@ const HeroSlider = () => {
       cta: "Start Your Project"
     },
     {
-      category: "Proven Results",
+      category: "Client Success Story",
       headline: {
-        first: "Custom Web & Mobile",
-        second: "Solutions That Scale"
+        first: "ABQ MRI Transformation",
+        second: "300% Revenue Growth"
       },
-      description: "From startups to enterprises, we build cutting-edge web applications and mobile apps that grow with your business. Our full-stack development expertise delivers scalable, secure, and high-performance digital solutions.",
-      cta: "View Our Work"
+      description: "See how we transformed ABQ MRI's digital presence, resulting in 300% revenue growth and 500% increase in online bookings through strategic web design, SEO optimization, and custom patient portal development.",
+      cta: "View Case Study"
+    },
+    {
+      category: "Digital Marketing Excellence",
+      headline: {
+        first: "AI-Powered SEO & Analytics",
+        second: "That Dominate Search Results"
+      },
+      description: "Leverage cutting-edge AI technology to optimize your search rankings, track performance metrics, and drive qualified traffic. Our advanced SEO strategies and analytics deliver measurable growth and competitive advantage.",
+      cta: "Boost Your Rankings"
     }
   ];
 
@@ -253,7 +262,11 @@ const HeroSlider = () => {
               {/* CTA Section with hover animations */}
               <div className="flex justify-start pt-2 sm:pt-3 lg:pt-4">
                 <Button 
-                  onClick={() => currentSlide === 0 ? window.location.href = '/strategy-call' : window.location.href = '/portfolio'} 
+                  onClick={() => {
+                    if (currentSlide === 0) window.location.href = '/strategy-call';
+                    else if (currentSlide === 1) window.location.href = '/portfolio/abqmri';
+                    else window.location.href = '/services/seo-insights';
+                  }} 
                   className={`bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 w-full sm:w-auto rounded-xl slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}
                 >
                   {slides[currentSlide].cta}
