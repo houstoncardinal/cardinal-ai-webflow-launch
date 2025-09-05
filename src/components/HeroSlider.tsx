@@ -337,104 +337,102 @@ const HeroSlider = () => {
         </div>
       </section>
 
-      {/* Evaluate Your Project for Free Form */}
-      <section className="-mt-16 sm:py-4 lg:py-2 relative overflow-hidden bg-gradient-to-br from-green-50/50 via-white to-gray-50/30">
-        {/* Floating background elements */}
-        <div className="absolute top-1/4 left-1/4 w-24 h-24 bg-green-100 rounded-full opacity-20 blur-2xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/3 w-20 h-20 bg-green-200 rounded-full opacity-30 blur-xl animate-pulse" style={{
-          animationDelay: '1s'
-        }}></div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Premium Form Container */}
+      {/* Evaluate Your Project for Free Form - Ultra High Z-Index */}
+      <section className="relative -mt-20 z-[9999]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Premium Form Container with Enhanced Glow */}
           <div className="relative group">
-            {/* Glow effect */}
-            <div className="absolute -inset-3 bg-gradient-to-r from-green-400/20 via-green-500/20 to-green-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+            {/* Always Visible Glow Effect */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-green-400/30 via-green-500/40 to-green-600/30 rounded-3xl blur-2xl opacity-60 animate-pulse"></div>
             
-            {/* Main form card */}
-            <div className="relative bg-white/80 backdrop-blur-xl border border-gray-200/50 rounded-xl shadow-sm overflow-hidden">
-              {/* Accent top border */}
-              <div className="h-1 bg-gradient-to-r from-green-400 via-green-500 to-green-600 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
+            {/* Enhanced Hover Glow */}
+            <div className="absolute -inset-6 bg-gradient-to-r from-green-400/20 via-green-500/30 to-green-600/20 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+            
+            {/* Main form card with enhanced styling */}
+            <div className="relative bg-white/95 backdrop-blur-2xl border border-green-200/50 rounded-2xl shadow-2xl overflow-hidden transform group-hover:scale-[1.02] transition-all duration-500">
+              {/* Enhanced accent top border */}
+              <div className="h-2 bg-gradient-to-r from-green-400 via-green-500 to-green-600 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-pulse"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-green-300 via-green-400 to-green-500 opacity-50 animate-pulse" style={{animationDelay: '1s'}}></div>
               </div>
               
-              <div className="p-4 sm:p-6 lg:p-8">
-                {/* Header */}
-                <div className="text-center mb-4 sm:mb-6 lg:mb-8">
-                  <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-light text-gray-900 leading-relaxed mb-2 sm:mb-3">
+              <div className="p-6 sm:p-8 lg:p-10">
+                {/* Enhanced Header */}
+                <div className="text-center mb-6 sm:mb-8 lg:mb-10">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-light text-gray-900 leading-relaxed mb-3 sm:mb-4">
                     Evaluate Your Project for Free
                   </h3>
-                  <p className="text-gray-600 text-xs sm:text-sm lg:text-base max-w-2xl mx-auto leading-relaxed px-2">
+                  <p className="text-gray-600 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed px-2">
                     Get expert insights on your digital transformation opportunities - completely free, no strings attached
                   </p>
                 </div>
 
-                {/* Form */}
-                <form onSubmit={handleFormSubmit} className="space-y-4" name="hero-project-evaluation" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
+                {/* Enhanced Form */}
+                <form onSubmit={handleFormSubmit} className="space-y-5" name="hero-project-evaluation" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
                   <input type="hidden" name="form-name" value="hero-project-evaluation" />
                   <input type="hidden" name="bot-field" style={{ display: 'none' }} />
                   
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
-                    {/* Name Input */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
+                    {/* Enhanced Name Input */}
                     <div className="relative group/input sm:col-span-2 lg:col-span-1">
-                      <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 rounded-lg opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-green-500/30 rounded-xl opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
                       <div className="relative">
-                        <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
+                        <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
                         <input 
                           type="text" 
                           name="name" 
                           placeholder="Full Name" 
-                          className="w-full pl-10 h-10 sm:h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400 text-sm sm:text-base" 
+                          className="w-full pl-12 h-12 sm:h-14 bg-white/70 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-500/20 transition-all duration-300 shadow-lg hover:shadow-xl placeholder:text-gray-400 text-sm sm:text-base font-medium" 
                           required 
                           value={formData.name}
                           onChange={handleInputChange}
                         />
-                        <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left"></div>
+                        <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left rounded-full"></div>
                       </div>
                     </div>
 
-                    {/* Email Input */}
+                    {/* Enhanced Email Input */}
                     <div className="relative group/input sm:col-span-2 lg:col-span-1">
-                      <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 rounded-lg opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-green-500/30 rounded-xl opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
                       <div className="relative">
-                        <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
+                        <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
                         <input 
                           type="email" 
                           name="email" 
                           placeholder="Email Address" 
-                          className="w-full pl-10 h-10 sm:h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400 text-sm sm:text-base" 
+                          className="w-full pl-12 h-12 sm:h-14 bg-white/70 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-500/20 transition-all duration-300 shadow-lg hover:shadow-xl placeholder:text-gray-400 text-sm sm:text-base font-medium" 
                           required 
                           value={formData.email}
                           onChange={handleInputChange}
                         />
-                        <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left"></div>
+                        <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left rounded-full"></div>
                       </div>
                     </div>
 
-                    {/* Phone Input */}
+                    {/* Enhanced Phone Input */}
                     <div className="relative group/input sm:col-span-2 lg:col-span-1">
-                      <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 rounded-lg opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-green-500/30 rounded-xl opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
                       <div className="relative">
-                        <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
+                        <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within/input:text-green-500 transition-colors duration-300" />
                         <input 
                           type="tel" 
                           name="phone" 
                           placeholder="Phone Number" 
-                          className="w-full pl-10 h-10 sm:h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md placeholder:text-gray-400 text-sm sm:text-base" 
+                          className="w-full pl-12 h-12 sm:h-14 bg-white/70 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-500/20 transition-all duration-300 shadow-lg hover:shadow-xl placeholder:text-gray-400 text-sm sm:text-base font-medium" 
                           value={formData.phone}
                           onChange={handleInputChange}
                         />
-                        <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left"></div>
+                        <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left rounded-full"></div>
                       </div>
                     </div>
 
-                    {/* Service Selection Dropdown */}
+                    {/* Enhanced Service Selection Dropdown */}
                     <div className="relative group/input sm:col-span-2 lg:col-span-1">
-                      <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-green-500/20 rounded-lg opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-green-500/30 rounded-xl opacity-0 group-hover/input:opacity-100 transition-all duration-300 blur-lg"></div>
                       <div className="relative">
                         <select 
                           name="service" 
-                          className="w-full pl-10 h-10 sm:h-12 bg-white/50 border border-gray-200 rounded-lg focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-300 shadow-sm hover:shadow-md text-sm sm:text-base appearance-none" 
+                          className="w-full pl-12 h-12 sm:h-14 bg-white/70 border border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-500/20 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base font-medium appearance-none" 
                           value={formData.service}
                           onChange={handleInputChange}
                         >
@@ -447,31 +445,31 @@ const HeroSlider = () => {
                           <option value="E-commerce">E-commerce</option>
                           <option value="Other">Other</option>
                         </select>
-                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                          <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                          <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                           </svg>
                         </div>
-                        <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left"></div>
+                        <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-green-400 to-green-600 scale-x-0 group-focus-within/input:scale-x-100 transition-transform duration-300 origin-left rounded-full"></div>
                       </div>
                     </div>
 
-                    {/* Submit Button */}
+                    {/* Enhanced Submit Button */}
                     <div className="sm:col-span-2 lg:col-span-1">
                       <Button 
                         type="submit" 
                         disabled={isSubmitting}
-                        className="w-full h-10 sm:h-12 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 rounded-lg relative overflow-hidden group"
+                        className="w-full h-12 sm:h-14 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-xl relative overflow-hidden group/btn"
                       >
                         {isSubmitting ? (
                           <div className="flex items-center justify-center">
-                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                            <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin mr-3"></div>
                             Submitting...
                           </div>
                         ) : (
                           <>
                             Get Free Evaluation
-                            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                            <ArrowRight className="ml-3 w-5 h-5 group-hover/btn:translate-x-1 transition-transform duration-300" />
                           </>
                         )}
                       </Button>
