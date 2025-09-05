@@ -29,8 +29,6 @@ import LoadingScreen from "./components/LoadingScreen";
 // Service pages
 import WebDevelopment from "./pages/services/WebDevelopment";
 import MobileApplications from "./pages/services/MobileApplications";
-import WebApplications from "./pages/services/WebApplications";
-import CloudSolutions from "./pages/services/CloudSolutions";
 import SEOInsights from "./pages/services/SEOInsights";
 import BrandIdentity from "./pages/services/BrandIdentity";
 import DigitalCampaigns from "./pages/services/DigitalCampaigns";
@@ -91,8 +89,6 @@ const App = () => (
             {/* Service Routes */}
             <Route path="/services/web-development" element={<WebDevelopment />} />
             <Route path="/services/mobile-applications" element={<MobileApplications />} />
-            <Route path="/services/web-applications" element={<WebApplications />} />
-            <Route path="/services/cloud-solutions" element={<CloudSolutions />} />
             <Route path="/services/seo-insights" element={<SEOInsights />} />
             <Route path="/services/brand-identity" element={<BrandIdentity />} />
             <Route path="/services/digital-campaigns" element={<DigitalCampaigns />} />
