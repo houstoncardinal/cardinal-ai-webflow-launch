@@ -131,19 +131,19 @@ const About = () => {
             <div className="prose prose-lg max-w-none">
               <div className="space-y-6 text-gray-300 leading-relaxed">
                 <p className="relative pl-6 border-l-2 border-green-400/30">
-                  We deliver enterprise-grade web development and digital marketing solutions to businesses, 
-                  helping them dominate their local market and expand their digital presence across Texas.
+                  We deliver enterprise-grade web design, mobile app development, and digital marketing solutions to businesses worldwide, 
+                  helping them dominate their market and expand their digital presence globally.
                 </p>
                 
                 <p className="relative pl-6 border-l-2 border-blue-400/30">
-                  As leading <span className="text-blue-400 font-medium">web development and digital marketing agency</span>, we're defining the future of 
-                  local business growth through cutting-edge technology, strategic digital campaigns, and mobile app development.
+                  As a leading <span className="text-blue-400 font-medium">web design and mobile app development agency</span>, we're defining the future of 
+                  business growth through cutting-edge technology, strategic digital campaigns, and comprehensive digital solutions.
                 </p>
                 
                 <p className="relative pl-6 border-l-2 border-emerald-400/30">
-                  Our comprehensive approach combines strategic consulting, cutting-edge technology, 
-                  and deep <span className="text-emerald-400 font-medium">market expertise</span> to deliver transformational outcomes for businesses.
-                </p>
+                  Our comprehensive suite of services includes Web Design & Development, Mobile & Web Application Development, SEO Optimization Services, Brand Identity & Strategy services, Digital Marketing and Advertisement Services, and AI Experience Optimization (AEO). We combine strategic consulting, cutting-edge technology, 
+                  and deep <span className="text-emerald-400 font-medium">market expertise</span> to deliver transformational outcomes for businesses worldwide.
+                </p>                </p>
               </div>
             </div>
             
