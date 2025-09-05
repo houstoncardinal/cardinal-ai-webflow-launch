@@ -468,8 +468,8 @@
   .floating-form {
     top: auto !important;
     bottom: 0 !important;
-    margin-top: 2rem !important;
-    margin-bottom: 4rem !important;
+    margin-top: 3rem !important;
+    margin-bottom: 5rem !important;
   }
 }
 
@@ -478,6 +478,6 @@
     top: auto !important;
     bottom: 0 !important;
     margin-top: 0 !important;
-    margin-bottom: 2rem !important;
+    margin-bottom: 3rem !important;
   }
 }
