@@ -143,7 +143,7 @@ const About = () => {
                 <p className="relative pl-6 border-l-2 border-emerald-400/30">
                   Our comprehensive suite of services includes Web Design & Development, Mobile & Web Application Development, SEO Optimization Services, Brand Identity & Strategy services, Digital Marketing and Advertisement Services, and AI Experience Optimization (AEO). We combine strategic consulting, cutting-edge technology, 
                   and deep <span className="text-emerald-400 font-medium">market expertise</span> to deliver transformational outcomes for businesses worldwide.
-                </p>                </p>
+                </p>
               </div>
             </div>
             
