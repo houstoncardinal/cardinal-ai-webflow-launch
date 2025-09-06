@@ -288,21 +288,21 @@ const HeroSlider = () => {
             </div>
           </div>
 
-          {/* Navigation Arrows - Edge Positioned */}
+          {/* Navigation Arrows - Full Width Edges */}
           <button
             onClick={() => handleSlideChange(currentSlide === 0 ? slides.length - 1 : currentSlide - 1)}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white border border-gray-200 hover:border-green-500 rounded-r-full p-3 sm:p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group"
+            className="absolute left-0 top-0 bottom-0 w-full max-w-[50vw] z-20 bg-gradient-to-r from-white/80 to-transparent hover:from-white/90 hover:to-white/20 transition-all duration-300 group flex items-center justify-start pl-8 sm:pl-12 lg:pl-16"
             disabled={isTransitioning}
           >
-            <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 group-hover:text-green-600 transition-colors duration-300" />
+            <ArrowLeft className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-gray-600 group-hover:text-green-600 transition-colors duration-300" />
           </button>
           
           <button
             onClick={() => handleSlideChange(currentSlide === slides.length - 1 ? 0 : currentSlide + 1)}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white border border-gray-200 hover:border-green-500 rounded-l-full p-3 sm:p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group"
+            className="absolute right-0 top-0 bottom-0 w-full max-w-[50vw] z-20 bg-gradient-to-l from-white/80 to-transparent hover:from-white/90 hover:to-white/20 transition-all duration-300 group flex items-center justify-end pr-8 sm:pr-12 lg:pr-16"
             disabled={isTransitioning}
           >
-            <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 group-hover:text-green-600 transition-colors duration-300" />
+            <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-gray-600 group-hover:text-green-600 transition-colors duration-300" />
           </button>
         </div>
       </section>
