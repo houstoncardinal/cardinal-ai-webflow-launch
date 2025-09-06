@@ -1,743 +1,875 @@
-import { useState } from "react";
-import { 
-  Search, 
-  CheckCircle, 
-  AlertTriangle, 
-  Globe, 
-  Clock, 
-  BarChart3,
-  Target,
-  TrendingUp,
-  Eye,
-  Shield,
-  Zap,
-  ArrowRight,
-  Download,
-  Mail,
-  Loader2,
-  Sparkles,
-  FileText,
-  Smartphone,
-  Link,
-  Image,
-  Code,
-  Settings,
-  Activity,
-  Gauge,
-  Users,
-  Lock,
-  ExternalLink
-} from "lucide-react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { 
+  Search, BarChart3, Target, TrendingUp, Settings, Link, FileText,
+  Download, CheckCircle, AlertTriangle, Clock, Globe, Brain, Zap, Eye,
+  Smartphone, Loader2, Sparkles, ArrowRight, ExternalLink, Hash, Users,
+  Lightbulb, Shield, Gauge, Bot, Cpu, Rocket, Star, Award, TrendingDown,
+  Activity, BarChart, PieChart, LineChart, BookOpen, Layers, Wifi, Lock,
+  Monitor, MousePointer, Headphones, MessageSquare, Database, Network,
+  ChevronDown, ChevronUp, Plus, Minus, AlertCircle, Info, CheckSquare
+} from "lucide-react";
 import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import { analyzeWebsiteWithAI, analyzeAEOWithAI, generateSEOReportWithAI, AIAnalysisResult, AEOAnalysisResult } from "@/lib/ai-seo-analysis";
 import { toast } from "sonner";
 
 const SEOAnalyzer = () => {
+  const [activeTool, setActiveTool] = useState('dashboard');
   const [url, setUrl] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [analysisProgress, setAnalysisProgress] = useState(0);
-  const [currentStep, setCurrentStep] = useState('');
-  const [result, setResult] = useState(null);
+  const [analysisResult, setAnalysisResult] = useState<AIAnalysisResult | null>(null);
+  const [aeoResult, setAeoResult] = useState<AEOAnalysisResult | null>(null);
+  const [progress, setProgress] = useState(0);
+  const [error, setError] = useState<string | null>(null);
 
-  const analysisSteps = [
-    'Initializing analysis...',
-    'Fetching website data...',
-    'Analyzing page structure...',
-    'Checking technical SEO...',
-    'Evaluating performance...',
-    'Scanning accessibility...',
-    'Analyzing content quality...',
-    'Checking mobile optimization...',
-    'Generating recommendations...',
-    'Creating detailed report...',
-    'Finalizing analysis...'
+  const tools = [
+    { id: 'dashboard', name: 'Revolutionary SEO', icon: Brain, description: 'Expert-Level Analysis', color: 'bg-gradient-to-r from-green-600 to-emerald-600' },
+    { id: 'aeo-tool', name: 'AEO Optimizer', icon: Bot, description: 'AI Experience Optimization', color: 'bg-gradient-to-r from-purple-600 to-pink-600' },
+    { id: 'keyword-research', name: 'Advanced Keywords', icon: Search, description: 'Semantic & Long-tail', color: 'bg-gradient-to-r from-green-500 to-emerald-500' },
+    { id: 'competitor-analysis', name: 'Market Intelligence', icon: Target, description: 'Competitive Analysis', color: 'bg-gradient-to-r from-emerald-500 to-green-500' },
+    { id: 'content-optimizer', name: 'Content Revolution', icon: FileText, description: 'AI-Powered Content', color: 'bg-gradient-to-r from-green-700 to-emerald-700' },
+    { id: 'technical-audit', name: 'Technical Mastery', icon: Settings, description: 'Advanced Technical SEO', color: 'bg-gradient-to-r from-emerald-600 to-green-600' },
+    { id: 'performance', name: 'Performance Pro', icon: Zap, description: 'Core Web Vitals', color: 'bg-gradient-to-r from-green-600 to-emerald-500' }
   ];
 
-  const simulateAnalysis = async () => {
+  const handleAIAnalysis = async () => {
     if (!url) {
       toast.error("Please enter a website URL");
       return;
     }
 
     setIsAnalyzing(true);
-    setAnalysisProgress(0);
-    
-    for (let i = 0; i < analysisSteps.length; i++) {
-      setCurrentStep(analysisSteps[i]);
-      await new Promise(resolve => setTimeout(resolve, 600));
-      setAnalysisProgress(((i + 1) / analysisSteps.length) * 100);
+    setProgress(0);
+    setAnalysisResult(null);
+    setAeoResult(null);
+    setError(null);
+
+    try {
+      const progressInterval = setInterval(() => {
+        setProgress(prev => {
+          if (prev >= 90) {
+            clearInterval(progressInterval);
+            return 90;
+          }
+          return prev + Math.random() * 15;
+        });
+      }, 500);
+
+      console.log('Starting analysis...');
+      const result = await analyzeWebsiteWithAI(url);
+      console.log('Analysis completed:', result);
+      
+      clearInterval(progressInterval);
+      setProgress(100);
+      setAnalysisResult(result);
+      
+      toast.success("Revolutionary SEO analysis completed!");
+    } catch (error) {
+      console.error('AI Analysis Error:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+      setError(errorMessage);
+      toast.error(`AI analysis failed: ${errorMessage}`);
+    } finally {
+      setIsAnalyzing(false);
     }
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Advanced mock result data
-    const mockResult = {
-      url: url,
-      domain: url.replace(/^https?:\/\//, '').replace(/\/$/, ''),
-      analysisDate: new Date().toISOString(),
-      overallScore: 78,
-      performanceScore: 85,
-      accessibilityScore: 72,
-      bestPracticesScore: 90,
-      seoScore: 65,
-      mobileScore: 88,
-      reportId: `SEO-${Date.now()}`,
-      
-      // Performance Metrics
-      performance: {
-        pageLoadTime: 3.2,
-        firstContentfulPaint: 2.1,
-        largestContentfulPaint: 4.8,
-        cumulativeLayoutShift: 0.15,
-        firstInputDelay: 120,
-        totalBlockingTime: 180,
-        speedIndex: 3.5,
-        timeToInteractive: 4.2
-      },
-      
-      // SEO Analysis
-      seo: {
-        titleTag: { present: true, length: 58, optimal: true },
-        metaDescription: { present: true, length: 145, optimal: true },
-        headings: { h1: 1, h2: 4, h3: 8, structure: 'good' },
-        images: { total: 12, optimized: 8, missingAlt: 4 },
-        internalLinks: 15,
-        externalLinks: 3,
-        canonicalUrl: true,
-        robotsTxt: true,
-        sitemap: true
-      },
-      
-      // Technical Issues
-      issues: [
-        {
-          type: 'error',
-          category: 'Performance',
-          title: 'Large Image Files',
-          description: 'Images are not optimized and are slowing down page load times.',
-          impact: 'high',
-          fixable: true,
-          affectedElements: ['hero-image.jpg (2.3MB)', 'gallery-1.png (1.8MB)'],
-          priority: 1
-        },
-        {
-          type: 'warning',
-          category: 'SEO',
-          title: 'Missing Alt Text',
-          description: '4 images are missing alt text, affecting accessibility and SEO.',
-          impact: 'medium',
-          fixable: true,
-          affectedElements: ['product-1.jpg', 'product-2.jpg', 'team-photo.jpg', 'office.jpg'],
-          priority: 2
-        },
-        {
-          type: 'warning',
-          category: 'Performance',
-          title: 'Unused CSS',
-          description: '45% of CSS is unused, increasing page load time.',
-          impact: 'medium',
-          fixable: true,
-          affectedElements: ['styles.css (unused: 12KB)'],
-          priority: 3
-        },
-        {
-          type: 'error',
-          category: 'SEO',
-          title: 'Missing Schema Markup',
-          description: 'No structured data found for better search engine understanding.',
-          impact: 'high',
-          fixable: true,
-          affectedElements: ['All pages'],
-          priority: 4
-        }
-      ],
-      
-      // Recommendations
-      recommendations: [
-        {
-          priority: 'high',
-          category: 'Performance',
-          title: 'Optimize Images',
-          description: 'Compress and optimize images to improve page load speed.',
-          action: 'Use tools like TinyPNG, ImageOptim, or WebP format. Target file sizes under 500KB.',
-          impact: 'Improve page load time by 2-3 seconds',
-          effort: 'Medium',
-          estimatedImprovement: '25-30% faster loading'
-        },
-        {
-          priority: 'high',
-          category: 'SEO',
-          title: 'Add Schema Markup',
-          description: 'Implement structured data for better search engine understanding.',
-          action: 'Add JSON-LD schema for Organization, WebSite, and WebPage types.',
-          impact: 'Increase rich snippets appearance by 40%',
-          effort: 'Low',
-          estimatedImprovement: 'Better search visibility'
-        },
-        {
-          priority: 'medium',
-          category: 'SEO',
-          title: 'Add Alt Text to Images',
-          description: 'Provide descriptive alt text for all images.',
-          action: 'Write unique, descriptive alt text for each image (125 characters max).',
-          impact: 'Improve accessibility and SEO ranking',
-          effort: 'Low',
-          estimatedImprovement: 'Better accessibility score'
-        },
-        {
-          priority: 'medium',
-          category: 'Performance',
-          title: 'Remove Unused CSS',
-          description: 'Eliminate unused CSS to reduce file size.',
-          action: 'Use tools like PurgeCSS or manually remove unused styles.',
-          impact: 'Reduce CSS file size by 45%',
-          effort: 'Medium',
-          estimatedImprovement: 'Faster page rendering'
-        },
-        {
-          priority: 'low',
-          category: 'SEO',
-          title: 'Improve Internal Linking',
-          description: 'Add more internal links to improve site structure.',
-          action: 'Add contextual internal links throughout content.',
-          impact: 'Better page authority distribution',
-          effort: 'Low',
-          estimatedImprovement: 'Improved site architecture'
-        }
-      ],
-      
-      // Content Analysis
-      content: {
-        wordCount: 1250,
-        readabilityScore: 78,
-        keywordDensity: 2.3,
-        contentQuality: 'good',
-        duplicateContent: false,
-        thinContent: false
-      },
-      
-      // Mobile Analysis
-      mobile: {
-        responsive: true,
-        viewport: true,
-        touchFriendly: true,
-        mobileSpeed: 88,
-        mobileUsability: 'good'
-      },
-      
-      // Security Analysis
-      security: {
-        https: true,
-        sslGrade: 'A',
-        securityHeaders: ['HSTS', 'CSP', 'X-Frame-Options'],
-        vulnerabilities: 0
-      }
-    };
-    
-    setResult(mockResult);
-    setIsAnalyzing(false);
-    
-    toast.success("Analysis Complete! 🎉", {
-      description: "Your comprehensive SEO analysis is ready.",
-    });
   };
 
-  const getScoreColor = (score) => {
-    if (score >= 90) return 'text-green-600';
+  const handleAEOAnalysis = async () => {
+    if (!url) {
+      toast.error("Please enter a website URL");
+      return;
+    }
+
+    setIsAnalyzing(true);
+    setProgress(0);
+    setAeoResult(null);
+    setError(null);
+
+    try {
+      const progressInterval = setInterval(() => {
+        setProgress(prev => {
+          if (prev >= 90) {
+            clearInterval(progressInterval);
+            return 90;
+          }
+          return prev + Math.random() * 15;
+        });
+      }, 500);
+
+      console.log('Starting AEO analysis...');
+      const result = await analyzeAEOWithAI(url);
+      console.log('AEO Analysis completed:', result);
+      
+      clearInterval(progressInterval);
+      setProgress(100);
+      setAeoResult(result);
+      
+      toast.success("AEO analysis completed!");
+    } catch (error) {
+      console.error('AEO Analysis Error:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+      setError(errorMessage);
+      toast.error(`AEO analysis failed: ${errorMessage}`);
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
+
+  const downloadReport = async () => {
+    if (!analysisResult) return;
+    
+    try {
+      const report = await generateSEOReportWithAI(url, analysisResult);
+      
+      const blob = new Blob([report], { type: 'text/markdown' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `revolutionary-seo-analysis-${new Date().toISOString().split('T')[0]}.md`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      toast.success("Report downloaded successfully!");
+    } catch (error) {
+      toast.error("Failed to generate report");
+    }
+  };
+
+  const getScoreColor = (score: number) => {
+    if (score >= 95) return 'text-green-600';
+    if (score >= 90) return 'text-green-500';
+    if (score >= 80) return 'text-blue-600';
     if (score >= 70) return 'text-yellow-600';
+    if (score >= 60) return 'text-orange-600';
     return 'text-red-600';
   };
 
-  const getScoreBgColor = (score) => {
-    if (score >= 90) return 'bg-green-100';
-    if (score >= 70) return 'bg-yellow-100';
-    return 'bg-red-100';
+  const getScoreBadgeVariant = (score: number) => {
+    if (score >= 95) return 'default';
+    if (score >= 90) return 'secondary';
+    if (score >= 80) return 'outline';
+    if (score >= 70) return 'outline';
+    if (score >= 60) return 'outline';
+    return 'destructive';
   };
 
-  const getImpactColor = (impact) => {
-    switch (impact) {
-      case 'high': return 'bg-red-100 text-red-800 border-red-200';
-      case 'medium': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'low': return 'bg-green-100 text-green-800 border-green-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+  const getScoreLabel = (score: number) => {
+    if (score >= 95) return 'Industry-Leading';
+    if (score >= 90) return 'Excellent';
+    if (score >= 80) return 'Very Good';
+    if (score >= 70) return 'Good';
+    if (score >= 60) return 'Fair';
+    return 'Needs Attention';
+  };
+
+  const getPriorityColor = (priority: string) => {
+    switch (priority.toLowerCase()) {
+      case 'high': return 'text-red-600 bg-red-50 border-red-200';
+      case 'medium': return 'text-yellow-600 bg-yellow-50 border-yellow-200';
+      case 'low': return 'text-green-600 bg-green-50 border-green-200';
+      default: return 'text-gray-600 bg-gray-50 border-gray-200';
     }
   };
 
-  const getPriorityColor = (priority) => {
-    switch (priority) {
-      case 'high': return 'bg-red-100 text-red-800 border-red-200';
-      case 'medium': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'low': return 'bg-green-100 text-green-800 border-green-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+  const getEffortColor = (effort: string) => {
+    switch (effort.toLowerCase()) {
+      case 'high': return 'text-red-600';
+      case 'medium': return 'text-yellow-600';
+      case 'low': return 'text-green-600';
+      default: return 'text-gray-600';
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div className="h-screen overflow-hidden bg-gray-50">
       <SEO 
-        title="🔍 Free SEO Analyzer Tool | Website Analysis & Optimization | Cardinal Consulting"
-        description="🚀 Analyze your website's SEO performance with our free, comprehensive SEO analyzer tool. Get detailed insights, recommendations, and actionable strategies to improve your search rankings."
-        keywords="SEO analyzer, website analysis, SEO audit, free SEO tool, website optimization, search engine optimization"
+        title="🚀 Revolutionary AI-Powered SEO Analysis | Expert-Level SEO Insights | Cardinal Consulting"
+        description="🔥 Advanced AI-powered SEO analysis with revolutionary insights, expert-level recommendations, and AEO optimization. Powered by world-class SEO expertise and cutting-edge AI technology."
+        keywords="revolutionary SEO analysis, expert SEO, AI-powered SEO, AEO optimization, advanced SEO tools, world-class SEO insights, cutting-edge SEO technology"
+        url="/seo-analyzer"
       />
       
       <Navigation />
       
-      {/* Hero Section */}
-      <section className="pt-20 pb-16 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center">
-            <div className="inline-flex items-center text-sm font-medium text-green-100 uppercase tracking-wide mb-4">
-              <Sparkles className="w-4 h-4 mr-2" />
-              Free SEO Analysis Tool
+      <div className="flex h-full pt-24">
+        {/* Sidebar */}
+        <div className="w-64 bg-white border-r border-gray-200 flex-shrink-0 overflow-y-auto">
+          <div className="p-6 border-b border-gray-200">
+            <div className="flex items-center mb-2">
+              <Brain className="w-6 h-6 text-green-600 mr-2" />
+              <h2 className="text-lg font-semibold text-gray-900">Revolutionary SEO</h2>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Analyze Your Website's
-              <span className="block text-green-200">SEO Performance</span>
-            </h1>
-            <p className="text-xl text-green-100 mb-8 max-w-3xl mx-auto">
-              Get comprehensive SEO insights, performance metrics, and actionable recommendations to boost your search rankings and drive more organic traffic.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Streamlined Analysis Form - Full Width */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Start Your SEO Analysis</h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Enter your website URL and get a comprehensive SEO report in minutes
-            </p>
+            <p className="text-sm text-gray-600">Expert-Level AI Analysis</p>
           </div>
           
-          <div className="max-w-2xl mx-auto">
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div className="flex-1">
-                <div className="relative">
-                  <Globe className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <Input
-                    type="url"
-                    placeholder="https://yourwebsite.com"
-                    value={url}
-                    onChange={(e) => setUrl(e.target.value)}
-                    className="pl-12 h-14 text-lg border-2 border-gray-200 focus:border-green-500 rounded-xl"
-                  />
-                </div>
-              </div>
-              <Button
-                onClick={simulateAnalysis}
-                disabled={!url || isAnalyzing}
-                className="h-14 px-8 text-lg font-semibold bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 rounded-xl"
+          <nav className="p-4 space-y-2">
+            {tools.map((tool) => (
+              <button
+                key={tool.id}
+                onClick={() => setActiveTool(tool.id)}
+                className={`w-full flex items-center p-3 rounded-lg transition-all duration-200 ${
+                  activeTool === tool.id
+                    ? 'bg-green-50 text-green-600 border border-green-200'
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                }`}
               >
-                {isAnalyzing ? (
-                  <>
-                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                    Analyzing...
-                  </>
-                ) : (
-                  <>
-                    <Search className="w-5 h-5 mr-2" />
-                    Analyze Website
-                  </>
-                )}
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+                <div className={`w-8 h-8 rounded-lg ${tool.color} flex items-center justify-center mr-3`}>
+                  <tool.icon className="w-4 h-4 text-white" />
+                </div>
+                <div className="text-left">
+                  <div className="font-medium">{tool.name}</div>
+                  <div className="text-xs text-gray-500">{tool.description}</div>
+                </div>
+              </button>
+            ))}
+          </nav>
 
-      {/* Analysis Progress */}
-      {isAnalyzing && (
-        <section className="py-16 bg-gray-50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Card className="shadow-xl">
-              <CardContent className="p-8">
-                <div className="text-center mb-8">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Loader2 className="w-8 h-8 text-green-600 animate-spin" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Analyzing Your Website</h3>
-                  <p className="text-gray-600">{currentStep}</p>
+          <div className="p-4">
+            <Card className="bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
+              <CardContent className="p-4">
+                <div className="flex items-center mb-2">
+                  <Sparkles className="w-4 h-4 text-green-600 mr-2" />
+                  <span className="text-sm font-medium text-gray-900">AI Status</span>
                 </div>
-                
-                <div className="space-y-4">
-                  <Progress value={analysisProgress} className="h-3" />
-                  <div className="flex justify-between text-sm text-gray-600">
-                    <span>Progress</span>
-                    <span>{Math.round(analysisProgress)}%</span>
-                  </div>
-                </div>
-                
-                <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="text-center">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Globe className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <h4 className="font-semibold text-gray-900">Website Analysis</h4>
-                    <p className="text-sm text-gray-600">Scanning structure and content</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Zap className="w-6 h-6 text-green-600" />
-                    </div>
-                    <h4 className="font-semibold text-gray-900">Performance Check</h4>
-                    <p className="text-sm text-gray-600">Measuring speed and optimization</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Target className="w-6 h-6 text-purple-600" />
-                    </div>
-                    <h4 className="font-semibold text-gray-900">SEO Evaluation</h4>
-                    <p className="text-sm text-gray-600">Checking search optimization</p>
-                  </div>
+                <div className="flex items-center">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                  <span className="text-xs text-gray-600">Expert AI Active</span>
                 </div>
               </CardContent>
             </Card>
           </div>
-        </section>
-      )}
+        </div>
 
-      {/* Advanced Results Section */}
-      {result && (
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">SEO Analysis Complete!</h2>
-              <p className="text-gray-600 text-lg">Comprehensive analysis for <span className="font-semibold text-green-600">{result.domain}</span></p>
-            </div>
-
-            {/* Overall Score Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              <Card className="text-center p-6 border-2 hover:shadow-lg transition-shadow">
-                <CardContent>
-                  <div className={`w-20 h-20 rounded-full ${getScoreBgColor(result.overallScore)} flex items-center justify-center mx-auto mb-4`}>
-                    <span className={`text-3xl font-bold ${getScoreColor(result.overallScore)}`}>
-                      {result.overallScore}
-                    </span>
-                  </div>
-                  <h3 className="font-semibold text-gray-900 mb-2">Overall Score</h3>
-                  <p className="text-sm text-gray-600">Website Performance</p>
-                </CardContent>
-              </Card>
+        {/* Main Content */}
+        <div className="flex-1 overflow-hidden">
+          <div className="bg-white border-b border-gray-200 p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h1 className="text-2xl font-bold text-gray-900 flex items-center">
+                  <Brain className="w-6 h-6 text-green-600 mr-2" />
+                  {tools.find(tool => tool.id === activeTool)?.name || 'Revolutionary SEO'}
+                </h1>
+                <p className="text-gray-600">
+                  {tools.find(tool => tool.id === activeTool)?.description || 'Expert-Level Analysis'}
+                </p>
+              </div>
               
-              <Card className="text-center p-6 border-2 hover:shadow-lg transition-shadow">
-                <CardContent>
-                  <div className={`w-20 h-20 rounded-full ${getScoreBgColor(result.performanceScore)} flex items-center justify-center mx-auto mb-4`}>
-                    <span className={`text-3xl font-bold ${getScoreColor(result.performanceScore)}`}>
-                      {result.performanceScore}
-                    </span>
-                  </div>
-                  <h3 className="font-semibold text-gray-900 mb-2">Performance</h3>
-                  <p className="text-sm text-gray-600">Speed & Optimization</p>
-                </CardContent>
-              </Card>
-              
-              <Card className="text-center p-6 border-2 hover:shadow-lg transition-shadow">
-                <CardContent>
-                  <div className={`w-20 h-20 rounded-full ${getScoreBgColor(result.seoScore)} flex items-center justify-center mx-auto mb-4`}>
-                    <span className={`text-3xl font-bold ${getScoreColor(result.seoScore)}`}>
-                      {result.seoScore}
-                    </span>
-                  </div>
-                  <h3 className="font-semibold text-gray-900 mb-2">SEO Score</h3>
-                  <p className="text-sm text-gray-600">Search Optimization</p>
-                </CardContent>
-              </Card>
-              
-              <Card className="text-center p-6 border-2 hover:shadow-lg transition-shadow">
-                <CardContent>
-                  <div className={`w-20 h-20 rounded-full ${getScoreBgColor(result.accessibilityScore)} flex items-center justify-center mx-auto mb-4`}>
-                    <span className={`text-3xl font-bold ${getScoreColor(result.accessibilityScore)}`}>
-                      {result.accessibilityScore}
-                    </span>
-                  </div>
-                  <h3 className="font-semibold text-gray-900 mb-2">Accessibility</h3>
-                  <p className="text-sm text-gray-600">User Experience</p>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Advanced Report Tabs */}
-            <Tabs defaultValue="overview" className="space-y-8">
-              <TabsList className="grid w-full grid-cols-5">
-                <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="performance">Performance</TabsTrigger>
-                <TabsTrigger value="seo">SEO Analysis</TabsTrigger>
-                <TabsTrigger value="issues">Issues</TabsTrigger>
-                <TabsTrigger value="recommendations">Recommendations</TabsTrigger>
-              </TabsList>
-
-              {/* Overview Tab */}
-              <TabsContent value="overview" className="space-y-6">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center">
-                        <BarChart3 className="w-5 h-5 mr-2 text-blue-600" />
-                        Performance Metrics
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">Page Load Time</span>
-                        <span className="text-sm font-semibold">{result.performance.pageLoadTime}s</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">First Contentful Paint</span>
-                        <span className="text-sm font-semibold">{result.performance.firstContentfulPaint}s</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">Largest Contentful Paint</span>
-                        <span className="text-sm font-semibold">{result.performance.largestContentfulPaint}s</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">Cumulative Layout Shift</span>
-                        <span className="text-sm font-semibold">{result.performance.cumulativeLayoutShift}</span>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center">
-                        <Target className="w-5 h-5 mr-2 text-green-600" />
-                        SEO Summary
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">Title Tag</span>
-                        <Badge className={result.seo.titleTag.optimal ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}>
-                          {result.seo.titleTag.optimal ? 'Optimal' : 'Needs Work'}
-                        </Badge>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">Meta Description</span>
-                        <Badge className={result.seo.metaDescription.optimal ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}>
-                          {result.seo.metaDescription.optimal ? 'Optimal' : 'Needs Work'}
-                        </Badge>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">Images with Alt Text</span>
-                        <span className="text-sm font-semibold">{result.seo.images.optimized}/{result.seo.images.total}</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">Internal Links</span>
-                        <span className="text-sm font-semibold">{result.seo.internalLinks}</span>
-                      </div>
-                    </CardContent>
-                  </Card>
+              <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span className="text-sm text-gray-600">Expert AI Live</span>
                 </div>
-              </TabsContent>
-
-              {/* Performance Tab */}
-              <TabsContent value="performance" className="space-y-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center">
-                      <Gauge className="w-5 h-5 mr-2 text-blue-600" />
-                      Detailed Performance Analysis
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-4">
-                        <h4 className="font-semibold text-gray-900">Core Web Vitals</h4>
-                        <div className="space-y-3">
-                          <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                            <span className="text-sm font-medium">Largest Contentful Paint</span>
-                            <span className="text-sm font-semibold">{result.performance.largestContentfulPaint}s</span>
-                          </div>
-                          <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                            <span className="text-sm font-medium">First Input Delay</span>
-                            <span className="text-sm font-semibold">{result.performance.firstInputDelay}ms</span>
-                          </div>
-                          <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                            <span className="text-sm font-medium">Cumulative Layout Shift</span>
-                            <span className="text-sm font-semibold">{result.performance.cumulativeLayoutShift}</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="space-y-4">
-                        <h4 className="font-semibold text-gray-900">Loading Metrics</h4>
-                        <div className="space-y-3">
-                          <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                            <span className="text-sm font-medium">Speed Index</span>
-                            <span className="text-sm font-semibold">{result.performance.speedIndex}s</span>
-                          </div>
-                          <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                            <span className="text-sm font-medium">Time to Interactive</span>
-                            <span className="text-sm font-semibold">{result.performance.timeToInteractive}s</span>
-                          </div>
-                          <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                            <span className="text-sm font-medium">Total Blocking Time</span>
-                            <span className="text-sm font-semibold">{result.performance.totalBlockingTime}ms</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-
-              {/* SEO Analysis Tab */}
-              <TabsContent value="seo" className="space-y-6">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center">
-                        <FileText className="w-5 h-5 mr-2 text-green-600" />
-                        Content Analysis
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">Word Count</span>
-                        <span className="text-sm font-semibold">{result.content.wordCount.toLocaleString()}</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">Readability Score</span>
-                        <span className="text-sm font-semibold">{result.content.readabilityScore}/100</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">Keyword Density</span>
-                        <span className="text-sm font-semibold">{result.content.keywordDensity}%</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">Content Quality</span>
-                        <Badge className="bg-green-100 text-green-800">Good</Badge>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center">
-                        <Smartphone className="w-5 h-5 mr-2 text-purple-600" />
-                        Mobile Analysis
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">Mobile Responsive</span>
-                        <Badge className="bg-green-100 text-green-800">Yes</Badge>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">Mobile Speed Score</span>
-                        <span className="text-sm font-semibold">{result.mobile.mobileSpeed}/100</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">Touch Friendly</span>
-                        <Badge className="bg-green-100 text-green-800">Yes</Badge>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">Mobile Usability</span>
-                        <Badge className="bg-green-100 text-green-800">Good</Badge>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </TabsContent>
-
-              {/* Issues Tab */}
-              <TabsContent value="issues" className="space-y-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center">
-                      <AlertTriangle className="w-5 h-5 mr-2 text-red-600" />
-                      Issues Found ({result.issues.length})
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    {result.issues.map((issue, index) => (
-                      <div key={index} className="border-l-4 border-red-200 pl-6 py-4 bg-red-50 rounded-r-lg">
-                        <div className="flex items-start justify-between mb-3">
-                          <h4 className="font-semibold text-gray-900 text-lg">{issue.title}</h4>
-                          <div className="flex gap-2">
-                            <Badge className={getImpactColor(issue.impact)}>
-                              {issue.impact} impact
-                            </Badge>
-                            <Badge variant="outline" className="text-gray-600">
-                              Priority #{issue.priority}
-                            </Badge>
-                          </div>
-                        </div>
-                        <p className="text-gray-700 mb-3">{issue.description}</p>
-                        <div className="space-y-2">
-                          <h5 className="font-medium text-gray-900">Affected Elements:</h5>
-                          <ul className="list-disc list-inside space-y-1 text-sm text-gray-600">
-                            {issue.affectedElements.map((element, idx) => (
-                              <li key={idx}>{element}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-              </TabsContent>
-
-              {/* Recommendations Tab */}
-              <TabsContent value="recommendations" className="space-y-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center">
-                      <CheckCircle className="w-5 h-5 mr-2 text-green-600" />
-                      Actionable Recommendations ({result.recommendations.length})
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    {result.recommendations.map((rec, index) => (
-                      <div key={index} className="border-l-4 border-green-200 pl-6 py-4 bg-green-50 rounded-r-lg">
-                        <div className="flex items-start justify-between mb-3">
-                          <h4 className="font-semibold text-gray-900 text-lg">{rec.title}</h4>
-                          <div className="flex gap-2">
-                            <Badge className={getPriorityColor(rec.priority)}>
-                              {rec.priority} priority
-                            </Badge>
-                            <Badge variant="outline" className="text-gray-600">
-                              {rec.effort} effort
-                            </Badge>
-                          </div>
-                        </div>
-                        <p className="text-gray-700 mb-3">{rec.description}</p>
-                        <div className="space-y-3">
-                          <div>
-                            <h5 className="font-medium text-gray-900 mb-1">Action Required:</h5>
-                            <p className="text-sm text-gray-600">{rec.action}</p>
-                          </div>
-                          <div>
-                            <h5 className="font-medium text-gray-900 mb-1">Expected Impact:</h5>
-                            <p className="text-sm text-green-600 font-medium">{rec.impact}</p>
-                          </div>
-                          <div>
-                            <h5 className="font-medium text-gray-900 mb-1">Estimated Improvement:</h5>
-                            <p className="text-sm text-blue-600 font-medium">{rec.estimatedImprovement}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-              </TabsContent>
-            </Tabs>
+                {analysisResult && (
+                  <Button onClick={downloadReport} variant="outline" size="sm" className="border-green-200 text-green-600 hover:bg-green-50">
+                    <Download className="w-4 h-4 mr-2" />
+                    Download Report
+                  </Button>
+                )}
+              </div>
+            </div>
           </div>
-        </section>
-      )}
 
-      <Footer />
+          <div className="h-full overflow-y-auto p-8 pt-16">
+            {/* AI Analysis Input */}
+            <div className="max-w-4xl mx-auto mb-8">
+              <Card className="bg-white border border-gray-200 shadow-lg">
+                <CardHeader>
+                  <CardTitle className="flex items-center text-2xl text-gray-900">
+                    <Brain className="w-6 h-6 text-green-600 mr-3" />
+                    Revolutionary SEO Analysis
+                  </CardTitle>
+                  <p className="text-gray-600">Enter a website URL for expert-level AI analysis</p>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <div className="flex-1">
+                      <Input
+                        placeholder="Enter website URL (e.g., https://example.com)"
+                        value={url}
+                        onChange={(e) => setUrl(e.target.value)}
+                        className="h-12 text-lg border-gray-300 focus:border-green-500 focus:ring-green-500"
+                      />
+                    </div>
+                    <div className="flex gap-2">
+                      <Button 
+                        onClick={handleAIAnalysis}
+                        disabled={isAnalyzing}
+                        className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 h-12 px-6 text-lg font-semibold"
+                      >
+                        {isAnalyzing ? (
+                          <>
+                            <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                            Analyzing...
+                          </>
+                        ) : (
+                          <>
+                            <Brain className="w-5 h-5 mr-2" />
+                            SEO Analysis
+                          </>
+                        )}
+                      </Button>
+                      <Button 
+                        onClick={handleAEOAnalysis}
+                        disabled={isAnalyzing}
+                        variant="outline"
+                        className="border-purple-200 text-purple-600 hover:bg-purple-50 h-12 px-6 text-lg font-semibold"
+                      >
+                        <Bot className="w-5 h-5 mr-2" />
+                        AEO Analysis
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  {isAnalyzing && (
+                    <div className="mt-4">
+                      <div className="flex justify-between text-sm mb-2">
+                        <span className="text-gray-600">Expert AI Analysis Progress</span>
+                        <span className="text-gray-900 font-medium">{Math.round(progress)}%</span>
+                      </div>
+                      <Progress value={progress} className="h-2" />
+                      <p className="text-sm text-gray-500 mt-2">
+                        Expert AI is conducting revolutionary analysis... This may take a few moments.
+                      </p>
+                    </div>
+                  )}
+
+                  {error && (
+                    <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                      <div className="flex items-center">
+                        <AlertTriangle className="w-5 h-5 text-red-600 mr-2" />
+                        <span className="text-red-800 font-medium">Analysis Error</span>
+                      </div>
+                      <p className="text-red-700 mt-2">{error}</p>
+                      <Button 
+                        onClick={() => setError(null)}
+                        variant="outline"
+                        size="sm"
+                        className="mt-2 border-red-200 text-red-600 hover:bg-red-50"
+                      >
+                        Dismiss
+                      </Button>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Analysis Results */}
+            {analysisResult && (
+              <div className="max-w-6xl mx-auto">
+                <Tabs value={activeTool} onValueChange={setActiveTool} className="w-full">
+                  <TabsList className="grid w-full grid-cols-7 bg-white border border-gray-200">
+                    <TabsTrigger value="dashboard" className="data-[state=active]:bg-green-50 data-[state=active]:text-green-600">
+                      <Brain className="w-4 h-4 mr-2" />
+                      Expert Overview
+                    </TabsTrigger>
+                    <TabsTrigger value="aeo-tool" className="data-[state=active]:bg-purple-50 data-[state=active]:text-purple-600">
+                      <Bot className="w-4 h-4 mr-2" />
+                      AEO Optimizer
+                    </TabsTrigger>
+                    <TabsTrigger value="keyword-research" className="data-[state=active]:bg-green-50 data-[state=active]:text-green-600">
+                      <Search className="w-4 h-4 mr-2" />
+                      Keywords
+                    </TabsTrigger>
+                    <TabsTrigger value="competitor-analysis" className="data-[state=active]:bg-green-50 data-[state=active]:text-green-600">
+                      <Target className="w-4 h-4 mr-2" />
+                      Market Intel
+                    </TabsTrigger>
+                    <TabsTrigger value="content-optimizer" className="data-[state=active]:bg-green-50 data-[state=active]:text-green-600">
+                      <FileText className="w-4 h-4 mr-2" />
+                      Content AI
+                    </TabsTrigger>
+                    <TabsTrigger value="technical-audit" className="data-[state=active]:bg-green-50 data-[state=active]:text-green-600">
+                      <Settings className="w-4 h-4 mr-2" />
+                      Technical Pro
+                    </TabsTrigger>
+                    <TabsTrigger value="performance" className="data-[state=active]:bg-green-50 data-[state=active]:text-green-600">
+                      <Zap className="w-4 h-4 mr-2" />
+                      Performance
+                    </TabsTrigger>
+                  </TabsList>
+
+                  {/* Revolutionary SEO Overview Tab */}
+                  <TabsContent value="dashboard" className="mt-6">
+                    <div className="space-y-6">
+                      {/* Expert-Level Scores */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <Card className="bg-white border border-gray-200 shadow-lg">
+                          <CardHeader>
+                            <CardTitle className="text-green-600 flex items-center">
+                              <Award className="w-5 h-5 mr-2" />
+                              Overall Score
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <div className={`text-3xl font-bold mb-2 ${getScoreColor(analysisResult.overallScore)}`}>
+                              {analysisResult.overallScore}
+                            </div>
+                            <Badge variant={getScoreBadgeVariant(analysisResult.overallScore)} className="mb-2">
+                              {getScoreLabel(analysisResult.overallScore)}
+                            </Badge>
+                            <Progress value={analysisResult.overallScore} className="h-2" />
+                          </CardContent>
+                        </Card>
+
+                        <Card className="bg-white border border-gray-200 shadow-lg">
+                          <CardHeader>
+                            <CardTitle className="text-green-600 flex items-center">
+                              <Gauge className="w-5 h-5 mr-2" />
+                              Performance
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <div className={`text-3xl font-bold mb-2 ${getScoreColor(analysisResult.performanceScore)}`}>
+                              {analysisResult.performanceScore}
+                            </div>
+                            <Badge variant={getScoreBadgeVariant(analysisResult.performanceScore)} className="mb-2">
+                              {getScoreLabel(analysisResult.performanceScore)}
+                            </Badge>
+                            <Progress value={analysisResult.performanceScore} className="h-2" />
+                          </CardContent>
+                        </Card>
+
+                        <Card className="bg-white border border-gray-200 shadow-lg">
+                          <CardHeader>
+                            <CardTitle className="text-green-600 flex items-center">
+                              <Target className="w-5 h-5 mr-2" />
+                              SEO Score
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <div className={`text-3xl font-bold mb-2 ${getScoreColor(analysisResult.seoScore)}`}>
+                              {analysisResult.seoScore}
+                            </div>
+                            <Badge variant={getScoreBadgeVariant(analysisResult.seoScore)} className="mb-2">
+                              {getScoreLabel(analysisResult.seoScore)}
+                            </Badge>
+                            <Progress value={analysisResult.seoScore} className="h-2" />
+                          </CardContent>
+                        </Card>
+
+                        <Card className="bg-white border border-gray-200 shadow-lg">
+                          <CardHeader>
+                            <CardTitle className="text-green-600 flex items-center">
+                              <Eye className="w-5 h-5 mr-2" />
+                              Accessibility
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <div className={`text-3xl font-bold mb-2 ${getScoreColor(analysisResult.accessibilityScore)}`}>
+                              {analysisResult.accessibilityScore}
+                            </div>
+                            <Badge variant={getScoreBadgeVariant(analysisResult.accessibilityScore)} className="mb-2">
+                              {getScoreLabel(analysisResult.accessibilityScore)}
+                            </Badge>
+                            <Progress value={analysisResult.accessibilityScore} className="h-2" />
+                          </CardContent>
+                        </Card>
+                      </div>
+
+                      {/* Score Breakdown */}
+                      {analysisResult.scoreBreakdown && (
+                        <Card className="bg-white border border-gray-200 shadow-lg">
+                          <CardHeader>
+                            <CardTitle className="text-green-600 flex items-center">
+                              <BarChart className="w-5 h-5 mr-2" />
+                              Score Breakdown & Optimization Potential
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                              {Object.entries(analysisResult.scoreBreakdown).map(([key, value]) => {
+                                if (key === 'totalPotential') return null;
+                                return (
+                                  <div key={key} className="text-center">
+                                    <div className="text-sm text-gray-600 mb-2 capitalize">
+                                      {key.replace(/([A-Z])/g, ' $1').trim()}
+                                    </div>
+                                    <div className="text-2xl font-bold text-green-600 mb-1">
+                                      {value.current}
+                                    </div>
+                                    <div className="text-sm text-gray-500 mb-2">
+                                      Potential: {value.potential}
+                                    </div>
+                                    <div className="text-xs text-green-600 font-medium">
+                                      +{value.improvements} points possible
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                            <div className="mt-6 text-center">
+                              <div className="text-lg font-semibold text-gray-900 mb-2">
+                                Total Optimization Potential
+                              </div>
+                              <div className="text-3xl font-bold text-green-600">
+                                {analysisResult.scoreBreakdown.totalPotential}%
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      )}
+
+                      {/* Detailed Strengths */}
+                      {analysisResult.detailedStrengths && analysisResult.detailedStrengths.length > 0 && (
+                        <Card className="bg-white border border-gray-200 shadow-lg">
+                          <CardHeader>
+                            <CardTitle className="text-green-600 flex items-center">
+                              <CheckCircle className="w-5 h-5 mr-2" />
+                              Revolutionary Strengths
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent className="space-y-4">
+                            {analysisResult.detailedStrengths.map((strength, index) => (
+                              <div key={index} className="border border-gray-200 rounded-lg p-4">
+                                <div className="flex items-center justify-between mb-3">
+                                  <h3 className="text-lg font-semibold text-gray-900">{strength.category}</h3>
+                                  <Badge variant="outline" className="bg-green-50 text-green-600 border-green-200">
+                                    {strength.items.length} strengths
+                                  </Badge>
+                                </div>
+                                <ul className="space-y-2">
+                                  {strength.items.map((item, itemIndex) => (
+                                    <li key={itemIndex} className="flex items-start">
+                                      <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                                      <span className="text-gray-700">{item}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </CardContent>
+                        </Card>
+                      )}
+
+                      {/* Detailed Improvements */}
+                      {analysisResult.detailedImprovements && analysisResult.detailedImprovements.length > 0 && (
+                        <Card className="bg-white border border-gray-200 shadow-lg">
+                          <CardHeader>
+                            <CardTitle className="text-red-600 flex items-center">
+                              <AlertTriangle className="w-5 h-5 mr-2" />
+                              Critical Improvements for 100% Optimization
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent className="space-y-4">
+                            {analysisResult.detailedImprovements.map((improvement, index) => (
+                              <div key={index} className="border border-gray-200 rounded-lg p-4">
+                                <div className="flex items-center justify-between mb-3">
+                                  <h3 className="text-lg font-semibold text-gray-900">{improvement.category}</h3>
+                                  <div className="flex items-center space-x-2">
+                                    <Badge className={getPriorityColor(improvement.priority)}>
+                                      {improvement.priority} Priority
+                                    </Badge>
+                                    <Badge variant="outline" className="bg-red-50 text-red-600 border-red-200">
+                                      {improvement.items.length} improvements
+                                    </Badge>
+                                  </div>
+                                </div>
+                                <div className="space-y-3">
+                                  {improvement.items.map((item, itemIndex) => (
+                                    <div key={itemIndex} className="bg-gray-50 p-3 rounded-lg">
+                                      <div className="flex items-start justify-between mb-2">
+                                        <h4 className="font-semibold text-gray-900">{item.issue}</h4>
+                                        <div className="flex items-center space-x-2">
+                                          <Badge variant="outline" className={getEffortColor(item.effort)}>
+                                            {item.effort} effort
+                                          </Badge>
+                                          <Badge variant="outline" className="bg-green-50 text-green-600 border-green-200">
+                                            +{item.scoreIncrease} points
+                                          </Badge>
+                                        </div>
+                                      </div>
+                                      <p className="text-gray-600 mb-2">{item.description}</p>
+                                      <div className="mb-2">
+                                        <span className="text-sm font-medium text-red-600">Impact: </span>
+                                        <span className="text-sm text-gray-700">{item.impact}</span>
+                                      </div>
+                                      <div className="bg-green-50 p-2 rounded">
+                                        <span className="text-sm font-medium text-green-600">Solution: </span>
+                                        <span className="text-sm text-gray-700">{item.solution}</span>
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            ))}
+                          </CardContent>
+                        </Card>
+                      )}
+
+                      {/* Optimization Roadmap */}
+                      {analysisResult.optimizationRoadmap && (
+                        <Card className="bg-white border border-gray-200 shadow-lg">
+                          <CardHeader>
+                            <CardTitle className="text-green-600 flex items-center">
+                              <Rocket className="w-5 h-5 mr-2" />
+                              Optimization Roadmap
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                              <div>
+                                <h3 className="text-lg font-semibold text-red-600 mb-3 flex items-center">
+                                  <Clock className="w-4 h-4 mr-2" />
+                                  Immediate (0-30 days)
+                                </h3>
+                                <ul className="space-y-2">
+                                  {analysisResult.optimizationRoadmap.immediate.map((action, index) => (
+                                    <li key={index} className="flex items-start">
+                                      <ArrowRight className="w-4 h-4 text-red-600 mr-2 mt-0.5 flex-shrink-0" />
+                                      <span className="text-gray-700">{action}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                              
+                              <div>
+                                <h3 className="text-lg font-semibold text-yellow-600 mb-3 flex items-center">
+                                  <Calendar className="w-4 h-4 mr-2" />
+                                  Short-term (1-3 months)
+                                </h3>
+                                <ul className="space-y-2">
+                                  {analysisResult.optimizationRoadmap.shortTerm.map((action, index) => (
+                                    <li key={index} className="flex items-start">
+                                      <ArrowRight className="w-4 h-4 text-yellow-600 mr-2 mt-0.5 flex-shrink-0" />
+                                      <span className="text-gray-700">{action}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                              
+                              <div>
+                                <h3 className="text-lg font-semibold text-green-600 mb-3 flex items-center">
+                                  <Target className="w-4 h-4 mr-2" />
+                                  Long-term (3-12 months)
+                                </h3>
+                                <ul className="space-y-2">
+                                  {analysisResult.optimizationRoadmap.longTerm.map((action, index) => (
+                                    <li key={index} className="flex items-start">
+                                      <ArrowRight className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                                      <span className="text-gray-700">{action}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      )}
+                    </div>
+                  </TabsContent>
+
+                  {/* AEO Tool Tab */}
+                  <TabsContent value="aeo-tool" className="mt-6">
+                    <div className="space-y-6">
+                      {aeoResult ? (
+                        <Card className="bg-white border border-gray-200 shadow-lg">
+                          <CardHeader>
+                            <CardTitle className="text-purple-600 flex items-center">
+                              <Bot className="w-5 h-5 mr-2" />
+                              AI Experience Optimization (AEO)
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent className="space-y-6">
+                            <div className="text-center">
+                              <div className="text-4xl font-bold text-purple-600 mb-2">
+                                {aeoResult.aeoScore}
+                              </div>
+                              <Badge variant="outline" className="border-purple-200 text-purple-600">
+                                AEO Score
+                              </Badge>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                              <Card>
+                                <CardHeader>
+                                  <CardTitle className="text-sm text-gray-600 flex items-center">
+                                    <Users className="w-4 h-4 mr-2" />
+                                    Personalization
+                                  </CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                  <div className="text-2xl font-bold text-purple-600 mb-2">
+                                    {aeoResult.personalizationOpportunities.score}
+                                  </div>
+                                  <Progress value={aeoResult.personalizationOpportunities.score} className="h-2" />
+                                </CardContent>
+                              </Card>
+
+                              <Card>
+                                <CardHeader>
+                                  <CardTitle className="text-sm text-gray-600 flex items-center">
+                                    <Bot className="w-4 h-4 mr-2" />
+                                    Conversational AI
+                                  </CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                  <div className="text-2xl font-bold text-purple-600 mb-2">
+                                    {aeoResult.conversationalAI.score}
+                                  </div>
+                                  <Progress value={aeoResult.conversationalAI.score} className="h-2" />
+                                </CardContent>
+                              </Card>
+
+                              <Card>
+                                <CardHeader>
+                                  <CardTitle className="text-sm text-gray-600 flex items-center">
+                                    <Cpu className="w-4 h-4 mr-2" />
+                                    Predictive Analytics
+                                  </CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                  <div className="text-2xl font-bold text-purple-600 mb-2">
+                                    {aeoResult.predictiveAnalytics.score}
+                                  </div>
+                                  <Progress value={aeoResult.predictiveAnalytics.score} className="h-2" />
+                                </CardContent>
+                              </Card>
+                            </div>
+
+                            <div>
+                              <h3 className="text-lg font-semibold mb-3 text-purple-600">Revolutionary AI Recommendations</h3>
+                              <div className="space-y-4">
+                                <div>
+                                  <h4 className="font-semibold text-green-600 mb-2">Immediate Opportunities</h4>
+                                  <ul className="space-y-2">
+                                    {aeoResult.aiRecommendations.immediate.map((rec, index) => (
+                                      <li key={index} className="flex items-start bg-green-50 p-3 rounded-lg">
+                                        <Rocket className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                                        <span className="text-gray-700">{rec}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+
+                                <div>
+                                  <h4 className="font-semibold text-blue-600 mb-2">Strategic Implementations</h4>
+                                  <ul className="space-y-2">
+                                    {aeoResult.aiRecommendations.strategic.map((rec, index) => (
+                                      <li key={index} className="flex items-start bg-blue-50 p-3 rounded-lg">
+                                        <Target className="w-4 h-4 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                                        <span className="text-gray-700">{rec}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+
+                                <div>
+                                  <h4 className="font-semibold text-purple-600 mb-2">Revolutionary Features</h4>
+                                  <ul className="space-y-2">
+                                    {aeoResult.aiRecommendations.revolutionary.map((rec, index) => (
+                                      <li key={index} className="flex items-start bg-purple-50 p-3 rounded-lg">
+                                        <Sparkles className="w-4 h-4 text-purple-600 mr-2 mt-0.5 flex-shrink-0" />
+                                        <span className="text-gray-700">{rec}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      ) : (
+                        <Card className="bg-white border border-gray-200 shadow-lg">
+                          <CardContent className="p-8 text-center">
+                            <Bot className="w-16 h-16 mx-auto mb-4 text-purple-600" />
+                            <h3 className="text-xl font-semibold mb-2 text-gray-900">AEO Analysis</h3>
+                            <p className="text-gray-600 mb-4">Click "AEO Analysis" to get AI Experience Optimization insights</p>
+                            <Button 
+                              onClick={handleAEOAnalysis}
+                              disabled={isAnalyzing}
+                              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                            >
+                              <Bot className="w-4 h-4 mr-2" />
+                              Analyze AEO
+                            </Button>
+                          </CardContent>
+                        </Card>
+                      )}
+                    </div>
+                  </TabsContent>
+
+                  {/* Other tabs with placeholder content */}
+                  <TabsContent value="keyword-research" className="mt-6">
+                    <Card className="bg-white border border-gray-200 shadow-lg">
+                      <CardContent className="p-8 text-center">
+                        <Search className="w-16 h-16 mx-auto mb-4 text-green-600" />
+                        <h3 className="text-xl font-semibold mb-2 text-gray-900">Advanced Keyword Analysis</h3>
+                        <p className="text-gray-600 mb-4">Comprehensive keyword research coming soon!</p>
+                        <Button disabled className="bg-gray-400 cursor-not-allowed">
+                          Coming Soon
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </TabsContent>
+
+                  <TabsContent value="competitor-analysis" className="mt-6">
+                    <Card className="bg-white border border-gray-200 shadow-lg">
+                      <CardContent className="p-8 text-center">
+                        <Target className="w-16 h-16 mx-auto mb-4 text-green-600" />
+                        <h3 className="text-xl font-semibold mb-2 text-gray-900">Market Intelligence</h3>
+                        <p className="text-gray-600 mb-4">Advanced competitive analysis coming soon!</p>
+                        <Button disabled className="bg-gray-400 cursor-not-allowed">
+                          Coming Soon
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </TabsContent>
+
+                  <TabsContent value="content-optimizer" className="mt-6">
+                    <Card className="bg-white border border-gray-200 shadow-lg">
+                      <CardContent className="p-8 text-center">
+                        <FileText className="w-16 h-16 mx-auto mb-4 text-green-600" />
+                        <h3 className="text-xl font-semibold mb-2 text-gray-900">Content Revolution</h3>
+                        <p className="text-gray-600 mb-4">AI-powered content optimization coming soon!</p>
+                        <Button disabled className="bg-gray-400 cursor-not-allowed">
+                          Coming Soon
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </TabsContent>
+
+                  <TabsContent value="technical-audit" className="mt-6">
+                    <Card className="bg-white border border-gray-200 shadow-lg">
+                      <CardContent className="p-8 text-center">
+                        <Settings className="w-16 h-16 mx-auto mb-4 text-green-600" />
+                        <h3 className="text-xl font-semibold mb-2 text-gray-900">Technical Mastery</h3>
+                        <p className="text-gray-600 mb-4">Advanced technical SEO analysis coming soon!</p>
+                        <Button disabled className="bg-gray-400 cursor-not-allowed">
+                          Coming Soon
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </TabsContent>
+
+                  <TabsContent value="performance" className="mt-6">
+                    <Card className="bg-white border border-gray-200 shadow-lg">
+                      <CardContent className="p-8 text-center">
+                        <Zap className="w-16 h-16 mx-auto mb-4 text-green-600" />
+                        <h3 className="text-xl font-semibold mb-2 text-gray-900">Performance Pro</h3>
+                        <p className="text-gray-600 mb-4">Core Web Vitals optimization coming soon!</p>
+                        <Button disabled className="bg-gray-400 cursor-not-allowed">
+                          Coming Soon
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </TabsContent>
+                </Tabs>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default SEOAnalyzer; 
+export default SEOAnalyzer;
