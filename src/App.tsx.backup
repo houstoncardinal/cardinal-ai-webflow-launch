@@ -23,7 +23,6 @@ import PortfolioPage from "./pages/Portfolio";
 import BlogPage from "./pages/Blog";
 import BlogPostPage from "./pages/BlogPost";
 import FreeAuditPage from "./pages/FreeAudit";
-import SEOAnalyzerPage from "./pages/SEOAnalyzer";
 import StrategyCallPage from "./pages/StrategyCall";
 import LoadingScreen from "./components/LoadingScreen";
 
@@ -85,7 +84,6 @@ const App = () => (
             <Route path="/portfolio/abq-mri" element={<ABQMRI />} />
             <Route path="/portfolio/apn-clinic" element={<APNClinic />} />
             <Route path="/free-audit" element={<FreeAuditPage />} />
-            <Route path="/seo-analyzer" element={<SEOAnalyzerPage />} />
             <Route path="/strategy-call" element={<StrategyCallPage />} />
             
             {/* Service Routes */}
