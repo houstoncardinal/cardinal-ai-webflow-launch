@@ -217,7 +217,7 @@ const HeroSlider = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[70vh] sm:min-h-[70vh] lg:min-h-[65vh] lg:min-h-[80vh]">
             <div className="lg:col-span-7 space-y-5 sm:space-y-6 lg:space-y-7">
               {/* Animated category tag */}
-              <div className={`inline-flex items-center text-sm sm:text-base lg:text-lg font-medium text-green-600 uppercase tracking-wide mb-2 sm:mb-3 animate-fade-in slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}>
+              <div className={`inline-flex items-center text-sm sm:text-base lg:text-lg font-medium text-green-600 uppercase tracking-wide mb-2 sm:mb-3 pt-4 sm:pt-0 animate-fade-in slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}>
                 <div className="w-8 sm:w-10 lg:w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-3 sm:mr-4 lg:mr-5"></div>
                 {slides[currentSlide].category}
               </div>
