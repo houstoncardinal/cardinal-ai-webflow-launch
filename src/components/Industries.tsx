@@ -210,7 +210,7 @@ const Industries = () => {
   };
 
   return (
-    <section id="industries" className="py-16 bg-gray-50 relative overflow-hidden">
+    <section id="industries" className="pt-16 pb-0 bg-gray-50 relative overflow-hidden">
       {/* Advanced animated background */}
       <div className="absolute inset-0 opacity-30">
         {/* Floating geometric shapes */}
@@ -485,7 +485,7 @@ const Industries = () => {
         </div>
 
         {/* Enhanced CTA Section */}
-        <div className="mt-24 relative">
+        <div className="mt-16 mb-0 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-green-50/50 via-gray-50 to-green-50/50 rounded-3xl"></div>
           <div className="relative bg-gradient-to-r from-gray-50/80 to-green-50/80 backdrop-blur-sm rounded-3xl p-8 md:p-16 text-center border border-gray-200/50 shadow-2xl animate-fade-in" style={{animationDelay: '1200ms'}}>
             <div className="absolute inset-0 opacity-10">
