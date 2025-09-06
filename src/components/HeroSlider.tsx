@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronDown, Star, ExternalLink, MessageCircle, Facebook, User, Mail, Phone, TrendingUp, Award, Users } from "lucide-react";
+import { ArrowRight, ChevronDown, Star, ExternalLink, MessageCircle, Facebook, User, Mail, Phone, TrendingUp, Award, Users, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -288,20 +288,22 @@ const HeroSlider = () => {
             </div>
           </div>
 
-          {/* Slide indicators */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => handleSlideChange(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  currentSlide === index 
-                    ? 'bg-green-600 scale-125' 
-                    : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-              />
-            ))}
-          </div>
+          {/* Luxury Navigation Arrows */}
+          <button
+            onClick={() => handleSlideChange(currentSlide === 0 ? slides.length - 1 : currentSlide - 1)}
+            className="absolute left-4 sm:left-6 lg:left-8 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white border border-gray-200 hover:border-green-500 rounded-full p-3 sm:p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group"
+            disabled={isTransitioning}
+          >
+            <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 group-hover:text-green-600 transition-colors duration-300" />
+          </button>
+          
+          <button
+            onClick={() => handleSlideChange(currentSlide === slides.length - 1 ? 0 : currentSlide + 1)}
+            className="absolute right-4 sm:right-6 lg:right-8 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white border border-gray-200 hover:border-green-500 rounded-full p-3 sm:p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group"
+            disabled={isTransitioning}
+          >
+            <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 group-hover:text-green-600 transition-colors duration-300" />
+          </button>
         </div>
       </section>
     </>
