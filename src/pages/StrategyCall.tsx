@@ -528,7 +528,7 @@ const StrategyCall = () => {
                     <div className="space-y-4">
                       <div className="flex items-center group/item">
                         <Phone className="w-4 h-4 text-green-600 mr-3 group-hover/item:scale-110 transition-transform duration-300" />
-                        <a href="tel:832-989-2163" className="text-sm text-gray-700 hover:text-green-600 transition-colors duration-300">832-989-2163</a>
+                        <a href="tel:281-901-7016" className="text-sm text-gray-700 hover:text-green-600 transition-colors duration-300">281-901-7016</a>
                       </div>
                       <div className="flex items-center group/item">
                         <Mail className="w-4 h-4 text-green-600 mr-3 group-hover/item:scale-110 transition-transform duration-300" />

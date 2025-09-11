@@ -1354,7 +1354,7 @@ const WebDevelopment = () => {
               <div className="mt-8 flex items-center justify-center space-x-4">
                 <div className="flex items-center text-white">
                   <Phone className="w-4 h-4 mr-2" />
-                  <span className="text-sm">(832) 555-0123</span>
+                  <span className="text-sm">(281) 901-7016</span>
                 </div>
                 <div className="flex items-center text-white">
                   <Mail className="w-4 h-4 mr-2" />

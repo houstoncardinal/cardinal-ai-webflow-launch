@@ -9,7 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import { Mail, Phone, MapPin, Clock, Sparkles, Star, MessageCircle, ExternalLink, Facebook, Code, Smartphone, Search, Palette, Cloud, BarChart, Target, Globe, Zap, Check, ChevronsUpDown } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Sparkles, Star, MessageCircle, ExternalLink, Facebook, Code, Smartphone, Search, Palette, Cloud, BarChart, BarChart3, Target, Globe, Zap, TrendingUp, Check, ChevronsUpDown } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import TransformationForm from "./TransformationForm";
 
@@ -75,39 +75,62 @@ const Contact = () => {
         icon: Code
       },
       {
-        id: "web-application",
-        label: "Web Applications",
-        description: "Complex web apps with enterprise architecture",
-        icon: Globe
-      },
-      {
         id: "ecommerce",
         label: "E-commerce Solutions",
         description: "Full-featured online stores with secure payment processing",
+        icon: Code
+      },
+      {
+        id: "cms-integration",
+        label: "CMS Integration",
+        description: "Content management system setup and customization",
         icon: Code
       }
     ]
   },
   {
-    category: "Mobile Development",
+    category: "Mobile & Web Applications",
     services: [
       {
-        id: "ios-development",
-        label: "iOS App Development",
-        description: "Native iOS applications for iPhone and iPad",
+        id: "mobile-apps",
+        label: "Mobile Applications",
+        description: "Native and cross-platform mobile applications",
         icon: Smartphone
       },
       {
-        id: "android-development",
-        label: "Android App Development",
-        description: "Native Android applications for all devices",
+        id: "web-applications",
+        label: "Web Applications",
+        description: "Custom web applications and enterprise solutions",
         icon: Smartphone
       },
       {
-        id: "cross-platform",
-        label: "Cross-Platform Apps",
-        description: "Hybrid apps that work on both iOS and Android",
+        id: "app-optimization",
+        label: "App Performance Optimization",
+        description: "Optimize existing applications for better performance",
         icon: Smartphone
+      }
+    ]
+  },
+  {
+    category: "SEO & Analytics",
+    services: [
+      {
+        id: "seo-optimization",
+        label: "SEO Optimization",
+        description: "Comprehensive SEO optimization and strategy",
+        icon: Search
+      },
+      {
+        id: "analytics-setup",
+        label: "Analytics & Tracking",
+        description: "Advanced analytics setup and conversion tracking",
+        icon: Search
+      },
+      {
+        id: "technical-seo",
+        label: "Technical SEO",
+        description: "Technical SEO audits and improvements",
+        icon: Search
       }
     ]
   },
@@ -115,56 +138,68 @@ const Contact = () => {
     category: "Digital Marketing",
     services: [
       {
-        id: "seo-optimization",
-        label: "SEO Optimization",
-        description: "Improve your search engine rankings and visibility",
-        icon: Search
-      },
-      {
         id: "ppc-advertising",
         label: "PPC Advertising",
-        description: "Targeted paid advertising campaigns",
-        icon: Target
+        description: "Strategic paid advertising campaigns",
+        icon: BarChart3
       },
       {
         id: "social-media",
         label: "Social Media Marketing",
         description: "Strategic social media presence and campaigns",
-        icon: BarChart
+        icon: BarChart3
+      },
+      {
+        id: "email-marketing",
+        label: "Email Marketing",
+        description: "Email campaign design and automation",
+        icon: BarChart3
       }
     ]
   },
   {
-    category: "Design & Branding",
+    category: "Brand Identity Design",
     services: [
       {
-        id: "brand-identity",
-        label: "Brand Identity Design",
-        description: "Complete brand development and visual identity",
+        id: "logo-design",
+        label: "Logo Design",
+        description: "Professional logo design and brand identity",
         icon: Palette
       },
       {
-        id: "ui-ux-design",
-        label: "UI/UX Design",
-        description: "User-centered interface and experience design",
+        id: "brand-guidelines",
+        label: "Brand Guidelines",
+        description: "Complete brand identity packages and guidelines",
+        icon: Palette
+      },
+      {
+        id: "visual-identity",
+        label: "Visual Identity",
+        description: "Comprehensive visual identity systems",
         icon: Palette
       }
     ]
   },
   {
-    category: "Infrastructure",
+    category: "UX/UI Experience Optimization",
     services: [
       {
-        id: "cloud-solutions",
-        label: "Cloud Infrastructure",
-        description: "Scalable, secure cloud hosting solutions",
-        icon: Cloud
+        id: "user-research",
+        label: "User Research",
+        description: "In-depth user research and behavior analysis",
+        icon: TrendingUp
       },
       {
-        id: "ai-optimization",
-        label: "AI & Optimization",
-        description: "AI-powered solutions and performance optimization",
-        icon: Zap
+        id: "interface-design",
+        label: "Interface Design",
+        description: "User interface design and prototyping",
+        icon: TrendingUp
+      },
+      {
+        id: "conversion-optimization",
+        label: "Conversion Optimization",
+        description: "A/B testing and conversion rate optimization",
+        icon: TrendingUp
       }
     ]
   }
@@ -180,7 +215,7 @@ const contactInfo = [
     {
       icon: Phone,
       title: "Phone",
-      details: ["(832) 989-2163", "Available 24/7"],
+      details: ["(281) 901-7016", "Available 24/7"],
       color: "text-green-600"
     },
     {
@@ -509,7 +544,7 @@ const contactInfo = [
                   Email us directly
                 </a>
                 <a 
-                  href="tel:832-989-2163" 
+                  href="tel:281-901-7016" 
                   className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all duration-300 hover:scale-105"
                 >
                   <Phone className="w-4 h-4 mr-2" />

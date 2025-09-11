@@ -3,9 +3,11 @@ import { ArrowRight, ChevronDown, Star, ExternalLink, MessageCircle, Facebook, U
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -209,7 +211,7 @@ const Hero = () => {
                                                {/* CTA Section with hover animations */}
               <div className="flex justify-start pt-2 sm:pt-3 lg:pt-4">
                 <Button 
-                  onClick={() => window.location.href = '/strategy-call'} 
+                  onClick={() => navigate('/strategy-call')} 
                   className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 sm:px-10 py-4 sm:py-5 text-lg sm:text-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 w-full sm:w-auto rounded-xl"
                 >
                   Book Free Strategy Call

@@ -2,9 +2,11 @@ import { ArrowRight, ChevronDown, Star, ExternalLink, MessageCircle, Facebook, U
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 
 const HeroSlider = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -248,9 +250,9 @@ const HeroSlider = () => {
               <div className="flex justify-start pt-3 sm:pt-4 lg:pt-5">
                 <Button 
                   onClick={() => {
-                    if (currentSlide === 0) window.location.href = '/strategy-call';
-                    else if (currentSlide === 1) window.location.href = '/portfolio/abqmri';
-                    else window.location.href = '/services/seo-insights';
+                    if (currentSlide === 0) navigate('/strategy-call');
+                    else if (currentSlide === 1) navigate('/portfolio/abq-mri');
+                    else navigate('/services/seo-insights');
                   }} 
                   className={`bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-10 sm:px-12 lg:px-14 py-5 sm:py-6 lg:py-7 text-xl sm:text-2xl lg:text-3xl font-semibold shadow-xl hover:shadow-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto rounded-xl slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}
                 >

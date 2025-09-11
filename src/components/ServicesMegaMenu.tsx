@@ -9,6 +9,7 @@ import {
   Share2, 
   Search, 
   Zap, 
+  TrendingUp,
   ArrowRight,
   Sparkles
 } from "lucide-react";
@@ -43,8 +44,8 @@ const ServicesMegaMenu = ({ isOpen, onClose, setIsOpen, setIsHoveringMegaMenu }:
     {
       id: "web-development",
       icon: Code,
-      title: "Web Development",
-      description: "Custom websites that convert",
+      title: "Custom Website Development",
+      description: "Professional, responsive websites built with modern technologies",
       gradient: "from-blue-500/20 via-cyan-400/25 to-blue-600/20",
       accentColor: "text-blue-600",
       glowColor: "blue-500/30",
@@ -54,79 +55,57 @@ const ServicesMegaMenu = ({ isOpen, onClose, setIsOpen, setIsHoveringMegaMenu }:
     {
       id: "mobile-apps",
       icon: Smartphone,
-      title: "Mobile Applications",
-      description: "Native & cross-platform apps",
+      title: "Mobile & Web Applications",
+      description: "Custom mobile apps and web applications for all devices",
       gradient: "from-emerald-500/20 via-green-400/25 to-emerald-600/20",
       accentColor: "text-emerald-600",
       glowColor: "emerald-500/30",
       link: "/services/mobile-applications",
-      features: ["iOS & Android", "React Native", "Flutter", "App Store Optimization"]
-    },
-    {
-      id: "web-apps",
-      icon: Globe,
-      title: "Web Applications",
-      description: "Complex business solutions",
-      gradient: "from-purple-500/20 via-violet-400/25 to-purple-600/20",
-      accentColor: "text-purple-600",
-      glowColor: "purple-500/30",
-      link: "/services/web-applications",
-      features: ["Enterprise Architecture", "API Development", "Database Design", "Scalability"]
-    },
-    {
-      id: "cloud-solutions",
-      icon: Zap,
-      title: "Cloud Solutions",
-      description: "Scalable infrastructure",
-      gradient: "from-amber-500/20 via-yellow-400/25 to-amber-600/20",
-      accentColor: "text-amber-600",
-      glowColor: "amber-500/30",
-      link: "/services/cloud-solutions",
-      features: ["AWS/Azure/GCP", "DevOps", "Security", "Cost Optimization"]
+      features: ["iOS & Android", "React Native", "Web Apps", "Cross-Platform"]
     },
     {
       id: "seo-analytics",
       icon: Search,
-      title: "SEO & Analytics",
-      description: "Data-driven growth",
-      gradient: "from-rose-500/20 via-pink-400/25 to-rose-600/20",
-      accentColor: "text-rose-600",
-      glowColor: "rose-500/30",
+      title: "SEO & Analytics Services",
+      description: "Comprehensive SEO optimization and analytics solutions",
+      gradient: "from-purple-500/20 via-violet-400/25 to-purple-600/20",
+      accentColor: "text-purple-600",
+      glowColor: "purple-500/30",
       link: "/services/seo-insights",
       features: ["Technical SEO", "Content Strategy", "Analytics", "Conversion Tracking"]
     },
     {
-      id: "brand-strategy",
-      icon: Palette,
-      title: "Brand Identity",
-      description: "Memorable brand experiences",
-      gradient: "from-indigo-500/20 via-blue-400/25 to-indigo-600/20",
-      accentColor: "text-indigo-600",
-      glowColor: "indigo-500/30",
-      link: "/services/brand-identity",
-      features: ["Logo Design", "Brand Guidelines", "Visual Identity", "Brand Strategy"]
-    },
-    {
       id: "digital-marketing",
-      icon: Share2,
-      title: "Digital Marketing",
-      description: "Results-driven campaigns",
-      gradient: "from-teal-500/20 via-cyan-400/25 to-teal-600/20",
-      accentColor: "text-teal-600",
-      glowColor: "teal-500/30",
+      icon: BarChart3,
+      title: "Digital Marketing Campaigns",
+      description: "Strategic digital marketing campaigns that drive growth",
+      gradient: "from-orange-500/20 via-red-400/25 to-orange-600/20",
+      accentColor: "text-orange-600",
+      glowColor: "orange-500/30",
       link: "/services/digital-campaigns",
       features: ["PPC Advertising", "Social Media", "Content Marketing", "Email Campaigns"]
     },
     {
-      id: "ai-optimization",
-      icon: BarChart3,
-      title: "AI Experience Optimization",
-      description: "Future-proof your business",
-      gradient: "from-violet-500/20 via-purple-400/25 to-violet-600/20",
-      accentColor: "text-violet-600",
-      glowColor: "violet-500/30",
+      id: "brand-identity",
+      icon: Palette,
+      title: "Brand Identity Design",
+      description: "Complete brand identity solutions that make you stand out",
+      gradient: "from-pink-500/20 via-rose-400/25 to-pink-600/20",
+      accentColor: "text-pink-600",
+      glowColor: "pink-500/30",
+      link: "/services/brand-identity",
+      features: ["Logo Design", "Brand Guidelines", "Visual Identity", "Brand Strategy"]
+    },
+    {
+      id: "ux-ui-optimization",
+      icon: TrendingUp,
+      title: "UX/UI Experience Optimization",
+      description: "User-centered design that improves conversions and engagement",
+      gradient: "from-teal-500/20 via-cyan-400/25 to-teal-600/20",
+      accentColor: "text-teal-600",
+      glowColor: "teal-500/30",
       link: "/services/experience-optimization",
-      features: ["AI-Ready Content", "Voice Search", "Machine Learning", "Predictive Analytics"]
+      features: ["User Research", "Interface Design", "Usability Testing", "Conversion Optimization"]
     }
   ];
 
@@ -137,7 +116,7 @@ const ServicesMegaMenu = ({ isOpen, onClose, setIsOpen, setIsHoveringMegaMenu }:
   return (
     <div 
       ref={menuRef}
-      className="absolute top-full left-0 right-0 z-50 animate-in slide-in-from-top-2 duration-500 ease-out mega-menu-container"
+      className="absolute top-full left-0 right-0 z-[10001] animate-in slide-in-from-top-2 duration-500 ease-out mega-menu-container"
       onMouseEnter={() => {
         setIsOpen(true);
         setIsHoveringMegaMenu?.(true);
@@ -165,14 +144,14 @@ const ServicesMegaMenu = ({ isOpen, onClose, setIsOpen, setIsHoveringMegaMenu }:
     >
       {/* Backdrop blur */}
       <div 
-        className="absolute inset-0 bg-black/5 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/5 backdrop-blur-sm pointer-events-none"
         onMouseEnter={() => {
           setIsHoveringMegaMenu?.(true);
         }}
       />
       
       {/* Main menu container */}
-      <div className="relative bg-white/95 backdrop-blur-md border-b border-gray-200/50 shadow-xl">
+      <div className="relative bg-white/95 backdrop-blur-md border-b border-gray-200/50 shadow-xl pointer-events-auto">
         {/* Animated border gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 via-blue-500/20 to-purple-500/20 opacity-0 animate-pulse"></div>
         {/* Subtle background elements */}
@@ -200,8 +179,8 @@ const ServicesMegaMenu = ({ isOpen, onClose, setIsOpen, setIsHoveringMegaMenu }:
             </p>
           </div>
 
-          {/* Compact Services Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          {/* Core Services Grid - Optimized for 6 services */}
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {services.map((service, index) => (
               <div
                 key={service.id}
@@ -211,7 +190,7 @@ const ServicesMegaMenu = ({ isOpen, onClose, setIsOpen, setIsHoveringMegaMenu }:
                 <Link
                   to={service.link}
                   onClick={onClose}
-                  className="group relative block"
+                  className="group relative block pointer-events-auto"
                 >
                 {/* Glass morphism effect */}
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500">

@@ -95,7 +95,7 @@ const SEO = ({
       <meta name="business:contact_data:administrative_area" content="TX" />
       <meta name="business:contact_data:postal_code" content="77027" />
       <meta name="business:contact_data:country_name" content="United States" />
-      <meta name="business:contact_data:phone_number" content="+1-832-989-2163" />
+              <meta name="business:contact_data:phone_number" content="+1-281-901-7016" />
       
       {/* Canonical URL */}
       <link rel="canonical" href={fullUrl} />
@@ -110,7 +110,7 @@ const SEO = ({
         "image": fullLogoUrl,
         "logo": fullLogoUrl,
         "url": "https://cardinalhtx.com",
-        "telephone": "+1-832-989-2163",
+        "telephone": "+1-281-901-7016",
         "email": "hello@cardinalhtx.com",
         "description": "Houston's #1 web development agency specializing in custom websites, mobile apps, and digital marketing solutions. 500+ projects completed with 98% client satisfaction.",
         "priceRange": "$$",
@@ -285,7 +285,7 @@ const SEO = ({
         },
         "contactPoint": {
           "@type": "ContactPoint",
-          "telephone": "+1-832-989-2163",
+          "telephone": "+1-281-901-7016",
           "contactType": "customer service",
           "areaServed": "US",
           "availableLanguage": "English",
@@ -439,7 +439,7 @@ const SEO = ({
               "name": "How can I get started with Cardinal Consulting?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Getting started is easy! Call us at (832) 989-2163 for a FREE consultation, or fill out our project evaluation form on our website. We'll discuss your project requirements and provide a custom quote with no obligation."
+                "text": "Getting started is easy! Call us at (281) 901-7016 for a FREE consultation, or fill out our project evaluation form on our website. We'll discuss your project requirements and provide a custom quote with no obligation."
               }
             },
             {

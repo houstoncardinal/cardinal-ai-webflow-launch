@@ -300,7 +300,7 @@ const Navigation = () => {
                     <Button 
                       variant="outline" 
                       size="sm"
-                      onClick={() => window.open("tel:+18325550123", "_self")}
+                      onClick={() => window.open("tel:+12819017016", "_self")}
                       className="text-sm"
                     >
                       📞 Call Now
@@ -317,21 +317,7 @@ const Navigation = () => {
             </div>
           </div>
           
-          {/* Services Mega Menu */}
-          <ServicesMegaMenu 
-            isOpen={isServicesMenuOpen} 
-            onClose={() => setIsServicesMenuOpen(false)}
-            setIsOpen={setIsServicesMenuOpen}
-            setIsHoveringMegaMenu={setIsHoveringMegaMenu}
-          />
 
-          {/* Contact Mega Menu */}
-          <ContactMegaMenu 
-            isOpen={isContactMenuOpen} 
-            onClose={() => setIsContactMenuOpen(false)}
-            setIsOpen={setIsContactMenuOpen}
-            setIsHoveringMegaMenu={setIsHoveringMegaMenu}
-          />
 
           {/* Enhanced mobile menu button */}
           <div className="lg:hidden">
@@ -397,7 +383,7 @@ const Navigation = () => {
                       variant="outline" 
                       className="w-full text-sm py-3 border-green-200 text-green-600 hover:bg-green-50 hover:border-green-300 transition-all duration-300"
                       onClick={() => {
-                        window.open("tel:+18325550123", "_self");
+                        window.open("tel:+12819017016", "_self");
                         setIsMenuOpen(false);
                       }}
                     >
@@ -422,6 +408,22 @@ const Navigation = () => {
           </div>
         )}
       </div>
+
+      {/* Services Mega Menu - positioned outside constrained container */}
+      <ServicesMegaMenu 
+        isOpen={isServicesMenuOpen} 
+        onClose={() => setIsServicesMenuOpen(false)}
+        setIsOpen={setIsServicesMenuOpen}
+        setIsHoveringMegaMenu={setIsHoveringMegaMenu}
+      />
+
+      {/* Contact Mega Menu - positioned outside constrained container */}
+      <ContactMegaMenu 
+        isOpen={isContactMenuOpen} 
+        onClose={() => setIsContactMenuOpen(false)}
+        setIsOpen={setIsContactMenuOpen}
+        setIsHoveringMegaMenu={setIsHoveringMegaMenu}
+      />
     </nav>
     </>
   );

@@ -42,11 +42,11 @@ const ContactMegaMenu = ({ isOpen, onClose, setIsOpen, setIsHoveringMegaMenu }: 
       icon: Phone,
       title: "Call Us Now",
       description: "Speak directly with our experts",
-      phone: "+1 (832) 989-2163",
+      phone: "+1 (281) 901-7016",
       gradient: "from-green-500/20 via-emerald-400/25 to-green-600/20",
       accentColor: "text-green-600",
       glowColor: "green-500/30",
-      action: () => window.open("tel:+18329892163", "_self"),
+      action: () => window.open("tel:+12819017016", "_self"),
       features: ["24/7 Support", "Expert Consultation", "Immediate Response"]
     },
     {
@@ -92,7 +92,7 @@ const ContactMegaMenu = ({ isOpen, onClose, setIsOpen, setIsHoveringMegaMenu }: 
   return (
     <div 
       ref={menuRef}
-      className="absolute top-full left-0 right-0 z-50 animate-in slide-in-from-top-2 duration-500 ease-out mega-menu-container"
+      className="absolute top-full left-0 right-0 z-[10001] animate-in slide-in-from-top-2 duration-500 ease-out mega-menu-container"
       onMouseEnter={() => {
         setIsOpen(true);
         setIsHoveringMegaMenu?.(true);
@@ -120,14 +120,14 @@ const ContactMegaMenu = ({ isOpen, onClose, setIsOpen, setIsHoveringMegaMenu }: 
     >
       {/* Backdrop blur */}
       <div 
-        className="absolute inset-0 bg-black/5 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/5 backdrop-blur-sm pointer-events-none"
         onMouseEnter={() => {
           setIsHoveringMegaMenu?.(true);
         }}
       />
       
       {/* Main menu container */}
-      <div className="relative bg-white/95 backdrop-blur-md border-b border-gray-200/50 shadow-xl">
+      <div className="relative bg-white/95 backdrop-blur-md border-b border-gray-200/50 shadow-xl pointer-events-auto">
         {/* Animated border gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 via-blue-500/20 to-purple-500/20 opacity-0 animate-pulse"></div>
         
@@ -164,7 +164,7 @@ const ContactMegaMenu = ({ isOpen, onClose, setIsOpen, setIsHoveringMegaMenu }: 
                 className="animate-in slide-in-from-bottom-4 duration-500"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="group relative block">
+                <div className="group relative block pointer-events-auto">
                   {/* Glass morphism effect */}
                   <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500">
                     <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-white/10 to-transparent rounded-2xl backdrop-blur-[2px]"></div>

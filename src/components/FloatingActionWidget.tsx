@@ -24,7 +24,7 @@ const FloatingActionWidget = () => {
       icon: Phone,
       title: "Call Us Now",
       subtitle: "Speak directly with our team",
-      action: "tel:+18329892163",
+      action: "tel:+12819017016",
       color: "text-green-600",
       bgColor: "bg-green-50",
       borderColor: "border-green-200",

@@ -179,7 +179,7 @@ const PrivacyPolicy = () => {
                 </p>
                 <p className="text-gray-700 mb-2">
                   <strong>Email:</strong> hunain@cardinalhtx.com<br />
-                  <strong>Phone:</strong> (832) 989-2163
+                  <strong>Phone:</strong> (281) 901-7016 or (832) 989-2163
                 </p>
               </div>
             </section>

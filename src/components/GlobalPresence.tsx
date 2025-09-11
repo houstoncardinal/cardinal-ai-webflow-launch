@@ -9,7 +9,7 @@ const GlobalPresence = () => {
       country: "Texas, USA",
       address: "2100 West Loop S Fwy, Houston, TX 77027",
       timezone: "CST (UTC-6)",
-      phone: "(832) 989-2163",
+      phone: "(281) 901-7016",
       primary: true
     },
     {

@@ -5,7 +5,7 @@ This document outlines the comprehensive SEO optimization strategy implemented f
 
 ## Company Information
 - **Name**: Cardinal Consulting
-- **Phone**: (832) 989-2163
+- **Phone**: (281) 901-7016
 - **Address**: 2100 West Loop S Fwy, Houston, TX 77027
 - **Domain**: cardinalhtx.com
 - **Email**: info@cardinalhtx.com

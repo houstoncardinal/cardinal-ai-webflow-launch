@@ -270,7 +270,7 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center space-x-4 group cursor-pointer">
                   <Phone className="w-5 h-5 text-green-400 group-hover:animate-pulse" />
-                  <span className="text-gray-300 text-sm font-light hover:text-white transition-colors duration-300">(832) 989-2163</span>
+                  <span className="text-gray-300 text-sm font-light hover:text-white transition-colors duration-300">(281) 901-7016</span>
                 </div>
                 <div className="flex items-center space-x-4 group cursor-pointer">
                   <Mail className="w-5 h-5 text-green-400 group-hover:animate-pulse" />

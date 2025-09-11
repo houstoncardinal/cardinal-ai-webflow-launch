@@ -131,7 +131,7 @@ const BlogArticleSchema = ({ post, url }: BlogArticleSchemaProps) => {
     ],
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+1-832-989-2163",
+      telephone: "+1-281-901-7016",
       contactType: "customer service",
       areaServed: "US",
       availableLanguage: "English",
@@ -184,7 +184,7 @@ const BlogArticleSchema = ({ post, url }: BlogArticleSchemaProps) => {
       "@type": "LocalBusiness",
       name: "Cardinal Consulting",
       url: window.location.origin,
-      telephone: "+1-832-989-2163",
+      telephone: "+1-281-901-7016",
       address: {
         "@type": "PostalAddress",
         streetAddress: "2100 West Loop S Fwy",

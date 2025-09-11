@@ -60,9 +60,9 @@ const Services = () => {
     },
     {
       icon: TrendingUp,
-      category: "EXPERIENCE OPTIMIZATION",
-      title: "Experience Optimization",
-      description: "Data-driven optimization strategies that improve user experience and conversion rates. We analyze user behavior and implement changes that drive real business growth.",
+      category: "UX/UI DESIGN",
+      title: "UX/UI Experience Optimization",
+      description: "User-centered design and interface optimization that creates exceptional digital experiences. We conduct user research, design intuitive interfaces, and optimize conversion paths to drive engagement and results.",
       gradient: "from-teal-500/10 via-cyan-400/15 to-teal-600/10",
       accentColor: "text-teal-600",
       glowColor: "teal-500/20",
