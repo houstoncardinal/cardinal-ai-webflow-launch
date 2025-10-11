@@ -76,37 +76,55 @@ export type Database = {
       }
       contact_submissions: {
         Row: {
+          budget: string | null
           company: string
           created_at: string | null
           email: string
           first_name: string
           id: string
+          language: string | null
           last_name: string
           message: string
           notes: string | null
+          phone: string | null
+          project_type: string | null
+          source: string | null
           status: string | null
+          timeline: string | null
         }
         Insert: {
+          budget?: string | null
           company: string
           created_at?: string | null
           email: string
           first_name: string
           id?: string
+          language?: string | null
           last_name: string
           message: string
           notes?: string | null
+          phone?: string | null
+          project_type?: string | null
+          source?: string | null
           status?: string | null
+          timeline?: string | null
         }
         Update: {
+          budget?: string | null
           company?: string
           created_at?: string | null
           email?: string
           first_name?: string
           id?: string
+          language?: string | null
           last_name?: string
           message?: string
           notes?: string | null
+          phone?: string | null
+          project_type?: string | null
+          source?: string | null
           status?: string | null
+          timeline?: string | null
         }
         Relationships: []
       }

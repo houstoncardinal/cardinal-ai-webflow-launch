@@ -49,15 +49,20 @@ const VoiceAgent = () => {
         console.log("📅 Scheduling appointment with parameters:", parameters);
         
         try {
-          // Store appointment request in contact_submissions
+          // Store appointment request in contact_submissions with all fields
           const { error } = await supabase
             .from('contact_submissions')
             .insert({
               first_name: parameters.name.split(' ')[0] || parameters.name,
               last_name: parameters.name.split(' ').slice(1).join(' ') || '',
               email: parameters.email,
+              phone: parameters.phone || '',
               company: parameters.service,
-              message: `Appointment Request - Date: ${parameters.date}, Time: ${parameters.time}, Service: ${parameters.service}${parameters.phone ? `, Phone: ${parameters.phone}` : ''}`,
+              message: `Appointment Request - Date: ${parameters.date}, Time: ${parameters.time}, Service: ${parameters.service}`,
+              project_type: parameters.service,
+              timeline: parameters.date,
+              source: 'lily_voice_agent',
+              language: 'en',
               status: 'new'
             });
 

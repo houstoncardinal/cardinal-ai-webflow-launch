@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Phone, Mail, Calendar, DollarSign } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 interface OfferContactFormProps {
   offer: string;
@@ -104,23 +105,40 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
     try {
       const formData = new FormData(e.currentTarget);
       
-      // Submit to Netlify
-      const response = await fetch("/", {
+      // Submit to database first
+      const { error: dbError } = await supabase
+        .from('contact_submissions')
+        .insert({
+          first_name: formData.get('firstName') as string,
+          last_name: formData.get('lastName') as string,
+          email: formData.get('email') as string,
+          phone: formData.get('phone') as string,
+          company: formData.get('company') as string || 'Not provided',
+          message: formData.get('projectDescription') as string,
+          project_type: projectType,
+          timeline: timeline,
+          budget: budget,
+          source: 'offer_landing_page',
+          language: language,
+          status: 'new'
+        });
+
+      if (dbError) throw dbError;
+
+      // Also submit to Netlify as backup
+      await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(formData as any).toString(),
       });
 
-      if (response.ok) {
-        setIsSubmitted(true);
-        toast({
-          title: "Success!",
-          description: language === 'en' ? "We'll contact you within 24 hours." : "Te contactaremos en 24 horas.",
-        });
-      } else {
-        throw new Error("Form submission failed");
-      }
+      setIsSubmitted(true);
+      toast({
+        title: "Success!",
+        description: language === 'en' ? "We'll contact you within 24 hours." : "Te contactaremos en 24 horas.",
+      });
     } catch (error) {
+      console.error('Form submission error:', error);
       toast({
         title: "Error",
         description: t.error,
