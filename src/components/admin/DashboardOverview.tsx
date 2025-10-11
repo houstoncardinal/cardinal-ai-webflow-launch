@@ -5,12 +5,12 @@ import { TrendingUp, Users, DollarSign, Clock, Server, Smartphone } from 'lucide
 
 const DashboardOverview = () => {
   const stats = [
-    { title: "Active Projects", value: "24", change: "+12%", icon: Clock, color: "text-blue-600" },
-    { title: "Total Clients", value: "156", change: "+8%", icon: Users, color: "text-green-600" },
+    { title: "Active Projects", value: "24", change: "+12%", icon: Clock, color: "text-emerald-600" },
+    { title: "Total Clients", value: "156", change: "+8%", icon: Users, color: "text-emerald-700" },
     { title: "Monthly Revenue", value: "$45,200", change: "+23%", icon: DollarSign, color: "text-emerald-600" },
-    { title: "Server Uptime", value: "99.8%", change: "+0.2%", icon: Server, color: "text-purple-600" },
-    { title: "Mobile Apps", value: "12", change: "+3", icon: Smartphone, color: "text-orange-600" },
-    { title: "Growth Rate", value: "18%", change: "+5%", icon: TrendingUp, color: "text-pink-600" },
+    { title: "Server Uptime", value: "99.8%", change: "+0.2%", icon: Server, color: "text-emerald-700" },
+    { title: "Mobile Apps", value: "12", change: "+3", icon: Smartphone, color: "text-emerald-600" },
+    { title: "Growth Rate", value: "18%", change: "+5%", icon: TrendingUp, color: "text-emerald-700" },
   ];
 
   const recentActivity = [
