@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 
 import VoiceAgent from "@/components/VoiceAgent";
+import { HalloweenDecorations } from "@/components/HalloweenDecorations";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -58,6 +59,7 @@ const App = () => (
       <TooltipProvider>
         <BrowserRouter>
           <LoadingScreen />
+          <HalloweenDecorations />
           <Toaster />
           <Sonner />
           

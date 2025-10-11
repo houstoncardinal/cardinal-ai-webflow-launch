@@ -199,6 +199,36 @@
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
+
+  @keyframes swing {
+    0%, 100% {
+      transform: rotate(-5deg);
+    }
+    50% {
+      transform: rotate(5deg);
+    }
+  }
+
+  @keyframes bat-fly {
+    0% {
+      transform: translateX(-100vw) translateY(0);
+    }
+    50% {
+      transform: translateX(50vw) translateY(-30px);
+    }
+    100% {
+      transform: translateX(100vw) translateY(0);
+    }
+  }
+
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
   
   @keyframes slide-up-fade {
     from { opacity: 0; transform: translateY(20px); }
