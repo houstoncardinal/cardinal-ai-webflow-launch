@@ -1,4 +1,3 @@
-import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -49,12 +48,11 @@ import HoustonWebDesignEsLanding from "./pages/landing/HoustonWebDesignEs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 
-const App = () => {
-  const [queryClient] = React.useState(() => new QueryClient());
-  
-  return (
-    <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
+const queryClient = new QueryClient();
+
+const App = () => (
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <BrowserRouter>
           <LoadingScreen />
@@ -124,7 +122,6 @@ const App = () => {
       </TooltipProvider>
     </QueryClientProvider>
   </HelmetProvider>
-  );
-};
+);
 
 export default App;
