@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import { PhoneOff, Loader2 } from "lucide-react";
 import { useToast } from "./ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import lilyAvatar from "@/assets/lily-luxury.png";
+import lilyAvatar from "@/assets/lily-ai-avatar.png";
 
 const VoiceAgent = () => {
   const { toast } = useToast();
