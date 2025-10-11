@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, Sparkles, useGLTF } from '@react-three/drei';
+import { Float, MeshDistortMaterial, Sparkles } from '@react-three/drei';
 import * as THREE from 'three';
 
 // 3D Pumpkin with glow
@@ -300,94 +300,167 @@ const Skull3D = ({ position }: { position: [number, number, number] }) => {
   );
 };
 
+interface DecorationPosition {
+  id: string;
+  x: number;
+  y: number;
+  type: 'pumpkin' | 'ghost' | 'bat' | 'spider' | 'skull';
+  element: Element;
+}
+
 export const HalloweenDecorations = () => {
   const [isOctober, setIsOctober] = useState(false);
+  const [decorations, setDecorations] = useState<DecorationPosition[]>([]);
 
   useEffect(() => {
     const currentMonth = new Date().getMonth();
-    setIsOctober(currentMonth === 9); // October is month 9 (0-indexed)
+    setIsOctober(currentMonth === 9);
   }, []);
+
+  useEffect(() => {
+    if (!isOctober) return;
+
+    const updateDecorations = () => {
+      const positions: DecorationPosition[] = [];
+
+      // Find all cards
+      const cards = document.querySelectorAll('[class*="card"], [class*="Card"], .bg-card, .rounded-lg.border');
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        if (rect.width > 100 && rect.height > 100) { // Only decorate larger cards
+          // Top left corner of card
+          if (index % 4 === 0) {
+            positions.push({
+              id: `card-tl-${index}`,
+              x: rect.left - 40,
+              y: rect.top - 40,
+              type: 'pumpkin',
+              element: card
+            });
+          }
+          // Top right corner
+          if (index % 4 === 1) {
+            positions.push({
+              id: `card-tr-${index}`,
+              x: rect.right - 40,
+              y: rect.top - 40,
+              type: 'ghost',
+              element: card
+            });
+          }
+          // Bottom right
+          if (index % 4 === 2) {
+            positions.push({
+              id: `card-br-${index}`,
+              x: rect.right - 40,
+              y: rect.bottom - 40,
+              type: 'skull',
+              element: card
+            });
+          }
+        }
+      });
+
+      // Find all buttons
+      const buttons = document.querySelectorAll('button:not(.pointer-events-none)');
+      buttons.forEach((button, index) => {
+        const rect = button.getBoundingClientRect();
+        if (rect.width > 80) { // Only larger buttons
+          if (index % 3 === 0) {
+            positions.push({
+              id: `button-${index}`,
+              x: rect.left - 35,
+              y: rect.top + rect.height / 2 - 25,
+              type: 'bat',
+              element: button
+            });
+          }
+        }
+      });
+
+      // Find sections
+      const sections = document.querySelectorAll('section, [class*="section"]');
+      sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.height > 300) { // Only large sections
+          // Top corners
+          if (index % 3 === 0) {
+            positions.push({
+              id: `section-tl-${index}`,
+              x: rect.left + 20,
+              y: rect.top + 20,
+              type: 'spider',
+              element: section
+            });
+          }
+          if (index % 3 === 1) {
+            positions.push({
+              id: `section-tr-${index}`,
+              x: rect.right - 80,
+              y: rect.top + 20,
+              type: 'spider',
+              element: section
+            });
+          }
+        }
+      });
+
+      setDecorations(positions.slice(0, 15)); // Limit to 15 decorations
+    };
+
+    updateDecorations();
+    window.addEventListener('resize', updateDecorations);
+    window.addEventListener('scroll', updateDecorations);
+
+    // Update on route changes
+    const observer = new MutationObserver(updateDecorations);
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      window.removeEventListener('resize', updateDecorations);
+      window.removeEventListener('scroll', updateDecorations);
+      observer.disconnect();
+    };
+  }, [isOctober]);
 
   if (!isOctober) return null;
 
+  const renderDecoration = (type: string) => {
+    switch (type) {
+      case 'pumpkin':
+        return <Pumpkin3D position={[0, 0, 0]} />;
+      case 'ghost':
+        return <Ghost3D position={[0, 0, 0]} />;
+      case 'bat':
+        return <Bat3D position={[0, 0, 0]} />;
+      case 'spider':
+        return <Spider3D position={[0, 0, 0]} />;
+      case 'skull':
+        return <Skull3D position={[0, 0, 0]} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <>
-      {/* Top left corner - Desktop/Tablet only */}
-      <div className="pointer-events-none fixed top-2 left-2 w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 z-40 hidden sm:block">
-        <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
-          <Pumpkin3D position={[0, 0, 0]} />
-        </Canvas>
-      </div>
-
-      {/* Top right corner - Desktop/Tablet only */}
-      <div className="pointer-events-none fixed top-2 right-2 w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 z-40 hidden sm:block">
-        <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[5, 5, 5]} intensity={1} />
-          <Ghost3D position={[0, 0, 0]} />
-        </Canvas>
-      </div>
-
-      {/* Bottom left corner - All devices */}
-      <div className="pointer-events-none fixed bottom-2 left-2 w-24 h-24 md:w-36 md:h-36 lg:w-44 lg:h-44 z-40">
-        <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[5, 5, 5]} intensity={1} />
-          <Skull3D position={[0, 0, 0]} />
-        </Canvas>
-      </div>
-
-      {/* Bottom right corner - All devices */}
-      <div className="pointer-events-none fixed bottom-2 right-2 w-24 h-24 md:w-36 md:h-36 lg:w-44 lg:h-44 z-40">
-        <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[5, 5, 5]} intensity={1} />
-          <Pumpkin3D position={[0, 0, 0]} />
-        </Canvas>
-      </div>
-
-      {/* Subtle flying bats - Desktop only, higher up to avoid content */}
-      <div className="pointer-events-none fixed top-20 left-1/2 -translate-x-1/2 w-72 h-20 z-30 opacity-40 hidden lg:block">
-        <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
-          <ambientLight intensity={0.3} />
-          <Bat3D position={[-2, 0, 0]} />
-          <Bat3D position={[2, 0, 0]} />
-        </Canvas>
-      </div>
-
-      {/* Floating spider - Desktop only, positioned safely */}
-      <div className="pointer-events-none fixed top-1/4 left-8 w-20 h-20 lg:w-24 lg:h-24 z-30 hidden lg:block">
-        <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-          <ambientLight intensity={0.5} />
-          <Spider3D position={[0, 0, 0]} />
-        </Canvas>
-      </div>
-
-      {/* Another spider - Desktop only, right side */}
-      <div className="pointer-events-none fixed top-1/3 right-8 w-20 h-20 lg:w-24 lg:h-24 z-30 hidden lg:block">
-        <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-          <ambientLight intensity={0.5} />
-          <Spider3D position={[0, 0, 0]} />
-        </Canvas>
-      </div>
-
-      {/* Subtle corner bat - Tablet/Desktop */}
-      <div className="pointer-events-none fixed bottom-1/4 left-4 w-16 h-16 md:w-20 md:h-20 z-30 opacity-60 hidden md:block">
-        <Canvas camera={{ position: [0, 0, 4], fov: 50 }}>
-          <ambientLight intensity={0.3} />
-          <Bat3D position={[0, 0, 0]} />
-        </Canvas>
-      </div>
-
-      {/* Additional ghost - Desktop only, far right */}
-      <div className="pointer-events-none fixed top-1/2 right-4 w-28 h-28 lg:w-32 lg:h-32 z-30 opacity-70 hidden xl:block">
-        <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-          <ambientLight intensity={0.5} />
-          <Ghost3D position={[0, 0, 0]} />
-        </Canvas>
-      </div>
+      {decorations.map((decoration) => (
+        <div
+          key={decoration.id}
+          className="pointer-events-none fixed w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 z-50 transition-all duration-300"
+          style={{
+            left: `${decoration.x}px`,
+            top: `${decoration.y}px`,
+          }}
+        >
+          <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
+            <ambientLight intensity={0.6} />
+            <directionalLight position={[5, 5, 5]} intensity={1.2} castShadow />
+            <pointLight position={[-5, -5, 5]} intensity={0.5} color="#ff6600" />
+            {renderDecoration(decoration.type)}
+          </Canvas>
+        </div>
+      ))}
     </>
   );
 };
