@@ -12,29 +12,29 @@ const VoiceAgent = () => {
 
   const conversation = useConversation({
     onConnect: () => {
-      console.log("Connected to Tim!");
+      console.log("Connected to Lily!");
       toast({
         title: "Connected",
-        description: "You're now speaking with Tim from Cardinal Consulting",
+        description: "You're now speaking with Lily from Cardinal Consulting",
       });
     },
     onDisconnect: () => {
-      console.log("Disconnected from Tim");
+      console.log("Disconnected from Lily");
       toast({
         title: "Call Ended",
-        description: "Your conversation with Tim has ended",
+        description: "Your conversation with Lily has ended",
       });
     },
     onError: (error) => {
       console.error("Conversation error:", error);
       toast({
         title: "Connection Error",
-        description: "There was an issue connecting to Tim. Please try again.",
+        description: "There was an issue connecting to Lily. Please try again.",
         variant: "destructive",
       });
     },
     onMessage: (message) => {
-      console.log("Message from Tim:", message);
+      console.log("Message from Lily:", message);
     },
     clientTools: {
       scheduleAppointment: async (parameters: {
@@ -157,7 +157,7 @@ const VoiceAgent = () => {
           <div className="flex items-center gap-3">
             <div className={`w-3 h-3 rounded-full ${isSpeaking ? 'bg-green-500 animate-pulse' : 'bg-gray-400'}`} />
             <span className="text-sm font-medium text-gray-700">
-              {isSpeaking ? 'Tim is speaking...' : 'Listening...'}
+              {isSpeaking ? 'Lily is speaking...' : 'Listening...'}
             </span>
           </div>
         </div>
@@ -179,7 +179,7 @@ const VoiceAgent = () => {
         
         {status !== "connected" && !isConnecting && (
           <div className="absolute -top-12 right-0 bg-gray-900 text-white px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
-            Tim By Cardinal
+            Lily By Cardinal
             <div className="absolute bottom-0 right-6 transform translate-y-1/2 rotate-45 w-2 h-2 bg-gray-900" />
           </div>
         )}

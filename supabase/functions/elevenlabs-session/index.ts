@@ -16,7 +16,7 @@ serve(async (req) => {
       throw new Error('ELEVENLABS_API_KEY is not set');
     }
 
-    const AGENT_ID = "agent_0401k79dzc4yfmr8p1jmxzfvz9jx"; // Tim From Cardinal Consulting
+    const AGENT_ID = "agent_0401k79dzc4yfmr8p1jmxzfvz9jx"; // Lily From Cardinal Consulting
 
     // Generate signed URL for ElevenLabs Conversational AI
     const response = await fetch(
