@@ -85,23 +85,17 @@ export async function analyzeWebsiteWithAI(url: string): Promise<AIAnalysisResul
   try {
     console.log('Starting AI analysis for:', url);
     
-    const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-    const response = await fetch(`${SUPABASE_URL}/functions/v1/seo-analysis`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ url }),
+    const { supabase } = await import('@/integrations/supabase/client');
+    const { data, error } = await supabase.functions.invoke('seo-analysis', {
+      body: { url }
     });
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+    if (error) {
+      throw new Error(error.message || 'Analysis request failed');
     }
 
-    const result = await response.json();
     console.log('AI analysis completed successfully');
-    return result;
+    return data as AIAnalysisResult;
   } catch (error) {
     console.error('AI Analysis Error:', error);
     
@@ -127,23 +121,17 @@ export async function analyzeAEOWithAI(url: string): Promise<AEOAnalysisResult> 
   try {
     console.log('Starting AEO analysis for:', url);
     
-    const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-    const response = await fetch(`${SUPABASE_URL}/functions/v1/aeo-analysis`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ url }),
+    const { supabase } = await import('@/integrations/supabase/client');
+    const { data, error } = await supabase.functions.invoke('aeo-analysis', {
+      body: { url }
     });
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+    if (error) {
+      throw new Error(error.message || 'AEO analysis request failed');
     }
 
-    const result = await response.json();
     console.log('AEO analysis completed successfully');
-    return result;
+    return data as AEOAnalysisResult;
   } catch (error) {
     console.error('AEO Analysis Error:', error);
     throw new Error(`AEO analysis failed: ${error instanceof Error ? error.message : 'Unknown error occurred'}`);
