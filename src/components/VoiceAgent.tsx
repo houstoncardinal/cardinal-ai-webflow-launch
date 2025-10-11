@@ -161,38 +161,49 @@ const VoiceAgent = () => {
         </div>
       )}
       
-      <Button
-        onClick={status === "connected" ? endConversation : startConversation}
-        disabled={isConnecting}
-        size="lg"
-        className="group relative h-24 w-24 bg-transparent hover:bg-transparent shadow-2xl hover:shadow-[0_20px_50px_rgba(34,197,94,0.4)] transition-all duration-300 p-0 border-0"
-        style={{
-          filter: 'drop-shadow(0 10px 30px rgba(34, 197, 94, 0.3))'
-        }}
-      >
-        {isConnecting ? (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-green-500 to-green-600 rounded-2xl">
-            <Loader2 className="h-10 w-10 animate-spin text-white" />
-          </div>
-        ) : status === "connected" ? (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-red-500 to-red-600 rounded-2xl">
-            <PhoneOff className="h-10 w-10 text-white" />
-          </div>
-        ) : (
-          <img 
-            src={lilyAvatar} 
-            alt="Lily AI Assistant" 
-            className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-300"
+      <div className="relative">
+        <Button
+          onClick={status === "connected" ? endConversation : startConversation}
+          disabled={isConnecting}
+          size="lg"
+          className="group relative h-28 w-28 bg-transparent hover:bg-transparent p-0 border-0 transition-all duration-500"
+        >
+          <div 
+            className="absolute inset-0 rounded-full bg-gradient-to-br from-green-400/20 to-emerald-600/20 blur-2xl group-hover:blur-3xl transition-all duration-500"
+            style={{
+              transform: 'scale(1.3)',
+            }}
           />
-        )}
+          
+          {isConnecting ? (
+            <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl shadow-2xl">
+              <Loader2 className="h-12 w-12 animate-spin text-white" />
+            </div>
+          ) : status === "connected" ? (
+            <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-br from-red-500 to-red-600 rounded-3xl shadow-2xl">
+              <PhoneOff className="h-12 w-12 text-white" />
+            </div>
+          ) : (
+            <div className="relative w-full h-full">
+              <img 
+                src={lilyAvatar} 
+                alt="Lily AI Assistant" 
+                className="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-500"
+                style={{
+                  filter: 'drop-shadow(0 15px 40px rgba(34, 197, 94, 0.5)) drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3))'
+                }}
+              />
+            </div>
+          )}
+        </Button>
         
         {status !== "connected" && !isConnecting && (
-          <div className="absolute -top-14 right-0 bg-gradient-to-r from-gray-900 to-gray-800 text-white px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+          <div className="absolute -top-16 left-1/2 -translate-x-1/2 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-2xl pointer-events-none">
             Lily By Cardinal
-            <div className="absolute bottom-0 right-8 transform translate-y-1/2 rotate-45 w-2 h-2 bg-gray-900" />
+            <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-900 rotate-45" />
           </div>
         )}
-      </Button>
+      </div>
     </div>
   );
 };
