@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import FloatingActionWidget from "@/components/FloatingActionWidget";
+import VoiceAgent from "@/components/VoiceAgent";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -60,6 +61,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <FloatingActionWidget />
+          <VoiceAgent />
           <div className="min-h-screen bg-white">
             <Routes>
             <Route path="/" element={<Index />} />
