@@ -183,8 +183,9 @@ Provide realistic scores based on what you would expect from analyzing ${url}. M
 
   } catch (error) {
     console.error('Error in seo-analysis function:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Internal server error';
     return new Response(
-      JSON.stringify({ error: error.message || 'Internal server error' }),
+      JSON.stringify({ error: errorMessage }),
       { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }
