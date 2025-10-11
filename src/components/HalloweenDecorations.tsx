@@ -2,17 +2,17 @@ import { useEffect, useState, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshDistortMaterial, Sparkles } from '@react-three/drei';
 import * as THREE from 'three';
-import { toast } from 'sonner';
 
 interface PopupProps {
   show: boolean;
+  message: string;
   onComplete: () => void;
 }
 
-const HalloweenPopup = ({ show, onComplete }: PopupProps) => {
+const HalloweenPopup = ({ show, message, onComplete }: PopupProps) => {
   useEffect(() => {
     if (show) {
-      const timer = setTimeout(onComplete, 2000);
+      const timer = setTimeout(onComplete, 800);
       return () => clearTimeout(timer);
     }
   }, [show, onComplete]);
@@ -21,8 +21,8 @@ const HalloweenPopup = ({ show, onComplete }: PopupProps) => {
 
   return (
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-      <div className="animate-[scale-in_0.3s_ease-out] text-orange-500 font-bold text-2xl md:text-3xl drop-shadow-[0_0_10px_rgba(255,107,0,0.8)] whitespace-nowrap animate-pulse">
-        🎃 Happy Halloween!! 👻
+      <div className="animate-[scale-in_0.2s_ease-out] text-orange-500 font-bold text-sm md:text-base drop-shadow-[0_0_10px_rgba(255,107,0,0.8)] whitespace-nowrap animate-pulse">
+        {message}
       </div>
     </div>
   );
@@ -44,11 +44,10 @@ const Pumpkin3D = ({
   useFrame((state) => {
     if (meshRef.current) {
       if (exploding) {
-        meshRef.current.scale.multiplyScalar(1.15);
-        meshRef.current.rotation.y += 0.3;
-        if (meshRef.current.scale.x > 3) {
-          setExploding(false);
-          meshRef.current.scale.set(1, 1, 1);
+        meshRef.current.scale.multiplyScalar(1.2);
+        meshRef.current.rotation.y += 0.4;
+        if (meshRef.current.scale.x > 2) {
+          meshRef.current.scale.set(0.01, 0.01, 0.01);
         }
       } else {
         meshRef.current.rotation.y += 0.005;
@@ -78,8 +77,11 @@ const Pumpkin3D = ({
         {/* Main pumpkin body */}
         <mesh
           ref={meshRef}
-          onClick={handleInteract}
-          onPointerEnter={() => setHovered(true)}
+          onPointerEnter={(e) => {
+            e.stopPropagation();
+            setHovered(true);
+            handleInteract();
+          }}
           onPointerLeave={() => setHovered(false)}
         >
           <sphereGeometry args={[0.5, 32, 32]} />
@@ -139,12 +141,10 @@ const Ghost3D = ({
   useFrame((state) => {
     if (meshRef.current) {
       if (exploding) {
-        meshRef.current.scale.multiplyScalar(1.12);
-        meshRef.current.rotation.z += 0.2;
-        if (meshRef.current.scale.x > 2.5) {
-          setExploding(false);
-          meshRef.current.scale.set(1, 1, 1);
-          meshRef.current.rotation.z = 0;
+        meshRef.current.scale.multiplyScalar(1.18);
+        meshRef.current.rotation.z += 0.3;
+        if (meshRef.current.scale.x > 2) {
+          meshRef.current.scale.set(0.01, 0.01, 0.01);
         }
       } else {
         meshRef.current.position.y += Math.sin(state.clock.elapsedTime * 2) * 0.002;
@@ -163,8 +163,11 @@ const Ghost3D = ({
       <group position={position}>
         <mesh
           ref={meshRef}
-          onClick={handleInteract}
-          onPointerEnter={() => setScared(true)}
+          onPointerEnter={(e) => {
+            e.stopPropagation();
+            setScared(true);
+            handleInteract();
+          }}
           onPointerLeave={() => setScared(false)}
         >
           <sphereGeometry args={[0.4, 32, 32]} />
@@ -235,11 +238,10 @@ const Bat3D = ({
     }
     if (bodyRef.current) {
       if (exploding) {
-        bodyRef.current.scale.multiplyScalar(1.1);
-        bodyRef.current.rotation.y += 0.4;
-        if (bodyRef.current.scale.x > 2.8) {
-          setExploding(false);
-          bodyRef.current.scale.set(1, 1, 1);
+        bodyRef.current.scale.multiplyScalar(1.15);
+        bodyRef.current.rotation.y += 0.5;
+        if (bodyRef.current.scale.x > 2) {
+          bodyRef.current.scale.set(0.01, 0.01, 0.01);
         }
       } else {
         bodyRef.current.position.x += Math.sin(state.clock.elapsedTime * 0.5) * 0.01;
@@ -254,10 +256,16 @@ const Bat3D = ({
   };
 
   return (
-    <group position={position} ref={bodyRef} onClick={handleInteract}>
+    <group 
+      position={position} 
+      ref={bodyRef} 
+      onPointerEnter={(e) => {
+        e.stopPropagation();
+        handleInteract();
+      }}
+    >
       {/* Bat body */}
-      <mesh>
-        <sphereGeometry args={[0.15, 16, 16]} />
+        <mesh>
         <meshStandardMaterial color="#1a1a1a" metalness={0.3} roughness={0.7} />
       </mesh>
 
@@ -302,11 +310,10 @@ const Spider3D = ({
   useFrame((state) => {
     if (spiderRef.current) {
       if (exploding) {
-        spiderRef.current.scale.multiplyScalar(1.08);
-        spiderRef.current.rotation.y += 0.5;
-        if (spiderRef.current.scale.x > 2.2) {
-          setExploding(false);
-          spiderRef.current.scale.set(1, 1, 1);
+        spiderRef.current.scale.multiplyScalar(1.12);
+        spiderRef.current.rotation.y += 0.6;
+        if (spiderRef.current.scale.x > 2) {
+          spiderRef.current.scale.set(0.01, 0.01, 0.01);
         }
       } else {
         spiderRef.current.position.y += Math.sin(state.clock.elapsedTime * 1.5) * 0.003;
@@ -374,12 +381,10 @@ const Skull3D = ({
   useFrame((state) => {
     if (skullRef.current) {
       if (exploding) {
-        skullRef.current.scale.multiplyScalar(1.13);
-        skullRef.current.rotation.x += 0.25;
-        if (skullRef.current.scale.x > 2.7) {
-          setExploding(false);
-          skullRef.current.scale.set(1, 1, 1);
-          skullRef.current.rotation.x = 0;
+        skullRef.current.scale.multiplyScalar(1.16);
+        skullRef.current.rotation.x += 0.35;
+        if (skullRef.current.scale.x > 2) {
+          skullRef.current.scale.set(0.01, 0.01, 0.01);
         }
       } else {
         skullRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.2;
@@ -397,8 +402,11 @@ const Skull3D = ({
       <group position={position}>
         <mesh
           ref={skullRef}
-          onClick={handleInteract}
-          onPointerEnter={() => setGlowing(true)}
+          onPointerEnter={(e) => {
+            e.stopPropagation();
+            setGlowing(true);
+            handleInteract();
+          }}
           onPointerLeave={() => setGlowing(false)}
         >
           <boxGeometry args={[0.4, 0.5, 0.4]} />
@@ -446,7 +454,20 @@ interface DecorationPosition {
 export const HalloweenDecorations = () => {
   const [isOctober, setIsOctober] = useState(false);
   const [decorations, setDecorations] = useState<DecorationPosition[]>([]);
-  const [activePopup, setActivePopup] = useState<string | null>(null);
+  const [activePopups, setActivePopups] = useState<Map<string, string>>(new Map());
+
+  const halloweenMessages = [
+    "🎃 Happy Halloween!",
+    "👻 Boo!",
+    "🍬 Trick or Treat!",
+    "🦇 Spooky!",
+    "💀 Eek!",
+    "🕷️ Creepy!",
+    "🕸️ Scary!",
+    "🧙 Bewitched!",
+    "⚰️ RIP!",
+    "🌙 Spooktacular!",
+  ];
 
   useEffect(() => {
     const currentMonth = new Date().getMonth();
@@ -579,11 +600,17 @@ export const HalloweenDecorations = () => {
   };
 
   const handleInteraction = (id: string) => {
-    setActivePopup(id);
-    toast("🎃 Happy Halloween!! 👻", {
-      description: "Spooky fun activated!",
-      duration: 2000,
-    });
+    const randomMessage = halloweenMessages[Math.floor(Math.random() * halloweenMessages.length)];
+    setActivePopups(prev => new Map(prev).set(id, randomMessage));
+    
+    setTimeout(() => {
+      setDecorations(prev => prev.filter(d => d.id !== id));
+      setActivePopups(prev => {
+        const newMap = new Map(prev);
+        newMap.delete(id);
+        return newMap;
+      });
+    }, 800);
   };
 
   return (
@@ -598,8 +625,9 @@ export const HalloweenDecorations = () => {
           }}
         >
           <HalloweenPopup 
-            show={activePopup === decoration.id} 
-            onComplete={() => setActivePopup(null)} 
+            show={activePopups.has(decoration.id)} 
+            message={activePopups.get(decoration.id) || ""}
+            onComplete={() => {}}
           />
           <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
             <ambientLight intensity={0.6} />
