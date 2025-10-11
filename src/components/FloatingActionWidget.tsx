@@ -225,69 +225,70 @@ const FloatingActionWidget = () => {
 
         {/* Quick Actions Popup */}
         {isOpen && (
-          <div className="absolute bottom-20 right-0 w-72 sm:w-80 lg:w-96 transform transition-all duration-300 ease-out scale-100 opacity-100 floating-widget-popup z-10" style={{ pointerEvents: 'auto' }}>
+          <div className="absolute bottom-20 right-0 w-80 sm:w-96 transform transition-all duration-300 ease-out scale-100 opacity-100 z-10" style={{ pointerEvents: 'auto' }}>
             {/* Popup Container */}
-            <div className="border-0 shadow-2xl bg-white/95 backdrop-blur-xl overflow-hidden rounded-xl transform transition-all duration-300 hover:scale-[1.02]" style={{ pointerEvents: 'auto' }}>
-            {/* Enhanced Header */}
-            <div className="bg-gradient-to-r from-green-600 via-green-700 to-green-800 p-4 text-white relative overflow-hidden">
-              {/* Background Pattern */}
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full -translate-y-16 translate-x-16"></div>
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-green-300 rounded-full translate-y-12 -translate-x-12"></div>
-              </div>
-              
-              <div className="flex items-center justify-between relative z-10">
-                <div>
-                  <h3 className="text-lg font-semibold flex items-center">
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Quick Actions
-                  </h3>
-                  <p className="text-green-100 text-sm">Get started in seconds</p>
+            <div className="border shadow-2xl bg-white backdrop-blur-xl overflow-hidden rounded-2xl transform transition-all duration-300 hover:scale-[1.01] w-full" style={{ pointerEvents: 'auto', minWidth: '320px' }}>
+              {/* Enhanced Header */}
+              <div className="bg-gradient-to-r from-green-600 via-green-700 to-green-800 p-5 text-white relative overflow-hidden">
+                {/* Background Pattern */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full -translate-y-16 translate-x-16"></div>
+                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-green-300 rounded-full translate-y-12 -translate-x-12"></div>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <button
-                    type="button"
-                    onClick={toggleExpanded}
-                    className="text-white hover:bg-white/20 p-2 rounded-lg transition-all duration-200 hover:scale-110"
-                  >
-                    <ChevronUp className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setIsOpen(false)}
-                    className="text-white hover:bg-white/20 p-2 rounded-lg transition-all duration-200 hover:scale-110"
-                    title="Close widget"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
+                
+                <div className="flex items-center justify-between relative z-10">
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold flex items-center mb-1">
+                      <MessageCircle className="w-5 h-5 mr-2" />
+                      Quick Actions
+                    </h3>
+                    <p className="text-green-100 text-sm">Get started in seconds</p>
+                  </div>
+                  <div className="flex items-center space-x-2 ml-4">
+                    <button
+                      type="button"
+                      onClick={toggleExpanded}
+                      className="text-white hover:bg-white/20 p-2 rounded-lg transition-all duration-200 hover:scale-110"
+                      aria-label="Toggle expand"
+                    >
+                      <ChevronUp className={`w-5 h-5 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setIsOpen(false)}
+                      className="text-white hover:bg-white/20 p-2 rounded-lg transition-all duration-200 hover:scale-110"
+                      aria-label="Close widget"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Content */}
-            <div className="p-0">
-              {/* Expanded View - All Actions */}
-              {isExpanded ? (
-                <div className="p-4 space-y-3 max-h-96 overflow-y-auto">
+              {/* Content */}
+              <div className="p-0 w-full">
+                {/* Expanded View - All Actions */}
+                {isExpanded ? (
+                  <div className="p-5 space-y-3 max-h-96 overflow-y-auto w-full">
                   {quickActions.map((action, index) => (
                     <button
                       key={index}
                       type="button"
                       onClick={() => handleAction(action.action, action.external)}
-                      className={`w-full p-3 rounded-lg border ${action.bgColor} ${action.borderColor} ${action.hoverBg} transition-all duration-300 hover:scale-[1.02] hover:shadow-lg text-left group relative overflow-hidden`}
+                      className={`w-full p-4 rounded-xl border-2 ${action.bgColor} ${action.borderColor} ${action.hoverBg} transition-all duration-300 hover:scale-[1.02] hover:shadow-lg text-left group relative overflow-hidden`}
                     >
                       {/* Hover Background Effect */}
                       <div className={`absolute inset-0 ${action.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                       
-                      <div className="flex items-center space-x-3 relative z-10">
-                        <div className={`p-2 rounded-lg ${action.bgColor} group-hover:scale-110 transition-all duration-300 group-hover:rotate-3`}>
-                          <action.icon className={`w-5 h-5 ${action.color}`} />
+                      <div className="flex items-center space-x-4 relative z-10">
+                        <div className={`p-3 rounded-xl ${action.bgColor} group-hover:scale-110 transition-all duration-300 group-hover:rotate-3 flex-shrink-0`}>
+                          <action.icon className={`w-6 h-6 ${action.color}`} />
                         </div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-gray-900 group-hover:text-gray-800 text-sm transition-colors duration-300">{action.title}</h4>
-                          <p className="text-gray-600 group-hover:text-gray-700 text-xs transition-colors duration-300">{action.subtitle}</p>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-bold text-gray-900 group-hover:text-gray-800 text-base transition-colors duration-300 mb-1">{action.title}</h4>
+                          <p className="text-gray-600 group-hover:text-gray-700 text-sm transition-colors duration-300">{action.subtitle}</p>
                         </div>
-                        <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-gray-600 transition-all duration-300 group-hover:translate-x-1" />
+                        <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-gray-600 transition-all duration-300 group-hover:translate-x-1 flex-shrink-0" />
                       </div>
                       
                       {/* Ripple Effect */}
@@ -295,28 +296,28 @@ const FloatingActionWidget = () => {
                     </button>
                   ))}
                 </div>
-              ) : (
-                /* Collapsed View - Top 3 Actions */
-                <div className="p-4 space-y-3">
+                ) : (
+                  /* Collapsed View - Top 3 Actions */
+                  <div className="p-5 space-y-3 w-full">
                   {quickActions.slice(0, 3).map((action, index) => (
                     <button
                       key={index}
                       type="button"
                       onClick={() => handleAction(action.action, action.external)}
-                      className={`w-full p-3 rounded-lg border ${action.bgColor} ${action.borderColor} ${action.hoverBg} transition-all duration-300 hover:scale-[1.02] hover:shadow-lg text-left group relative overflow-hidden`}
+                      className={`w-full p-4 rounded-xl border-2 ${action.bgColor} ${action.borderColor} ${action.hoverBg} transition-all duration-300 hover:scale-[1.02] hover:shadow-lg text-left group relative overflow-hidden`}
                     >
                       {/* Hover Background Effect */}
                       <div className={`absolute inset-0 ${action.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                       
-                      <div className="flex items-center space-x-3 relative z-10">
-                        <div className={`p-2 rounded-lg ${action.bgColor} group-hover:scale-110 transition-all duration-300 group-hover:rotate-3`}>
-                          <action.icon className={`w-5 h-5 ${action.color}`} />
+                      <div className="flex items-center space-x-4 relative z-10">
+                        <div className={`p-3 rounded-xl ${action.bgColor} group-hover:scale-110 transition-all duration-300 group-hover:rotate-3 flex-shrink-0`}>
+                          <action.icon className={`w-6 h-6 ${action.color}`} />
                         </div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-gray-900 group-hover:text-gray-800 text-sm transition-colors duration-300">{action.title}</h4>
-                          <p className="text-gray-600 group-hover:text-gray-700 text-xs transition-colors duration-300">{action.subtitle}</p>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-bold text-gray-900 group-hover:text-gray-800 text-base transition-colors duration-300 mb-1">{action.title}</h4>
+                          <p className="text-gray-600 group-hover:text-gray-700 text-sm transition-colors duration-300">{action.subtitle}</p>
                         </div>
-                        <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-gray-600 transition-all duration-300 group-hover:translate-x-1" />
+                        <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-gray-600 transition-all duration-300 group-hover:translate-x-1 flex-shrink-0" />
                       </div>
                       
                       {/* Ripple Effect */}
@@ -333,9 +334,9 @@ const FloatingActionWidget = () => {
                     {/* Hover Background */}
                     <div className="absolute inset-0 bg-gradient-to-r from-green-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     
-                    <div className="flex items-center justify-center space-x-2 text-gray-600 group-hover:text-gray-800 relative z-10">
-                      <span className="text-sm font-medium">Show More Actions</span>
-                      <ChevronUp className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
+                      <div className="flex items-center justify-center space-x-2 text-gray-600 group-hover:text-gray-800 relative z-10">
+                        <span className="text-base font-semibold">Show More Actions</span>
+                        <ChevronUp className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
                     </div>
                     
                     {/* Subtle Border Animation */}
@@ -345,7 +346,7 @@ const FloatingActionWidget = () => {
               )}
 
               {/* Enhanced Footer */}
-              <div className="border-t border-gray-100 p-4 bg-gradient-to-r from-gray-50/80 to-green-50/30 relative overflow-hidden">
+              <div className="border-t border-gray-100 p-5 bg-gradient-to-r from-gray-50/80 to-green-50/30 relative overflow-hidden">
                 {/* Background Pattern */}
                 <div className="absolute inset-0 opacity-5">
                   <div className="absolute top-0 right-0 w-16 h-16 bg-green-400 rounded-full -translate-y-8 translate-x-8"></div>
