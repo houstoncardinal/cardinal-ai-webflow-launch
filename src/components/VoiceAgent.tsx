@@ -97,12 +97,14 @@ const VoiceAgent = () => {
       setIsConnecting(true);
       console.log("🎙️ Requesting microphone access...");
 
-      // Request microphone access first
+      // Request microphone access with optimal settings for conversation
       const stream = await navigator.mediaDevices.getUserMedia({ 
         audio: {
           echoCancellation: true,
           noiseSuppression: true,
-          autoGainControl: true
+          autoGainControl: true,
+          sampleRate: 16000, // Lower sample rate for better processing
+          channelCount: 1 // Mono audio
         } 
       });
       console.log("✅ Microphone access granted");
@@ -126,15 +128,15 @@ const VoiceAgent = () => {
       // Start the conversation with the signed URL
       console.log("🚀 Starting conversation session...");
       await conversation.startSession({ 
-        signedUrl: data.signed_url 
+        signedUrl: data.signed_url,
       });
-      console.log("✅ Conversation session started");
+      console.log("✅ Conversation session started - Lily is ready to talk!");
 
     } catch (error) {
       console.error("❌ Error starting conversation:", error);
       toast({
-        title: "Error",
-        description: error instanceof Error ? error.message : "Failed to start conversation",
+        title: "Connection Error",
+        description: error instanceof Error ? error.message : "Failed to start conversation. Please check your microphone and try again.",
         variant: "destructive",
       });
     } finally {
@@ -143,8 +145,10 @@ const VoiceAgent = () => {
   };
 
   const endConversation = async () => {
+    console.log("📞 Ending conversation...");
     await conversation.endSession();
     setSignedUrl(null);
+    console.log("✅ Conversation ended");
   };
 
   const { status, isSpeaking } = conversation;
