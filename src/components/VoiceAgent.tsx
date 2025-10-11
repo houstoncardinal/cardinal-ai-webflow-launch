@@ -13,21 +13,21 @@ const VoiceAgent = () => {
 
   const conversation = useConversation({
     onConnect: () => {
-      console.log("Connected to Lily!");
+      console.log("✅ Connected to Lily successfully!");
       toast({
         title: "Connected",
         description: "You're now speaking with Lily from Cardinal Consulting",
       });
     },
     onDisconnect: () => {
-      console.log("Disconnected from Lily");
+      console.log("❌ Disconnected from Lily");
       toast({
         title: "Call Ended",
         description: "Your conversation with Lily has ended",
       });
     },
     onError: (error) => {
-      console.error("Conversation error:", error);
+      console.error("❌ Conversation error:", error);
       toast({
         title: "Connection Error",
         description: "There was an issue connecting to Lily. Please try again.",
@@ -35,7 +35,7 @@ const VoiceAgent = () => {
       });
     },
     onMessage: (message) => {
-      console.log("Message from Lily:", message);
+      console.log("📩 Message from Lily:", JSON.stringify(message, null, 2));
     },
     clientTools: {
       scheduleAppointment: async (parameters: {
@@ -46,7 +46,7 @@ const VoiceAgent = () => {
         email: string;
         phone?: string;
       }) => {
-        console.log("Scheduling appointment:", parameters);
+        console.log("📅 Scheduling appointment with parameters:", parameters);
         
         try {
           // Store appointment request in contact_submissions
@@ -61,17 +61,24 @@ const VoiceAgent = () => {
               status: 'new'
             });
 
-          if (error) throw error;
+          if (error) {
+            console.error("❌ Database error:", error);
+            throw error;
+          }
+
+          console.log("✅ Appointment saved successfully");
 
           toast({
             title: "Appointment Scheduled",
             description: `Your appointment for ${parameters.date} at ${parameters.time} has been requested.`,
           });
 
-          return `Great! I've scheduled your appointment for ${parameters.service} on ${parameters.date} at ${parameters.time}. You'll receive a confirmation email at ${parameters.email} shortly.`;
+          const response = `Perfect! I've successfully scheduled your appointment for ${parameters.service} on ${parameters.date} at ${parameters.time}. You'll receive a confirmation email at ${parameters.email} shortly. Is there anything else I can help you with?`;
+          console.log("🤖 Returning response:", response);
+          return response;
         } catch (error) {
-          console.error("Error scheduling appointment:", error);
-          return "I apologize, but there was an issue scheduling your appointment. Please try again or contact us directly.";
+          console.error("❌ Error scheduling appointment:", error);
+          return "I apologize, but there was an issue scheduling your appointment. Please try again or contact us directly at 281-901-7016.";
         }
       },
       getServices: async () => {
@@ -88,28 +95,43 @@ const VoiceAgent = () => {
   const startConversation = async () => {
     try {
       setIsConnecting(true);
+      console.log("🎙️ Requesting microphone access...");
 
       // Request microphone access first
-      await navigator.mediaDevices.getUserMedia({ audio: true });
+      const stream = await navigator.mediaDevices.getUserMedia({ 
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true
+        } 
+      });
+      console.log("✅ Microphone access granted");
 
       // Get signed URL from our edge function
+      console.log("🔗 Fetching signed URL...");
       const { data, error } = await supabase.functions.invoke('elevenlabs-session');
 
-      if (error) throw error;
+      if (error) {
+        console.error("❌ Edge function error:", error);
+        throw error;
+      }
 
       if (!data?.signed_url) {
         throw new Error("Failed to get signed URL");
       }
 
+      console.log("✅ Signed URL received");
       setSignedUrl(data.signed_url);
 
       // Start the conversation with the signed URL
+      console.log("🚀 Starting conversation session...");
       await conversation.startSession({ 
         signedUrl: data.signed_url 
       });
+      console.log("✅ Conversation session started");
 
     } catch (error) {
-      console.error("Error starting conversation:", error);
+      console.error("❌ Error starting conversation:", error);
       toast({
         title: "Error",
         description: error instanceof Error ? error.message : "Failed to start conversation",
