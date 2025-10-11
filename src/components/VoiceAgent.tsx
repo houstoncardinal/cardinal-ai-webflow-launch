@@ -142,14 +142,14 @@ const VoiceAgent = () => {
       
       <div className="group relative">
         {status !== "connected" && !isConnecting && (
-          <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-40 h-20 flex items-end justify-center pointer-events-none">
-            <svg viewBox="0 0 200 100" className="w-full h-full">
+          <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-48 h-24 flex items-end justify-center pointer-events-none">
+            <svg viewBox="0 0 240 120" className="w-full h-full">
               <path
                 id="curve"
-                d="M 20,80 Q 100,20 180,80"
+                d="M 30,100 Q 120,30 210,100"
                 fill="transparent"
               />
-              <text className="fill-green-500 font-bold text-[16px] animate-pulse" style={{ letterSpacing: '0.1em' }}>
+              <text className="fill-green-500 font-bold text-[22px] animate-pulse" style={{ letterSpacing: '0.15em' }}>
                 <textPath href="#curve" startOffset="50%" textAnchor="middle">
                   Lily By Cardinal
                 </textPath>
@@ -184,7 +184,8 @@ const VoiceAgent = () => {
                 alt="Lily AI Assistant" 
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                 style={{
-                  filter: 'drop-shadow(0 10px 30px rgba(34, 197, 94, 0.4))'
+                  filter: 'drop-shadow(0 10px 30px rgba(34, 197, 94, 0.4))',
+                  objectPosition: 'center 30%'
                 }}
               />
             </div>
