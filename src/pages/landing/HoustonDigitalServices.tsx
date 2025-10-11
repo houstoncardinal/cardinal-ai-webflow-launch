@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { CheckCircle, Star, ArrowRight, Phone, Mail, MapPin, Clock, Award, Users, Zap, Shield, TrendingUp, Smartphone, Code, Palette, Rocket, BarChart } from 'lucide-react';
+import { CheckCircle, Star, ArrowRight, Phone, Mail, MapPin, Clock, Award, Users, Zap, Shield, TrendingUp, Smartphone, Code, Palette, Rocket, BarChart, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HoustonDigitalServices = () => {
@@ -209,9 +209,9 @@ const HoustonDigitalServices = () => {
 
   const stats = [
     { number: '500+', label: 'Websites Launched', icon: Rocket },
-    { number: '127+', label: '5-Star Reviews', icon: Star },
+    { number: '4.9/5', label: '5-Star Rating', icon: Star },
     { number: '98%', label: 'Client Satisfaction', icon: Award },
-    { number: '10+', label: 'Years Experience', icon: TrendingUp },
+    { number: '2-4wks', label: 'Avg. Delivery Time', icon: TrendingUp },
   ];
 
   const webServices = [
@@ -219,25 +219,29 @@ const HoustonDigitalServices = () => {
       title: 'Custom Web Design',
       description: 'Stunning, conversion-focused websites built specifically for your Houston business',
       icon: Palette,
-      features: ['Mobile-First Design', 'SEO Optimized', 'Lightning Fast', 'Conversion Focused']
+      features: ['Mobile-First Design', 'SEO Optimized', 'Lightning Fast', 'Conversion Focused'],
+      startingPrice: '$2,500'
     },
     {
       title: 'E-Commerce Solutions', 
       description: 'Powerful online stores that turn browsers into buyers',
       icon: BarChart,
-      features: ['Shopify & Custom', 'Payment Integration', 'Inventory Management', 'Marketing Tools']
+      features: ['Shopify & Custom', 'Payment Integration', 'Inventory Management', 'Marketing Tools'],
+      startingPrice: '$5,000'
     },
     {
-      title: 'WordPress Development',
-      description: 'Custom WordPress sites with enterprise-level functionality',
+      title: 'CMS Integration',
+      description: 'Content management system setup and customization for easy updates',
       icon: Code,
-      features: ['Custom Themes', 'Plugin Development', 'Security Hardening', 'Performance Optimization']
+      features: ['WordPress', 'Custom CMS', 'Easy Updates', 'Training Included'],
+      startingPrice: '$1,800'
     },
     {
       title: 'Website Redesign',
       description: 'Transform your outdated website into a modern conversion machine',
       icon: Zap,
-      features: ['Modern UI/UX', 'Speed Optimization', 'Mobile Responsive', 'Brand Refresh']
+      features: ['Modern UI/UX', 'Speed Optimization', 'Mobile Responsive', 'Brand Refresh'],
+      startingPrice: '$3,000'
     }
   ];
 
@@ -246,46 +250,53 @@ const HoustonDigitalServices = () => {
       title: 'iOS App Development',
       description: 'Native iPhone and iPad apps that Apple users love',
       icon: Smartphone,
-      features: ['Swift & SwiftUI', 'App Store Optimization', 'Push Notifications', 'In-App Purchases']
+      features: ['Swift & SwiftUI', 'App Store Optimization', 'Push Notifications', 'In-App Purchases'],
+      startingPrice: '$8,000'
     },
     {
       title: 'Android App Development',
       description: 'Powerful Android apps for the world\'s largest mobile platform',
       icon: Code,
-      features: ['Kotlin & Java', 'Google Play Optimization', 'Material Design', 'Firebase Integration']
+      features: ['Kotlin & Java', 'Google Play Optimization', 'Material Design', 'Firebase Integration'],
+      startingPrice: '$8,000'
     },
     {
       title: 'Cross-Platform Apps',
       description: 'One codebase, multiple platforms - save time and money',
       icon: Zap,
-      features: ['React Native', 'Flutter Support', 'Faster Development', 'Cost Effective']
+      features: ['React Native', 'Flutter Support', 'Faster Development', 'Cost Effective'],
+      startingPrice: '$10,000'
     },
     {
-      title: 'App Consulting',
-      description: 'Strategic guidance from idea to launch and beyond',
+      title: 'App Maintenance',
+      description: 'Ongoing support and updates for your mobile applications',
       icon: Users,
-      features: ['Market Research', 'Technical Planning', 'Monetization Strategy', 'Launch Support']
+      features: ['Bug Fixes', 'Feature Updates', 'Performance Monitoring', '24/7 Support'],
+      startingPrice: '$500/mo'
     }
   ];
 
   const testimonials = [
     {
-      name: 'Sarah Johnson',
-      company: 'Houston Energy Solutions',
-      text: 'Cardinal transformed our outdated website into a lead-generating machine. We saw a 300% increase in qualified leads within 3 months!',
-      rating: 5
+      name: 'Vargas Tax',
+      company: 'Tax Preparation Services',
+      text: 'Cardinal transformed our online presence with customized quick action widgets and powerful SEO. We now serve clients across all 50 states!',
+      rating: 5,
+      metrics: '1000+ clients served'
     },
     {
-      name: 'Michael Chen',
-      company: 'MedTech Houston',
-      text: 'Their app development team built our healthcare app on time and under budget. The quality exceeded our expectations.',
-      rating: 5
+      name: 'ClearLedger Solutions',
+      company: 'Bookkeeping Services',
+      text: 'Your trusted financial partner - Cardinal built us a website that perfectly represents our accurate, reliable, and transparent services.',
+      rating: 5,
+      metrics: '99.9% accuracy rating'
     },
     {
-      name: 'Lisa Martinez',
-      company: 'Houston Real Estate Group',
-      text: 'Best web design company in Houston, hands down. Professional, responsive, and delivered exactly what we needed.',
-      rating: 5
+      name: 'BluTouch Pools & Spas',
+      company: 'Pool Services',
+      text: 'Over 10 years in the business and Cardinal gave us the digital presence we deserved. Their service showcase and portfolio display drove real results.',
+      rating: 5,
+      metrics: '200+ pools serviced'
     }
   ];
 
@@ -361,23 +372,27 @@ const HoustonDigitalServices = () => {
             </Badge>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Web Design & App Development in <span className="text-accent">Houston</span>
+              Web Design & App Development in <span className="text-accent">Houston, TX</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
               Transform your business with stunning websites and powerful mobile apps. 
-              <strong className="block mt-2">127+ Five-Star Reviews | 500+ Projects Launched</strong>
+              <strong className="block mt-2">Serving Houston • 500+ Projects Launched • 2-4 Week Delivery</strong>
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6">
-                <Phone className="mr-2 h-5 w-5" />
-                Get Free Consultation
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6">
-                View Our Portfolio
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+              <Link to="/contact">
+                <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 w-full sm:w-auto">
+                  <Phone className="mr-2 h-5 w-5" />
+                  Get Free Consultation
+                </Button>
+              </Link>
+              <Link to="/portfolio">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6 w-full sm:w-auto">
+                  View Our Portfolio
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
             </div>
 
             {/* Stats */}
@@ -444,13 +459,18 @@ const HoustonDigitalServices = () => {
                           <Icon className="h-8 w-8 text-primary" />
                         </div>
                         <div className="flex-1">
-                          <CardTitle className="text-2xl mb-2">{service.title}</CardTitle>
+                          <div className="flex items-center justify-between mb-2">
+                            <CardTitle className="text-2xl">{service.title}</CardTitle>
+                            <Badge variant="outline" className="text-primary border-primary">
+                              {service.startingPrice}
+                            </Badge>
+                          </div>
                           <CardDescription className="text-base">{service.description}</CardDescription>
                         </div>
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <ul className="space-y-3">
+                      <ul className="space-y-3 mb-4">
                         {service.features.map((feature, idx) => (
                           <li key={idx} className="flex items-center gap-2">
                             <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
@@ -458,6 +478,12 @@ const HoustonDigitalServices = () => {
                           </li>
                         ))}
                       </ul>
+                      <Link to="/contact?service=web-design" className="inline-block w-full">
+                        <Button className="w-full" variant="outline">
+                          Get Started
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </Link>
                     </CardContent>
                   </Card>
                 );
@@ -488,7 +514,7 @@ const HoustonDigitalServices = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Our clients see an average 250% increase in leads within the first 6 months
+                    Average 4.9/5 star rating from real Houston businesses. Our clients see measurable improvements in traffic, leads, and revenue.
                   </p>
                 </CardContent>
               </Card>
@@ -500,7 +526,7 @@ const HoustonDigitalServices = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    We understand Houston's market and serve businesses across all industries
+                    Based in Houston with offices at 2100 West Loop S Fwy. We serve businesses across Houston and beyond.
                   </p>
                 </CardContent>
               </Card>
@@ -512,7 +538,7 @@ const HoustonDigitalServices = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    127+ five-star reviews and counting. We don't stop until you're thrilled
+                    We deliver projects in 2-4 weeks on average, with transparent pricing starting at just $2,500. No hidden fees.
                   </p>
                 </CardContent>
               </Card>
@@ -550,7 +576,8 @@ const HoustonDigitalServices = () => {
                     <CardDescription>{testimonial.company}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground italic">"{testimonial.text}"</p>
+                    <p className="text-muted-foreground italic mb-2">"{testimonial.text}"</p>
+                    <p className="text-sm text-primary font-medium">{testimonial.metrics}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -600,12 +627,14 @@ const HoustonDigitalServices = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6">
-                <Phone className="mr-2 h-5 w-5" />
-                Call Now: (XXX) XXX-XXXX
-              </Button>
+              <a href="tel:2819017016">
+                <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 w-full sm:w-auto">
+                  <Phone className="mr-2 h-5 w-5" />
+                  Call Now: (281) 901-7016
+                </Button>
+              </a>
               <Link to="/contact">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6 w-full">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6 w-full sm:w-auto">
                   <Mail className="mr-2 h-5 w-5" />
                   Request Free Quote
                 </Button>
@@ -615,7 +644,7 @@ const HoustonDigitalServices = () => {
             <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-white">
               <div className="flex items-center justify-center gap-2">
                 <MapPin className="h-6 w-6" />
-                <span>Serving All of Houston, TX</span>
+                <span>2100 West Loop S, Houston, TX</span>
               </div>
               <div className="flex items-center justify-center gap-2">
                 <Clock className="h-6 w-6" />
@@ -623,7 +652,7 @@ const HoustonDigitalServices = () => {
               </div>
               <div className="flex items-center justify-center gap-2">
                 <Mail className="h-6 w-6" />
-                <span>info@cardinaldigital.com</span>
+                <span>hello@cardinalhtx.com</span>
               </div>
             </div>
           </div>
