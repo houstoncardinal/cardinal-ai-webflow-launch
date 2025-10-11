@@ -312,70 +312,80 @@ export const HalloweenDecorations = () => {
 
   return (
     <>
-      {/* Top left canvas */}
-      <div className="pointer-events-auto fixed top-0 left-0 w-64 h-64 z-50">
+      {/* Top left corner - Desktop/Tablet only */}
+      <div className="pointer-events-none fixed top-2 left-2 w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 z-40 hidden sm:block">
         <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
           <Pumpkin3D position={[0, 0, 0]} />
-          <Spider3D position={[1.5, 1.5, 0]} />
         </Canvas>
       </div>
 
-      {/* Top right canvas */}
-      <div className="pointer-events-auto fixed top-0 right-0 w-64 h-64 z-50">
+      {/* Top right corner - Desktop/Tablet only */}
+      <div className="pointer-events-none fixed top-2 right-2 w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 z-40 hidden sm:block">
         <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[5, 5, 5]} intensity={1} />
           <Ghost3D position={[0, 0, 0]} />
-          <Spider3D position={[-1.5, 1.5, 0]} />
         </Canvas>
       </div>
 
-      {/* Bottom left canvas */}
-      <div className="pointer-events-auto fixed bottom-0 left-0 w-64 h-64 z-50">
+      {/* Bottom left corner - All devices */}
+      <div className="pointer-events-none fixed bottom-2 left-2 w-24 h-24 md:w-36 md:h-36 lg:w-44 lg:h-44 z-40">
         <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[5, 5, 5]} intensity={1} />
           <Skull3D position={[0, 0, 0]} />
-          <Bat3D position={[1, 0.5, 0]} />
         </Canvas>
       </div>
 
-      {/* Bottom right canvas */}
-      <div className="pointer-events-auto fixed bottom-0 right-0 w-64 h-64 z-50">
+      {/* Bottom right corner - All devices */}
+      <div className="pointer-events-none fixed bottom-2 right-2 w-24 h-24 md:w-36 md:h-36 lg:w-44 lg:h-44 z-40">
         <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[5, 5, 5]} intensity={1} />
           <Pumpkin3D position={[0, 0, 0]} />
-          <Bat3D position={[-1, -0.5, 0]} />
         </Canvas>
       </div>
 
-      {/* Floating center decorations */}
-      <div className="pointer-events-auto fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 z-40 opacity-50">
+      {/* Subtle flying bats - Desktop only, higher up to avoid content */}
+      <div className="pointer-events-none fixed top-20 left-1/2 -translate-x-1/2 w-72 h-20 z-30 opacity-40 hidden lg:block">
         <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
           <ambientLight intensity={0.3} />
-          <Bat3D position={[-2, 1, 0]} />
-          <Bat3D position={[2, -1, 0]} />
-          <Bat3D position={[0, 2, 0]} />
+          <Bat3D position={[-2, 0, 0]} />
+          <Bat3D position={[2, 0, 0]} />
         </Canvas>
       </div>
 
-      {/* Side pumpkins */}
-      <div className="pointer-events-auto fixed top-1/3 left-10 w-48 h-48 z-50">
-        <Canvas camera={{ position: [0, 0, 4], fov: 50 }}>
+      {/* Floating spider - Desktop only, positioned safely */}
+      <div className="pointer-events-none fixed top-1/4 left-8 w-20 h-20 lg:w-24 lg:h-24 z-30 hidden lg:block">
+        <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
           <ambientLight intensity={0.5} />
-          <directionalLight position={[3, 3, 3]} intensity={1} />
-          <Pumpkin3D position={[0, 0, 0]} />
+          <Spider3D position={[0, 0, 0]} />
         </Canvas>
       </div>
 
-      <div className="pointer-events-auto fixed top-2/3 right-10 w-48 h-48 z-50">
-        <Canvas camera={{ position: [0, 0, 4], fov: 50 }}>
+      {/* Another spider - Desktop only, right side */}
+      <div className="pointer-events-none fixed top-1/3 right-8 w-20 h-20 lg:w-24 lg:h-24 z-30 hidden lg:block">
+        <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
           <ambientLight intensity={0.5} />
-          <directionalLight position={[3, 3, 3]} intensity={1} />
-          <Skull3D position={[0, 0, 0]} />
+          <Spider3D position={[0, 0, 0]} />
+        </Canvas>
+      </div>
+
+      {/* Subtle corner bat - Tablet/Desktop */}
+      <div className="pointer-events-none fixed bottom-1/4 left-4 w-16 h-16 md:w-20 md:h-20 z-30 opacity-60 hidden md:block">
+        <Canvas camera={{ position: [0, 0, 4], fov: 50 }}>
+          <ambientLight intensity={0.3} />
+          <Bat3D position={[0, 0, 0]} />
+        </Canvas>
+      </div>
+
+      {/* Additional ghost - Desktop only, far right */}
+      <div className="pointer-events-none fixed top-1/2 right-4 w-28 h-28 lg:w-32 lg:h-32 z-30 opacity-70 hidden xl:block">
+        <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
+          <ambientLight intensity={0.5} />
+          <Ghost3D position={[0, 0, 0]} />
         </Canvas>
       </div>
     </>
