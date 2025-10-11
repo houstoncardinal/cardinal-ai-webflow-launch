@@ -225,9 +225,12 @@ const FloatingActionWidget = () => {
 
         {/* Quick Actions Popup */}
         {isOpen && (
-          <div className="absolute bottom-20 right-0 w-80 sm:w-96 transform transition-all duration-300 ease-out scale-100 opacity-100 z-10" style={{ pointerEvents: 'auto' }}>
+          <div 
+            className="fixed sm:absolute bottom-20 left-1/2 -translate-x-1/2 sm:left-auto sm:right-0 sm:translate-x-0 w-[calc(100vw-2rem)] sm:w-80 md:w-96 max-w-md transition-all duration-300 ease-out scale-100 opacity-100 z-10"
+            style={{ pointerEvents: 'auto' }}
+          >
             {/* Popup Container */}
-            <div className="border shadow-2xl bg-white backdrop-blur-xl overflow-hidden rounded-2xl transform transition-all duration-300 hover:scale-[1.01] w-full" style={{ pointerEvents: 'auto', minWidth: '320px' }}>
+            <div className="border shadow-2xl bg-white backdrop-blur-xl overflow-hidden rounded-2xl transform transition-all duration-300 hover:scale-[1.01] w-full" style={{ pointerEvents: 'auto', minWidth: '280px' }}>
               {/* Enhanced Header */}
               <div className="bg-gradient-to-r from-green-600 via-green-700 to-green-800 p-5 text-white relative overflow-hidden">
                 {/* Background Pattern */}
@@ -366,8 +369,8 @@ const FloatingActionWidget = () => {
               </div>
             </div>
 
-            {/* Arrow Pointer */}
-            <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white transform rotate-45 border-r border-b border-gray-200"></div>
+            {/* Arrow Pointer - Hidden on mobile, shown on larger screens */}
+            <div className="hidden sm:block absolute -bottom-2 right-6 w-4 h-4 bg-white transform rotate-45 border-r border-b border-gray-200"></div>
           </div>
           </div>
         )}
