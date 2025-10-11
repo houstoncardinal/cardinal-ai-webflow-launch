@@ -1,9 +1,10 @@
 import { useConversation } from "@11labs/react";
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { PhoneOff, Loader2, Bot } from "lucide-react";
+import { PhoneOff, Loader2 } from "lucide-react";
 import { useToast } from "./ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import lilyAvatar from "@/assets/lily-avatar.png";
 
 const VoiceAgent = () => {
   const { toast } = useToast();
@@ -164,14 +165,18 @@ const VoiceAgent = () => {
         onClick={status === "connected" ? endConversation : startConversation}
         disabled={isConnecting}
         size="lg"
-        className="group relative h-16 w-16 rounded-full bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-white"
+        className="group relative h-20 w-20 rounded-full bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 shadow-lg hover:shadow-xl transition-all duration-300 border-4 border-white p-0 overflow-hidden"
       >
         {isConnecting ? (
-          <Loader2 className="h-6 w-6 animate-spin text-white" />
+          <Loader2 className="h-8 w-8 animate-spin text-white" />
         ) : status === "connected" ? (
-          <PhoneOff className="h-6 w-6 text-white" />
+          <PhoneOff className="h-8 w-8 text-white" />
         ) : (
-          <Bot className="h-7 w-7 text-white" />
+          <img 
+            src={lilyAvatar} 
+            alt="Lily AI" 
+            className="w-full h-full object-cover"
+          />
         )}
         
         {status !== "connected" && !isConnecting && (
