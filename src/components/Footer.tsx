@@ -289,7 +289,7 @@ const Footer = () => {
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="text-center md:text-left animate-fade-in">
                 <p className="text-white text-xs font-light">
-                  © 2024 Cardinal Consulting. All rights reserved.
+                  © 2025 Cardinal Consulting. All rights reserved.
                 </p>
                 <p className="text-gray-500 text-[10px] font-light mt-1">
                   Est. 2016
