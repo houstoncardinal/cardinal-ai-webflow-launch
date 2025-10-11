@@ -49,9 +49,9 @@ import HoustonWebDesignEsLanding from "./pages/landing/HoustonWebDesignEs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 
-const queryClient = new QueryClient();
-
 const App = () => {
+  const [queryClient] = React.useState(() => new QueryClient());
+  
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
