@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -6,7 +7,10 @@ import { TrendingUp, Users, DollarSign, Clock, Server, Smartphone, FileText, Mai
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
+
 const DashboardOverview = () => {
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [stats, setStats] = useState({
     totalProjects: 0,
     totalClients: 0,
@@ -17,6 +21,10 @@ const DashboardOverview = () => {
   });
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
+
+  const navigateToTab = (tab: string) => {
+    setSearchParams({ tab });
+  };
 
   useEffect(() => {
     loadDashboardData();
@@ -57,20 +65,22 @@ const DashboardOverview = () => {
     }
   };
 
+
   const statCards = [
-    { title: "Active Projects", value: stats.totalProjects.toString(), change: "+12%", icon: Clock, color: "from-emerald-500 to-teal-600", bgGlow: "emerald" },
-    { title: "Total Clients", value: stats.totalClients.toString(), change: "+8%", icon: Users, color: "from-blue-500 to-cyan-600", bgGlow: "blue" },
-    { title: "Contact Submissions", value: stats.totalSubmissions.toString(), change: "+15%", icon: Mail, color: "from-purple-500 to-pink-600", bgGlow: "purple" },
-    { title: "Newsletter Subscribers", value: stats.totalSubscribers.toString(), change: "+23%", icon: TrendingUp, color: "from-orange-500 to-red-600", bgGlow: "orange" },
-    { title: "Blog Posts", value: stats.blogPosts.toString(), change: `${stats.publishedPosts} published`, icon: FileText, color: "from-violet-500 to-purple-600", bgGlow: "violet" },
-    { title: "Engagement Rate", value: "94%", change: "+5%", icon: Activity, color: "from-green-500 to-emerald-600", bgGlow: "green" },
+    { title: "Active Projects", value: stats.totalProjects.toString(), change: "+12%", icon: Clock, color: "from-emerald-500 to-teal-600", bgGlow: "emerald", tab: "projects" },
+    { title: "Total Clients", value: stats.totalClients.toString(), change: "+8%", icon: Users, color: "from-blue-500 to-cyan-600", bgGlow: "blue", tab: "clients" },
+    { title: "Contact Submissions", value: stats.totalSubmissions.toString(), change: "+15%", icon: Mail, color: "from-purple-500 to-pink-600", bgGlow: "purple", tab: "marketing" },
+    { title: "Newsletter Subscribers", value: stats.totalSubscribers.toString(), change: "+23%", icon: TrendingUp, color: "from-orange-500 to-red-600", bgGlow: "orange", tab: "marketing" },
+    { title: "Blog Posts", value: stats.blogPosts.toString(), change: `${stats.publishedPosts} published`, icon: FileText, color: "from-violet-500 to-purple-600", bgGlow: "violet", tab: "marketing" },
+    { title: "Engagement Rate", value: "94%", change: "+5%", icon: Activity, color: "from-green-500 to-emerald-600", bgGlow: "green", tab: "marketing" },
   ];
 
+
   const recentActivity = [
-    { type: "Project", title: "E-commerce Website", client: "TechCorp", status: "In Progress", time: "2 hours ago" },
-    { type: "Contact", title: "New Inquiry", client: "StartupXYZ", status: "New", time: "5 hours ago" },
-    { type: "Newsletter", title: "New Subscriber", client: "Creative Agency", status: "Active", time: "1 day ago" },
-    { type: "Blog", title: "New Post Published", client: "Cardinal Blog", status: "Published", time: "2 days ago" },
+    { type: "Project", title: "E-commerce Website", client: "TechCorp", status: "In Progress", time: "2 hours ago", tab: "projects" },
+    { type: "Contact", title: "New Inquiry", client: "StartupXYZ", status: "New", time: "5 hours ago", tab: "marketing" },
+    { type: "Newsletter", title: "New Subscriber", client: "Creative Agency", status: "Active", time: "1 day ago", tab: "marketing" },
+    { type: "Blog", title: "New Post Published", client: "Cardinal Blog", status: "Published", time: "2 days ago", tab: "marketing" },
   ];
 
   if (loading) {
@@ -90,6 +100,7 @@ const DashboardOverview = () => {
         {statCards.map((stat, index) => (
           <Card 
             key={index}
+            onClick={() => navigateToTab(stat.tab)}
             className="group relative overflow-hidden bg-white hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-transparent cursor-pointer hover:-translate-y-1"
           >
             {/* Animated gradient background */}
@@ -131,7 +142,8 @@ const DashboardOverview = () => {
             <div className="space-y-4">
               {recentActivity.map((activity, index) => (
                 <div 
-                  key={index} 
+                  key={index}
+                  onClick={() => navigateToTab(activity.tab)}
                   className="flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-emerald-200 hover:bg-emerald-50/30 transition-all duration-300 group cursor-pointer"
                 >
                   <div className="flex-1">
@@ -160,7 +172,8 @@ const DashboardOverview = () => {
               ))}
             </div>
             <Button 
-              variant="outline" 
+              variant="outline"
+              onClick={() => navigateToTab('marketing')}
               className="w-full mt-6 border-emerald-200 text-emerald-700 hover:bg-emerald-50 hover:border-emerald-300"
             >
               View All Activity
@@ -176,13 +189,14 @@ const DashboardOverview = () => {
           <CardContent className="pt-6">
             <div className="grid grid-cols-2 gap-3">
               {[
-                { label: 'New Project', icon: Clock, color: 'emerald' },
-                { label: 'View Contacts', icon: Mail, color: 'blue' },
-                { label: 'Manage Blog', icon: FileText, color: 'purple' },
-                { label: 'Analytics', icon: TrendingUp, color: 'orange' },
+                { label: 'New Project', icon: Clock, color: 'emerald', tab: 'projects' },
+                { label: 'View Contacts', icon: Mail, color: 'blue', tab: 'marketing' },
+                { label: 'Manage Blog', icon: FileText, color: 'purple', tab: 'marketing' },
+                { label: 'Analytics', icon: TrendingUp, color: 'orange', tab: 'finance' },
               ].map((action, index) => (
                 <Button
                   key={index}
+                  onClick={() => navigateToTab(action.tab)}
                   variant="outline"
                   className={`h-24 flex-col gap-2 border-${action.color}-200 hover:bg-${action.color}-50 hover:border-${action.color}-300 hover:shadow-md transition-all duration-300 group`}
                 >
