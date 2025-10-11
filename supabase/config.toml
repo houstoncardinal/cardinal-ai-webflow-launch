@@ -1,1 +1,7 @@
 project_id = "fuzbkwbaazwoghtadgvg"
+
+[functions.seo-analysis]
+verify_jwt = false
+
+[functions.aeo-analysis]
+verify_jwt = false
