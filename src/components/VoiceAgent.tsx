@@ -73,37 +73,124 @@ const VoiceAgent = () => {
           return "I apologize, but there was an issue scheduling your appointment. Please try again or contact us directly.";
         }
       },
-      getServices: () => {
+      getServices: async () => {
+        console.log("Fetching services...");
+        return JSON.stringify([
+          "Web Development - Custom websites and web applications",
+          "Mobile Applications - iOS and Android app development",
+          "SEO & Digital Marketing - Search engine optimization and online marketing",
+          "Brand Identity - Logo design, branding, and visual identity",
+          "E-commerce Solutions - Online store development and optimization",
+          "UI/UX Design - User interface and experience design"
+        ]);
+      },
+      getBusinessInfo: async () => {
+        console.log("Fetching business info...");
         return JSON.stringify({
-          services: [
-            "Web Development",
-            "Mobile App Development",
+          name: "Cardinal Consulting",
+          phone: "Contact through the website",
+          email: "Contact through the website",
+          address: "We serve clients nationwide",
+          hours: "Monday-Friday, 9 AM - 6 PM",
+          specialties: [
+            "Custom Web Development",
+            "Mobile App Development", 
             "SEO & Digital Marketing",
-            "Brand Identity Design",
-            "UI/UX Design",
-            "E-commerce Solutions",
-            "Custom Software Development"
+            "Brand Identity & Design"
           ]
         });
       },
-      getBusinessInfo: () => {
-        return JSON.stringify({
-          name: "Cardinal Consulting",
-          description: "We're a full-service digital agency specializing in web development, mobile applications, and digital marketing.",
-          location: "Serving clients nationwide",
-          hours: "Monday-Friday: 9AM-6PM CST",
-          contact: {
-            phone: "(555) 123-4567",
-            email: "info@cardinalconsulting.com"
-          },
-          specialties: [
-            "Custom web applications with React and modern frameworks",
-            "Mobile app development for iOS and Android",
-            "SEO optimization and digital marketing campaigns",
-            "Brand identity and visual design",
-            "E-commerce platforms and integrations"
-          ]
-        });
+      getProjectStats: async () => {
+        console.log("Fetching project statistics...");
+        
+        try {
+          const { count: totalProjects } = await supabase
+            .from('projects')
+            .select('*', { count: 'exact', head: true });
+
+          const { count: activeProjects } = await supabase
+            .from('projects')
+            .select('*', { count: 'exact', head: true })
+            .in('status', ['in_progress', 'planning']);
+
+          const { count: completedProjects } = await supabase
+            .from('projects')
+            .select('*', { count: 'exact', head: true })
+            .eq('status', 'completed');
+
+          return JSON.stringify({
+            totalProjects: totalProjects || 0,
+            activeProjects: activeProjects || 0,
+            completedProjects: completedProjects || 0,
+            message: `We have ${totalProjects || 0} total projects, with ${activeProjects || 0} currently active and ${completedProjects || 0} completed successfully.`
+          });
+        } catch (error) {
+          console.error("Error fetching project stats:", error);
+          return JSON.stringify({
+            totalProjects: 0,
+            activeProjects: 0,
+            completedProjects: 0
+          });
+        }
+      },
+      getRecentProjects: async () => {
+        console.log("Fetching recent projects...");
+        
+        try {
+          const { data: projects, error } = await supabase
+            .from('projects')
+            .select('name, service_type, status, client_name')
+            .order('created_at', { ascending: false })
+            .limit(5);
+
+          if (error) throw error;
+
+          return JSON.stringify(projects || []);
+        } catch (error) {
+          console.error("Error fetching recent projects:", error);
+          return JSON.stringify([]);
+        }
+      },
+      getContactSubmissions: async () => {
+        console.log("Fetching contact submission stats...");
+        
+        try {
+          const { count: totalSubmissions } = await supabase
+            .from('contact_submissions')
+            .select('*', { count: 'exact', head: true });
+
+          const { count: newSubmissions } = await supabase
+            .from('contact_submissions')
+            .select('*', { count: 'exact', head: true })
+            .eq('status', 'new');
+
+          return JSON.stringify({
+            total: totalSubmissions || 0,
+            new: newSubmissions || 0,
+            message: `We have ${totalSubmissions || 0} total contact submissions, with ${newSubmissions || 0} new ones waiting for review.`
+          });
+        } catch (error) {
+          console.error("Error fetching contact submissions:", error);
+          return JSON.stringify({ total: 0, new: 0 });
+        }
+      },
+      getNewsletterSubscribers: async () => {
+        console.log("Fetching newsletter subscriber count...");
+        
+        try {
+          const { count } = await supabase
+            .from('newsletter_subscriptions')
+            .select('*', { count: 'exact', head: true })
+            .eq('is_active', true);
+
+          return JSON.stringify({
+            count: count || 0,
+            message: `We have ${count || 0} active newsletter subscribers.`
+          });
+        } catch (error) {
+          console.error("Error fetching newsletter subscribers:", error);
+          return JSON.stringify({ count: 0 });
+        }
       }
     },
   });
