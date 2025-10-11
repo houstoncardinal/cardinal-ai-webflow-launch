@@ -182,41 +182,52 @@ const FloatingActionWidget = () => {
   }
 
   return (
-    <div className={`fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-[99999] floating-widget transition-all duration-500 ease-out ${
-      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-    }`}>
-      {/* Main Floating Button */}
-      <div className="relative">
-        <button
-          type="button"
-          onClick={toggleWidget}
-          className="w-16 h-16 rounded-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 border-0 cursor-pointer flex items-center justify-center group"
-          style={{
-            boxShadow: '0 10px 40px rgba(5, 150, 105, 0.3), 0 0 20px rgba(5, 150, 105, 0.2)'
-          }}
-        >
-          {isOpen ? (
-            <X className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" />
-          ) : (
-            <MessageCircle className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
-          )}
-        </button>
-
-        {/* Pulse Animation Rings */}
-        <div className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-30"></div>
-        <div className="absolute inset-0 rounded-full bg-green-300 animate-ping opacity-20" style={{ animationDelay: '1s' }}></div>
-        
-        {/* Status Indicator */}
-        <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white animate-pulse">
-          <div className="absolute inset-1 bg-green-400 rounded-full animate-ping"></div>
-        </div>
-      </div>
-
-      {/* Quick Actions Popup */}
+    <>
+      {/* Enhanced Backdrop - Render first, below everything */}
       {isOpen && (
-        <div className="absolute bottom-20 right-0 w-72 sm:w-80 lg:w-96 transform transition-all duration-300 ease-out scale-100 opacity-100 floating-widget-popup">
-          {/* Popup Container */}
-          <div className="border-0 shadow-2xl bg-white/95 backdrop-blur-xl overflow-hidden rounded-xl transform transition-all duration-300 hover:scale-[1.02]">
+        <div 
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[99998] transition-opacity duration-300"
+          onClick={handleBackdropClick}
+          style={{ pointerEvents: 'auto' }}
+        />
+      )}
+
+      <div className={`fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-[99999] floating-widget transition-all duration-500 ease-out ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+      }`} style={{ pointerEvents: 'auto' }}>
+        {/* Main Floating Button */}
+        <div className="relative" style={{ pointerEvents: 'auto' }}>
+          <button
+            type="button"
+            onClick={toggleWidget}
+            className="w-16 h-16 rounded-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 border-0 cursor-pointer flex items-center justify-center group relative z-10"
+            style={{
+              boxShadow: '0 10px 40px rgba(5, 150, 105, 0.3), 0 0 20px rgba(5, 150, 105, 0.2)',
+              pointerEvents: 'auto'
+            }}
+          >
+            {isOpen ? (
+              <X className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" />
+            ) : (
+              <MessageCircle className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
+            )}
+          </button>
+
+          {/* Pulse Animation Rings */}
+          <div className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-30 pointer-events-none"></div>
+          <div className="absolute inset-0 rounded-full bg-green-300 animate-ping opacity-20 pointer-events-none" style={{ animationDelay: '1s' }}></div>
+          
+          {/* Status Indicator */}
+          <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white animate-pulse pointer-events-none">
+            <div className="absolute inset-1 bg-green-400 rounded-full animate-ping"></div>
+          </div>
+        </div>
+
+        {/* Quick Actions Popup */}
+        {isOpen && (
+          <div className="absolute bottom-20 right-0 w-72 sm:w-80 lg:w-96 transform transition-all duration-300 ease-out scale-100 opacity-100 floating-widget-popup z-10" style={{ pointerEvents: 'auto' }}>
+            {/* Popup Container */}
+            <div className="border-0 shadow-2xl bg-white/95 backdrop-blur-xl overflow-hidden rounded-xl transform transition-all duration-300 hover:scale-[1.02]" style={{ pointerEvents: 'auto' }}>
             {/* Enhanced Header */}
             <div className="bg-gradient-to-r from-green-600 via-green-700 to-green-800 p-4 text-white relative overflow-hidden">
               {/* Background Pattern */}
@@ -357,17 +368,10 @@ const FloatingActionWidget = () => {
             {/* Arrow Pointer */}
             <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white transform rotate-45 border-r border-b border-gray-200"></div>
           </div>
-        </div>
-      )}
-
-      {/* Enhanced Backdrop */}
-      {isOpen && (
-        <div 
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[-1] transition-opacity duration-300"
-          onClick={handleBackdropClick}
-        />
-      )}
-    </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
