@@ -479,30 +479,30 @@ const FinanceTab = () => {
 
       {/* Main Content Tabs */}
       <Tabs defaultValue="invoices" className="w-full">
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="invoices" className="text-purple-300 data-[state=active]:bg-purple-600 data-[state=active]:text-white">Invoices</TabsTrigger>
-          <TabsTrigger value="expenses" className="text-purple-300 data-[state=active]:bg-purple-600 data-[state=active]:text-white">Expenses</TabsTrigger>
-          <TabsTrigger value="payments" className="text-purple-300 data-[state=active]:bg-purple-600 data-[state=active]:text-white">Payments</TabsTrigger>
-          <TabsTrigger value="analytics" className="text-purple-300 data-[state=active]:bg-purple-600 data-[state=active]:text-white">Analytics</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-4 bg-gray-100">
+          <TabsTrigger value="invoices">Invoices</TabsTrigger>
+          <TabsTrigger value="expenses">Expenses</TabsTrigger>
+          <TabsTrigger value="payments">Payments</TabsTrigger>
+          <TabsTrigger value="analytics">Analytics</TabsTrigger>
         </TabsList>
 
         <TabsContent value="invoices" className="space-y-6 mt-6">
           {/* Invoice Filters */}
           <div className="flex gap-4 items-center">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 h-4 w-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
               <Input
                 placeholder="Search invoices..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-black/40 backdrop-blur-xl border-purple-800/50 text-white placeholder:text-purple-300"
+                className="pl-10"
               />
             </div>
             <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-32 bg-black/40 backdrop-blur-xl border-purple-800/50 text-white">
+              <SelectTrigger className="w-32">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="bg-black/90 border-purple-800/50">
+              <SelectContent>
                 <SelectItem value="all">All Status</SelectItem>
                 <SelectItem value="draft">Draft</SelectItem>
                 <SelectItem value="sent">Sent</SelectItem>
@@ -516,14 +516,14 @@ const FinanceTab = () => {
           {/* Invoices Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {filteredInvoices.map((invoice) => (
-              <Card key={invoice.id} className="bg-black/40 backdrop-blur-xl border border-purple-800/50 hover:border-purple-600/50 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 group">
+              <Card key={invoice.id} className="hover:shadow-xl transition-all duration-300 border-gray-100 group">
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <div>
-                      <CardTitle className="text-lg text-white group-hover:text-purple-300 transition-colors">
+                      <CardTitle className="text-lg text-gray-900 group-hover:text-emerald-700 transition-colors">
                         {invoice.invoice_number}
                       </CardTitle>
-                      <CardDescription className="text-purple-300 mt-1">
+                      <CardDescription className="text-gray-600 mt-1">
                         {invoice.client_name}
                       </CardDescription>
                     </div>
@@ -532,37 +532,37 @@ const FinanceTab = () => {
                         {invoice.status.toUpperCase()}
                       </Badge>
                       <div className="text-right">
-                        <p className="text-lg font-bold text-white">{formatCurrency(invoice.amount)}</p>
-                        <p className="text-xs text-purple-300">{invoice.currency}</p>
+                        <p className="text-lg font-bold text-gray-900">{formatCurrency(invoice.amount)}</p>
+                        <p className="text-xs text-gray-500">{invoice.currency}</p>
                       </div>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
-                    <h4 className="font-medium text-white mb-2">{invoice.project_name}</h4>
-                    <p className="text-sm text-purple-300 line-clamp-2">{invoice.description}</p>
+                    <h4 className="font-medium text-gray-900 mb-2">{invoice.project_name}</h4>
+                    <p className="text-sm text-gray-600 line-clamp-2">{invoice.description}</p>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4 text-purple-400" />
-                      <span className="text-purple-300">Issued: {formatDate(invoice.issue_date)}</span>
+                      <Calendar className="h-4 w-4 text-gray-500" />
+                      <span className="text-gray-600">Issued: {formatDate(invoice.issue_date)}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4 text-purple-400" />
-                      <span className="text-purple-300">Due: {formatDate(invoice.due_date)}</span>
+                      <Calendar className="h-4 w-4 text-gray-500" />
+                      <span className="text-gray-600">Due: {formatDate(invoice.due_date)}</span>
                     </div>
                     {invoice.paid_date && (
                       <div className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-400" />
-                        <span className="text-green-400">Paid: {formatDate(invoice.paid_date)}</span>
+                        <CheckCircle className="h-4 w-4 text-green-600" />
+                        <span className="text-green-600">Paid: {formatDate(invoice.paid_date)}</span>
                       </div>
                     )}
                     {invoice.payment_method && (
                       <div className="flex items-center gap-2">
-                        <CreditCard className="h-4 w-4 text-purple-400" />
-                        <span className="text-purple-300">{invoice.payment_method}</span>
+                        <CreditCard className="h-4 w-4 text-gray-500" />
+                        <span className="text-gray-600">{invoice.payment_method}</span>
                       </div>
                     )}
                   </div>
@@ -571,13 +571,13 @@ const FinanceTab = () => {
                     <Button 
                       size="sm" 
                       variant="outline" 
-                      className="flex-1 border-purple-600 text-purple-300 hover:bg-purple-600 hover:text-white"
+                      className="flex-1"
                       onClick={() => setSelectedInvoice(invoice)}
                     >
                       <Eye className="mr-1 h-3 w-3" />
                       View
                     </Button>
-                    <Button size="sm" className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700">
+                    <Button size="sm" className="flex-1 bg-emerald-600 hover:bg-emerald-700">
                       <Download className="mr-1 h-3 w-3" />
                       Download
                     </Button>
