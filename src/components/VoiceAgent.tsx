@@ -168,14 +168,14 @@ const VoiceAgent = () => {
       
       <div className="group relative">
         {status !== "connected" && !isConnecting && (
-          <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-48 h-24 flex items-end justify-center pointer-events-none">
-            <svg viewBox="0 0 240 120" className="w-full h-full">
+          <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-64 h-28 flex items-end justify-center pointer-events-none">
+            <svg viewBox="0 0 300 140" className="w-full h-full">
               <path
                 id="curve"
-                d="M 30,100 Q 120,30 210,100"
+                d="M 40,120 Q 150,40 260,120"
                 fill="transparent"
               />
-              <text className="fill-green-500 font-bold text-[22px] animate-pulse" style={{ letterSpacing: '0.15em' }}>
+              <text className="fill-green-500 font-bold text-[26px] animate-pulse" style={{ letterSpacing: '0.2em' }}>
                 <textPath href="#curve" startOffset="50%" textAnchor="middle">
                   Lily By Cardinal
                 </textPath>
