@@ -2,23 +2,69 @@ import { useEffect, useState, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshDistortMaterial, Sparkles } from '@react-three/drei';
 import * as THREE from 'three';
+import { toast } from 'sonner';
+
+interface PopupProps {
+  show: boolean;
+  onComplete: () => void;
+}
+
+const HalloweenPopup = ({ show, onComplete }: PopupProps) => {
+  useEffect(() => {
+    if (show) {
+      const timer = setTimeout(onComplete, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [show, onComplete]);
+
+  if (!show) return null;
+
+  return (
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+      <div className="animate-[scale-in_0.3s_ease-out] text-orange-500 font-bold text-2xl md:text-3xl drop-shadow-[0_0_10px_rgba(255,107,0,0.8)] whitespace-nowrap animate-pulse">
+        🎃 Happy Halloween!! 👻
+      </div>
+    </div>
+  );
+};
 
 // 3D Pumpkin with glow
-const Pumpkin3D = ({ position }: { position: [number, number, number] }) => {
+const Pumpkin3D = ({ 
+  position, 
+  onInteract 
+}: { 
+  position: [number, number, number];
+  onInteract: () => void;
+}) => {
   const meshRef = useRef<THREE.Mesh>(null);
   const glowRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
+  const [exploding, setExploding] = useState(false);
 
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.y += 0.005;
-      const scale = 1 + Math.sin(state.clock.elapsedTime * 2) * 0.05;
-      meshRef.current.scale.set(scale, scale, scale);
+      if (exploding) {
+        meshRef.current.scale.multiplyScalar(1.15);
+        meshRef.current.rotation.y += 0.3;
+        if (meshRef.current.scale.x > 3) {
+          setExploding(false);
+          meshRef.current.scale.set(1, 1, 1);
+        }
+      } else {
+        meshRef.current.rotation.y += 0.005;
+        const scale = 1 + Math.sin(state.clock.elapsedTime * 2) * 0.05;
+        meshRef.current.scale.set(scale, scale, scale);
+      }
     }
     if (glowRef.current) {
       glowRef.current.scale.setScalar(1.2 + Math.sin(state.clock.elapsedTime * 3) * 0.1);
     }
   });
+
+  const handleInteract = () => {
+    setExploding(true);
+    onInteract();
+  };
 
   return (
     <Float speed={2} rotationIntensity={0.5} floatIntensity={2}>
@@ -32,6 +78,7 @@ const Pumpkin3D = ({ position }: { position: [number, number, number] }) => {
         {/* Main pumpkin body */}
         <mesh
           ref={meshRef}
+          onClick={handleInteract}
           onPointerEnter={() => setHovered(true)}
           onPointerLeave={() => setHovered(false)}
         >
@@ -78,22 +125,45 @@ const Pumpkin3D = ({ position }: { position: [number, number, number] }) => {
 };
 
 // 3D Ghost with transparency and floating
-const Ghost3D = ({ position }: { position: [number, number, number] }) => {
+const Ghost3D = ({ 
+  position,
+  onInteract 
+}: { 
+  position: [number, number, number];
+  onInteract: () => void;
+}) => {
   const meshRef = useRef<THREE.Mesh>(null);
   const [scared, setScared] = useState(false);
+  const [exploding, setExploding] = useState(false);
 
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.position.y += Math.sin(state.clock.elapsedTime * 2) * 0.002;
-      meshRef.current.rotation.y = Math.sin(state.clock.elapsedTime) * 0.3;
+      if (exploding) {
+        meshRef.current.scale.multiplyScalar(1.12);
+        meshRef.current.rotation.z += 0.2;
+        if (meshRef.current.scale.x > 2.5) {
+          setExploding(false);
+          meshRef.current.scale.set(1, 1, 1);
+          meshRef.current.rotation.z = 0;
+        }
+      } else {
+        meshRef.current.position.y += Math.sin(state.clock.elapsedTime * 2) * 0.002;
+        meshRef.current.rotation.y = Math.sin(state.clock.elapsedTime) * 0.3;
+      }
     }
   });
+
+  const handleInteract = () => {
+    setExploding(true);
+    onInteract();
+  };
 
   return (
     <Float speed={1.5} rotationIntensity={0.3} floatIntensity={3}>
       <group position={position}>
         <mesh
           ref={meshRef}
+          onClick={handleInteract}
           onPointerEnter={() => setScared(true)}
           onPointerLeave={() => setScared(false)}
         >
@@ -141,13 +211,20 @@ const Ghost3D = ({ position }: { position: [number, number, number] }) => {
 };
 
 // 3D Bat with flapping wings
-const Bat3D = ({ position }: { position: [number, number, number] }) => {
+const Bat3D = ({ 
+  position,
+  onInteract 
+}: { 
+  position: [number, number, number];
+  onInteract: () => void;
+}) => {
   const leftWingRef = useRef<THREE.Mesh>(null);
   const rightWingRef = useRef<THREE.Mesh>(null);
   const bodyRef = useRef<THREE.Group>(null);
+  const [exploding, setExploding] = useState(false);
 
   useFrame((state) => {
-    const flapSpeed = 8;
+    const flapSpeed = exploding ? 20 : 8;
     const flapAngle = Math.sin(state.clock.elapsedTime * flapSpeed) * 0.5;
     
     if (leftWingRef.current) {
@@ -157,13 +234,27 @@ const Bat3D = ({ position }: { position: [number, number, number] }) => {
       rightWingRef.current.rotation.z = -flapAngle;
     }
     if (bodyRef.current) {
-      bodyRef.current.position.x += Math.sin(state.clock.elapsedTime * 0.5) * 0.01;
-      bodyRef.current.position.y += Math.cos(state.clock.elapsedTime * 0.7) * 0.008;
+      if (exploding) {
+        bodyRef.current.scale.multiplyScalar(1.1);
+        bodyRef.current.rotation.y += 0.4;
+        if (bodyRef.current.scale.x > 2.8) {
+          setExploding(false);
+          bodyRef.current.scale.set(1, 1, 1);
+        }
+      } else {
+        bodyRef.current.position.x += Math.sin(state.clock.elapsedTime * 0.5) * 0.01;
+        bodyRef.current.position.y += Math.cos(state.clock.elapsedTime * 0.7) * 0.008;
+      }
     }
   });
 
+  const handleInteract = () => {
+    setExploding(true);
+    onInteract();
+  };
+
   return (
-    <group position={position} ref={bodyRef}>
+    <group position={position} ref={bodyRef} onClick={handleInteract}>
       {/* Bat body */}
       <mesh>
         <sphereGeometry args={[0.15, 16, 16]} />
@@ -198,18 +289,39 @@ const Bat3D = ({ position }: { position: [number, number, number] }) => {
 };
 
 // Spider with web
-const Spider3D = ({ position }: { position: [number, number, number] }) => {
+const Spider3D = ({ 
+  position,
+  onInteract 
+}: { 
+  position: [number, number, number];
+  onInteract: () => void;
+}) => {
   const spiderRef = useRef<THREE.Group>(null);
+  const [exploding, setExploding] = useState(false);
 
   useFrame((state) => {
     if (spiderRef.current) {
-      spiderRef.current.position.y += Math.sin(state.clock.elapsedTime * 1.5) * 0.003;
-      spiderRef.current.rotation.y += 0.01;
+      if (exploding) {
+        spiderRef.current.scale.multiplyScalar(1.08);
+        spiderRef.current.rotation.y += 0.5;
+        if (spiderRef.current.scale.x > 2.2) {
+          setExploding(false);
+          spiderRef.current.scale.set(1, 1, 1);
+        }
+      } else {
+        spiderRef.current.position.y += Math.sin(state.clock.elapsedTime * 1.5) * 0.003;
+        spiderRef.current.rotation.y += 0.01;
+      }
     }
   });
 
+  const handleInteract = () => {
+    setExploding(true);
+    onInteract();
+  };
+
   return (
-    <group position={position} ref={spiderRef}>
+    <group position={position} ref={spiderRef} onClick={handleInteract}>
       {/* Spider body */}
       <mesh>
         <sphereGeometry args={[0.1, 16, 16]} />
@@ -248,21 +360,44 @@ const Spider3D = ({ position }: { position: [number, number, number] }) => {
 };
 
 // Skull with dramatic lighting
-const Skull3D = ({ position }: { position: [number, number, number] }) => {
+const Skull3D = ({ 
+  position,
+  onInteract 
+}: { 
+  position: [number, number, number];
+  onInteract: () => void;
+}) => {
   const skullRef = useRef<THREE.Mesh>(null);
   const [glowing, setGlowing] = useState(false);
+  const [exploding, setExploding] = useState(false);
 
   useFrame((state) => {
     if (skullRef.current) {
-      skullRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.2;
+      if (exploding) {
+        skullRef.current.scale.multiplyScalar(1.13);
+        skullRef.current.rotation.x += 0.25;
+        if (skullRef.current.scale.x > 2.7) {
+          setExploding(false);
+          skullRef.current.scale.set(1, 1, 1);
+          skullRef.current.rotation.x = 0;
+        }
+      } else {
+        skullRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.2;
+      }
     }
   });
+
+  const handleInteract = () => {
+    setExploding(true);
+    onInteract();
+  };
 
   return (
     <Float speed={1} rotationIntensity={0.2} floatIntensity={1.5}>
       <group position={position}>
         <mesh
           ref={skullRef}
+          onClick={handleInteract}
           onPointerEnter={() => setGlowing(true)}
           onPointerLeave={() => setGlowing(false)}
         >
@@ -311,6 +446,7 @@ interface DecorationPosition {
 export const HalloweenDecorations = () => {
   const [isOctober, setIsOctober] = useState(false);
   const [decorations, setDecorations] = useState<DecorationPosition[]>([]);
+  const [activePopup, setActivePopup] = useState<string | null>(null);
 
   useEffect(() => {
     const currentMonth = new Date().getMonth();
@@ -425,21 +561,29 @@ export const HalloweenDecorations = () => {
 
   if (!isOctober) return null;
 
-  const renderDecoration = (type: string) => {
+  const renderDecoration = (type: string, onInteract: () => void) => {
     switch (type) {
       case 'pumpkin':
-        return <Pumpkin3D position={[0, 0, 0]} />;
+        return <Pumpkin3D position={[0, 0, 0]} onInteract={onInteract} />;
       case 'ghost':
-        return <Ghost3D position={[0, 0, 0]} />;
+        return <Ghost3D position={[0, 0, 0]} onInteract={onInteract} />;
       case 'bat':
-        return <Bat3D position={[0, 0, 0]} />;
+        return <Bat3D position={[0, 0, 0]} onInteract={onInteract} />;
       case 'spider':
-        return <Spider3D position={[0, 0, 0]} />;
+        return <Spider3D position={[0, 0, 0]} onInteract={onInteract} />;
       case 'skull':
-        return <Skull3D position={[0, 0, 0]} />;
+        return <Skull3D position={[0, 0, 0]} onInteract={onInteract} />;
       default:
         return null;
     }
+  };
+
+  const handleInteraction = (id: string) => {
+    setActivePopup(id);
+    toast("🎃 Happy Halloween!! 👻", {
+      description: "Spooky fun activated!",
+      duration: 2000,
+    });
   };
 
   return (
@@ -447,17 +591,21 @@ export const HalloweenDecorations = () => {
       {decorations.map((decoration) => (
         <div
           key={decoration.id}
-          className="pointer-events-none fixed w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 z-50 transition-all duration-300"
+          className="pointer-events-auto fixed w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 z-50 transition-all duration-300 cursor-pointer"
           style={{
             left: `${decoration.x}px`,
             top: `${decoration.y}px`,
           }}
         >
+          <HalloweenPopup 
+            show={activePopup === decoration.id} 
+            onComplete={() => setActivePopup(null)} 
+          />
           <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
             <ambientLight intensity={0.6} />
             <directionalLight position={[5, 5, 5]} intensity={1.2} castShadow />
             <pointLight position={[-5, -5, 5]} intensity={0.5} color="#ff6600" />
-            {renderDecoration(decoration.type)}
+            {renderDecoration(decoration.type, () => handleInteraction(decoration.id))}
           </Canvas>
         </div>
       ))}
