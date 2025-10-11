@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import { PhoneOff, Loader2 } from "lucide-react";
 import { useToast } from "./ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import lilyAvatar from "@/assets/lily-avatar.png";
+import lilyAvatar from "@/assets/lily-luxury.png";
 
 const VoiceAgent = () => {
   const { toast } = useToast();
@@ -165,24 +165,31 @@ const VoiceAgent = () => {
         onClick={status === "connected" ? endConversation : startConversation}
         disabled={isConnecting}
         size="lg"
-        className="group relative h-20 w-20 rounded-full bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 shadow-lg hover:shadow-xl transition-all duration-300 border-4 border-white p-0 overflow-hidden"
+        className="group relative h-24 w-24 bg-transparent hover:bg-transparent shadow-2xl hover:shadow-[0_20px_50px_rgba(34,197,94,0.4)] transition-all duration-300 p-0 border-0"
+        style={{
+          filter: 'drop-shadow(0 10px 30px rgba(34, 197, 94, 0.3))'
+        }}
       >
         {isConnecting ? (
-          <Loader2 className="h-8 w-8 animate-spin text-white" />
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-green-500 to-green-600 rounded-2xl">
+            <Loader2 className="h-10 w-10 animate-spin text-white" />
+          </div>
         ) : status === "connected" ? (
-          <PhoneOff className="h-8 w-8 text-white" />
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-red-500 to-red-600 rounded-2xl">
+            <PhoneOff className="h-10 w-10 text-white" />
+          </div>
         ) : (
           <img 
             src={lilyAvatar} 
-            alt="Lily AI" 
-            className="w-full h-full object-cover"
+            alt="Lily AI Assistant" 
+            className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-300"
           />
         )}
         
         {status !== "connected" && !isConnecting && (
-          <div className="absolute -top-12 right-0 bg-gray-900 text-white px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="absolute -top-14 right-0 bg-gradient-to-r from-gray-900 to-gray-800 text-white px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
             Lily By Cardinal
-            <div className="absolute bottom-0 right-6 transform translate-y-1/2 rotate-45 w-2 h-2 bg-gray-900" />
+            <div className="absolute bottom-0 right-8 transform translate-y-1/2 rotate-45 w-2 h-2 bg-gray-900" />
           </div>
         )}
       </Button>
