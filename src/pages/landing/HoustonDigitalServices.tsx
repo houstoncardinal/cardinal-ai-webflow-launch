@@ -362,33 +362,49 @@ const HoustonDigitalServices = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-primary via-primary-dark to-secondary overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIi8+PC9nPjwvc3ZnPg==')] opacity-10"></div>
+      <section className="relative min-h-[80vh] flex items-center justify-center bg-white overflow-hidden pt-24 pb-16">
+        {/* Animated network background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 opacity-10">
+            <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <defs>
+                <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                  <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#059669" strokeWidth="0.5" />
+                </pattern>
+              </defs>
+              <rect width="100" height="100" fill="url(#grid)" />
+            </svg>
+          </div>
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-green-50 rounded-full opacity-20 animate-pulse"></div>
+          <div className="absolute bottom-1/3 right-1/3 w-32 h-32 bg-green-100 rounded-full opacity-30 animate-bounce"></div>
+        </div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-5xl mx-auto text-center">
-            <Badge className="mb-6 bg-white/20 text-white border-white/30 hover:bg-white/30">
-              🏆 Houston's #1 Rated Digital Agency
-            </Badge>
+          <div className="max-w-5xl mx-auto text-center space-y-8">
+            <div className="inline-flex items-center text-sm font-medium text-green-600 uppercase tracking-wide">
+              <div className="w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-4"></div>
+              <MapPin className="w-4 h-4 mr-2" />
+              Houston's #1 Rated Digital Agency
+            </div>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Web Design & App Development in <span className="text-accent">Houston, TX</span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-gray-900 leading-tight tracking-tight">
+              Web Design & App Development in <span className="text-green-600 font-normal">Houston, TX</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-              Transform your business with stunning websites and powerful mobile apps. 
-              <strong className="block mt-2">Serving Houston • 500+ Projects Launched • 2-4 Week Delivery</strong>
+            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
+              Transform your business with stunning websites and powerful mobile apps
+              <strong className="block mt-2 font-normal">Serving Houston • 500+ Projects Launched • 2-4 Week Delivery</strong>
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 w-full sm:w-auto">
+                <Button size="lg" className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white text-lg px-8 py-6 w-full sm:w-auto rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
                   <Phone className="mr-2 h-5 w-5" />
                   Get Free Consultation
                 </Button>
               </Link>
               <Link to="/portfolio">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6 w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white text-lg px-8 py-6 w-full sm:w-auto rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
                   View Our Portfolio
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -396,14 +412,14 @@ const HoustonDigitalServices = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-gray-200">
               {stats.map((stat, index) => {
                 const Icon = stat.icon;
                 return (
-                  <div key={index} className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                    <Icon className="h-8 w-8 text-accent mb-2 mx-auto" />
-                    <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.number}</div>
-                    <div className="text-white/80 text-sm">{stat.label}</div>
+                  <div key={index} className="group cursor-pointer text-center">
+                    <Icon className="h-8 w-8 text-green-600 mb-3 mx-auto group-hover:scale-110 transition-transform duration-300" />
+                    <div className="text-3xl font-light text-gray-900 mb-1 group-hover:text-green-600 transition-colors duration-300">{stat.number}</div>
+                    <div className="text-sm text-gray-600 uppercase tracking-wide">{stat.label}</div>
                   </div>
                 );
               })}
@@ -413,14 +429,19 @@ const HoustonDigitalServices = () => {
       </section>
 
       {/* Services Toggle */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              <div className="inline-flex items-center text-sm font-medium text-green-600 uppercase tracking-wide mb-4">
+                <div className="w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-4"></div>
+                Our Services
+                <div className="w-12 h-px bg-gradient-to-r from-green-500 to-green-600 ml-4"></div>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-light text-gray-900 mb-4">
                 Houston's Premier Digital Solutions
               </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light">
                 Whether you need a stunning website or a powerful mobile app, we've got you covered
               </p>
             </div>
@@ -429,18 +450,24 @@ const HoustonDigitalServices = () => {
             <div className="flex justify-center gap-4 mb-12">
               <Button
                 size="lg"
-                variant={activeTab === 'web' ? 'default' : 'outline'}
                 onClick={() => setActiveTab('web')}
-                className="px-8"
+                className={`px-8 py-6 text-lg font-semibold rounded-xl transition-all shadow-xl hover:shadow-2xl ${
+                  activeTab === 'web' 
+                    ? 'bg-gradient-to-r from-green-600 to-green-700 text-white scale-105' 
+                    : 'bg-white text-gray-900 border-2 border-gray-200 hover:border-green-600 hover:text-green-600'
+                }`}
               >
                 <Code className="mr-2 h-5 w-5" />
                 Web Design Services
               </Button>
               <Button
                 size="lg"
-                variant={activeTab === 'app' ? 'default' : 'outline'}
                 onClick={() => setActiveTab('app')}
-                className="px-8"
+                className={`px-8 py-6 text-lg font-semibold rounded-xl transition-all shadow-xl hover:shadow-2xl ${
+                  activeTab === 'app' 
+                    ? 'bg-gradient-to-r from-green-600 to-green-700 text-white scale-105' 
+                    : 'bg-white text-gray-900 border-2 border-gray-200 hover:border-green-600 hover:text-green-600'
+                }`}
               >
                 <Smartphone className="mr-2 h-5 w-5" />
                 App Development
@@ -452,20 +479,20 @@ const HoustonDigitalServices = () => {
               {(activeTab === 'web' ? webServices : appServices).map((service, index) => {
                 const Icon = service.icon;
                 return (
-                  <Card key={index} className="hover:shadow-xl transition-all duration-300 border-2 hover:border-primary">
+                  <Card key={index} className="hover:shadow-xl transition-all duration-300 border-2 border-gray-200 hover:border-green-600 bg-white">
                     <CardHeader>
                       <div className="flex items-start gap-4">
-                        <div className="bg-primary/10 p-3 rounded-lg">
-                          <Icon className="h-8 w-8 text-primary" />
+                        <div className="bg-green-50 p-3 rounded-lg">
+                          <Icon className="h-8 w-8 text-green-600" />
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center justify-between mb-2">
-                            <CardTitle className="text-2xl">{service.title}</CardTitle>
-                            <Badge variant="outline" className="text-primary border-primary">
+                            <CardTitle className="text-2xl font-light text-gray-900">{service.title}</CardTitle>
+                            <Badge className="bg-green-600 text-white">
                               {service.startingPrice}
                             </Badge>
                           </div>
-                          <CardDescription className="text-base">{service.description}</CardDescription>
+                          <CardDescription className="text-base text-gray-600">{service.description}</CardDescription>
                         </div>
                       </div>
                     </CardHeader>
@@ -473,13 +500,13 @@ const HoustonDigitalServices = () => {
                       <ul className="space-y-3 mb-4">
                         {service.features.map((feature, idx) => (
                           <li key={idx} className="flex items-center gap-2">
-                            <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                            <span>{feature}</span>
+                            <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+                            <span className="text-gray-600">{feature}</span>
                           </li>
                         ))}
                       </ul>
                       <Link to="/contact?service=web-design" className="inline-block w-full">
-                        <Button className="w-full" variant="outline">
+                        <Button className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white rounded-xl">
                           Get Started
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
@@ -494,50 +521,55 @@ const HoustonDigitalServices = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-muted/50">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              <div className="inline-flex items-center text-sm font-medium text-green-600 uppercase tracking-wide mb-4">
+                <div className="w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-4"></div>
+                Why Choose Us
+                <div className="w-12 h-px bg-gradient-to-r from-green-500 to-green-600 ml-4"></div>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-light text-gray-900 mb-4">
                 Why Houston Businesses Choose Cardinal
               </h2>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-xl text-gray-600 font-light">
                 We're not just another web design company—we're your digital growth partner
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="text-center">
+              <Card className="text-center border-2 border-gray-200 hover:border-green-600 transition-all duration-300 bg-white">
                 <CardHeader>
-                  <Shield className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <CardTitle>Proven Results</CardTitle>
+                  <Shield className="h-12 w-12 text-green-600 mx-auto mb-4" />
+                  <CardTitle className="font-light text-gray-900">Proven Results</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">
+                  <p className="text-gray-600">
                     Average 4.9/5 star rating from real Houston businesses. Our clients see measurable improvements in traffic, leads, and revenue.
                   </p>
                 </CardContent>
               </Card>
 
-              <Card className="text-center">
+              <Card className="text-center border-2 border-gray-200 hover:border-green-600 transition-all duration-300 bg-white">
                 <CardHeader>
-                  <Users className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <CardTitle>Local Houston Team</CardTitle>
+                  <Users className="h-12 w-12 text-green-600 mx-auto mb-4" />
+                  <CardTitle className="font-light text-gray-900">Local Houston Team</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">
+                  <p className="text-gray-600">
                     Based in Houston with offices at 2100 West Loop S Fwy. We serve businesses across Houston and beyond.
                   </p>
                 </CardContent>
               </Card>
 
-              <Card className="text-center">
+              <Card className="text-center border-2 border-gray-200 hover:border-green-600 transition-all duration-300 bg-white">
                 <CardHeader>
-                  <Award className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <CardTitle>Award-Winning Quality</CardTitle>
+                  <Award className="h-12 w-12 text-green-600 mx-auto mb-4" />
+                  <CardTitle className="font-light text-gray-900">Award-Winning Quality</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">
+                  <p className="text-gray-600">
                     We deliver projects in 2-4 weeks on average, with transparent pricing starting at just $2,500. No hidden fees.
                   </p>
                 </CardContent>
@@ -548,36 +580,41 @@ const HoustonDigitalServices = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              <div className="inline-flex items-center text-sm font-medium text-green-600 uppercase tracking-wide mb-4">
+                <div className="w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-4"></div>
+                Testimonials
+                <div className="w-12 h-px bg-gradient-to-r from-green-500 to-green-600 ml-4"></div>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-light text-gray-900 mb-4">
                 What Houston Businesses Say About Us
               </h2>
               <div className="flex items-center justify-center gap-1 mb-4">
                 {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={star} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
+                  <Star key={star} className="h-6 w-6 fill-green-600 text-green-600" />
                 ))}
-                <span className="ml-2 text-xl font-semibold">5.0 Average Rating</span>
+                <span className="ml-2 text-xl font-light text-gray-900">5.0 Average Rating</span>
               </div>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {testimonials.map((testimonial, index) => (
-                <Card key={index} className="relative">
+                <Card key={index} className="relative border-2 border-gray-200 hover:border-green-600 transition-all duration-300 bg-white">
                   <CardHeader>
                     <div className="flex items-center gap-1 mb-2">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                        <Star key={i} className="h-5 w-5 fill-green-600 text-green-600" />
                       ))}
                     </div>
-                    <CardTitle className="text-lg">{testimonial.name}</CardTitle>
-                    <CardDescription>{testimonial.company}</CardDescription>
+                    <CardTitle className="text-lg font-normal text-gray-900">{testimonial.name}</CardTitle>
+                    <CardDescription className="text-gray-600">{testimonial.company}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground italic mb-2">"{testimonial.text}"</p>
-                    <p className="text-sm text-primary font-medium">{testimonial.metrics}</p>
+                    <p className="text-gray-600 italic mb-2">"{testimonial.text}"</p>
+                    <p className="text-sm text-green-600 font-medium">{testimonial.metrics}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -587,26 +624,31 @@ const HoustonDigitalServices = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 bg-muted/50">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              <div className="inline-flex items-center text-sm font-medium text-green-600 uppercase tracking-wide mb-4">
+                <div className="w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-4"></div>
+                FAQ
+                <div className="w-12 h-px bg-gradient-to-r from-green-500 to-green-600 ml-4"></div>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-light text-gray-900 mb-4">
                 Frequently Asked Questions
               </h2>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-xl text-gray-600 font-light">
                 Everything you need to know about our services
               </p>
             </div>
 
             <div className="space-y-6">
               {faqs.map((faq, index) => (
-                <Card key={index}>
+                <Card key={index} className="border-2 border-gray-200 hover:border-green-600 transition-all duration-300 bg-white">
                   <CardHeader>
-                    <CardTitle className="text-xl">{faq.question}</CardTitle>
+                    <CardTitle className="text-xl font-normal text-gray-900">{faq.question}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">{faq.answer}</p>
+                    <p className="text-gray-600">{faq.answer}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -616,38 +658,38 @@ const HoustonDigitalServices = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-primary to-secondary">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-5xl font-light text-gray-900 mb-6">
               Ready to Transform Your Digital Presence?
             </h2>
-            <p className="text-xl text-white/90 mb-8">
+            <p className="text-xl text-gray-600 mb-8 font-light">
               Join 500+ Houston businesses that trust Cardinal Digital for their web design and app development needs
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="tel:2819017016">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 w-full sm:w-auto">
+                <Button size="lg" className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white text-lg px-8 py-6 w-full sm:w-auto rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
                   <Phone className="mr-2 h-5 w-5" />
                   Call Now: (281) 901-7016
                 </Button>
               </a>
               <Link to="/contact">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6 w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white text-lg px-8 py-6 w-full sm:w-auto rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
                   <Mail className="mr-2 h-5 w-5" />
                   Request Free Quote
                 </Button>
               </Link>
             </div>
 
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-white">
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-gray-600">
               <div className="flex items-center justify-center gap-2">
-                <MapPin className="h-6 w-6" />
+                <MapPin className="h-6 w-6 text-green-600" />
                 <span>2100 West Loop S, Houston, TX</span>
               </div>
               <div className="flex items-center justify-center gap-2">
-                <Clock className="h-6 w-6" />
+                <Clock className="h-6 w-6 text-green-600" />
                 <span>Mon-Fri: 9AM - 6PM CST</span>
               </div>
               <div className="flex items-center justify-center gap-2">
