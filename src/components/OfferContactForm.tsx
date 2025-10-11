@@ -230,7 +230,7 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
                 <SelectTrigger className="w-full h-12 border-gray-300 focus:border-green-500 bg-white">
                   <SelectValue placeholder={language === 'en' ? "Select project type" : "Selecciona tipo"} />
                 </SelectTrigger>
-                <SelectContent className="bg-white border border-gray-200 shadow-lg z-[100] max-h-[300px] overflow-y-auto">
+                <SelectContent className="bg-white border border-gray-200 shadow-lg z-[100] max-h-[300px] overflow-y-auto min-w-[var(--radix-select-trigger-width)]">
                   {Object.entries(t.projectTypes).map(([value, label]) => (
                     <SelectItem key={value} value={value} className="cursor-pointer hover:bg-green-50">{label}</SelectItem>
                   ))}
@@ -248,7 +248,7 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
                 <SelectTrigger className="w-full h-12 border-gray-300 focus:border-green-500 bg-white">
                   <SelectValue placeholder={language === 'en' ? "Select timeline" : "Selecciona cronograma"} />
                 </SelectTrigger>
-                <SelectContent className="bg-white border border-gray-200 shadow-lg z-[100] max-h-[300px] overflow-y-auto">
+                <SelectContent className="bg-white border border-gray-200 shadow-lg z-[100] max-h-[300px] overflow-y-auto min-w-[var(--radix-select-trigger-width)]">
                   {Object.entries(t.timelines).map(([value, label]) => (
                     <SelectItem key={value} value={value} className="cursor-pointer hover:bg-green-50">{label}</SelectItem>
                   ))}
@@ -267,7 +267,7 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
               <SelectTrigger className="w-full h-12 border-gray-300 focus:border-green-500 bg-white">
                 <SelectValue placeholder={language === 'en' ? "Select budget range" : "Selecciona presupuesto"} />
               </SelectTrigger>
-              <SelectContent className="bg-white border border-gray-200 shadow-lg z-[100] max-h-[300px] overflow-y-auto">
+              <SelectContent className="bg-white border border-gray-200 shadow-lg z-[100] max-h-[300px] overflow-y-auto min-w-[var(--radix-select-trigger-width)]">
                 {Object.entries(t.budgetRanges).map(([value, label]) => (
                   <SelectItem key={value} value={value} className="cursor-pointer hover:bg-green-50">{label}</SelectItem>
                 ))}
