@@ -1,30 +1,34 @@
 import React, { useState, useEffect } from 'react';
+import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Calendar, User, DollarSign, Clock, Plus, Filter, Search, Edit, Trash2, FileText, Upload, Download, Eye, CalendarDays, Users, Tag, Target, CheckCircle, AlertCircle, Clock as ClockIcon, FileUp, MessageSquare, BarChart3, Zap, Crown, Star, Award, Trophy, Gem, Diamond, Sparkles, Rocket, Brain, Cpu, Shield, Database, Globe, Network, Activity, TrendingUp } from 'lucide-react';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
+import { Calendar, DollarSign, Plus, Search, Edit, Trash2, Eye, Crown, Star, Target, CheckCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-interface SimpleProject {
+interface Project {
   id: string;
   name: string;
-  description: string;
+  description: string | null;
   client_name: string;
   service_type: string;
   status: string;
   priority: string;
-  start_date: string;
-  end_date: string;
-  deadline: string;
-  budget: number;
+  start_date: string | null;
+  end_date: string | null;
+  deadline: string | null;
+  budget: number | null;
   actual_cost: number;
   progress: number;
-  team_lead: string;
+  team_lead: string | null;
   assigned_team: string[];
   tags: string[];
   created_at: string;
@@ -32,98 +36,212 @@ interface SimpleProject {
 }
 
 const ProjectsTab = () => {
-  const [projects, setProjects] = useState<SimpleProject[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [priorityFilter, setPriorityFilter] = useState<string>('all');
-  const [selectedProject, setSelectedProject] = useState<SimpleProject | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isProjectDialogOpen, setIsProjectDialogOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [deleteProject, setDeleteProject] = useState<Project | null>(null);
+  const [formData, setFormData] = useState<Partial<Project>>({
+    name: '',
+    client_name: '',
+    service_type: 'web-development',
+    status: 'new',
+    priority: 'medium',
+    progress: 0,
+    actual_cost: 0,
+    assigned_team: [],
+    tags: []
+  });
   const { toast } = useToast();
 
   useEffect(() => {
-    loadData();
+    loadProjects();
+    
+    // Set up realtime subscription
+    const channel = supabase
+      .channel('projects-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'projects'
+        },
+        () => {
+          loadProjects();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
-  const loadData = async () => {
+  const loadProjects = async () => {
     try {
       setLoading(true);
-      
-      // Demo data for luxury projects
-      const demoProjects: SimpleProject[] = [
-        {
-          id: '1',
-          name: 'Quantum E-commerce Platform',
-          description: 'Next-generation e-commerce platform with AI-powered recommendations, blockchain payments, and immersive AR shopping experiences.',
-          client_name: 'TechCorp Solutions',
-          service_type: 'web-development',
-          status: 'in-progress',
-          priority: 'critical',
-          start_date: '2024-01-15',
-          end_date: '2024-06-30',
-          deadline: '2024-06-30',
-          budget: 250000,
-          actual_cost: 125000,
-          progress: 65,
-          team_lead: 'Dr. Sarah Chen',
-          assigned_team: ['Alex Rodriguez', 'Emma Thompson', 'Marcus Kim', 'Lisa Park'],
-          tags: ['AI/ML', 'Blockchain', 'AR/VR', 'Enterprise'],
-          created_at: '2024-01-15T00:00:00Z',
-          updated_at: '2024-01-15T00:00:00Z'
-        },
-        {
-          id: '2',
-          name: 'Neural Banking Application',
-          description: 'Revolutionary mobile banking app with neural network security, biometric authentication, and predictive financial insights.',
-          client_name: 'FinanceFirst Bank',
-          service_type: 'mobile-applications',
-          status: 'in-progress',
-          priority: 'critical',
-          start_date: '2024-01-01',
-          end_date: '2024-05-15',
-          deadline: '2024-05-15',
-          budget: 450000,
-          actual_cost: 280000,
-          progress: 85,
-          team_lead: 'Dr. Michael Chang',
-          assigned_team: ['Sophie Williams', 'David Kim', 'Rachel Green'],
-          tags: ['Neural Networks', 'Biometrics', 'FinTech', 'Security'],
-          created_at: '2024-01-01T00:00:00Z',
-          updated_at: '2024-01-01T00:00:00Z'
-        },
-        {
-          id: '3',
-          name: 'Quantum Brand Identity Suite',
-          description: 'Comprehensive brand identity system with quantum-inspired design principles, dynamic logos, and immersive brand experiences.',
-          client_name: 'Creative Studio Inc',
-          service_type: 'brand-identity',
-          status: 'in-progress',
-          priority: 'high',
-          start_date: '2024-01-20',
-          end_date: '2024-03-20',
-          deadline: '2024-03-20',
-          budget: 85000,
-          actual_cost: 52000,
-          progress: 90,
-          team_lead: 'Creative Director Lisa Park',
-          assigned_team: ['Tom Wilson', 'Anna Rodriguez'],
-          tags: ['Quantum Design', 'Dynamic Branding', 'Immersive', 'Creative'],
-          created_at: '2024-01-20T00:00:00Z',
-          updated_at: '2024-01-20T00:00:00Z'
-        }
-      ];
+      const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+        .order('created_at', { ascending: false });
 
-      setProjects(demoProjects);
-    } catch (error) {
-      console.error('Error loading data:', error);
+      if (error) throw error;
+      setProjects(data || []);
+    } catch (error: any) {
       toast({
         title: "Error",
-        description: "Failed to load project data",
+        description: error.message || "Failed to load projects",
         variant: "destructive"
       });
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleCreateProject = async () => {
+    try {
+      if (!formData.name || !formData.client_name) {
+        toast({
+          title: "Error",
+          description: "Please fill in required fields",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      const projectData = {
+        name: formData.name,
+        client_name: formData.client_name,
+        description: formData.description || null,
+        service_type: formData.service_type || 'web-development',
+        status: formData.status || 'new',
+        priority: formData.priority || 'medium',
+        start_date: formData.start_date || null,
+        end_date: formData.end_date || null,
+        deadline: formData.deadline || null,
+        budget: formData.budget || null,
+        actual_cost: formData.actual_cost || 0,
+        progress: formData.progress || 0,
+        team_lead: formData.team_lead || null,
+        assigned_team: formData.assigned_team || [],
+        tags: formData.tags || []
+      };
+
+      const { error } = await supabase
+        .from('projects')
+        .insert([projectData]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Success",
+        description: "Project created successfully"
+      });
+      
+      setIsProjectDialogOpen(false);
+      resetForm();
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to create project",
+        variant: "destructive"
+      });
+    }
+  };
+
+  const handleUpdateProject = async () => {
+    try {
+      if (!selectedProject || !formData.name || !formData.client_name) {
+        toast({
+          title: "Error",
+          description: "Please fill in required fields",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      const { error } = await supabase
+        .from('projects')
+        .update(formData)
+        .eq('id', selectedProject.id);
+
+      if (error) throw error;
+
+      toast({
+        title: "Success",
+        description: "Project updated successfully"
+      });
+      
+      setIsProjectDialogOpen(false);
+      setIsEditMode(false);
+      setSelectedProject(null);
+      resetForm();
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to update project",
+        variant: "destructive"
+      });
+    }
+  };
+
+  const handleDeleteProject = async () => {
+    try {
+      if (!deleteProject) return;
+
+      const { error } = await supabase
+        .from('projects')
+        .delete()
+        .eq('id', deleteProject.id);
+
+      if (error) throw error;
+
+      toast({
+        title: "Success",
+        description: "Project deleted successfully"
+      });
+      
+      setDeleteProject(null);
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to delete project",
+        variant: "destructive"
+      });
+    }
+  };
+
+  const openCreateDialog = () => {
+    resetForm();
+    setIsEditMode(false);
+    setSelectedProject(null);
+    setIsProjectDialogOpen(true);
+  };
+
+  const openEditDialog = (project: Project) => {
+    setFormData(project);
+    setSelectedProject(project);
+    setIsEditMode(true);
+    setIsProjectDialogOpen(true);
+  };
+
+  const resetForm = () => {
+    setFormData({
+      name: '',
+      client_name: '',
+      service_type: 'web-development',
+      status: 'new',
+      priority: 'medium',
+      progress: 0,
+      actual_cost: 0,
+      assigned_team: [],
+      tags: []
+    });
   };
 
   const getStatusColor = (status: string) => {
@@ -159,14 +277,16 @@ const ProjectsTab = () => {
     }
   };
 
-  const formatCurrency = (amount: number) => {
+  const formatCurrency = (amount: number | null) => {
+    if (!amount) return '$0.00';
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD'
     }).format(amount);
   };
 
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString: string | null) => {
+    if (!dateString) return 'Not set';
     return new Date(dateString).toLocaleDateString();
   };
 
@@ -183,7 +303,7 @@ const ProjectsTab = () => {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 mx-auto mb-4"></div>
           <div className="text-gray-600">Loading projects...</div>
         </div>
       </div>
@@ -195,39 +315,13 @@ const ProjectsTab = () => {
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-3xl font-bold text-gray-900">
-            Project Management
-          </h2>
-          <p className="text-gray-600 mt-2">Advanced project orchestration for Cardinal Consulting</p>
+          <h2 className="text-3xl font-bold text-gray-900">Project Management</h2>
+          <p className="text-gray-600 mt-2">Manage your projects with precision</p>
         </div>
-        <div className="flex gap-3">
-          <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
-            <Filter className="mr-2 h-4 w-4" />
-            Advanced Filter
-          </Button>
-          <Dialog open={isProjectDialogOpen} onOpenChange={setIsProjectDialogOpen}>
-            <DialogTrigger asChild>
-              <Button className="bg-blue-600 hover:bg-blue-700">
-                <Plus className="mr-2 h-4 w-4" />
-                New Project
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="max-w-2xl">
-              <DialogHeader>
-                <DialogTitle>Create New Project</DialogTitle>
-                <DialogDescription>
-                  Initialize a new advanced project for Cardinal Consulting
-                </DialogDescription>
-              </DialogHeader>
-              <DialogFooter>
-                <Button variant="outline" onClick={() => setIsProjectDialogOpen(false)}>
-                  Cancel
-                </Button>
-                <Button>Create Project</Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
-        </div>
+        <Button onClick={openCreateDialog} className="bg-emerald-600 hover:bg-emerald-700">
+          <Plus className="mr-2 h-4 w-4" />
+          New Project
+        </Button>
       </div>
 
       {/* Filters */}
@@ -242,7 +336,7 @@ const ProjectsTab = () => {
           />
         </div>
         <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-32">
+          <SelectTrigger className="w-40">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -279,14 +373,14 @@ const ProjectsTab = () => {
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div className="flex-1">
-                    <CardTitle className="text-lg text-gray-900">
+                    <CardTitle className="text-lg text-gray-900 line-clamp-1">
                       {project.name}
                     </CardTitle>
                     <CardDescription className="text-gray-600 mt-1">
                       {project.client_name}
                     </CardDescription>
                   </div>
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-2 ml-2">
                     <div className="flex items-center gap-1">
                       <PriorityIcon className="h-4 w-4 text-gray-500" />
                       <Badge className={getPriorityColor(project.priority)}>
@@ -300,7 +394,9 @@ const ProjectsTab = () => {
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-sm text-gray-600 leading-relaxed">{project.description}</p>
+                <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">
+                  {project.description || 'No description'}
+                </p>
                 
                 <div className="flex items-center gap-2 text-sm">
                   <Badge variant="outline" className="border-gray-300 text-gray-700">
@@ -313,35 +409,23 @@ const ProjectsTab = () => {
                     <span className="text-gray-600">Progress</span>
                     <span className="text-gray-900 font-medium">{project.progress}%</span>
                   </div>
-                  <Progress value={project.progress} className="h-2">
-                    <div className="h-full bg-blue-600 rounded-full transition-all duration-300" style={{ width: `${project.progress}%` }}></div>
-                  </Progress>
+                  <Progress value={project.progress} className="h-2" />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   {project.deadline && (
                     <div className="flex items-center gap-2">
                       <Calendar className="h-4 w-4 text-gray-500" />
-                      <span className="text-gray-600">{formatDate(project.deadline)}</span>
+                      <span className="text-gray-600 text-xs">{formatDate(project.deadline)}</span>
                     </div>
                   )}
                   {project.budget && (
                     <div className="flex items-center gap-2">
                       <DollarSign className="h-4 w-4 text-gray-500" />
-                      <span className="text-gray-600">{formatCurrency(project.budget)}</span>
+                      <span className="text-gray-600 text-xs">{formatCurrency(project.budget)}</span>
                     </div>
                   )}
                 </div>
-
-                {project.tags && project.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-1">
-                    {project.tags.map((tag, index) => (
-                      <Badge key={index} variant="secondary" className="text-xs bg-gray-100 text-gray-700 border-gray-300">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                )}
 
                 <div className="flex gap-2 pt-4">
                   <Button 
@@ -353,9 +437,22 @@ const ProjectsTab = () => {
                     <Eye className="mr-1 h-3 w-3" />
                     View
                   </Button>
-                  <Button size="sm" className="flex-1 bg-blue-600 hover:bg-blue-700">
+                  <Button 
+                    size="sm" 
+                    variant="outline"
+                    className="flex-1"
+                    onClick={() => openEditDialog(project)}
+                  >
                     <Edit className="mr-1 h-3 w-3" />
                     Edit
+                  </Button>
+                  <Button 
+                    size="sm" 
+                    variant="outline"
+                    className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                    onClick={() => setDeleteProject(project)}
+                  >
+                    <Trash2 className="h-3 w-3" />
                   </Button>
                 </div>
               </CardContent>
@@ -364,8 +461,208 @@ const ProjectsTab = () => {
         })}
       </div>
 
-      {/* Project Details Dialog */}
-      {selectedProject && (
+      {filteredProjects.length === 0 && (
+        <div className="text-center py-12">
+          <p className="text-gray-500">No projects found</p>
+        </div>
+      )}
+
+      {/* Create/Edit Dialog */}
+      <Dialog open={isProjectDialogOpen} onOpenChange={setIsProjectDialogOpen}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>{isEditMode ? 'Edit Project' : 'Create New Project'}</DialogTitle>
+            <DialogDescription>
+              {isEditMode ? 'Update project details' : 'Add a new project to your portfolio'}
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="grid gap-4 py-4">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="name">Project Name *</Label>
+                <Input
+                  id="name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  placeholder="Enter project name"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="client_name">Client Name *</Label>
+                <Input
+                  id="client_name"
+                  value={formData.client_name}
+                  onChange={(e) => setFormData({...formData, client_name: e.target.value})}
+                  placeholder="Enter client name"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="description">Description</Label>
+              <Textarea
+                id="description"
+                value={formData.description || ''}
+                onChange={(e) => setFormData({...formData, description: e.target.value})}
+                placeholder="Project description"
+                rows={3}
+              />
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="service_type">Service Type</Label>
+                <Select
+                  value={formData.service_type}
+                  onValueChange={(value) => setFormData({...formData, service_type: value})}
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="web-development">Web Development</SelectItem>
+                    <SelectItem value="mobile-applications">Mobile Applications</SelectItem>
+                    <SelectItem value="brand-identity">Brand Identity</SelectItem>
+                    <SelectItem value="digital-campaigns">Digital Campaigns</SelectItem>
+                    <SelectItem value="seo-insights">SEO Insights</SelectItem>
+                    <SelectItem value="experience-optimization">Experience Optimization</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="status">Status</Label>
+                <Select
+                  value={formData.status}
+                  onValueChange={(value) => setFormData({...formData, status: value})}
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="new">New</SelectItem>
+                    <SelectItem value="in-review">In Review</SelectItem>
+                    <SelectItem value="quoted">Quoted</SelectItem>
+                    <SelectItem value="approved">Approved</SelectItem>
+                    <SelectItem value="in-progress">In Progress</SelectItem>
+                    <SelectItem value="completed">Completed</SelectItem>
+                    <SelectItem value="cancelled">Cancelled</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="priority">Priority</Label>
+                <Select
+                  value={formData.priority}
+                  onValueChange={(value) => setFormData({...formData, priority: value})}
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="low">Low</SelectItem>
+                    <SelectItem value="medium">Medium</SelectItem>
+                    <SelectItem value="high">High</SelectItem>
+                    <SelectItem value="critical">Critical</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="progress">Progress (%)</Label>
+                <Input
+                  id="progress"
+                  type="number"
+                  min="0"
+                  max="100"
+                  value={formData.progress}
+                  onChange={(e) => setFormData({...formData, progress: parseInt(e.target.value) || 0})}
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="budget">Budget</Label>
+                <Input
+                  id="budget"
+                  type="number"
+                  value={formData.budget || ''}
+                  onChange={(e) => setFormData({...formData, budget: parseFloat(e.target.value) || null})}
+                  placeholder="0.00"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="actual_cost">Actual Cost</Label>
+                <Input
+                  id="actual_cost"
+                  type="number"
+                  value={formData.actual_cost}
+                  onChange={(e) => setFormData({...formData, actual_cost: parseFloat(e.target.value) || 0})}
+                  placeholder="0.00"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-3 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="start_date">Start Date</Label>
+                <Input
+                  id="start_date"
+                  type="date"
+                  value={formData.start_date || ''}
+                  onChange={(e) => setFormData({...formData, start_date: e.target.value})}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="end_date">End Date</Label>
+                <Input
+                  id="end_date"
+                  type="date"
+                  value={formData.end_date || ''}
+                  onChange={(e) => setFormData({...formData, end_date: e.target.value})}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="deadline">Deadline</Label>
+                <Input
+                  id="deadline"
+                  type="date"
+                  value={formData.deadline || ''}
+                  onChange={(e) => setFormData({...formData, deadline: e.target.value})}
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="team_lead">Team Lead</Label>
+              <Input
+                id="team_lead"
+                value={formData.team_lead || ''}
+                onChange={(e) => setFormData({...formData, team_lead: e.target.value})}
+                placeholder="Enter team lead name"
+              />
+            </div>
+          </div>
+
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setIsProjectDialogOpen(false)}>
+              Cancel
+            </Button>
+            <Button 
+              onClick={isEditMode ? handleUpdateProject : handleCreateProject}
+              className="bg-emerald-600 hover:bg-emerald-700"
+            >
+              {isEditMode ? 'Update Project' : 'Create Project'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* View Project Dialog */}
+      {selectedProject && !isEditMode && (
         <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
           <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
@@ -375,150 +672,103 @@ const ProjectsTab = () => {
               </DialogDescription>
             </DialogHeader>
             
-            <Tabs defaultValue="overview" className="w-full">
-              <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="team">Team</TabsTrigger>
-                <TabsTrigger value="timeline">Timeline</TabsTrigger>
-              </TabsList>
-
-              <TabsContent value="overview" className="space-y-6 mt-6">
-                <div className="grid grid-cols-2 gap-6">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="text-lg text-gray-900">Project Details</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Status:</span>
-                        <Badge className={getStatusColor(selectedProject.status)}>
-                          {selectedProject.status.replace('-', ' ')}
-                        </Badge>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Priority:</span>
-                        <Badge className={getPriorityColor(selectedProject.priority)}>
-                          {selectedProject.priority}
-                        </Badge>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Progress:</span>
-                        <span className="text-gray-900">{selectedProject.progress}%</span>
-                      </div>
-                      {selectedProject.budget && (
-                        <div className="flex justify-between">
-                          <span className="text-gray-600">Budget:</span>
-                          <span className="text-gray-900">{formatCurrency(selectedProject.budget)}</span>
-                        </div>
-                      )}
-                      {selectedProject.actual_cost > 0 && (
-                        <div className="flex justify-between">
-                          <span className="text-gray-600">Actual Cost:</span>
-                          <span className="text-gray-900">{formatCurrency(selectedProject.actual_cost)}</span>
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="text-lg text-gray-900">Timeline</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      {selectedProject.start_date && (
-                        <div className="flex justify-between">
-                          <span className="text-gray-600">Start Date:</span>
-                          <span className="text-gray-900">{formatDate(selectedProject.start_date)}</span>
-                        </div>
-                      )}
-                      {selectedProject.deadline && (
-                        <div className="flex justify-between">
-                          <span className="text-gray-600">Deadline:</span>
-                          <span className="text-gray-900">{formatDate(selectedProject.deadline)}</span>
-                        </div>
-                      )}
-                      {selectedProject.end_date && (
-                        <div className="flex justify-between">
-                          <span className="text-gray-600">End Date:</span>
-                          <span className="text-gray-900">{formatDate(selectedProject.end_date)}</span>
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
-                </div>
-
-                {selectedProject.description && (
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="text-lg text-gray-900">Description</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-600">{selectedProject.description}</p>
-                    </CardContent>
-                  </Card>
-                )}
-              </TabsContent>
-
-              <TabsContent value="team" className="space-y-4 mt-6">
+            <div className="space-y-6 mt-6">
+              <div className="grid grid-cols-2 gap-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-lg text-gray-900">Team Information</CardTitle>
+                    <CardTitle className="text-lg text-gray-900">Project Details</CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div>
-                      <h4 className="font-medium text-gray-900 mb-2">Team Lead</h4>
-                      <p className="text-gray-600">{selectedProject.team_lead}</p>
+                  <CardContent className="space-y-3">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Status:</span>
+                      <Badge className={getStatusColor(selectedProject.status)}>
+                        {selectedProject.status.replace('-', ' ')}
+                      </Badge>
                     </div>
-                    <div>
-                      <h4 className="font-medium text-gray-900 mb-2">Team Members</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedProject.assigned_team.map((member, index) => (
-                          <Badge key={index} variant="secondary" className="bg-gray-100 text-gray-700 border-gray-300">
-                            {member}
-                          </Badge>
-                        ))}
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Priority:</span>
+                      <Badge className={getPriorityColor(selectedProject.priority)}>
+                        {selectedProject.priority}
+                      </Badge>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Progress:</span>
+                      <span className="text-gray-900">{selectedProject.progress}%</span>
+                    </div>
+                    {selectedProject.budget && (
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Budget:</span>
+                        <span className="text-gray-900">{formatCurrency(selectedProject.budget)}</span>
                       </div>
-                    </div>
+                    )}
+                    {selectedProject.actual_cost > 0 && (
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Actual Cost:</span>
+                        <span className="text-gray-900">{formatCurrency(selectedProject.actual_cost)}</span>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
-              </TabsContent>
 
-              <TabsContent value="timeline" className="space-y-4 mt-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-lg text-gray-900">Project Timeline</CardTitle>
+                    <CardTitle className="text-lg text-gray-900">Timeline</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Start Date:</span>
+                      <span className="text-gray-900">{formatDate(selectedProject.start_date)}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">End Date:</span>
+                      <span className="text-gray-900">{formatDate(selectedProject.end_date)}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Deadline:</span>
+                      <span className="text-gray-900">{formatDate(selectedProject.deadline)}</span>
+                    </div>
+                    {selectedProject.team_lead && (
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Team Lead:</span>
+                        <span className="text-gray-900">{selectedProject.team_lead}</span>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              </div>
+
+              {selectedProject.description && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg text-gray-900">Description</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-4">
-                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                        <div>
-                          <p className="font-medium text-gray-900">Project Started</p>
-                          <p className="text-sm text-gray-600">{formatDate(selectedProject.start_date)}</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-4">
-                        <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                        <div>
-                          <p className="font-medium text-gray-900">Current Progress</p>
-                          <p className="text-sm text-gray-600">{selectedProject.progress}% Complete</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-4">
-                        <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                        <div>
-                          <p className="font-medium text-gray-900">Project Deadline</p>
-                          <p className="text-sm text-gray-600">{formatDate(selectedProject.deadline)}</p>
-                        </div>
-                      </div>
-                    </div>
+                    <p className="text-gray-700">{selectedProject.description}</p>
                   </CardContent>
                 </Card>
-              </TabsContent>
-            </Tabs>
+              )}
+            </div>
           </DialogContent>
         </Dialog>
       )}
+
+      {/* Delete Confirmation Dialog */}
+      <AlertDialog open={!!deleteProject} onOpenChange={() => setDeleteProject(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will permanently delete the project "{deleteProject?.name}". This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handleDeleteProject} className="bg-red-600 hover:bg-red-700">
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };

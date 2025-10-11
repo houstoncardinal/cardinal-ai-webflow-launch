@@ -203,6 +203,69 @@ export type Database = {
         }
         Relationships: []
       }
+      projects: {
+        Row: {
+          actual_cost: number | null
+          assigned_team: string[] | null
+          budget: number | null
+          client_name: string
+          created_at: string | null
+          deadline: string | null
+          description: string | null
+          end_date: string | null
+          id: string
+          name: string
+          priority: string
+          progress: number | null
+          service_type: string
+          start_date: string | null
+          status: string
+          tags: string[] | null
+          team_lead: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          actual_cost?: number | null
+          assigned_team?: string[] | null
+          budget?: number | null
+          client_name: string
+          created_at?: string | null
+          deadline?: string | null
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          name: string
+          priority?: string
+          progress?: number | null
+          service_type: string
+          start_date?: string | null
+          status?: string
+          tags?: string[] | null
+          team_lead?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          actual_cost?: number | null
+          assigned_team?: string[] | null
+          budget?: number | null
+          client_name?: string
+          created_at?: string | null
+          deadline?: string | null
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          name?: string
+          priority?: string
+          progress?: number | null
+          service_type?: string
+          start_date?: string | null
+          status?: string
+          tags?: string[] | null
+          team_lead?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
