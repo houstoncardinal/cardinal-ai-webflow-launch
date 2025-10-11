@@ -12,7 +12,7 @@ import {
   Lightbulb, Shield, Gauge, Bot, Cpu, Rocket, Star, Award, TrendingDown,
   Activity, BarChart, PieChart, LineChart, BookOpen, Layers, Wifi, Lock,
   Monitor, MousePointer, Headphones, MessageSquare, Database, Network,
-  ChevronDown, ChevronUp, Plus, Minus, AlertCircle, Info, CheckSquare
+  ChevronDown, ChevronUp, Plus, Minus, AlertCircle, Info, CheckSquare, Calendar
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import SEO from "@/components/SEO";
@@ -128,14 +128,14 @@ const SEOAnalyzer = () => {
       const report = await generateSEOReportWithAI(url, analysisResult);
       
       const blob = new Blob([report], { type: 'text/markdown' });
-      const url = URL.createObjectURL(blob);
+      const downloadUrl = URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = url;
+      a.href = downloadUrl;
       a.download = `revolutionary-seo-analysis-${new Date().toISOString().split('T')[0]}.md`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      URL.revokeObjectURL(downloadUrl);
       
       toast.success("Report downloaded successfully!");
     } catch (error) {
@@ -488,6 +488,7 @@ const SEOAnalyzer = () => {
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                               {Object.entries(analysisResult.scoreBreakdown).map(([key, value]) => {
                                 if (key === 'totalPotential') return null;
+                                if (typeof value === 'number') return null;
                                 return (
                                   <div key={key} className="text-center">
                                     <div className="text-sm text-gray-600 mb-2 capitalize">

@@ -12,7 +12,32 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Calendar, User, DollarSign, Clock, Plus, Filter, Search, Edit, Trash2, Mail, Phone, Globe, Building, Users, TrendingUp, Award, Star, Crown, Gem, Diamond, Sparkles, Rocket, Brain, Cpu, Shield, Database, Globe as GlobeIcon, Network, Activity, Target, CheckCircle, AlertCircle, Clock as ClockIcon, FileUp, MessageSquare, BarChart3, Zap } from 'lucide-react';
-import type { Client, Project } from '@/integrations/supabase/types';
+
+// Define local types since these tables don't exist in the database yet
+interface Project {
+  id: string;
+  name: string;
+  status: string;
+  budget: number;
+  progress: number;
+  created_at: string;
+  updated_at: string;
+}
+
+interface Client {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  company: string;
+  website?: string;
+  industry: string;
+  address?: string;
+  notes?: string;
+  status: string;
+  created_at: string;
+  updated_at: string;
+}
 
 interface ClientWithProjects extends Client {
   projects?: Project[];
