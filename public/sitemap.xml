@@ -6,7 +6,7 @@
   <!-- Homepage - Highest Priority -->
   <url>
     <loc>https://www.cardinalhtx.com/</loc>
-    <lastmod>2025-01-11</lastmod>
+    <lastmod>2025-10-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -77,18 +77,8 @@
 
   <!-- Landing Pages - High SEO Value -->
   <url>
-    <loc>https://www.cardinalhtx.com/houston-web-design</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.cardinalhtx.com/diseno-web-houston" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.cardinalhtx.com/houston-web-design" />
-    <lastmod>2025-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
     <loc>https://www.cardinalhtx.com/diseno-web-houston</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.cardinalhtx.com/houston-web-design" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.cardinalhtx.com/diseno-web-houston" />
-    <lastmod>2025-01-11</lastmod>
+    <lastmod>2025-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
