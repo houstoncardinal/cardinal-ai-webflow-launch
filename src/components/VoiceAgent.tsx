@@ -142,9 +142,9 @@ const VoiceAgent = () => {
       
       <div className="group relative">
         {status !== "connected" && !isConnecting && (
-          <div className="absolute -top-11 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-4 py-2 rounded-lg text-xs font-semibold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xl z-10">
+          <div className="absolute -top-14 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-4 py-2.5 rounded-lg text-sm font-semibold whitespace-nowrap shadow-2xl z-50 pointer-events-none">
             Lily By Cardinal
-            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45" />
+            <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-900 rotate-45" />
           </div>
         )}
         
