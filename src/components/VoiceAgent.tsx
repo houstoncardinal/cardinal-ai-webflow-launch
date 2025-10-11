@@ -173,14 +173,23 @@ const VoiceAgent = () => {
       
       <div className="group relative">
         {status !== "connected" && !isConnecting && (
-          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-32 flex items-end justify-center pointer-events-none z-10">
-            <svg viewBox="0 0 500 160" className="w-full h-full overflow-visible">
+          <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-72 h-20 flex items-end justify-center pointer-events-none z-10">
+            <svg viewBox="0 0 400 100" className="w-full h-full overflow-visible">
+              <defs>
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
               <path
                 id="curve"
-                d="M 80,140 Q 250,60 420,140"
+                d="M 60,85 Q 200,40 340,85"
                 fill="transparent"
               />
-              <text className="fill-green-500 font-bold text-[28px] animate-pulse drop-shadow-lg" style={{ letterSpacing: '0.3em' }}>
+              <text className="fill-green-500 font-bold text-[32px] animate-pulse" style={{ letterSpacing: '0.2em', filter: 'url(#glow)', textShadow: '0 0 20px rgba(34, 197, 94, 0.8), 0 0 40px rgba(34, 197, 94, 0.4)' }}>
                 <textPath href="#curve" startOffset="50%" textAnchor="middle">
                   Lily By Cardinal
                 </textPath>

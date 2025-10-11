@@ -287,9 +287,14 @@ const Footer = () => {
 
           <div className="border-t border-gray-700/50 mt-16 pt-10">
             <div className="flex flex-col md:flex-row justify-between items-center">
-              <p className="text-white text-xs font-light animate-fade-in">
-                © 2024 Cardinal Consulting. All rights reserved.
-              </p>
+              <div className="text-center md:text-left animate-fade-in">
+                <p className="text-white text-xs font-light">
+                  © 2024 Cardinal Consulting. All rights reserved.
+                </p>
+                <p className="text-gray-500 text-[10px] font-light mt-1">
+                  Est. 2016
+                </p>
+              </div>
               <div className="flex space-x-8 mt-6 md:mt-0 animate-fade-in" style={{animationDelay: '200ms'}}>
                 <Link to="/privacy-policy" className="text-gray-400 hover:text-white text-sm font-light transition-all duration-300 hover:scale-105 group">
                   <span className="relative">
