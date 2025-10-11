@@ -220,7 +220,7 @@ const ExperienceOptimization = () => {
               </Button>
             </Link>
             <Link to="/portfolio">
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-violet-600 px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105">
+              <Button variant="outline" className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-violet-600 px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105">
                 Explore AEO
               </Button>
             </Link>
