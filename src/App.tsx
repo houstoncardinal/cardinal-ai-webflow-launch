@@ -51,9 +51,10 @@ import TermsOfService from "./pages/TermsOfService";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <HelmetProvider>
-    <QueryClientProvider client={queryClient}>
+const App = () => {
+  return (
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <BrowserRouter>
           <LoadingScreen />
@@ -123,6 +124,7 @@ const App = () => (
       </TooltipProvider>
     </QueryClientProvider>
   </HelmetProvider>
-);
+  );
+};
 
 export default App;
