@@ -265,7 +265,8 @@ const Bat3D = ({
       }}
     >
       {/* Bat body */}
-        <mesh>
+      <mesh>
+        <sphereGeometry args={[0.15, 16, 16]} />
         <meshStandardMaterial color="#1a1a1a" metalness={0.3} roughness={0.7} />
       </mesh>
 
