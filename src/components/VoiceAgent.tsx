@@ -88,109 +88,19 @@ const VoiceAgent = () => {
         console.log("Fetching business info...");
         return JSON.stringify({
           name: "Cardinal Consulting",
-          phone: "Contact through the website",
-          email: "Contact through the website",
-          address: "We serve clients nationwide",
+          phone: "281-901-7016",
+          email: "hello@cardinalhtx.com",
           hours: "Monday-Friday, 9 AM - 6 PM",
+          description: "We're a full-service digital agency serving clients nationwide",
           specialties: [
             "Custom Web Development",
             "Mobile App Development", 
             "SEO & Digital Marketing",
-            "Brand Identity & Design"
+            "Brand Identity & Design",
+            "E-commerce Solutions",
+            "UI/UX Design"
           ]
         });
-      },
-      getProjectStats: async () => {
-        console.log("Fetching project statistics...");
-        
-        try {
-          const { count: totalProjects } = await supabase
-            .from('projects')
-            .select('*', { count: 'exact', head: true });
-
-          const { count: activeProjects } = await supabase
-            .from('projects')
-            .select('*', { count: 'exact', head: true })
-            .in('status', ['in_progress', 'planning']);
-
-          const { count: completedProjects } = await supabase
-            .from('projects')
-            .select('*', { count: 'exact', head: true })
-            .eq('status', 'completed');
-
-          return JSON.stringify({
-            totalProjects: totalProjects || 0,
-            activeProjects: activeProjects || 0,
-            completedProjects: completedProjects || 0,
-            message: `We have ${totalProjects || 0} total projects, with ${activeProjects || 0} currently active and ${completedProjects || 0} completed successfully.`
-          });
-        } catch (error) {
-          console.error("Error fetching project stats:", error);
-          return JSON.stringify({
-            totalProjects: 0,
-            activeProjects: 0,
-            completedProjects: 0
-          });
-        }
-      },
-      getRecentProjects: async () => {
-        console.log("Fetching recent projects...");
-        
-        try {
-          const { data: projects, error } = await supabase
-            .from('projects')
-            .select('name, service_type, status, client_name')
-            .order('created_at', { ascending: false })
-            .limit(5);
-
-          if (error) throw error;
-
-          return JSON.stringify(projects || []);
-        } catch (error) {
-          console.error("Error fetching recent projects:", error);
-          return JSON.stringify([]);
-        }
-      },
-      getContactSubmissions: async () => {
-        console.log("Fetching contact submission stats...");
-        
-        try {
-          const { count: totalSubmissions } = await supabase
-            .from('contact_submissions')
-            .select('*', { count: 'exact', head: true });
-
-          const { count: newSubmissions } = await supabase
-            .from('contact_submissions')
-            .select('*', { count: 'exact', head: true })
-            .eq('status', 'new');
-
-          return JSON.stringify({
-            total: totalSubmissions || 0,
-            new: newSubmissions || 0,
-            message: `We have ${totalSubmissions || 0} total contact submissions, with ${newSubmissions || 0} new ones waiting for review.`
-          });
-        } catch (error) {
-          console.error("Error fetching contact submissions:", error);
-          return JSON.stringify({ total: 0, new: 0 });
-        }
-      },
-      getNewsletterSubscribers: async () => {
-        console.log("Fetching newsletter subscriber count...");
-        
-        try {
-          const { count } = await supabase
-            .from('newsletter_subscriptions')
-            .select('*', { count: 'exact', head: true })
-            .eq('is_active', true);
-
-          return JSON.stringify({
-            count: count || 0,
-            message: `We have ${count || 0} active newsletter subscribers.`
-          });
-        } catch (error) {
-          console.error("Error fetching newsletter subscribers:", error);
-          return JSON.stringify({ count: 0 });
-        }
       }
     },
   });
