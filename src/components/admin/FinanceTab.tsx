@@ -356,8 +356,8 @@ const FinanceTab = () => {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500 mx-auto mb-4"></div>
-          <div className="text-purple-300">Loading financial systems...</div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 mx-auto mb-4"></div>
+          <div className="text-gray-600">Loading financial systems...</div>
         </div>
       </div>
     );
@@ -368,27 +368,27 @@ const FinanceTab = () => {
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold text-gray-900">
             Financial Command Center
           </h2>
-          <p className="text-purple-300 mt-2">Advanced financial management for Cardinal Consulting</p>
+          <p className="text-gray-600 mt-2">Advanced financial management for Cardinal Consulting</p>
         </div>
         <div className="flex gap-3">
-          <Button variant="outline" className="border-purple-600 text-purple-300 hover:bg-purple-600 hover:text-white">
+          <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
             <Download className="mr-2 h-4 w-4" />
             Export Reports
           </Button>
           <Dialog open={isInvoiceDialogOpen} onOpenChange={setIsInvoiceDialogOpen}>
             <DialogTrigger asChild>
-              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700">
+              <Button className="bg-emerald-600 hover:bg-emerald-700">
                 <Plus className="mr-2 h-4 w-4" />
                 New Invoice
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-2xl bg-black/90 backdrop-blur-xl border border-purple-800/50">
+            <DialogContent className="max-w-2xl">
               <DialogHeader>
-                <DialogTitle className="text-white">Create Professional Invoice</DialogTitle>
-                <DialogDescription className="text-purple-300">
+                <DialogTitle>Create Professional Invoice</DialogTitle>
+                <DialogDescription>
                   Generate a new invoice for Cardinal Consulting services
                 </DialogDescription>
               </DialogHeader>
@@ -406,55 +406,71 @@ const FinanceTab = () => {
 
       {/* Financial Metrics */}
       {metrics && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Card className="bg-black/40 backdrop-blur-xl border border-purple-800/50">
-            <CardContent className="p-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <Card className="group relative overflow-hidden bg-white hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-transparent cursor-pointer hover:-translate-y-1">
+            <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-emerald-600 opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg blur opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
+            <CardContent className="p-6 relative">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-purple-300">Total Revenue</p>
-                  <p className="text-2xl font-bold text-white">{formatCurrency(metrics.total_revenue)}</p>
+                  <p className="text-sm font-semibold text-gray-700 group-hover:text-gray-900 transition-colors">Total Revenue</p>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">{formatCurrency(metrics.total_revenue)}</p>
                   <div className="flex items-center gap-1 mt-1">
-                    <TrendingUp className="h-4 w-4 text-green-400" />
-                    <span className="text-sm text-green-400">+{metrics.growth_rate}%</span>
+                    <TrendingUp className="h-4 w-4 text-green-600" />
+                    <span className="text-sm text-green-600 font-medium">+{metrics.growth_rate}%</span>
                   </div>
                 </div>
-                <DollarSign className="h-8 w-8 text-green-400" />
+                <div className="p-2.5 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <DollarSign className="h-5 w-5 text-white" />
+                </div>
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-black/40 backdrop-blur-xl border border-purple-800/50">
-            <CardContent className="p-6">
+          <Card className="group relative overflow-hidden bg-white hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-transparent cursor-pointer hover:-translate-y-1">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-600 opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-lg blur opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
+            <CardContent className="p-6 relative">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-purple-300">Net Profit</p>
-                  <p className="text-2xl font-bold text-white">{formatCurrency(metrics.net_profit)}</p>
-                  <p className="text-sm text-purple-300 mt-1">{metrics.profit_margin}% margin</p>
+                  <p className="text-sm font-semibold text-gray-700 group-hover:text-gray-900 transition-colors">Net Profit</p>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">{formatCurrency(metrics.net_profit)}</p>
+                  <p className="text-sm text-blue-600 mt-1 font-medium">{metrics.profit_margin}% margin</p>
                 </div>
-                <TrendingUp className="h-8 w-8 text-blue-400" />
+                <div className="p-2.5 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <TrendingUp className="h-5 w-5 text-white" />
+                </div>
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-black/40 backdrop-blur-xl border border-purple-800/50">
-            <CardContent className="p-6">
+          <Card className="group relative overflow-hidden bg-white hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-transparent cursor-pointer hover:-translate-y-1">
+            <div className="absolute inset-0 bg-gradient-to-br from-red-500 to-rose-600 opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-red-500 to-rose-600 rounded-lg blur opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
+            <CardContent className="p-6 relative">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-purple-300">Outstanding</p>
-                  <p className="text-2xl font-bold text-white">{formatCurrency(metrics.outstanding_invoices)}</p>
-                  <p className="text-sm text-red-400 mt-1">{formatCurrency(metrics.overdue_amount)} overdue</p>
+                  <p className="text-sm font-semibold text-gray-700 group-hover:text-gray-900 transition-colors">Outstanding</p>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">{formatCurrency(metrics.outstanding_invoices)}</p>
+                  <p className="text-sm text-red-600 mt-1 font-medium">{formatCurrency(metrics.overdue_amount)} overdue</p>
                 </div>
-                <AlertCircle className="h-8 w-8 text-red-400" />
+                <div className="p-2.5 rounded-xl bg-gradient-to-br from-red-500 to-rose-600 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <AlertCircle className="h-5 w-5 text-white" />
+                </div>
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-black/40 backdrop-blur-xl border border-purple-800/50">
-            <CardContent className="p-6">
+          <Card className="group relative overflow-hidden bg-white hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-transparent cursor-pointer hover:-translate-y-1">
+            <div className="absolute inset-0 bg-gradient-to-br from-violet-500 to-purple-600 opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-violet-500 to-purple-600 rounded-lg blur opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
+            <CardContent className="p-6 relative">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-purple-300">Cash Flow</p>
-                  <p className="text-2xl font-bold text-white">{formatCurrency(metrics.cash_flow)}</p>
-                  <p className="text-sm text-green-400 mt-1">Positive</p>
+                  <p className="text-sm font-semibold text-gray-700 group-hover:text-gray-900 transition-colors">Cash Flow</p>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">{formatCurrency(metrics.cash_flow)}</p>
+                  <p className="text-sm text-green-600 mt-1 font-medium">Positive</p>
                 </div>
-                <Activity className="h-8 w-8 text-purple-400" />
+                <div className="p-2.5 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <Activity className="h-5 w-5 text-white" />
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -463,7 +479,7 @@ const FinanceTab = () => {
 
       {/* Main Content Tabs */}
       <Tabs defaultValue="invoices" className="w-full">
-        <TabsList className="grid w-full grid-cols-4 bg-black/40 backdrop-blur-xl border border-purple-800/50">
+        <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="invoices" className="text-purple-300 data-[state=active]:bg-purple-600 data-[state=active]:text-white">Invoices</TabsTrigger>
           <TabsTrigger value="expenses" className="text-purple-300 data-[state=active]:bg-purple-600 data-[state=active]:text-white">Expenses</TabsTrigger>
           <TabsTrigger value="payments" className="text-purple-300 data-[state=active]:bg-purple-600 data-[state=active]:text-white">Payments</TabsTrigger>
