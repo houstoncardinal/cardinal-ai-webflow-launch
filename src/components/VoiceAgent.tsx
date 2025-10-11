@@ -1,7 +1,7 @@
 import { useConversation } from "@11labs/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "./ui/button";
-import { Mic, MicOff, Phone, PhoneOff } from "lucide-react";
+import { PhoneOff, Loader2, Bot } from "lucide-react";
 import { useToast } from "./ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -148,57 +148,42 @@ const VoiceAgent = () => {
     setSignedUrl(null);
   };
 
+  const { status, isSpeaking } = conversation;
+
   return (
-    <div className="fixed bottom-8 right-8 z-50">
-      <div className="flex flex-col items-end gap-4">
-        {conversation.status === "connected" && (
-          <div className="bg-card border rounded-lg p-4 shadow-lg max-w-sm">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="relative">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Mic className={`w-6 h-6 ${conversation.isSpeaking ? 'text-primary animate-pulse' : 'text-muted-foreground'}`} />
-                </div>
-                {conversation.isSpeaking && (
-                  <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
-                  </span>
-                )}
-              </div>
-              <div>
-                <p className="font-semibold text-sm">Tim from Cardinal Consulting</p>
-                <p className="text-xs text-muted-foreground">
-                  {conversation.isSpeaking ? "Speaking..." : "Listening..."}
-                </p>
-              </div>
-            </div>
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
+      {status === "connected" && (
+        <div className="bg-white rounded-lg shadow-lg p-4 animate-in slide-in-from-bottom-2">
+          <div className="flex items-center gap-3">
+            <div className={`w-3 h-3 rounded-full ${isSpeaking ? 'bg-green-500 animate-pulse' : 'bg-gray-400'}`} />
+            <span className="text-sm font-medium text-gray-700">
+              {isSpeaking ? 'Tim is speaking...' : 'Listening...'}
+            </span>
+          </div>
+        </div>
+      )}
+      
+      <Button
+        onClick={status === "connected" ? endConversation : startConversation}
+        disabled={isConnecting}
+        size="lg"
+        className="group relative h-16 w-16 rounded-full bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-white"
+      >
+        {isConnecting ? (
+          <Loader2 className="h-6 w-6 animate-spin text-white" />
+        ) : status === "connected" ? (
+          <PhoneOff className="h-6 w-6 text-white" />
+        ) : (
+          <Bot className="h-7 w-7 text-white" />
+        )}
+        
+        {status !== "connected" && !isConnecting && (
+          <div className="absolute -top-12 right-0 bg-gray-900 text-white px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+            Tim By Cardinal
+            <div className="absolute bottom-0 right-6 transform translate-y-1/2 rotate-45 w-2 h-2 bg-gray-900" />
           </div>
         )}
-
-        {conversation.status === "connected" ? (
-          <Button
-            onClick={endConversation}
-            size="lg"
-            variant="destructive"
-            className="rounded-full h-16 w-16 shadow-lg"
-          >
-            <PhoneOff className="w-6 h-6" />
-          </Button>
-        ) : (
-          <Button
-            onClick={startConversation}
-            disabled={isConnecting}
-            size="lg"
-            className="rounded-full h-16 w-16 shadow-lg bg-primary hover:bg-primary/90"
-          >
-            {isConnecting ? (
-              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white" />
-            ) : (
-              <Phone className="w-6 h-6" />
-            )}
-          </Button>
-        )}
-      </div>
+      </Button>
     </div>
   );
 };
