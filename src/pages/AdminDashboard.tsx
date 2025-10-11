@@ -58,11 +58,47 @@ const AdminDashboard = () => {
   }, []);
 
   const checkAuth = async () => {
-    // BYPASS: Always allow admin access for development
-    setIsAdmin(true);
-    setUser({ id: 'admin-bypass', email: 'admin@cardinalhtx.com' } as any);
-    await loadData();
-    setLoading(false);
+    try {
+      setLoading(true);
+      
+      // Get current session
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+      
+      if (sessionError) throw sessionError;
+      
+      if (!session) {
+        navigate('/auth');
+        return;
+      }
+
+      setUser(session.user);
+
+      // Check if user has admin role
+      const { data: roleData, error: roleError } = await supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', session.user.id)
+        .eq('role', 'admin')
+        .single();
+
+      if (roleError || !roleData) {
+        toast({
+          title: "Access Denied",
+          description: "You don't have permission to access this page",
+          variant: "destructive"
+        });
+        navigate('/');
+        return;
+      }
+
+      setIsAdmin(true);
+      await loadData();
+    } catch (error) {
+      console.error('Auth error:', error);
+      navigate('/auth');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const loadData = async () => {
