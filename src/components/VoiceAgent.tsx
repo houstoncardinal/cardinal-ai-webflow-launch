@@ -128,7 +128,7 @@ const VoiceAgent = () => {
       // Start the conversation with the signed URL
       console.log("🚀 Starting conversation session...");
       await conversation.startSession({ 
-        signedUrl: data.signed_url,
+        signedUrl: data.signed_url
       });
       console.log("✅ Conversation session started - Lily is ready to talk!");
 
