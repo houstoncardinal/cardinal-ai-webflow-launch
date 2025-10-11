@@ -76,32 +76,11 @@ const VoiceAgent = () => {
       },
       getServices: async () => {
         console.log("Fetching services...");
-        return JSON.stringify([
-          "Web Development - Custom websites and web applications",
-          "Mobile Applications - iOS and Android app development",
-          "SEO & Digital Marketing - Search engine optimization and online marketing",
-          "Brand Identity - Logo design, branding, and visual identity",
-          "E-commerce Solutions - Online store development and optimization",
-          "UI/UX Design - User interface and experience design"
-        ]);
+        return "We offer: Web Development for custom websites and web applications, Mobile Applications for iOS and Android, SEO and Digital Marketing services, Brand Identity design including logos and branding, E-commerce Solutions, and UI/UX Design services.";
       },
       getBusinessInfo: async () => {
         console.log("Fetching business info...");
-        return JSON.stringify({
-          name: "Cardinal Consulting",
-          phone: "281-901-7016",
-          email: "hello@cardinalhtx.com",
-          hours: "Monday-Friday, 9 AM - 6 PM",
-          description: "We're a full-service digital agency serving clients nationwide",
-          specialties: [
-            "Custom Web Development",
-            "Mobile App Development", 
-            "SEO & Digital Marketing",
-            "Brand Identity & Design",
-            "E-commerce Solutions",
-            "UI/UX Design"
-          ]
-        });
+        return "Cardinal Consulting is a full-service digital agency serving clients nationwide. You can reach us at 281-901-7016 or hello@cardinalhtx.com. We're open Monday through Friday, 9 AM to 6 PM. We specialize in Custom Web Development, Mobile App Development, SEO and Digital Marketing, Brand Identity and Design, E-commerce Solutions, and UI/UX Design.";
       }
     },
   });
