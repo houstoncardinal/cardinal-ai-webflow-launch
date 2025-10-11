@@ -186,14 +186,14 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
                 <Phone className="w-4 h-4" />
                 {t.firstName} *
               </label>
-              <Input name="firstName" required className="border-gray-300 focus:border-green-500" />
+              <Input name="firstName" required className="h-12 border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20" />
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                 <Phone className="w-4 h-4" />
                 {t.lastName} *
               </label>
-              <Input name="lastName" required className="border-gray-300 focus:border-green-500" />
+              <Input name="lastName" required className="h-12 border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20" />
             </div>
           </div>
 
@@ -203,20 +203,20 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
                 <Mail className="w-4 h-4" />
                 {t.email} *
               </label>
-              <Input name="email" type="email" required className="border-gray-300 focus:border-green-500" />
+              <Input name="email" type="email" required className="h-12 border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20" />
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                 <Phone className="w-4 h-4" />
                 {t.phone} *
               </label>
-              <Input name="phone" type="tel" required className="border-gray-300 focus:border-green-500" />
+              <Input name="phone" type="tel" required className="h-12 border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20" />
             </div>
           </div>
 
           <div className="space-y-2">
             <label className="text-sm font-medium text-gray-700">{t.company}</label>
-            <Input name="company" className="border-gray-300 focus:border-green-500" />
+            <Input name="company" className="h-12 border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20" />
           </div>
 
           {/* Project Details */}
@@ -224,12 +224,12 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700">{t.projectType} *</label>
               <Select name="projectType" required>
-                <SelectTrigger className="border-gray-300 focus:border-green-500 relative bg-white">
+                <SelectTrigger className="w-full h-12 border-gray-300 focus:border-green-500 bg-white">
                   <SelectValue placeholder={language === 'en' ? "Select project type" : "Selecciona tipo"} />
                 </SelectTrigger>
-                <SelectContent className="bg-white z-[100]">
+                <SelectContent className="bg-white border border-gray-200 shadow-lg z-[100] max-h-[300px] overflow-y-auto">
                   {Object.entries(t.projectTypes).map(([value, label]) => (
-                    <SelectItem key={value} value={value}>{label}</SelectItem>
+                    <SelectItem key={value} value={value} className="cursor-pointer hover:bg-green-50">{label}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -241,12 +241,12 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
                 {t.timeline} *
               </label>
               <Select name="timeline" required>
-                <SelectTrigger className="border-gray-300 focus:border-green-500 relative bg-white">
+                <SelectTrigger className="w-full h-12 border-gray-300 focus:border-green-500 bg-white">
                   <SelectValue placeholder={language === 'en' ? "Select timeline" : "Selecciona cronograma"} />
                 </SelectTrigger>
-                <SelectContent className="bg-white z-[100]">
+                <SelectContent className="bg-white border border-gray-200 shadow-lg z-[100] max-h-[300px] overflow-y-auto">
                   {Object.entries(t.timelines).map(([value, label]) => (
-                    <SelectItem key={value} value={value}>{label}</SelectItem>
+                    <SelectItem key={value} value={value} className="cursor-pointer hover:bg-green-50">{label}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>
@@ -259,12 +259,12 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
               {t.budget}
             </label>
             <Select name="budget">
-              <SelectTrigger className="border-gray-300 focus:border-green-500 relative bg-white">
+              <SelectTrigger className="w-full h-12 border-gray-300 focus:border-green-500 bg-white">
                 <SelectValue placeholder={language === 'en' ? "Select budget range" : "Selecciona presupuesto"} />
               </SelectTrigger>
-              <SelectContent className="bg-white z-[100]">
+              <SelectContent className="bg-white border border-gray-200 shadow-lg z-[100] max-h-[300px] overflow-y-auto">
                 {Object.entries(t.budgetRanges).map(([value, label]) => (
-                  <SelectItem key={value} value={value}>{label}</SelectItem>
+                  <SelectItem key={value} value={value} className="cursor-pointer hover:bg-green-50">{label}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
@@ -280,7 +280,7 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
                 ? "Tell us about your goals, current challenges, and what you envision..."
                 : "Cuéntanos sobre tus objetivos, desafíos actuales y lo que visualizas..."
               }
-              className="border-gray-300 focus:border-green-500"
+              className="border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20"
             />
           </div>
 

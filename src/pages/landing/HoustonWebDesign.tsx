@@ -90,7 +90,7 @@ const HoustonWebDesignLanding = () => {
       <Navigation />
 
       {/* Hero Section - Enhanced */}
-      <header className="pt-16 md:pt-24 pb-16 bg-gradient-to-br from-gray-50 via-white to-green-50/30 relative overflow-hidden">
+      <header className="pt-32 md:pt-40 pb-16 md:pb-20 bg-gradient-to-br from-gray-50 via-white to-green-50/30 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPGcgZmlsbD0iIzAwMCIgZmlsbC1vcGFjaXR5PSIwLjAzIj4KPGNpcmNsZSBjeD0iNyIgY3k9IjciIHI9IjEiLz4KPC9nPgo8L2c+Cjwvc3ZnPg==')] opacity-30"></div>
         
         {/* Animated background elements - Optimized for mobile */}

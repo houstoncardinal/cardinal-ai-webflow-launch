@@ -362,7 +362,7 @@ const HoustonDigitalServices = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center bg-white overflow-hidden pt-24 pb-16">
+      <section className="relative min-h-[80vh] flex items-center justify-center bg-white overflow-hidden pt-32 md:pt-40 pb-16 md:pb-20">
         {/* Animated network background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 opacity-10">
