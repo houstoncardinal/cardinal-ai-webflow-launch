@@ -376,53 +376,61 @@ const ServicesTab = () => {
 
       {/* Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card>
+        <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Total Services</p>
-                <p className="text-2xl font-bold text-gray-900">{services.length}</p>
+              <div className="flex-1 min-w-0 pr-4">
+                <p className="text-sm font-medium text-gray-600 truncate">Total Services</p>
+                <p className="text-2xl sm:text-3xl font-bold text-gray-900 truncate">{services.length}</p>
               </div>
-              <Settings className="h-8 w-8 text-blue-600" />
+              <div className="flex-shrink-0">
+                <Settings className="h-8 w-8 text-blue-600" />
+              </div>
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Active Services</p>
-                <p className="text-2xl font-bold text-gray-900">
+              <div className="flex-1 min-w-0 pr-4">
+                <p className="text-sm font-medium text-gray-600 truncate">Active Services</p>
+                <p className="text-2xl sm:text-3xl font-bold text-gray-900 truncate">
                   {services.filter(s => s.status === 'active').length}
                 </p>
               </div>
-              <CheckCircle className="h-8 w-8 text-green-600" />
+              <div className="flex-shrink-0">
+                <CheckCircle className="h-8 w-8 text-green-600" />
+              </div>
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Total Revenue</p>
-                <p className="text-2xl font-bold text-gray-900">
+              <div className="flex-1 min-w-0 pr-4">
+                <p className="text-sm font-medium text-gray-600 truncate">Total Revenue</p>
+                <p className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 break-words">
                   {formatCurrency(services.reduce((sum, service) => sum + (service.total_revenue || 0), 0))}
                 </p>
               </div>
-              <TrendingUp className="h-8 w-8 text-emerald-600" />
+              <div className="flex-shrink-0">
+                <TrendingUp className="h-8 w-8 text-emerald-600" />
+              </div>
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Avg Rating</p>
-                <p className="text-2xl font-bold text-gray-900">
+              <div className="flex-1 min-w-0 pr-4">
+                <p className="text-sm font-medium text-gray-600 truncate">Avg Rating</p>
+                <p className="text-2xl sm:text-3xl font-bold text-gray-900 truncate">
                   {(services.reduce((sum, service) => sum + (service.average_rating || 0), 0) / services.length).toFixed(1)}
                 </p>
               </div>
-              <Star className="h-8 w-8 text-yellow-600" />
+              <div className="flex-shrink-0">
+                <Star className="h-8 w-8 text-yellow-600" />
+              </div>
             </div>
           </CardContent>
         </Card>

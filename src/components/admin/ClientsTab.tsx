@@ -319,53 +319,61 @@ const ClientsTab = () => {
 
       {/* Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card>
+        <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Total Clients</p>
-                <p className="text-2xl font-bold text-gray-900">{clients.length}</p>
+              <div className="flex-1 min-w-0 pr-4">
+                <p className="text-sm font-medium text-gray-600 truncate">Total Clients</p>
+                <p className="text-2xl sm:text-3xl font-bold text-gray-900 truncate">{clients.length}</p>
               </div>
-              <Users className="h-8 w-8 text-blue-600" />
+              <div className="flex-shrink-0">
+                <Users className="h-8 w-8 text-blue-600" />
+              </div>
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Active Clients</p>
-                <p className="text-2xl font-bold text-gray-900">
+              <div className="flex-1 min-w-0 pr-4">
+                <p className="text-sm font-medium text-gray-600 truncate">Active Clients</p>
+                <p className="text-2xl sm:text-3xl font-bold text-gray-900 truncate">
                   {clients.filter(c => c.status === 'active').length}
                 </p>
               </div>
-              <CheckCircle className="h-8 w-8 text-green-600" />
+              <div className="flex-shrink-0">
+                <CheckCircle className="h-8 w-8 text-green-600" />
+              </div>
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Total Revenue</p>
-                <p className="text-2xl font-bold text-gray-900">
+              <div className="flex-1 min-w-0 pr-4">
+                <p className="text-sm font-medium text-gray-600 truncate">Total Revenue</p>
+                <p className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 break-words">
                   {formatCurrency(clients.reduce((sum, client) => sum + (client.totalRevenue || 0), 0))}
                 </p>
               </div>
-              <TrendingUp className="h-8 w-8 text-emerald-600" />
+              <div className="flex-shrink-0">
+                <TrendingUp className="h-8 w-8 text-emerald-600" />
+              </div>
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="overflow-hidden hover:shadow-xl transition-all duration-300">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Avg Project Value</p>
-                <p className="text-2xl font-bold text-gray-900">
+              <div className="flex-1 min-w-0 pr-4">
+                <p className="text-sm font-medium text-gray-600 truncate">Avg Project Value</p>
+                <p className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 break-words">
                   {formatCurrency(clients.reduce((sum, client) => sum + (client.averageProjectValue || 0), 0) / clients.length)}
                 </p>
               </div>
-              <Award className="h-8 w-8 text-purple-600" />
+              <div className="flex-shrink-0">
+                <Award className="h-8 w-8 text-purple-600" />
+              </div>
             </div>
           </CardContent>
         </Card>
