@@ -291,8 +291,8 @@ const HostingTab = () => {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500 mx-auto mb-4"></div>
-          <div className="text-purple-300">Loading hosting infrastructure...</div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 mx-auto mb-4"></div>
+          <div className="text-gray-600">Loading hosting infrastructure...</div>
         </div>
       </div>
     );
@@ -303,27 +303,27 @@ const HostingTab = () => {
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold text-gray-900">
             Hosting Infrastructure
           </h2>
-          <p className="text-purple-300 mt-2">Advanced server management for Cardinal Consulting</p>
+          <p className="text-gray-600 mt-2">Advanced server management for Cardinal Consulting</p>
         </div>
         <div className="flex gap-3">
-          <Button variant="outline" className="border-purple-600 text-purple-300 hover:bg-purple-600 hover:text-white">
+          <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
             <BarChart3 className="mr-2 h-4 w-4" />
             Analytics
           </Button>
           <Dialog open={isServerDialogOpen} onOpenChange={setIsServerDialogOpen}>
             <DialogTrigger asChild>
-              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700">
+              <Button className="bg-emerald-600 hover:bg-emerald-700">
                 <Plus className="mr-2 h-4 w-4" />
                 Add Server
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-2xl bg-black/90 backdrop-blur-xl border border-purple-800/50">
+            <DialogContent className="max-w-2xl">
               <DialogHeader>
-                <DialogTitle className="text-white">Deploy New Server</DialogTitle>
-                <DialogDescription className="text-purple-300">
+                <DialogTitle>Deploy New Server</DialogTitle>
+                <DialogDescription>
                   Provision a new hosting server for Cardinal Consulting
                 </DialogDescription>
               </DialogHeader>
@@ -341,52 +341,68 @@ const HostingTab = () => {
 
       {/* Hosting Metrics */}
       {metrics && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Card className="bg-black/40 backdrop-blur-xl border border-purple-800/50">
-            <CardContent className="p-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <Card className="group relative overflow-hidden bg-white hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-transparent cursor-pointer hover:-translate-y-1">
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 to-teal-600 opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg blur opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
+            <CardContent className="p-6 relative">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-purple-300">Total Servers</p>
-                  <p className="text-2xl font-bold text-white">{metrics.total_servers}</p>
-                  <p className="text-sm text-green-400 mt-1">{metrics.online_servers} online</p>
+                  <p className="text-sm font-semibold text-gray-700 group-hover:text-gray-900 transition-colors">Total Servers</p>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">{metrics.total_servers}</p>
+                  <p className="text-sm text-emerald-600 mt-1 font-medium">{metrics.online_servers} online</p>
                 </div>
-                <Server className="h-8 w-8 text-purple-400" />
+                <div className="p-2.5 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <Server className="h-5 w-5 text-white" />
+                </div>
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-black/40 backdrop-blur-xl border border-purple-800/50">
-            <CardContent className="p-6">
+          <Card className="group relative overflow-hidden bg-white hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-transparent cursor-pointer hover:-translate-y-1">
+            <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-emerald-600 opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg blur opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
+            <CardContent className="p-6 relative">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-purple-300">Average Uptime</p>
-                  <p className="text-2xl font-bold text-white">{metrics.average_uptime}%</p>
-                  <p className="text-sm text-green-400 mt-1">Excellent</p>
+                  <p className="text-sm font-semibold text-gray-700 group-hover:text-gray-900 transition-colors">Average Uptime</p>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">{metrics.average_uptime}%</p>
+                  <p className="text-sm text-green-600 mt-1 font-medium">Excellent</p>
                 </div>
-                <Activity className="h-8 w-8 text-green-400" />
+                <div className="p-2.5 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <Activity className="h-5 w-5 text-white" />
+                </div>
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-black/40 backdrop-blur-xl border border-purple-800/50">
-            <CardContent className="p-6">
+          <Card className="group relative overflow-hidden bg-white hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-transparent cursor-pointer hover:-translate-y-1">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-600 opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-lg blur opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
+            <CardContent className="p-6 relative">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-purple-300">Security Score</p>
-                  <p className="text-2xl font-bold text-white">{metrics.security_score}/100</p>
-                  <p className="text-sm text-green-400 mt-1">Protected</p>
+                  <p className="text-sm font-semibold text-gray-700 group-hover:text-gray-900 transition-colors">Security Score</p>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">{metrics.security_score}/100</p>
+                  <p className="text-sm text-blue-600 mt-1 font-medium">Protected</p>
                 </div>
-                <Shield className="h-8 w-8 text-blue-400" />
+                <div className="p-2.5 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <Shield className="h-5 w-5 text-white" />
+                </div>
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-black/40 backdrop-blur-xl border border-purple-800/50">
-            <CardContent className="p-6">
+          <Card className="group relative overflow-hidden bg-white hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-transparent cursor-pointer hover:-translate-y-1">
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-600 opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg blur opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
+            <CardContent className="p-6 relative">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-purple-300">Monthly Cost</p>
-                  <p className="text-2xl font-bold text-white">{formatCurrency(metrics.total_monthly_cost)}</p>
-                  <p className="text-sm text-purple-300 mt-1">Total infrastructure</p>
+                  <p className="text-sm font-semibold text-gray-700 group-hover:text-gray-900 transition-colors">Monthly Cost</p>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">{formatCurrency(metrics.total_monthly_cost)}</p>
+                  <p className="text-sm text-orange-600 mt-1 font-medium">Total infrastructure</p>
                 </div>
-                <DollarSign className="h-8 w-8 text-yellow-400" />
+                <div className="p-2.5 rounded-xl bg-gradient-to-br from-orange-500 to-red-600 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <DollarSign className="h-5 w-5 text-white" />
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -396,19 +412,19 @@ const HostingTab = () => {
       {/* Filters */}
       <div className="flex gap-4 items-center">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 h-4 w-4" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
           <Input
             placeholder="Search servers..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 bg-black/40 backdrop-blur-xl border-purple-800/50 text-white placeholder:text-purple-300"
+            className="pl-10"
           />
         </div>
         <Select value={statusFilter} onValueChange={setStatusFilter}>
-          <SelectTrigger className="w-32 bg-black/40 backdrop-blur-xl border-purple-800/50 text-white">
+          <SelectTrigger className="w-32">
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className="bg-black/90 border-purple-800/50">
+          <SelectContent>
             <SelectItem value="all">All Status</SelectItem>
             <SelectItem value="online">Online</SelectItem>
             <SelectItem value="offline">Offline</SelectItem>
@@ -417,10 +433,10 @@ const HostingTab = () => {
           </SelectContent>
         </Select>
         <Select value={typeFilter} onValueChange={setTypeFilter}>
-          <SelectTrigger className="w-32 bg-black/40 backdrop-blur-xl border-purple-800/50 text-white">
+          <SelectTrigger className="w-32">
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className="bg-black/90 border-purple-800/50">
+          <SelectContent>
             <SelectItem value="all">All Types</SelectItem>
             <SelectItem value="vps">VPS</SelectItem>
             <SelectItem value="dedicated">Dedicated</SelectItem>
@@ -435,7 +451,7 @@ const HostingTab = () => {
         {filteredServers.map((server) => {
           const TypeIcon = getTypeIcon(server.type);
           return (
-            <Card key={server.id} className="bg-black/40 backdrop-blur-xl border border-purple-800/50 hover:border-purple-600/50 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 group">
+            <Card key={server.id} className="hover:shadow-xl transition-all duration-300 border-gray-100 group cursor-pointer">
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
