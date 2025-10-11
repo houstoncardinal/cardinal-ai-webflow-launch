@@ -15,6 +15,9 @@ interface OfferContactFormProps {
 const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [projectType, setProjectType] = useState("");
+  const [timeline, setTimeline] = useState("");
+  const [budget, setBudget] = useState("");
   const { toast } = useToast();
 
   const texts = {
@@ -223,7 +226,7 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700">{t.projectType} *</label>
-              <Select name="projectType" required>
+              <Select value={projectType} onValueChange={setProjectType} required>
                 <SelectTrigger className="w-full h-12 border-gray-300 focus:border-green-500 bg-white">
                   <SelectValue placeholder={language === 'en' ? "Select project type" : "Selecciona tipo"} />
                 </SelectTrigger>
@@ -233,6 +236,7 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
                   ))}
                 </SelectContent>
               </Select>
+              <input type="hidden" name="projectType" value={projectType} required />
             </div>
             
             <div className="space-y-2">
@@ -240,7 +244,7 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
                 <Calendar className="w-4 h-4" />
                 {t.timeline} *
               </label>
-              <Select name="timeline" required>
+              <Select value={timeline} onValueChange={setTimeline} required>
                 <SelectTrigger className="w-full h-12 border-gray-300 focus:border-green-500 bg-white">
                   <SelectValue placeholder={language === 'en' ? "Select timeline" : "Selecciona cronograma"} />
                 </SelectTrigger>
@@ -250,6 +254,7 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
                   ))}
                 </SelectContent>
               </Select>
+              <input type="hidden" name="timeline" value={timeline} required />
             </div>
           </div>
 
@@ -258,7 +263,7 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
               <DollarSign className="w-4 h-4" />
               {t.budget}
             </label>
-            <Select name="budget">
+            <Select value={budget} onValueChange={setBudget}>
               <SelectTrigger className="w-full h-12 border-gray-300 focus:border-green-500 bg-white">
                 <SelectValue placeholder={language === 'en' ? "Select budget range" : "Selecciona presupuesto"} />
               </SelectTrigger>
@@ -268,6 +273,7 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
                 ))}
               </SelectContent>
             </Select>
+            <input type="hidden" name="budget" value={budget} />
           </div>
 
           <div className="space-y-2">
