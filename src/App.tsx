@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import FloatingActionWidget from "@/components/FloatingActionWidget";
 import Index from "./pages/Index";
@@ -55,12 +55,13 @@ const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <LoadingScreen />
-        <Toaster />
-        <Sonner />
-        <FloatingActionWidget />
-        <div className="min-h-screen bg-white">
-          <Routes>
+        <BrowserRouter>
+          <LoadingScreen />
+          <Toaster />
+          <Sonner />
+          <FloatingActionWidget />
+          <div className="min-h-screen bg-white">
+            <Routes>
             <Route path="/" element={<Index />} />
             
             {/* Main Pages */}
@@ -118,6 +119,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
+        </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
   </HelmetProvider>
