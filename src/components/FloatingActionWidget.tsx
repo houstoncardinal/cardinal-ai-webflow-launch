@@ -182,7 +182,7 @@ const FloatingActionWidget = () => {
   }
 
   return (
-    <div className={`fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-[9999] floating-widget transition-all duration-500 ease-out ${
+    <div className={`fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-[99999] floating-widget transition-all duration-500 ease-out ${
       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
     }`}>
       {/* Main Floating Button */}
@@ -363,7 +363,7 @@ const FloatingActionWidget = () => {
       {/* Enhanced Backdrop */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9998] transition-opacity duration-300"
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[-1] transition-opacity duration-300"
           onClick={handleBackdropClick}
         />
       )}
