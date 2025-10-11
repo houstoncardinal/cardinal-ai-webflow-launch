@@ -46,7 +46,6 @@ import EPSParking from "./pages/portfolio/EPSParking";
 import IACCenters from "./pages/portfolio/IACCenters";
 import ABQMRI from "./pages/portfolio/ABQMRI";
 import APNClinic from "./pages/portfolio/APNClinic";
-import HoustonWebDesignLanding from "./pages/landing/HoustonWebDesign";
 import HoustonWebDesignEsLanding from "./pages/landing/HoustonWebDesignEs";
 import HoustonDigitalServices from "./pages/landing/HoustonDigitalServices";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -113,7 +112,6 @@ const App = () => (
             <Route path="/portfolio/apn-clinic" element={<APNClinic />} />
             
             {/* Promotional Landing Pages */}
-            <Route path="/houston-web-design" element={<HoustonWebDesignLanding />} />
             <Route path="/diseno-web-houston" element={<HoustonWebDesignEsLanding />} />
             <Route path="/houston-digital-services" element={<HoustonDigitalServices />} />
             <Route path="/web-design-houston" element={<HoustonDigitalServices />} />
