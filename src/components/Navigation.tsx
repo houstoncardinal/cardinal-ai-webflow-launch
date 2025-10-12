@@ -279,13 +279,6 @@ const Navigation = () => {
               <div className="flex items-center gap-4 ml-4">
                 {user ? (
                   <div className="flex items-center gap-2">
-                    {isAdmin && (
-                      <Link to="/admin">
-                        <Button variant="outline" size="sm" className="text-sm">
-                          Admin
-                        </Button>
-                      </Link>
-                    )}
                     <Button 
                       variant="ghost" 
                       size="sm"
@@ -358,14 +351,6 @@ const Navigation = () => {
               <div className="mt-6 pt-6 border-t border-gray-200">
                 {user ? (
                   <div className="space-y-3">
-                    {isAdmin && (
-                      <Link to="/admin" onClick={() => setIsMenuOpen(false)}>
-                        <Button variant="outline" className="w-full text-sm py-3 border-green-200 text-green-600 hover:bg-green-50 hover:border-green-300 transition-all duration-300">
-                          <User className="mr-2 w-4 h-4" />
-                          Admin Dashboard
-                        </Button>
-                      </Link>
-                    )}
                     <Button 
                       onClick={() => {
                         supabase.auth.signOut();
