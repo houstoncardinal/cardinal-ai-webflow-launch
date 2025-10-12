@@ -310,7 +310,7 @@ const BlogPost = () => {
       </div>
       
       {/* Article Header */}
-      <article className="pt-24 pb-16">
+      <article className="pt-32 lg:pt-36 pb-16">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           {/* Back Button */}
           <div className="mb-8">
