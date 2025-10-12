@@ -5,10 +5,32 @@
   
   <!-- Homepage - Highest Priority -->
   <url>
-    <loc>https://www.cardinalhtx.com/</loc>
+    <loc>https://cardinalhtx.com/blog</loc>
     <lastmod>2025-10-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- New Viral Blog Articles -->
+  <url>
+    <loc>https://cardinalhtx.com/blog/human-centered-web-design-2025</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://cardinalhtx.com/blog/ambient-interfaces-invisible-app-design</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://cardinalhtx.com/blog/seo-to-aeo-ai-answer-engines</loc>
+    <lastmod>2025-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <!-- Main Navigation Pages - Core Business Pages -->
