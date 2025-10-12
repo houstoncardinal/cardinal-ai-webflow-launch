@@ -6,10 +6,37 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "postbuild": "react-snap",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
     "server": "node server.js"
+  },
+  "reactSnap": {
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ],
+    "include": [
+      "/",
+      "/services",
+      "/services/web-development",
+      "/services/mobile-applications",
+      "/services/seo-insights",
+      "/services/digital-campaigns",
+      "/services/brand-identity",
+      "/services/experience-optimization",
+      "/portfolio",
+      "/about",
+      "/contact",
+      "/blog",
+      "/free-audit",
+      "/sms-opt-in.html"
+    ],
+    "minifyHtml": {
+      "collapseWhitespace": false,
+      "removeComments": false
+    }
   },
   "dependencies": {
     "@11labs/react": "^0.2.0",
@@ -91,6 +118,7 @@
     "globals": "^15.9.0",
     "lovable-tagger": "^1.1.7",
     "postcss": "^8.4.47",
+    "react-snap": "^1.23.0",
     "tailwindcss": "^3.4.11",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
