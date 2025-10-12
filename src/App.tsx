@@ -28,6 +28,7 @@ import FreeAuditPage from "./pages/FreeAudit";
 import SEOAnalyzerPage from "./pages/SEOAnalyzer";
 import StrategyCallPage from "./pages/StrategyCall";
 import LoadingScreen from "./components/LoadingScreen";
+import FAQPage from "./pages/FAQ";
 
 // Service pages
 import WebDevelopment from "./pages/services/WebDevelopment";
@@ -92,6 +93,7 @@ const App = () => (
             <Route path="/free-audit" element={<FreeAuditPage />} />
             <Route path="/seo-analyzer" element={<SEOAnalyzerPage />} />
             <Route path="/strategy-call" element={<StrategyCallPage />} />
+            <Route path="/faq" element={<FAQPage />} />
             
             {/* Service Routes */}
             <Route path="/services/web-development" element={<WebDevelopment />} />
