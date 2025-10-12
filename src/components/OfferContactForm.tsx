@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Phone, Mail, Calendar, DollarSign } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
@@ -13,13 +17,62 @@ interface OfferContactFormProps {
   language?: 'en' | 'es';
 }
 
+const formSchema = z.object({
+  firstName: z.string()
+    .trim()
+    .min(2, { message: "First name must be at least 2 characters" })
+    .max(50, { message: "First name must be less than 50 characters" })
+    .regex(/^[a-zA-Z\s'-]+$/, { message: "First name can only contain letters" }),
+  lastName: z.string()
+    .trim()
+    .min(2, { message: "Last name must be at least 2 characters" })
+    .max(50, { message: "Last name must be less than 50 characters" })
+    .regex(/^[a-zA-Z\s'-]+$/, { message: "Last name can only contain letters" }),
+  email: z.string()
+    .trim()
+    .email({ message: "Please enter a valid email address" })
+    .max(255, { message: "Email must be less than 255 characters" })
+    .toLowerCase(),
+  phone: z.string()
+    .trim()
+    .regex(/^[\d\s()+-]+$/, { message: "Please enter a valid phone number" })
+    .min(10, { message: "Phone number must be at least 10 digits" })
+    .max(20, { message: "Phone number must be less than 20 characters" }),
+  company: z.string()
+    .trim()
+    .max(100, { message: "Company name must be less than 100 characters" })
+    .optional(),
+  projectType: z.string()
+    .min(1, { message: "Please select a project type" }),
+  timeline: z.string()
+    .min(1, { message: "Please select a timeline" }),
+  budget: z.string().optional(),
+  projectDescription: z.string()
+    .trim()
+    .min(10, { message: "Please provide at least 10 characters" })
+    .max(2000, { message: "Description must be less than 2000 characters" })
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
 const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [projectType, setProjectType] = useState("");
-  const [timeline, setTimeline] = useState("");
-  const [budget, setBudget] = useState("");
   const { toast } = useToast();
+  
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      company: '',
+      projectType: '',
+      timeline: '',
+      budget: '',
+      projectDescription: ''
+    }
+  });
 
   const texts = {
     en: {
@@ -98,26 +151,34 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
 
   const t = texts[language];
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
+  const handleSubmit = async (values: FormValues) => {
     try {
-      const formData = new FormData(e.currentTarget);
+      // Sanitize values
+      const sanitizedData = {
+        firstName: values.firstName.trim(),
+        lastName: values.lastName.trim(),
+        email: values.email.trim().toLowerCase(),
+        phone: values.phone.trim(),
+        company: values.company?.trim() || 'Not provided',
+        projectDescription: values.projectDescription.trim(),
+        projectType: values.projectType,
+        timeline: values.timeline,
+        budget: values.budget || 'Not specified'
+      };
       
       // Submit to database first
       const { error: dbError } = await supabase
         .from('contact_submissions')
         .insert({
-          first_name: formData.get('firstName') as string,
-          last_name: formData.get('lastName') as string,
-          email: formData.get('email') as string,
-          phone: formData.get('phone') as string,
-          company: formData.get('company') as string || 'Not provided',
-          message: formData.get('projectDescription') as string,
-          project_type: projectType,
-          timeline: timeline,
-          budget: budget,
+          first_name: sanitizedData.firstName,
+          last_name: sanitizedData.lastName,
+          email: sanitizedData.email,
+          phone: sanitizedData.phone,
+          company: sanitizedData.company,
+          message: sanitizedData.projectDescription,
+          project_type: sanitizedData.projectType,
+          timeline: sanitizedData.timeline,
+          budget: sanitizedData.budget,
           source: 'offer_landing_page',
           language: language,
           status: 'new'
@@ -126,10 +187,17 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
       if (dbError) throw dbError;
 
       // Also submit to Netlify as backup
+      const formData = new FormData();
+      Object.entries(sanitizedData).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+      formData.append('form-name', 'offer-contact');
+      formData.append('offer', offer);
+      formData.append('language', language);
+
       await fetch("/", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
+        body: formData,
       });
 
       setIsSubmitted(true);
@@ -138,14 +206,11 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
         description: language === 'en' ? "We'll contact you within 24 hours." : "Te contactaremos en 24 horas.",
       });
     } catch (error) {
-      console.error('Form submission error:', error);
       toast({
         title: "Error",
         description: t.error,
         variant: "destructive",
       });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -180,149 +245,228 @@ const OfferContactForm = ({ offer, language = 'en' }: OfferContactFormProps) => 
       </CardHeader>
       
       <CardContent>
-        <form 
-          onSubmit={handleSubmit}
-          name="offer-contact"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          className="space-y-6"
-        >
-          {/* Netlify form detection */}
-          <input type="hidden" name="form-name" value="offer-contact" />
-          <input type="hidden" name="offer" value={offer} />
-          <input type="hidden" name="language" value={language} />
-          
-          {/* Honeypot field */}
-          <div className="hidden">
-            <label>
-              Don't fill this out if you're human: <input name="bot-field" />
-            </label>
-          </div>
-
-          {/* Contact Information */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                <Phone className="w-4 h-4" />
-                {t.firstName} *
-              </label>
-              <Input name="firstName" required className="h-12 border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20" />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                <Phone className="w-4 h-4" />
-                {t.lastName} *
-              </label>
-              <Input name="lastName" required className="h-12 border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20" />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                <Mail className="w-4 h-4" />
-                {t.email} *
-              </label>
-              <Input name="email" type="email" required className="h-12 border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20" />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                <Phone className="w-4 h-4" />
-                {t.phone} *
-              </label>
-              <Input name="phone" type="tel" required className="h-12 border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20" />
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700">{t.company}</label>
-            <Input name="company" className="h-12 border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20" />
-          </div>
-
-          {/* Project Details */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">{t.projectType} *</label>
-              <Select value={projectType} onValueChange={setProjectType} required>
-                <SelectTrigger className="w-full h-12 border-gray-300 focus:border-green-500 bg-white">
-                  <SelectValue placeholder={language === 'en' ? "Select project type" : "Selecciona tipo"} />
-                </SelectTrigger>
-                <SelectContent className="bg-white border border-gray-200 shadow-lg z-[100] max-h-[300px] overflow-y-auto min-w-[var(--radix-select-trigger-width)]">
-                  {Object.entries(t.projectTypes).map(([value, label]) => (
-                    <SelectItem key={value} value={value} className="cursor-pointer hover:bg-green-50">{label}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <input type="hidden" name="projectType" value={projectType} required />
-            </div>
-            
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                {t.timeline} *
-              </label>
-              <Select value={timeline} onValueChange={setTimeline} required>
-                <SelectTrigger className="w-full h-12 border-gray-300 focus:border-green-500 bg-white">
-                  <SelectValue placeholder={language === 'en' ? "Select timeline" : "Selecciona cronograma"} />
-                </SelectTrigger>
-                <SelectContent className="bg-white border border-gray-200 shadow-lg z-[100] max-h-[300px] overflow-y-auto min-w-[var(--radix-select-trigger-width)]">
-                  {Object.entries(t.timelines).map(([value, label]) => (
-                    <SelectItem key={value} value={value} className="cursor-pointer hover:bg-green-50">{label}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <input type="hidden" name="timeline" value={timeline} required />
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
-              <DollarSign className="w-4 h-4" />
-              {t.budget}
-            </label>
-            <Select value={budget} onValueChange={setBudget}>
-              <SelectTrigger className="w-full h-12 border-gray-300 focus:border-green-500 bg-white">
-                <SelectValue placeholder={language === 'en' ? "Select budget range" : "Selecciona presupuesto"} />
-              </SelectTrigger>
-              <SelectContent className="bg-white border border-gray-200 shadow-lg z-[100] max-h-[300px] overflow-y-auto min-w-[var(--radix-select-trigger-width)]">
-                {Object.entries(t.budgetRanges).map(([value, label]) => (
-                  <SelectItem key={value} value={value} className="cursor-pointer hover:bg-green-50">{label}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <input type="hidden" name="budget" value={budget} />
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700">{t.projectDescription} *</label>
-            <Textarea 
-              name="projectDescription" 
-              required
-              rows={4}
-              placeholder={language === 'en' 
-                ? "Tell us about your goals, current challenges, and what you envision..."
-                : "Cuéntanos sobre tus objetivos, desafíos actuales y lo que visualizas..."
-              }
-              className="border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20"
-            />
-          </div>
-
-          <Button 
-            type="submit" 
-            disabled={isSubmitting}
-            className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+        <Form {...form}>
+          <form 
+            onSubmit={form.handleSubmit(handleSubmit)}
+            name="offer-contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            className="space-y-6"
           >
-            {isSubmitting ? (language === 'en' ? "Submitting..." : "Enviando...") : t.submit}
-          </Button>
-          
-          <p className="text-xs text-gray-500 text-center">
-            {language === 'en' 
-              ? "By submitting, you agree to receive communications about your project. We never share your information."
-              : "Al enviar, aceptas recibir comunicaciones sobre tu proyecto. Nunca compartimos tu información."
-            }
-          </p>
-        </form>
+            {/* Netlify form detection */}
+            <input type="hidden" name="form-name" value="offer-contact" />
+            <input type="hidden" name="offer" value={offer} />
+            <input type="hidden" name="language" value={language} />
+            
+            {/* Honeypot field */}
+            <div className="hidden">
+              <label>
+                Don't fill this out if you're human: <input name="bot-field" />
+              </label>
+            </div>
+
+            {/* Contact Information */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="firstName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                      <Phone className="w-4 h-4" />
+                      {t.firstName} *
+                    </FormLabel>
+                    <FormControl>
+                      <Input {...field} className="h-12 border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="lastName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                      <Phone className="w-4 h-4" />
+                      {t.lastName} *
+                    </FormLabel>
+                    <FormControl>
+                      <Input {...field} className="h-12 border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                      <Mail className="w-4 h-4" />
+                      {t.email} *
+                    </FormLabel>
+                    <FormControl>
+                      <Input {...field} type="email" className="h-12 border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                      <Phone className="w-4 h-4" />
+                      {t.phone} *
+                    </FormLabel>
+                    <FormControl>
+                      <Input {...field} type="tel" className="h-12 border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            <FormField
+              control={form.control}
+              name="company"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm font-medium text-gray-700">{t.company}</FormLabel>
+                  <FormControl>
+                    <Input {...field} className="h-12 border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Project Details */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="projectType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-medium text-gray-700">{t.projectType} *</FormLabel>
+                    <FormControl>
+                      <Select onValueChange={field.onChange} value={field.value}>
+                        <SelectTrigger className="w-full h-12 border-gray-300 focus:border-green-500 bg-white">
+                          <SelectValue placeholder={language === 'en' ? "Select project type" : "Selecciona tipo"} />
+                        </SelectTrigger>
+                        <SelectContent className="bg-white border border-gray-200 shadow-lg z-[100] max-h-[300px] overflow-y-auto min-w-[var(--radix-select-trigger-width)]">
+                          {Object.entries(t.projectTypes).map(([value, label]) => (
+                            <SelectItem key={value} value={value} className="cursor-pointer hover:bg-green-50">{label}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="timeline"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                      <Calendar className="w-4 h-4" />
+                      {t.timeline} *
+                    </FormLabel>
+                    <FormControl>
+                      <Select onValueChange={field.onChange} value={field.value}>
+                        <SelectTrigger className="w-full h-12 border-gray-300 focus:border-green-500 bg-white">
+                          <SelectValue placeholder={language === 'en' ? "Select timeline" : "Selecciona cronograma"} />
+                        </SelectTrigger>
+                        <SelectContent className="bg-white border border-gray-200 shadow-lg z-[100] max-h-[300px] overflow-y-auto min-w-[var(--radix-select-trigger-width)]">
+                          {Object.entries(t.timelines).map(([value, label]) => (
+                            <SelectItem key={value} value={value} className="cursor-pointer hover:bg-green-50">{label}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            <FormField
+              control={form.control}
+              name="budget"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                    <DollarSign className="w-4 h-4" />
+                    {t.budget}
+                  </FormLabel>
+                  <FormControl>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <SelectTrigger className="w-full h-12 border-gray-300 focus:border-green-500 bg-white">
+                        <SelectValue placeholder={language === 'en' ? "Select budget range" : "Selecciona presupuesto"} />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white border border-gray-200 shadow-lg z-[100] max-h-[300px] overflow-y-auto min-w-[var(--radix-select-trigger-width)]">
+                        {Object.entries(t.budgetRanges).map(([value, label]) => (
+                          <SelectItem key={value} value={value} className="cursor-pointer hover:bg-green-50">{label}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="projectDescription"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm font-medium text-gray-700">{t.projectDescription} *</FormLabel>
+                  <FormControl>
+                    <Textarea 
+                      {...field}
+                      rows={4}
+                      placeholder={language === 'en' 
+                        ? "Tell us about your goals, current challenges, and what you envision..."
+                        : "Cuéntanos sobre tus objetivos, desafíos actuales y lo que visualizas..."
+                      }
+                      className="border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-500/20"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <Button 
+              type="submit" 
+              disabled={form.formState.isSubmitting}
+              className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              {form.formState.isSubmitting ? (language === 'en' ? "Submitting..." : "Enviando...") : t.submit}
+            </Button>
+            
+            <p className="text-xs text-gray-500 text-center">
+              {language === 'en' 
+                ? "By submitting, you agree to receive communications about your project. We never share your information."
+                : "Al enviar, aceptas recibir comunicaciones sobre tu proyecto. Nunca compartimos tu información."
+              }
+            </p>
+          </form>
+        </Form>
       </CardContent>
     </Card>
   );
