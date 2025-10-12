@@ -32,7 +32,7 @@ const formSchema = z.object({
     .trim()
     .email({ message: "Please enter a valid email address" })
     .max(255, { message: "Email must be less than 255 characters" })
-    .toLowerCase(),
+    .transform(val => val.toLowerCase()),
   phone: z.string()
     .trim()
     .regex(/^[\d\s()+-]+$/, { message: "Please enter a valid phone number" })
