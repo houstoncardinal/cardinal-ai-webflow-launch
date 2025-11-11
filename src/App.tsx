@@ -55,11 +55,11 @@ import TermsOfService from "./pages/TermsOfService";
 
 // Industry pages
 import Healthcare from "./pages/industries/HealthcareNew";
-import Legal from "./pages/industries/Legal";
-import RealEstate from "./pages/industries/RealEstate";
-import HomeServices from "./pages/industries/HomeServices";
-import FinancialServices from "./pages/industries/FinancialServices";
-import Government from "./pages/industries/Government";
+import Legal from "./pages/industries/LegalNew";
+import RealEstate from "./pages/industries/RealEstateNew";
+import HomeServices from "./pages/industries/HomeServicesNew";
+import FinancialServices from "./pages/industries/FinancialServicesNew";
+import Government from "./pages/industries/GovernmentNew";
 
 const queryClient = new QueryClient();
 
