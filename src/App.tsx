@@ -54,7 +54,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 
 // Industry pages
-import Healthcare from "./pages/industries/Healthcare";
+import Healthcare from "./pages/industries/HealthcareNew";
 import Legal from "./pages/industries/Legal";
 import RealEstate from "./pages/industries/RealEstate";
 import HomeServices from "./pages/industries/HomeServices";
