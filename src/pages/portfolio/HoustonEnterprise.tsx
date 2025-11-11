@@ -19,11 +19,13 @@ const HoustonEnterprise = () => {
       <Navigation />
       
       {/* Hero Section with Device Mockup */}
-      <section className="pt-32 pb-32 bg-gradient-to-br from-orange-50 via-amber-50 to-white relative overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-orange-400 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-amber-400 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <section className="pt-32 pb-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-[0.02]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, rgb(0 0 0) 1px, transparent 0)',
+            backgroundSize: '40px 40px'
+          }}></div>
         </div>
         
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -35,107 +37,165 @@ const HoustonEnterprise = () => {
           </div>
           
           {/* Client Logo */}
-          <div className="mb-12 flex justify-center">
-            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div className="mb-16 flex justify-center">
+            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
               <img 
                 src="/houston-enterprise-logo.png" 
                 alt="Houston Enterprise Construction Logo"
                 loading="eager"
                 decoding="async"
-                className="h-20 w-auto object-contain"
+                className="h-16 w-auto object-contain opacity-90"
               />
             </div>
           </div>
           
           {/* Headline */}
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-orange-100 to-amber-100 rounded-full mb-8">
-              <Award className="w-5 h-5 text-orange-600" />
-              <span className="text-sm font-bold text-orange-800 uppercase tracking-wider">Construction Industry Case Study</span>
+          <div className="max-w-5xl mx-auto text-center mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full mb-8">
+              <div className="w-2 h-2 bg-orange-600 rounded-full"></div>
+              <span className="text-xs font-semibold text-gray-700 uppercase tracking-wider">Case Study</span>
             </div>
             
-            <h1 className="text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6 tracking-tight">
-              Building Digital
-              <span className="block bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 bg-clip-text text-transparent mt-2">
-                Excellence
+            <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 leading-[1.1] mb-8 tracking-tight">
+              From Digital Invisibility to
+              <span className="block text-orange-600 mt-2">
+                Market Leadership
               </span>
             </h1>
             
-            <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              How Houston Enterprise achieved <span className="font-bold text-orange-600">450% growth</span> in qualified leads and established market leadership in just 6 months.
+            <p className="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto font-light">
+              How a comprehensive digital transformation delivered <span className="font-semibold text-gray-900">450% lead growth</span> and established Houston Enterprise as the premier construction partner in their market.
             </p>
           </div>
           
-          {/* Device Mockup with Website Preview */}
-          <div className="max-w-6xl mx-auto mb-16">
-            {/* iMac-style mockup */}
-            <div className="relative">
-              {/* Monitor */}
-              <div className="bg-gradient-to-b from-gray-800 to-gray-900 rounded-t-3xl p-3 shadow-2xl">
-                {/* Screen bezel */}
-                <div className="bg-black rounded-t-2xl p-1">
-                  {/* Screen */}
-                  <div className="bg-white rounded-t-xl overflow-hidden">
-                    <img 
-                      src="/houston-enterprise-screenshot.png" 
-                      alt="Houston Enterprise Website Design"
-                      loading="eager"
-                      decoding="async"
-                      className="w-full h-auto"
-                    />
+          {/* Photorealistic iMac Mockup */}
+          <div className="max-w-7xl mx-auto mb-20 px-4">
+            <div className="relative" style={{ perspective: '2000px' }}>
+              {/* iMac Device */}
+              <div className="relative" style={{ transformStyle: 'preserve-3d' }}>
+                {/* Monitor Body */}
+                <div className="relative bg-gradient-to-b from-[#e8e8e8] via-[#f5f5f5] to-[#e8e8e8] rounded-[20px] p-[18px] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.25),0_30px_60px_-30px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.6)]">
+                  {/* Screen Bezel */}
+                  <div className="relative bg-gradient-to-b from-[#2c2c2c] to-[#1a1a1a] rounded-[12px] p-[8px] shadow-[inset_0_2px_8px_rgba(0,0,0,0.3)]">
+                    {/* Inner Bezel Highlight */}
+                    <div className="absolute inset-0 rounded-[12px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"></div>
+                    
+                    {/* Screen */}
+                    <div className="relative bg-black rounded-[8px] overflow-hidden">
+                      {/* Screen Gloss Effect */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none z-10"></div>
+                      
+                      {/* Actual Website Screenshot */}
+                      <div className="relative">
+                        <img 
+                          src="/houston-enterprise-screenshot.png" 
+                          alt="Houston Enterprise Website Design"
+                          loading="eager"
+                          decoding="async"
+                          className="w-full h-auto"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Camera */}
+                  <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-[6px] h-[6px] bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] rounded-full shadow-[0_1px_3px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.1)]">
+                    <div className="absolute inset-[1px] bg-gradient-to-br from-[#1e3a5f] to-[#0f1f3f] rounded-full"></div>
+                  </div>
+                </div>
+                
+                {/* Stand */}
+                <div className="flex justify-center -mt-[2px]">
+                  <div className="relative w-[140px] h-[28px]">
+                    {/* Stand Main Body */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#e0e0e0] via-[#d5d5d5] to-[#c8c8c8] rounded-b-[8px] shadow-[0_8px_16px_-4px_rgba(0,0,0,0.2)]">
+                      {/* Stand Highlight */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-b-[8px]"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Base */}
+                <div className="flex justify-center -mt-[1px]">
+                  <div className="relative w-[240px] h-[12px]">
+                    {/* Base Shadow */}
+                    <div className="absolute inset-x-0 -bottom-[8px] h-[8px] bg-gradient-radial from-black/20 via-black/10 to-transparent rounded-full blur-sm"></div>
+                    
+                    {/* Base Body */}
+                    <div className="relative h-full bg-gradient-to-b from-[#e8e8e8] via-[#d8d8d8] to-[#c8c8c8] rounded-[16px] shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.3)]">
+                      {/* Base Edge Highlight */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-transparent rounded-[16px]"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Desk Shadow */}
+                <div className="absolute inset-x-0 -bottom-[40px] h-[40px] bg-gradient-radial from-black/15 via-black/5 to-transparent blur-2xl"></div>
+              </div>
+              
+              {/* Floating Metric Cards - Refined */}
+              <div className="absolute -right-8 top-[20%] hidden xl:block animate-fade-in" style={{ animationDelay: '0.3s' }}>
+                <div className="bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] p-8 border border-gray-100 backdrop-blur-sm">
+                  <div className="text-5xl font-bold bg-gradient-to-br from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">450%</div>
+                  <div className="text-sm text-gray-600 font-medium">Lead Growth</div>
+                  <div className="mt-3 pt-3 border-t border-gray-100">
+                    <div className="flex items-center gap-2 text-xs text-green-600 font-semibold">
+                      <TrendingUp className="w-3 h-3" />
+                      <span>+385 Qualified Leads</span>
+                    </div>
                   </div>
                 </div>
               </div>
-              {/* Stand */}
-              <div className="flex justify-center">
-                <div className="w-32 h-6 bg-gradient-to-b from-gray-300 to-gray-400 rounded-b-lg shadow-md"></div>
-              </div>
-              {/* Base */}
-              <div className="flex justify-center -mt-1">
-                <div className="w-48 h-3 bg-gradient-to-b from-gray-400 to-gray-500 rounded-full shadow-lg"></div>
-              </div>
               
-              {/* Floating metrics */}
-              <div className="absolute -right-4 top-1/4 hidden lg:block">
-                <div className="bg-white rounded-2xl shadow-2xl p-6 backdrop-blur-sm bg-opacity-95 transform hover:scale-105 transition-transform duration-300">
-                  <div className="text-4xl font-bold text-green-600 mb-2">450%</div>
-                  <div className="text-sm text-gray-600 font-medium">Lead Growth</div>
-                </div>
-              </div>
-              
-              <div className="absolute -left-4 top-2/3 hidden lg:block">
-                <div className="bg-white rounded-2xl shadow-2xl p-6 backdrop-blur-sm bg-opacity-95 transform hover:scale-105 transition-transform duration-300">
-                  <div className="text-4xl font-bold text-orange-600 mb-2">#1</div>
+              <div className="absolute -left-8 bottom-[25%] hidden xl:block animate-fade-in" style={{ animationDelay: '0.5s' }}>
+                <div className="bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] p-8 border border-gray-100 backdrop-blur-sm">
+                  <div className="text-5xl font-bold bg-gradient-to-br from-orange-600 to-amber-600 bg-clip-text text-transparent mb-2">#1</div>
                   <div className="text-sm text-gray-600 font-medium">Local Ranking</div>
+                  <div className="mt-3 pt-3 border-t border-gray-100">
+                    <div className="flex items-center gap-2 text-xs text-orange-600 font-semibold">
+                      <Award className="w-3 h-3" />
+                      <span>Top Houston Position</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           
-          {/* Quick Stats Bar */}
-          <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <TrendingUp className="w-8 h-8 text-green-600 mx-auto mb-3" />
-              <div className="text-3xl font-bold text-gray-900 mb-1">280%</div>
-              <div className="text-sm text-gray-600 font-medium">Project Inquiries</div>
-            </div>
-            
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <Target className="w-8 h-8 text-orange-600 mx-auto mb-3" />
-              <div className="text-3xl font-bold text-gray-900 mb-1">72%</div>
-              <div className="text-sm text-gray-600 font-medium">Conversion Rate</div>
-            </div>
-            
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <Users className="w-8 h-8 text-blue-600 mx-auto mb-3" />
-              <div className="text-3xl font-bold text-gray-900 mb-1">+40%</div>
-              <div className="text-sm text-gray-600 font-medium">Team Growth</div>
-            </div>
-            
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <Zap className="w-8 h-8 text-purple-600 mx-auto mb-3" />
-              <div className="text-3xl font-bold text-gray-900 mb-1">6mo</div>
-              <div className="text-sm text-gray-600 font-medium">Pipeline</div>
+          {/* Key Metrics Grid - Refined */}
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="bg-white rounded-xl p-8 text-center border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-gray-50 rounded-xl mb-4 group-hover:bg-gray-100 transition-colors">
+                  <TrendingUp className="w-6 h-6 text-gray-700" />
+                </div>
+                <div className="text-4xl font-bold text-gray-900 mb-2">280%</div>
+                <div className="text-sm text-gray-600 font-medium">Project Inquiries</div>
+              </div>
+              
+              <div className="bg-white rounded-xl p-8 text-center border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-gray-50 rounded-xl mb-4 group-hover:bg-gray-100 transition-colors">
+                  <Target className="w-6 h-6 text-gray-700" />
+                </div>
+                <div className="text-4xl font-bold text-gray-900 mb-2">72%</div>
+                <div className="text-sm text-gray-600 font-medium">Conversion Rate</div>
+              </div>
+              
+              <div className="bg-white rounded-xl p-8 text-center border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-gray-50 rounded-xl mb-4 group-hover:bg-gray-100 transition-colors">
+                  <Users className="w-6 h-6 text-gray-700" />
+                </div>
+                <div className="text-4xl font-bold text-gray-900 mb-2">+40%</div>
+                <div className="text-sm text-gray-600 font-medium">Team Expansion</div>
+              </div>
+              
+              <div className="bg-white rounded-xl p-8 text-center border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-gray-50 rounded-xl mb-4 group-hover:bg-gray-100 transition-colors">
+                  <Clock className="w-6 h-6 text-gray-700" />
+                </div>
+                <div className="text-4xl font-bold text-gray-900 mb-2">6mo</div>
+                <div className="text-sm text-gray-600 font-medium">Project Pipeline</div>
+              </div>
             </div>
           </div>
         </div>
@@ -143,40 +203,44 @@ const HoustonEnterprise = () => {
 
       {/* Client Background - Story Section */}
       <section className="py-32 bg-white relative">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-16 items-center mb-20">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-20 items-center mb-20">
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 rounded-full mb-6">
-                <div className="w-2 h-2 bg-orange-600 rounded-full animate-pulse"></div>
-                <span className="text-sm font-semibold text-orange-800 uppercase tracking-wide">The Challenge</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full mb-8">
+                <div className="w-1.5 h-1.5 bg-orange-600 rounded-full"></div>
+                <span className="text-xs font-semibold text-gray-700 uppercase tracking-wider">The Challenge</span>
               </div>
-              <h2 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                From Local Reputation to Digital Invisibility
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
+                Exceptional Work,<br />Invisible Online
               </h2>
-              <div className="w-20 h-1.5 bg-gradient-to-r from-orange-500 to-amber-500 mb-8"></div>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Houston Enterprise had built a sterling reputation through years of exceptional construction work. Their craftsmanship spoke for itself, with satisfied clients throughout Houston.
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                But when potential clients searched for construction services online, Houston Enterprise was nowhere to be found. Their digital presence didn't reflect their real-world excellence.
-              </p>
+              <div className="space-y-6 text-gray-600 leading-relaxed">
+                <p className="text-lg">
+                  Houston Enterprise had built an exceptional reputation through years of superior construction work. Their craftsmanship was unmatched, with a portfolio of satisfied clients across Houston.
+                </p>
+                <p className="text-lg">
+                  Yet when prospective clients searched for construction services online, Houston Enterprise was nowhere to be found. Their digital presence failed to reflect their real-world excellence.
+                </p>
+                <p className="text-base font-medium text-gray-900">
+                  The disconnect was costing them millions in lost opportunities.
+                </p>
+              </div>
             </div>
             
-            <div className="space-y-6">
-              <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-8 rounded-2xl border border-orange-100">
-                <div className="text-orange-600 font-bold text-sm uppercase tracking-wide mb-3">Industry</div>
+            <div className="space-y-4">
+              <div className="bg-white p-8 rounded-xl border border-gray-200 hover:border-gray-300 transition-colors">
+                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Industry</div>
                 <div className="text-2xl font-bold text-gray-900 mb-1">Construction Services</div>
                 <div className="text-gray-600">Residential & Commercial</div>
               </div>
               
-              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border border-blue-100">
-                <div className="text-blue-600 font-bold text-sm uppercase tracking-wide mb-3">Location</div>
+              <div className="bg-white p-8 rounded-xl border border-gray-200 hover:border-gray-300 transition-colors">
+                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Location</div>
                 <div className="text-2xl font-bold text-gray-900 mb-1">Houston, Texas</div>
-                <div className="text-gray-600">Serving Greater Houston Area</div>
+                <div className="text-gray-600">Greater Houston Metro</div>
               </div>
               
-              <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border border-purple-100">
-                <div className="text-purple-600 font-bold text-sm uppercase tracking-wide mb-3">Timeline</div>
+              <div className="bg-white p-8 rounded-xl border border-gray-200 hover:border-gray-300 transition-colors">
+                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Project Duration</div>
                 <div className="text-2xl font-bold text-gray-900 mb-1">10 Weeks</div>
                 <div className="text-gray-600">Discovery to Launch</div>
               </div>
@@ -186,74 +250,66 @@ const HoustonEnterprise = () => {
       </section>
 
       {/* Core Problems - Pain Points */}
-      <section className="py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-400 rounded-full blur-3xl"></div>
-        </div>
-        
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 relative">
+      <section className="py-32 bg-gray-50 relative">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 rounded-full mb-6">
-              <div className="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
-              <span className="text-sm font-semibold text-red-800 uppercase tracking-wide">Pain Points</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full mb-8">
+              <div className="w-1.5 h-1.5 bg-gray-700 rounded-full"></div>
+              <span className="text-xs font-semibold text-gray-700 uppercase tracking-wider">The Problems</span>
             </div>
-            <h2 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Three Critical Challenges
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              Three Critical Barriers<br />to Growth
             </h2>
-            <div className="w-20 h-1.5 bg-gradient-to-r from-red-500 to-orange-500 mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Despite exceptional service quality, Houston Enterprise faced digital obstacles preventing them from reaching their full growth potential.
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto font-light">
+              Despite exceptional service delivery, systemic digital challenges were limiting market reach and revenue potential.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-gradient-to-br from-white to-red-50 group overflow-hidden relative">
-              <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-red-500 to-orange-500"></div>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white group">
               <CardContent className="p-8">
-                <div className="bg-red-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl">🔍</span>
+                <div className="bg-gray-100 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gray-200 transition-colors">
+                  <span className="text-2xl">🔍</span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Invisible in Local Search</h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  Zero visibility when prospects searched for construction services. Competitors with weaker portfolios ranked higher.
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Search Invisibility</h3>
+                <p className="text-gray-600 leading-relaxed mb-6 text-sm">
+                  Zero organic visibility for high-intent construction searches. Competitors with inferior portfolios captured the market due to stronger digital presence.
                 </p>
-                <div className="bg-red-50 rounded-lg p-4 border border-red-100">
-                  <div className="text-sm font-semibold text-red-800 mb-1">Impact</div>
-                  <div className="text-gray-700">Missing 80%+ of digital traffic</div>
+                <div className="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                  <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Quantified Impact</div>
+                  <div className="text-sm font-medium text-gray-900">80%+ of market unreachable</div>
                 </div>
               </CardContent>
             </Card>
             
-            <Card className="border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-gradient-to-br from-white to-orange-50 group overflow-hidden relative">
-              <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-orange-500 to-amber-500"></div>
+            <Card className="border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white group">
               <CardContent className="p-8">
-                <div className="bg-orange-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl">📱</span>
+                <div className="bg-gray-100 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gray-200 transition-colors">
+                  <span className="text-2xl">📱</span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Outdated Digital Experience</h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  Website failed to showcase project excellence. Poor mobile experience drove away 65% of visitors.
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Suboptimal User Experience</h3>
+                <p className="text-gray-600 leading-relaxed mb-6 text-sm">
+                  Dated interface failed to communicate quality. Mobile dysfunction and unclear messaging resulted in immediate visitor abandonment.
                 </p>
-                <div className="bg-orange-50 rounded-lg p-4 border border-orange-100">
-                  <div className="text-sm font-semibold text-orange-800 mb-1">Impact</div>
-                  <div className="text-gray-700">78% bounce rate on mobile</div>
+                <div className="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                  <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Quantified Impact</div>
+                  <div className="text-sm font-medium text-gray-900">78% mobile bounce rate</div>
                 </div>
               </CardContent>
             </Card>
             
-            <Card className="border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-gradient-to-br from-white to-amber-50 group overflow-hidden relative">
-              <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-amber-500 to-yellow-500"></div>
+            <Card className="border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white group">
               <CardContent className="p-8">
-                <div className="bg-amber-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl">📊</span>
+                <div className="bg-gray-100 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gray-200 transition-colors">
+                  <span className="text-2xl">📊</span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Unpredictable Pipeline</h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  100% referral-dependent. No systematic lead generation created feast-or-famine cycles.
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Referral Dependency</h3>
+                <p className="text-gray-600 leading-relaxed mb-6 text-sm">
+                  No systematic acquisition channel. Complete reliance on word-of-mouth created unpredictable revenue and prevented strategic planning.
                 </p>
-                <div className="bg-amber-50 rounded-lg p-4 border border-amber-100">
-                  <div className="text-sm font-semibold text-amber-800 mb-1">Impact</div>
-                  <div className="text-gray-700">Revenue volatility & planning challenges</div>
+                <div className="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                  <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Quantified Impact</div>
+                  <div className="text-sm font-medium text-gray-900">Volatile cash flow & scaling limits</div>
                 </div>
               </CardContent>
             </Card>
@@ -701,39 +757,39 @@ const HoustonEnterprise = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 bg-gradient-to-br from-orange-600 via-orange-500 to-amber-600 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-orange-800 rounded-full blur-3xl"></div>
+      <section className="py-32 bg-gray-900 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, rgb(255 255 255) 1px, transparent 0)',
+            backgroundSize: '40px 40px'
+          }}></div>
         </div>
         
         <div className="max-w-5xl mx-auto px-6 lg:px-8 text-center relative z-10">
-          <div className="mb-8">
-            <div className="text-7xl mb-6">🚀</div>
-            <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Ready for Your Own
-              <span className="block mt-2">Success Story?</span>
+          <div className="mb-12">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+              Ready to Transform<br />Your Digital Presence?
             </h2>
-            <p className="text-xl lg:text-2xl text-orange-50 mb-10 leading-relaxed max-w-3xl mx-auto">
-              Get a custom transformation roadmap designed specifically for your business. Let's turn your digital presence into your most powerful growth driver.
+            <p className="text-lg lg:text-xl text-gray-300 mb-10 leading-relaxed max-w-3xl mx-auto font-light">
+              Get a comprehensive transformation roadmap designed for your business objectives. Let's build your path to market leadership.
             </p>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
             <Button 
               asChild
-              className="bg-white text-orange-600 hover:bg-orange-50 px-10 py-7 text-xl font-bold shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 rounded-2xl"
+              className="bg-orange-600 text-white hover:bg-orange-700 px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg"
             >
-              <Link to="/contact" className="flex items-center gap-3">
-                <span>Get Your Free Project Roadmap</span>
-                <ArrowRight className="w-6 h-6" />
+              <Link to="/contact" className="flex items-center gap-2">
+                <span>Schedule Free Consultation</span>
+                <ArrowRight className="w-5 h-5" />
               </Link>
             </Button>
             
             <Button 
               variant="outline" 
               asChild
-              className="border-3 border-white text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-orange-600 px-10 py-7 text-xl font-bold transition-all duration-300 hover:scale-105 rounded-2xl"
+              className="border-2 border-gray-600 text-white bg-transparent hover:bg-gray-800 hover:border-gray-500 px-8 py-6 text-lg font-semibold transition-all duration-300 rounded-lg"
             >
               <Link to="/portfolio">
                 View More Case Studies
@@ -741,14 +797,18 @@ const HoustonEnterprise = () => {
             </Button>
           </div>
           
-          <div className="flex items-center justify-center gap-8 text-orange-50">
+          <div className="flex items-center justify-center gap-8 text-gray-400 text-sm">
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5" />
-              <span className="font-medium">No commitment required</span>
+              <CheckCircle className="w-4 h-4" />
+              <span>No commitment</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5" />
-              <span className="font-medium">Free consultation</span>
+              <CheckCircle className="w-4 h-4" />
+              <span>Free consultation</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-4 h-4" />
+              <span>Custom roadmap</span>
             </div>
           </div>
         </div>
