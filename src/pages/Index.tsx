@@ -24,7 +24,7 @@ const Index = () => {
       <Navigation />
       
       {/* Hero - White background */}
-      <div className="bg-white">
+      <div className="bg-white pb-8 sm:pb-12 lg:pb-16">
         <HeroSlider />
       </div>
       

@@ -1,53 +1,65 @@
-import { Code, Smartphone, Globe, BarChart3, Palette, Share2, Search, Zap, TrendingUp, Users, ArrowRight } from "lucide-react";
+import { Code, Smartphone, Search, Megaphone, Palette, Zap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+
 const Services = () => {
   const services = [
     {
       icon: Code,
       category: "WEB DEVELOPMENT",
-      title: "Custom Website Development",
-      description: "Professional, responsive websites built with modern technologies. From simple business sites to complex e-commerce platforms, we create digital experiences that convert visitors into customers.",
+      title: "Web Development",
+      description: "High-performance websites engineered for conversion, credibility, and scale.",
       gradient: "from-blue-500/10 via-cyan-400/15 to-blue-600/10",
       accentColor: "text-blue-600",
-      glowColor: "blue-500/20",
-      link: "/services/web-development",
-      benefitText: "High-conversion websites engineered to scale your business."
+      link: "/services/web-development"
     },
     {
       icon: Smartphone,
-      category: "MOBILE APPS",
+      category: "MOBILE & WEB APPS",
       title: "Mobile & Web Applications",
-      description: "Custom mobile apps and web applications that streamline your business operations. Built for performance, scalability, and exceptional user experience across all devices and platforms.",
+      description: "Custom applications built to automate workflows, enhance user experience, and support long-term growth.",
       gradient: "from-emerald-500/10 via-green-400/15 to-emerald-600/10",
       accentColor: "text-emerald-600",
-      glowColor: "emerald-500/20",
-      link: "/services/mobile-applications",
-      benefitText: "Custom applications built for performance and seamless user experience."
+      link: "/services/mobile-applications"
     },
     {
       icon: Search,
-      category: "SEO & ANALYTICS",
-      title: "SEO & Growth Systems",
-      description: "Comprehensive SEO optimization and analytics solutions that drive real results. Help businesses rank higher in search results and drive more qualified traffic to their websites.",
+      category: "SEO & GROWTH",
+      title: "SEO & Digital Growth",
+      description: "Search visibility and inbound systems that generate qualified leads predictably and sustainably.",
       gradient: "from-purple-500/10 via-violet-400/15 to-purple-600/10",
       accentColor: "text-purple-600",
-      glowColor: "purple-500/20",
-      link: "/services/seo-insights",
-      benefitText: "Search visibility and lead pipelines that generate measurable revenue."
+      link: "/services/seo-insights"
+    },
+    {
+      icon: Megaphone,
+      category: "DIGITAL MARKETING",
+      title: "Digital Marketing Campaigns",
+      description: "Integrated marketing campaigns designed to drive engagement, revenue, and brand loyalty across platforms.",
+      gradient: "from-orange-500/10 via-amber-400/15 to-orange-600/10",
+      accentColor: "text-orange-600",
+      link: "/services/digital-campaigns"
     },
     {
       icon: Palette,
       category: "BRAND IDENTITY",
       title: "Brand Identity & Experience",
-      description: "Complete brand identity solutions that make your business stand out. From logo design to brand guidelines, we create cohesive visual identities that resonate with your target audience.",
+      description: "Cohesive brand identity systems that establish trust, recognition, and market differentiation.",
       gradient: "from-pink-500/10 via-rose-400/15 to-pink-600/10",
       accentColor: "text-pink-600",
-      glowColor: "pink-500/20",
-      link: "/services/brand-identity",
-      benefitText: "Cohesive brand systems that create trust and differentiation."
+      link: "/services/brand-identity"
+    },
+    {
+      icon: Zap,
+      category: "UX/UI OPTIMIZATION",
+      title: "UX/UI Experience Optimization",
+      description: "User-centered interface design that improves clarity, engagement, and conversion across web and mobile experiences.",
+      gradient: "from-indigo-500/10 via-blue-400/15 to-indigo-600/10",
+      accentColor: "text-indigo-600",
+      link: "/services/experience-optimization"
     }
   ];
+
   return (
     <>
       <section id="services" className="pt-12 sm:pt-16 lg:pt-20 pb-40 sm:pb-44 lg:pb-48 bg-white relative">
@@ -60,26 +72,26 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light text-gray-900 mb-4 sm:mb-6 lg:mb-8 leading-tight">
-              Services
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light text-gray-900 mb-4 sm:mb-6 leading-tight">
+              End-to-End Digital Transformation.
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-3xl mx-auto">
-              End-to-end digital solutions engineered for performance and business impact
+              We design, build, and scale digital systems that drive measurable business growth.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {services.map((service, index) => (
               <Link key={index} to={service.link} className="group relative block h-full">
-                {/* Subtle luxury glow - much more refined */}
+                {/* Subtle luxury glow */}
                 <div className={`absolute -inset-0.5 bg-gradient-to-r ${service.gradient} rounded-2xl opacity-0 group-hover:opacity-60 transition-all duration-700 blur-sm`}></div>
                 
-                {/* Glass morphism effect */}
-                <Card className="relative bg-white/80 backdrop-blur-sm border border-white/50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 group-hover:scale-[1.02] overflow-hidden h-full flex flex-col">
+                {/* Card with consistent height */}
+                <Card className="relative bg-white/80 backdrop-blur-sm border border-white/50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 group-hover:scale-[1.015] overflow-hidden h-full flex flex-col">
                   <CardContent className="p-6 sm:p-8 flex flex-col h-full">
-                    {/* Icon with enhanced glow */}
-                    <div className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                      <service.icon className={`w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 ${service.accentColor}`} />
+                    {/* Icon */}
+                    <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                      <service.icon className={`w-6 h-6 sm:w-7 sm:h-7 ${service.accentColor}`} />
                     </div>
                     
                     {/* Category */}
@@ -88,26 +100,19 @@ const Services = () => {
                     </div>
                     
                     {/* Title */}
-                    <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-900 mb-3 sm:mb-4 leading-tight">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4 leading-tight">
                       {service.title}
                     </h3>
                     
-                    {/* Description - flex-grow to fill space */}
-                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 sm:mb-6 flex-grow">
+                    {/* Description - flex-grow to push CTA to bottom */}
+                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 flex-grow">
                       {service.description}
                     </p>
-                    
-                    {/* Benefit Text */}
-                    <div className="mb-4 sm:mb-6">
-                      <p className="text-sm sm:text-base font-medium text-gray-900 leading-relaxed">
-                        {service.benefitText}
-                      </p>
-                    </div>
                     
                     {/* CTA Link - always at bottom */}
                     <div className="flex items-center mt-auto">
                       <div className="flex items-center text-sm sm:text-base font-medium text-gray-900 group-hover:text-green-600 transition-colors duration-300">
-                        Get Your Free Project Roadmap
+                        Explore Service
                         <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
