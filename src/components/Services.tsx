@@ -12,7 +12,7 @@ const Services = () => {
       accentColor: "text-blue-600",
       glowColor: "blue-500/20",
       link: "/services/web-development",
-      benefitText: "High-Conversion Websites Engineered for Growth."
+      benefitText: "Engineered for Revenue Growth and Lead Conversion"
     },
     {
       icon: Smartphone,
@@ -23,7 +23,7 @@ const Services = () => {
       accentColor: "text-emerald-600",
       glowColor: "emerald-500/20",
       link: "/services/mobile-applications",
-      benefitText: "Scalable Applications Designed for Performance and User Experience."
+      benefitText: "Built for Scalability, Performance, and UX Excellence"
     },
     {
       icon: Search,
@@ -34,7 +34,7 @@ const Services = () => {
       accentColor: "text-purple-600",
       glowColor: "purple-500/20",
       link: "/services/seo-insights",
-      benefitText: "Search Ranking, Lead Flow & Conversion Improvements Backed by Analytics."
+      benefitText: "Designed to Outperform Competitors in Your Market"
     },
     {
       icon: BarChart3,
@@ -45,7 +45,7 @@ const Services = () => {
       accentColor: "text-orange-600",
       glowColor: "orange-500/20",
       link: "/services/digital-campaigns",
-      benefitText: "Integrated Campaigns That Drive Real Revenue Impact."
+      benefitText: "Engineered for Revenue Growth and Lead Conversion"
     },
     {
       icon: Palette,
@@ -56,7 +56,7 @@ const Services = () => {
       accentColor: "text-pink-600",
       glowColor: "pink-500/20",
       link: "/services/brand-identity",
-      benefitText: "Modern, Cohesive Identity Systems That Establish Trust."
+      benefitText: "Built for Scalability, Performance, and UX Excellence"
     },
     {
       icon: TrendingUp,
@@ -67,7 +67,7 @@ const Services = () => {
       accentColor: "text-teal-600",
       glowColor: "teal-500/20",
       link: "/services/experience-optimization",
-      benefitText: "User-Centered Interfaces Optimized for Engagement and Conversion."
+      benefitText: "Designed to Outperform Competitors in Your Market"
     }
   ];
   return (
@@ -135,10 +135,10 @@ const Services = () => {
                       </p>
                     </div>
                     
-                    {/* View Details Link - always at bottom */}
+                    {/* CTA Link - always at bottom */}
                     <div className="flex items-center mt-auto">
                       <div className="flex items-center text-sm sm:text-base font-medium text-gray-900 group-hover:text-green-600 transition-colors duration-300">
-                        View Details
+                        Get Your Free Project Roadmap
                         <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>

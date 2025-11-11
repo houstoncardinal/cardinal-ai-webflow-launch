@@ -17,8 +17,8 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <SEO 
-        title="Cardinal Consulting — Custom Web Design, Mobile App Development & Digital Growth Agency"
-        description="Cardinal Consulting builds high-performance websites, mobile apps, and digital growth systems that drive revenue, increase lead flow, and scale operations. Serving businesses nationwide."
+        title="Cardinal Consulting — Custom Web Design, Mobile Apps & Digital Growth Agency"
+        description="We build high-performance websites, mobile apps, and digital growth systems engineered for conversion and scale. Serving businesses nationwide."
         keywords="web design, mobile app development, web development, digital marketing agency, website design, SEO services, mobile app development, web developer, digital agency, website builder, e-commerce development, responsive web design, web design company, web development services, custom website design, e-commerce website, SEO company, digital marketing, web agency, website development, web design agency, web development company, website designer, web development firm, app development, mobile applications, cloud solutions, brand identity, custom websites, mobile apps, digital solutions"
         url="/"
       />
