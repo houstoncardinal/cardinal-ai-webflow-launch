@@ -40,7 +40,7 @@ const HoustonEnterprise = () => {
           <div className="mb-16 max-w-6xl mx-auto">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
               <img 
-                src="/houston-enterprise-website.jpg" 
+                src="/houinc.png" 
                 alt="Houston Enterprise Website Design"
                 className="w-full h-auto"
               />
