@@ -8,8 +8,6 @@ const HeroSlider = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,28 +15,6 @@ const HeroSlider = () => {
     service: ''
   });
 
-  // Auto-slide every 8 seconds with smooth transitions
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentSlide((prev) => (prev === 2 ? 0 : prev + 1));
-        setIsTransitioning(false);
-      }, 300);
-    }, 8000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleSlideChange = (newSlide: number) => {
-    if (newSlide !== currentSlide && !isTransitioning) {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentSlide(newSlide);
-        setIsTransitioning(false);
-      }, 300);
-    }
-  };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -94,39 +70,17 @@ const HeroSlider = () => {
     }));
   };
 
-  const slides = [
-    {
-      category: "High-Performance Digital Solutions",
-      headline: {
-        first: "High-Performance Websites & Mobile Apps,",
-        second: "Built for Growth"
-      },
-      description: "We design and develop digital systems that increase revenue, scale operations, and create market advantage.",
-      cta: "Get Your Free Project Roadmap",
-      ctaSecondary: "View Client Results",
-      checkmarks: ["✓ 24-hour delivery", "✓ No obligation", "✓ Custom strategy"]
+  // Only show the 72-hour development slide
+  const slide = {
+    category: "Fast-Track Development",
+    headline: {
+      first: "72-Hour Development",
+      second: "Enterprise Quality"
     },
-    {
-      category: "Proven Results",
-      headline: {
-        first: "300% Revenue Growth",
-        second: "Real Client Results"
-      },
-      description: "See how we transformed ABQ MRI's digital presence, resulting in 300% revenue growth and 500% increase in online bookings through strategic web design, SEO optimization, and custom patient portal development.",
-      cta: "View Client Results",
-      checkmarks: ["✓ Measured outcomes", "✓ Real clients", "✓ Documented success"]
-    },
-    {
-      category: "Fast-Track Development",
-      headline: {
-        first: "72-Hour Development",
-        second: "Enterprise Quality"
-      },
-      description: "Get your high-performance website or application delivered in 72 hours with our expedited Cardinal Acceleration Framework™. Premium quality, rapid deployment, ongoing support included.",
-      cta: "See Pricing + Timeline",
-      checkmarks: ["✓ Rapid delivery", "✓ Premium quality", "✓ Full support"]
-    }
-  ];
+    description: "Get your high-performance website or application delivered in 72 hours with our expedited Cardinal Acceleration Framework™. Premium quality, rapid deployment, ongoing support included.",
+    cta: "See Pricing + Timeline",
+    checkmarks: ["✓ Rapid delivery", "✓ Premium quality", "✓ Full support"]
+  };
   return (
     <>
       <section className="min-h-[70vh] lg:min-h-[65vh] bg-white flex items-center relative overflow-hidden hero-mobile-padding pt-16 sm:pt-12 lg:pt-16 -mb-24 sm:-mb-28 lg:-mb-32">
@@ -220,29 +174,29 @@ const HeroSlider = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[70vh] sm:min-h-[70vh] lg:min-h-[65vh] lg:min-h-[80vh]">
             <div className="lg:col-span-7 space-y-5 sm:space-y-6 lg:space-y-7">
               {/* Animated category tag */}
-              <div className={`inline-flex items-center text-sm sm:text-base lg:text-lg font-medium text-green-600 uppercase tracking-wide mb-2 sm:mb-3 pt-4 sm:pt-0 animate-fade-in slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}>
+              <div className="inline-flex items-center text-sm sm:text-base lg:text-lg font-medium text-green-600 uppercase tracking-wide mb-2 sm:mb-3 pt-4 sm:pt-0 animate-fade-in">
                 <div className="w-8 sm:w-10 lg:w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-3 sm:mr-4 lg:mr-5"></div>
-                {slides[currentSlide].category}
+                {slide.category}
               </div>
               
               {/* Main headline with staggered animation */}
               <div className="space-y-4 sm:space-y-5 lg:space-y-6">
-                <h1 className={`text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-gray-900 leading-[1.15] tracking-tight slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}>
-                  <span className="inline-block animate-fade-in my-0 py-0 text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">{slides[currentSlide].headline.first}</span>
+                <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-gray-900 leading-[1.15] tracking-tight">
+                  <span className="inline-block animate-fade-in my-0 py-0 text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">{slide.headline.first}</span>
                   <span className="block text-green-600 font-normal text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl animate-slide-forward relative" style={{
                     animationDelay: '300ms'
                   }}>
                     <span className="text-green-600 relative">
-                      {slides[currentSlide].headline.second}
+                      {slide.headline.second}
                     </span>
                   </span>
                 </h1>
                 
-                <p className={`text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed font-light max-w-2xl animate-fade-in relative z-10 slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`} style={{
+                <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed font-light max-w-2xl animate-fade-in relative z-10" style={{
                   animationDelay: '500ms',
                   textShadow: '0 0 8px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 255, 255, 0.9), 0 0 24px rgba(255, 255, 255, 0.7)'
                 }}>
-                  {slides[currentSlide].description}
+                  {slide.description}
                 </p>
                 
               </div>
@@ -250,29 +204,16 @@ const HeroSlider = () => {
               {/* CTA Section with hover animations */}
               <div className="flex flex-col sm:flex-row items-center gap-4 pt-3 sm:pt-4 lg:pt-5">
                 <Button 
-                  onClick={() => {
-                    if (currentSlide === 0) navigate('/contact');
-                    else if (currentSlide === 1) navigate('/portfolio/abq-mri');
-                    else navigate('/services/seo-insights');
-                  }} 
-                  className={`bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-10 sm:px-12 lg:px-14 py-5 sm:py-6 lg:py-7 text-xl sm:text-2xl lg:text-3xl font-semibold shadow-xl hover:shadow-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto rounded-xl slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}
+                  onClick={() => navigate('/services/seo-insights')} 
+                  className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-10 sm:px-12 lg:px-14 py-5 sm:py-6 lg:py-7 text-xl sm:text-2xl lg:text-3xl font-semibold shadow-xl hover:shadow-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto rounded-xl"
                 >
-                  {slides[currentSlide].cta}
+                  {slide.cta}
                   <ArrowRight className="ml-4 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
                 </Button>
-                
-                {currentSlide === 0 && slides[currentSlide].ctaSecondary && (
-                  <button 
-                    onClick={() => navigate('/portfolio')}
-                    className={`text-gray-600 hover:text-green-600 font-medium text-lg sm:text-xl lg:text-2xl underline underline-offset-4 transition-colors duration-300 slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}
-                  >
-                    {slides[currentSlide].ctaSecondary}
-                  </button>
-                )}
               </div>
               
-              <p className={`text-sm sm:text-base lg:text-lg text-gray-500 mt-5 sm:mt-6 lg:mt-7 text-center sm:text-left slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}>
-                <span className="text-green-600">{slides[currentSlide].checkmarks[0]}</span> <span className="text-green-600">{slides[currentSlide].checkmarks[1]}</span> <span className="text-green-600">{slides[currentSlide].checkmarks[2]}</span>
+              <p className="text-sm sm:text-base lg:text-lg text-gray-500 mt-5 sm:mt-6 lg:mt-7 text-center sm:text-left">
+                <span className="text-green-600">{slide.checkmarks[0]}</span> <span className="text-green-600">{slide.checkmarks[1]}</span> <span className="text-green-600">{slide.checkmarks[2]}</span>
               </p>
 
             </div>
