@@ -9,6 +9,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import FeaturedArticles from "@/components/FeaturedArticles";
+import CardinalAccelerationFramework from "@/components/CardinalAccelerationFramework";
+import TrustSignals from "@/components/TrustSignals";
+import MultiStepQuoteForm from "@/components/MultiStepQuoteForm";
 
 const Index = () => {
   return (
@@ -33,10 +36,19 @@ const Index = () => {
       {/* Client Logos - Showcase trusted clients */}
       <ClientLogos />
       
+      {/* Trust Signals */}
+      <TrustSignals />
+      
+      {/* Cardinal Acceleration Framework */}
+      <CardinalAccelerationFramework />
+      
       {/* Services - Light gray background for variation */}
       <div className="bg-gray-50">
         <Services />
       </div>
+      
+      {/* Multi-Step Quote Form */}
+      <MultiStepQuoteForm />
       
       {/* About - Dark background */}
       <div>

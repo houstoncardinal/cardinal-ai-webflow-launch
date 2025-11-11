@@ -96,34 +96,34 @@ const HeroSlider = () => {
 
   const slides = [
     {
-      category: "Premier Digital Agency",
+      category: "Transform Your Business",
       headline: {
-        first: "Custom Websites & Apps",
-        second: "That Convert Visitors"
+        first: "High-Performance Websites,",
+        second: "Mobile Apps & Digital Growth Systems"
       },
-      description: "Transform your business into a digital powerhouse with custom websites, mobile applications, and AI-powered solutions that deliver measurable ROI. Serving clients worldwide with 500+ successful projects completed.",
-      cta: "Start Your Project",
-      checkmarks: ["✓ No obligation", "✓ Free consultation", "✓ 100% custom"]
+      description: "We build conversion-engineered digital platforms that increase revenue, capture leads, and scale operations — with fast delivery, long-term support, and proven market results.",
+      cta: "Get Free Project Roadmap",
+      checkmarks: ["✓ 24-hour delivery", "✓ No obligation", "✓ Custom strategy"]
     },
     {
       category: "Proven Results",
       headline: {
         first: "300% Revenue Growth",
-        second: "In 6 Months"
+        second: "Real Client Results"
       },
       description: "See how we transformed ABQ MRI's digital presence, resulting in 300% revenue growth and 500% increase in online bookings through strategic web design, SEO optimization, and custom patient portal development.",
-      cta: "View Case Study",
-      checkmarks: ["✓ Real results", "✓ Proven success", "✓ Detailed case study"]
+      cta: "View Client Results",
+      checkmarks: ["✓ Measured outcomes", "✓ Real clients", "✓ Documented success"]
     },
     {
-      category: "AI-Powered SEO",
+      category: "Fast-Track Development",
       headline: {
-        first: "Rank #1 on Google",
-        second: "With AI Technology"
+        first: "72-Hour Development",
+        second: "Enterprise Quality"
       },
-      description: "Leverage cutting-edge AI technology to optimize your search rankings, track performance metrics, and drive qualified traffic. Our advanced SEO strategies and analytics deliver measurable growth and competitive advantage.",
-      cta: "Boost Your Rankings",
-      checkmarks: ["✓ AI-powered", "✓ Data-driven", "✓ Measurable results"]
+      description: "Get your high-performance website or application delivered in 72 hours with our expedited Cardinal Acceleration Framework™. Premium quality, rapid deployment, ongoing support included.",
+      cta: "See Pricing + Timeline",
+      checkmarks: ["✓ Rapid delivery", "✓ Premium quality", "✓ Full support"]
     }
   ];
   return (
