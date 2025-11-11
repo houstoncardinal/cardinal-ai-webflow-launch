@@ -48,6 +48,7 @@ import EPSParking from "./pages/portfolio/EPSParking";
 import IACCenters from "./pages/portfolio/IACCenters";
 import ABQMRI from "./pages/portfolio/ABQMRINew";
 import APNClinic from "./pages/portfolio/APNClinic";
+import HoustonEnterprise from "./pages/portfolio/HoustonEnterprise";
 import HoustonWebDesignEsLanding from "./pages/landing/HoustonWebDesignEs";
 import HoustonDigitalServices from "./pages/landing/HoustonDigitalServices";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -91,14 +92,6 @@ const App = () => (
             <Route path="/portfolio" element={<PortfolioPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:slug" element={<BlogPostPage />} />
-            <Route path="/portfolio/vargas-tax" element={<VargasGroup />} />
-            <Route path="/portfolio/clearledger" element={<ClearLedger />} />
-            <Route path="/portfolio/blutouch-pools" element={<BluTouchPools />} />
-            <Route path="/portfolio/hougenpros" element={<HougenPros />} />
-            <Route path="/portfolio/eps-parking" element={<EPSParking />} />
-            <Route path="/portfolio/iac-centers" element={<IACCenters />} />
-            <Route path="/portfolio/abq-mri" element={<ABQMRI />} />
-            <Route path="/portfolio/apn-clinic" element={<APNClinic />} />
             <Route path="/free-audit" element={<FreeAuditPage />} />
             <Route path="/seo-analyzer" element={<SEOAnalyzerPage />} />
             <Route path="/strategy-call" element={<StrategyCallPage />} />
@@ -122,6 +115,7 @@ const App = () => (
             <Route path="/industries/government" element={<Government />} />
             
             {/* Portfolio Detail Routes */}
+            <Route path="/portfolio/houston-enterprise" element={<HoustonEnterprise />} />
             <Route path="/portfolio/vargas-tax" element={<VargasGroup />} />
             <Route path="/portfolio/clearledger" element={<ClearLedger />} />
             <Route path="/portfolio/blutouch-pools" element={<BluTouchPools />} />

@@ -14,6 +14,17 @@ const Portfolio = () => {
 
   const projects = [
     {
+      id: "houston-enterprise",
+      title: "Houston Enterprise",
+      category: "Construction Services",
+      description: "Comprehensive construction services tailored to your needs. From custom home construction and renovations to meticulous remodeling projects, delivering excellence in residential and commercial construction.",
+      image: "/helogo.png",
+      tags: ["Construction", "Residential", "Commercial", "Project Management"],
+      metrics: { leads: "450%", inquiries: "280%", satisfaction: "98%", value: "+35%" },
+      industry: "Construction Services",
+      services: ["Website Development", "Local SEO Domination", "Lead Generation", "Conversion Optimization"]
+    },
+    {
       id: "vargas-tax",
       title: "Vargas Tax",
       category: "Tax Preparation Services",
@@ -105,6 +116,7 @@ const Portfolio = () => {
 
   const industries = [
     { value: "all", label: "All Industries" },
+    { value: "Construction Services", label: "Construction Services" },
     { value: "Tax Services", label: "Tax Services" },
     { value: "Financial Services", label: "Financial Services" },
     { value: "Pool & Spa Services", label: "Pool & Spa Services" },
