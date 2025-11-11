@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import ServicesMegaMenu from "./ServicesMegaMenu";
 import ContactMegaMenu from "./ContactMegaMenu";
+import IndustriesMegaMenu from "./IndustriesMegaMenu";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,6 +14,7 @@ const Navigation = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isServicesMenuOpen, setIsServicesMenuOpen] = useState(false);
   const [isContactMenuOpen, setIsContactMenuOpen] = useState(false);
+  const [isIndustriesMenuOpen, setIsIndustriesMenuOpen] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [isHoveringMegaMenu, setIsHoveringMegaMenu] = useState(false);
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
@@ -78,11 +80,12 @@ const Navigation = () => {
       );
 
       // If mouse leaves the extended nav area, close mega menus
-      if (!isInNavArea && (isServicesMenuOpen || isContactMenuOpen)) {
+      if (!isInNavArea && (isServicesMenuOpen || isContactMenuOpen || isIndustriesMenuOpen)) {
         setTimeout(() => {
           if (!isHoveringMegaMenu) {
             setIsServicesMenuOpen(false);
             setIsContactMenuOpen(false);
+            setIsIndustriesMenuOpen(false);
             setActiveMegaMenu(null);
           }
         }, 500);
@@ -105,7 +108,7 @@ const Navigation = () => {
 
   const navItems = [
     { name: "Services", href: "/services", hasMegaMenu: true, megaMenuType: "services" },
-    { name: "Industries", href: "/industries" },
+    { name: "Industries", href: "/industries", hasMegaMenu: true, megaMenuType: "industries" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Blog", href: "/blog" },
     { name: "About", href: "/about" },
@@ -132,6 +135,7 @@ const Navigation = () => {
       if (!target.closest('.mega-menu-container') && !target.closest('.nav-item')) {
         setIsServicesMenuOpen(false);
         setIsContactMenuOpen(false);
+        setIsIndustriesMenuOpen(false);
         setActiveMegaMenu(null);
       }
     };
@@ -230,6 +234,10 @@ const Navigation = () => {
                             setIsHoveringNavItem("contact");
                             setIsContactMenuOpen(true);
                             setActiveMegaMenu("contact");
+                          } else if (item.megaMenuType === "industries") {
+                            setIsHoveringNavItem("industries");
+                            setIsIndustriesMenuOpen(true);
+                            setActiveMegaMenu("industries");
                           }
                         }}
                         onMouseLeave={() => {
@@ -244,6 +252,9 @@ const Navigation = () => {
                                 setActiveMegaMenu(null);
                               } else if (item.megaMenuType === "contact") {
                                 setIsContactMenuOpen(false);
+                                setActiveMegaMenu(null);
+                              } else if (item.megaMenuType === "industries") {
+                                setIsIndustriesMenuOpen(false);
                                 setActiveMegaMenu(null);
                               }
                             }
@@ -266,6 +277,7 @@ const Navigation = () => {
                         // Close any open mega menus when hovering over regular nav items
                         setIsServicesMenuOpen(false);
                         setIsContactMenuOpen(false);
+                        setIsIndustriesMenuOpen(false);
                         setActiveMegaMenu(null);
                       }}
                     >
@@ -401,6 +413,24 @@ const Navigation = () => {
         setIsOpen={setIsServicesMenuOpen}
         setIsHoveringMegaMenu={setIsHoveringMegaMenu}
       />
+
+      {/* Industries Mega Menu - positioned outside constrained container */}
+      {isIndustriesMenuOpen && (
+        <div 
+          onMouseEnter={() => setIsHoveringMegaMenu(true)}
+          onMouseLeave={() => {
+            setIsHoveringMegaMenu(false);
+            setTimeout(() => {
+              if (!isHoveringNavItem) {
+                setIsIndustriesMenuOpen(false);
+                setActiveMegaMenu(null);
+              }
+            }, 300);
+          }}
+        >
+          <IndustriesMegaMenu />
+        </div>
+      )}
 
       {/* Contact Mega Menu - positioned outside constrained container */}
       <ContactMegaMenu 

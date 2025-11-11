@@ -52,6 +52,14 @@ import HoustonDigitalServices from "./pages/landing/HoustonDigitalServices";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 
+// Industry pages
+import Healthcare from "./pages/industries/Healthcare";
+import Legal from "./pages/industries/Legal";
+import RealEstate from "./pages/industries/RealEstate";
+import HomeServices from "./pages/industries/HomeServices";
+import FinancialServices from "./pages/industries/FinancialServices";
+import Government from "./pages/industries/Government";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -102,6 +110,14 @@ const App = () => (
             <Route path="/services/brand-identity" element={<BrandIdentity />} />
             <Route path="/services/digital-campaigns" element={<DigitalCampaigns />} />
             <Route path="/services/experience-optimization" element={<ExperienceOptimization />} />
+            
+            {/* Industry Routes */}
+            <Route path="/industries/healthcare" element={<Healthcare />} />
+            <Route path="/industries/legal" element={<Legal />} />
+            <Route path="/industries/real-estate" element={<RealEstate />} />
+            <Route path="/industries/home-services" element={<HomeServices />} />
+            <Route path="/industries/financial-services" element={<FinancialServices />} />
+            <Route path="/industries/government" element={<Government />} />
             
             {/* Portfolio Detail Routes */}
             <Route path="/portfolio/vargas-tax" element={<VargasGroup />} />
