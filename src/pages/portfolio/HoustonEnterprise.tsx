@@ -18,7 +18,7 @@ const HoustonEnterprise = () => {
       
       <Navigation />
       
-      {/* Hero Section */}
+      {/* Hero Section with Website Preview */}
       <section className="pt-40 pb-24 bg-gradient-to-br from-orange-50 via-white to-amber-50 relative overflow-hidden">
         {/* Background decorations */}
         <div className="absolute inset-0 opacity-5">
@@ -34,6 +34,17 @@ const HoustonEnterprise = () => {
               alt="Houston Enterprise Construction Logo"
               className="h-24 w-auto object-contain"
             />
+          </div>
+          
+          {/* Website Preview */}
+          <div className="mb-16 max-w-6xl mx-auto">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+              <img 
+                src="/houston-enterprise-website.jpg" 
+                alt="Houston Enterprise Website Design"
+                className="w-full h-auto"
+              />
+            </div>
           </div>
           
           <div className="max-w-4xl mx-auto text-center">
