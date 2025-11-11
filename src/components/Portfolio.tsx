@@ -46,10 +46,10 @@ const Portfolio = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-4 sm:mb-6">
-            Featured Client Success Stories
+            Client Results
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-2">
-            Discover how we've helped businesses across America transform their digital presence and achieve remarkable results
+            Measurable outcomes from strategic digital transformation
           </p>
         </div>
 
@@ -132,7 +132,7 @@ const Portfolio = () => {
             to="/portfolio"
             className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl text-base sm:text-lg font-medium w-full sm:w-auto justify-center"
           >
-            View All Client Success Stories
+            View All Results
             <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
           </Link>
         </div>

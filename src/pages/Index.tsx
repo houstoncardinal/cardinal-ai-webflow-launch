@@ -1,5 +1,5 @@
 
-import HeroSlider, { ProjectEvaluationForm } from "@/components/HeroSlider";
+import HeroSlider from "@/components/HeroSlider";
 import Services from "@/components/Services";
 import ClientLogos from "@/components/ClientLogos";
 import Portfolio from "@/components/Portfolio";
@@ -8,9 +8,7 @@ import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
-import CardinalAccelerationFramework from "@/components/CardinalAccelerationFramework";
 import TrustSignals from "@/components/TrustSignals";
-import MultiStepQuoteForm from "@/components/MultiStepQuoteForm";
 import CTASection from "@/components/CTASection";
 
 const Index = () => {
@@ -30,25 +28,16 @@ const Index = () => {
         <HeroSlider />
       </div>
       
-      {/* Project Evaluation Form - Separate from hero */}
-      <ProjectEvaluationForm />
-      
       {/* Client Logos - Showcase trusted clients */}
       <ClientLogos />
       
       {/* Trust Signals */}
       <TrustSignals />
       
-      {/* Cardinal Acceleration Framework */}
-      <CardinalAccelerationFramework />
-      
       {/* Services - Light gray background for variation */}
       <div className="bg-gray-50">
         <Services />
       </div>
-      
-      {/* Multi-Step Quote Form */}
-      <MultiStepQuoteForm />
       
       {/* About - Dark background */}
       <div>

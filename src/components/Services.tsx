@@ -12,7 +12,7 @@ const Services = () => {
       accentColor: "text-blue-600",
       glowColor: "blue-500/20",
       link: "/services/web-development",
-      benefitText: "Engineered for Revenue Growth and Lead Conversion"
+      benefitText: "High-conversion websites engineered to scale your business."
     },
     {
       icon: Smartphone,
@@ -23,51 +23,29 @@ const Services = () => {
       accentColor: "text-emerald-600",
       glowColor: "emerald-500/20",
       link: "/services/mobile-applications",
-      benefitText: "Built for Scalability, Performance, and UX Excellence"
+      benefitText: "Custom applications built for performance and seamless user experience."
     },
     {
       icon: Search,
       category: "SEO & ANALYTICS",
-      title: "SEO & Analytics Services",
+      title: "SEO & Growth Systems",
       description: "Comprehensive SEO optimization and analytics solutions that drive real results. Help businesses rank higher in search results and drive more qualified traffic to their websites.",
       gradient: "from-purple-500/10 via-violet-400/15 to-purple-600/10",
       accentColor: "text-purple-600",
       glowColor: "purple-500/20",
       link: "/services/seo-insights",
-      benefitText: "Designed to Outperform Competitors in Your Market"
-    },
-    {
-      icon: BarChart3,
-      category: "DIGITAL MARKETING",
-      title: "Digital Marketing Campaigns",
-      description: "Strategic digital marketing campaigns that drive growth and engagement. From social media to email marketing, we create comprehensive strategies that deliver measurable results.",
-      gradient: "from-orange-500/10 via-red-400/15 to-orange-600/10",
-      accentColor: "text-orange-600",
-      glowColor: "orange-500/20",
-      link: "/services/digital-campaigns",
-      benefitText: "Engineered for Revenue Growth and Lead Conversion"
+      benefitText: "Search visibility and lead pipelines that generate measurable revenue."
     },
     {
       icon: Palette,
       category: "BRAND IDENTITY",
-      title: "Brand Identity Design",
+      title: "Brand Identity & Experience",
       description: "Complete brand identity solutions that make your business stand out. From logo design to brand guidelines, we create cohesive visual identities that resonate with your target audience.",
       gradient: "from-pink-500/10 via-rose-400/15 to-pink-600/10",
       accentColor: "text-pink-600",
       glowColor: "pink-500/20",
       link: "/services/brand-identity",
-      benefitText: "Built for Scalability, Performance, and UX Excellence"
-    },
-    {
-      icon: TrendingUp,
-      category: "UX/UI DESIGN",
-      title: "UX/UI Experience Optimization",
-      description: "User-centered design and interface optimization that creates exceptional digital experiences. We conduct user research, design intuitive interfaces, and optimize conversion paths to drive engagement and results.",
-      gradient: "from-teal-500/10 via-cyan-400/15 to-teal-600/10",
-      accentColor: "text-teal-600",
-      glowColor: "teal-500/20",
-      link: "/services/experience-optimization",
-      benefitText: "Designed to Outperform Competitors in Your Market"
+      benefitText: "Cohesive brand systems that create trust and differentiation."
     }
   ];
   return (
@@ -82,24 +60,15 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <div className="inline-flex items-center text-xs sm:text-sm font-medium text-green-600 uppercase tracking-wide mb-2 sm:mb-3">
-              <div className="w-6 sm:w-8 h-px bg-gradient-to-r from-green-500 to-green-600 mr-3 sm:mr-4"></div>
-              Our Services
-            </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light text-gray-900 mb-4 sm:mb-6 lg:mb-8 leading-tight">
-              Digital solutions that
-              <span className="block text-green-600 font-normal">
-                grow your business
-              </span>
+              Services
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-3xl mx-auto">
-              We deliver end-to-end digital solutions designed to transform businesses. 
-              From custom websites to comprehensive digital marketing, we help companies 
-              dominate their market and drive sustainable growth.
+              End-to-end digital solutions engineered for performance and business impact
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {services.map((service, index) => (
               <Link key={index} to={service.link} className="group relative block h-full">
                 {/* Subtle luxury glow - much more refined */}
@@ -148,20 +117,6 @@ const Services = () => {
                 </Card>
               </Link>
             ))}
-          </div>
-
-          {/* View All Services Link */}
-          <div className="text-center mt-12 sm:mt-16 lg:mt-20">
-            <Link 
-              to="/services" 
-              className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-semibold text-lg sm:text-xl transition-all duration-300 group shadow-lg hover:shadow-xl"
-            >
-              <span className="mr-3">Explore All Our Services</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
-            <p className="text-gray-600 text-sm sm:text-base mt-4 font-light">
-              Discover how we can transform your business with our complete suite of digital solutions
-            </p>
           </div>
         </div>
       </section>

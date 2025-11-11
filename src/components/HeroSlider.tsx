@@ -96,13 +96,14 @@ const HeroSlider = () => {
 
   const slides = [
     {
-      category: "Transform Your Business",
+      category: "High-Performance Digital Solutions",
       headline: {
-        first: "High-Performance Websites,",
-        second: "Mobile Apps & Digital Growth Systems"
+        first: "High-Performance Websites & Mobile Apps,",
+        second: "Built for Growth"
       },
-      description: "We build conversion-engineered digital platforms that increase revenue, capture leads, and scale operations — with fast delivery, long-term support, and proven market results.",
-      cta: "Get Free Project Roadmap",
+      description: "We design and develop digital systems that increase revenue, scale operations, and create market advantage.",
+      cta: "Get Your Free Project Roadmap",
+      ctaSecondary: "View Client Results",
       checkmarks: ["✓ 24-hour delivery", "✓ No obligation", "✓ Custom strategy"]
     },
     {
@@ -247,10 +248,10 @@ const HeroSlider = () => {
               </div>
               
               {/* CTA Section with hover animations */}
-              <div className="flex justify-start pt-3 sm:pt-4 lg:pt-5">
+              <div className="flex flex-col sm:flex-row items-center gap-4 pt-3 sm:pt-4 lg:pt-5">
                 <Button 
                   onClick={() => {
-                    if (currentSlide === 0) navigate('/strategy-call');
+                    if (currentSlide === 0) navigate('/contact');
                     else if (currentSlide === 1) navigate('/portfolio/abq-mri');
                     else navigate('/services/seo-insights');
                   }} 
@@ -259,6 +260,15 @@ const HeroSlider = () => {
                   {slides[currentSlide].cta}
                   <ArrowRight className="ml-4 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
                 </Button>
+                
+                {currentSlide === 0 && slides[currentSlide].ctaSecondary && (
+                  <button 
+                    onClick={() => navigate('/portfolio')}
+                    className={`text-gray-600 hover:text-green-600 font-medium text-lg sm:text-xl lg:text-2xl underline underline-offset-4 transition-colors duration-300 slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}
+                  >
+                    {slides[currentSlide].ctaSecondary}
+                  </button>
+                )}
               </div>
               
               <p className={`text-sm sm:text-base lg:text-lg text-gray-500 mt-5 sm:mt-6 lg:mt-7 text-center sm:text-left slide-transition ${isTransitioning ? 'slide-exit' : 'slide-enter'}`}>
