@@ -18,142 +18,149 @@ const HoustonEnterprise = () => {
       
       <Navigation />
       
-      {/* Hero Section with Device Mockup */}
-      <section className="pt-32 pb-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-[0.02]">
+      {/* Hero Section with Ultra-Modern Device Mockup */}
+      <section className="pt-24 pb-32 bg-gradient-to-b from-slate-50 via-white to-slate-50/50 relative overflow-hidden">
+        {/* Sophisticated background pattern */}
+        <div className="absolute inset-0 opacity-[0.015]">
           <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 1px 1px, rgb(0 0 0) 1px, transparent 0)',
-            backgroundSize: '40px 40px'
+            backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)',
+            backgroundSize: '48px 48px'
           }}></div>
         </div>
         
+        {/* Ambient gradient orbs */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+        
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           {/* Breadcrumb */}
-          <div className="mb-8 flex items-center gap-2 text-sm text-gray-600">
-            <Link to="/portfolio" className="hover:text-orange-600 transition-colors">Portfolio</Link>
+          <div className="mb-12 flex items-center gap-2 text-sm text-muted-foreground">
+            <Link to="/portfolio" className="hover:text-primary transition-colors font-medium">Portfolio</Link>
             <span>/</span>
-            <span className="text-gray-900 font-medium">Houston Enterprise</span>
+            <span className="text-foreground font-semibold">Houston Enterprise</span>
           </div>
           
-          {/* Client Logo */}
-          <div className="mb-16 flex justify-center">
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-              <img 
-                src="/houston-enterprise-logo.png" 
-                alt="Houston Enterprise Construction Logo"
-                loading="eager"
-                decoding="async"
-                className="h-16 w-auto object-contain opacity-90"
-              />
-            </div>
-          </div>
-          
-          {/* Headline */}
-          <div className="max-w-5xl mx-auto text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full mb-8">
-              <div className="w-2 h-2 bg-orange-600 rounded-full"></div>
-              <span className="text-xs font-semibold text-gray-700 uppercase tracking-wider">Case Study</span>
+          {/* Headline Section */}
+          <div className="max-w-6xl mx-auto text-center mb-24">
+            <div className="inline-flex items-center gap-2.5 px-4 py-2.5 bg-muted/50 backdrop-blur-sm rounded-full mb-10 border border-border/40">
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+              <span className="text-xs font-bold text-foreground uppercase tracking-[0.15em]">Client Success Story</span>
             </div>
             
-            <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 leading-[1.1] mb-8 tracking-tight">
-              From Digital Invisibility to
-              <span className="block text-orange-600 mt-2">
-                Market Leadership
+            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-foreground leading-[0.95] mb-10 tracking-tight">
+              From Digital Invisibility
+              <span className="block bg-gradient-to-r from-primary via-orange-600 to-amber-600 bg-clip-text text-transparent mt-3">
+                to Market Dominance
               </span>
             </h1>
             
-            <p className="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto font-light">
-              How a comprehensive digital transformation delivered <span className="font-semibold text-gray-900">450% lead growth</span> and established Houston Enterprise as the premier construction partner in their market.
+            <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-4xl mx-auto font-light">
+              A comprehensive digital transformation that delivered <span className="font-bold text-foreground">450% qualified lead growth</span>, establishing Houston Enterprise as the premier construction partner in their market.
             </p>
           </div>
           
-          {/* Photorealistic iMac Mockup */}
-          <div className="max-w-7xl mx-auto mb-20 px-4">
-            <div className="relative" style={{ perspective: '2000px' }}>
-              {/* iMac Device */}
-              <div className="relative" style={{ transformStyle: 'preserve-3d' }}>
-                {/* Monitor Body */}
-                <div className="relative bg-gradient-to-b from-[#e8e8e8] via-[#f5f5f5] to-[#e8e8e8] rounded-[20px] p-[18px] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.25),0_30px_60px_-30px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.6)]">
-                  {/* Screen Bezel */}
-                  <div className="relative bg-gradient-to-b from-[#2c2c2c] to-[#1a1a1a] rounded-[12px] p-[8px] shadow-[inset_0_2px_8px_rgba(0,0,0,0.3)]">
-                    {/* Inner Bezel Highlight */}
-                    <div className="absolute inset-0 rounded-[12px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"></div>
+          {/* Ultra-Modern iMac Pro Mockup */}
+          <div className="max-w-[1400px] mx-auto mb-28 px-4">
+            <div className="relative" style={{ perspective: '3000px' }}>
+              {/* iMac Pro Device - Ultra Thin Bezels */}
+              <div className="relative group" style={{ transformStyle: 'preserve-3d', transform: 'rotateX(2deg)' }}>
+                {/* Outer Aluminum Frame */}
+                <div className="relative rounded-[28px] p-[10px] bg-gradient-to-b from-[#e2e2e2] via-[#f0f0f0] to-[#dcdcdc] shadow-[0_60px_120px_-25px_rgba(0,0,0,0.35),0_40px_80px_-30px_rgba(0,0,0,0.2),inset_0_2px_4px_rgba(255,255,255,0.5),inset_0_-1px_2px_rgba(0,0,0,0.1)]">
+                  
+                  {/* Ultra-Thin Bezel */}
+                  <div className="relative bg-gradient-to-b from-[#1a1a1a] to-[#0d0d0d] rounded-[22px] p-[4px] shadow-[inset_0_2px_12px_rgba(0,0,0,0.4),inset_0_-1px_4px_rgba(255,255,255,0.05)]">
                     
-                    {/* Screen */}
-                    <div className="relative bg-black rounded-[8px] overflow-hidden">
-                      {/* Screen Gloss Effect */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none z-10"></div>
+                    {/* Screen Container */}
+                    <div className="relative bg-black rounded-[20px] overflow-hidden shadow-[inset_0_0_1px_rgba(255,255,255,0.1)]">
                       
-                      {/* Actual Website Screenshot */}
-                      <div className="relative">
+                      {/* Multi-layer Screen Gloss */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/8 via-transparent via-30% to-transparent pointer-events-none z-20"></div>
+                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/3 to-white/6 pointer-events-none z-20"></div>
+                      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white/4 to-transparent pointer-events-none z-20"></div>
+                      
+                      {/* Ambient Screen Glow */}
+                      <div className="absolute -inset-1 bg-gradient-to-br from-blue-500/10 via-transparent to-orange-500/10 blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-700"></div>
+                      
+                      {/* Website Screenshot */}
+                      <div className="relative z-10">
                         <img 
                           src="/houston-enterprise-screenshot.png" 
-                          alt="Houston Enterprise Website Design"
+                          alt="Houston Enterprise Professional Website Interface"
                           loading="eager"
                           decoding="async"
-                          className="w-full h-auto"
+                          className="w-full h-auto block"
                         />
                       </div>
+                      
+                      {/* Screen Inner Shadow for Depth */}
+                      <div className="absolute inset-0 rounded-[20px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] pointer-events-none z-30"></div>
                     </div>
                   </div>
                   
-                  {/* Camera */}
-                  <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-[6px] h-[6px] bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] rounded-full shadow-[0_1px_3px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.1)]">
-                    <div className="absolute inset-[1px] bg-gradient-to-br from-[#1e3a5f] to-[#0f1f3f] rounded-full"></div>
+                  {/* High-res Camera */}
+                  <div className="absolute top-[7px] left-1/2 -translate-x-1/2 w-[7px] h-[7px] bg-gradient-to-br from-[#0a0a0a] to-black rounded-full shadow-[0_2px_4px_rgba(0,0,0,0.4),inset_0_1px_2px_rgba(255,255,255,0.05)]">
+                    <div className="absolute inset-[1.5px] bg-gradient-to-br from-[#1a3a5f] via-[#0f2545] to-[#0a1a30] rounded-full"></div>
+                    <div className="absolute inset-[2px] bg-gradient-radial from-blue-400/30 to-transparent rounded-full"></div>
                   </div>
+                  
+                  {/* Edge Lighting Effect */}
+                  <div className="absolute inset-0 rounded-[28px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-1px_1px_rgba(0,0,0,0.2)] pointer-events-none"></div>
                 </div>
                 
-                {/* Stand */}
-                <div className="flex justify-center -mt-[2px]">
-                  <div className="relative w-[140px] h-[28px]">
-                    {/* Stand Main Body */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#e0e0e0] via-[#d5d5d5] to-[#c8c8c8] rounded-b-[8px] shadow-[0_8px_16px_-4px_rgba(0,0,0,0.2)]">
-                      {/* Stand Highlight */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-b-[8px]"></div>
+                {/* Modern Tapered Stand */}
+                <div className="flex justify-center -mt-[1px] relative z-10">
+                  <div className="relative w-[160px] h-[32px]">
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#e2e2e2] via-[#d5d5d5] to-[#c5c5c5] rounded-b-[10px] shadow-[0_10px_20px_-5px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.3)]">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent rounded-b-[10px]"></div>
+                      <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-b from-transparent to-black/10 rounded-b-[10px]"></div>
                     </div>
                   </div>
                 </div>
                 
-                {/* Base */}
-                <div className="flex justify-center -mt-[1px]">
-                  <div className="relative w-[240px] h-[12px]">
-                    {/* Base Shadow */}
-                    <div className="absolute inset-x-0 -bottom-[8px] h-[8px] bg-gradient-radial from-black/20 via-black/10 to-transparent rounded-full blur-sm"></div>
+                {/* Premium Base with Logo Indent */}
+                <div className="flex justify-center -mt-[1px] relative z-10">
+                  <div className="relative w-[280px] h-[14px]">
+                    {/* Base Ambient Shadow */}
+                    <div className="absolute inset-x-0 -bottom-[12px] h-[12px] bg-gradient-radial from-black/25 via-black/10 to-transparent rounded-full blur-lg"></div>
                     
                     {/* Base Body */}
-                    <div className="relative h-full bg-gradient-to-b from-[#e8e8e8] via-[#d8d8d8] to-[#c8c8c8] rounded-[16px] shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.3)]">
-                      {/* Base Edge Highlight */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-transparent rounded-[16px]"></div>
+                    <div className="relative h-full bg-gradient-to-b from-[#e5e5e5] via-[#d8d8d8] to-[#c8c8c8] rounded-[20px] shadow-[0_6px_16px_-3px_rgba(0,0,0,0.35),inset_0_2px_1px_rgba(255,255,255,0.4),inset_0_-1px_1px_rgba(0,0,0,0.1)]">
+                      {/* Anodized Aluminum Effect */}
+                      <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.08)_50%,transparent_100%)] rounded-[20px]"></div>
+                      
+                      {/* Subtle Logo Indent */}
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-2 bg-gradient-to-b from-black/5 to-transparent rounded-sm"></div>
                     </div>
                   </div>
                 </div>
                 
-                {/* Desk Shadow */}
-                <div className="absolute inset-x-0 -bottom-[40px] h-[40px] bg-gradient-radial from-black/15 via-black/5 to-transparent blur-2xl"></div>
+                {/* Desk Contact Shadow with Soft Edges */}
+                <div className="absolute inset-x-0 -bottom-[50px] h-[50px]">
+                  <div className="w-full h-full bg-gradient-radial from-black/20 via-black/8 to-transparent blur-3xl"></div>
+                </div>
               </div>
               
-              {/* Floating Metric Cards - Refined */}
-              <div className="absolute -right-8 top-[20%] hidden xl:block animate-fade-in" style={{ animationDelay: '0.3s' }}>
-                <div className="bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] p-8 border border-gray-100 backdrop-blur-sm">
-                  <div className="text-5xl font-bold bg-gradient-to-br from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">450%</div>
-                  <div className="text-sm text-gray-600 font-medium">Lead Growth</div>
-                  <div className="mt-3 pt-3 border-t border-gray-100">
-                    <div className="flex items-center gap-2 text-xs text-green-600 font-semibold">
-                      <TrendingUp className="w-3 h-3" />
+              {/* Floating Metric Cards - Premium Design */}
+              <div className="absolute -right-12 top-[18%] hidden xl:block animate-fade-in" style={{ animationDelay: '0.4s', animationDuration: '0.6s' }}>
+                <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_70px_-15px_rgba(0,0,0,0.3),0_0_1px_rgba(0,0,0,0.1)] p-10 border border-border/50 hover:shadow-[0_25px_80px_-15px_rgba(0,0,0,0.35)] transition-all duration-500 hover:-translate-y-1">
+                  <div className="text-6xl font-black bg-gradient-to-br from-emerald-600 via-green-600 to-teal-600 bg-clip-text text-transparent mb-3 tracking-tight">450%</div>
+                  <div className="text-sm text-muted-foreground font-bold uppercase tracking-wider mb-4">Lead Growth</div>
+                  <div className="pt-4 border-t border-border/40">
+                    <div className="flex items-center gap-2.5 text-xs text-emerald-700 font-bold">
+                      <TrendingUp className="w-4 h-4" strokeWidth={2.5} />
                       <span>+385 Qualified Leads</span>
                     </div>
                   </div>
                 </div>
               </div>
               
-              <div className="absolute -left-8 bottom-[25%] hidden xl:block animate-fade-in" style={{ animationDelay: '0.5s' }}>
-                <div className="bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] p-8 border border-gray-100 backdrop-blur-sm">
-                  <div className="text-5xl font-bold bg-gradient-to-br from-orange-600 to-amber-600 bg-clip-text text-transparent mb-2">#1</div>
-                  <div className="text-sm text-gray-600 font-medium">Local Ranking</div>
-                  <div className="mt-3 pt-3 border-t border-gray-100">
-                    <div className="flex items-center gap-2 text-xs text-orange-600 font-semibold">
-                      <Award className="w-3 h-3" />
+              <div className="absolute -left-12 bottom-[22%] hidden xl:block animate-fade-in" style={{ animationDelay: '0.6s', animationDuration: '0.6s' }}>
+                <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_70px_-15px_rgba(0,0,0,0.3),0_0_1px_rgba(0,0,0,0.1)] p-10 border border-border/50 hover:shadow-[0_25px_80px_-15px_rgba(0,0,0,0.35)] transition-all duration-500 hover:-translate-y-1">
+                  <div className="text-6xl font-black bg-gradient-to-br from-primary via-orange-600 to-amber-600 bg-clip-text text-transparent mb-3 tracking-tight">#1</div>
+                  <div className="text-sm text-muted-foreground font-bold uppercase tracking-wider mb-4">Local Ranking</div>
+                  <div className="pt-4 border-t border-border/40">
+                    <div className="flex items-center gap-2.5 text-xs font-bold" style={{ color: 'hsl(var(--primary))' }}>
+                      <Award className="w-4 h-4" strokeWidth={2.5} />
                       <span>Top Houston Position</span>
                     </div>
                   </div>
@@ -162,154 +169,167 @@ const HoustonEnterprise = () => {
             </div>
           </div>
           
-          {/* Key Metrics Grid - Refined */}
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white rounded-xl p-8 text-center border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-gray-50 rounded-xl mb-4 group-hover:bg-gray-100 transition-colors">
-                  <TrendingUp className="w-6 h-6 text-gray-700" />
+          {/* Key Metrics Grid - Executive Dashboard Style */}
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+              <div className="bg-background rounded-2xl p-10 text-center border border-border shadow-sm hover:shadow-xl hover:border-border/80 transition-all duration-500 group hover:-translate-y-0.5">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-muted rounded-2xl mb-5 group-hover:bg-muted/80 group-hover:scale-110 transition-all duration-300">
+                  <TrendingUp className="w-7 h-7 text-foreground" strokeWidth={2} />
                 </div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">280%</div>
-                <div className="text-sm text-gray-600 font-medium">Project Inquiries</div>
+                <div className="text-5xl font-black text-foreground mb-3 tracking-tight">280%</div>
+                <div className="text-sm text-muted-foreground font-bold uppercase tracking-wider">Project Inquiries</div>
               </div>
               
-              <div className="bg-white rounded-xl p-8 text-center border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-gray-50 rounded-xl mb-4 group-hover:bg-gray-100 transition-colors">
-                  <Target className="w-6 h-6 text-gray-700" />
+              <div className="bg-background rounded-2xl p-10 text-center border border-border shadow-sm hover:shadow-xl hover:border-border/80 transition-all duration-500 group hover:-translate-y-0.5">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-muted rounded-2xl mb-5 group-hover:bg-muted/80 group-hover:scale-110 transition-all duration-300">
+                  <Target className="w-7 h-7 text-foreground" strokeWidth={2} />
                 </div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">72%</div>
-                <div className="text-sm text-gray-600 font-medium">Conversion Rate</div>
+                <div className="text-5xl font-black text-foreground mb-3 tracking-tight">72%</div>
+                <div className="text-sm text-muted-foreground font-bold uppercase tracking-wider">Conversion Rate</div>
               </div>
               
-              <div className="bg-white rounded-xl p-8 text-center border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-gray-50 rounded-xl mb-4 group-hover:bg-gray-100 transition-colors">
-                  <Users className="w-6 h-6 text-gray-700" />
+              <div className="bg-background rounded-2xl p-10 text-center border border-border shadow-sm hover:shadow-xl hover:border-border/80 transition-all duration-500 group hover:-translate-y-0.5">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-muted rounded-2xl mb-5 group-hover:bg-muted/80 group-hover:scale-110 transition-all duration-300">
+                  <Users className="w-7 h-7 text-foreground" strokeWidth={2} />
                 </div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">+40%</div>
-                <div className="text-sm text-gray-600 font-medium">Team Expansion</div>
+                <div className="text-5xl font-black text-foreground mb-3 tracking-tight">+40%</div>
+                <div className="text-sm text-muted-foreground font-bold uppercase tracking-wider">Team Expansion</div>
               </div>
               
-              <div className="bg-white rounded-xl p-8 text-center border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-gray-50 rounded-xl mb-4 group-hover:bg-gray-100 transition-colors">
-                  <Clock className="w-6 h-6 text-gray-700" />
+              <div className="bg-background rounded-2xl p-10 text-center border border-border shadow-sm hover:shadow-xl hover:border-border/80 transition-all duration-500 group hover:-translate-y-0.5">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-muted rounded-2xl mb-5 group-hover:bg-muted/80 group-hover:scale-110 transition-all duration-300">
+                  <Clock className="w-7 h-7 text-foreground" strokeWidth={2} />
                 </div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">6mo</div>
-                <div className="text-sm text-gray-600 font-medium">Project Pipeline</div>
+                <div className="text-5xl font-black text-foreground mb-3 tracking-tight">6mo</div>
+                <div className="text-sm text-muted-foreground font-bold uppercase tracking-wider">Project Pipeline</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Client Background - Story Section */}
-      <section className="py-32 bg-white relative">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-20 items-center mb-20">
+      {/* Client Background - Executive Summary */}
+      <section className="py-40 bg-background relative overflow-hidden">
+        {/* Subtle Grid Background */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'linear-gradient(hsl(var(--border)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px)',
+            backgroundSize: '64px 64px'
+          }}></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-24 items-start">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full mb-8">
-                <div className="w-1.5 h-1.5 bg-orange-600 rounded-full"></div>
-                <span className="text-xs font-semibold text-gray-700 uppercase tracking-wider">The Challenge</span>
+              <div className="inline-flex items-center gap-2.5 px-4 py-2.5 bg-muted/60 backdrop-blur-sm rounded-full mb-10">
+                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: 'hsl(var(--primary))' }}></div>
+                <span className="text-xs font-bold uppercase tracking-[0.15em]" style={{ color: 'hsl(var(--foreground))' }}>The Situation</span>
               </div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-                Exceptional Work,<br />Invisible Online
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-10 leading-[1.05] tracking-tight">
+                Exceptional Execution,<br />Zero Digital Presence
               </h2>
-              <div className="space-y-6 text-gray-600 leading-relaxed">
-                <p className="text-lg">
-                  Houston Enterprise had built an exceptional reputation through years of superior construction work. Their craftsmanship was unmatched, with a portfolio of satisfied clients across Houston.
+              <div className="space-y-7 text-muted-foreground text-base md:text-lg leading-relaxed">
+                <p className="text-lg font-light">
+                  Houston Enterprise had established an exceptional reputation through decades of superior construction execution. Their craftsmanship was industry-leading, with a portfolio of premium residential and commercial projects across Houston.
                 </p>
-                <p className="text-lg">
-                  Yet when prospective clients searched for construction services online, Houston Enterprise was nowhere to be found. Their digital presence failed to reflect their real-world excellence.
+                <p className="text-lg font-light">
+                  However, when high-value prospects searched for construction partners online, Houston Enterprise was completely invisible. Their digital footprint failed to reflect their real-world market position and capabilities.
                 </p>
-                <p className="text-base font-medium text-gray-900">
-                  The disconnect was costing them millions in lost opportunities.
-                </p>
+                <div className="bg-muted/30 border-l-4 rounded-r-xl p-6 backdrop-blur-sm" style={{ borderColor: 'hsl(var(--primary))' }}>
+                  <p className="text-base font-bold text-foreground">
+                    This digital-physical disconnect was resulting in millions of dollars in lost high-margin opportunities annually.
+                  </p>
+                </div>
               </div>
             </div>
             
-            <div className="space-y-4">
-              <div className="bg-white p-8 rounded-xl border border-gray-200 hover:border-gray-300 transition-colors">
-                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Industry</div>
-                <div className="text-2xl font-bold text-gray-900 mb-1">Construction Services</div>
-                <div className="text-gray-600">Residential & Commercial</div>
+            <div className="space-y-5">
+              <div className="bg-card border border-border rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:border-primary/30">
+                <div className="text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground mb-4">Industry Vertical</div>
+                <div className="text-3xl font-black text-foreground mb-2 tracking-tight">Construction Services</div>
+                <div className="text-base text-muted-foreground font-medium">Residential & Commercial</div>
               </div>
               
-              <div className="bg-white p-8 rounded-xl border border-gray-200 hover:border-gray-300 transition-colors">
-                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Location</div>
-                <div className="text-2xl font-bold text-gray-900 mb-1">Houston, Texas</div>
-                <div className="text-gray-600">Greater Houston Metro</div>
+              <div className="bg-card border border-border rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:border-primary/30">
+                <div className="text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground mb-4">Market</div>
+                <div className="text-3xl font-black text-foreground mb-2 tracking-tight">Houston, Texas</div>
+                <div className="text-base text-muted-foreground font-medium">Greater Houston Metropolitan Area</div>
               </div>
               
-              <div className="bg-white p-8 rounded-xl border border-gray-200 hover:border-gray-300 transition-colors">
-                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Project Duration</div>
-                <div className="text-2xl font-bold text-gray-900 mb-1">10 Weeks</div>
-                <div className="text-gray-600">Discovery to Launch</div>
+              <div className="bg-card border border-border rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:border-primary/30">
+                <div className="text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground mb-4">Transformation Timeline</div>
+                <div className="text-3xl font-black text-foreground mb-2 tracking-tight">10 Weeks</div>
+                <div className="text-base text-muted-foreground font-medium">Discovery Through Full Deployment</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Core Problems - Pain Points */}
-      <section className="py-32 bg-gray-50 relative">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full mb-8">
-              <div className="w-1.5 h-1.5 bg-gray-700 rounded-full"></div>
-              <span className="text-xs font-semibold text-gray-700 uppercase tracking-wider">The Problems</span>
+      {/* Core Problems - Analytical Framework */}
+      <section className="py-40 bg-muted/30 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-24">
+            <div className="inline-flex items-center gap-2.5 px-4 py-2.5 bg-background/80 backdrop-blur-sm rounded-full mb-10 border border-border/50">
+              <div className="w-2 h-2 bg-foreground rounded-full"></div>
+              <span className="text-xs font-bold uppercase tracking-[0.15em] text-foreground">Critical Analysis</span>
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Three Critical Barriers<br />to Growth
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-8 leading-[1.05] tracking-tight">
+              Three Systemic<br />Growth Constraints
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto font-light">
-              Despite exceptional service delivery, systemic digital challenges were limiting market reach and revenue potential.
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
+              Despite exceptional operational execution, fundamental digital infrastructure gaps were systematically limiting market penetration and revenue scaling potential.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card className="border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white group">
-              <CardContent className="p-8">
-                <div className="bg-gray-100 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gray-200 transition-colors">
-                  <span className="text-2xl">🔍</span>
+          <div className="grid lg:grid-cols-3 gap-6">
+            <Card className="border border-border bg-card hover:shadow-2xl transition-all duration-500 group hover:-translate-y-1">
+              <CardContent className="p-10">
+                <div className="bg-muted w-16 h-16 rounded-2xl flex items-center justify-center mb-7 group-hover:bg-muted/80 group-hover:scale-110 transition-all duration-300">
+                  <span className="text-3xl">🔍</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Search Invisibility</h3>
-                <p className="text-gray-600 leading-relaxed mb-6 text-sm">
-                  Zero organic visibility for high-intent construction searches. Competitors with inferior portfolios captured the market due to stronger digital presence.
+                <h3 className="text-2xl font-black text-foreground mb-5 tracking-tight">Market Invisibility</h3>
+                <p className="text-muted-foreground leading-relaxed mb-7 text-base font-light">
+                  Complete absence of organic search visibility for high-commercial-intent construction keywords. Inferior competitors systematically captured qualified demand through superior digital positioning.
                 </p>
-                <div className="bg-gray-50 rounded-lg p-4 border border-gray-100">
-                  <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Quantified Impact</div>
-                  <div className="text-sm font-medium text-gray-900">80%+ of market unreachable</div>
+                <div className="bg-muted/50 rounded-xl p-5 border border-border/40">
+                  <div className="text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground mb-2">Quantified Business Impact</div>
+                  <div className="text-sm font-bold text-foreground">80%+ addressable market unreachable</div>
                 </div>
               </CardContent>
             </Card>
             
-            <Card className="border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white group">
-              <CardContent className="p-8">
-                <div className="bg-gray-100 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gray-200 transition-colors">
-                  <span className="text-2xl">📱</span>
+            <Card className="border border-border bg-card hover:shadow-2xl transition-all duration-500 group hover:-translate-y-1">
+              <CardContent className="p-10">
+                <div className="bg-muted w-16 h-16 rounded-2xl flex items-center justify-center mb-7 group-hover:bg-muted/80 group-hover:scale-110 transition-all duration-300">
+                  <span className="text-3xl">📱</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Suboptimal User Experience</h3>
-                <p className="text-gray-600 leading-relaxed mb-6 text-sm">
-                  Dated interface failed to communicate quality. Mobile dysfunction and unclear messaging resulted in immediate visitor abandonment.
+                <h3 className="text-2xl font-black text-foreground mb-5 tracking-tight">Experience Dysfunction</h3>
+                <p className="text-muted-foreground leading-relaxed mb-7 text-base font-light">
+                  Legacy digital interface failed to communicate premium positioning. Critical mobile experience failures and ambiguous value proposition resulted in immediate prospect abandonment.
                 </p>
-                <div className="bg-gray-50 rounded-lg p-4 border border-gray-100">
-                  <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Quantified Impact</div>
-                  <div className="text-sm font-medium text-gray-900">78% mobile bounce rate</div>
+                <div className="bg-muted/50 rounded-xl p-5 border border-border/40">
+                  <div className="text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground mb-2">Quantified Business Impact</div>
+                  <div className="text-sm font-bold text-foreground">78% mobile abandonment rate</div>
                 </div>
               </CardContent>
             </Card>
             
-            <Card className="border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white group">
-              <CardContent className="p-8">
-                <div className="bg-gray-100 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gray-200 transition-colors">
-                  <span className="text-2xl">📊</span>
+            <Card className="border border-border bg-card hover:shadow-2xl transition-all duration-500 group hover:-translate-y-1">
+              <CardContent className="p-10">
+                <div className="bg-muted w-16 h-16 rounded-2xl flex items-center justify-center mb-7 group-hover:bg-muted/80 group-hover:scale-110 transition-all duration-300">
+                  <span className="text-3xl">📊</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Referral Dependency</h3>
-                <p className="text-gray-600 leading-relaxed mb-6 text-sm">
-                  No systematic acquisition channel. Complete reliance on word-of-mouth created unpredictable revenue and prevented strategic planning.
+                <h3 className="text-2xl font-black text-foreground mb-5 tracking-tight">Acquisition Fragility</h3>
+                <p className="text-muted-foreground leading-relaxed mb-7 text-base font-light">
+                  Zero systematized demand generation infrastructure. Complete reliance on unscalable referral networks created revenue unpredictability and prevented strategic growth planning.
                 </p>
-                <div className="bg-gray-50 rounded-lg p-4 border border-gray-100">
-                  <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Quantified Impact</div>
-                  <div className="text-sm font-medium text-gray-900">Volatile cash flow & scaling limits</div>
+                <div className="bg-muted/50 rounded-xl p-5 border border-border/40">
+                  <div className="text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground mb-2">Quantified Business Impact</div>
+                  <div className="text-sm font-bold text-foreground">Volatile pipeline & scaling ceiling</div>
                 </div>
               </CardContent>
             </Card>
@@ -317,50 +337,57 @@ const HoustonEnterprise = () => {
         </div>
       </section>
 
-      {/* Strategic Approach - Solution */}
-      <section className="py-32 bg-white relative">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-50 rounded-full mb-6">
-              <div className="w-2 h-2 bg-green-600 rounded-full animate-pulse"></div>
-              <span className="text-sm font-semibold text-green-800 uppercase tracking-wide">Our Solution</span>
+      {/* Strategic Approach - Transformation Framework */}
+      <section className="py-40 bg-background relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.02]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, hsl(var(--foreground)) 1px, transparent 0)',
+            backgroundSize: '56px 56px'
+          }}></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-24">
+            <div className="inline-flex items-center gap-2.5 px-5 py-3 bg-emerald-500/10 backdrop-blur-sm rounded-full mb-10 border border-emerald-500/20">
+              <div className="w-2 h-2 bg-emerald-600 rounded-full animate-pulse"></div>
+              <span className="text-xs font-bold uppercase tracking-[0.15em] text-emerald-900">Strategic Framework</span>
             </div>
-            <h2 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Three-Pillar Digital Transformation
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-8 leading-[1.05] tracking-tight">
+              Three-Pillar Digital<br />Transformation
             </h2>
-            <div className="w-20 h-1.5 bg-gradient-to-r from-green-500 to-emerald-500 mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A comprehensive strategy designed to establish Houston Enterprise as the premier digital-first construction partner.
+            <div className="w-24 h-1 bg-gradient-to-r from-emerald-600 to-teal-600 mx-auto mb-8 rounded-full"></div>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto font-light leading-relaxed">
+              A comprehensive digital infrastructure strategy engineered to establish market leadership through systematic brand elevation, demand generation, and conversion optimization.
             </p>
           </div>
           
-          <div className="space-y-8">
+          <div className="space-y-8 max-w-6xl mx-auto">
             <div className="group">
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-10 border border-green-100 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-                <div className="flex items-start gap-8">
-                  <div className="bg-gradient-to-br from-green-500 to-emerald-600 w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <div className="bg-card border border-border rounded-3xl p-10 lg:p-12 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+                <div className="flex flex-col lg:flex-row items-start gap-10">
+                  <div className="bg-gradient-to-br from-emerald-500 to-teal-600 w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <span className="text-4xl">🎯</span>
                   </div>
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="bg-green-600 text-white text-sm font-bold px-4 py-1.5 rounded-full">Pillar 1</span>
-                      <h3 className="text-3xl font-bold text-gray-900">Brand-First Digital Foundation</h3>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
+                      <span className="bg-emerald-600 text-white text-xs font-black px-4 py-2 rounded-full uppercase tracking-wider">Initiative 1</span>
+                      <h3 className="text-3xl lg:text-4xl font-black text-foreground tracking-tight">Brand-First Digital Foundation</h3>
                     </div>
-                    <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                      Complete website transformation showcasing construction excellence through stunning project galleries, detailed service breakdowns, and authentic client testimonials. Mobile-optimized architecture ensuring flawless experience across all devices.
+                    <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8 font-light">
+                      Complete digital platform transformation showcasing construction excellence through premium project galleries, comprehensive service architectures, and verified client validation. Mobile-optimized infrastructure ensuring optimal experience across all touchpoints.
                     </p>
-                    <div className="grid md:grid-cols-3 gap-4">
-                      <div className="bg-white rounded-lg p-4 border border-green-100">
-                        <div className="text-green-600 font-bold mb-1">High-Impact Design</div>
-                        <div className="text-sm text-gray-600">Visual storytelling that converts</div>
+                    <div className="grid sm:grid-cols-3 gap-4">
+                      <div className="bg-muted/50 rounded-xl p-5 border border-border/50">
+                        <div className="text-emerald-600 font-bold mb-1.5 text-sm">Premium Design</div>
+                        <div className="text-xs text-muted-foreground font-medium">Visual storytelling system</div>
                       </div>
-                      <div className="bg-white rounded-lg p-4 border border-green-100">
-                        <div className="text-green-600 font-bold mb-1">Mobile-First</div>
-                        <div className="text-sm text-gray-600">Optimized for on-site browsing</div>
+                      <div className="bg-muted/50 rounded-xl p-5 border border-border/50">
+                        <div className="text-emerald-600 font-bold mb-1.5 text-sm">Mobile-First</div>
+                        <div className="text-xs text-muted-foreground font-medium">Field-optimized experience</div>
                       </div>
-                      <div className="bg-white rounded-lg p-4 border border-green-100">
-                        <div className="text-green-600 font-bold mb-1">Trust Signals</div>
-                        <div className="text-sm text-gray-600">Credentials & testimonials</div>
+                      <div className="bg-muted/50 rounded-xl p-5 border border-border/50">
+                        <div className="text-emerald-600 font-bold mb-1.5 text-sm">Trust Architecture</div>
+                        <div className="text-xs text-muted-foreground font-medium">Credentials & social proof</div>
                       </div>
                     </div>
                   </div>
@@ -369,31 +396,31 @@ const HoustonEnterprise = () => {
             </div>
             
             <div className="group">
-              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-10 border border-blue-100 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-                <div className="flex items-start gap-8">
+              <div className="bg-card border border-border rounded-3xl p-10 lg:p-12 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+                <div className="flex flex-col lg:flex-row items-start gap-10">
                   <div className="bg-gradient-to-br from-blue-500 to-indigo-600 w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <span className="text-4xl">🚀</span>
                   </div>
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="bg-blue-600 text-white text-sm font-bold px-4 py-1.5 rounded-full">Pillar 2</span>
-                      <h3 className="text-3xl font-bold text-gray-900">Local SEO Domination</h3>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
+                      <span className="bg-blue-600 text-white text-xs font-black px-4 py-2 rounded-full uppercase tracking-wider">Initiative 2</span>
+                      <h3 className="text-3xl lg:text-4xl font-black text-foreground tracking-tight">Local Market Dominance</h3>
                     </div>
-                    <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                      Strategic optimization targeting high-intent construction keywords across Houston markets. Google Business Profile enhancement, strategic citation building, and proactive review management to dominate local search rankings.
+                    <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8 font-light">
+                      Advanced SEO infrastructure targeting high-commercial-intent construction keywords across Houston metropolitan markets. Google Business Profile optimization, strategic citation architecture, and systematic review management to dominate local search positioning.
                     </p>
-                    <div className="grid md:grid-cols-3 gap-4">
-                      <div className="bg-white rounded-lg p-4 border border-blue-100">
-                        <div className="text-blue-600 font-bold mb-1">Keyword Strategy</div>
-                        <div className="text-sm text-gray-600">High-intent local targeting</div>
+                    <div className="grid sm:grid-cols-3 gap-4">
+                      <div className="bg-muted/50 rounded-xl p-5 border border-border/50">
+                        <div className="text-blue-600 font-bold mb-1.5 text-sm">Keyword Strategy</div>
+                        <div className="text-xs text-muted-foreground font-medium">High-intent local targeting</div>
                       </div>
-                      <div className="bg-white rounded-lg p-4 border border-blue-100">
-                        <div className="text-blue-600 font-bold mb-1">Google My Business</div>
-                        <div className="text-sm text-gray-600">Optimized for local pack</div>
+                      <div className="bg-muted/50 rounded-xl p-5 border border-border/50">
+                        <div className="text-blue-600 font-bold mb-1.5 text-sm">Business Profile</div>
+                        <div className="text-xs text-muted-foreground font-medium">Local pack optimization</div>
                       </div>
-                      <div className="bg-white rounded-lg p-4 border border-blue-100">
-                        <div className="text-blue-600 font-bold mb-1">Review System</div>
-                        <div className="text-sm text-gray-600">Automated reputation building</div>
+                      <div className="bg-muted/50 rounded-xl p-5 border border-border/50">
+                        <div className="text-blue-600 font-bold mb-1.5 text-sm">Review System</div>
+                        <div className="text-xs text-muted-foreground font-medium">Automated reputation engine</div>
                       </div>
                     </div>
                   </div>
@@ -402,31 +429,31 @@ const HoustonEnterprise = () => {
             </div>
             
             <div className="group">
-              <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-10 border border-purple-100 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-                <div className="flex items-start gap-8">
-                  <div className="bg-gradient-to-br from-purple-500 to-pink-600 w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <div className="bg-card border border-border rounded-3xl p-10 lg:p-12 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+                <div className="flex flex-col lg:flex-row items-start gap-10">
+                  <div className="bg-gradient-to-br from-violet-500 to-purple-600 w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <span className="text-4xl">💰</span>
                   </div>
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="bg-purple-600 text-white text-sm font-bold px-4 py-1.5 rounded-full">Pillar 3</span>
-                      <h3 className="text-3xl font-bold text-gray-900">Conversion Architecture</h3>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
+                      <span className="bg-violet-600 text-white text-xs font-black px-4 py-2 rounded-full uppercase tracking-wider">Initiative 3</span>
+                      <h3 className="text-3xl lg:text-4xl font-black text-foreground tracking-tight">Conversion Infrastructure</h3>
                     </div>
-                    <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                      Strategic conversion pathways with psychologically-optimized CTAs, intelligent multi-step consultation forms with built-in qualification logic, and automated nurturing sequences converting visitors into scheduled consultations.
+                    <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8 font-light">
+                      Strategic conversion pathways featuring psychologically-optimized engagement points, intelligent multi-stage consultation forms with embedded qualification logic, and automated nurturing sequences systematically converting prospects to scheduled consultations.
                     </p>
-                    <div className="grid md:grid-cols-3 gap-4">
-                      <div className="bg-white rounded-lg p-4 border border-purple-100">
-                        <div className="text-purple-600 font-bold mb-1">Smart Forms</div>
-                        <div className="text-sm text-gray-600">Qualify leads automatically</div>
+                    <div className="grid sm:grid-cols-3 gap-4">
+                      <div className="bg-muted/50 rounded-xl p-5 border border-border/50">
+                        <div className="text-violet-600 font-bold mb-1.5 text-sm">Smart Forms</div>
+                        <div className="text-xs text-muted-foreground font-medium">Automated qualification</div>
                       </div>
-                      <div className="bg-white rounded-lg p-4 border border-purple-100">
-                        <div className="text-purple-600 font-bold mb-1">Lead Nurturing</div>
-                        <div className="text-sm text-gray-600">Automated follow-up sequences</div>
+                      <div className="bg-muted/50 rounded-xl p-5 border border-border/50">
+                        <div className="text-violet-600 font-bold mb-1.5 text-sm">Lead Nurturing</div>
+                        <div className="text-xs text-muted-foreground font-medium">Automated engagement flows</div>
                       </div>
-                      <div className="bg-white rounded-lg p-4 border border-purple-100">
-                        <div className="text-purple-600 font-bold mb-1">CRM Integration</div>
-                        <div className="text-sm text-gray-600">Seamless lead management</div>
+                      <div className="bg-muted/50 rounded-xl p-5 border border-border/50">
+                        <div className="text-violet-600 font-bold mb-1.5 text-sm">CRM Integration</div>
+                        <div className="text-xs text-muted-foreground font-medium">Unified pipeline management</div>
                       </div>
                     </div>
                   </div>
