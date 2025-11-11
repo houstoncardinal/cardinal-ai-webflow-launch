@@ -42,7 +42,7 @@ const HoustonEnterprise = () => {
           <div className="mb-16 max-w-6xl mx-auto">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
               <img 
-                src="/houinc.png" 
+                src="/houston-enterprise-screenshot.png" 
                 alt="Houston Enterprise Website Design"
                 loading="lazy"
                 decoding="async"
