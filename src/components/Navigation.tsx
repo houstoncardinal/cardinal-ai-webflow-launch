@@ -419,10 +419,9 @@ const Navigation = () => {
         setIsHoveringMegaMenu={setIsHoveringMegaMenu}
       />
 
-      {/* Industries Mega Menu - positioned outside constrained container with higher z-index */}
+      {/* Industries Mega Menu - positioned outside constrained container */}
       {isIndustriesMenuOpen && (
         <div 
-          className="relative z-[9999]"
           onMouseEnter={() => setIsHoveringMegaMenu(true)}
           onMouseLeave={() => {
             setIsHoveringMegaMenu(false);
