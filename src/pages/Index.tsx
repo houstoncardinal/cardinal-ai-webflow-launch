@@ -17,8 +17,8 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <SEO 
-        title="🚀 Premier Web Design & Mobile App Development & Digital Marketing Agency Mobile App Development Agency | #1 Custom Websites | Cardinal Consulting"
-        description="🔥 Premier digital agency serving clients worldwide! Custom websites, mobile apps, SEO, PPC & digital marketing that drives RESULTS. 500+ global projects completed. FREE consultation & quote! Serving clients worldwide."
+        title="Cardinal Consulting — Custom Web Design, Mobile App Development & Digital Growth Agency"
+        description="Cardinal Consulting builds high-performance websites, mobile apps, and digital growth systems that drive revenue, increase lead flow, and scale operations. Serving businesses nationwide."
         keywords="web design, mobile app development, web development, digital marketing agency, website design, SEO services, mobile app development, web developer, digital agency, website builder, e-commerce development, responsive web design, web design company, web development services, custom website design, e-commerce website, SEO company, digital marketing, web agency, website development, web design agency, web development company, website designer, web development firm, app development, mobile applications, cloud solutions, brand identity, custom websites, mobile apps, digital solutions"
         url="/"
       />
