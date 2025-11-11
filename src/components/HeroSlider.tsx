@@ -70,16 +70,12 @@ const HeroSlider = () => {
     }));
   };
 
-  // Only show the 72-hour development slide
-  const slide = {
-    category: "Fast-Track Development",
-    headline: {
-      first: "72-Hour Development",
-      second: "Enterprise Quality"
-    },
-    description: "Get your high-performance website or application delivered in 72 hours with our expedited Cardinal Acceleration Framework™. Premium quality, rapid deployment, ongoing support included.",
-    cta: "See Pricing + Timeline",
-    checkmarks: ["✓ Rapid delivery", "✓ Premium quality", "✓ Full support"]
+  // Hero content
+  const content = {
+    headline: "High-Performance Websites & Mobile Apps, Built for Growth.",
+    subheadline: "We engineer digital systems that scale revenue, operations, and customer acquisition.",
+    primaryCTA: "Get Your Free Project Roadmap",
+    secondaryCTA: "View Client Results"
   };
   return (
     <>
@@ -172,49 +168,43 @@ const HeroSlider = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 form-container relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[70vh] sm:min-h-[70vh] lg:min-h-[65vh] lg:min-h-[80vh]">
-            <div className="lg:col-span-7 space-y-5 sm:space-y-6 lg:space-y-7">
+            <div className="lg:col-span-7 space-y-6 sm:space-y-7 lg:space-y-8">
               {/* Animated category tag */}
-              <div className="inline-flex items-center text-sm sm:text-base lg:text-lg font-medium text-green-600 uppercase tracking-wide mb-2 sm:mb-3 pt-4 sm:pt-0 animate-fade-in">
-                <div className="w-8 sm:w-10 lg:w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-3 sm:mr-4 lg:mr-5"></div>
-                {slide.category}
+              <div className="inline-flex items-center text-sm font-medium text-green-600 uppercase tracking-wide mb-2 animate-fade-in">
+                <div className="w-12 h-px bg-gradient-to-r from-green-500 to-green-600 mr-4"></div>
+                Digital Excellence
               </div>
               
-              {/* Main headline with staggered animation */}
-              <div className="space-y-4 sm:space-y-5 lg:space-y-6">
-                <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-gray-900 leading-[1.15] tracking-tight">
-                  <span className="inline-block animate-fade-in my-0 py-0 text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">{slide.headline.first}</span>
-                  <span className="block text-green-600 font-normal text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl animate-slide-forward relative" style={{
-                    animationDelay: '300ms'
-                  }}>
-                    <span className="text-green-600 relative">
-                      {slide.headline.second}
-                    </span>
-                  </span>
+              {/* Main headline */}
+              <div className="space-y-5">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-gray-900 leading-tight tracking-tight">
+                  {content.headline}
                 </h1>
                 
-                <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed font-light max-w-2xl animate-fade-in relative z-10" style={{
-                  animationDelay: '500ms',
-                  textShadow: '0 0 8px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 255, 255, 0.9), 0 0 24px rgba(255, 255, 255, 0.7)'
-                }}>
-                  {slide.description}
+                <p className="text-xl sm:text-2xl text-gray-600 leading-relaxed font-light max-w-3xl">
+                  {content.subheadline}
                 </p>
-                
               </div>
               
-              {/* CTA Section with hover animations */}
-              <div className="flex flex-col sm:flex-row items-center gap-4 pt-3 sm:pt-4 lg:pt-5">
+              {/* CTA Section */}
+              <div className="flex flex-col sm:flex-row items-start gap-4 pt-4">
                 <Button 
-                  onClick={() => navigate('/services/seo-insights')} 
-                  className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-10 sm:px-12 lg:px-14 py-5 sm:py-6 lg:py-7 text-xl sm:text-2xl lg:text-3xl font-semibold shadow-xl hover:shadow-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto rounded-xl"
+                  onClick={() => navigate('/contact')} 
+                  className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-8 py-6 text-lg font-medium shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-lg"
                 >
-                  {slide.cta}
-                  <ArrowRight className="ml-4 w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
+                  {content.primaryCTA}
+                  <ArrowRight className="ml-3 w-5 h-5" />
+                </Button>
+                
+                <Button 
+                  variant="ghost"
+                  onClick={() => navigate('/portfolio')} 
+                  className="text-green-700 hover:text-green-800 px-8 py-6 text-lg font-medium transition-all duration-300 hover:underline"
+                >
+                  {content.secondaryCTA}
+                  <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </div>
-              
-              <p className="text-sm sm:text-base lg:text-lg text-gray-500 mt-5 sm:mt-6 lg:mt-7 text-center sm:text-left">
-                <span className="text-green-600">{slide.checkmarks[0]}</span> <span className="text-green-600">{slide.checkmarks[1]}</span> <span className="text-green-600">{slide.checkmarks[2]}</span>
-              </p>
 
             </div>
 
@@ -246,8 +236,8 @@ const HeroSlider = () => {
   );
 };
 
-// Separate component for the form
-const ProjectEvaluationForm = () => {
+// Form component removed - replaced with MultiStepProjectRoadmapForm
+const ProjectEvaluationFormDeprecated = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -459,4 +449,3 @@ const ProjectEvaluationForm = () => {
 };
 
 export default HeroSlider;
-export { ProjectEvaluationForm };

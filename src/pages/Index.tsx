@@ -15,8 +15,8 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <SEO 
-        title="Cardinal Consulting — Custom Web Design, Mobile Apps & Digital Growth Agency"
-        description="We build high-performance websites, mobile apps, and digital growth systems engineered for conversion and scale. Serving businesses nationwide."
+        title="Cardinal Consulting — Web Design, App Development & Digital Growth Agency"
+        description="High-performance websites, mobile apps, and growth systems engineered to scale your business."
         keywords="web design, mobile app development, web development, digital marketing agency, website design, SEO services, mobile app development, web developer, digital agency, website builder, e-commerce development, responsive web design, web design company, web development services, custom website design, e-commerce website, SEO company, digital marketing, web agency, website development, web design agency, web development company, website designer, web development firm, app development, mobile applications, cloud solutions, brand identity, custom websites, mobile apps, digital solutions"
         url="/"
       />
@@ -24,7 +24,7 @@ const Index = () => {
       <Navigation />
       
       {/* Hero - White background */}
-      <div className="bg-white pb-8 sm:pb-12 lg:pb-16">
+      <div className="bg-white pb-16 sm:pb-20 lg:pb-24">
         <HeroSlider />
       </div>
       
@@ -48,9 +48,6 @@ const Index = () => {
       <div className="bg-green-50/30">
         <Portfolio />
       </div>
-      
-      {/* CTA Section */}
-      <CTASection />
       
       {/* Contact - Gray background */}
       <div className="bg-gray-50">

@@ -9,6 +9,7 @@ import { HelmetProvider } from "react-helmet-async";
 import VoiceAgent from "@/components/VoiceAgent";
 import { HalloweenDecorations } from "@/components/HalloweenDecorations";
 import Index from "./pages/Index";
+import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
 
 // Main pages
@@ -45,7 +46,7 @@ import BluTouchPools from "./pages/portfolio/BluTouchPools";
 import HougenPros from "./pages/portfolio/HougenPros";
 import EPSParking from "./pages/portfolio/EPSParking";
 import IACCenters from "./pages/portfolio/IACCenters";
-import ABQMRI from "./pages/portfolio/ABQMRI";
+import ABQMRI from "./pages/portfolio/ABQMRINew";
 import APNClinic from "./pages/portfolio/APNClinic";
 import HoustonWebDesignEsLanding from "./pages/landing/HoustonWebDesignEs";
 import HoustonDigitalServices from "./pages/landing/HoustonDigitalServices";
@@ -102,6 +103,7 @@ const App = () => (
             <Route path="/seo-analyzer" element={<SEOAnalyzerPage />} />
             <Route path="/strategy-call" element={<StrategyCallPage />} />
             <Route path="/faq" element={<FAQPage />} />
+            <Route path="/thank-you" element={<ThankYou />} />
             
             {/* Service Routes */}
             <Route path="/services/web-development" element={<WebDevelopment />} />
