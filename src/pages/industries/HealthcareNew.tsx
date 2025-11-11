@@ -19,7 +19,12 @@ const Healthcare = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50 relative overflow-hidden">
+      <section className="pt-40 pb-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50 relative overflow-hidden">
+        {/* Subtle background decoration */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-indigo-400 rounded-full blur-3xl"></div>
+        </div>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
             <div className="inline-flex items-center text-sm font-medium text-blue-600 uppercase tracking-wide mb-6">
@@ -52,7 +57,7 @@ const Healthcare = () => {
       </section>
 
       {/* Pain Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl font-light text-gray-900 mb-8">
             Modern Healthcare Requires Modern Digital Infrastructure
@@ -80,13 +85,13 @@ const Healthcare = () => {
       </section>
 
       {/* Solution Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl font-light text-gray-900 mb-12">
             Healthcare Digital Systems Built for Efficiency, Trust & Scalability
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
             {[
               "Patient scheduling and onboarding automation",
               "Simplified intake workflows and document flow",
@@ -95,7 +100,7 @@ const Healthcare = () => {
               "Seamless EMR/EHR + practice management integrations",
               "Growth systems built for referral and local search expansion"
             ].map((solution, index) => (
-              <div key={index} className="flex items-start space-x-4 p-6 bg-white rounded-lg">
+              <div key={index} className="flex items-start space-x-4 p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
                 <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
                 <p className="text-lg text-gray-700">{solution}</p>
               </div>
@@ -131,12 +136,12 @@ const Healthcare = () => {
       </section>
 
       {/* Case Study Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl font-light text-gray-900 mb-12">Proven Results in Healthcare</h2>
           
-          <Card className="border-0 shadow-lg">
-            <CardContent className="p-8">
+          <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <CardContent className="p-10">
               <div className="mb-6">
                 <div className="text-sm font-medium text-blue-600 uppercase tracking-wide mb-2">Case Study</div>
                 <h3 className="text-2xl font-semibold text-gray-900">ABQ MRI & Diagnostic Imaging</h3>
@@ -182,7 +187,7 @@ const Healthcare = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl font-light text-gray-900 mb-12">Our Healthcare Development Framework</h2>
           
@@ -209,7 +214,7 @@ const Healthcare = () => {
                 description: "Continuous improvement through analytics and workflow feedback."
               }
             ].map((step, index) => (
-              <div key={index} className="bg-white rounded-lg p-6">
+              <div key={index} className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
                 <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
                   {step.number}
                 </div>
@@ -222,7 +227,11 @@ const Healthcare = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-700">
+      <section className="py-24 bg-gradient-to-r from-blue-600 to-blue-700 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-light text-white mb-6">
             Ready to Modernize Your Healthcare Digital Infrastructure?

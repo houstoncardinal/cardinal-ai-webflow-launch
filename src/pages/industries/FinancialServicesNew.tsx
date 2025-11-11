@@ -19,7 +19,11 @@ const FinancialServices = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-emerald-50 via-white to-teal-50 relative overflow-hidden">
+      <section className="pt-40 pb-24 bg-gradient-to-br from-emerald-50 via-white to-teal-50 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-400 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-teal-400 rounded-full blur-3xl"></div>
+        </div>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
             <div className="inline-flex items-center text-sm font-medium text-emerald-600 uppercase tracking-wide mb-6">
@@ -52,7 +56,7 @@ const FinancialServices = () => {
       </section>
 
       {/* Pain Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl font-light text-gray-900 mb-8">
             The Financial Services Landscape is Changing — Your Digital Infrastructure Must Lead
@@ -80,13 +84,13 @@ const FinancialServices = () => {
       </section>
 
       {/* Solution Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl font-light text-gray-900 mb-12">
             Digital Systems Built for Performance, Trust & Scale
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
             {[
               "Secure client portals with bank-grade encryption",
               "Professional digital presence that communicates expertise and credibility",
@@ -94,7 +98,7 @@ const FinancialServices = () => {
               "Integration with accounting software and CRM systems",
               "Clear compliance workflows with built-in audit trails"
             ].map((solution, index) => (
-              <div key={index} className="flex items-start space-x-4 p-6 bg-white rounded-lg">
+              <div key={index} className="flex items-start space-x-4 p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
                 <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
                 <p className="text-lg text-gray-700">{solution}</p>
               </div>
@@ -130,12 +134,12 @@ const FinancialServices = () => {
       </section>
 
       {/* Case Study Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl font-light text-gray-900 mb-12">Proven Results in Financial Services</h2>
           
-          <Card className="border-0 shadow-lg">
-            <CardContent className="p-8">
+          <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <CardContent className="p-10">
               <div className="mb-6">
                 <div className="text-sm font-medium text-emerald-600 uppercase tracking-wide mb-2">Case Study</div>
                 <h3 className="text-2xl font-semibold text-gray-900">ClearLedger</h3>
@@ -181,7 +185,7 @@ const FinancialServices = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl font-light text-gray-900 mb-12">Our Financial Services Digital Development Framework</h2>
           
@@ -208,7 +212,7 @@ const FinancialServices = () => {
                 description: "We support continuous improvement with analytics and performance cycles."
               }
             ].map((step, index) => (
-              <div key={index} className="bg-white rounded-lg p-6">
+              <div key={index} className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
                 <div className="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
                   {step.number}
                 </div>
@@ -221,7 +225,11 @@ const FinancialServices = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-emerald-600 to-emerald-700">
+      <section className="py-24 bg-gradient-to-r from-emerald-600 to-emerald-700 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-light text-white mb-6">
             Ready to Modernize Your Financial Services Digital Infrastructure?

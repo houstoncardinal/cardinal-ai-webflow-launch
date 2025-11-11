@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, ArrowRight, User } from "lucide-react";
+import { Menu, X, ArrowRight, User, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -216,7 +216,7 @@ const Navigation = () => {
                     <div className="relative">
                       <Link
                         to={item.href}
-                        className="text-gray-700 hover:text-green-600 text-sm font-medium transition-all duration-300 relative group transform hover:scale-105 cursor-pointer nav-item"
+                        className="text-gray-700 hover:text-green-600 text-sm font-medium transition-all duration-300 relative group transform hover:scale-105 cursor-pointer nav-item flex items-center gap-1"
                         style={{animationDelay: `${index * 100}ms`}}
                         onMouseEnter={() => {
                           // Clear any existing timeout
@@ -229,14 +229,20 @@ const Navigation = () => {
                           if (item.megaMenuType === "services") {
                             setIsHoveringNavItem("services");
                             setIsServicesMenuOpen(true);
+                            setIsContactMenuOpen(false);
+                            setIsIndustriesMenuOpen(false);
                             setActiveMegaMenu("services");
                           } else if (item.megaMenuType === "contact") {
                             setIsHoveringNavItem("contact");
                             setIsContactMenuOpen(true);
+                            setIsServicesMenuOpen(false);
+                            setIsIndustriesMenuOpen(false);
                             setActiveMegaMenu("contact");
                           } else if (item.megaMenuType === "industries") {
                             setIsHoveringNavItem("industries");
                             setIsIndustriesMenuOpen(true);
+                            setIsServicesMenuOpen(false);
+                            setIsContactMenuOpen(false);
                             setActiveMegaMenu("industries");
                           }
                         }}
@@ -263,9 +269,8 @@ const Navigation = () => {
                         }}
                       >
                         {item.name}
+                        <ChevronDown className="w-3 h-3 transition-transform duration-300 group-hover:translate-y-0.5" />
                         <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full"></div>
-                        {/* Mega menu indicator */}
-                        <div className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 scale-0 group-hover:scale-100"></div>
                       </Link>
                     </div>
                   ) : (
@@ -414,9 +419,10 @@ const Navigation = () => {
         setIsHoveringMegaMenu={setIsHoveringMegaMenu}
       />
 
-      {/* Industries Mega Menu - positioned outside constrained container */}
+      {/* Industries Mega Menu - positioned outside constrained container with higher z-index */}
       {isIndustriesMenuOpen && (
         <div 
+          className="relative z-[9999]"
           onMouseEnter={() => setIsHoveringMegaMenu(true)}
           onMouseLeave={() => {
             setIsHoveringMegaMenu(false);

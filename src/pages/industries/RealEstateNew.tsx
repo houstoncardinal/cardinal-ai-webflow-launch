@@ -19,7 +19,11 @@ const RealEstate = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-orange-50 via-white to-red-50 relative overflow-hidden">
+      <section className="pt-40 pb-24 bg-gradient-to-br from-orange-50 via-white to-red-50 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-orange-400 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-red-400 rounded-full blur-3xl"></div>
+        </div>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
             <div className="inline-flex items-center text-sm font-medium text-orange-600 uppercase tracking-wide mb-6">
@@ -52,7 +56,7 @@ const RealEstate = () => {
       </section>
 
       {/* Pain Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl font-light text-gray-900 mb-8">
             The Real Estate Landscape is Changing — Your Digital Infrastructure Must Lead
@@ -80,13 +84,13 @@ const RealEstate = () => {
       </section>
 
       {/* Solution Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl font-light text-gray-900 mb-12">
             Digital Systems Built for Performance, Trust & Scale
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
             {[
               "Streamlined property showcase and search experience",
               "Professional digital presence that increases buyer and seller trust",
@@ -94,7 +98,7 @@ const RealEstate = () => {
               "Integration with MLS, IDX, and CRM systems",
               "Clear, intuitive user flows that convert browsers to qualified leads"
             ].map((solution, index) => (
-              <div key={index} className="flex items-start space-x-4 p-6 bg-white rounded-lg">
+              <div key={index} className="flex items-start space-x-4 p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
                 <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
                 <p className="text-lg text-gray-700">{solution}</p>
               </div>
@@ -130,12 +134,12 @@ const RealEstate = () => {
       </section>
 
       {/* Case Study Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl font-light text-gray-900 mb-12">Proven Results in Real Estate</h2>
           
-          <Card className="border-0 shadow-lg">
-            <CardContent className="p-8">
+          <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <CardContent className="p-10">
               <div className="mb-6">
                 <div className="text-sm font-medium text-orange-600 uppercase tracking-wide mb-2">Case Study</div>
                 <h3 className="text-2xl font-semibold text-gray-900">Southwest Realty Group</h3>
@@ -181,7 +185,7 @@ const RealEstate = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl font-light text-gray-900 mb-12">Our Real Estate Digital Development Framework</h2>
           
@@ -208,7 +212,7 @@ const RealEstate = () => {
                 description: "We support continuous improvement with analytics and performance cycles."
               }
             ].map((step, index) => (
-              <div key={index} className="bg-white rounded-lg p-6">
+              <div key={index} className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
                 <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
                   {step.number}
                 </div>
@@ -221,7 +225,11 @@ const RealEstate = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-orange-600 to-orange-700">
+      <section className="py-24 bg-gradient-to-r from-orange-600 to-orange-700 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-light text-white mb-6">
             Ready to Modernize Your Real Estate Digital Infrastructure?
