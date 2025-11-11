@@ -30,7 +30,7 @@ const HoustonEnterprise = () => {
           {/* Client Logo */}
           <div className="mb-12 flex justify-center">
             <img 
-              src="/houinc.png" 
+              src="/houston-enterprise-logo.png" 
               alt="Houston Enterprise Construction Logo"
               className="h-24 w-auto object-contain"
             />

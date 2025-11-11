@@ -18,7 +18,7 @@ const Portfolio = () => {
       title: "Houston Enterprise",
       category: "Construction Services",
       description: "Comprehensive construction services tailored to your needs. From custom home construction and renovations to meticulous remodeling projects, delivering excellence in residential and commercial construction.",
-      image: "/houinc.png",
+      image: "/houston-enterprise-logo.png",
       tags: ["Construction", "Residential", "Commercial", "Project Management"],
       metrics: { leads: "450%", inquiries: "280%", satisfaction: "98%", value: "+35%" },
       industry: "Construction Services",
