@@ -53,6 +53,7 @@ import HoustonWebDesignEsLanding from "./pages/landing/HoustonWebDesignEs";
 import HoustonDigitalServices from "./pages/landing/HoustonDigitalServices";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import SEOTrends2025 from "./pages/SEOTrends2025";
 
 // Industry pages
 import Healthcare from "./pages/industries/HealthcareNew";
@@ -134,6 +135,9 @@ const App = () => (
             {/* Legal Pages */}
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
+            
+            {/* Resources */}
+            <Route path="/seo-trends-2025" element={<SEOTrends2025 />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
