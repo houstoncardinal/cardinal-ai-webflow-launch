@@ -1,4 +1,4 @@
-import { Smartphone, CheckCircle, ArrowRight, Monitor, Zap, Users, Globe } from "lucide-react";
+import { Smartphone, CheckCircle, ArrowRight, Zap, Shield, TrendingUp, Code } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
@@ -7,55 +7,85 @@ import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 
 const MobileApplications = () => {
-  const features = [{
-    icon: Monitor,
-    title: "Cross-Platform Development",
-    description: "React Native and Flutter for iOS and Android from a single codebase"
-  }, {
-    icon: Zap,
-    title: "Native Performance",
-    description: "Optimized performance that feels native on every platform"
-  }, {
-    icon: Users,
-    title: "User-Centric Design",
-    description: "Intuitive interfaces designed for exceptional user experiences"
-  }, {
-    icon: Globe,
-    title: "Offline Capabilities",
-    description: "Apps that work seamlessly even without internet connectivity"
-  }];
-  
-  const platforms = [{
-    name: "iOS",
-    description: "Native Swift/SwiftUI development",
-    icon: "🍎"
-  }, {
-    name: "Android",
-    description: "Native Kotlin/Java development",
-    icon: "🤖"
-  }, {
-    name: "React Native",
-    description: "Cross-platform development",
-    icon: "⚛️"
-  }, {
-    name: "Flutter",
-    description: "Google's UI toolkit",
-    icon: "🎯"
-  }];
-  
-
-  
-  const appTypes = [
-    "E-commerce Apps", "Social Media Apps", "Business Apps", "Educational Apps",
-    "Healthcare Apps", "Entertainment Apps", "Productivity Apps", "Gaming Apps"
+  const differentiators = [
+    "Built for scalability — handle 10x growth without performance degradation",
+    "99.9% uptime with enterprise-grade infrastructure and monitoring",
+    "Security-first architecture with data encryption and compliance standards",
+    "Cross-platform development reducing time-to-market by 40%"
   ];
-  
+
+  const capabilities = [
+    { capability: "Native Mobile Apps", description: "iOS and Android optimized for performance" },
+    { capability: "Cross-Platform Apps", description: "React Native & Flutter solutions" },
+    { capability: "Progressive Web Apps", description: "Web-based mobile experiences" },
+    { capability: "Workflow Automation Tools", description: "Internal process optimization" },
+    { capability: "Client Portals", description: "Secure customer access platforms" },
+    { capability: "Booking & Scheduling", description: "Automated appointment systems" },
+    { capability: "API Integrations", description: "Connect to existing systems" },
+    { capability: "Real-time Features", description: "Live updates and notifications" }
+  ];
+
+  const framework = [
+    {
+      step: "01",
+      title: "Define",
+      description: "Business requirements, technical architecture, user flows, and feasibility analysis"
+    },
+    {
+      step: "02",
+      title: "Design",
+      description: "UX wireframes, UI design systems, interactive prototypes, and user testing"
+    },
+    {
+      step: "03",
+      title: "Develop",
+      description: "Agile sprints, continuous testing, performance optimization, security audits"
+    },
+    {
+      step: "04",
+      title: "Deploy",
+      description: "App store submission, monitoring setup, user analytics, ongoing support"
+    }
+  ];
+
+  const standards = [
+    { metric: "99.9%", label: "Uptime SLA" },
+    { metric: "<100ms", label: "API Response Time" },
+    { metric: "A+", label: "Security Rating" },
+    { metric: "4.8★", label: "Avg. User Rating" }
+  ];
+
+  const caseStudies = [
+    {
+      client: "APN Clinic",
+      industry: "Healthcare",
+      challenge: "Manual appointment scheduling causing staff bottlenecks and patient frustration",
+      solution: "Custom booking app with automated scheduling, SMS reminders, and integrated payment processing",
+      result: [
+        "75% reduction in phone call volume",
+        "90% appointment confirmation rate",
+        "40% increase in booking capacity"
+      ]
+    },
+    {
+      client: "Hougen Pros",
+      industry: "Field Services",
+      challenge: "Disconnected field teams with no real-time job tracking or customer communication",
+      solution: "Mobile workforce management app with GPS tracking, job routing, and customer notifications",
+      result: [
+        "50% faster job completion times",
+        "35% improvement in customer satisfaction",
+        "60% reduction in administrative overhead"
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       <SEO 
-        title="📱 Mobile App Development Services | iOS & Android Apps | Cardinal Consulting"
-        description="🚀 Professional mobile app development for iOS and Android. Custom mobile applications, cross-platform solutions, and app maintenance services to grow your business."
-        keywords="mobile app development, iOS development, Android development, cross-platform apps, custom mobile apps, business mobile applications, React Native, Flutter"
+        title="Mobile App Development Services | Cardinal Consulting"
+        description="We design and develop mobile and web applications that automate workflows, improve customer experience, and unlock new revenue — engineered for scalability, performance, and long-term growth."
+        keywords="mobile app development, custom applications, workflow automation, client portals, iOS apps, Android apps, cross-platform development"
         servicePage={true}
         pageType="service"
         breadcrumbs={[
@@ -65,8 +95,7 @@ const MobileApplications = () => {
         ]}
         serviceDetails={{
           name: "Mobile Application Development",
-          description: "Native and cross-platform mobile app development for iOS and Android platforms",
-          priceRange: "$5,000 - $50,000",
+          description: "Custom applications that power real business operations",
           category: "Mobile Development"
         }}
         url="/services/mobile-applications"
@@ -76,77 +105,179 @@ const MobileApplications = () => {
       
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-to-br from-emerald-900 via-green-900 to-teal-900 relative overflow-hidden">
-        {/* Animated background elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(34,197,94,0.1),transparent_50%)]"></div>
-          <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
         
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center text-sm font-medium text-emerald-400 uppercase tracking-wide mb-8">
-              <Smartphone className="w-5 h-5 mr-3" />
-              Mobile Development Service
-            </div>
-            
-            <h1 className="text-6xl lg:text-7xl font-light text-white mb-8 leading-tight">
-              Mobile
-              <span className="block bg-gradient-to-r from-emerald-400 to-green-400 bg-clip-text text-transparent">
-                Applications
-              </span>
+            <h1 className="text-5xl lg:text-7xl font-light text-white mb-8 leading-tight">
+              Apps That Power
+              <span className="block text-emerald-400 font-normal">Real Business.</span>
             </h1>
             
             <p className="text-xl text-gray-300 leading-relaxed mb-12 max-w-3xl">
-              Native and cross-platform mobile solutions that deliver exceptional user experiences. 
-              From concept to app store, we create mobile applications that engage users and 
-              drive business growth.
+              We design and develop mobile and web applications that automate workflows, improve customer experience, and unlock new revenue — engineered for scalability, performance, and long-term growth.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/contact?service=cross-platform">
-                <Button className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-emerald-500/25">
-                  Start Your App
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-              <Link to="/contact">
-                <Button variant="outline" className="border-gray-600 px-8 py-4 rounded-lg font-medium bg-slate-50 text-slate-950 hover:bg-slate-100 transition-all duration-300 hover:scale-105">
-                  Get Quote
-                </Button>
-              </Link>
-            </div>
+            <Link to="/contact">
+              <Button className="bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white px-10 py-6 rounded-xl text-xl font-semibold transition-all duration-300 hover:scale-105 shadow-xl">
+                Get Your Free Project Roadmap
+                <ArrowRight className="ml-3 w-6 h-6" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
 
+      {/* Why Our Apps Are Different */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
+              Why Our Apps Are Different
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Enterprise-grade reliability with startup speed
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {differentiators.map((item, index) => (
+              <div key={index} className="flex items-start gap-4 p-6 bg-gray-50 rounded-xl">
+                <CheckCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-1" />
+                <p className="text-gray-700 text-lg leading-relaxed">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-
-      {/* Features Section */}
+      {/* Capabilities Table */}
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-light text-gray-900 mb-6">
-              Mobile App <span className="text-emerald-600">Excellence</span>
+            <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
+              Capabilities
+            </h2>
+          </div>
+          
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <table className="w-full">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-8 py-4 text-left text-sm font-semibold text-gray-900">Application Type</th>
+                  <th className="px-8 py-4 text-left text-sm font-semibold text-gray-900">Use Case</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {capabilities.map((item, index) => (
+                  <tr key={index} className="hover:bg-gray-50 transition-colors">
+                    <td className="px-8 py-6 font-medium text-gray-900">{item.capability}</td>
+                    <td className="px-8 py-6 text-gray-600">{item.description}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* 4-Step Framework */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
+              App Development Framework
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We create mobile applications that users love and businesses depend on.
+              From concept to App Store in record time
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-white overflow-hidden">
-                <CardContent className="p-8 text-center relative">
-                  {/* Animated background */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 to-teal-50 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+            {framework.map((step, index) => (
+              <div key={index} className="relative">
+                <div className="text-6xl font-bold text-gray-100 mb-4">{step.step}</div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">{step.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Performance & Reliability Standards */}
+      <section className="py-24 bg-gradient-to-br from-emerald-600 to-green-700">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-light text-white mb-6">
+              Performance & Reliability Standards
+            </h2>
+            <p className="text-xl text-emerald-100">
+              Enterprise-grade benchmarks for every application
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {standards.map((standard, index) => (
+              <div key={index} className="text-center">
+                <div className="text-5xl lg:text-6xl font-bold text-white mb-2">{standard.metric}</div>
+                <div className="text-emerald-100 text-lg">{standard.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Case Studies */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
+              Client Results
+            </h2>
+          </div>
+          
+          <div className="space-y-12">
+            {caseStudies.map((study, index) => (
+              <Card key={index} className="border-0 shadow-xl overflow-hidden">
+                <CardContent className="p-12">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="text-sm font-semibold text-emerald-600 uppercase tracking-wide">{study.industry}</div>
+                    <div className="h-1 w-1 bg-gray-300 rounded-full"></div>
+                    <div className="text-lg font-semibold text-gray-900">{study.client}</div>
+                  </div>
                   
-                  <div className="relative z-10">
-                    <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-emerald-600 transition-all duration-300 group-hover:scale-110">
-                      <feature.icon className="w-8 h-8 text-emerald-600 group-hover:text-white transition-colors duration-300" />
+                  <div className="grid md:grid-cols-3 gap-8">
+                    <div>
+                      <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Challenge</h3>
+                      <p className="text-gray-700 leading-relaxed">{study.challenge}</p>
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-600 transition-colors duration-300">{feature.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                    <div>
+                      <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Solution</h3>
+                      <p className="text-gray-700 leading-relaxed">{study.solution}</p>
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Result</h3>
+                      <ul className="space-y-2">
+                        {study.result.map((result, i) => (
+                          <li key={i} className="flex items-start">
+                            <CheckCircle className="w-5 h-5 text-emerald-600 mr-2 flex-shrink-0 mt-0.5" />
+                            <span className="text-gray-700">{result}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-8 pt-8 border-t border-gray-100">
+                    <Link to="/contact">
+                      <Button variant="outline" className="border-emerald-600 text-emerald-600 hover:bg-emerald-50">
+                        Build Your App
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>
@@ -155,81 +286,21 @@ const MobileApplications = () => {
         </div>
       </section>
 
-      {/* Platforms Section */}
+      {/* Final CTA */}
       <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-light text-gray-900 mb-6">
-              Development <span className="text-emerald-600">Platforms</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We master all major mobile development platforms and frameworks.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {platforms.map((platform, index) => (
-              <div key={index} className="text-center p-8 bg-gray-50 rounded-2xl hover:bg-emerald-50 hover:shadow-lg transition-all duration-300 group hover:-translate-y-2">
-                <div className="text-4xl mb-4">{platform.icon}</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors duration-300">{platform.name}</h3>
-                <p className="text-gray-600">{platform.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* App Types Section */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-light text-gray-900 mb-6">
-              App <span className="text-emerald-600">Categories</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We develop apps across all major categories and industries.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {appTypes.map((type, index) => (
-              <div key={index} className="bg-white p-6 rounded-2xl text-center hover:bg-emerald-50 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
-                <h3 className="text-gray-900 font-semibold group-hover:text-emerald-600 transition-colors duration-300">{type}</h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-emerald-600 to-green-600 relative overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-white/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-        
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-4xl font-light text-white mb-6">
-            Ready to Build Your Mobile App?
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6">
+            Ready to Build Your Application?
           </h2>
-          <p className="text-xl text-emerald-100 mb-12 leading-relaxed">
-            Let's create a mobile experience that your users will love and your business will benefit from.
+          <p className="text-xl text-gray-600 mb-10">
+            Get a detailed technical roadmap, timeline, and cost estimate within 24 hours
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact">
-              <Button className="bg-white text-emerald-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-white/25">
-                Start Your App
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-            <Link to="/portfolio">
-              <Button variant="outline" className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-emerald-600 px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105">
-                View App Portfolio
-              </Button>
-            </Link>
-          </div>
+          <Link to="/contact">
+            <Button className="bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white px-10 py-6 rounded-xl text-xl font-semibold transition-all duration-300 hover:scale-105 shadow-xl">
+              Get Your Free Project Roadmap
+              <ArrowRight className="ml-3 w-6 h-6" />
+            </Button>
+          </Link>
         </div>
       </section>
 
