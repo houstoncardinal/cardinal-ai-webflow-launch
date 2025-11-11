@@ -58,10 +58,12 @@ const Portfolio = () => {
           {featuredProjects.map((project) => (
             <Link key={project.id} to={`/portfolio/${project.id}`} className="group">
               <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105 bg-white overflow-hidden">
-                <div className="relative overflow-hidden">
+                 <div className="relative overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="absolute top-4 left-4">

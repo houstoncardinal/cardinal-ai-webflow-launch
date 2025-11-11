@@ -32,6 +32,8 @@ const HoustonEnterprise = () => {
             <img 
               src="/houston-enterprise-logo.png" 
               alt="Houston Enterprise Construction Logo"
+              loading="eager"
+              decoding="async"
               className="h-24 w-auto object-contain"
             />
           </div>
@@ -42,6 +44,8 @@ const HoustonEnterprise = () => {
               <img 
                 src="/houinc.png" 
                 alt="Houston Enterprise Website Design"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-auto"
               />
             </div>

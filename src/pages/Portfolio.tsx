@@ -236,18 +236,22 @@ const Portfolio = () => {
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
-              <Card 
-                key={project.id} 
-                className="group overflow-hidden border-gray-200 hover:border-green-500 transition-all duration-500 bg-white shadow-none hover:shadow-2xl cursor-pointer hover:scale-105 animate-fade-in"
-                style={{animationDelay: `${index * 100}ms`}}
-                onClick={() => window.location.href = `/portfolio/${project.id}`}
+              <Link 
+                key={project.id}
+                to={`/portfolio/${project.id}`}
               >
-                <div className="relative overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={`${project.title} - ${project.category}`}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
+                <Card 
+                  className="group overflow-hidden border-gray-200 hover:border-green-500 transition-all duration-500 bg-white shadow-none hover:shadow-2xl cursor-pointer hover:scale-105 animate-fade-in"
+                  style={{animationDelay: `${index * 100}ms`}}
+                >
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={`${project.title} - ${project.category}`}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute top-4 left-4">
                     <span className="text-xs font-medium text-white bg-green-600 px-3 py-1 rounded-full animate-pulse">
@@ -310,6 +314,7 @@ const Portfolio = () => {
                   </Button>
                 </CardContent>
               </Card>
+              </Link>
             ))}
           </div>
 
