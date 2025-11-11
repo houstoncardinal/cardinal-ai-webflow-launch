@@ -8,10 +8,10 @@ import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
-import FeaturedArticles from "@/components/FeaturedArticles";
 import CardinalAccelerationFramework from "@/components/CardinalAccelerationFramework";
 import TrustSignals from "@/components/TrustSignals";
 import MultiStepQuoteForm from "@/components/MultiStepQuoteForm";
+import CTASection from "@/components/CTASection";
 
 const Index = () => {
   return (
@@ -60,13 +60,13 @@ const Index = () => {
         <Portfolio />
       </div>
       
+      {/* CTA Section */}
+      <CTASection />
+      
       {/* Contact - Gray background */}
       <div className="bg-gray-50">
         <Contact />
       </div>
-      
-      {/* Featured Articles */}
-      <FeaturedArticles />
       
       <Footer />
     </div>
