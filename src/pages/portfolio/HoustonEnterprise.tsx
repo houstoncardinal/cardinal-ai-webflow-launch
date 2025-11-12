@@ -100,7 +100,7 @@ const HoustonEnterprise = () => {
                   {/* High-res Camera */}
                   <div className="absolute top-[7px] left-1/2 -translate-x-1/2 w-[7px] h-[7px] bg-gradient-to-br from-[#0a0a0a] to-black rounded-full shadow-[0_2px_4px_rgba(0,0,0,0.4),inset_0_1px_2px_rgba(255,255,255,0.05)]">
                     <div className="absolute inset-[1.5px] bg-gradient-to-br from-[#1a3a5f] via-[#0f2545] to-[#0a1a30] rounded-full"></div>
-                    <div className="absolute inset-[2px] bg-gradient-radial from-blue-400/30 to-transparent rounded-full"></div>
+                    <div className="absolute inset-[2px] bg-gradient-to-br from-blue-400/30 to-transparent rounded-full"></div>
                   </div>
                   
                   {/* Edge Lighting Effect */}
@@ -121,7 +121,7 @@ const HoustonEnterprise = () => {
                 <div className="flex justify-center -mt-[1px] relative z-10">
                   <div className="relative w-[280px] h-[14px]">
                     {/* Base Ambient Shadow */}
-                    <div className="absolute inset-x-0 -bottom-[12px] h-[12px] bg-gradient-radial from-black/25 via-black/10 to-transparent rounded-full blur-lg"></div>
+                    <div className="absolute inset-x-0 -bottom-[12px] h-[12px] bg-gradient-to-br from-black/25 via-black/10 to-transparent rounded-full blur-lg"></div>
                     
                     {/* Base Body */}
                     <div className="relative h-full bg-gradient-to-b from-[#e5e5e5] via-[#d8d8d8] to-[#c8c8c8] rounded-[20px] shadow-[0_6px_16px_-3px_rgba(0,0,0,0.35),inset_0_2px_1px_rgba(255,255,255,0.4),inset_0_-1px_1px_rgba(0,0,0,0.1)]">
@@ -136,7 +136,7 @@ const HoustonEnterprise = () => {
                 
                 {/* Desk Contact Shadow with Soft Edges */}
                 <div className="absolute inset-x-0 -bottom-[50px] h-[50px]">
-                  <div className="w-full h-full bg-gradient-radial from-black/20 via-black/8 to-transparent blur-3xl"></div>
+                  <div className="w-full h-full bg-gradient-to-br from-black/20 via-black/8 to-transparent blur-3xl"></div>
                 </div>
               </div>
               
@@ -587,7 +587,7 @@ const HoustonEnterprise = () => {
       <section className="py-32 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-20 right-20 w-96 h-96 bg-green-400 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-400 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-400 rounded-full blur-3xl animate-pulse"></div>
         </div>
         
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
