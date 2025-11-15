@@ -93,12 +93,21 @@ export default {
 					'50%': { 
 						backgroundPosition: '100% 50%' 
 					}
+				},
+				'fade-in': {
+					from: {
+						opacity: '0'
+					},
+					to: {
+						opacity: '1'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'gradient-shift': 'gradient-shift 3s ease-in-out infinite'
+				'gradient-shift': 'gradient-shift 3s ease-in-out infinite',
+				'fade-in': 'fade-in 0.6s ease-out forwards'
 			}
 		}
 	},
