@@ -8,6 +8,7 @@ import { HelmetProvider } from "react-helmet-async";
 
 import VoiceAgent from "@/components/VoiceAgent";
 import { HalloweenDecorations } from "@/components/HalloweenDecorations";
+import ChristmasDecorations from "@/components/ChristmasDecorations";
 import Index from "./pages/Index";
 import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
@@ -72,6 +73,7 @@ const App = () => (
         <BrowserRouter>
           <LoadingScreen />
           <HalloweenDecorations />
+          <ChristmasDecorations />
           <Toaster />
           <Sonner />
           
