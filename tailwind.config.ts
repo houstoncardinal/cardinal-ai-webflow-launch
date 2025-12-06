@@ -19,7 +19,7 @@ export default {
 			}
 		},
 		extend: {
-			colors: {
+		colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -62,6 +62,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Christmas Festive Colors
+				christmas: {
+					red: 'hsl(var(--christmas-red))',
+					green: 'hsl(var(--christmas-green))',
+					gold: 'hsl(var(--christmas-gold))',
+					cream: 'hsl(var(--christmas-cream))',
+					snow: 'hsl(var(--christmas-snow))'
 				}
 			},
 			borderRadius: {
