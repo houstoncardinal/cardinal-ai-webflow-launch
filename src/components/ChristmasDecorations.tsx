@@ -339,143 +339,261 @@ const ChristmasDecorations = () => {
           className="fixed pointer-events-none z-[104]"
           style={{
             top: `${grinch.yPosition}%`,
-            left: grinch.direction === 'right' ? '-200px' : 'auto',
-            right: grinch.direction === 'left' ? '-200px' : 'auto',
+            left: grinch.direction === 'right' ? '-220px' : 'auto',
+            right: grinch.direction === 'left' ? '-220px' : 'auto',
             animation: `fly-${grinch.direction} ${grinch.duration}s linear infinite`,
             animationDelay: `${grinch.startDelay}s`,
             transform: `scale(${grinch.scale}) ${grinch.direction === 'left' ? 'scaleX(-1)' : ''}`,
           }}
         >
-          <svg width="200" height="160" viewBox="0 0 200 160" className="grinch-hd">
+          <svg width="220" height="170" viewBox="0 0 220 170" className="grinch-hd">
             <defs>
-              {/* Grinch green gradient */}
-              <linearGradient id={`grinch-green-${grinch.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#7CBA3D" />
-                <stop offset="50%" stopColor="#5a9a2a" />
-                <stop offset="100%" stopColor="#3d7a1a" />
-              </linearGradient>
-              {/* Grinch fur */}
+              {/* Grinch authentic green - more yellow-green like the movie */}
+              <radialGradient id={`grinch-skin-${grinch.id}`} cx="40%" cy="35%">
+                <stop offset="0%" stopColor="#9ACD32" />
+                <stop offset="40%" stopColor="#6B8E23" />
+                <stop offset="100%" stopColor="#556B2F" />
+              </radialGradient>
+              {/* Grinch fur texture */}
               <linearGradient id={`grinch-fur-${grinch.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#8BC34A" />
+                <stop offset="0%" stopColor="#9ACD32" />
+                <stop offset="50%" stopColor="#7CB342" />
                 <stop offset="100%" stopColor="#558B2F" />
               </linearGradient>
-              {/* Evil glow */}
-              <filter id={`grinch-glow-${grinch.id}`} x="-50%" y="-50%" width="200%" height="200%">
+              {/* Dark fur shadows */}
+              <linearGradient id={`grinch-fur-dark-${grinch.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#6B8E23" />
+                <stop offset="100%" stopColor="#3d5a1a" />
+              </linearGradient>
+              {/* Grinch glow */}
+              <filter id={`grinch-glow-${grinch.id}`} x="-30%" y="-30%" width="160%" height="160%">
                 <feGaussianBlur stdDeviation="2" result="blur" />
-                <feFlood floodColor="#7CBA3D" floodOpacity="0.4" />
+                <feFlood floodColor="#9ACD32" floodOpacity="0.3" />
                 <feComposite in2="blur" operator="in" />
                 <feMerge>
                   <feMergeNode />
                   <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
+              {/* Fur texture pattern */}
+              <pattern id={`fur-pattern-${grinch.id}`} patternUnits="userSpaceOnUse" width="6" height="6">
+                <path d="M0 3 Q1 0 2 3 Q3 6 4 3 Q5 0 6 3" fill="none" stroke="#556B2F" strokeWidth="0.5" opacity="0.4" />
+              </pattern>
             </defs>
             
             {/* Stolen presents flying behind */}
             <g className="animate-float" style={{ animationDuration: '1s' }}>
-              <rect x="5" y="100" width="20" height="20" rx="2" fill="#ff4444" />
-              <path d="M5 110 L25 110 M15 100 L15 120" stroke="#ffd700" strokeWidth="2" />
+              <rect x="5" y="110" width="22" height="22" rx="2" fill="#ff4444" />
+              <path d="M5 121 L27 121 M16 110 L16 132" stroke="#ffd700" strokeWidth="2.5" />
+              <ellipse cx="16" cy="110" rx="6" ry="3" fill="#ffd700" />
             </g>
             <g className="animate-float" style={{ animationDuration: '1.2s', animationDelay: '0.3s' }}>
-              <rect x="30" y="115" width="16" height="16" rx="2" fill="#4444ff" />
-              <path d="M30 123 L46 123 M38 115 L38 131" stroke="#fff" strokeWidth="2" />
+              <rect x="32" y="125" width="18" height="18" rx="2" fill="#4488ff" />
+              <path d="M32 134 L50 134 M41 125 L41 143" stroke="#fff" strokeWidth="2" />
             </g>
             
-            {/* Grinch on flying sled/contraption */}
+            {/* Grinch on his makeshift sleigh */}
             <g>
-              {/* Makeshift sled */}
+              {/* Rickety wooden sled */}
               <path
-                d="M60 130 Q70 120 120 120 L170 120 Q180 125 175 135 L65 140 Q55 140 60 130"
-                fill="#4a3728"
-                stroke="#2d1810"
-                strokeWidth="2"
+                d="M65 138 Q75 128 130 128 L180 128 Q192 132 188 142 L72 148 Q60 148 65 138"
+                fill="#5c4033"
+                stroke="#3d2817"
+                strokeWidth="2.5"
               />
-              {/* Stolen Christmas lights tangled */}
-              <path
-                d="M55 125 Q70 115 85 125 Q100 135 115 125 Q130 115 145 125"
-                fill="none"
-                stroke="#1a1a1a"
-                strokeWidth="2"
-              />
+              {/* Sled runners */}
+              <path d="M70 148 Q60 155 65 158 L185 158 Q195 152 188 145" fill="none" stroke="#8B4513" strokeWidth="4" strokeLinecap="round" />
+              
+              {/* Tangled stolen lights on sled */}
+              <path d="M60 133 Q78 122 95 133 Q112 144 130 133 Q148 122 165 133" fill="none" stroke="#222" strokeWidth="2" />
               {Array.from({ length: 5 }).map((_, i) => (
-                <circle
-                  key={i}
-                  cx={60 + i * 22}
-                  cy={120 + (i % 2 === 0 ? -5 : 5)}
-                  r="5"
-                  fill={lightColors[i % lightColors.length]}
-                  className="animate-light-flicker"
-                  style={{ animationDelay: `${i * 0.2}s` }}
-                />
+                <g key={i}>
+                  <ellipse
+                    cx={68 + i * 24}
+                    cy={128 + (i % 2 === 0 ? -6 : 6)}
+                    rx="6"
+                    ry="8"
+                    fill={lightColors[i % lightColors.length]}
+                    className="animate-light-flicker"
+                    style={{ animationDelay: `${i * 0.2}s` }}
+                  />
+                  <ellipse cx={68 + i * 24} cy={126 + (i % 2 === 0 ? -6 : 6)} rx="2" ry="3" fill="#fff" opacity="0.5" />
+                </g>
               ))}
               
-              {/* Grinch body */}
-              <ellipse cx="120" cy="95" rx="28" ry="32" fill={`url(#grinch-fur-${grinch.id})`} filter={`url(#grinch-glow-${grinch.id})`} />
+              {/* === THE GRINCH - Furry & Authentic === */}
               
-              {/* Grinch head */}
-              <ellipse cx="120" cy="50" rx="26" ry="28" fill={`url(#grinch-green-${grinch.id})`} />
+              {/* Grinch furry body */}
+              <ellipse cx="130" cy="100" rx="32" ry="38" fill={`url(#grinch-fur-${grinch.id})`} filter={`url(#grinch-glow-${grinch.id})`} />
+              {/* Fur texture overlay */}
+              <ellipse cx="130" cy="100" rx="32" ry="38" fill={`url(#fur-pattern-${grinch.id})`} opacity="0.6" />
+              {/* Fur tufts around body */}
+              {Array.from({ length: 12 }).map((_, i) => {
+                const angle = (i / 12) * Math.PI * 2;
+                const x = 130 + Math.cos(angle) * 30;
+                const y = 100 + Math.sin(angle) * 36;
+                const outX = 130 + Math.cos(angle) * 38;
+                const outY = 100 + Math.sin(angle) * 44;
+                return (
+                  <path
+                    key={`body-fur-${i}`}
+                    d={`M${x} ${y} Q${outX + Math.random() * 6 - 3} ${outY + Math.random() * 6 - 3} ${outX} ${outY}`}
+                    fill="none"
+                    stroke="#6B8E23"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    opacity="0.8"
+                  />
+                );
+              })}
               
-              {/* Grinch fur tufts on head */}
-              <path d="M100 30 Q90 15 95 25 Q88 18 100 28" fill={`url(#grinch-fur-${grinch.id})`} />
-              <path d="M140 30 Q150 15 145 25 Q152 18 140 28" fill={`url(#grinch-fur-${grinch.id})`} />
-              <path d="M120 20 Q120 5 125 15 Q130 5 128 22" fill={`url(#grinch-fur-${grinch.id})`} />
-              
-              {/* Evil eyebrows */}
-              <path d="M102 38 Q108 32 116 38" fill="none" stroke="#2d5a1a" strokeWidth="4" strokeLinecap="round" />
-              <path d="M124 38 Q132 32 138 38" fill="none" stroke="#2d5a1a" strokeWidth="4" strokeLinecap="round" />
-              
-              {/* Evil eyes */}
-              <ellipse cx="108" cy="48" rx="8" ry="10" fill="#ffff00" />
-              <ellipse cx="132" cy="48" rx="8" ry="10" fill="#ffff00" />
-              <circle cx="110" cy="48" r="4" fill="#ff0000" />
-              <circle cx="134" cy="48" r="4" fill="#ff0000" />
-              <circle cx="111" cy="47" r="1.5" fill="#fff" />
-              <circle cx="135" cy="47" r="1.5" fill="#fff" />
-              
-              {/* Sinister grin */}
+              {/* Grinch head - elongated pear shape like the real Grinch */}
               <path
-                d="M100 70 Q110 85 120 78 Q130 85 140 70"
+                d={`M130 25 
+                   Q155 28 160 50 
+                   Q165 72 155 85 
+                   Q145 95 130 95 
+                   Q115 95 105 85 
+                   Q95 72 100 50 
+                   Q105 28 130 25`}
+                fill={`url(#grinch-skin-${grinch.id})`}
+              />
+              {/* Face fur texture */}
+              <path
+                d={`M130 25 Q155 28 160 50 Q165 72 155 85 Q145 95 130 95 Q115 95 105 85 Q95 72 100 50 Q105 28 130 25`}
+                fill={`url(#fur-pattern-${grinch.id})`}
+                opacity="0.4"
+              />
+              
+              {/* Messy fur on top of head - wild and spiky */}
+              <path d="M115 28 Q110 12 105 18 Q100 8 108 15 Q102 5 115 20" fill={`url(#grinch-fur-${grinch.id})`} />
+              <path d="M125 22 Q122 5 118 12 Q120 0 128 10 Q125 2 130 18" fill={`url(#grinch-fur-${grinch.id})`} />
+              <path d="M135 22 Q138 5 142 12 Q140 0 132 10 Q135 2 130 18" fill={`url(#grinch-fur-${grinch.id})`} />
+              <path d="M145 28 Q150 12 155 18 Q160 8 152 15 Q158 5 145 20" fill={`url(#grinch-fur-${grinch.id})`} />
+              {/* Extra wild fur strands */}
+              <path d="M120 25 Q115 8 110 15" fill="none" stroke="#7CB342" strokeWidth="3" strokeLinecap="round" />
+              <path d="M140 25 Q145 8 150 15" fill="none" stroke="#7CB342" strokeWidth="3" strokeLinecap="round" />
+              <path d="M130 20 Q130 2 135 10" fill="none" stroke="#8BC34A" strokeWidth="2.5" strokeLinecap="round" />
+              
+              {/* Fur around face edges */}
+              <path d="M100 55 Q92 52 88 58 Q94 55 100 60" fill={`url(#grinch-fur-dark-${grinch.id})`} />
+              <path d="M160 55 Q168 52 172 58 Q166 55 160 60" fill={`url(#grinch-fur-dark-${grinch.id})`} />
+              <path d="M105 80 Q95 82 92 88 Q100 84 108 85" fill={`url(#grinch-fur-dark-${grinch.id})`} />
+              <path d="M155 80 Q165 82 168 88 Q160 84 152 85" fill={`url(#grinch-fur-dark-${grinch.id})`} />
+              
+              {/* Sinister arched eyebrows - very angled */}
+              <path d="M108 42 Q115 32 126 40" fill="none" stroke="#3d5a1a" strokeWidth="5" strokeLinecap="round" />
+              <path d="M134 40 Q145 32 152 42" fill="none" stroke="#3d5a1a" strokeWidth="5" strokeLinecap="round" />
+              
+              {/* Evil squinting eyes - yellow with red pupils */}
+              <ellipse cx="118" cy="52" rx="10" ry="8" fill="#FFEB3B" />
+              <ellipse cx="142" cy="52" rx="10" ry="8" fill="#FFEB3B" />
+              {/* Red pupils - scheming look */}
+              <ellipse cx="120" cy="52" rx="4" ry="5" fill="#D32F2F" />
+              <ellipse cx="144" cy="52" rx="4" ry="5" fill="#D32F2F" />
+              {/* Eye shine */}
+              <circle cx="122" cy="50" r="1.5" fill="#fff" />
+              <circle cx="146" cy="50" r="1.5" fill="#fff" />
+              {/* Wrinkles around eyes */}
+              <path d="M106 48 Q104 52 106 56" fill="none" stroke="#556B2F" strokeWidth="1.5" opacity="0.6" />
+              <path d="M154 48 Q156 52 154 56" fill="none" stroke="#556B2F" strokeWidth="1.5" opacity="0.6" />
+              
+              {/* Long pointy nose */}
+              <path
+                d="M130 52 Q132 62 130 72 Q128 62 130 52"
+                fill="#7CB342"
+                stroke="#6B8E23"
+                strokeWidth="1"
+              />
+              
+              {/* The iconic sinister Grinch smile */}
+              <path
+                d="M108 78 Q115 90 130 85 Q145 90 152 78"
                 fill="none"
-                stroke="#1a1a1a"
-                strokeWidth="3"
+                stroke="#2d2d2d"
+                strokeWidth="3.5"
                 strokeLinecap="round"
               />
-              {/* Teeth */}
-              <path d="M105 72 L108 78 L111 72" fill="#fff" stroke="#1a1a1a" strokeWidth="1" />
-              <path d="M129 72 L132 78 L135 72" fill="#fff" stroke="#1a1a1a" strokeWidth="1" />
+              {/* Crooked teeth showing in grin */}
+              <path d="M115 80 L118 86 L121 80" fill="#ffffcc" stroke="#2d2d2d" strokeWidth="1" />
+              <path d="M139 80 L142 86 L145 80" fill="#ffffcc" stroke="#2d2d2d" strokeWidth="1" />
+              <path d="M127 82 L130 87 L133 82" fill="#ffffcc" stroke="#2d2d2d" strokeWidth="1" />
               
-              {/* Long fingers reaching for presents */}
+              {/* Wrinkles on face for expression */}
+              <path d="M110 68 Q108 72 110 76" fill="none" stroke="#556B2F" strokeWidth="1" opacity="0.5" />
+              <path d="M150 68 Q152 72 150 76" fill="none" stroke="#556B2F" strokeWidth="1" opacity="0.5" />
+              
+              {/* Long spindly arm reaching out */}
               <g className="animate-grinch-grab">
+                {/* Upper arm */}
+                <ellipse cx="95" cy="85" rx="12" ry="8" fill={`url(#grinch-fur-${grinch.id})`} transform="rotate(-30 95 85)" />
+                {/* Forearm */}
                 <path
-                  d="M80 90 Q60 85 50 75"
+                  d="M88 80 Q68 70 52 60"
                   fill="none"
-                  stroke={`url(#grinch-green-${grinch.id})`}
-                  strokeWidth="10"
+                  stroke={`url(#grinch-fur-${grinch.id})`}
+                  strokeWidth="14"
                   strokeLinecap="round"
                 />
-                {/* Long creepy fingers */}
-                <path d="M50 75 Q40 65 35 60" fill="none" stroke="#5a9a2a" strokeWidth="4" strokeLinecap="round" />
-                <path d="M50 75 Q42 70 38 68" fill="none" stroke="#5a9a2a" strokeWidth="4" strokeLinecap="round" />
-                <path d="M50 75 Q45 78 40 78" fill="none" stroke="#5a9a2a" strokeWidth="4" strokeLinecap="round" />
+                {/* Fur on arm */}
+                <path d="M75 72 Q70 65 72 68" fill="none" stroke="#8BC34A" strokeWidth="3" strokeLinecap="round" />
+                <path d="M65 68 Q60 62 63 64" fill="none" stroke="#8BC34A" strokeWidth="2" strokeLinecap="round" />
+                
+                {/* Creepy long green fingers */}
+                <g fill="none" stroke="#7CB342" strokeWidth="5" strokeLinecap="round">
+                  <path d="M52 60 Q42 48 35 42">
+                    <animate attributeName="d" values="M52 60 Q42 48 35 42;M52 60 Q40 50 32 46;M52 60 Q42 48 35 42" dur="0.8s" repeatCount="indefinite" />
+                  </path>
+                  <path d="M52 60 Q40 52 32 50">
+                    <animate attributeName="d" values="M52 60 Q40 52 32 50;M52 60 Q38 55 28 54;M52 60 Q40 52 32 50" dur="0.8s" repeatCount="indefinite" />
+                  </path>
+                  <path d="M52 60 Q42 58 35 60">
+                    <animate attributeName="d" values="M52 60 Q42 58 35 60;M52 60 Q40 62 30 65;M52 60 Q42 58 35 60" dur="0.8s" repeatCount="indefinite" />
+                  </path>
+                  <path d="M52 60 Q45 65 40 72">
+                    <animate attributeName="d" values="M52 60 Q45 65 40 72;M52 60 Q44 68 38 78;M52 60 Q45 65 40 72" dur="0.8s" repeatCount="indefinite" />
+                  </path>
+                </g>
+                {/* Sharp fingernails */}
+                <circle cx="35" cy="42" r="2" fill="#556B2F" />
+                <circle cx="32" cy="50" r="2" fill="#556B2F" />
+                <circle cx="35" cy="60" r="2" fill="#556B2F" />
+                <circle cx="40" cy="72" r="2" fill="#556B2F" />
               </g>
               
-              {/* Santa hat (stolen!) */}
+              {/* Stolen Santa hat on head */}
               <path
-                d="M95 28 Q100 10 130 15 Q150 8 155 25"
-                fill="#cc0000"
+                d="M105 30 Q115 8 145 12 Q165 5 172 28"
+                fill="#c62828"
               />
-              <ellipse cx="98" cy="30" rx="20" ry="5" fill="#fff" />
-              <circle cx="158" cy="22" r="7" fill="#fff" />
+              <path d="M105 30 Q115 8 145 12 Q165 5 172 28" fill="none" stroke="#8B0000" strokeWidth="1" />
+              <ellipse cx="108" cy="32" rx="24" ry="6" fill="#fff" />
+              <circle cx="175" cy="24" r="9" fill="#fff" />
               
-              {/* Max the dog flying behind */}
-              <g transform="translate(-40, 70)">
-                <ellipse cx="30" cy="30" rx="15" ry="10" fill="#8B7355" />
-                <ellipse cx="15" cy="25" rx="8" ry="6" fill="#8B7355" />
-                <circle cx="10" cy="23" r="2" fill="#1a1a1a" />
-                <ellipse cx="8" cy="27" rx="4" ry="2" fill="#1a1a1a" />
-                {/* Antler on Max's head (tied on) */}
-                <path d="M18 18 Q20 10 25 8" fill="none" stroke="#5c3317" strokeWidth="2" strokeLinecap="round" />
-                <circle cx="18" cy="18" r="3" fill="#ff0000" />
+              {/* Max the dog being dragged along */}
+              <g transform="translate(-45, 80)">
+                {/* Max's body - scruffy */}
+                <ellipse cx="32" cy="32" rx="18" ry="12" fill="#A0826D" />
+                {/* Fur texture on Max */}
+                <path d="M20 28 Q18 24 20 26" fill="none" stroke="#8B7355" strokeWidth="2" />
+                <path d="M44 28 Q46 24 44 26" fill="none" stroke="#8B7355" strokeWidth="2" />
+                {/* Max's head */}
+                <ellipse cx="14" cy="26" rx="10" ry="8" fill="#A0826D" />
+                {/* Floppy ears */}
+                <ellipse cx="8" cy="22" rx="5" ry="8" fill="#8B7355" transform="rotate(-20 8 22)" />
+                <ellipse cx="20" cy="20" rx="4" ry="7" fill="#8B7355" transform="rotate(20 20 20)" />
+                {/* Sad eye */}
+                <circle cx="12" cy="24" r="3" fill="#1a1a1a" />
+                <circle cx="13" cy="23" r="1" fill="#fff" />
+                {/* Nose */}
+                <ellipse cx="6" cy="28" rx="4" ry="3" fill="#1a1a1a" />
+                {/* The famous single antler tied to head */}
+                <path d="M15 16 Q18 6 24 4 M20 8 Q24 6 26 8" fill="none" stroke="#5c3317" strokeWidth="3" strokeLinecap="round" />
+                {/* Red ribbon tying antler */}
+                <circle cx="15" cy="16" r="4" fill="#c62828" />
+                {/* Legs dangling */}
+                <line x1="25" y1="42" x2="22" y2="52" stroke="#8B7355" strokeWidth="4" strokeLinecap="round" />
+                <line x1="40" y1="42" x2="43" y2="52" stroke="#8B7355" strokeWidth="4" strokeLinecap="round" />
               </g>
             </g>
           </svg>
