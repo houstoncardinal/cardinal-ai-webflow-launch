@@ -470,6 +470,76 @@
   .animate-light-flicker { animation: light-flicker 3s ease-in-out infinite; }
   .animate-leaf-sway { animation: leaf-sway 6s ease-in-out infinite; }
   .animate-berry-glow { animation: berry-glow 3s ease-in-out infinite; }
+  .animate-reindeer-run { animation: reindeer-run 0.4s ease-in-out infinite; }
+  .animate-grinch-grab { animation: grinch-grab 1.5s ease-in-out infinite; }
+
+  /* Flying Santa & Grinch Animations */
+  @keyframes fly-right {
+    0% {
+      transform: translateX(0) translateY(0);
+    }
+    25% {
+      transform: translateX(35vw) translateY(-15px);
+    }
+    50% {
+      transform: translateX(70vw) translateY(10px);
+    }
+    75% {
+      transform: translateX(105vw) translateY(-8px);
+    }
+    100% {
+      transform: translateX(140vw) translateY(0);
+    }
+  }
+
+  @keyframes fly-left {
+    0% {
+      transform: translateX(0) translateY(0);
+    }
+    25% {
+      transform: translateX(-35vw) translateY(-12px);
+    }
+    50% {
+      transform: translateX(-70vw) translateY(8px);
+    }
+    75% {
+      transform: translateX(-105vw) translateY(-10px);
+    }
+    100% {
+      transform: translateX(-140vw) translateY(0);
+    }
+  }
+
+  @keyframes reindeer-run {
+    0%, 100% {
+      transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+      transform: translateY(-4px) rotate(2deg);
+    }
+  }
+
+  @keyframes grinch-grab {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-8deg);
+    }
+    75% {
+      transform: rotate(8deg);
+    }
+  }
+
+  /* Santa Sleigh HD effects */
+  .santa-sleigh-hd {
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.4));
+  }
+
+  /* Grinch HD effects */
+  .grinch-hd {
+    filter: drop-shadow(0 6px 16px rgba(0,0,0,0.35));
+  }
   
   /* 3D Snowflake Effect */
   .snowflake-3d {
