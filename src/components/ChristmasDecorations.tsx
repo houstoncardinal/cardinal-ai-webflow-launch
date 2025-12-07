@@ -33,9 +33,18 @@ const ChristmasDecorations = () => {
   const [headerLights, setHeaderLights] = useState<Light[]>([]);
   const [santaFlights, setSantaFlights] = useState<FlyingCharacter[]>([]);
   const [grinchFlights, setGrinchFlights] = useState<FlyingCharacter[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
   
   const currentMonth = new Date().getMonth();
   const isDecember = currentMonth === 11;
+
+  // Detect mobile for reduced animations
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const lightColors = [
     'hsl(0, 100%, 50%)',      // Bright red
@@ -49,10 +58,11 @@ const ChristmasDecorations = () => {
   useEffect(() => {
     if (!isDecember) return;
     
-    // Generate realistic snowflakes with depth
+    // Generate realistic snowflakes with depth - fewer on mobile
     const flakes: Snowflake[] = [];
     const snowChars = ['❄', '❅', '❆', '✻', '✼', '❊'];
-    for (let i = 0; i < 100; i++) {
+    const flakeCount = window.innerWidth < 768 ? 25 : 100;
+    for (let i = 0; i < flakeCount; i++) {
       const depth = Math.random();
       flakes.push({
         id: i,
@@ -102,7 +112,7 @@ const ChristmasDecorations = () => {
   return (
     <>
       {/* Ultra-Realistic Snowfall with Depth */}
-      <div className="fixed inset-0 pointer-events-none z-[100] overflow-hidden">
+      <div className="fixed inset-0 pointer-events-none z-[5] overflow-hidden select-none" style={{ touchAction: 'none' }}>
         {snowflakes.map((flake) => (
           <div
             key={flake.id}
@@ -124,12 +134,13 @@ const ChristmasDecorations = () => {
         ))}
       </div>
 
-      {/* Flying Santa with Sleigh and Reindeer */}
-      {santaFlights.map((santa) => (
+      {/* Flying Santa with Sleigh and Reindeer - Hidden on mobile for performance */}
+      {!isMobile && santaFlights.map((santa) => (
         <div
           key={`santa-${santa.id}`}
-          className="fixed pointer-events-none z-[105]"
+          className="fixed pointer-events-none z-[5] select-none"
           style={{
+            touchAction: 'none',
             top: `${santa.yPosition}%`,
             left: santa.direction === 'right' ? '-300px' : 'auto',
             right: santa.direction === 'left' ? '-300px' : 'auto',
@@ -332,12 +343,13 @@ const ChristmasDecorations = () => {
         </div>
       ))}
 
-      {/* Flying Grinch stealing Christmas */}
-      {grinchFlights.map((grinch) => (
+      {/* Flying Grinch stealing Christmas - Hidden on mobile for performance */}
+      {!isMobile && grinchFlights.map((grinch) => (
         <div
           key={`grinch-${grinch.id}`}
-          className="fixed pointer-events-none z-[104]"
+          className="fixed pointer-events-none z-[5] select-none"
           style={{
+            touchAction: 'none',
             top: `${grinch.yPosition}%`,
             left: grinch.direction === 'right' ? '-220px' : 'auto',
             right: grinch.direction === 'left' ? '-220px' : 'auto',
@@ -600,8 +612,8 @@ const ChristmasDecorations = () => {
         </div>
       ))}
 
-      {/* String Lights Along Top - Ultra HD */}
-      <div className="fixed top-0 left-0 right-0 pointer-events-none z-[99] overflow-visible">
+      {/* String Lights Along Top - Ultra HD - Hidden on mobile */}
+      <div className="fixed top-0 left-0 right-0 pointer-events-none z-[5] overflow-visible hidden md:block">
         <svg className="w-full" height="90" viewBox="0 0 2000 90" preserveAspectRatio="none" style={{ overflow: 'visible' }}>
           <defs>
             {lightColors.map((color, i) => (
@@ -695,8 +707,8 @@ const ChristmasDecorations = () => {
         </svg>
       </div>
 
-      {/* Corner Holly - Enhanced */}
-      <div className="fixed top-0 left-0 pointer-events-none z-[98]">
+      {/* Corner Holly - Enhanced - Hidden on mobile */}
+      <div className="fixed top-0 left-0 pointer-events-none z-[5] hidden md:block">
         <svg width="200" height="200" viewBox="0 0 200 200" className="drop-shadow-2xl">
           <defs>
             <linearGradient id="holly-leaf" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -730,8 +742,8 @@ const ChristmasDecorations = () => {
         </svg>
       </div>
 
-      {/* Corner Holly - Right */}
-      <div className="fixed top-0 right-0 pointer-events-none z-[98] transform scale-x-[-1]">
+      {/* Corner Holly - Right - Hidden on mobile */}
+      <div className="fixed top-0 right-0 pointer-events-none z-[5] transform scale-x-[-1] hidden md:block">
         <svg width="200" height="200" viewBox="0 0 200 200" className="drop-shadow-2xl">
           <path d="M10 50 Q20 30 40 40 Q35 50 45 55 Q40 60 50 70 Q45 75 55 85 Q35 80 30 60 Q15 70 10 50" 
                 fill="url(#holly-leaf)" filter="url(#leaf-shadow)" className="animate-leaf-sway" style={{ animationDelay: '0.2s' }} />
@@ -747,8 +759,8 @@ const ChristmasDecorations = () => {
         </svg>
       </div>
 
-      {/* Enhanced Hanging Ornaments */}
-      <div className="fixed top-16 left-6 pointer-events-none z-[97] hidden lg:block">
+      {/* Enhanced Hanging Ornaments - Desktop only */}
+      <div className="fixed top-16 left-6 pointer-events-none z-[5] hidden lg:block">
         <div className="animate-ornament-swing-realistic" style={{ transformOrigin: 'top center' }}>
           <svg width="55" height="100" viewBox="0 0 55 100">
             <defs>
@@ -782,7 +794,7 @@ const ChristmasDecorations = () => {
         </div>
       </div>
 
-      <div className="fixed top-20 right-8 pointer-events-none z-[97] hidden lg:block">
+      <div className="fixed top-20 right-8 pointer-events-none z-[5] hidden lg:block">
         <div className="animate-ornament-swing-realistic" style={{ transformOrigin: 'top center', animationDelay: '1.2s' }}>
           <svg width="50" height="90" viewBox="0 0 50 90">
             <defs>
@@ -811,8 +823,8 @@ const ChristmasDecorations = () => {
         </div>
       </div>
 
-      {/* Side Light Strands */}
-      <div className="fixed top-0 left-0 h-full pointer-events-none z-[96] hidden lg:block">
+      {/* Side Light Strands - Desktop only */}
+      <div className="fixed top-0 left-0 h-full pointer-events-none z-[5] hidden lg:block">
         <svg width="70" height="100%" viewBox="0 0 70 1000" preserveAspectRatio="none">
           <path d="M35 0 Q55 100 35 200 Q15 300 35 400 Q55 500 35 600 Q15 700 35 800 Q55 900 35 1000" 
                 fill="none" stroke="hsl(0,0%,12%)" strokeWidth="3" />
@@ -836,7 +848,7 @@ const ChristmasDecorations = () => {
         </svg>
       </div>
 
-      <div className="fixed top-0 right-0 h-full pointer-events-none z-[96] hidden lg:block">
+      <div className="fixed top-0 right-0 h-full pointer-events-none z-[5] hidden lg:block">
         <svg width="70" height="100%" viewBox="0 0 70 1000" preserveAspectRatio="none">
           <path d="M35 0 Q15 100 35 200 Q55 300 35 400 Q15 500 35 600 Q55 700 35 800 Q15 900 35 1000" 
                 fill="none" stroke="hsl(0,0%,12%)" strokeWidth="3" />
@@ -860,8 +872,8 @@ const ChristmasDecorations = () => {
         </svg>
       </div>
 
-      {/* Ambient Glow Effect at Bottom */}
-      <div className="fixed bottom-0 left-0 right-0 h-40 pointer-events-none z-[95]"
+      {/* Ambient Glow Effect at Bottom - Hidden on mobile */}
+      <div className="fixed bottom-0 left-0 right-0 h-40 pointer-events-none z-[5] hidden md:block"
            style={{
              background: 'linear-gradient(to top, hsla(0, 75%, 52%, 0.12), hsla(140, 65%, 42%, 0.08), transparent)'
            }} />
