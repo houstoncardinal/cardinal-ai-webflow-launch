@@ -26,13 +26,23 @@ interface FlyingCharacter {
   yPosition: number;
   scale: number;
   direction: 'left' | 'right';
+  path: 'straight' | 'wave' | 'dive' | 'loop';
+}
+
+interface Elf {
+  id: number;
+  x: number;
+  y: number;
+  scale: number;
+  delay: number;
+  activity: 'waving' | 'jumping' | 'carrying';
 }
 
 const ChristmasDecorations = () => {
   const [snowflakes, setSnowflakes] = useState<Snowflake[]>([]);
   const [headerLights, setHeaderLights] = useState<Light[]>([]);
   const [santaFlights, setSantaFlights] = useState<FlyingCharacter[]>([]);
-  const [grinchFlights, setGrinchFlights] = useState<FlyingCharacter[]>([]);
+  const [elves, setElves] = useState<Elf[]>([]);
   const [isMobile, setIsMobile] = useState(false);
   
   const currentMonth = new Date().getMonth();
@@ -91,20 +101,22 @@ const ChristmasDecorations = () => {
     }
     setHeaderLights(lights);
 
-    // Generate Santa flights
+    // Generate Santa flights with varied paths
     const santas: FlyingCharacter[] = [
-      { id: 1, startDelay: 0, duration: 18, yPosition: 15, scale: 1.2, direction: 'right' },
-      { id: 2, startDelay: 25, duration: 22, yPosition: 30, scale: 0.9, direction: 'left' },
-      { id: 3, startDelay: 50, duration: 20, yPosition: 8, scale: 1.0, direction: 'right' },
+      { id: 1, startDelay: 0, duration: 20, yPosition: 12, scale: 1.1, direction: 'right', path: 'wave' },
+      { id: 2, startDelay: 30, duration: 25, yPosition: 35, scale: 0.85, direction: 'left', path: 'dive' },
+      { id: 3, startDelay: 60, duration: 22, yPosition: 55, scale: 0.95, direction: 'right', path: 'loop' },
     ];
     setSantaFlights(santas);
 
-    // Generate Grinch flights
-    const grinches: FlyingCharacter[] = [
-      { id: 1, startDelay: 12, duration: 20, yPosition: 25, scale: 0.85, direction: 'left' },
-      { id: 2, startDelay: 40, duration: 16, yPosition: 12, scale: 1.1, direction: 'right' },
+    // Generate elves throughout the page
+    const elfList: Elf[] = [
+      { id: 1, x: 5, y: 20, scale: 0.8, delay: 0, activity: 'waving' },
+      { id: 2, x: 92, y: 35, scale: 0.7, delay: 0.5, activity: 'jumping' },
+      { id: 3, x: 8, y: 60, scale: 0.75, delay: 1, activity: 'carrying' },
+      { id: 4, x: 90, y: 75, scale: 0.85, delay: 1.5, activity: 'waving' },
     ];
-    setGrinchFlights(grinches);
+    setElves(elfList);
   }, [isDecember]);
 
   if (!isDecember) return null;
@@ -134,7 +146,7 @@ const ChristmasDecorations = () => {
         ))}
       </div>
 
-      {/* Flying Santa with Sleigh and Reindeer - Hidden on mobile for performance */}
+      {/* Flying Santa with Sleigh and Reindeer - Dynamic paths throughout page */}
       {!isMobile && santaFlights.map((santa) => (
         <div
           key={`santa-${santa.id}`}
@@ -144,7 +156,7 @@ const ChristmasDecorations = () => {
             top: `${santa.yPosition}%`,
             left: santa.direction === 'right' ? '-300px' : 'auto',
             right: santa.direction === 'left' ? '-300px' : 'auto',
-            animation: `fly-${santa.direction} ${santa.duration}s linear infinite`,
+            animation: `santa-fly-${santa.path}-${santa.direction} ${santa.duration}s ease-in-out infinite`,
             animationDelay: `${santa.startDelay}s`,
             transform: `scale(${santa.scale}) ${santa.direction === 'left' ? 'scaleX(-1)' : ''}`,
           }}
@@ -343,271 +355,87 @@ const ChristmasDecorations = () => {
         </div>
       ))}
 
-      {/* Flying Grinch stealing Christmas - Hidden on mobile for performance */}
-      {!isMobile && grinchFlights.map((grinch) => (
+      {/* Cute Christmas Elves throughout the page - Hidden on mobile */}
+      {!isMobile && elves.map((elf) => (
         <div
-          key={`grinch-${grinch.id}`}
+          key={`elf-${elf.id}`}
           className="fixed pointer-events-none z-[5] select-none"
           style={{
             touchAction: 'none',
-            top: `${grinch.yPosition}%`,
-            left: grinch.direction === 'right' ? '-220px' : 'auto',
-            right: grinch.direction === 'left' ? '-220px' : 'auto',
-            animation: `fly-${grinch.direction} ${grinch.duration}s linear infinite`,
-            animationDelay: `${grinch.startDelay}s`,
-            transform: `scale(${grinch.scale}) ${grinch.direction === 'left' ? 'scaleX(-1)' : ''}`,
+            left: `${elf.x}%`,
+            top: `${elf.y}%`,
+            transform: `scale(${elf.scale})`,
+            animation: elf.activity === 'jumping' ? 'elf-jump 1s ease-in-out infinite' : elf.activity === 'waving' ? 'elf-wave 1.5s ease-in-out infinite' : 'elf-carry 2s ease-in-out infinite',
+            animationDelay: `${elf.delay}s`,
           }}
         >
-          <svg width="220" height="170" viewBox="0 0 220 170" className="grinch-hd">
+          <svg width="80" height="100" viewBox="0 0 80 100" className="drop-shadow-lg">
             <defs>
-              {/* Grinch authentic green - more yellow-green like the movie */}
-              <radialGradient id={`grinch-skin-${grinch.id}`} cx="40%" cy="35%">
-                <stop offset="0%" stopColor="#9ACD32" />
-                <stop offset="40%" stopColor="#6B8E23" />
-                <stop offset="100%" stopColor="#556B2F" />
-              </radialGradient>
-              {/* Grinch fur texture */}
-              <linearGradient id={`grinch-fur-${grinch.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#9ACD32" />
-                <stop offset="50%" stopColor="#7CB342" />
-                <stop offset="100%" stopColor="#558B2F" />
+              <linearGradient id={`elf-suit-${elf.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#22c55e" />
+                <stop offset="100%" stopColor="#16a34a" />
               </linearGradient>
-              {/* Dark fur shadows */}
-              <linearGradient id={`grinch-fur-dark-${grinch.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#6B8E23" />
-                <stop offset="100%" stopColor="#3d5a1a" />
+              <linearGradient id={`elf-skin-${elf.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#fcd5b8" />
+                <stop offset="100%" stopColor="#e8b89d" />
               </linearGradient>
-              {/* Grinch glow */}
-              <filter id={`grinch-glow-${grinch.id}`} x="-30%" y="-30%" width="160%" height="160%">
-                <feGaussianBlur stdDeviation="2" result="blur" />
-                <feFlood floodColor="#9ACD32" floodOpacity="0.3" />
-                <feComposite in2="blur" operator="in" />
-                <feMerge>
-                  <feMergeNode />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-              {/* Fur texture pattern */}
-              <pattern id={`fur-pattern-${grinch.id}`} patternUnits="userSpaceOnUse" width="6" height="6">
-                <path d="M0 3 Q1 0 2 3 Q3 6 4 3 Q5 0 6 3" fill="none" stroke="#556B2F" strokeWidth="0.5" opacity="0.4" />
-              </pattern>
             </defs>
             
-            {/* Stolen presents flying behind */}
-            <g className="animate-float" style={{ animationDuration: '1s' }}>
-              <rect x="5" y="110" width="22" height="22" rx="2" fill="#ff4444" />
-              <path d="M5 121 L27 121 M16 110 L16 132" stroke="#ffd700" strokeWidth="2.5" />
-              <ellipse cx="16" cy="110" rx="6" ry="3" fill="#ffd700" />
-            </g>
-            <g className="animate-float" style={{ animationDuration: '1.2s', animationDelay: '0.3s' }}>
-              <rect x="32" y="125" width="18" height="18" rx="2" fill="#4488ff" />
-              <path d="M32 134 L50 134 M41 125 L41 143" stroke="#fff" strokeWidth="2" />
-            </g>
+            {/* Pointy elf hat */}
+            <path d="M40 2 L28 28 L52 28 Z" fill="#dc2626" />
+            <circle cx="40" cy="2" r="5" fill="#ffd700" />
+            <ellipse cx="40" cy="28" rx="14" ry="4" fill="#fff" />
             
-            {/* Grinch on his makeshift sleigh */}
-            <g>
-              {/* Rickety wooden sled */}
-              <path
-                d="M65 138 Q75 128 130 128 L180 128 Q192 132 188 142 L72 148 Q60 148 65 138"
-                fill="#5c4033"
-                stroke="#3d2817"
-                strokeWidth="2.5"
-              />
-              {/* Sled runners */}
-              <path d="M70 148 Q60 155 65 158 L185 158 Q195 152 188 145" fill="none" stroke="#8B4513" strokeWidth="4" strokeLinecap="round" />
-              
-              {/* Tangled stolen lights on sled */}
-              <path d="M60 133 Q78 122 95 133 Q112 144 130 133 Q148 122 165 133" fill="none" stroke="#222" strokeWidth="2" />
-              {Array.from({ length: 5 }).map((_, i) => (
-                <g key={i}>
-                  <ellipse
-                    cx={68 + i * 24}
-                    cy={128 + (i % 2 === 0 ? -6 : 6)}
-                    rx="6"
-                    ry="8"
-                    fill={lightColors[i % lightColors.length]}
-                    className="animate-light-flicker"
-                    style={{ animationDelay: `${i * 0.2}s` }}
-                  />
-                  <ellipse cx={68 + i * 24} cy={126 + (i % 2 === 0 ? -6 : 6)} rx="2" ry="3" fill="#fff" opacity="0.5" />
-                </g>
-              ))}
-              
-              {/* === THE GRINCH - Furry & Authentic === */}
-              
-              {/* Grinch furry body */}
-              <ellipse cx="130" cy="100" rx="32" ry="38" fill={`url(#grinch-fur-${grinch.id})`} filter={`url(#grinch-glow-${grinch.id})`} />
-              {/* Fur texture overlay */}
-              <ellipse cx="130" cy="100" rx="32" ry="38" fill={`url(#fur-pattern-${grinch.id})`} opacity="0.6" />
-              {/* Fur tufts around body */}
-              {Array.from({ length: 12 }).map((_, i) => {
-                const angle = (i / 12) * Math.PI * 2;
-                const x = 130 + Math.cos(angle) * 30;
-                const y = 100 + Math.sin(angle) * 36;
-                const outX = 130 + Math.cos(angle) * 38;
-                const outY = 100 + Math.sin(angle) * 44;
-                return (
-                  <path
-                    key={`body-fur-${i}`}
-                    d={`M${x} ${y} Q${outX + Math.random() * 6 - 3} ${outY + Math.random() * 6 - 3} ${outX} ${outY}`}
-                    fill="none"
-                    stroke="#6B8E23"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    opacity="0.8"
-                  />
-                );
-              })}
-              
-              {/* Grinch head - elongated pear shape like the real Grinch */}
-              <path
-                d={`M130 25 
-                   Q155 28 160 50 
-                   Q165 72 155 85 
-                   Q145 95 130 95 
-                   Q115 95 105 85 
-                   Q95 72 100 50 
-                   Q105 28 130 25`}
-                fill={`url(#grinch-skin-${grinch.id})`}
-              />
-              {/* Face fur texture */}
-              <path
-                d={`M130 25 Q155 28 160 50 Q165 72 155 85 Q145 95 130 95 Q115 95 105 85 Q95 72 100 50 Q105 28 130 25`}
-                fill={`url(#fur-pattern-${grinch.id})`}
-                opacity="0.4"
-              />
-              
-              {/* Messy fur on top of head - wild and spiky */}
-              <path d="M115 28 Q110 12 105 18 Q100 8 108 15 Q102 5 115 20" fill={`url(#grinch-fur-${grinch.id})`} />
-              <path d="M125 22 Q122 5 118 12 Q120 0 128 10 Q125 2 130 18" fill={`url(#grinch-fur-${grinch.id})`} />
-              <path d="M135 22 Q138 5 142 12 Q140 0 132 10 Q135 2 130 18" fill={`url(#grinch-fur-${grinch.id})`} />
-              <path d="M145 28 Q150 12 155 18 Q160 8 152 15 Q158 5 145 20" fill={`url(#grinch-fur-${grinch.id})`} />
-              {/* Extra wild fur strands */}
-              <path d="M120 25 Q115 8 110 15" fill="none" stroke="#7CB342" strokeWidth="3" strokeLinecap="round" />
-              <path d="M140 25 Q145 8 150 15" fill="none" stroke="#7CB342" strokeWidth="3" strokeLinecap="round" />
-              <path d="M130 20 Q130 2 135 10" fill="none" stroke="#8BC34A" strokeWidth="2.5" strokeLinecap="round" />
-              
-              {/* Fur around face edges */}
-              <path d="M100 55 Q92 52 88 58 Q94 55 100 60" fill={`url(#grinch-fur-dark-${grinch.id})`} />
-              <path d="M160 55 Q168 52 172 58 Q166 55 160 60" fill={`url(#grinch-fur-dark-${grinch.id})`} />
-              <path d="M105 80 Q95 82 92 88 Q100 84 108 85" fill={`url(#grinch-fur-dark-${grinch.id})`} />
-              <path d="M155 80 Q165 82 168 88 Q160 84 152 85" fill={`url(#grinch-fur-dark-${grinch.id})`} />
-              
-              {/* Sinister arched eyebrows - very angled */}
-              <path d="M108 42 Q115 32 126 40" fill="none" stroke="#3d5a1a" strokeWidth="5" strokeLinecap="round" />
-              <path d="M134 40 Q145 32 152 42" fill="none" stroke="#3d5a1a" strokeWidth="5" strokeLinecap="round" />
-              
-              {/* Evil squinting eyes - yellow with red pupils */}
-              <ellipse cx="118" cy="52" rx="10" ry="8" fill="#FFEB3B" />
-              <ellipse cx="142" cy="52" rx="10" ry="8" fill="#FFEB3B" />
-              {/* Red pupils - scheming look */}
-              <ellipse cx="120" cy="52" rx="4" ry="5" fill="#D32F2F" />
-              <ellipse cx="144" cy="52" rx="4" ry="5" fill="#D32F2F" />
-              {/* Eye shine */}
-              <circle cx="122" cy="50" r="1.5" fill="#fff" />
-              <circle cx="146" cy="50" r="1.5" fill="#fff" />
-              {/* Wrinkles around eyes */}
-              <path d="M106 48 Q104 52 106 56" fill="none" stroke="#556B2F" strokeWidth="1.5" opacity="0.6" />
-              <path d="M154 48 Q156 52 154 56" fill="none" stroke="#556B2F" strokeWidth="1.5" opacity="0.6" />
-              
-              {/* Long pointy nose */}
-              <path
-                d="M130 52 Q132 62 130 72 Q128 62 130 52"
-                fill="#7CB342"
-                stroke="#6B8E23"
-                strokeWidth="1"
-              />
-              
-              {/* The iconic sinister Grinch smile */}
-              <path
-                d="M108 78 Q115 90 130 85 Q145 90 152 78"
-                fill="none"
-                stroke="#2d2d2d"
-                strokeWidth="3.5"
-                strokeLinecap="round"
-              />
-              {/* Crooked teeth showing in grin */}
-              <path d="M115 80 L118 86 L121 80" fill="#ffffcc" stroke="#2d2d2d" strokeWidth="1" />
-              <path d="M139 80 L142 86 L145 80" fill="#ffffcc" stroke="#2d2d2d" strokeWidth="1" />
-              <path d="M127 82 L130 87 L133 82" fill="#ffffcc" stroke="#2d2d2d" strokeWidth="1" />
-              
-              {/* Wrinkles on face for expression */}
-              <path d="M110 68 Q108 72 110 76" fill="none" stroke="#556B2F" strokeWidth="1" opacity="0.5" />
-              <path d="M150 68 Q152 72 150 76" fill="none" stroke="#556B2F" strokeWidth="1" opacity="0.5" />
-              
-              {/* Long spindly arm reaching out */}
-              <g className="animate-grinch-grab">
-                {/* Upper arm */}
-                <ellipse cx="95" cy="85" rx="12" ry="8" fill={`url(#grinch-fur-${grinch.id})`} transform="rotate(-30 95 85)" />
-                {/* Forearm */}
-                <path
-                  d="M88 80 Q68 70 52 60"
-                  fill="none"
-                  stroke={`url(#grinch-fur-${grinch.id})`}
-                  strokeWidth="14"
-                  strokeLinecap="round"
-                />
-                {/* Fur on arm */}
-                <path d="M75 72 Q70 65 72 68" fill="none" stroke="#8BC34A" strokeWidth="3" strokeLinecap="round" />
-                <path d="M65 68 Q60 62 63 64" fill="none" stroke="#8BC34A" strokeWidth="2" strokeLinecap="round" />
-                
-                {/* Creepy long green fingers */}
-                <g fill="none" stroke="#7CB342" strokeWidth="5" strokeLinecap="round">
-                  <path d="M52 60 Q42 48 35 42">
-                    <animate attributeName="d" values="M52 60 Q42 48 35 42;M52 60 Q40 50 32 46;M52 60 Q42 48 35 42" dur="0.8s" repeatCount="indefinite" />
-                  </path>
-                  <path d="M52 60 Q40 52 32 50">
-                    <animate attributeName="d" values="M52 60 Q40 52 32 50;M52 60 Q38 55 28 54;M52 60 Q40 52 32 50" dur="0.8s" repeatCount="indefinite" />
-                  </path>
-                  <path d="M52 60 Q42 58 35 60">
-                    <animate attributeName="d" values="M52 60 Q42 58 35 60;M52 60 Q40 62 30 65;M52 60 Q42 58 35 60" dur="0.8s" repeatCount="indefinite" />
-                  </path>
-                  <path d="M52 60 Q45 65 40 72">
-                    <animate attributeName="d" values="M52 60 Q45 65 40 72;M52 60 Q44 68 38 78;M52 60 Q45 65 40 72" dur="0.8s" repeatCount="indefinite" />
-                  </path>
-                </g>
-                {/* Sharp fingernails */}
-                <circle cx="35" cy="42" r="2" fill="#556B2F" />
-                <circle cx="32" cy="50" r="2" fill="#556B2F" />
-                <circle cx="35" cy="60" r="2" fill="#556B2F" />
-                <circle cx="40" cy="72" r="2" fill="#556B2F" />
+            {/* Elf face */}
+            <circle cx="40" cy="38" r="14" fill={`url(#elf-skin-${elf.id})`} />
+            {/* Rosy cheeks */}
+            <circle cx="32" cy="40" r="4" fill="#ffb3b3" opacity="0.6" />
+            <circle cx="48" cy="40" r="4" fill="#ffb3b3" opacity="0.6" />
+            {/* Eyes */}
+            <circle cx="35" cy="36" r="3" fill="#1a1a1a" />
+            <circle cx="45" cy="36" r="3" fill="#1a1a1a" />
+            <circle cx="36" cy="35" r="1" fill="#fff" />
+            <circle cx="46" cy="35" r="1" fill="#fff" />
+            {/* Big smile */}
+            <path d="M34 44 Q40 50 46 44" fill="none" stroke="#1a1a1a" strokeWidth="2" strokeLinecap="round" />
+            {/* Pointy ears */}
+            <path d="M25 36 Q18 32 22 26" fill={`url(#elf-skin-${elf.id})`} stroke="#d4a88a" strokeWidth="1" />
+            <path d="M55 36 Q62 32 58 26" fill={`url(#elf-skin-${elf.id})`} stroke="#d4a88a" strokeWidth="1" />
+            
+            {/* Elf body/suit */}
+            <ellipse cx="40" cy="62" rx="16" ry="14" fill={`url(#elf-suit-${elf.id})`} />
+            {/* Belt */}
+            <rect x="24" y="60" width="32" height="6" fill="#1a1a1a" />
+            <rect x="37" y="58" width="6" height="10" rx="1" fill="#ffd700" />
+            {/* Collar */}
+            <path d="M28 52 Q32 58 40 55 Q48 58 52 52" fill="#dc2626" />
+            
+            {/* Arms */}
+            <ellipse cx="22" cy="60" rx="6" ry="8" fill={`url(#elf-suit-${elf.id})`} 
+              className={elf.activity === 'waving' ? 'animate-elf-arm-wave' : ''} 
+              style={{ transformOrigin: '26px 60px' }} />
+            <circle cx="18" cy="56" r="5" fill={`url(#elf-skin-${elf.id})`} />
+            <ellipse cx="58" cy="60" rx="6" ry="8" fill={`url(#elf-suit-${elf.id})`} />
+            <circle cx="62" cy="56" r="5" fill={`url(#elf-skin-${elf.id})`} />
+            
+            {/* Legs */}
+            <rect x="30" y="72" width="8" height="16" rx="2" fill={`url(#elf-suit-${elf.id})`} />
+            <rect x="42" y="72" width="8" height="16" rx="2" fill={`url(#elf-suit-${elf.id})`} />
+            
+            {/* Curly elf shoes */}
+            <path d="M26 88 Q22 88 20 92 Q18 98 28 96 L38 88" fill="#dc2626" />
+            <path d="M42 88 L52 96 Q62 98 60 92 Q58 88 54 88" fill="#dc2626" />
+            <circle cx="20" cy="94" r="3" fill="#ffd700" />
+            <circle cx="60" cy="94" r="3" fill="#ffd700" />
+            
+            {/* Gift (for carrying elf) */}
+            {elf.activity === 'carrying' && (
+              <g transform="translate(60, 40)">
+                <rect x="0" y="0" width="18" height="18" rx="2" fill="#dc2626" />
+                <path d="M0 9 L18 9 M9 0 L9 18" stroke="#ffd700" strokeWidth="3" />
+                <path d="M4 0 Q9 -6 14 0" fill="#ffd700" />
               </g>
-              
-              {/* Stolen Santa hat on head */}
-              <path
-                d="M105 30 Q115 8 145 12 Q165 5 172 28"
-                fill="#c62828"
-              />
-              <path d="M105 30 Q115 8 145 12 Q165 5 172 28" fill="none" stroke="#8B0000" strokeWidth="1" />
-              <ellipse cx="108" cy="32" rx="24" ry="6" fill="#fff" />
-              <circle cx="175" cy="24" r="9" fill="#fff" />
-              
-              {/* Max the dog being dragged along */}
-              <g transform="translate(-45, 80)">
-                {/* Max's body - scruffy */}
-                <ellipse cx="32" cy="32" rx="18" ry="12" fill="#A0826D" />
-                {/* Fur texture on Max */}
-                <path d="M20 28 Q18 24 20 26" fill="none" stroke="#8B7355" strokeWidth="2" />
-                <path d="M44 28 Q46 24 44 26" fill="none" stroke="#8B7355" strokeWidth="2" />
-                {/* Max's head */}
-                <ellipse cx="14" cy="26" rx="10" ry="8" fill="#A0826D" />
-                {/* Floppy ears */}
-                <ellipse cx="8" cy="22" rx="5" ry="8" fill="#8B7355" transform="rotate(-20 8 22)" />
-                <ellipse cx="20" cy="20" rx="4" ry="7" fill="#8B7355" transform="rotate(20 20 20)" />
-                {/* Sad eye */}
-                <circle cx="12" cy="24" r="3" fill="#1a1a1a" />
-                <circle cx="13" cy="23" r="1" fill="#fff" />
-                {/* Nose */}
-                <ellipse cx="6" cy="28" rx="4" ry="3" fill="#1a1a1a" />
-                {/* The famous single antler tied to head */}
-                <path d="M15 16 Q18 6 24 4 M20 8 Q24 6 26 8" fill="none" stroke="#5c3317" strokeWidth="3" strokeLinecap="round" />
-                {/* Red ribbon tying antler */}
-                <circle cx="15" cy="16" r="4" fill="#c62828" />
-                {/* Legs dangling */}
-                <line x1="25" y1="42" x2="22" y2="52" stroke="#8B7355" strokeWidth="4" strokeLinecap="round" />
-                <line x1="40" y1="42" x2="43" y2="52" stroke="#8B7355" strokeWidth="4" strokeLinecap="round" />
-              </g>
-            </g>
+            )}
           </svg>
         </div>
       ))}

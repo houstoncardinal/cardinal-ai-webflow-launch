@@ -510,6 +510,103 @@
     }
   }
 
+  /* Santa Dynamic Flight Paths - Wave Pattern */
+  @keyframes santa-fly-wave-right {
+    0% { transform: translateX(0) translateY(0); }
+    12.5% { transform: translateX(17vw) translateY(-25vh); }
+    25% { transform: translateX(35vw) translateY(0); }
+    37.5% { transform: translateX(52vw) translateY(20vh); }
+    50% { transform: translateX(70vw) translateY(0); }
+    62.5% { transform: translateX(87vw) translateY(-15vh); }
+    75% { transform: translateX(105vw) translateY(5vh); }
+    100% { transform: translateX(140vw) translateY(0); }
+  }
+
+  @keyframes santa-fly-wave-left {
+    0% { transform: translateX(0) translateY(0); }
+    12.5% { transform: translateX(-17vw) translateY(-20vh); }
+    25% { transform: translateX(-35vw) translateY(5vh); }
+    37.5% { transform: translateX(-52vw) translateY(25vh); }
+    50% { transform: translateX(-70vw) translateY(0); }
+    62.5% { transform: translateX(-87vw) translateY(-18vh); }
+    75% { transform: translateX(-105vw) translateY(8vh); }
+    100% { transform: translateX(-140vw) translateY(0); }
+  }
+
+  /* Santa Dive Pattern - Swoops down and up */
+  @keyframes santa-fly-dive-right {
+    0% { transform: translateX(0) translateY(0); }
+    20% { transform: translateX(28vw) translateY(35vh); }
+    40% { transform: translateX(56vw) translateY(50vh); }
+    60% { transform: translateX(84vw) translateY(25vh); }
+    80% { transform: translateX(112vw) translateY(-10vh); }
+    100% { transform: translateX(140vw) translateY(0); }
+  }
+
+  @keyframes santa-fly-dive-left {
+    0% { transform: translateX(0) translateY(0); }
+    20% { transform: translateX(-28vw) translateY(30vh); }
+    40% { transform: translateX(-56vw) translateY(45vh); }
+    60% { transform: translateX(-84vw) translateY(20vh); }
+    80% { transform: translateX(-112vw) translateY(-8vh); }
+    100% { transform: translateX(-140vw) translateY(0); }
+  }
+
+  /* Santa Loop Pattern - Figure 8 style */
+  @keyframes santa-fly-loop-right {
+    0% { transform: translateX(0) translateY(0) rotate(0deg); }
+    15% { transform: translateX(21vw) translateY(-30vh) rotate(-5deg); }
+    30% { transform: translateX(42vw) translateY(10vh) rotate(5deg); }
+    45% { transform: translateX(63vw) translateY(-20vh) rotate(-3deg); }
+    60% { transform: translateX(84vw) translateY(15vh) rotate(3deg); }
+    75% { transform: translateX(105vw) translateY(-10vh) rotate(-2deg); }
+    100% { transform: translateX(140vw) translateY(0) rotate(0deg); }
+  }
+
+  @keyframes santa-fly-loop-left {
+    0% { transform: translateX(0) translateY(0) rotate(0deg); }
+    15% { transform: translateX(-21vw) translateY(-25vh) rotate(5deg); }
+    30% { transform: translateX(-42vw) translateY(15vh) rotate(-5deg); }
+    45% { transform: translateX(-63vw) translateY(-18vh) rotate(3deg); }
+    60% { transform: translateX(-84vw) translateY(12vh) rotate(-3deg); }
+    75% { transform: translateX(-105vw) translateY(-8vh) rotate(2deg); }
+    100% { transform: translateX(-140vw) translateY(0) rotate(0deg); }
+  }
+
+  /* Santa Straight Pattern (simple horizontal) */
+  @keyframes santa-fly-straight-right {
+    0% { transform: translateX(0) translateY(0); }
+    100% { transform: translateX(140vw) translateY(0); }
+  }
+
+  @keyframes santa-fly-straight-left {
+    0% { transform: translateX(0) translateY(0); }
+    100% { transform: translateX(-140vw) translateY(0); }
+  }
+
+  /* Elf Animations */
+  @keyframes elf-jump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes elf-wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+  }
+
+  @keyframes elf-carry {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-3px) rotate(-2deg); }
+    75% { transform: translateX(3px) rotate(2deg); }
+  }
+
+  @keyframes elf-arm-wave {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-30deg); }
+  }
+
   @keyframes reindeer-run {
     0%, 100% {
       transform: translateY(0) rotate(-2deg);
